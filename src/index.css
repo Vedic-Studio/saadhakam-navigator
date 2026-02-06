@@ -9,37 +9,35 @@
 @layer base {
   :root {
     /* Core palette - Deep Indigo & Warm Saffron */
-    --background: 48 100% 98%; /* Warm ivory */
-    --foreground: 240 20% 15%; /* Rich charcoal */
+    --background: 45 30% 96%;   /* Warmer parchment foundation */
+    --foreground: 24 10% 10%;   /* Softer charcoal */
 
-    --card: 48 60% 97%;
-    --card-foreground: 240 20% 15%;
+    --card: 45 40% 98%;         /* Light warm card */
+    --card-foreground: 24 10% 10%;
 
-    --popover: 48 60% 97%;
-    --popover-foreground: 240 20% 15%;
+    --popover: 45 40% 98%;
+    --popover-foreground: 24 10% 10%;
 
     /* Primary: Deep Indigo */
-    --primary: 243 46% 20%;
-    --primary-foreground: 48 100% 96%;
+    --primary: 260 25% 15%;     /* More neutral deep indigo */
+    --primary-foreground: 45 20% 96%;
 
-    /* Secondary: Warm Saffron */
-    --secondary: 38 92% 50%;
-    --secondary-foreground: 240 20% 10%;
+    /* Secondary: Vibrant Saffron */
+    --secondary: 25 90% 55%;    /* Richer, deeper saffron */
+    --secondary-foreground: 45 20% 96%;
 
-    /* Muted: Soft parchment */
-    --muted: 45 30% 92%;
-    --muted-foreground: 240 10% 40%;
+    /* Muted */
+    --muted: 40 20% 92%;
+    --muted-foreground: 25 5% 45%;
 
-    /* Accent: Gold highlights */
-    --accent: 43 74% 49%;
-    --accent-foreground: 240 20% 10%;
+    /* Accent: Gold */
+    --accent: 35 85% 50%;
+    --accent-foreground: 45 20% 96%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 45 20% 85%;
-    --input: 45 20% 85%;
-    --ring: 243 46% 30%;
+    /* Soft border */
+    --border: 40 15% 90%;
+    --input: 40 15% 90%;
+    --ring: 25 90% 55%;
 
     --radius: 0.75rem;
 
@@ -245,11 +243,51 @@
 
   /* Subtle glow */
   .glow-saffron {
-    box-shadow: 0 0 40px hsl(38 92% 50% / 0.2);
+    box-shadow: 0 0 60px -15px hsl(25 90% 55% / 0.15);
+  }
+  
+  .glow-gold {
+    box-shadow: 0 0 40px -10px hsl(35 85% 50% / 0.15);
   }
 
   /* Gold text */
   .text-gold {
-    color: hsl(43 74% 49%);
+    color: hsl(35 85% 45%);
+  }
+  
+  /* Glassmorphism */
+  .glassmorphic-warm {
+    background: rgba(253, 251, 247, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Numbered heading */
+  .numbered-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 1px hsl(25 90% 55% / 0.3);
+  }
+  
+  /* Sticky section utilities */
+  .sticky-section {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Floating elements */
+  .floating-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  }
+  
+  .floating-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
   }
 }
