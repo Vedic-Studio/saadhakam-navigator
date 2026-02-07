@@ -1,105 +1,82 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Quote, BookCheck, Users, Heart } from "lucide-react";
+import { Star } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const testimonials = [
+const TESTIMONIALS = [
   {
-    quote: "After years of reading random books and watching videos, Saadhakam helped me understand which path actually resonates with my nature. The framework around gunas and svabhava was eye-opening.",
-    author: "Sarah M.",
-    context: "Former seeker, now practicing Bhakti yoga",
+    id: 1,
+    text: "Sutra explained the concept of 'Dharma' in a way that finally clicked. It's like having a wise grandmother and a Sanskrit scholar in your pocket.",
+    author: "Priya Sharma",
+    role: "Yoga Teacher",
+    rating: 5,
+    image: "https://i.pravatar.cc/100?img=1"
   },
   {
-    quote: "As someone who grew up Hindu but never really understood the philosophical depth, this platform reconnected me with my tradition in a way that feels both authentic and accessible.",
-    author: "Arun P.",
-    context: "Second-generation Indian-American",
+    id: 2,
+    text: "The pathfinder quiz was eerily accurate. I always felt drawn to Bhakti but didn't know where to start. Now I have a daily practice.",
+    author: "Rahul Verma",
+    role: "Software Engineer",
+    rating: 5,
+    image: "https://i.pravatar.cc/100?img=11"
   },
   {
-    quote: "I appreciated that it doesn't push you toward one path. It genuinely helps you discover what fits—for me, that turned out to be Advaita inquiry combined with simple daily puja.",
-    author: "Michael R.",
-    context: "Meditation teacher and counselor",
-  },
-];
-
-const trustBadges = [
-  {
-    label: "Culturally respectful",
-    description: "Honoring the living tradition without appropriation",
-    icon: Heart,
-  },
-  {
-    label: "Source-linked learning",
-    description: "Connected to authentic texts and lineages",
-    icon: BookCheck,
-  },
-  {
-    label: "Non-dogmatic guidance",
-    description: "Multiple paths, no single answer imposed",
-    icon: Users,
-  },
+    id: 3,
+    text: "Studying the Gita with word-by-word breakdown has transformed my understanding. The depth of knowledge here is incredible.",
+    author: "Sarah Jenkins",
+    role: "Student of Philosophy",
+    rating: 5,
+    image: "https://i.pravatar.cc/100?img=5"
+  }
 ];
 
 export function SocialProof() {
   return (
-    <section className="section-padding bg-background">
-      <div className="container-padding mx-auto max-w-7xl">
-        {/* Testimonials */}
-        <div className="mb-16">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground text-center mb-8">
-            What Seekers Say
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-card border-border/50 shadow-spiritual">
-                <CardContent className="p-6">
-                  <Quote className="w-8 h-8 text-secondary/50 mb-4" />
-                  <p className="text-foreground mb-4 italic leading-relaxed">
-                    "{testimonial.quote}"
-                  </p>
-                  <div className="border-t border-border pt-4">
-                    <p className="font-semibold text-foreground">
-                      {testimonial.author}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {testimonial.context}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+    <section className="py-24 bg-card/10 border-t border-white/5 relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10" />
+
+      <div className="container-padding mx-auto max-w-7xl px-4">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">Trusted by Seekers Worldwide</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Join a community of thousands who are discovering their path through ancient wisdom and modern technology.
+          </p>
         </div>
 
-        {/* Trust badges */}
-        <div className="grid sm:grid-cols-3 gap-6 mb-12">
-          {trustBadges.map((badge) => {
-            const IconComponent = badge.icon;
-            return (
-              <div 
-                key={badge.label}
-                className="flex items-start gap-4 p-5 bg-muted/30 rounded-xl"
-              >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <IconComponent className="w-5 h-5 text-primary" />
-                </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {TESTIMONIALS.map((t) => (
+            <div key={t.id} className="bg-card/40 backdrop-blur-md border border-white/5 p-8 rounded-3xl hover:border-primary/20 hover:bg-card/60 transition-all duration-300 hover:-translate-y-1 shadow-lg">
+              <div className="flex gap-1 text-primary mb-6">
+                {Array.from({ length: t.rating }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-current" />
+                ))}
+              </div>
+              <p className="text-lg leading-relaxed mb-6 text-foreground/90 font-medium">"{t.text}"</p>
+              <div className="flex items-center gap-4 mt-auto">
+                <Avatar className="h-12 w-12 border border-white/10">
+                  <AvatarImage src={t.image} />
+                  <AvatarFallback>{t.author[0]}</AvatarFallback>
+                </Avatar>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">
-                    {badge.label}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {badge.description}
-                  </p>
+                  <div className="font-semibold text-foreground">{t.author}</div>
+                  <div className="text-sm text-muted-foreground">{t.role}</div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
-        {/* Disclaimer */}
-        <div className="text-center">
-          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-            <strong>Please note:</strong> Saadhakam offers educational and spiritual exploration support. 
-            It is not a substitute for professional medical, psychological, or mental health treatment. 
-            If you're experiencing a crisis, please seek appropriate professional help.
-          </p>
+        <div className="mt-20 pt-16 border-t border-white/5 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          {[
+            { label: "Active Users", value: "10,000+" },
+            { label: "Questions Answered", value: "500k+" },
+            { label: "Sadhana Minutes", value: "1M+" },
+            { label: "App Store Rating", value: "4.9/5" }
+          ].map((stat, i) => (
+            <div key={i} className="space-y-2">
+              <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-white to-white/50">{stat.value}</div>
+              <div className="text-sm text-primary uppercase tracking-widest font-semibold">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

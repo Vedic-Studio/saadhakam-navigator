@@ -1,148 +1,215 @@
-import { useState } from "react";
+import { useRef } from "react";
+import { useStickyScroll } from "@/hooks/useStickyScroll";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Compass, Map, Activity } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { ArrowRight, Compass, Map, Activity, Check } from "lucide-react";
 
 const FEATURES = [
     {
         id: "pathfinder",
-        step: "01",
-        label: "Discover",
-        title: "Find your path in seconds",
-        description: "Answer a few deep questions about your nature (Samskaras) and let the Pathfinder algorithm suggest the philosophies and practices that align with your Svabhava.",
+        title: "The Pathfinder",
+        description: "Not sure where to start? Answer 7 simple questions about your nature (Samskaras) and life stage. Our algorithm recommends the perfect path for you, from Bhakti to Jnana.",
         icon: Compass,
-        mockupImage: "/pathfinder-ui.jpg" // Placeholder
+        color: "text-rose-400",
+        bg: "bg-rose-500/10",
+        mockup: (
+            <div className="w-full max-w-sm bg-card border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-500 to-orange-500" />
+                <div className="mb-6">
+                    <span className="text-xs font-bold text-rose-400 uppercase tracking-widest">Question 3 of 7</span>
+                    <h4 className="text-xl font-medium mt-2 leading-snug">When you feel most connected to the divine, is it through...</h4>
+                </div>
+                <div className="space-y-3">
+                    {["Deep intellectual inquiry", "Emotional devotion & surrender", "Selfless service to others", "Disciplined meditation"].map((opt, i) => (
+                        <div key={i} className={cn("p-4 rounded-xl border cursor-pointer transition-all hover:bg-white/5", i === 1 ? "border-rose-500 bg-rose-500/10" : "border-white/10")}>
+                            <div className="flex items-center gap-3">
+                                <div className={cn("w-5 h-5 rounded-full border flex items-center justify-center", i === 1 ? "border-rose-500 bg-rose-500 text-white" : "border-gray-500")}>
+                                    {i === 1 && <Check className="w-3 h-3" />}
+                                </div>
+                                <span className={cn("text-sm", i === 1 ? "text-rose-100" : "text-muted-foreground")}>{opt}</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="mt-6 flex justify-end">
+                    <Button size="sm" className="rounded-full bg-rose-600 hover:bg-rose-700">Next <ArrowRight className="ml-1 w-3 h-3" /></Button>
+                </div>
+            </div>
+        )
     },
     {
         id: "map",
-        step: "02",
-        label: "Explore",
-        title: "Navigate the Map of Sanatan",
-        description: "Visualize the connections between Schools (Darshanas), Deities, and Texts. See how Vedanta connects to Yoga, or how Bhakti flows through the Epics.",
+        title: "Knowledge Map",
+        description: "Navigate the vast ocean of Sanatan Dharma. Visualize connections between 6 Philosophies, 4 Traditions, and thousands of texts. See how Vedanta connects to Yoga, or how Bhakti flows through the Epics.",
         icon: Map,
-        mockupImage: "/map-ui.jpg" // Placeholder
+        color: "text-cyan-400",
+        bg: "bg-cyan-500/10",
+        mockup: (
+            <div className="w-full max-w-sm aspect-square bg-card border border-white/10 rounded-2xl p-4 shadow-2xl relative overflow-hidden flex items-center justify-center">
+                {/* Abstract Graph Nodes */}
+                <div className="absolute inset-0 bg-grid-white/[0.02]" />
+
+                {/* Central Node */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-cyan-900/30 border border-cyan-500/50 flex items-center justify-center z-10 animate-pulse-slow">
+                    <span className="font-bold text-cyan-200">Dharma</span>
+                </div>
+
+                {/* Orbiting Nodes */}
+                {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+                    <div key={i} className="absolute top-1/2 left-1/2 w-4 h-4 rounded-full bg-cyan-500/20 border border-cyan-500/50"
+                        style={{
+                            transform: `translate(-50%, -50%) rotate(${deg}deg) translate(80px) rotate(-${deg}deg)`
+                        }}
+                    />
+                ))}
+
+                {/* Connecting Lines (SVG) */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+                    <circle cx="50%" cy="50%" r="80" fill="none" stroke="currentColor" strokeDasharray="4 4" className="text-cyan-500" />
+                </svg>
+
+                {/* Tooltip Mockup */}
+                <div className="absolute bottom-6 left-6 right-6 bg-black/80 backdrop-blur-md rounded-lg p-3 border border-white/10 text-xs">
+                    <span className="font-bold text-cyan-400 block mb-1">Vedanta</span>
+                    The end of the Vedas; one of the six orthodox schools of Hindu philosophy.
+                </div>
+            </div>
+        )
     },
     {
         id: "practice",
-        step: "03",
-        label: "Practice",
-        title: "Turn wisdom into action",
-        description: "Don't just read—do. Select daily Sadhanas, track your consistency, and move from intellectual understanding to direct experience.",
+        title: "Practice Tracker",
+        description: "Don't just read—do. Select daily Sadhanas, track your consistency, and move from intellectual understanding to direct experience. Build your streak and watch your inner garden bloom.",
         icon: Activity,
-        mockupImage: "/practice-ui.jpg" // Placeholder
+        color: "text-emerald-400",
+        bg: "bg-emerald-500/10",
+        mockup: (
+            <div className="w-full max-w-sm bg-card border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+                <div className="flex justify-between items-end mb-6">
+                    <div>
+                        <span className="text-xs text-muted-foreground uppercase tracking-widest">Your Streak</span>
+                        <div className="text-4xl font-bold text-white mt-1">12 <span className="text-lg font-normal text-emerald-400">Days</span></div>
+                    </div>
+                    <div className="h-10 w-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                        <Activity className="w-5 h-5" />
+                    </div>
+                </div>
+
+                {/* Contribution Graph Mockup */}
+                <div className="grid grid-cols-7 gap-2 mb-6">
+                    {Array.from({ length: 28 }).map((_, i) => (
+                        <div
+                            key={i}
+                            className={cn(
+                                "w-full aspect-square rounded-sm",
+                                Math.random() > 0.4 ? "bg-emerald-500/20" : Math.random() > 0.7 ? "bg-emerald-500/60" : "bg-white/5"
+                            )}
+                        />
+                    ))}
+                </div>
+
+                <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5">
+                        <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 text-xs">AM</div>
+                        <div className="flex-1">
+                            <div className="text-sm font-medium">Morning Chanting</div>
+                            <div className="text-xs text-muted-foreground">15 mins • Completed</div>
+                        </div>
+                        <Check className="w-4 h-4 text-emerald-500" />
+                    </div>
+                </div>
+            </div>
+        )
     }
 ];
 
 export function FeatureShowcase() {
-    const [activeFeature, setActiveFeature] = useState(0);
+    const { containerRef, activeSection } = useStickyScroll({
+        sectionCount: FEATURES.length,
+        offset: 0
+    });
 
     return (
-        <section className="section-padding bg-background relative overflow-hidden">
-            {/* Background radial gradient */}
-            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
+        <section ref={containerRef} className="relative bg-background">
+            {/* Total height = num features * 100vh */}
+            <div className="h-[300vh]">
+                <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+                    <div className="container-padding mx-auto w-full max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-24 items-center h-full py-20">
 
-            <div className="container-padding mx-auto max-w-7xl">
-                <div className="text-center mb-16 md:mb-24">
-                    <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-                        From theory to <span className="text-secondary">experience</span>
-                    </h2>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Saadhakam is not just an encyclopedia. It is a tool designed to close the gap between ancient wisdom and your daily life.
-                    </p>
-                </div>
+                        {/* LEFT: Text Content */}
+                        <div className="flex flex-col justify-center h-full order-2 lg:order-1">
+                            {FEATURES.map((feature, index) => {
+                                const isActive = activeSection === index;
+                                return (
+                                    <div
+                                        key={feature.id}
+                                        className={cn(
+                                            "transition-all duration-500 absolute w-full max-w-lg",
+                                            isActive
+                                                ? "opacity-100 translate-y-0 relative"
+                                                : "opacity-0 translate-y-8 absolute pointer-events-none"
+                                        )}
+                                        // Using absolute positioning for inactive elements to stack them 
+                                        // But we need one relative element to hold space? 
+                                        // Actually simplest sticky pattern is to just transition opacity/transform 
+                                        // provided they overlap or we only show one.
+                                        // Let's rely on the "absolute" trick for overlap.
+                                        style={{ display: isActive ? 'block' : 'none' }} // Hard Switch for cleaner DOM in this mockup
+                                    >
+                                        <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full border mb-6", feature.bg, feature.color, "border-white/10")}>
+                                            <feature.icon className="w-4 h-4" />
+                                            <span className="text-xs font-bold uppercase tracking-wider">{feature.title}</span>
+                                        </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                                        <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                                            {feature.title === "The Pathfinder" && <span>Discover your <span className="text-rose-400">True Path</span></span>}
+                                            {feature.title === "Knowledge Map" && <span>Navigate the <span className="text-cyan-400">Infinite</span></span>}
+                                            {feature.title === "Practice Tracker" && <span>Turn Wisdom into <span className="text-emerald-400">Action</span></span>}
+                                        </h2>
 
-                    {/* Left: Interactive Steps */}
-                    <div className="space-y-8">
-                        {FEATURES.map((feature, index) => (
-                            <div
-                                key={feature.id}
-                                onClick={() => setActiveFeature(index)}
-                                className={`relative pl-8 border-l-2 transition-all duration-300 cursor-pointer group ${activeFeature === index
-                                        ? "border-secondary py-4"
-                                        : "border-border/50 py-4 opacity-60 hover:opacity-100 hover:border-secondary/50"
-                                    }`}
-                            >
-                                <div className="flex items-baseline gap-4 mb-2">
-                                    <span className={`text-sm font-bold tracking-widest uppercase ${activeFeature === index ? "text-secondary" : "text-muted-foreground"
-                                        }`}>
-                                        {feature.step}. {feature.label}
-                                    </span>
-                                </div>
+                                        <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+                                            {feature.description}
+                                        </p>
 
-                                <h3 className={`font-display text-2xl font-bold mb-3 transition-colors ${activeFeature === index ? "text-foreground" : "text-muted-foreground"
-                                    }`}>
-                                    {feature.title}
-                                </h3>
+                                        <Button variant="outline" size="lg" className="rounded-full border-white/10 hover:bg-white/5">
+                                            Explore {feature.title} <ArrowRight className="ml-2 w-4 h-4" />
+                                        </Button>
+                                    </div>
+                                );
+                            })}
+                        </div>
 
-                                <div className={`overflow-hidden transition-all duration-500 ${activeFeature === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                                    }`}>
-                                    <p className="text-muted-foreground leading-relaxed mb-4">
-                                        {feature.description}
-                                    </p>
-                                    <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80 font-medium">
-                                        Try it now <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                        {/* RIGHT: Mockups */}
+                        <div className="order-1 lg:order-2 flex items-center justify-center relative h-full">
+                            <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
+                                {/* Background Blob */}
+                                <div className={cn(
+                                    "absolute inset-0 blur-[100px] transition-colors duration-1000",
+                                    FEATURES[activeSection].bg.replace("/10", "/30")
+                                )} />
 
-                    {/* Right: Floating Mockup */}
-                    <div className="relative h-[500px] w-full items-center justify-center flex">
-                        {/* Abstract device frame */}
-                        <div className="relative w-full max-w-md aspect-[9/16] md:aspect-square bg-card border-8 border-muted/20 rounded-[2.5rem] shadow-2xl overflow-hidden glassmorphic-warm floating-card">
-
-                            {/* Dynamic Content based on active state */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-background to-muted/50 p-6 flex flex-col">
-
-                                {/* Fake UI Header */}
-                                <div className="flex items-center justify-between mb-8 opacity-50">
-                                    <div className="w-8 h-8 rounded-full bg-foreground/10" />
-                                    <div className="w-24 h-3 rounded-full bg-foreground/10" />
-                                </div>
-
-                                {/* Transitioning Content */}
-                                <div className="flex-1 flex items-center justify-center text-center p-6 relative">
-                                    {FEATURES.map((feature, index) => (
+                                {FEATURES.map((feature, index) => {
+                                    const isActive = activeSection === index;
+                                    return (
                                         <div
                                             key={feature.id}
-                                            className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 transform ${activeFeature === index
-                                                    ? "opacity-100 translate-y-0 scale-100"
-                                                    : "opacity-0 translate-y-8 scale-95 pointer-events-none"
-                                                }`}
+                                            className={cn(
+                                                "absolute inset-0 flex items-center justify-center transition-all duration-700 ease-out transform",
+                                                isActive
+                                                    ? "opacity-100 scale-100 rotate-0 z-10"
+                                                    : index < activeSection
+                                                        ? "opacity-0 scale-95 -rotate-6 z-0"
+                                                        : "opacity-0 scale-95 rotate-6 z-0"
+                                            )}
                                         >
-                                            <div className="w-20 h-20 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 shadow-sm">
-                                                <feature.icon size={40} />
-                                            </div>
-                                            <h4 className="font-display text-2xl font-bold text-foreground mb-2">
-                                                {feature.title}
-                                            </h4>
-                                            <p className="text-sm text-muted-foreground">
-                                                {feature.label} Mode Active
-                                            </p>
-
-                                            {/* Abstract UI Lines */}
-                                            <div className="w-full mt-8 space-y-3 opacity-30">
-                                                <div className="h-2 w-3/4 mx-auto bg-current rounded-full" />
-                                                <div className="h-2 w-1/2 mx-auto bg-current rounded-full" />
-                                                <div className="h-2 w-2/3 mx-auto bg-current rounded-full" />
-                                            </div>
+                                            {feature.mockup}
                                         </div>
-                                    ))}
-                                </div>
-
-                                {/* Fake UI FAB */}
-                                <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full bg-secondary shadow-lg shadow-secondary/20" />
+                                    );
+                                })}
                             </div>
                         </div>
 
-                        {/* Floating Elements behind */}
-                        <div className="absolute -z-10 top-10 -right-10 w-40 h-40 bg-gold/10 rounded-full blur-2xl animate-pulse-soft" />
-                        <div className="absolute -z-10 -bottom-10 -left-10 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
                     </div>
-
                 </div>
             </div>
         </section>

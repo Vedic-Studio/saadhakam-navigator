@@ -1,110 +1,48 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
-import { ArrowRight, Mail, Shield } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 
 export function ConversionSection() {
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setIsSubmitting(true);
-    
-    // Mock submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Welcome to the path!",
-      description: "You'll receive guidance to begin your journey shortly.",
-    });
-    
-    setEmail("");
-    setIsSubmitting(false);
-
-    // Analytics stub
-    if (typeof window !== "undefined") {
-      console.log("[Analytics] Email captured:", email);
-    }
-  };
-
   return (
-    <section className="section-padding bg-gradient-spiritual relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full bg-lotus opacity-5" />
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2" />
-      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-primary/20 rounded-full blur-3xl" />
+    <section className="relative py-32 overflow-hidden bg-background">
+      {/* Background Gradients */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-[500px] bg-gradient-glow opacity-50 pointer-events-none" />
+
+      {/* Decorative Circles */}
+      <div className="absolute top-1/2 left-10 w-64 h-64 bg-secondary/10 rounded-full blur-[80px]" />
+      <div className="absolute top-1/2 right-10 w-64 h-64 bg-primary/10 rounded-full blur-[80px]" />
 
       <div className="container-padding mx-auto max-w-4xl relative z-10 text-center">
-        <span className="text-secondary font-medium text-sm uppercase tracking-wider">
-          Begin Today
-        </span>
-        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mt-3 mb-4">
-          Begin Your Saadhana
+        <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 tracking-tight">
+          Your Guru Awaits.
         </h2>
-        <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
-          7 days. 10 minutes a day. A path that fits you.
-          <br />
-          Start with clarity, continue with commitment.
+
+        <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+          Start your journey with <span className="text-foreground font-semibold">Sutra</span> today.
+          <br className="hidden md:block" />
+          Explore the eternal path with guidance that adapts to you.
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
           <Link to="/pathfinder">
-            <Button 
-              size="lg" 
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-saffron text-lg px-8 h-14"
-            >
-              Start Your Path
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button size="lg" className="h-16 px-10 rounded-full text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl shadow-primary/20 hover:scale-105 transition-transform duration-300">
+              Start with Sutra
+              <ArrowRight className="ml-2 w-6 h-6" />
             </Button>
           </Link>
-          <Link to="/start">
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="text-lg px-8 h-14 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10"
-            >
-              Create a Practice Plan
+
+          <Link to="/download">
+            <Button size="lg" variant="outline" className="h-16 px-10 rounded-full text-lg border-white/10 hover:bg-white/5 hover:text-foreground text-muted-foreground transition-colors">
+              <Download className="mr-2 w-5 h-5" />
+              Download App
             </Button>
           </Link>
         </div>
 
-        {/* Email capture */}
-        <div className="max-w-md mx-auto">
-          <p className="text-primary-foreground/70 text-sm mb-4">
-            Or receive guidance directly to your inbox:
-          </p>
-          <form onSubmit={handleSubmit} className="flex gap-2">
-            <div className="relative flex-1">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-              <Input
-                type="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="pl-10 h-12 bg-white/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:border-secondary"
-                required
-              />
-            </div>
-            <Button 
-              type="submit" 
-              disabled={isSubmitting}
-              className="h-12 px-6 bg-secondary text-secondary-foreground hover:bg-secondary/90"
-            >
-              {isSubmitting ? "..." : "Begin"}
-            </Button>
-          </form>
-          <div className="flex items-center justify-center gap-2 mt-4 text-xs text-primary-foreground/60">
-            <Shield className="w-3 h-3" />
-            <span>No spam. Unsubscribe anytime. Your data stays private.</span>
-          </div>
-        </div>
+        <p className="mt-8 text-sm text-muted-foreground/60">
+          Free forever for seekers. Premium features available.
+        </p>
       </div>
     </section>
   );

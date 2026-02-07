@@ -4,100 +4,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Saadhakam Design System - Modern Spiritual Theme */
+/* Saadhakam Design System - Paradox-Style Dark Theme */
 
 @layer base {
   :root {
-    /* Core palette - Deep Indigo & Warm Saffron */
-    --background: 45 30% 96%;   /* Warmer parchment foundation */
-    --foreground: 24 10% 10%;   /* Softer charcoal */
+    /* Base: Deep Indigo / Void Black */
+    --background: 248 30% 8%;
+    /* #0f0d1a - Deepest indigo */
+    --foreground: 250 20% 98%;
+    /* #f8f7ff - Soft white */
 
-    --card: 45 40% 98%;         /* Light warm card */
-    --card-foreground: 24 10% 10%;
+    /* Cards: Dark Glass */
+    --card: 248 35% 12%;
+    /* #161326 - Slightly lighter */
+    --card-foreground: 250 20% 98%;
 
-    --popover: 45 40% 98%;
-    --popover-foreground: 24 10% 10%;
+    --popover: 248 35% 12%;
+    --popover-foreground: 250 20% 98%;
 
-    /* Primary: Deep Indigo */
-    --primary: 260 25% 15%;     /* More neutral deep indigo */
-    --primary-foreground: 45 20% 96%;
+    /* Primary: Saffron (Action) */
+    --primary: 25 90% 55%;
+    /* #f97316 - Vibrant Saffron */
+    --primary-foreground: 250 20% 98%;
 
-    /* Secondary: Vibrant Saffron */
-    --secondary: 25 90% 55%;    /* Richer, deeper saffron */
-    --secondary-foreground: 45 20% 96%;
+    /* Secondary: Mystic Purple/Indigo */
+    --secondary: 260 60% 60%;
+    /* #9333ea - Purple Glow */
+    --secondary-foreground: 250 20% 98%;
 
     /* Muted */
-    --muted: 40 20% 92%;
-    --muted-foreground: 25 5% 45%;
+    --muted: 248 30% 18%;
+    --muted-foreground: 248 10% 65%;
 
     /* Accent: Gold */
-    --accent: 35 85% 50%;
-    --accent-foreground: 45 20% 96%;
+    --accent: 35 90% 50%;
+    /* #f59e0b - Warm Gold */
+    --accent-foreground: 250 20% 98%;
 
-    /* Soft border */
-    --border: 40 15% 90%;
-    --input: 40 15% 90%;
+    /* Destructive */
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 250 20% 98%;
+
+    /* Borders */
+    --border: 248 30% 20%;
+    --input: 248 30% 20%;
     --ring: 25 90% 55%;
 
-    --radius: 0.75rem;
-
-    /* Extended palette */
-    --indigo-deep: 243 46% 15%;
-    --indigo-light: 243 30% 35%;
-    --saffron: 38 92% 50%;
-    --saffron-light: 38 92% 65%;
-    --gold: 43 74% 49%;
-    --ivory: 48 100% 98%;
-    --parchment: 45 40% 94%;
-
-    /* Sidebar */
-    --sidebar-background: 243 46% 12%;
-    --sidebar-foreground: 48 60% 95%;
-    --sidebar-primary: 38 92% 50%;
-    --sidebar-primary-foreground: 240 20% 10%;
-    --sidebar-accent: 243 30% 25%;
-    --sidebar-accent-foreground: 48 60% 95%;
-    --sidebar-border: 243 30% 20%;
-    --sidebar-ring: 38 92% 50%;
-  }
-
-  .dark {
-    --background: 243 46% 8%;
-    --foreground: 48 60% 95%;
-
-    --card: 243 40% 12%;
-    --card-foreground: 48 60% 95%;
-
-    --popover: 243 40% 12%;
-    --popover-foreground: 48 60% 95%;
-
-    --primary: 38 92% 50%;
-    --primary-foreground: 240 20% 10%;
-
-    --secondary: 243 30% 25%;
-    --secondary-foreground: 48 60% 95%;
-
-    --muted: 243 30% 18%;
-    --muted-foreground: 45 20% 65%;
-
-    --accent: 43 74% 49%;
-    --accent-foreground: 240 20% 10%;
-
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 243 30% 20%;
-    --input: 243 30% 20%;
-    --ring: 38 92% 50%;
-
-    --sidebar-background: 243 46% 6%;
-    --sidebar-foreground: 48 60% 95%;
-    --sidebar-primary: 38 92% 50%;
-    --sidebar-primary-foreground: 240 20% 10%;
-    --sidebar-accent: 243 30% 15%;
-    --sidebar-accent-foreground: 48 60% 95%;
-    --sidebar-border: 243 30% 15%;
-    --sidebar-ring: 38 92% 50%;
+    --radius: 1rem;
   }
 }
 
@@ -107,12 +60,18 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Playfair Display', Georgia, serif;
+    @apply tracking-tight;
   }
 
   .font-sanskrit {
@@ -122,172 +81,84 @@
   .font-display {
     font-family: 'Playfair Display', Georgia, serif;
   }
-
-  .font-body {
-    font-family: 'Inter', system-ui, sans-serif;
-  }
 }
 
 @layer components {
-  /* Mandala background pattern */
-  .bg-mandala {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e1b4b' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20v40c11.046 0 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20V10c-11.046 0-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+  /* Glassmorphism - Premium Dark */
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-xl border border-white/5 shadow-2xl;
   }
 
-  /* Lotus pattern */
-  .bg-lotus {
-    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231e1b4b' stroke-opacity='0.04' stroke-width='1'%3E%3Cellipse cx='40' cy='40' rx='15' ry='25' transform='rotate(0 40 40)'/%3E%3Cellipse cx='40' cy='40' rx='15' ry='25' transform='rotate(45 40 40)'/%3E%3Cellipse cx='40' cy='40' rx='15' ry='25' transform='rotate(90 40 40)'/%3E%3Cellipse cx='40' cy='40' rx='15' ry='25' transform='rotate(135 40 40)'/%3E%3C/g%3E%3C/svg%3E");
+  .glass-card-hover {
+    @apply transition-all duration-300 hover:bg-card/60 hover:border-white/10 hover:shadow-primary/5 hover:-translate-y-1;
   }
 
-  /* Gradient overlays */
-  .gradient-spiritual {
-    background: linear-gradient(
-      135deg,
-      hsl(243 46% 20% / 0.95) 0%,
-      hsl(243 46% 15% / 0.98) 50%,
-      hsl(38 92% 50% / 0.1) 100%
-    );
-  }
-
-  .gradient-saffron {
-    background: linear-gradient(
-      135deg,
-      hsl(38 92% 50%) 0%,
-      hsl(43 74% 49%) 100%
-    );
-  }
-
-  .gradient-indigo {
-    background: linear-gradient(
-      180deg,
-      hsl(243 46% 15%) 0%,
-      hsl(243 46% 20%) 100%
-    );
-  }
-
-  /* Card hover states */
-  .card-hover {
-    @apply transition-all duration-300 ease-out;
-  }
-
-  .card-hover:hover {
-    @apply -translate-y-1 shadow-xl;
-  }
-
-  /* Section animations */
-  .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    .animate-fade-up {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-
-    .card-hover:hover {
-      transform: none;
-    }
-  }
-
-  /* Smooth scroll */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
-
-  /* Trust badge */
-  .trust-badge {
-    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium;
-    @apply bg-primary/5 text-primary border border-primary/10;
-  }
-
-  /* Section spacing */
-  .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
-  }
-
-  .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
+  /* Badge Styles */
+  .badge-primary {
+    @apply bg-primary/10 text-primary border border-primary/20 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider;
   }
 }
 
 @layer utilities {
-  /* Text gradient */
-  .text-gradient-spiritual {
+
+  /* Backgrounds */
+  .bg-gradient-dark {
+    background: radial-gradient(circle at top center, hsl(248 40% 12%), hsl(248 30% 8%));
+  }
+
+  .bg-gradient-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.15) 0%, rgba(15, 13, 26, 0) 70%);
+  }
+
+  /* Text Effects */
+  .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      135deg,
-      hsl(243 46% 20%) 0%,
-      hsl(38 92% 50%) 100%
-    );
+    background-image: linear-gradient(135deg, hsl(35 90% 60%), hsl(25 90% 55%));
   }
 
-  /* Subtle glow */
-  .glow-saffron {
-    box-shadow: 0 0 60px -15px hsl(25 90% 55% / 0.15);
-  }
-  
-  .glow-gold {
-    box-shadow: 0 0 40px -10px hsl(35 85% 50% / 0.15);
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 
-  /* Gold text */
-  .text-gold {
-    color: hsl(35 85% 45%);
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
-  
-  /* Glassmorphism */
-  .glassmorphic-warm {
-    background: rgba(253, 251, 247, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
-  
-  /* Numbered heading */
-  .numbered-heading {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    line-height: 0.8;
-    color: transparent;
-    -webkit-text-stroke: 1px hsl(25 90% 55% / 0.3);
+
+  /* Sticky Scroll Utilities */
+  .sticky-section-container {
+    @apply relative w-full;
+    min-height: 300vh;
+    /* Ensuring enough scroll distance */
   }
-  
-  /* Sticky section utilities */
-  .sticky-section {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+
+  .sticky-panel {
+    @apply sticky top-0 h-screen flex flex-col justify-center;
   }
-  
-  /* Floating elements */
-  .floating-card {
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
   }
-  
-  .floating-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full hover:bg-muted-foreground/50 transition-colors;
   }
 }
