@@ -11,7 +11,7 @@ import { FAQSection } from "@/components/landing/FAQSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-primary-foreground">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground">
       <Header />
       <main>
         {/* Fold 1: Hero - Sutra Intro */}

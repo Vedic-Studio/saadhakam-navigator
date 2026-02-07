@@ -33,13 +33,12 @@ const FEATURES = [
     }
 ];
 
-// Separate mockup components 
 const PathfinderMockup = () => (
     <div className="w-full max-w-sm bg-card border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rose-500 to-orange-500" />
         <div className="mb-6">
             <span className="text-xs font-bold text-rose-400 uppercase tracking-widest">Question 3 of 7</span>
-            <h4 className="text-xl font-medium mt-2 leading-snug">When you feel most connected to the divine, is it through...</h4>
+            <h4 className="text-xl font-medium mt-2 leading-snug text-white">When you feel most connected to the divine, is it through...</h4>
         </div>
         <div className="space-y-3">
             {["Deep intellectual inquiry", "Emotional devotion & surrender", "Selfless service to others", "Disciplined meditation"].map((opt, i) => (
@@ -75,13 +74,12 @@ const KnowledgeMapMockup = () => (
         </svg>
         <div className="absolute bottom-6 left-6 right-6 bg-black/80 backdrop-blur-md rounded-lg p-3 border border-white/10 text-xs">
             <span className="font-bold text-cyan-400 block mb-1">Vedanta</span>
-            The end of the Vedas; one of the six orthodox schools of Hindu philosophy.
+            <span className="text-white/90">The end of the Vedas; one of the six orthodox schools of Hindu philosophy.</span>
         </div>
     </div>
 );
 
 const TrackerMockup = () => {
-    // Pre-computed pattern to avoid random on each render
     const pattern = [1, 2, 1, 3, 2, 1, 3, 1, 2, 3, 1, 2, 1, 3, 2, 1, 2, 3, 1, 2, 1, 3, 2, 1, 2, 3, 1, 2];
     return (
         <div className="w-full max-w-sm bg-card border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
@@ -107,9 +105,9 @@ const TrackerMockup = () => {
             </div>
             <div className="space-y-3">
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5">
-                    <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 text-xs">AM</div>
+                    <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 text-xs text-white">AM</div>
                     <div className="flex-1">
-                        <div className="text-sm font-medium">Morning Chanting</div>
+                        <div className="text-sm font-medium text-white">Morning Chanting</div>
                         <div className="text-xs text-muted-foreground">15 mins • Completed</div>
                     </div>
                     <Check className="w-4 h-4 text-emerald-500" />
@@ -128,11 +126,11 @@ export function FeatureShowcase() {
 
     return (
         <section ref={containerRef} className="relative bg-background" style={{ height: '300vh' }}>
-            <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+            <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden z-10">
                 <div className="container-padding mx-auto w-full max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-24 items-center h-full py-20">
 
                     {/* LEFT: Text Content */}
-                    <div className="flex flex-col justify-center h-full order-2 lg:order-1 relative">
+                    <div className="flex flex-col justify-center h-full order-2 lg:order-1 relative z-10">
                         {FEATURES.map((feature, index) => {
                             const isActive = activeSection === index;
                             return (
@@ -146,7 +144,8 @@ export function FeatureShowcase() {
                                     )}
                                     style={{
                                         position: isActive ? 'relative' : 'absolute',
-                                        zIndex: isActive ? 10 : 0
+                                        zIndex: isActive ? 20 : 0,
+                                        visibility: isActive ? 'visible' : 'hidden'
                                     }}
                                 >
                                     <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full border mb-6", feature.bg, feature.color, "border-white/10")}>
@@ -154,7 +153,7 @@ export function FeatureShowcase() {
                                         <span className="text-xs font-bold uppercase tracking-wider">{feature.title}</span>
                                     </div>
 
-                                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                                    <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight text-white">
                                         {feature.headline}
                                     </h2>
 
@@ -162,7 +161,7 @@ export function FeatureShowcase() {
                                         {feature.description}
                                     </p>
 
-                                    <Button variant="outline" size="lg" className="rounded-full border-white/10 hover:bg-white/5">
+                                    <Button variant="outline" size="lg" className="rounded-full border-white/10 hover:bg-white/5 text-white">
                                         Explore {feature.title} <ArrowRight className="ml-2 w-4 h-4" />
                                     </Button>
                                 </div>
@@ -171,9 +170,8 @@ export function FeatureShowcase() {
                     </div>
 
                     {/* RIGHT: Mockups */}
-                    <div className="order-1 lg:order-2 flex items-center justify-center relative h-full">
+                    <div className="order-1 lg:order-2 flex items-center justify-center relative h-full z-10">
                         <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
-                            {/* Background Blob */}
                             <div className={cn(
                                 "absolute inset-0 blur-[100px] transition-colors duration-1000",
                                 FEATURES[activeSection]?.bg.replace("/10", "/30") || "bg-rose-500/30"
@@ -186,7 +184,7 @@ export function FeatureShowcase() {
                                     <div
                                         key={feature.id}
                                         className={cn(
-                                            "absolute inset-0 flex items-center justify-center transition-all duration-700 ease-out transform",
+                                            "absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out transform",
                                             isActive
                                                 ? "opacity-100 scale-100 rotate-0"
                                                 : index < activeSection
@@ -194,8 +192,9 @@ export function FeatureShowcase() {
                                                     : "opacity-0 scale-95 rotate-6"
                                         )}
                                         style={{
-                                            zIndex: isActive ? 10 : 0,
-                                            pointerEvents: isActive ? 'auto' : 'none'
+                                            zIndex: isActive ? 20 : 0,
+                                            pointerEvents: isActive ? 'auto' : 'none',
+                                            visibility: isActive || Math.abs(index - activeSection) <= 1 ? 'visible' : 'hidden'
                                         }}
                                     >
                                         <MockupComponent />
