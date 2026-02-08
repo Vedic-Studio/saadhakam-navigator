@@ -7,7 +7,7 @@ const CAPABILITIES = [
         id: "study",
         step: "01",
         title: "Study the Shastras",
-        description: "Ask Sutra about any verse from the Bhagavad Gita, Upanishads, or Puranas. Get word-by-word breakdowns with authentic commentary references.",
+        description: "Ask Sadhaka about any verse from the Bhagavad Gita, Upanishads, or Puranas. Get word-by-word breakdowns with authentic commentary references.",
         icon: BookOpen,
         color: "text-orange-400",
         bg: "bg-orange-400/10",
@@ -16,7 +16,7 @@ const CAPABILITIES = [
         id: "learn",
         step: "02",
         title: "Learn Shlokas",
-        description: "Master pronunciation and memorization. Sutra listens to you recite and provides real-time feedback on your intonation and accuracy.",
+        description: "Master pronunciation and memorization. Sadhaka listens to you recite and provides real-time feedback on your intonation and accuracy.",
         icon: Mic,
         color: "text-purple-400",
         bg: "bg-purple-400/10",
@@ -129,7 +129,7 @@ const ProgressMockup = () => (
 
 const MOCKUPS = [StudyMockup, LearnMockup, PracticeMockup, ProgressMockup];
 
-export function SutraCapabilities() {
+export function SadhakaCapabilities() {
     const { containerRef, activeSection } = useStickyScroll({
         sectionCount: CAPABILITIES.length,
     });

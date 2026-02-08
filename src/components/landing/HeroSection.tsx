@@ -1,130 +1,124 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageSquare, Sparkles } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ArrowRight, Sparkles, MessageSquare } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center bg-background overflow-hidden pt-20">
       {/* Background gradients */}
-      <div className="absolute inset-0 bg-gradient-dark" />
-      <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-glow opacity-30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-950/40 via-background to-background" />
 
-      {/* Floating decorative elements */}
-      <div className="absolute top-20 left-[10%] w-72 h-72 bg-secondary/10 rounded-full blur-[100px] animate-pulse-slow" />
+      {/* Ambient glow */}
+      <div className="absolute top-20 left-[10%] w-72 h-72 bg-secondary/5 rounded-full blur-[100px] animate-pulse-slow" />
       <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-primary/5 rounded-full blur-[120px] animate-float" />
 
-      <div className="container-padding relative z-10 w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container-padding relative z-10 w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center py-12">
 
-        {/* Left: Text Content */}
-        <div className="text-center lg:text-left space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-xs font-medium text-accent uppercase tracking-wider">New: Meet Sutra AI</span>
+        {/* LEFT: Text Content */}
+        <div className="space-y-8 text-center lg:text-left">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md animate-fade-in">
+            <Sparkles className="w-4 h-4 text-amber-400" />
+            <span className="text-xs font-medium text-amber-200 uppercase tracking-widest">Sanatan Dharma • The Eternal Truth</span>
           </div>
 
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] tracking-tight">
-            What if Krishna was your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary">personal guide?</span>
+          {/* Main Headline */}
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] tracking-tight animate-fade-up">
+            The Only Standing Dharma After <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-400 to-amber-200">10,000 Years</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-            Meet <strong>Sutra</strong> — your AI companion rooted in 5000 years of Sanatan wisdom. Decode Shastras, learn Shlokas, and find your path.
+          {/* Subheadline */}
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+            Invasions came. Empires fell. Libraries burned. Yet this wisdom survived — because it was never just written. It was lived. Practiced. Transmitted from Guru to Shishya.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 h-14 px-8 rounded-full text-lg">
-              Talk to Sutra
-              <MessageSquare className="ml-2 w-5 h-5" />
-            </Button>
+          {/* Call to Action */}
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <Link to="/pathfinder">
-              <Button variant="outline" size="lg" className="h-14 px-8 rounded-full text-lg border-white/10 hover:bg-white/5 text-foreground hover:text-white">
-                Find Your Path
+              <Button size="lg" className="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white border-0 h-14 px-8 rounded-full text-lg font-medium shadow-lg shadow-orange-900/20 transition-all hover:scale-105">
+                Begin Your Path
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
+            <Button variant="outline" size="lg" className="h-14 px-8 rounded-full text-lg border-white/10 hover:bg-white/5 text-foreground hover:text-white backdrop-blur-sm">
+              Explore Wisdom
+            </Button>
           </div>
 
-          {/* Social Proof */}
-          <div className="pt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-muted-foreground">
-            <div className="flex -space-x-3">
-              {[1, 2, 3, 4].map(i => (
-                <Avatar key={i} className="w-10 h-10 border-2 border-background">
-                  <AvatarImage src={`https://i.pravatar.cc/100?img=${i + 15}`} />
-                  <AvatarFallback>U{i}</AvatarFallback>
-                </Avatar>
-              ))}
-              <div className="w-10 h-10 rounded-full bg-card border-2 border-background flex items-center justify-center text-xs font-bold text-foreground">
-                +10k
-              </div>
+          {/* Trust Indicators */}
+          <div className="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 opacity-60 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🕉️</span>
+              <span className="text-sm font-medium uppercase tracking-wider">One Dharma</span>
             </div>
-            <div className="flex flex-col">
-              <div className="flex text-accent">★★★★★</div>
-              <span>Loved by 10,000+ seekers</span>
+            <div className="w-px h-6 bg-white/10 hidden sm:block" />
+            <div className="flex items-center gap-2">
+              <span className="text-xl">📜</span>
+              <span className="text-sm font-medium uppercase tracking-wider">5000+ Years</span>
+            </div>
+            <div className="w-px h-6 bg-white/10 hidden sm:block" />
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🔥</span>
+              <span className="text-sm font-medium uppercase tracking-wider">50+ Lineages</span>
             </div>
           </div>
         </div>
 
-        {/* Right: Interactive Chat Preview */}
-        <div className="relative mx-auto w-full max-w-md lg:max-w-full perspective-1000">
-          {/* Glassmorphic Card */}
-          <div className="relative glass-card rounded-3xl p-6 md:p-8 animate-float duration-[8s] border border-white/10 bg-gradient-to-br from-white/5 to-transparent">
+        {/* RIGHT: Heritage Image + Chat Window Overlay */}
+        <div className="relative hidden lg:block animate-fade-up" style={{ animationDelay: "0.3s" }}>
+          {/* Background Heritage Image */}
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl border border-white/10">
+            <img
+              src="/assets/generated/ancient_civilization_abundance.png"
+              alt="Ancient Vedic Civilization"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
 
-            {/* Chat Header */}
-            <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/5">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent p-[2px]">
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                  <Sparkles className="w-6 h-6 text-accent" />
+            {/* Chat Window Overlay */}
+            <div className="absolute bottom-6 left-6 right-6 glass-card rounded-2xl p-5 border border-white/10 bg-black/60 backdrop-blur-xl animate-float">
+              {/* Chat Header */}
+              <div className="flex items-center gap-3 mb-4 pb-4 border-b border-white/10">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-amber-600 p-[2px]">
+                  <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 text-amber-400" />
+                  </div>
                 </div>
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Sutra AI</h3>
-                <p className="text-xs text-secondary flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-                  Online • Wisdom of Ages
-                </p>
-              </div>
-            </div>
-
-            {/* Chat Messages */}
-            <div className="space-y-6 font-medium">
-              {/* User Message */}
-              <div className="flex justify-end">
-                <div className="bg-primary/20 text-foreground rounded-2xl rounded-tr-sm py-3 px-5 max-w-[85%] border border-primary/10">
-                  <p className="text-sm">Bhagwan, I am confused about my dharma. How do I know which path is right for me?</p>
-                </div>
-              </div>
-
-              {/* AI Message */}
-              <div className="flex justify-start">
-                <div className="bg-card/50 text-foreground rounded-2xl rounded-tl-sm py-4 px-6 max-w-[90%] border border-white/5 shadow-inner">
-                  <p className="text-sm mb-3">
-                    <span className="font-sanskrit text-accent text-lg block mb-1">क्लैब्यं मा स्म गमः पार्थ</span>
-                    "O Parth, do not yield to this degrading impotence."
+                <div>
+                  <h3 className="font-semibold text-white text-sm">Sadhaka AI</h3>
+                  <p className="text-xs text-green-400 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    Online • Your Dharma Guide
                   </p>
+                </div>
+              </div>
+
+              {/* Chat Message */}
+              <div className="space-y-3">
+                <div className="bg-white/5 text-white rounded-xl rounded-tl-sm py-3 px-4 border border-white/5">
+                  <p className="text-xs text-amber-300/80 mb-1 font-sanskrit">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन</p>
                   <p className="text-sm leading-relaxed opacity-90">
-                    Your confusion is the first step toward clarity. Let us explore your <strong>Svabhava</strong> (inner nature).
-                    <br /><br />
-                    Tell me — does your heart seek <em>knowledge</em>, <em>devotion</em>, or <em>action</em>?
+                    "Your right is to action alone, never to its fruits."
                   </p>
+                  <p className="text-xs text-muted-foreground mt-2">— Bhagavad Gita 2.47</p>
                 </div>
               </div>
-            </div>
 
-            {/* Input Area Mockup */}
-            <div className="mt-8 relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-              <div className="bg-white/5 rounded-full p-1 pl-6 flex items-center border border-white/10">
-                <span className="text-sm text-muted-foreground flex-1">I seek devotion...</span>
-                <Button size="icon" className="rounded-full bg-primary hover:bg-primary/90">
-                  <ArrowRight className="w-4 h-4" />
+              {/* Input Mockup */}
+              <div className="mt-4 flex items-center gap-2">
+                <div className="flex-1 bg-white/5 rounded-full py-2.5 px-4 text-sm text-muted-foreground border border-white/5">
+                  Ask about any Shloka or Practice...
+                </div>
+                <Button size="icon" className="rounded-full bg-orange-600 hover:bg-orange-700 shrink-0">
+                  <MessageSquare className="w-4 h-4" />
                 </Button>
               </div>
             </div>
-
           </div>
 
-          {/* Background glow behind card */}
-          <div className="absolute inset-0 bg-primary/20 blur-[100px] -z-10" />
+          {/* Background glow */}
+          <div className="absolute inset-0 bg-orange-500/10 blur-[80px] -z-10 translate-y-8" />
         </div>
 
       </div>

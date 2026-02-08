@@ -19,7 +19,7 @@ export function ConversionSection() {
         </h2>
 
         <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-          Start your journey with <span className="text-foreground font-semibold">Sutra</span> today.
+          Start your journey with <span className="text-foreground font-semibold">Sadhaka</span> today.
           <br className="hidden md:block" />
           Explore the eternal path with guidance that adapts to you.
         </p>
@@ -27,7 +27,7 @@ export function ConversionSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
           <Link to="/pathfinder">
             <Button size="lg" className="h-16 px-10 rounded-full text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl shadow-primary/20 hover:scale-105 transition-transform duration-300">
-              Start with Sutra
+              Start with Sadhaka
               <ArrowRight className="ml-2 w-6 h-6" />
             </Button>
           </Link>

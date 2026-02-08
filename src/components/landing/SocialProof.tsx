@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 const TESTIMONIALS = [
   {
     id: 1,
-    text: "Sutra explained the concept of 'Dharma' in a way that finally clicked. It's like having a wise grandmother and a Sanskrit scholar in your pocket.",
+    text: "Sadhaka explained the concept of 'Dharma' in a way that finally clicked. It's like having a wise grandmother and a Sanskrit scholar in your pocket.",
     author: "Priya Sharma",
     role: "Yoga Teacher",
     rating: 5,
