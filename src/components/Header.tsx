@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Practices", href: "/#practices" },
   { label: "Greats", href: "/greats" },
   { label: "Texts", href: "/texts" },
+  { label: "A/B Testing", href: "/variant-selector" },
 ];
 
 export function Header() {
@@ -26,11 +27,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container-padding mx-auto">
         <div className="flex items-center justify-between h-16 md:h-20">
