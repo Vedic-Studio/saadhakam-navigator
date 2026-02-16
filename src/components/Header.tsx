@@ -28,19 +28,18 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
+        ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+        : "bg-transparent"
         }`}
     >
       <div className="container-padding mx-auto">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-sanskrit text-lg">ॐ</span>
-            </div>
+            <img src="/favicon.svg" alt="Sadhaka Logo" className="w-8 h-8 rounded-full bg-primary p-1" />
             <span className="font-display text-xl font-semibold text-foreground">
-              Saadhakam
+              Sadhaka
             </span>
           </Link>
 

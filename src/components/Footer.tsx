@@ -36,12 +36,12 @@ export function Footer() {
 
     setIsSubmitting(true);
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     toast({
       title: "Subscribed!",
       description: "You'll receive our newsletter with insights and guidance.",
     });
-    
+
     setEmail("");
     setIsSubmitting(false);
   };
@@ -53,15 +53,13 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                <span className="text-secondary-foreground font-sanskrit text-xl">ॐ</span>
-              </div>
+              <img src="/favicon.svg" alt="Sadhaka Logo" className="w-10 h-10 rounded-full bg-secondary p-1" />
               <span className="font-display text-2xl font-semibold">
-                Saadhakam
+                Sadhaka
               </span>
             </div>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">
-              A respectful guide for Western seekers exploring the paths, philosophies, 
+              A respectful guide for Western seekers exploring the paths, philosophies,
               and practices of Sanatan Dharma.
             </p>
 
@@ -82,8 +80,8 @@ export function Footer() {
                     required
                   />
                 </div>
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   disabled={isSubmitting}
                   className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
                 >
@@ -99,7 +97,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.explore.map((link) => (
                 <li key={link.href}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
                   >
@@ -115,7 +113,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.start.map((link) => (
                 <li key={link.href}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
                   >
@@ -131,7 +129,7 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.about.map((link) => (
                 <li key={link.href}>
-                  <Link 
+                  <Link
                     to={link.href}
                     className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
                   >
@@ -157,7 +155,7 @@ export function Footer() {
         <div className="pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
             <p>
-              © {new Date().getFullYear()} Saadhakam. Created with reverence for the tradition.
+              © {new Date().getFullYear()} Sadhaka. Created with reverence for the tradition.
             </p>
             <p>
               Content drawn from authentic sources within Sanatan Dharma.

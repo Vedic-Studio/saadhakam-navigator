@@ -54,7 +54,7 @@ export function PillarsSection() {
                         Our Foundation
                     </span>
                     <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                        Four Pillars of <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-orange-400">Saadhakam</span>
+                        Four Pillars of <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-orange-400">Sadhaka</span>
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-6" />
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">

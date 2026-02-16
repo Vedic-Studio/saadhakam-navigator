@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Dark Blue Background -->
+  <circle cx="50" cy="50" r="50" fill="#0f172a" />
+  
+  <!-- Golden Line Art -->
+  <g stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Head/Bun Outline -->
+    <path d="M 45 25 C 45 20 55 15 65 20 C 70 23 72 30 68 35 L 65 38" /> <!-- Bun top -->
+    <path d="M 65 38 C 75 40 78 55 75 65 C 72 75 55 85 35 85" /> <!-- Back of head/neck -->
+    
+    <!-- Face Profile -->
+    <path d="M 45 25 C 35 28 30 40 30 45 C 30 48 28 50 32 52 L 32 58 C 30 60 35 65 40 65 L 40 75" />
+    
+    <!-- Beard Detail -->
+    <path d="M 32 52 C 32 58 35 62 42 62" />
+    
+    <!-- Circuit Lines on Face/Cheek -->
+    <path d="M 45 45 L 50 45 L 52 48" stroke-width="1.5" />
+    <path d="M 48 55 L 55 55 L 58 52" stroke-width="1.5" />
+    <circle cx="58" cy="52" r="1.5" fill="#fbbf24" stroke="none" />
+    <circle cx="52" cy="48" r="1.5" fill="#fbbf24" stroke="none" />
+    
+    <!-- Third Eye / Bindi -->
+    <circle cx="38" cy="38" r="1.5" fill="#4ade80" stroke="none" /> 
+  </g>
+</svg>

@@ -7,12 +7,12 @@ import {
 
 const faqs = [
   {
-    question: "Is Saadhakam a religious conversion tool?",
-    answer: "No. Saadhakam is an educational platform for exploration, not conversion. We help you understand the depth and breadth of Sanatan Dharma so you can make informed choices about your spiritual practice. Many users come from other traditions or no tradition at all—we welcome honest seekers without any expectation of 'converting' anyone."
+    question: "Is Sadhaka a religious conversion tool?",
+    answer: "No. Sadhaka is an educational platform for exploration, not conversion. We help you understand the depth and breadth of Sanatan Dharma so you can make informed choices about your spiritual practice. Many users come from other traditions or no tradition at all—we welcome honest seekers without any expectation of 'converting' anyone."
   },
   {
     question: "Is it okay if I'm completely new to Sanskrit and Indian philosophy?",
-    answer: "Absolutely. Saadhakam is designed for Western seekers who may have little or no background in these traditions. We explain terms clearly, provide translations, and build understanding progressively. Everyone starts somewhere—curiosity and sincerity are the only prerequisites."
+    answer: "Absolutely. Sadhaka is designed for Western seekers who may have little or no background in these traditions. We explain terms clearly, provide translations, and build understanding progressively. Everyone starts somewhere—curiosity and sincerity are the only prerequisites."
   },
   {
     question: "How do you avoid misrepresenting these traditions?",
@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: "How is this different from what I'd find on Wikipedia or random websites?",
-    answer: "While there's good information scattered across the internet, Saadhakam offers something different: a structured, practice-oriented approach that helps you find your path. We're not just providing information—we're providing a framework for self-understanding and practical guidance for beginning and sustaining a practice that fits your nature and life situation."
+    answer: "While there's good information scattered across the internet, Sadhaka offers something different: a structured, practice-oriented approach that helps you find your path. We're not just providing information—we're providing a framework for self-understanding and practical guidance for beginning and sustaining a practice that fits your nature and life situation."
   }
 ];
 
@@ -52,8 +52,8 @@ export function FAQSection() {
         {/* FAQ Accordion */}
         <Accordion type="single" collapsible className="space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem 
-              key={index} 
+            <AccordionItem
+              key={index}
               value={`faq-${index}`}
               className="bg-card border border-border/50 rounded-xl px-6 data-[state=open]:shadow-spiritual"
             >
