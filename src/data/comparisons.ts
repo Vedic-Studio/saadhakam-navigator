@@ -258,6 +258,42 @@ export const comparisons: Comparison[] = [
     entityB: "Transcendental Meditation",
     metaDescription:
       "Understand the differences in technique, origin, and goals between Vipassana mindfulness and Transcendental Meditation (TM).",
+    tldr: "Vipassana asks you to observe the raw, unfiltered reality of mind and body without flinching — discomfort is the curriculum. TM gives the mind a mantra-vehicle and lets it dive inward into effortless stillness. Two very different entry points to the same silent depth.",
+    content: `
+<h2>Two Meditators Walk Into a Retreat</h2>
+<p>One sits in absolute stillness for 10 days, eating simple food, rising at 4am, observing the sensation of breathing and the arising and passing of every bodily sensation without reacting. No talking. No reading. No phones. Pure observation.</p>
+<p>The other sits twice a day, 20 minutes each, silently repeating a mantra given by their teacher — effortlessly, without concentration — and notices the mind growing quieter and quieter, until thoughts thin out and something like pure rest appears.</p>
+<p>Both are meditators. Both are reaching for depth. But they are taking very different roads.</p>
+
+<h2>Vipassana: The Path of Clear Seeing</h2>
+<p>Vipassana (Pāli: "clear seeing" or "insight") is one of the oldest meditation techniques in existence, originating within the Theravada Buddhist tradition. It was brought to wide prominence in the 20th century through teachers like Mahasi Sayadaw and S.N. Goenka, whose 10-day silent retreats now run in centres across 90+ countries.</p>
+<p>The core practice: continuous, dispassionate observation of bodily sensations, thoughts, and emotions as they arise and pass. The meditator is instructed not to react — not to cling to pleasurable sensations or push away unpleasant ones. In doing so, the deep-seated habit patterns of the mind (Samskāras, in Sanskrit; Sankharas in Pāli) are surfaced and dissolved through the simple act of bare observation.</p>
+<p>It is a demanding practice. Goenka's retreats are essentially a 10-day surgery of the mind — and like any surgery, there is discomfort before there is healing. The payoff: practitioners frequently report fundamental shifts in their relationship to emotional reactivity, suffering, and the nature of the self.</p>
+
+<h2>Transcendental Meditation: The Effortless Dive</h2>
+<p>TM, as taught by Maharishi Mahesh Yogi (the teacher famously visited by The Beatles in 1968), takes a radically different approach. There is no observation of pain. No extended retreats. No concentration.</p>
+<p>A student receives, through a one-on-one ceremony with a certified TM teacher, a specific Sanskrit mantra selected for their nature. They then repeat this mantra silently, effortlessly, twice daily for 20 minutes. The mantra, Maharishi taught, acts as a vehicle — the mind naturally follows the sound inward to increasingly refined levels of awareness until it "transcends" thought entirely and rests in pure, silent wakefulness.</p>
+<p>TM is backed by an unusually large body of peer-reviewed research: reduced cortisol, improved cardiovascular health, decreased PTSD symptoms in veterans, and measurable shifts in brainwave coherence. It is also significantly more expensive than most meditation forms, due to the structured in-person teacher training required.</p>
+
+<h2>Side by Side</h2>
+<table>
+<thead><tr><th></th><th>Vipassana</th><th>Transcendental Meditation</th></tr></thead>
+<tbody>
+<tr><td><strong>Origin</strong></td><td>Theravada Buddhism (Burma/India)</td><td>Vedic tradition, via Maharishi Mahesh Yogi</td></tr>
+<tr><td><strong>Primary technique</strong></td><td>Observation of bodily sensations, breath</td><td>Silent effortless mantra repetition</td></tr>
+<tr><td><strong>Effort level</strong></td><td>High — sustained, disciplined observation</td><td>Low — effortless; concentration is discouraged</td></tr>
+<tr><td><strong>Goal</strong></td><td>Insight into impermanence; dissolution of Sankharas</td><td>Transcendence; access to "pure consciousness"</td></tr>
+<tr><td><strong>Format</strong></td><td>10-day silent residential retreats; daily practice</td><td>Self-conducted 20-min sessions, 2x daily</td></tr>
+<tr><td><strong>Cost</strong></td><td>Free (donation-based)</td><td>Paid course ($400–1,500 depending on location)</td></tr>
+<tr><td><strong>Research backing</strong></td><td>Strong (especially for insight meditation)</td><td>Extensive, particularly cardiovascular and stress</td></tr>
+</tbody>
+</table>
+
+<h2>Which Is Right for You?</h2>
+<p>Vipassana suits the practitioner who wants to go to the root of their reactivity — who is willing to face discomfort as the price of genuine transformation. It has a particularly powerful effect on grief, trauma, addiction, and deep-seated anxiety patterns.</p>
+<p>TM suits the practitioner who needs rest as much as insight — whose system is already taxed, who finds forced concentration counterproductive, and who wants a sustainable daily practice that fits within a professional life. Many executives and creatives swear by it.</p>
+<p>They are not mutually exclusive. Some practitioners use TM as a daily maintenance practice and Vipassana for periodic deep dives. The question is always the same: what does your particular mind need, right now, to move toward freedom?</p>
+    `,
   },
   {
     slug: "hatha-yoga-vs-raja-yoga",
@@ -267,6 +303,44 @@ export const comparisons: Comparison[] = [
     entityB: "Raja Yoga",
     metaDescription:
       "Hatha Yoga focuses on the physical body and energy, while Raja Yoga deals mostly with mind control. Learn how they intersect.",
+    tldr: "Hatha Yoga prepares the physical body and its energy systems for deep meditation. Raja Yoga is that deep meditation — the direct science of controlling the mind. Hatha is the preparation; Raja is the destination. Most modern 'yoga' is Hatha; most classical yoga philosophy is Raja.",
+    content: `
+<h2>A Case of Mistaken Identity</h2>
+<p>When most Westerners say "yoga," they mean Hatha Yoga — the physical practice of postures, breathing exercises, and perhaps some relaxation. This is like saying you've studied music because you practice scales. The scales are real. They are valuable. But they are not the symphony.</p>
+<p>The symphony is Raja Yoga.</p>
+
+<h2>Hatha Yoga: Preparing the Instrument</h2>
+<p>Hatha (Sanskrit: "force," or interpreted as <em>Ha</em> = sun + <em>Tha</em> = moon, representing the union of opposing energies) Yoga is a system for purifying and strengthening the physical and energetic body so that it becomes a fit vehicle for higher states of consciousness.</p>
+<p>Its primary tools:</p>
+<ul>
+<li><em>Asana</em>: Physical postures that build strength, flexibility, and pranic flow</li>
+<li><em>Pranayama</em>: Breath control practices that regulate and amplify vital energy (Prana)</li>
+<li><em>Shatkarmas</em>: Six classical purification practices (including Neti, Nauli, Trataka)</li>
+<li><em>Mudras and Bandhas</em>: Psycho-energetic locks and gestures that direct Prana inward</li>
+</ul>
+<p>The goal of all this? Not fitness. The Hatha Yoga Pradipika — the foundational Hatha Yoga text — is explicit: <em>"Hatha Yoga is practised for the sake of Raja Yoga alone."</em> The body is being refined so the mind can be refined.</p>
+
+<h2>Raja Yoga: The Science of the Mind</h2>
+<p>Raja ("royal") Yoga is the path of meditation and direct mental control, systematized by Patanjali in the Yoga Sutras. It is the eight-limbed path (Ashtanga), beginning with ethical conduct (Yama/Niyama) and culminating in Samadhi — the absorption of individual consciousness into cosmic consciousness.</p>
+<p>Raja Yoga works directly with the mind. While Hatha Yoga purifies the body-vehicle to create the conditions for mental stillness, Raja Yoga addresses the mind directly through concentration (Dharana), meditation (Dhyana), and ultimate absorption (Samadhi). The body is assumed to be prepared. The real work is psychological and spiritual.</p>
+
+<h2>Side by Side</h2>
+<table>
+<thead><tr><th></th><th>Hatha Yoga</th><th>Raja Yoga</th></tr></thead>
+<tbody>
+<tr><td><strong>Primary domain</strong></td><td>Physical body, energy systems (Prana)</td><td>Mind, consciousness, awareness</td></tr>
+<tr><td><strong>Core practices</strong></td><td>Asana, Pranayama, Shatkarmas</td><td>Pratyahara, Dharana, Dhyana, Samadhi</td></tr>
+<tr><td><strong>Primary text</strong></td><td>Hatha Yoga Pradipika (15th c.)</td><td>Yoga Sutras of Patanjali (est. 2nd c. BCE)</td></tr>
+<tr><td><strong>Goal</strong></td><td>Purify body and energy for higher practice</td><td>Cessation of mind-fluctuations; Kaivalya</td></tr>
+<tr><td><strong>Relationship</strong></td><td>Preparation and means</td><td>The destination itself</td></tr>
+</tbody>
+</table>
+
+<h2>Why Most Modern Yoga Stops Halfway</h2>
+<p>Modern yoga studios teach Hatha. This is legitimate and valuable — a good Hatha practice dramatically improves health, reduces stress, and connects the practitioner to their body and breath in a way that purely mental practices cannot.</p>
+<p>But stopping at Hatha is stopping at the airport. You have arrived somewhere real, somewhere worth being. But the journey continues. The postures were always meant to take you somewhere the postures themselves cannot reach.</p>
+<p>Raja Yoga is what you find when you follow the Hatha path all the way to its intended destination: the still, clear awareness that lies beneath all movement, sensation, and thought.</p>
+    `,
   },
   {
     slug: "bhakti-vs-jnana",
@@ -360,6 +434,39 @@ export const comparisons: Comparison[] = [
     entityB: "Vedanta",
     metaDescription:
       "Compare the ancient Greek philosophy of Stoicism with the Indian wisdom of Vedanta on achieving peace of mind and understanding reality.",
+    tldr: "Both Stoicism and Vedanta teach that peace comes from mastering your inner world, not controlling external events. Stoicism focuses on virtue and rational self-discipline within the flow of Nature. Vedanta goes further — it questions whether the 'self' doing the controlling is real at all.",
+    content: `
+<h2>Two Ancient Answers to the Same Human Problem</h2>
+<p>The problem: life is uncertain. People we love die. Plans collapse. Empires fall. Bodies age. The question both philosophies asked, centuries apart and thousands of miles away: <em>how does a human being remain unbroken in the face of this?</em></p>
+<p>Marcus Aurelius — Roman Emperor, Stoic philosopher — wrote his answers alone at night in a tent on the Germanic border. The Upanishadic Rishis of ancient India wrote theirs in forest retreats on the banks of sacred rivers. The resonances between their answers are remarkable.</p>
+
+<h2>Stoicism: Virtue in the Flow of Logos</h2>
+<p>The Stoics (Zeno, Epictetus, Marcus Aurelius, Seneca) built their system on a key distinction: things in our control, and things not in our control. Body, reputation, wealth, other people's opinions — <em>not in your control</em>. Your judgments, desires, aversions — <em>fully in your control.</em></p>
+<p>Suffering, the Stoics argued, comes entirely from misidentifying the second category with the first: wanting what is not yours to determine, fearing what is not yours to prevent. The remedy: radical acceptance of what is, combined with devoted attention to your own inner virtue.</p>
+<p>The Stoic universe is rational and orderly — governed by the Logos, the divine rational principle. To live according to Nature is to live according to reason. Virtue (wisdom, justice, courage, temperance) is the only true good.</p>
+
+<h2>Vedanta: Beyond the Self That Suffers</h2>
+<p>Vedanta agrees with much of this — and then goes further. Yes, mastering your reactions is essential. Yes, the inner life is within your purview. But Vedanta asks a more radical question: <em>who is it who is reacting?</em> Who is the "I" that is doing the controlling?</p>
+<p>Investigate this "I" sincerely, Vedanta says, and you will find it has no fixed location. The self that seems to suffer is not your deepest nature. Your deepest nature — Atman — is already free, already at peace, already complete. It was never in danger. Suffering is not caused by failing to control your reactions. It is caused by mistaking a temporary, constructed self for the eternal, unconditioned awareness that you actually are.</p>
+<p>This is Vedanta's leap beyond Stoicism: from self-mastery to self-transcendence.</p>
+
+<h2>Side by Side</h2>
+<table>
+<thead><tr><th></th><th>Stoicism</th><th>Vedanta</th></tr></thead>
+<tbody>
+<tr><td><strong>Nature of reality</strong></td><td>Material universe governed by rational Logos</td><td>Consciousness (Brahman) is the only ultimate reality</td></tr>
+<tr><td><strong>Nature of self</strong></td><td>A rational soul embedded in a material world</td><td>Atman — pure awareness, identical with Brahman</td></tr>
+<tr><td><strong>Source of suffering</strong></td><td>False judgments about what is "good" or "bad"</td><td>Misidentification of the Self with the ego-mind</td></tr>
+<tr><td><strong>Primary remedy</strong></td><td>Virtue, rational discipline, acceptance of fate</td><td>Self-inquiry and recognition of one's true nature</td></tr>
+<tr><td><strong>The "sage"</strong></td><td>The Stoic Sage — master of virtue and reason</td><td>The Jivanmukta — liberated while in the body</td></tr>
+<tr><td><strong>Afterlife</strong></td><td>Rationalist — soul dissolves back into Logos</td><td>Moksha — reunion with Brahman (or eternal devotion)</td></tr>
+</tbody>
+</table>
+
+<h2>What Stoicism Borrows (and Misses)</h2>
+<p>Ryan Holiday's revival of Stoicism has introduced millions of educated professionals to ideas that feel startlingly modern: the dichotomy of control, journaling practice, the memento mori. This is Stoicism doing what it has always done — providing practical philosophy for people who must function in the world.</p>
+<p>What it cannot provide — what requires going East — is the experiential dimension. Stoicism remains a philosophy of reason: you understand it with your mind. Vedanta offers a complete science of direct experience: meditation traditions, breath practices, self-inquiry techniques designed to take you beyond the rational mind into the direct recognition of your own nature. The difference is the difference between understanding a map and standing in the territory.</p>
+    `,
   },
   {
     slug: "psychology-vs-yoga-philosophy",
@@ -369,6 +476,43 @@ export const comparisons: Comparison[] = [
     entityB: "Yoga Philosophy",
     metaDescription:
       "How does modern psychology compare to the ancient science of Yoga in understanding the human mind and consciousness?",
+    tldr: "Western psychology studies and heals the mind from within the framework of the mind itself. Yoga philosophy maps the entire territory of consciousness — from ego to pure awareness — and offers a direct route to the level of consciousness where all psychological problems become irrelevant.",
+    content: `
+<h2>Both Are Studying the Same Country with Different Maps</h2>
+<p>The mind is the most complex territory in the known universe. Western psychology and Yoga philosophy have both spent millennia (and one of them, actual millennia) mapping it. Their maps overlap in surprising ways. But their methods, their goals, and their view of what is ultimately possible differ profoundly.</p>
+
+<h2>Western Psychology: The Science of the Conditioned Self</h2>
+<p>Modern psychology — from Freud to Jung to cognitive-behavioral therapy to neuroscience — studies the mind primarily as a product of: genetics, developmental history (especially early childhood), social conditioning, and neurological processes. The fundamental assumption is that the mind arises from the brain. Consciousness is an output of biological process.</p>
+<p>This framework has produced genuinely powerful tools:</p>
+<ul>
+<li>CBT and DBT for managing thought patterns and emotional dysregulation</li>
+<li>Trauma-informed therapies (EMDR, somatic approaches) for healing developmental wounds</li>
+<li>Psychopharmacology for stabilizing extreme states</li>
+<li>Attachment theory for understanding relational patterns</li>
+</ul>
+<p>The implicit ceiling of Western psychology: a healthy, well-functioning ego. A person whose trauma is processed, whose relationships are secure, whose anxiety is managed, whose sense of self is stable. This is the therapeutic destination. It is genuinely valuable. Millions of people genuinely need it.</p>
+
+<h2>Yoga Philosophy: The Science of Transcending the Conditioned Self</h2>
+<p>Yoga philosophy — as expressed in the Yoga Sutras, the Upanishads, the Bhagavad Gita, the Kashmir Shaiva texts — begins where Western psychology's most ambitious ceiling becomes the floor.</p>
+<p>Yes, the ego needs to function well. But the ego is not who you are. Beneath the conditioned self is Purusha (the Witness), Atman (the Soul), or Shiva-Shakti (pure consciousness-energy) — depending on which school you consult. And beneath even those concepts is an experiential reality that no concept captures: the direct, undivided, unchanging awareness that is your actual nature.</p>
+<p>Yoga philosophy's tools are designed to take you there: Pranayama to shift the nervous system, Pratyahara to withdraw awareness from the senses, Dharana to stabilize attention, Dhyana to deepen into absorption, and Samadhi to rest in the recognition of what was always already present.</p>
+
+<h2>Key Differences</h2>
+<table>
+<thead><tr><th></th><th>Western Psychology</th><th>Yoga Philosophy</th></tr></thead>
+<tbody>
+<tr><td><strong>Primary assumption</strong></td><td>Mind emerges from brain; consciousness is biological</td><td>Consciousness is primary; mind and brain are within it</td></tr>
+<tr><td><strong>Goal</strong></td><td>A healthy, functional ego and stable sense of self</td><td>Liberation from identification with ego entirely</td></tr>
+<tr><td><strong>View of suffering</strong></td><td>Caused by trauma, conditioning, cognitive distortion</td><td>Caused by Avidya — ignorance of one's true nature</td></tr>
+<tr><td><strong>The "unconscious"</strong></td><td>Freud's repressed content; Jung's collective unconscious</td><td>Chitta — the storehouse of Samskaras (deep impressions)</td></tr>
+<tr><td><strong>Ultimate vision</strong></td><td>Psychological wholeness: the integrated personality</td><td>Moksha: freedom from the personality structure entirely</td></tr>
+</tbody>
+</table>
+
+<h2>The Relationship Between Them</h2>
+<p>They are not enemies. In the 21st century, the wisest practitioners integrate both. Psychological work clears the ground — processes trauma, stabilizes emotional regulation, addresses relational wounds — so that the deeper practices of Yoga can take root without the practitioner being constantly derailed by unresolved psychological material.</p>
+<p>Yoga philosophy, in turn, offers psychological work a destination beyond wholeness: the recognition that the very self that has been healed is a construction — and beneath that construction is something that was never wounded.</p>
+    `,
   },
   {
     slug: "freud-vs-patanjali",
@@ -378,6 +522,38 @@ export const comparisons: Comparison[] = [
     entityB: "Patanjali's Yoga",
     metaDescription:
       "A deep dive comparing Sigmund Freud's model of the unconscious mind with Patanjali's concept of Chitta and Samskaras.",
+    tldr: "Freud's unconscious holds repressed drives, memories, and conflicts that leak into behavior through symptoms and dreams. Patanjali's Chitta holds Samskaras — deep impressions from all past experience — that shape every perception and reaction. Both systems agree the invisible past drives the present. Their solutions differ radically.",
+    content: `
+<h2>Two Men Who Read the Mind's Hidden Layers</h2>
+<p>Two thousand years apart: Patanjali (~2nd century BCE), compiling the Yoga tradition into 196 sutras in ancient India. Sigmund Freud (~1900 CE), developing psychoanalysis in fin-de-siècle Vienna. Neither knew of the other. Both concluded that the surface of the mind is not the whole story — and that the hidden depths drive us far more than we realize.</p>
+
+<h2>Freud's Unconscious</h2>
+<p>Freud's revolutionary claim: human behavior is largely driven by unconscious forces — specifically, by repressed memories, unresolved conflicts, and instinctual drives (primarily sexual and aggressive) that could not be integrated into conscious experience and were therefore pushed into a hidden psychic zone.</p>
+<p>These unconscious contents do not disappear. They press upward, appearing as slips of the tongue, phobias, compulsive patterns, dreams, neurotic symptoms. The therapeutic process (free association, dream analysis, transference analysis) aims to bring unconscious material to conscious light — where it can be understood, processed, and integrated.</p>
+<p>Freud's map of the psyche: Id (primitive drives), Ego (rational management), Superego (internalized moral authority). The goal: a strong ego capable of navigating the demands of Id, Superego, and external reality simultaneously. <em>"Where Id was, there Ego shall be."</em></p>
+
+<h2>Patanjali's Chitta and Samskaras</h2>
+<p>Patanjali's Chitta (often translated as "mind-stuff" or "consciousness field") is in many ways a more comprehensive map of what Freud was pointing at. Chitta is the totality of the mental apparatus — intellect, ego, and the vast reservoir of past impressions and memories.</p>
+<p>These impressions are called <em>Samskaras</em>: deep grooves worn into the Chitta by repeated experiences, actions, and thoughts. Every experience leaves a Samskara. Every Samskara inclines the mind toward certain patterns of perception, reaction, and desire. In this sense, Samskaras function remarkably like Freud's unconscious — the invisible past shaping the apparent present.</p>
+<p>But Patanjali's model is larger in scope. Samskaras are not just from this lifetime — they carry across multiple incarnations (in the yogic framework). And crucially: the solution is not to excavate and analyze them individually, but to still the mind so completely that no new Samskaras are created and existing ones cease to influence consciousness.</p>
+
+<h2>The Key Difference: Cure vs. Liberation</h2>
+<table>
+<thead><tr><th></th><th>Freud's Model</th><th>Patanjali's Model</th></tr></thead>
+<tbody>
+<tr><td><strong>Hidden layer</strong></td><td>The Unconscious (repressed drives, conflicts)</td><td>Chitta with its accumulated Samskaras</td></tr>
+<tr><td><strong>How it forms</strong></td><td>Repression of unacceptable drives and memories</td><td>Every past experience leaves an impression</td></tr>
+<tr><td><strong>How it manifests</strong></td><td>Symptoms, dreams, slips, neurotic patterns</td><td>Habitual thought patterns, reactions, desires, Vasanas</td></tr>
+<tr><td><strong>The goal</strong></td><td>Make the unconscious conscious; ego integration</td><td>Still the Chitta entirely; rest as the Witness (Purusha)</td></tr>
+<tr><td><strong>Primary method</strong></td><td>Free association, dream analysis, transference</td><td>Eight-limbed Yoga culminating in Samadhi</td></tr>
+<tr><td><strong>View of the self</strong></td><td>The ego is the healthy center of consciousness</td><td>The ego is itself a Samskara — the deepest one</td></tr>
+</tbody>
+</table>
+
+<h2>What Patanjali Adds</h2>
+<p>Freud's ambition was therapeutic: reduce neurotic suffering and restore normal human functioning. Patanjali's ambition was transformative: transcend the entire structure of the conditioned mind and recognize the Purusha (the witness, the true self) that was never conditioned in the first place.</p>
+<p>Where Freud says "become conscious of the unconscious," Patanjali says "still both the conscious and the unconscious, and discover what remains." The answer — according to the Yoga tradition — is pure awareness: unconditioned, unchanging, and free from all Samskaras, past, present, or future.</p>
+    `,
   },
   {
     slug: "sin-vs-karma",
@@ -559,6 +735,36 @@ export const comparisons: Comparison[] = [
     entityB: "Mukti",
     metaDescription:
       "Explore the nuances between Moksha and Mukti in Hindu thought representing ultimate liberation.",
+    tldr: "Moksha and Mukti are often used interchangeably, and both mean liberation. But Moksha tends to emphasize the positive fullness of the liberated state, while Mukti means 'release' — freedom from bondage. The difference is like 'arriving home' vs 'leaving prison.' Same destination, different emphasis.",
+    content: `
+<h2>Two Words for the Same Summit</h2>
+<p>The most-asked question among new students of Indian philosophy: are Moksha and Mukti the same thing? The short answer: yes, essentially. The longer answer: they carry slightly different resonances, and exploring those resonances reveals something important about the nature of liberation itself.</p>
+
+<h2>Moksha: The Fullness of Freedom</h2>
+<p>Moksha (from the Sanskrit root <em>muc</em>, "to release," combined with the suffix <em>sha</em> connoting a state of being) is the most common term used in Vedanta and the Bhagavad Gita. It describes not merely the absence of bondage, but the <em>positive fullness</em> of the liberated state.</p>
+<p>The Upanishads describe Moksha as the recognition of one's own nature as Sat-Chit-Ananda: pure Being, pure Consciousness, pure Bliss. This is not a new acquisition — it is the recognition of what was always the case. The wave recognizes it was always the ocean. The rope recognizes it was never a snake.</p>
+<p>Moksha is the destination language of Vedanta. It emphasizes what you <em>arrive at</em>: the fullness of Brahman-nature, the end of the cycle of death and rebirth (Samsara), the permanent rest in one's own nature.</p>
+
+<h2>Mukti: The Release from Bondage</h2>
+<p>Mukti (from the same root <em>muc</em>, but with a different suffix) carries more of the flavor of <em>release</em> or <em>liberation</em> as such. It emphasizes what you are freed <em>from</em>: from Karma, from Samsara, from the endless cycle of desire and consequence, from the misidentification of the Self with the body-mind complex.</p>
+<p>Mukti is the more common term in devotional (Bhakti) traditions, where the emphasis is on being released from the prison of Maya by the grace of God. You are freed by divine love, not merely through philosophical recognition.</p>
+<p>There are five classical forms of Mukti described in Vaishnava theology (Panchavidha Mukti):</p>
+<ul>
+<li><em>Salokya</em>: Dwelling in the same realm as God</li>
+<li><em>Samipya</em>: Proximity to God</li>
+<li><em>Sarupya</em>: Resembling God in form</li>
+<li><em>Sarshti</em>: Equality of power with God</li>
+<li><em>Sayujya</em>: Complete absorption into God (equivalent to Advaitic Moksha)</li>
+</ul>
+
+<h2>Jivanmukti: Liberation While Living</h2>
+<p>Both traditions agree on one of the most radical ideas in world philosophy: you do not need to die to be liberated. A <em>Jivanmukta</em> is one who has achieved Moksha/Mukti while still inhabiting a physical body.</p>
+<p>The Jivanmukta moves through the world like anyone else — eating, speaking, aging, interacting. But their relationship to all experience is fundamentally different: nothing binds. Nothing clings. The actions continue (Prarabdha Karma must exhaust itself), but no new binding Karma is created, because the actor — the ego that acts <em>for</em> results — no longer exists as a separate reality.</p>
+<p>Historical examples the tradition points to: Ramana Maharshi, Nisargadatta Maharaj, Sri Ramakrishna — human beings who, by all accounts, moved through ordinary existence with an extraordinary absence of personal need or reactivity.</p>
+
+<h2>The Practical Question</h2>
+<p>For a new student of Indian philosophy, the Moksha/Mukti distinction is less important than understanding what both words point <em>toward</em>: a complete and permanent freedom from the suffering caused by the fundamental misidentification of the infinite Atman with the finite ego-mind. That is the horizon. The word used to describe it matters less than the direction you are walking.</p>
+    `,
   },
   // Category 8: Platform / Competitor
   {

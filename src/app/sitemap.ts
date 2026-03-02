@@ -10,6 +10,7 @@ import { topics } from "@/data/topics";
 import { practiceGoals } from "@/data/practiceGoals";
 import { bgChapters } from "@/data/bgChapters";
 import { bgShlokas } from "@/data/bgShlokas";
+import { sanskritVocab } from "@/data/sanskritVocab";
 
 const baseUrl = "https://opensadhaka.com";
 
@@ -26,6 +27,7 @@ export async function generateSitemaps() {
     { id: "topics" },
     { id: "practices" },
     { id: "shlokas" },
+    { id: "sanskrit" },
   ];
 }
 
@@ -288,6 +290,14 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
         });
       }
       return shlokaPages;
+
+    case "sanskrit":
+      return sanskritVocab.map((word) => ({
+        url: `${baseUrl}/learn/sanskrit/${word.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.85,
+      }));
 
     default:
       return [];
