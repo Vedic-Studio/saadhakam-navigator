@@ -889,4 +889,909 @@ export const comparisons: Comparison[] = [
 <p>But if you've done the mindfulness. You've done the yoga. You've read the books. And you still feel that something ancient and essential is calling you — that there's a depth to existence that wellness apps don't touch — Sadhaka is where that conversation begins.</p>
     `,
   },
+  // Category 3: Path vs Path
+  {
+    slug: "tantra-vs-vedanta",
+    title: "Tantra vs Vedanta: Two Paths to the Same Summit",
+    category: "Path vs Path",
+    entityA: "Tantra",
+    entityB: "Vedanta",
+    metaDescription:
+      "Tantra and Vedanta are often seen as opposites, but they share the same goal of liberation. Explore their differences in approach and philosophy.",
+    tldr: "Vedanta seeks liberation by denying the world (Neti, Neti - Not this, Not this). Tantra seeks liberation by embracing the world as the Goddess's own power. One is a path of subtraction, the other a path of expansion.",
+    content: `
+<h2>The World: Trap or Tool?</h2>
+<p>In the vast landscape of Indian spirituality, two major currents have defined the seeker's journey for over a thousand years: Vedanta and Tantra. While they share the same ultimate goal—Moksha, or absolute freedom—their maps of the territory could not be more different.</p>
+<p>The fundamental disagreement is not about the destination, but about the status of the world we inhabit.</p>
+
+<h2>Vedanta: The Path of Subtraction</h2>
+<p>Classical Advaita Vedanta, as popularized by Shankara, views the world through the lens of <em>Maya</em>. The world is an appearance, a superimposition upon the only true reality: Brahman. To find the truth, one must systematically peel away the layers of the false.</p>
+<p>The Vedantic method is <em>Viveka</em> (discrimination). By asking "Who am I?" and concluding "I am not this body, I am not these thoughts, I am not this world," the seeker eventually rests in pure, undivided awareness. It is a path of renunciation, often associated with the monk, the ascetic, and the intellectual.</p>
+
+<h2>Tantra: The Path of Divinization</h2>
+<p>Tantra (specifically the non-dual traditions like Kashmir Shaivism) takes a radical counter-position. If Brahman is all there is, then <em>the world is also Brahman</em>. Why deny it? Instead of pushing the world away, Tantra asks: how can we use every experience—sound, touch, emotion, even the "mundane"—as a doorway to the divine?</p>
+<p>In Tantra, the universe is the dance of Shiva (Consciousness) and Shakti (Energy). The world is not an illusion to be escaped; it is the Goddess's own body. The Tantric practitioner (Sadhaka) seeks to "divinize" the world, recognizing the sacred pulse in every heartbeat and every atom. It is a path of transformation, suitable for the householder and the engaged seeker.</p>
+
+<h2>Side by Side</h2>
+<table>
+<thead><tr><th></th><th>Vedanta</th><th>Tantra</th></tr></thead>
+<tbody>
+<tr><td><strong>View of the World</strong></td><td>Apparent/Illusory (Maya)</td><td>Real / Manifestation of the Divine</td></tr>
+<tr><td><strong>Primary Method</strong></td><td>Renunciation &amp; Discrimination</td><td>Transformation &amp; Engagement</td></tr>
+<tr><td><strong>Goal</strong></td><td>Realization of the Absolute</td><td>Realization of the Absolute in the Relative</td></tr>
+<tr><td><strong>Body</strong></td><td>An obstacle/cover to be transcended</td><td>A sacred instrument to be purified</td></tr>
+<tr><td><strong>Path</strong></td><td>Jnana (Knowledge)</td><td>Kriya, Mantra, and Ritual</td></tr>
+</tbody>
+</table>
+
+<h2>Choosing Your Vehicle</h2>
+<p>Vedanta suits those with a sharp, analytical intellect who find peace in silence and withdrawal. It is the path for those who feel the world is a heavy burden they wish to set down.</p>
+<p>Tantra suits those with a vibrantly engaged nature who find God in beauty, energy, and relationship. It is for those who want to live fully and wake up <em>through</em> life, not away from it.</p>
+    `,
+  },
+  {
+    slug: "sanyasa-vs-grihastha",
+    title: "Sanyasa vs Grihastha: Renunciation vs Householder Path",
+    category: "Path vs Path",
+    entityA: "Sanyasa",
+    entityB: "Grihastha",
+    metaDescription:
+      "Is spiritual growth possible while living a family life? Compare the paths of Sanyasa (Renunciation) and Grihastha (Householder).",
+    tldr: "Sanyasa is the total commitment to spiritual life through the abandonment of social roles. Grihastha is the path of spiritual growth within the structures of family, work, and society. Both are valid 'Ashramas' for reaching the highest truth.",
+    content: `
+<h2>Can You Be Holy and Have a Mortgage?</h2>
+<p>One of the persistent myths in spirituality is that genuine enlightenment requires a cave, an orange robe, and a total abandonment of family life. While the path of the monk (Sanyasa) is highly revered in India, the tradition has always maintained a second, equally valid path: the householder (Grihastha).</p>
+
+<h2>Sanyasa: The Vertical Leap</h2>
+<p>Sanyasa is the final stage of the classical Ashrama system. It is a "social death." The Sanyasi performs their own funeral rites, discards their name, their caste, and their possessions, and wanders as a free soul. Their only focus is Brahman.</p>
+<p>The advantage of Sanyasa is <em>one-pointedness</em>. Without the distractions of children, career, or social obligation, the mind can be trained with extreme intensity. It is the specialist's path—total immersion in the laboratory of consciousness.</p>
+
+<h2>Grihastha: The Horizontal Integration</h2>
+<p>The Grihastha path argues that the world itself is the best monastery. Dealing with a crying child, a difficult boss, or the complexities of a marriage requires precisely the virtues the spiritual life demands: patience, selflessness, equanimity, and love.</p>
+<p>The Bhagavad Gita is the ultimate Householder text. Krishna does not tell Arjuna to go to the forest; he tells him to fight his battle, do his duty, but keep his mind on the Divine. This is <em>Karma Yoga</em>—the art of acting in the world while remaining internally free.</p>
+
+<h2>Comparison at a Glance</h2>
+<table>
+<thead><tr><th></th><th>Sanyasa (Monk)</th><th>Grihastha (Householder)</th></tr></thead>
+<tbody>
+<tr><td><strong>Focus</strong></td><td>Solitude and internal study</td><td>Duty (Dharma) and service</td></tr>
+<tr><td><strong>Lifestyle</strong></td><td>Minimalist, wandering or monastic</td><td>Socially integrated, family-oriented</td></tr>
+<tr><td><strong>Challenges</strong></td><td>Loneliness, arrogance of "holiness"</td><td>Distraction, attachment to family/wealth</td></tr>
+<tr><td><strong>Strength</strong></td><td>Extreme depth and speed</td><td>Broad stability and practical testing</td></tr>
+<tr><td><strong>Goal</strong></td><td>Moksha through withdrawal</td><td>Moksha through selfless action</td></tr>
+</tbody>
+</table>
+
+<h2>The "Inner Sanyasi"</h2>
+<p>The modern consensus among great teachers like Lahiri Mahasaya and Swami Vivekananda is that the robe doesn't matter as much as the internal state. You can be a Sanyasi in a suit, and a worldling in a cave. The true path is <em>detachment</em>—the ability to be in the world, but not of it. Whether you do that in a Himalayan retreat or a suburban home is a matter of temperament and calling, not "higher" or "lower" status.</p>
+    `,
+  },
+  {
+    slug: "karma-yoga-vs-jnana-yoga",
+    title: "Karma Yoga vs Jnana Yoga: Action vs Wisdom",
+    category: "Path vs Path",
+    entityA: "Karma Yoga",
+    entityB: "Jnana Yoga",
+    metaDescription:
+      "Understand the difference between the path of selfless action (Karma Yoga) and the path of knowledge (Jnana Yoga) as taught in the Bhagavad Gita.",
+    tldr: "Karma Yoga purifies the heart through selfless service and action without attachment. Jnana Yoga clears the mind through inquiry and discrimination. They are two wings of the same bird, often practiced together to achieve balance.",
+    content: `
+<h2>Doing vs. Knowing</h2>
+<p>Should we spend our lives serving others and acting for the good of the world, or should we spend them in deep study, reflection, and the inquiry into the nature of the Self? This is the debate between Karma Yoga and Jnana Yoga.</p>
+
+<h2>Karma Yoga: The Science of Action</h2>
+<p>Karma Yoga is the "yoga of work." Its core principle is <em>Nishkama Karma</em>: acting without attachment to the results. We act because it is right to act (our Dharma), but we surrender the outcome—success or failure, praise or blame—to the Divine.</p>
+<p>This path is perfect for active, energetic temperaments. It transforms every mundane task into a spiritual practice. By serving others without ego, the heart is purified, and the sense of a separate "doer" begins to vanish.</p>
+
+<h2>Jnana Yoga: The Science of Knowledge</h2>
+<p>Jnana Yoga is the "yoga of the intellect." It uses the faculty of discrimination (Viveka) to separate the real from the unreal. The primary practice is <em>Neti-Neti</em> (not this, not this) or <em>Vichara</em> (Self-Inquiry).</p>
+<p>This path is for the philosophical, introverted nature. It doesn't focus on *doing* things in the world, but on *understanding* the one who experiences the world. By realizing that the 'I' is not the body or mind, but pure awareness, liberation is achieved.</p>
+
+<h2>Key Differences</h2>
+<table>
+<thead><tr><th></th><th>Karma Yoga</th><th>Jnana Yoga</th></tr></thead>
+<tbody>
+<tr><td><strong>Primary Organ</strong></td><td>Hand and Heart</td><td>Intellect (Buddhi)</td></tr>
+<tr><td><strong>Method</strong></td><td>Selfless service, dedication of fruits</td><td>Inquiry, study, and meditation</td></tr>
+<tr><td><strong>Best for</strong></td><td>Active, social temperaments</td><td>Intellectual, contemplative temperaments</td></tr>
+<tr><td><strong>Danger</strong></td><td>Burnout or attachment to "being a helper"</td><td>Dry intellectualism or spiritual pride</td></tr>
+<tr><td><strong>Result</strong></td><td>Purification of the Chitta (mind-stuff)</td><td>Dissolution of ignorance (Avidya)</td></tr>
+</tbody>
+</table>
+
+<h2>The Synthesis</h2>
+<p>In the Bhagavad Gita, Krishna makes it clear that they are not separate. He says: <em>"The path of Action is superior for most, but the end of both is the same."</em> Without the heart-purification of Karma Yoga, Jnana remains mere theory. Without the clarity of Jnana Yoga, Karma can become egoic helping. For the modern seeker, a balance of both—acting selflessly while inquiring deeply—is often the most sustainable path.</p>
+    `,
+  },
+  {
+    slug: "raja-yoga-vs-kundalini-yoga",
+    title: "Raja Yoga vs Kundalini Yoga: Mind vs Energy",
+    category: "Path vs Path",
+    entityA: "Raja Yoga",
+    entityB: "Kundalini Yoga",
+    metaDescription:
+      "Compare the systematic mental discipline of Raja Yoga with the energetic awakening of Kundalini Yoga.",
+    tldr: "Raja Yoga focuses on stilling the mind through meditation and ethics (Patanjali's 8 limbs). Kundalini Yoga focuses on awakening the latent spiritual energy (Shakti) within the body and raising it through the chakras. One is the path of the Witness; the other is the path of the Energy.",
+    content: `
+<h2>The Pilot and the Engine</h2>
+<p>Consider the spiritual journey like a flight. Raja Yoga is the discipline of the pilot—learning to navigate, stay calm, and master the controls (the mind). Kundalini Yoga is the work on the engine—amplifying the power, refining the fuel, and ensuring the propulsion system (Prana) is at maximum efficiency.</p>
+
+<h2>Raja Yoga: The Path of the King</h2>
+<p>Raja Yoga (the "royal" path) refers to the system of Patanjali. It is a top-down approach. If you control the mind, everything else—body, breath, senses—follows. Its eight limbs (Ashtanga) move from outward behavior (Yama) to inward absorption (Samadhi).</p>
+<p>The hallmark of Raja Yoga is <em>purity and stillness</em>. You don't "do" something to your energy; you create the conditions where the mind naturally settles into its own source. It is safe, gradual, and highly systematic.</p>
+
+<h2>Kundalini Yoga: The Path of Power</h2>
+<p>Kundalini Yoga (often associated with Hatha and Tantra) is a bottom-up approach. It asserts that there is a massive storehouse of spiritual energy—Kundalini Shakti—dormant at the base of the spine. Through specific kriyas, mantras, and breathwork, this energy is "awakened" and guided up the central channel (Sushumna) through the chakras.</p>
+<p>The hallmark of Kundalini Yoga is <em>intensity and experience</em>. It is a biological and energetic shortcut. When the energy rises, it burns through psychological blocks and creates states of ecstasy and profound insight. However, it requires a qualified teacher, as "premature" awakening can be destabilizing to the nervous system.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Raja Yoga</th><th>Kundalini Yoga</th></tr></thead>
+<tbody>
+<tr><td><strong>Primary Focus</strong></td><td>Mental Stillness (Chitta Vritti Nirodha)</td><td>Energy Awakening (Shakti-pat)</td></tr>
+<tr><td><strong>Method</strong></td><td>Ethics, Meditation, Concentration</td><td>Breath (Pranayama), Mantra, Kriyas</td></tr>
+<tr><td><strong>Experience</strong></td><td>Calm, clear, expansive awareness</td><td>Dynamic, energetic, visionary, ecstatic</td></tr>
+<tr><td><strong>Safety</strong></td><td>High; extremely gradual</td><td>Moderate; requires guidance and preparation</td></tr>
+<tr><td><strong>Goal</strong></td><td>Kaivalya (Liberation of Consciousness)</td><td>Sahansrara (Union of Shakti with Shiva)</td></tr>
+</tbody>
+</table>
+
+<h2>Which Should You Practice?</h2>
+<p>If you have an overactive mind and seek psychological stability and clarity, Raja Yoga is your foundation. It builds the "container" of a stable mind.</p>
+<p>If you feel stuck, stagnant, or seek a direct, visceral experience of the divine energy within the body, Kundalini Yoga (practiced safely) can provide the "spark" to move you forward. Many advanced practitioners find that Raja Yoga provides the necessary discipline to handle the powerful energy that Kundalini awakens.</p>
+    `,
+  },
+  {
+    slug: "shaiva-siddhanta-vs-kashmir-shaivism",
+    title: "Shaiva Siddhanta vs Kashmir Shaivism",
+    category: "Path vs Path",
+    entityA: "Shaiva Siddhanta",
+    entityB: "Kashmir Shaivism",
+    metaDescription:
+      "Explore the differences between the dualistic/pluralistic Shaiva Siddhanta of South India and the non-dual Trika philosophy of Kashmir.",
+    tldr: "Shaiva Siddhanta (South) is primarily dualistic: God (Pati), souls (Pashu), and the world (Pasha) are all eternally real and distinct. Kashmir Shaivism (North) is strictly non-dual: Everything is Shiva, and there is no real difference between the Lord and the soul.",
+    content: `
+<h2>The Two Peaks of Shiva's Wisdom</h2>
+<p>Shaivism, the devotion to Shiva, has produced two of the world's most sophisticated philosophical systems—one from the far south of India (Shaiva Siddhanta) and one from the far north (Kashmir Shaivism). While they both worship the same deity, their understanding of the relationship between God and the individual is strikingly different.</p>
+
+<h2>Shaiva Siddhanta: The Southern School of Relationship</h2>
+<p>Mainly found in Tamil Nadu, Shaiva Siddhanta is a path of <em>devoted relationship</em>. It posits three eternal realities:</p>
+<ol>
+<li><strong>Pati</strong>: Shiva, the Lord, the efficient cause of the universe.</li>
+<li><strong>Pashu</strong>: The soul, eternally existing but bound by ignorance.</li>
+<li><strong>Pasha</strong>: The bonds (Karma, Maya, and Ego) that keep the soul trapped.</li>
+</ol>
+<p>For the Siddhantin, the soul never <em>becomes</em> Shiva. It matures through devotion and grace until it attains a state of eternal union with Shiva, much like a fruit is on a tree but is not the tree itself. It is a path of "Dualistic-Non-dualism" where the soul and God are "not-two" in union, but "two" in existence.</p>
+
+<h2>Kashmir Shaivism: The Northern School of Recognition</h2>
+<p>Developed in the Himalayas between the 8th and 12th centuries, Kashmir Shaivism (Trika) is one of the most radical non-dual philosophies ever written. Its core claim: <em>Pratyabhijna</em> or "Recognition."</p>
+<p>You are not a soul trying to find Shiva. You <em>are</em> Shiva, who has voluntarily limited his power and knowledge to play the game of being a person. Liberation is not something you achieve; it is a sudden "recognition" of your own nature as the infinite consciousness that is even now dancing this universe into existence.</p>
+
+<h2>Side by Side Comparison</h2>
+<table>
+<thead><tr><th></th><th>Shaiva Siddhanta</th><th>Kashmir Shaivism</th></tr></thead>
+<tbody>
+<tr><td><strong>Primary Locality</strong></td><td>Tamil Nadu / South India</td><td>Kashmir / North India</td></tr>
+<tr><td><strong>Metaphysics</strong></td><td>Dualistic / Pluralistic</td><td>Monistic (Strictly Non-dual)</td></tr>
+<tr><td><strong>Soul-God Relationship</strong></td><td>Eternal separation; bliss in union</td><td>Strict identity; you are Shiva</td></tr>
+<tr><td><strong>Liberation</strong></td><td>By the grace of Shiva after maturation</td><td>By recognition of one's own nature</td></tr>
+<tr><td><strong>Role of the World</strong></td><td>A place of testing and bond-breaking</td><td>Shiva's own self-expression (Shakti)</td></tr>
+</tbody>
+</table>
+
+<h2>Which Resonates With You?</h2>
+<p>If you feel a deep, prayerful love for God as a separate, merciful Lord—if you want to be a devotee forever—the rich rituals and devotional hymns of Shaiva Siddhanta will feel like home.</p>
+<p>If you have an expansive, mystical bent—if you find that in deep meditation, all boundaries between "me" and "universe" dissolve—Kashmir Shaivism offers the most powerful intellectual framework for that experience of infinite unity.</p>
+    `,
+  },
+  {
+    slug: "advaita-vs-buddhism",
+    title: "Advaita Vedanta vs Buddhism: Non-Dualism Compared",
+    category: "Path vs Path",
+    entityA: "Advaita Vedanta",
+    entityB: "Buddhism",
+    metaDescription:
+      "Comparing the Non-Dualism of Indian Vedanta with the Emptiness of Buddhist philosophy. Atman vs Anatman.",
+    tldr: "Advaita says there is an eternal, unchanging Self (Atman) that is the Ground of Being. Buddhism says there is no permanent Self (Anatman) and reality is Emptiness (Sunyata). Two paths that sound similar but differ on the very foundation of existence.",
+    content: `
+<h2>The Great Debate: Is There an "I"?</h2>
+<p>For centuries, the philosophers of India's Vedic tradition (Vedanta) and the followers of the Buddha engaged in what is arguably the most sophisticated debate in human history. To a casual observer, they sound almost identical: both say the ego is a problem, both value meditation, and both seek an end to suffering. But at their core, they disagree on the most fundamental question: <em>Who is experiencing this?</em></p>
+
+<h2>Advaita Vedanta: The Presence of the Self</h2>
+<p>Advaita (Non-duality) asserts that beneath our changing thoughts and bodies, there is a permanent, unchanging, eternal Witness: <strong>Atman</strong>. This Atman is not personal; it is identical to <strong>Brahman</strong>, the absolute reality. For the Vedantin, liberation is realizing that "I am THAT"—returning to the eternal Ground of Being that was always there.</p>
+
+<h2>Buddhism: The Absence of the Self</h2>
+<p>Buddhism (specifically the Mahayana and Theravada core) asserts the doctrine of <strong>Anatman</strong> (No-Self). The Buddha taught that if you look for a permanent, unchanging "soul" or "witness," you will never find one. You only find a collection of changing parts (skandhas)—sensations, perceptions, and thoughts. Liberation is realizing <strong>Sunyata</strong> (Emptiness)—that there is no core "Self" at all. Everything is interdependent and rising and falling.</p>
+
+<h2>Comparison Table</h2>
+<table>
+<thead><tr><th></th><th>Advaita Vedanta</th><th>Buddhism</th></tr></thead>
+<tbody>
+<tr><td><strong>Ground of Reality</strong></td><td>Brahman (Absolute Existence)</td><td>Sunyata (Emptiness/Openness)</td></tr>
+<tr><td><strong>The "Self"</strong></td><td>Atman (The Eternal Witness)</td><td>Anatman (No permanent Self)</td></tr>
+<tr><td><strong>Liberation</strong></td><td>Reunion/Recognition of the One</td><td>Nirvana (Extinguishment of the "I" flame)</td></tr>
+<tr><td><strong>Metaphor</strong></td><td>The drop merging with the Ocean</td><td>The candle being blown out in a room</td></tr>
+<tr><td><strong>Foundational Text</strong></td><td>Upanishads / Bhagavad Gita</td><td>Dhammapada / Heart Sutra</td></tr>
+</tbody>
+</table>
+
+<h2>Same Mountain, Different Camps?</h2>
+<p>Many modern scholars and practitioners (like those in the Zen or Tibetan traditions) argue that "Emptiness" and "Brahman" are just two ways of describing the same wordless experience. If "Emptiness" means "empty of separate self," then it is the same as the Vedantic "Self" which is "undivided and non-separate."</p>
+<p>However, the traditions themselves have guarded these distinctions fiercely. Vedanta emphasizes <em>Being</em> (Sat); Buddhism emphasizes <em>Becoming</em> and <em>Change</em>. Whether they are different paths or just different languages for the same peak is a mystery you can only solve through your own meditation practice.</p>
+    `,
+  },
+  {
+    slug: "vaishnavism-vs-shaktism",
+    title: "Vaishnavism vs Shaktism: Vishnu vs the Goddess",
+    category: "Path vs Path",
+    entityA: "Vaishnavism",
+    entityB: "Shaktism",
+    metaDescription:
+      "Compare the devotion to Vishnu as the Preserver with the worship of Shakti as the Supreme Mother and Cosmic Power.",
+    tldr: "Vaishnavism centers on Vishnu and his avatars (Krishna, Rama) as the supreme personal God of love and Dharma. Shaktism centers on Devi (Durga, Kali, Lakshmi) as the primordial power that creates, sustains, and destroys the universe. One is the path of the Lord; the other is the path of the Mother.",
+    content: `
+<h2>The King and the Queen of the Heart</h2>
+<p>In the vast landscape of Sanatan Dharma, two of the largest "denominations" are Vaishnavism and Shaktism. They represent two profound ways of relate to the Divine: one as the benevolent, world-preserving Father/King (Vishnu), and the other as the dynamic, all-encompassing Mother/Power (Shakti).</p>
+
+<h2>Vaishnavism: The Path of the Preserver</h2>
+<p>Vaishnavism is characterized by <em>Bhakti</em>—intense, personal, and often ecstatic love for Vishnu or his most beloved avatars, Krishna and Rama. It emphasizes Dharma (righteousness), grace, and the relational aspect of God. The goal is often defined as reaching Vaikuntha (Vishnu's realm) where the soul enjoys eternal service and proximity to the Lord.</p>
+
+<h2>Shaktism: The Path of the Power</h2>
+<p>Shaktism views the Goddess (Devi) not as the "wife" of a male god, but as the <strong>Supreme Reality</strong> itself. Shakti is the energy through which Shiva (pure consciousness) acts. Without Shakti, Shiva is inert. Shaktism is deeply experiential, often incorporating Tantric practices, mantra, and the recognition of the Goddess in all forms of energy—from the violent destruction of Kali to the nurturing wealth of Lakshmi.</p>
+
+<h2>Differences at a Glance</h2>
+<table>
+<thead><tr><th></th><th>Vaishnavism</th><th>Shaktism</th></tr></thead>
+<tbody>
+<tr><td><strong>Supreme Being</strong></td><td>Vishnu (Krishna / Rama)</td><td>Devi (Durga / Kali / Lalita)</td></tr>
+<tr><td><strong>God's Core Nature</strong></td><td>Preserver, Avatar, Relational Lord</td><td>Primordial Energy, Mother, Creatrix</td></tr>
+<tr><td><strong>Philosophy</strong></td><td>Usually Vishishtadvaita or Dvaita</td><td>Usually Non-Dual Tantra or Shakta Advaita</td></tr>
+<tr><td><strong>Primary Mood</strong></td><td>Wait for Grace, Sweet Devotion (Madhurya)</td><td>Ecstatic Power, Maternal Protection, Intensity</td></tr>
+<tr><td><strong>Key Texts</strong></td><td>Srimad Bhagavatam, Bhagavad Gita</td><td>Devi Mahatmyam, Lalita Sahasranama</td></tr>
+</tbody>
+</table>
+
+<h2>Which Should You Follow?</h2>
+<p>Vaishnavism appeals to those who seek a steady, ethical, and deeply loving relationship with a personal God. It is a path of profound "sweetness" and social harmony.</p>
+<p>Shaktism appeals to those who seek power, protection, and a direct encounter with the "raw" energy of life. It is for those who find the Divine presence most palpable in the dynamic movement of the world and their own bodies.</p>
+    `,
+  },
+  {
+    slug: "navavidha-bhakti-vs-ashtanga-yoga",
+    title: "Navavidha Bhakti vs Ashtanga Yoga: Love vs Discipline",
+    category: "Path vs Path",
+    entityA: "Navavidha Bhakti",
+    entityB: "Ashtanga Yoga",
+    metaDescription:
+      "Compare the nine forms of devotion (Bhakti) with the eight limbs of classical Yoga (Ashtanga). Is the path of the heart different from the path of the mind?",
+    tldr: "Navavidha Bhakti is the path of the Heart, using nine relational practices (singing, remembering, serving) to find God. Ashtanga Yoga is the path of the Mind and Body, using eight limbs of discipline (postures, breath, meditation) to find Stillness. Two distinct technologies of transformation.",
+    content: `
+<h2>The Singer and the Scientist</h2>
+<p>There are two classic ways to cross the ocean of life. One is to set sail on a ship of <strong>Love</strong> (Bhakti), singing and trusting the Captain. The other is to build a high-performance vessel of <strong>Discipline</strong> (Yoga) and master every control and navigation system ourselves. Both can reach the other shore, but the experience of the journey is entirely different.</p>
+
+<h2>Navavidha Bhakti: The Nine Stepping Stones of Love</h2>
+<p>Described in the Srimad Bhagavatam, Navavidha Bhakti is a gradual deepening of relationship with God. It includes:</p>
+<ol>
+<li><strong>Shravanam</strong>: Listening to divine stories.</li>
+<li><strong>Kirtanam</strong>: Singing divine names.</li>
+<li><strong>Smaranam</strong>: Remembering the Divine constantly.</li>
+<li><strong>Padasevanam</strong>: Serving at the Lord's feet.</li>
+<li><strong>Archanam</strong>: Ritual worship.</li>
+<li><strong>Vandanam</strong>: Prayer and prostration.</li>
+<li><strong>Dasyam</strong>: Serving God as a servant.</li>
+<li><strong>Sakhyam</strong>: Relating to God as a friend.</li>
+<li><strong>Atma-nivedanam</strong>: Complete self-surrender.</li>
+</ol>
+<p>It is organic, emotional, and available to anyone, regardless of intellectual or physical ability.</p>
+
+<h2>Ashtanga Yoga: The Eight Limbs of Mental Control</h2>
+<p>Patanjali's system is a rigorous, scientific approach to consciousness. It requires precise effort across eight stages:</p>
+<ol>
+<li><strong>Yama/Niyama</strong>: Ethical foundations.</li>
+<li><strong>Asana</strong>: Physical posture.</li>
+<li><strong>Pranayama</strong>: Breath control.</li>
+<li><strong>Pratyahara</strong>: Withdrawal of senses.</li>
+<li><strong>Dharana</strong>: Concentration.</li>
+<li><strong>Dhyana</strong>: Meditation.</li>
+<li><strong>Samadhi</strong>: Absorption.</li>
+</ol>
+<p>It is systematic, demanding, and focuses on the "engineering" of the mind and energy.</p>
+
+<h2>Side by Side</h2>
+<table>
+<thead><tr><th></th><th>Navavidha Bhakti</th><th>Ashtanga Yoga</th></tr></thead>
+<tbody>
+<tr><td><strong>Primary Organ</strong></td><td>Heart / Emotions</td><td>Mind / Intellect / Body</td></tr>
+<tr><td><strong>Effort</strong></td><td>Surrender and Love</td><td>Willpower and Discipline</td></tr>
+<tr><td><strong>View of God</strong></td><td>Personal Beloved / Master / Friend</td><td>Ishvara (The Ideal Purusha) or Pure Consciousness</td></tr>
+<tr><td><strong>Motto</strong></td><td>"Help me, Lord."</td><td>"I will master myself."</td></tr>
+<tr><td><strong>Strength</strong></td><td>Natural and easy for many</td><td>Extremely precise and replicable</td></tr>
+</tbody>
+</table>
+
+<h2>Can They Be Combined?</h2>
+<p>Absolutely. Most great masters have been both powerful Yogis and deep Bhaktas. Yoga provides the stable seat and clear mind, while Bhakti provides the "fuel" of longing and love. Without Bhakti, Yoga can become ego-centric; without Yoga, Bhakti can become overly emotional without grounding. Together, they form a complete human spiritual path.</p>
+    `,
+  },
+  // Category 5: Teacher vs Teacher
+  {
+    slug: "ramana-maharshi-vs-nisargadatta-maharaj",
+    title: "Ramana Maharshi vs Nisargadatta Maharaj",
+    category: "Teacher vs Teacher",
+    entityA: "Ramana Maharshi",
+    entityB: "Nisargadatta Maharaj",
+    metaDescription:
+      "Two of the 20th century's greatest non-dual masters. Compare the silent presence of Arunachala with the fiery 'I Am' of Mumbai.",
+    tldr: "Ramana Maharshi taught the direct method of 'Who Am I?' through silence and steady inquiry. Nisargadatta Maharaj taught the path of 'Abiding in the I Am' through sharp, intellectual pointers and fiery discourse. Both represent the pinnacle of Advaita Bhakti.",
+    content: `
+<h2>Two Lions of Non-Duality</h2>
+<p>If you are drawn to Advaita Vedanta (Non-duality), you will inevitably encounter these two giants. They didn't write books; they mostly sat in small rooms and answered questions. Yet their impact on global spirituality is immeasurable. While they taught the same truth, their "flavors" were very different.</p>
+
+<h2>Ramana Maharshi: The Silence of Arunachala</h2>
+<p>Ramana Maharshi spent his life at the foot of the sacred hill Arunachala. His primary teaching was <strong>Silence</strong>. He often sat in stillness for hours, and many seekers found their questions dissolved just by being in his presence. When he did speak, he gave one primary tool: <em>Atma Vichara</em> (Self-Inquiry). He asked seekers to trace the "I-thought" back to its source by asking "To whom do these thoughts arise?" until only the Source remained.</p>
+
+<h2>Nisargadatta Maharaj: The Fire of Mumbai</h2>
+<p>Nisargadatta was a simple bidi-seller who lived in the bustling backstreets of Mumbai. He was known for his direct, often confrontational style. His teaching centered on the <strong>"I Am"</strong>. He told seekers to ignore all thoughts and just "abide in the sense of being." His classic book, <em>I Am That</em>, is a record of his fiery dialogues where he mercilessly stripped away the seeker's false identities.</p>
+
+<h2>Side by Side</h2>
+<table>
+<thead><tr><th></th><th>Ramana Maharshi</th><th>Nisargadatta Maharaj</th></tr></thead>
+<tbody>
+<tr><td><strong>Style</strong></td><td>Passive, Silent, Gentle</td><td>Active, Fiery, Direct</td></tr>
+<tr><td><strong>Primary Pointer</strong></td><td>"Who am I?" (Source Inquiry)</td><td>"I Am" (Sense of Being)</td></tr>
+<tr><td><strong>Setting</strong></td><td>Sacred Hill (Arunachala)</td><td>Internal-city hub (Mumbai)</td></tr>
+<tr><td><strong>Language</strong></td><td>Tamil / Simple Pointers</td><td>Marathi / Sharp Dialectic</td></tr>
+<tr><td><strong>Core Emphasis</strong></td><td>Heart-centered Awareness</td><td>Intelligence-centered Awareness</td></tr>
+</tbody>
+</table>
+
+<h2>Which Teacher For You?</h2>
+<p>If you find that your mind quiets easily in nature and you are drawn to the power of silence and the space of the heart, Ramana Maharshi's presence will resonate deeply with you.</p>
+<p>If you have a sharp, restless intellect that needs to be "beaten" into submission by logic and direct pointers—if you like the grit of city-spirituality—Nisargadatta's fire will likely burn through your doubts faster.</p>
+    `,
+  },
+  {
+    slug: "adi-shankaracharya-vs-ramanuja",
+    title: "Adi Shankaracharya vs Ramanuja: Two Pillars of Vedanta",
+    category: "Teacher vs Teacher",
+    entityA: "Adi Shankaracharya",
+    entityB: "Ramanuja",
+    metaDescription:
+      "The intellectual giant of Advaita vs the devotional visionary of Vishishtadvaita. Compare the two most influential philosophers in Indian history.",
+    tldr: "Shankara taught that the world is an illusion (Maya) and the soul is identical to Brahman. Ramanuja taught that the world is real and the soul is an eternal, distinct part of Brahman. It's the classic debate between Pure Knowledge and Divine Love.",
+    content: `
+<h2>The Head and the Heart of Indian Philosophy</h2>
+<p>In the history of Indian thought, no two figures loom larger than Shankara (8th Century) and Ramanuja (11th Century). Their debate defined the two main tracks of spiritual life that continue to this day: the path of <strong>Jnana</strong> (Inquiry) and the path of <strong>Bhakti</strong> (Devotion).</p>
+
+<h2>Adi Shankaracharya: The Architect of Non-Duality</h2>
+<p>Shankara was a prodigy who traveled the length of India on foot, reviving the Vedic tradition. His philosophy, <strong>Advaita</strong>, is uncompromising. He argued that there is only one reality—Brahman— and that our sense of being a separate person is an error (Maya). His goal was "Brahmavidya"—the knowledge that you already are the Absolute.</p>
+
+<h2>Ramanuja: The Champion of Devotion</h2>
+<p>Ramanuja found Shankara's philosophy too cold and abstract. He argued that if the world is an illusion, then God's love for us is also an illusion. His philosophy, <strong>Vishishtadvaita</strong> (Qualified Non-duality), asserts that the world and souls are <em>real</em>. They are like the body of God. We are not identical to God, but we are organically part of Him, like cells in a body.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Adi Shankaracharya</th><th>Ramanuja</th></tr></thead>
+<tbody>
+<tr><td><strong>Philosophy</strong></td><td>Advaita (Non-dual)</td><td>Vishishtadvaita (Qualified Non-dual)</td></tr>
+<tr><td><strong>View of God</strong></td><td>Nirguna (Attribute-less)</td><td>Saguna (Personal, full of qualities)</td></tr>
+<tr><td><strong>View of the Soul</strong></td><td>Identical to Brahman</td><td>Part of Brahman, distinct existence</td></tr>
+<tr><td><strong>View of the World</strong></td><td>Maya (Superimposed)</td><td>Real (Manifestation of Divine)</td></tr>
+<tr><td><strong>Primary Path</strong></td><td>Jnana Yoga (Inquiry)</td><td>Bhakti Yoga (Love)</td></tr>
+</tbody>
+</table>
+
+<h2>Who Is Your Guide?</h2>
+<p>Shankara is the teacher for the deep thinkers, the logicians, and those who seek the "cold light" of absolute truth. His approach is for those who find the most peace in the dissolution of the "me."</p>
+<p>Ramanuja is the teacher for the lovers, the poets, and those who seek a personal relationship with the Divine. His approach is for those who want to be <em>with</em> God forever, not merely merge into Him.</p>
+    `,
+  },
+  {
+    slug: "swami-vivekananda-vs-ramakrishna",
+    title: "Swami Vivekananda vs Sri Ramakrishna: Master and Disciple",
+    category: "Teacher vs Teacher",
+    entityA: "Swami Vivekananda",
+    entityB: "Sri Ramakrishna",
+    metaDescription:
+      "One was a rural mystic who saw the Mother in everything; the other was a modern intellectual who brought Yoga to the West. Explore their unique relationship.",
+    tldr: "Ramakrishna was the embodiment of direct mystical experience, seeing no difference between religions. Vivekananda was the 'Man-maker' who rationalized and organized these experiences into a global mission of service and strength.",
+    content: `
+<h2>The Mystic and the Missionary</h2>
+<p>The relationship between Ramakrishna Paramahansa and Swami Vivekananda is the most famous teacher-student dynamic in modern times. Together, they bridged the gap between ancient temple-worship and the modern, globalized world.</p>
+
+<h2>Sri Ramakrishna: The Child of Kali</h2>
+<p>Ramakrishna lived at the Dakshineswar Kali temple. He was a "spiritual laboratory," practicing the paths of Hinduism, Islam, and Christianity, and concluding that "As many faiths, so many paths." He lived in a state of constant <em>Bhava</em> (divine ecstasy), seeing the Divine Mother in every person and every object. His teaching was purely experiential and oral.</p>
+
+<h2>Swami Vivekananda: The Voice of India</h2>
+<p>Vivekananda (born Narendranath) was a highly educated, skeptical youth who challenged Ramakrishna: "Have you seen God?" Ramakrishna replied, "Yes, I see Him more clearly than I see you." Vivekananda became the great messenger, bringing Hindu philosophy to the 1893 Parliament of Religions in Chicago. He emphasized <strong>Strength</strong>, <strong>Seva</strong> (Service), and the <strong>Universality</strong> of truth.</p>
+
+<h2>Side by Side</h2>
+<table>
+<thead><tr><th></th><th>Sri Ramakrishna</th><th>Swami Vivekananda</th></tr></thead>
+<tbody>
+<tr><td><strong>Nature</strong></td><td>Ecstatic Mystic</td><td>Intellectual Reformer</td></tr>
+<tr><td><strong>Approach</strong></td><td>Direct Vision of God</td><td>Practical Vedanta / Service</td></tr>
+<tr><td><strong>Audience</strong></td><td>Local seekers / Rural India</td><td>The World / Modern Youth</td></tr>
+<tr><td><strong>Legacy</strong></td><td>The 'Realization' of Truth</td><td>The 'Organization' of Truth</td></tr>
+<tr><td><strong>Key Phrase</strong></td><td>"God realization is the only goal."</td><td>"Arise, awake, and stop not!"</td></tr>
+</tbody>
+</table>
+
+<h2>How Do They Help You?</h2>
+<p>Ramakrishna helps those who are thirsty for the <em>experience</em> of God. He reminds us that all our books are useless without a single tear of love for the Divine.</p>
+<p>Vivekananda helps those who want to <em>live</em> their spirituality in the world. He provides the backbone, the courage, and the intellectual framework to be a "Spiritual Warrior" in a modern society.</p>
+    `,
+  },
+  {
+    slug: "sadhguru-vs-osho",
+    title: "Sadhguru vs Osho: Neo-Vedanta Compared",
+    category: "Teacher vs Teacher",
+    entityA: "Sadhguru",
+    entityB: "Osho",
+    metaDescription:
+      "Two of the most controversial and charismatic modern teachers. Compare Sadhguru’s Inner Engineering with Osho’s Rebellion.",
+    tldr: "Sadhguru emphasizes 'Inner Engineering'—a systematic, technology-based approach to well-being and yoga. Osho emphasized 'Rebellion'—stripping away social conditioning and personal ego through celebration, meditation, and radical honesty.",
+    content: `
+<h2>The Engineer and the Rebel</h2>
+<p>Both Sadhguru and Osho have been criticized and celebrated in equal measure. They represent a new wave of "Modern Gurus" who use logic, humor, and sharp wit to make ancient wisdom palatable to the global corporate and creative classes. But their methods of "waking up" are quite different.</p>
+
+<h2>Sadhguru: The Spiritual Technologist</h2>
+<p>Sadhguru frames yoga as a "technology" for well-being. He avoids religious jargon, focusing instead on how the human mechanism works. His flagship program, <em>Inner Engineering</em>, provides tools to manage the body, mind, and energy like a sophisticated machine. He is a proponent of <strong>Hatha Yoga</strong>, <strong>Pranayama</strong>, and sustainability, bridging ancient occult sciences with modern management logic.</p>
+
+<h2>Osho: The Master of Rebellion</h2>
+<p>Osho (formerly Rajneesh) was a provocateur. He believed that the human mind is so conditioned by society, family, and religion that it cannot "meditate" normally. He created <strong>Dynamic Meditation</strong>—a process of catharsis (screaming, jumping, shaking) to release repressed energy before sitting in silence. He spoke on every tradition, from Zen to Sufism, always emphasizing <strong>Freedom</strong> from the ego and the joy of <strong>Zorba the Buddha</strong> (living both materially and spiritually).</p>
+
+<h2>Side by Side</h2>
+<table>
+<thead><tr><th></th><th>Sadhguru</th><th>Osho</th></tr></thead>
+<tbody>
+<tr><td><strong>Key System</strong></td><td>Inner Engineering / Isha Yoga</td><td>Diverse Meditations / Rebelliousness</td></tr>
+<tr><td><strong>Primary Tool</strong></td><td>Shambhavi Mahamudra (Energy)</td><td>Catharsis &amp; Awareness (Witnessing)</td></tr>
+<tr><td><strong>Style</strong></td><td>Cerebral, Logical, 'Yogic'</td><td>Provocative, Poetic, 'Antinomian'</td></tr>
+<tr><td><strong>View of Society</strong></td><td>Engage and fix from within</td><td>Deconstruct and rebel against</td></tr>
+<tr><td><strong>Ideal State</strong></td><td>Pleasantness / Ecological Harmony</td><td>Total Freedom / Spontaneity</td></tr>
+</tbody>
+</table>
+
+<h2>Which Presence For You?</h2>
+<p>If you like structure, discipline, and a clear "how-to" for your energy and body—if you want to be a highly effective person in the world—Sadhguru's engineering approach will likely suit you.</p>
+<p>If you feel suffocated by rules and social norms—if you seek a path that breaks you open through laughter, tears, and a radical deconstruction of everything you believe—Osho's "rebellious" wisdom might be the medicine you need.</p>
+    `,
+  },
+  {
+    slug: "paramahansa-yogananda-vs-maharishi-mahesh-yogi",
+    title: "Paramahansa Yogananda vs Maharishi Mahesh Yogi",
+    category: "Teacher vs Teacher",
+    entityA: "Paramahansa Yogananda",
+    entityB: "Maharishi Mahesh Yogi",
+    metaDescription:
+      "Two masters who brought Yoga to the West. Compare Yogananda's Kriya Yoga with Maharishi's Transcendental Meditation (TM).",
+    tldr: "Yogananda emphasized Kriya Yoga—a comprehensive path of devotion, energy control, and Christ-consciousness. Maharishi emphasized Transcendental Meditation (TM)—an effortless technique for mental rest and cosmic consciousness.",
+    content: `
+<h2>The Ambassadors of the Soul</h2>
+<p>If you live in the West, your understanding of "Yoga" and "Meditation" has likely been shaped by these two men. Yogananda arrived in the 1920s with a message of mystical union; Maharishi arrived in the 1960s with a message of scientific peace.</p>
+
+<h2>Paramahansa Yogananda: The Kriya Yoga Master</h2>
+<p>Yogananda's <em>Autobiography of a Yogi</em> is often the first book that wakes people up to the spiritual path. He taught <strong>Kriya Yoga</strong>, a specialized technique to magnetize the spine and nervous system. He was a bridge-builder, showing the "Original Christianity" of Jesus and the "Original Yoga" of Krishna were the same path of God-communion. His approach is deeply devotional and discipline-heavy.</p>
+
+<h2>Maharishi Mahesh Yogi: The TM Visionary</h2>
+<p>Maharishi became famous as the teacher of the Beatles. He stripped meditation of its "mysticism" and presented <strong>Transcendental Meditation (TM)</strong> as a simple, mental technique that required no belief or lifestyle change. He spoke of "Scientific Research" and "World Peace" through the "Maharishi Effect." His approach is effortless and accessible to the mainstream.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Paramahansa Yogananda</th><th>Maharishi Mahesh Yogi</th></tr></thead>
+<tbody>
+<tr><td><strong>Primary Path</strong></td><td>Kriya Yoga (Energy/Devotion)</td><td>Transcendental Meditation (Mantra)</td></tr>
+<tr><td><strong>Focus</strong></td><td>Direct Union with God</td><td>Mental Rest / Potential / Peace</td></tr>
+<tr><td><strong>Framework</strong></td><td>Mystical / Religious / Discipline</td><td>Scientific / Secular / Effortless</td></tr>
+<tr><td><strong>Christ Connection</strong></td><td>Explicit (Self-Realization Fellowship)</td><td>Implicit / None</td></tr>
+<tr><td><strong>Key Text</strong></td><td>Autobiography of a Yogi</td><td>Science of Being &amp; Art of Living</td></tr>
+</tbody>
+</table>
+
+<h2>Which One To Follow?</h2>
+<p>If you want a "complete" path that involves prayer, chanting, energy techniques, and a guru-disciple relationship—if you want to be a "Yogi" in the classical sense—Yogananda's SRF is a powerful home.</p>
+<p>If you are a busy professional or creative who just wants a reliable "hack" to quiet the mind and improve brain function without the religious "baggage"—Maharishi's TM system is the gold standard for effortless results.</p>
+    `,
+  },
+  {
+    slug: "krishnamurti-vs-chogyam-trungpa",
+    title: "J. Krishnamurti vs Chögyam Trungpa",
+    category: "Teacher vs Teacher",
+    entityA: "J. Krishnamurti",
+    entityB: "Chögyam Trungpa",
+    metaDescription:
+      "One was the anti-guru who rejected all authority; the other was the 'Crazy Wisdom' master who used everything for awakening. A study in contrasts.",
+    tldr: "Krishnamurti was an ascetic intellectual who told seekers to 'be a light unto yourself' and reject all gurus. Trungpa was a Vajrayana master who used alcohol, relationship, and shock ('Crazy Wisdom') to break seekers out of their 'spiritual materialism'.",
+    content: `
+<h2>The Pure Light and the Crazy Wisdom</h2>
+<p>If you are tired of "standard" spirituality, you will find these two fascinating. They both hated "Spiritual Materialism"—using spiritual practices to decorate the ego. But their methods for destroying that ego were on opposite ends of the spectrum.</p>
+
+<h2>J. Krishnamurti: The Anti-Guru</h2>
+<p>Krishnamurti was groomed by the Theosophists to be the "World Teacher," but he famously disbanded the organization, saying: "Truth is a pathless land." He told his followers <em>not</em> to follow him. He asked them to observe the movement of their own minds with "passive awareness." No mantras, no gurus, no traditions. Just the radical responsibility of seeing things as they are.</p>
+
+<h2>Chögyam Trungpa: The Crazy Wisdom Master</h2>
+<p>Trungpa was a high-ranking Tibetan tulku who brought Vajrayana Buddhism to the West. He was infamous for his "un-monk-like" behavior—drinking, smoking, and having relationships. He called this <strong>Crazy Wisdom</strong>—deliberately shocking the seeker out of their polite, spiritual expectations. He founded Naropa University and Shambhala, emphasizing that "the obstacle is the path."</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>J. Krishnamurti</th><th>Chögyam Trungpa</th></tr></thead>
+<tbody>
+<tr><td><strong>Philosophy</strong></td><td>Philosophical Inquiry / No Path</td><td>Vajrayana Buddhism / Crazy Wisdom</td></tr>
+<tr><td><strong>Authority</strong></td><td>Rejected all gurus/traditions</td><td>The Guru as a mirror/shock-agent</td></tr>
+<tr><td><strong>Meditation</strong></td><td>Choice-less Awareness</td><td>Shamatha/Vipashyana &amp; Tantra</td></tr>
+<tr><td><strong>Lifestyle</strong></td><td>Austere, Ascetic, Private</td><td>Bohemian, Social, Provocative</td></tr>
+<tr><td><strong>Key Warning</strong></td><td>"Don't follow anyone."</td><td>"Watch out for spiritual materialism."</td></tr>
+</tbody>
+</table>
+
+<h2>Which Presence For You?</h2>
+<p>If you are highly independent, intellectually rigorous, and disgusted by "guru-cults" and religious ritual—if you want to stand entirely on your own feet—Krishnamurti's "pathless land" is for you.</p>
+<p>If you are drawn to the depth of Buddhist tradition but find modern religion too "sanitized"—if you want a path that uses the grit and chaos of your actual life (including its failures) as fuel for awakening—Trungpa's raw, uncompromising vision will challenge you like no other.</p>
+    `,
+  },
+  {
+    slug: "nagarjuna-vs-adi-shankara",
+    title: "Nagarjuna vs Adi Shankara: Emptiness vs Non-Duality",
+    category: "Teacher vs Teacher",
+    entityA: "Nagarjuna",
+    entityB: "Adi Shankara",
+    metaDescription:
+      "The two greatest logicians in Eastern history. Compare the Buddhist philosophy of Sunyata with the Vedantic philosophy of Advaita.",
+    tldr: "Nagarjuna used logic to show that all things are 'Empty' of inherent existence (Sunyata). Shankara used logic to show that all things are 'One' in their ultimate reality (Brahman). To an untrained ear, they sound the same; to the seeker, they are two different voids.",
+    content: `
+<h2>The Masters of the Mind</h2>
+<p>If you like "hard" philosophy, these are your masters. Nagarjuna (2nd Century) is the second most important figure in Buddhism after the Buddha. Shankara (8th Century) is the architect of Advaita Vedanta. They both used devastating logic to destroy our everyday understanding of reality.</p>
+
+<h2>Nagarjuna: The Philosopher of Emptiness</h2>
+<p>Nagarjuna's <em>Madhyamaka</em> (Middle Way) philosophy is a logical machine. He analyzed every concept—cause, effect, motion, self, time—and showed that they are all "empty" of inherent, independent existence. Things only exist because of other things. This <strong>Emptiness (Sunyata)</strong> is not "nothingness"—it is the "openness" that allows things to happen. His goal: to stop the mind from "grasping" at anything as real.</p>
+
+<h2>Adi Shankara: The Philosopher of Being</h2>
+<p>Shankara agreed that things are empty of independent existence, but he argued that there must be a <strong>Locus</strong> for that emptiness. If everything is shifting and empty, what is the "screen" on which this movement appears? That screen is **Brahman** (Pure Consciousness). For Shankara, reality is not an "absence" (Emptiness); it is a "Presence" (Absolute Being).</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Nagarjuna</th><th>Adi Shankara</th></tr></thead>
+<tbody>
+<tr><td><strong>Core Idea</strong></td><td>Sunyata (Emptiness)</td><td>Brahman (Absolute Being)</td></tr>
+<tr><td><strong>Method</strong></td><td>Dialectical Negation (Catuskoti)</td><td>Scriptural Logic (Pramana)</td></tr>
+<tr><td><strong>View of the Self</strong></td><td>Anatman (No Self)</td><td>Atman (The True Self)</td></tr>
+<tr><td><strong>Ultimate Truth</strong></td><td>Interdependence is Reality</td><td>Unity is Reality</td></tr>
+<tr><td><strong>Atmosphere</strong></td><td>Dynamic, Open, Fluid</td><td>Static, Infinite, Solid</td></tr>
+</tbody>
+</table>
+
+<h2>Who Should You Study?</h2>
+<p>Study Nagarjuna if you find that your mind keeps getting "stuck" in concepts, beliefs, and rigid views. His logic is like a laser that dissolves everything you think you know, leaving you in a state of open, boundless potential.</p>
+<p>Study Shankara if you are seeking a "Home." If you feel that beneath the chaos of change, there is something solid, eternal, and deeply familiar that you can "rest" in. His philosophy provides the "Self" that Nagarjuna's philosophy removes.</p>
+    `,
+  },
+  {
+    slug: "ramakrishna-vs-chaitanya-mahaprabhu",
+    title: "Sri Ramakrishna vs Chaitanya Mahaprabhu",
+    category: "Teacher vs Teacher",
+    entityA: "Sri Ramakrishna",
+    entityB: "Chaitanya Mahaprabhu",
+    metaDescription:
+      "Two of India’s most beloved 'God-intoxicated' saints. Compare the diverse mysticism of Ramakrishna with the ecstatic Krishna-bhakti of Chaitanya.",
+    tldr: "Chaitanya (15th Century) was the father of the Kirtan movement, lost in the love of Krishna. Ramakrishna (19th Century) was a universalist mystic who saw the Divine in all paths and deities. Both lived in a state of constant spiritual intoxication.",
+    content: `
+<h2>The Lovers of God</h2>
+<p>If you are an emotional person who wants to "feel" God, these are your saints. They didn't just talk about divinity; they were consumed by it. In India, they are both worshipped as avatars (divine incarnations).</p>
+
+<h2>Chaitanya Mahaprabhu: The Golden Avatar</h2>
+<p>Chaitanya was a brilliant scholar who abandoned everything for <strong>Nama-Sankirtana</strong> (the congregational chanting of Hare Krishna). He popularized the path of <em>Raganuga Bhakti</em>—trying to feel the same love for God that the Gopis (milkmaids) of Vrindavan felt for Krishna. He was often found dancing through the streets in a trance, his body turning golden with ecstasy.</p>
+
+<h2>Sri Ramakrishna: The Master of All Moods</h2>
+<p>Ramakrishna lived four hundred years later. While he loved Krishna, he was not limited to one deity. He practiced the "moods" of the mother-worshipper, the servant, the friend, and the lover. He even practiced the disciplines of other religions. His ecstasy was <strong>Universal</strong>. He taught that "all religions are true" and that the goal is simply to "weep for God" with a sincere heart.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Chaitanya Mahaprabhu</th><th>Sri Ramakrishna</th></tr></thead>
+<tbody>
+<tr><td><strong>Focus</strong></td><td>Krishna-Bhakti specifically</td><td>Universal Divine / Kali / All paths</td></tr>
+<tr><td><strong>Primary Practice</strong></td><td>Kirtan (Chanting and Dancing)</td><td>Japa, Bhajan, Silence, Direct Vision</td></tr>
+<tr><td><strong>Era</strong></td><td>Bhakti Movement (15th Century)</td><td>Modern Renaissance (19th Century)</td></tr>
+<tr><td><strong>Doctrine</strong></td><td>Achintya Bheda-Abheda</td><td>Vijnana (Complete Realization)</td></tr>
+<tr><td><strong>Spirit</strong></td><td>Exclusivity of Love (One Beloved)</td><td>Inclusivity of Spirit (All paths)</td></tr>
+</tbody>
+</table>
+
+<h2>Which Presence For You?</h2>
+<p>If you have a one-pointed heart—if you have found "your" deity (Ista Devata) and want to be completely lost in the sweetness of that specific name and form—Chaitanya's path of ecstatic kirtan is your fire.</p>
+<p>If you are a "spiritual explorer" who appreciates all traditions but feels a deep, agonizing hunger to see the Truth in whatever form it appears—if you find the Divine in the Mother, the Christ, and the Silence—Ramakrishna's broad, all-encompassing love is your guide.</p>
+    `,
+  },
+  // Category 6: Text vs Text
+  {
+    slug: "bhagavad-gita-vs-upanishads",
+    title: "Bhagavad Gita vs Upanishads",
+    category: "Text vs Text",
+    entityA: "Bhagavad Gita",
+    entityB: "Upanishads",
+    metaDescription:
+      "Explore the relationship between the poetic, practical Bhagavad Gita and the philosophical, mystical Upanishads.",
+    tldr: "The Upanishads are the philosophical seeds (Shruti); the Bhagavad Gita is the practical fruit (Smriti). The Gita takes the abstract non-duality of the Upanishads and makes it actionable for a person living in the world.",
+    content: `
+<h2>The Source and the Stream</h2>
+<p>If you want to understand Indian wisdom, you must start with these two. The relationship is often described with a beautiful metaphor: if the Upanishads are the cows, the Bhagavad Gita is the milk. Krishna is the milker, and we are the drinkers.</p>
+
+<h2>The Upanishads: The End of Knowledge</h2>
+<p>The Upanishads (meaning "sitting down near" the teacher) are the final sections of the Vedas (Vedanta). They are mystical, poetic, and often cryptic dialogues. They deal with the nature of reality (Brahman) and the Self (Atman). They are <strong>Shruti</strong>—revelation. Their atmosphere is one of forest retreats, deep silence, and the sudden "aha!" moment of realization. They are the <em>theory</em> of non-duality.</p>
+
+<h2>The Bhagavad Gita: The Song of Action</h2>
+<p>The Gita is a 700-verse dialogue embedded in the Mahabharata epic. It takes place on a battlefield, not in a forest. It takes the abstract truths of the Upanishads—like the immortality of the soul—and applies them to a man (Arjuna) who is paralyzed by a moral crisis. It is <strong>Smriti</strong>—remembered tradition. It is the <em>practice</em> of non-duality in the midst of chaos.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>The Upanishads</th><th>The Bhagavad Gita</th></tr></thead>
+<tbody>
+<tr><td><strong>Primary Focus</strong></td><td>Pure Knowledge (Jnana)</td><td>Integration of Yoga (Karma, Bhakti, Jnana)</td></tr>
+<tr><td><strong>Setting</strong></td><td>Forest Hermitage / Silent Retreat</td><td>Battlefield of Kurukshetra</td></tr>
+<tr><td><strong>Nature of Text</strong></td><td>Shruti (Absolute Revelation)</td><td>Smriti (Epic / Divine Teaching)</td></tr>
+<tr><td><strong>Key Audience</strong></td><td>Renunciants / Philosophers</td><td>Active People / Householders</td></tr>
+<tr><td><strong>Core Message</strong></td><td>"You are Brahman."</td><td>"Act selflessly, and find the Brahman in you."</td></tr>
+</tbody>
+</table>
+
+<h2>Which Should You Read First?</h2>
+<p>Read the <strong>Bhagavad Gita</strong> if you are looking for a guide on how to live. It is the most accessible entry point to Indian thought, dealing with doubt, duty, and love in a way that feels intensely modern.</p>
+<p>Read the <strong>Upanishads</strong> (starting with the ten principal ones like the Isha, Kena, and Katha) if you have already grasped the basics and want to dive into the raw, uncompromising mystical source code of reality. They require more mental quietness and reflection.</p>
+    `,
+  },
+  {
+    slug: "yoga-sutras-vs-bhagavad-gita",
+    title: "Yoga Sutras vs Bhagavad Gita",
+    category: "Text vs Text",
+    entityA: "Yoga Sutras",
+    entityB: "Bhagavad Gita",
+    metaDescription:
+      "Compare the psychological manual of Patanjali with the devotional epic of Krishna. Science vs Song.",
+    tldr: "The Yoga Sutras are a scientific manual for the mind, focusing on meditation and internal discipline. The Bhagavad Gita is a poetic guide for the heart and life, focusing on relationship and action. Both lead to Yoga (Union), but through different temperaments.",
+    content: `
+<h2>Science vs. Song</h2>
+<p>If there are two "bibles" of modern yoga, these are they. One is a list of 196 pithy technical aphorisms (Sutras) that read like coded computer science. The other is a beautiful, epic poem (Gita) that reads like a conversation with a best friend who also happens to be God. They agree on 90% of the territory, but their "vibe" is entirely different.</p>
+
+<h2>Patanjali's Yoga Sutras: The Psychology of Stillness</h2>
+<p>Patanjali is the scientist. He doesn't talk about God's love or the beauty of the world. He talks about <em>Chitta Vritti</em> (mind-stuff fluctuations) and how to stop them. He provides the <strong>Eight-Limbed Path</strong> (Ashtanga) as a replicable technology. It is a solo journey of self-mastery. The goal is <em>Kaivalya</em>—the isolation of the Self from the mess of matter.</p>
+
+<h2>The Bhagavad Gita: The Yoga of Relationship</h2>
+<p>Krishna is the lover and the warrior. He acknowledges the difficulty of the mind, but he doesn't just give breathing exercises. He says: "Give your mind to Me." He integrates <strong>Bhakti</strong> (Devotion) and <strong>Karma</strong> (Action) with meditation. The goal is not isolation, but <em>Union</em> (Yoga)—realizing the Divine in everything and acting for the sake of the whole.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Yoga Sutras</th><th>Bhagavad Gita</th></tr></thead>
+<tbody>
+<tr><td><strong>Style</strong></td><td>Technical / Aphoristic</td><td>Narrative / Poetic</td></tr>
+<tr><td><strong>Primary Tool</strong></td><td>Mental Concentration (Abhyasa)</td><td>Internal Surrender &amp; Action</td></tr>
+<tr><td><strong>View of God</strong></td><td>An optional aid (Ishvara Pranidhana)</td><td>The Center and Goal of all life</td></tr>
+<tr><td><strong>The Seeker</strong></td><td>The Scientist / Ascetic</td><td>The Warrior / Friend / Lover</td></tr>
+<tr><td><strong>Result</strong></td><td>Stillness (Nirodha)</td><td>Participation in Divine Will</td></tr>
+</tbody>
+</table>
+
+<h2>Which One To Study?</h2>
+<p>Study the <strong>Yoga Sutras</strong> if you want to understand the mechanics of your mind. If you are serious about meditation and want a clear, step-by-step roadmap for how to handle distraction, boredom, and deeper states of consciousness, Patanjali is your manual.</p>
+<p>Study the <strong>Bhagavad Gita</strong> if you feel that "life is yoga." If you are overwhelmed by decisions, relationships, and the work you have to do in the world, the Gita provides the emotional and philosophical support to stay spiritually connected while living an active life.</p>
+    `,
+  },
+  {
+    slug: "rigveda-vs-atharvaveda",
+    title: "Rigveda vs Atharvaveda: Chants vs Spells",
+    category: "Text vs Text",
+    entityA: "Rigveda",
+    entityB: "Atharvaveda",
+    metaDescription:
+      "The oldest Vedic wisdom vs the practical folk wisdom. Compare the high hymns of the Rigveda with the healing charms of the Atharvaveda.",
+    tldr: "The Rigveda is the foundation of Vedic philosophy, filled with grand hymns to Cosmic Powers (Devas). The Atharvaveda is the 'Veda of the common man,' filled with prayers for healing, prosperity, and protection in daily life. Transcendent vs Immanent.",
+    content: `
+<h2>The Sky and the Earth</h2>
+<p>The Vedas are the root of all Indian thought. While there are four, the Rigveda and the Atharvaveda represent two very different poles of the human experience of the sacred.</p>
+
+<h2>The Rigveda: The Hymns to the Cosmos</h2>
+<p>The Rigveda is the oldest living text in human history (some parts date back over 4,000 years). It consists of 1,028 hymns (Suktas) addressing the gods of nature—Agni (Fire), Indra (Thunder), Varuna (Water). It is majestic, speculative, and deeply philosophical. It contains the <em>Nasadiya Sukta</em> (the Hymn of Creation) which asks profound questions about the origins of existence. It is the Veda of the <strong>Ritual</strong> and the <strong>Mantra</strong>.</p>
+
+<h2>The Atharvaveda: The Veda of Healing</h2>
+<p>The Atharvaveda was integrated into the "three Vedas" much later. It deals with the "here and now." It contains "Bheshajani" (charms to cure diseases), "Paushtikani" (prayers for a good harvest or successful business), and even "Vashikarana" (charms for love and influence). It is the source of <strong>Ayurveda</strong> (Indian medicine). It is the Veda of the <strong>Household</strong> and the <strong>Body</strong>.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Rigveda</th><th>Atharvaveda</th></tr></thead>
+<tbody>
+<tr><td><strong>Focus</strong></td><td>Cosmic Order (Rita) / Mythology</td><td>Personal Well-being / Magic / Healing</td></tr>
+<tr><td><strong>Mood</strong></td><td>Awe, Gratitude, Speculation</td><td>Protection, Healing, Practicality</td></tr>
+<tr><td><strong>Legacy</strong></td><td>Led to the Upanishads &amp; Vedanta</td><td>Led to Ayurveda &amp; Tantric medicine</td></tr>
+<tr><td><strong>Audience</strong></td><td>Sages and Priests</td><td>Ordinary people / Healers</td></tr>
+<tr><td><strong>Theme</strong></td><td>Sacrifice and Higher Truth</td><td>Success and Physical Health</td></tr>
+</tbody>
+</table>
+
+<h2>Why Know Both?</h2>
+<p>The Rigveda reminds us of our connection to the <strong>Infinite</strong>—that we are part of a vast, cosmic order. It provides the "High Purpose" of life.</p>
+<p>The Atharvaveda reminds us that spirituality must be <strong>Practical</strong>. It acknowledges that it's hard to meditate when you are sick, poor, or in conflict. It provides the "Daily support" for life.</p>
+    `,
+  },
+  {
+    slug: "mahabharata-vs-ramayana",
+    title: "Mahabharata vs Ramayana: The Epic of Gray vs the Epic of Gold",
+    category: "Text vs Text",
+    entityA: "Mahabharata",
+    entityB: "Ramayana",
+    metaDescription:
+      "The two great Itihasas (Histories). Compare the ideal moral world of the Ramayana with the complex, gritty realism of the Mahabharata.",
+    tldr: "The Ramayana is a story of 'Ideal Dharma'—the perfect King, the perfect wife, the perfect brother. The Mahabharata is a story of 'Crisis Dharma'—a world where every choice is difficult, good people make mistakes, and the line between right and wrong is thin.",
+    content: `
+<h2>The Golden Age and the Iron Age</h2>
+<p>India's two great epics are not just stories; they are the "Dharma Shastras" of the common people. They teach ethics, politics, and spirituality through action. But they speak to two very different moral landscapes.</p>
+
+<h2>The Ramayana: The Path of the Ideal</h2>
+<p>The Ramayana (The Journey of Rama) is a poem of 24,000 verses. Its hero, Rama, is <em>Maryada Purushottam</em>—the man who never breaks the law. Even when it brings him personal suffering, he chooses the highest duty. It is a world of black and white, of clear heroes (Rama, Sita, Hanuman) and clear villains (Ravana). It sets the **Standard** for human behavior.</p>
+
+<h2>The Mahabharata: The Path of the Real</h2>
+<p>The Mahabharata (The Great Tale of the Bharatas) is the longest poem in the world (100,000 verses). It’s famously said: "Whatever is here is found elsewhere; what is not here is found nowhere." It is a messy, complicated world. Yudhisthira tells a lie; Bhishma is bound by a wrong oath; Krishna uses trickery. It acknowledges that in the real world, <strong>Dharma is subtle</strong> (Sukshma). it is a guide for navigating an imperfect world.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Ramayana</th><th>Mahabharata</th></tr></thead>
+<tbody>
+<tr><td><strong>Theme</strong></td><td>Ideal Conduct (Maryada)</td><td>Practical/Subtle Conduct (Sukshma)</td></tr>
+<tr><td><strong>Hero</strong></td><td>Rama (The Perfect Human)</td><td>Krishna (The Divine Guide)</td></tr>
+<tr><td><strong>Conflict</strong></td><td>Good vs. Evil</td><td>Dharma vs. Adharma (within family)</td></tr>
+<tr><td><strong>Outcome</strong></td><td>Restoration of the Golden Age</td><td>Acceptance of the Iron Age (Kali Yuga)</td></tr>
+<tr><td><strong>Moral Vibe</strong></td><td>Inspirational / Devotional</td><td>Psychological / Political / Realist</td></tr>
+</tbody>
+</table>
+
+<h2>Which Should You Turn To?</h2>
+<p>Turn to the <strong>Ramayana</strong> when you need <strong>Inspiration</strong>. When you feel lost and want to see what a life of absolute integrity and love looks like, Rama and Sita provides the North Star.</p>
+<p>Turn to the <strong>Mahabharata</strong> when you need <strong>Validation</strong>. When your life is messy, your family is in conflict, and every choice seems equally bad, this epic shows you that even the gods and sages struggled with these same dilemmas.</p>
+    `,
+  },
+  {
+    slug: "brahma-sutras-vs-upanishads",
+    title: "Brahma Sutras vs Upanishads: Logic vs Poetry",
+    category: "Text vs Text",
+    entityA: "Brahma Sutras",
+    entityB: "Upanishads",
+    metaDescription:
+      "Compare the source-wisdom of the Upanishads with the systematic logical defense of that wisdom in the Brahma Sutras.",
+    tldr: "The Upanishads are the inspired 'Songs' of the forest sages. The Brahma Sutras are the 'Logic' of the philosophers, organizing and defending those songs against critics. Revelation vs. Systematization.",
+    content: `
+<h2>The Experience and the Argument</h2>
+<p>In the Vedanta tradition, there are three foundations (Prasthanatrayi). The first two are the Upanishads and the Brahma Sutras. They represent two different functions of the human spirit: the <strong>Vision</strong> and the <strong>Defense</strong>.</p>
+
+<h2>The Upanishads: The Direct Vision</h2>
+<p>The Upanishads are records of direct mystical experience. They aren't interested in logic; they are interested in <em>Seeing</em>. They use metaphors—the salt in the water, the sparks from a fire—to describe the oneness of life. They can be confusing because different Upanishads seem to say different things (some sound dualistic, some non-dualistic).</p>
+
+<h2>The Brahma Sutras: The Systematic Logic</h2>
+<p>Attributed to Badarayana, the Brahma Sutras (also called Vedanta Sutras) were written to reconcile the apparent contradictions in the Upanishads. It is a highly technical text of 555 sutras. It provides the "grammar" of Vedanta. It argues against other schools (like Buddhism or Samkhya) and proves that the Upanishads consistently point to Brahman as the source of all.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>The Upanishads</th><th>The Brahma Sutras</th></tr></thead>
+<tbody>
+<tr><td><strong>Nature</strong></td><td>Revelatory / Poetry</td><td>Analytical / Logic</td></tr>
+<tr><td><strong>Function</strong></td><td>To inspire realization</td><td>To provide philosophical consistency</td></tr>
+<tr><td><strong>Accessibility</strong></td><td>High (with a good translation)</td><td>Low (requires a commentary)</td></tr>
+<tr><td><strong>Primary Focus</strong></td><td>What is the Truth?</td><td>Why is this the Truth?</td></tr>
+<tr><td><strong>Spirit</strong></td><td>Spontaneous and Expansive</td><td>Ordered and Defensive</td></tr>
+</tbody>
+</table>
+
+<h2>Why Study Both?</h2>
+<p>If you only read the <strong>Upanishads</strong>, your spirituality might become <strong>vague</strong> and "wishy-washy." You might get lost in your own interpretations and miss the rigorous depth of the tradition.</p>
+<p>If you only read the <strong>Brahma Sutras</strong>, your spirituality might become <strong>dry</strong> and purely intellectual. You will have a great argument for God, but no love or vision of God. The tradition insists that logic must support experience, and experience must be validated by logic.</p>
+    `,
+  },
+  {
+    slug: "ashtavakra-gita-vs-bhagavad-gita",
+    title: "Ashtavakra Gita vs Bhagavad Gita",
+    category: "Text vs Text",
+    entityA: "Ashtavakra Gita",
+    entityB: "Bhagavad Gita",
+    metaDescription:
+      "One is for the beginner in the world; the other is for the advanced soul ready to fly. Compare the different levels of Advaita logic.",
+    tldr: "The Bhagavad Gita is the 'Kindergarten' of Advaita (for everyone); the Ashtavakra Gita is the 'Post-Doctorate' (for those ready for absolute non-duality). The Gita teaches how to act; Ashtavakra teaches how to simply be.",
+    content: `
+<h2>The Action and the Absolute</h2>
+<p>Both texts are called "Gitas" (Songs), and both are dialogues. But they speak to two very different stages of the spiritual journey. This comparison is vital for knowing which "medicine" you need right now.</p>
+
+<h2>The Bhagavad Gita: The Medicine of the World</h2>
+<p>The Gita meets you <em>where you are</em>. It assumes you have a body, a family, a job, and a lot of confusion. It teaches you how to purify those through Karma Yoga and Bhakti. It says: "Act, but act with God in your heart." It is a <strong>Path-oriented</strong> text. It is compassionate toward the struggling seeker.</p>
+
+<h2>The Ashtavakra Gita: The Medicine of the Sky</h2>
+<p>The Ashtavakra Gita (a dialogue between King Janaka and the sage Ashtavakra) doesn't care about your job or your family. It starts with the final conclusion: <strong>"You are already free."</strong> It tells you that all your "practice" is just another ego-trap. It is <strong>Result-oriented</strong>. It is shockingly direct, dismissing all paths and ethics in favor of the immediate recognition of your own infinite, unchanging nature.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Bhagavad Gita</th><th>Ashtavakra Gita</th></tr></thead>
+<tbody>
+<tr><td><strong>Starting Point</strong></td><td>Conflict and confusion</td><td>Radiant Awareness</td></tr>
+<tr><td><strong>Key Advice</strong></td><td>"Act for the sake of the Divine."</td><td>"Rest in your own Being; do nothing."</td></tr>
+<tr><td><strong>Mood</strong></td><td>Supportive, Emotional, Balanced</td><td>Uncompromising, Radical, Intellectual</td></tr>
+<tr><td><strong>Requirement</strong></td><td>Sincerity and a sense of duty</td><td>Pre-purified mind / Mature intellect</td></tr>
+<tr><td><strong>View of 'Path'</strong></td><td>Essential (Karma, Bhakti, Jnana)</td><td>Unnecessary / An obstacle</td></tr>
+</tbody>
+</table>
+
+<h2>Which Is For You?</h2>
+<p>If you feel you have much to "do"—if you are struggling with your emotions and your place in society—read the <strong>Bhagavad Gita</strong>. It will give you the strength to move forward.</p>
+<p>If you have been practicing for years, have done the service, have studied the books, and yet you feel "stuck" in the role of the seeker—if you are ready to "drop the search" and simply see—the <strong>Ashtavakra Gita</strong> will pull the rug out from under your "spiritual ego" and set you free.</p>
+    `,
+  },
+  {
+    slug: "shiva-sutras-vs-yoga-sutras",
+    title: "Shiva Sutras vs Yoga Sutras",
+    category: "Text vs Text",
+    entityA: "Shiva Sutras",
+    entityB: "Yoga Sutras",
+    metaDescription:
+      "The manual for the dualist meditator vs the manual for the non-dual mystic. Compare Patanjali with the Trika philosophy of Vasugupta.",
+    tldr: "Yoga Sutras focus on 'Nirodha' (Stilling the mind) to separate the soul from matter. Shiva Sutras focus on 'Samatva' (Union) to realize that even the mind and matter are Shiva's own light. Separation vs. Recognition.",
+    content: `
+<h2>Two Maps of the Mind</h2>
+<p>Both texts are written in the "Sutra" style—pithy pearls of wisdom. But they represent the two great poles of Indian meditation: the "Classical Yoga" of the dualists and the "Tantric Yoga" of the non-dualists.</p>
+
+<h2>Patanjali's Yoga Sutras: The Path of Separation</h2>
+<p>Patanjali's philosophy is <strong>Dualistic</strong>. He believes that you (Purusha) and nature (Prakriti) are two different things that got tangled up. The goal of the Yoga Sutras is to quiet the mind so completely that the soul can realize it is <em>separate</em> from the body and mind. It is a path of subtraction and concentration.</p>
+
+<h2>Vasugupta's Shiva Sutras: The Path of Expansion</h2>
+<p>The foundation of Kashmir Shaivism, the Shiva Sutras (8th Century) are <strong>Non-dual</strong>. They teach that everything—including your thoughts, your body, and your distractions—is part of Shiva's consciousness. You don't need to push "nature" away; you need to recognize that nature is your own "shakti" (power). It is a path of expansion and recognition.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Yoga Sutras</th><th>Shiva Sutras</th></tr></thead>
+<tbody>
+<tr><td><strong>School</strong></td><td>Classical Yoga / Samkhya</td><td>Kashmir Shaivism / Trika</td></tr>
+<tr><td><strong>The Goal</strong></td><td>Kaivalya (Aloneness / Isolation)</td><td>Shiva-consciousness (Totality)</td></tr>
+<tr><td><strong>View of the World</strong></td><td>A trap to be escaped</td><td>A dance of divine light</td></tr>
+<tr><td><strong>The Seeker</strong></td><td>An observer separating from objects</td><td>Shiva recognizing Himself in objects</td></tr>
+<tr><td><strong>Atmosphere</strong></td><td>Disciplined, Austere, Still</td><td>Vibrant, Mystical, Expansive</td></tr>
+</tbody>
+</table>
+
+<h2>Why Study Both?</h2>
+<p>The <strong>Yoga Sutras</strong> are essential for <strong>Discipline</strong>. If you cannot sit still, if your mind is a mess of impulses, Patanjali will give you the technical skills to "clean the room."</p>
+<p>The <strong>Shiva Sutras</strong> are essential for <strong>Vision</strong>. Once the room is clean, Patanjali might leave you sitting in a silent, empty room. The Shiva Sutras open the door and show you that the whole universe is your room. They bring the "joy" and "magic" back into the meditation.</p>
+    `,
+  },
+  {
+    slug: "narada-bhakti-sutras-vs-yoga-sutras",
+    title: "Narada Bhakti Sutras vs Yoga Sutras",
+    category: "Text vs Text",
+    entityA: "Narada Bhakti Sutras",
+    entityB: "Yoga Sutras",
+    metaDescription:
+      "Is the path to the Divine through Love (Bhakti) or through Mind Control (Yoga)? Compare the aphorisms of Narada and Patanjali.",
+    tldr: "Narada Bhakti Sutras define Yoga as 'Supreme Love for God.' Patanjali's Yoga Sutras define Yoga as 'Stilling the movements of the mind.' One is a manual for the enthusiast; the other for the engineer.",
+    content: `
+<h2>The Lover and the Scientist (Part 2)</h2>
+<p>Both texts use the same literary form—short, logical aphorisms (sutras). But they turn that logic toward two different destinations.</p>
+
+<h2>Narada Bhakti Sutras: The Manual of Divine Love</h2>
+<p>Narada is the legendary sage of <strong>Bhakti</strong> (Devotion). His sutras are a scientific study of love. He defines Bhakti, describes its signs (tears, goosebumps, loss of worldly interest), and explains how to cultivate it (through the company of saints and avoiding worldly talk). His path is high-energy, emotional, and relational. He says that Bhakti is superior to Knowledge and Action because it is its own result.</p>
+
+<h2>Patanjali's Yoga Sutras: The Manual of Mental Stillness</h2>
+<p>Patanjali is the master of <strong>Abhyasa</strong> (Practice). As discussed in other comparisons, his focus is the mechanics of attention. He doesn't want you to "love" your object of meditation; he wants you to avoid being distracted by anything else. His path is cooling and stabilizing.</p>
+
+<h2>Comparison</h2>
+<table>
+<thead><tr><th></th><th>Narada Bhakti Sutras</th><th>Yoga Sutras</th></tr></thead>
+<tbody>
+<tr><td><strong>Definition of Success</strong></td><td>"Supreme Love for God"</td><td>"Stilling of Mind-stuff"</td></tr>
+<tr><td><strong>Requirement</strong></td><td>Deep Longing / Thirst (Mumukshutva)</td><td>Willpower and Consistency</td></tr>
+<tr><td><strong>The Obstacle</strong></td><td>Worldly attachments / Pride</td><td>Mental fluctuations (Vrittis)</td></tr>
+<tr><td><strong>Result</strong></td><td>Intoxication with Divine Bliss</td><td>Isolation of the Soul (Kaivalya)</td></tr>
+<tr><td><strong>Mood</strong></td><td>Ecstatic / Hot / Pouring Out</td><td>Calm / Cold / Sinking In</td></tr>
+</tbody>
+</table>
+
+<h2>Which Text For You?</h2>
+<p>Study <strong>Narada</strong> if you find that "concentration" feels like a struggle, but you naturally feel moved by music, prayer, or the beauty of a spiritual presence. He will show you how to take your "natural" emotions and turn them into a high-speed elevator to the Divine.</p>
+<p>Study <strong>Patanjali</strong> if you find that your emotions are unreliable and you seek a path based on logic, anatomy, and replicable sensory control. He will give you the "ground" that allows your love to be more than just a passing feeling.</p>
+    `,
+  },
 ];
+
+
+

@@ -137,9 +137,38 @@ export default function ComparisonPage({ params }: Props) {
             }}
           />
 
-          <hr className="border-border my-12" />
+          <div className="mt-24 mb-16 pt-16 border-t border-border">
+            <div className="flex items-baseline justify-between mb-8">
+              <h2 className="font-display text-2xl md:text-3xl font-bold">
+                More in <span className="text-primary">{comp.category}</span>
+              </h2>
+              <Link href="/compare" className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1 group">
+                View all <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {comparisons
+                .filter((c) => c.category === comp.category && c.slug !== comp.slug)
+                .slice(0, 3)
+                .map((item) => (
+                  <Link key={item.slug} href={`/compare/${item.slug}`} className="group h-full">
+                    <div className="p-5 rounded-2xl border border-border/50 bg-card hover:border-primary/20 transition-all flex flex-col h-full shadow-sm hover:shadow-primary/5">
+                      <h3 className="font-display font-bold text-base mb-2 group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-muted-foreground line-clamp-2 mt-auto">
+                        {item.tldr}
+                      </p>
+                    </div>
+                  </Link>
+                ))
+              }
+            </div>
+          </div>
 
           <div className="bg-gradient-to-br from-indigo-950/40 to-background rounded-3xl border border-white/10 p-10 text-center relative overflow-hidden">
+
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
             <h3 className="text-3xl font-display font-bold mb-4">
               Ready to find your personal path?

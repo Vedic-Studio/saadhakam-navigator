@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Search, Heart, Flame, Dumbbell } from "lucide-react";
-import { QuizResult, getResultDescription } from "@/data/faithFinderQuiz";
+import { Separator } from "@/components/ui/separator";
+import { Brain, Heart, Sparkles, Zap, ArrowRight, Check } from "lucide-react";
+import { QuizResult, pathMetadata } from "@/data/faithFinderQuiz";
 
 interface ResultsPreviewProps {
     result: QuizResult;
@@ -10,66 +11,75 @@ interface ResultsPreviewProps {
 }
 
 const pathIcons = {
-    inquiry: Search,
+    inquiry: Brain,
     devotion: Heart,
-    ritual: Flame,
-    discipline: Dumbbell,
+    ritual: Sparkles,
+    discipline: Zap,
 };
 
 const pathColors = {
-    inquiry: "bg-indigo-500/10 border-indigo-500/20 text-indigo-600",
+    inquiry: "bg-amber-500/10 border-amber-500/20 text-amber-600",
     devotion: "bg-rose-500/10 border-rose-500/20 text-rose-600",
-    ritual: "bg-amber-500/10 border-amber-500/20 text-amber-600",
-    discipline: "bg-emerald-500/10 border-emerald-500/20 text-emerald-600",
-};
-
-const pathTitles = {
-    inquiry: "Inquiry-led Path",
-    devotion: "Devotion-led Path",
-    ritual: "Ritual-led Path",
-    discipline: "Discipline-led Path",
+    ritual: "bg-orange-500/10 border-orange-500/20 text-orange-600",
+    discipline: "bg-indigo-500/10 border-indigo-500/20 text-indigo-600",
 };
 
 export const ResultsPreview = ({ result, onContinue }: ResultsPreviewProps) => {
     const IconComponent = pathIcons[result.primaryPath];
+    const metadata = pathMetadata[result.primaryPath];
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-8 animate-in fade-in zoom-in duration-500">
             <div className="text-center">
-                <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl ${pathColors[result.primaryPath]} mb-4`}>
-                    <IconComponent className={`w-10 h-10 ${pathColors[result.primaryPath].split(' ').pop()}`} />
+                <div className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl ${pathColors[result.primaryPath]} border-2 border-current/20 mb-6 shadow-xl shadow-current/5`}>
+                    <IconComponent className="w-12 h-12" />
                 </div>
-                <h2 className="text-3xl font-bold text-foreground mb-2">
-                    Your Path: {pathTitles[result.primaryPath]}
+                <p className="text-sm font-semibold tracking-widest uppercase text-muted-foreground mb-2">My Archetype</p>
+                <h2 className="text-4xl font-bold text-foreground mb-2">
+                    {metadata.name}
                 </h2>
-                {result.secondaryPath && (
-                    <Badge variant="secondary" className="mb-4">
-                        Also influenced by: {pathTitles[result.secondaryPath]}
-                    </Badge>
-                )}
+                <Badge variant="outline" className="text-md py-1 px-4 rounded-full border-current/30">
+                    {metadata.archetype}
+                </Badge>
             </div>
 
-            <Card className="bg-muted/30">
-                <CardContent className="p-6">
+            <Card className="bg-muted/30 border-dashed border-2">
+                <CardContent className="p-8">
+                    <p className="text-xl italic text-foreground text-center leading-relaxed">
+                        "{metadata.slogan}"
+                    </p>
+                    <Separator className="my-6" />
                     <p className="text-muted-foreground text-center leading-relaxed">
-                        {getResultDescription(result.primaryPath)}
+                        {metadata.longDescription.split('.')[0]}. {metadata.longDescription.split('.')[1]}.
                     </p>
                 </CardContent>
             </Card>
 
-            <div className="text-center">
-                <p className="text-sm text-muted-foreground mb-4">
-                    Get your complete personalized report with:
+            <div className="text-center bg-secondary/5 p-8 rounded-3xl border border-secondary/20">
+                <p className="text-lg font-semibold text-foreground mb-4">
+                    Your 12-Page Dharmic Architecture Report is Ready
                 </p>
-                <ul className="text-sm text-muted-foreground space-y-2 mb-6 max-w-md mx-auto">
-                    <li>✓ Detailed explanation of your path</li>
-                    <li>✓ Recommended traditions and practices</li>
-                    <li>✓ Personalized next steps</li>
-                    <li>✓ Resources to begin your journey</li>
-                </ul>
-                <Button onClick={onContinue} className="gap-2">
-                    View Full Results
-                    <ArrowRight className="w-4 h-4" />
+                <div className="grid grid-cols-2 gap-4 text-left text-sm text-muted-foreground mb-8">
+                    <div className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-green-500" />
+                        Dominant & Secondary Paths
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-green-500" />
+                        Specific Practice Blockers
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-green-500" />
+                        Recommended Lineages
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Check className="w-4 h-4 text-green-500" />
+                        30-Day Launch Plan
+                    </div>
+                </div>
+                <Button onClick={onContinue} size="lg" className="w-full h-14 rounded-full text-lg bg-foreground text-background hover:bg-foreground/90 gap-2">
+                    Claim My Full Results
+                    <ArrowRight className="w-5 h-5" />
                 </Button>
             </div>
         </div>

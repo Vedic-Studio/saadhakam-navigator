@@ -73,6 +73,12 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
           changeFrequency: "monthly",
           priority: 0.8,
         },
+        {
+          url: `${baseUrl}/compare`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.9,
+        },
         // Static articles
         {
           url: `${baseUrl}/what-is-vedanta`,

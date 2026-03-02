@@ -41,17 +41,15 @@ export default function FaithFinderPage() {
                   <Sparkles className="w-4 h-4" />
                   Faith Finder Quiz
                 </div>
-                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                  Discover Your Spiritual Path
+                <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/60">
+                  Stop Guessing.<br />Start Practicing.
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-                  Your spiritual path isn't random—it emerges from your nature,
-                  tendencies, and how you naturally approach the sacred. Take
-                  this 2-minute quiz to discover which direction calls to you.
+                <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+                  Discover your **Dharmic Archetype** and the specific 5,000-year-old lineage that matches your modern temperament.
                 </p>
-                <Button onClick={handleStartQuiz} size="lg" className="gap-2">
-                  Start the Quiz
-                  <ArrowRight className="w-4 h-4" />
+                <Button onClick={handleStartQuiz} size="lg" className="h-14 px-10 rounded-full text-lg bg-orange-600 hover:bg-orange-700 shadow-xl shadow-orange-900/20 gap-2 transition-all hover:scale-105">
+                  Begin Your Discovery
+                  <ArrowRight className="w-5 h-5" />
                 </Button>
               </div>
 
@@ -103,28 +101,28 @@ export default function FaithFinderPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   {[
                     {
-                      color: "indigo",
+                      color: "amber",
                       icon: Compass,
-                      title: "Inquiry-led Path",
-                      desc: "For those who question deeply. Drawn to understanding reality, consciousness, and self through investigation and contemplation.",
+                      title: "The Way of Inquiry",
+                      desc: "For the Analysts of Reality. You don't want to just believe; you want to know. Driven by the fire of discrimination and deep philosophical investigation.",
                     },
                     {
                       color: "rose",
                       icon: Sparkles,
-                      title: "Devotion-led Path",
-                      desc: "For those whose hearts overflow. Natural love for the Divine, finding meaning in worship, surrender, and sacred relationship.",
+                      title: "The Way of Devotion",
+                      desc: "For the Relational Seekers. You find the Divine in the pull of the heart, the sweetness of grace, and the power of sacred relationship.",
                     },
                     {
-                      color: "amber",
+                      color: "orange",
                       icon: Sparkles,
-                      title: "Ritual-led Path",
-                      desc: "For those who honor tradition. Finding power in sacred action, ceremony, and the precise performance of spiritual rites.",
+                      title: "The Way of Action",
+                      desc: "For the Alchemists of Action. You find peace in the preservation of sacred rhythms, duty, and the science of purposeful behavior.",
                     },
                     {
-                      color: "emerald",
+                      color: "indigo",
                       icon: RefreshCw,
-                      title: "Discipline-led Path",
-                      desc: "For those who cultivate methodically. Drawn to systematic practice, training the mind and body through structured approaches.",
+                      title: "The Way of Practice",
+                      desc: "For the Architects of Mind. You seek direct, silent experience through mastery over the inner mechanics of mind and energy.",
                     },
                   ].map(({ color, icon: Icon, title, desc }) => (
                     <Card

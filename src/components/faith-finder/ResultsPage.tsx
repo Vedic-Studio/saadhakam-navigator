@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Search, Heart, Flame, Dumbbell, Share2, Download, Mail, CheckCircle2, Copy } from "lucide-react";
-import { QuizResult, getResultDescription } from "@/data/faithFinderQuiz";
+import { Brain, Heart, Sparkles, Zap, Share2, Download, Mail, CheckCircle2, Copy } from "lucide-react";
+import { QuizResult, pathMetadata } from "@/data/faithFinderQuiz";
 import { EmailCaptureForm } from "./EmailCaptureForm";
 
 interface ResultsPageProps {
@@ -15,18 +15,18 @@ interface ResultsPageProps {
 }
 
 const pathIcons = {
-    inquiry: Search,
+    inquiry: Brain,
     devotion: Heart,
-    ritual: Flame,
-    discipline: Dumbbell,
+    ritual: Sparkles,
+    discipline: Zap,
 };
 
 const pathColors = {
     inquiry: {
-        bg: "bg-indigo-500/10",
-        border: "border-indigo-500/20",
-        text: "text-indigo-600",
-        gradient: "from-indigo-500 to-purple-600"
+        bg: "bg-amber-500/10",
+        border: "border-amber-500/20",
+        text: "text-amber-600",
+        gradient: "from-amber-500 to-orange-600"
     },
     devotion: {
         bg: "bg-rose-500/10",
@@ -35,16 +35,16 @@ const pathColors = {
         gradient: "from-rose-500 to-pink-600"
     },
     ritual: {
-        bg: "bg-amber-500/10",
-        border: "border-amber-500/20",
-        text: "text-amber-600",
-        gradient: "from-amber-500 to-orange-600"
+        bg: "bg-orange-500/10",
+        border: "border-orange-500/20",
+        text: "text-orange-600",
+        gradient: "from-orange-500 to-amber-600"
     },
     discipline: {
-        bg: "bg-emerald-500/10",
-        border: "border-emerald-500/20",
-        text: "text-emerald-600",
-        gradient: "from-emerald-500 to-teal-600"
+        bg: "bg-indigo-500/10",
+        border: "border-indigo-500/20",
+        text: "text-indigo-600",
+        gradient: "from-indigo-500 to-purple-600"
     },
 };
 
@@ -68,8 +68,10 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
     const IconComponent = pathIcons[result.primaryPath];
     const colors = pathColors[result.primaryPath];
 
+    const metadata = pathMetadata[result.primaryPath];
+
     const handleShare = async () => {
-        const shareText = `I discovered my spiritual path is ${pathTitles[result.primaryPath]}! Take the Faith Finder Quiz to discover yours.`;
+        const shareText = `I discovered my spiritual path is ${metadata.name}! Take the Faith Finder Quiz to discover yours.`;
         const shareUrl = window.location.href;
 
         if (navigator.share) {
@@ -96,56 +98,81 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto space-y-8">
+        <div className="w-full max-w-5xl mx-auto space-y-12 animate-in fade-in slide-in-from-bottom-5 duration-700">
             {/* Header */}
-            <div className="text-center space-y-4">
-                <div className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl ${colors.bg} ${colors.border} border-2`}>
-                    <IconComponent className={`w-12 h-12 ${colors.text}`} />
+            <div className="text-center space-y-6">
+                <div className={`inline-flex items-center justify-center w-28 h-28 rounded-[2rem] ${colors.bg} ${colors.border} border-2 shadow-2xl shadow-current/5`}>
+                    <IconComponent className={`w-14 h-14 ${colors.text}`} />
                 </div>
                 <div>
-                    <h1 className="text-4xl font-bold text-foreground mb-2">
-                        Your Spiritual Path
+                    <h1 className="text-5xl font-bold text-foreground mb-4">
+                        The {metadata.name}
                     </h1>
-                    <h2 className={`text-2xl font-semibold bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>
-                        {pathTitles[result.primaryPath]}
-                    </h2>
-                    {result.secondaryPath && (
-                        <Badge variant="secondary" className="mt-2">
-                            Also influenced by: {pathTitles[result.secondaryPath]}
+                    <div className="flex flex-wrap items-center justify-center gap-3">
+                        <Badge className={`text-lg py-1 px-5 rounded-full bg-gradient-to-r ${colors.gradient} text-white border-0`}>
+                            {metadata.archetype}
                         </Badge>
-                    )}
+                        {result.secondaryPath && (
+                            <Badge variant="outline" className="text-lg py-1 px-5 rounded-full">
+                                Sub-path: {pathMetadata[result.secondaryPath].name}
+                            </Badge>
+                        )}
+                    </div>
                 </div>
             </div>
 
             {/* Main Result Card */}
-            <Card className={`border-2 ${colors.border}`}>
-                <CardContent className="p-8">
-                    <h3 className="text-xl font-semibold text-foreground mb-4">Your Path</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                        {pathDescriptions[result.primaryPath]}
-                    </p>
+            <Card className={`border-2 ${colors.border} bg-card/50 backdrop-blur-sm overflow-hidden`}>
+                <div className={`h-2 bg-gradient-to-r ${colors.gradient}`} />
+                <CardContent className="p-10">
+                    <div className="grid lg:grid-cols-[1fr,300px] gap-12">
+                        <div>
+                            <h3 className="text-2xl font-bold text-foreground mb-6">Your Dharmic Architecture</h3>
+                            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+                                {metadata.longDescription}
+                            </p>
 
-                    <Separator className="my-6" />
+                            <Separator className="my-8" />
 
-                    <h3 className="text-xl font-semibold text-foreground mb-4">Your Scores</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {Object.entries(result.scores).map(([path, score]) => {
-                            const PathIcon = pathIcons[path as keyof typeof pathIcons];
-                            const isActive = path === result.primaryPath;
-                            return (
-                                <div
-                                    key={path}
-                                    className={`p-4 rounded-lg border-2 text-center ${isActive
-                                            ? `${colors.bg} ${colors.border}`
-                                            : 'bg-muted/30 border-border'
-                                        }`}
-                                >
-                                    <PathIcon className={`w-6 h-6 mx-auto mb-2 ${isActive ? colors.text : 'text-muted-foreground'}`} />
-                                    <div className="text-2xl font-bold text-foreground">{score}</div>
-                                    <div className="text-xs text-muted-foreground capitalize">{path}</div>
-                                </div>
-                            );
-                        })}
+                            <h3 className="text-xl font-bold text-foreground mb-6">Lineage Affinity Breakdown</h3>
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                                {Object.entries(result.scores).map(([path, score]) => {
+                                    const PathIcon = pathIcons[path as keyof typeof pathIcons];
+                                    const pathMeta = pathMetadata[path as keyof typeof pathMetadata];
+                                    const isActive = path === result.primaryPath;
+                                    const pathCol = pathColors[path as keyof typeof pathColors];
+                                    return (
+                                        <div
+                                            key={path}
+                                            className={`p-5 rounded-2xl border-2 transition-all ${isActive
+                                                ? `${pathCol.bg} ${pathCol.border} scale-105 shadow-lg`
+                                                : 'bg-muted/10 border-border opacity-60 hover:opacity-100'
+                                                }`}
+                                        >
+                                            <PathIcon className={`w-8 h-8 mx-auto mb-3 ${isActive ? pathCol.text : 'text-muted-foreground'}`} />
+                                            <div className="text-3xl font-bold text-foreground">{score}</div>
+                                            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mt-1">{pathMeta.name.replace('The Way of ', '')}</div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        <div className="space-y-6">
+                            <Card className="bg-secondary/5 border-secondary/20 h-full">
+                                <CardContent className="p-6">
+                                    <h4 className="font-bold text-foreground mb-4">Dominant Trait</h4>
+                                    <div className="space-y-4">
+                                        <div className="p-4 rounded-xl bg-background border border-border">
+                                            <p className="text-sm italic">"{metadata.slogan}"</p>
+                                        </div>
+                                        <p className="text-sm text-muted-foreground leading-relaxed">
+                                            Your high score in {metadata.name} suggests a deep-seated need for {result.primaryPath === 'inquiry' ? 'rational proof' : result.primaryPath === 'devotion' ? 'emotional connection' : result.primaryPath === 'ritual' ? 'structured order' : 'direct experience'}.
+                                        </p>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </div>
                 </CardContent>
             </Card>

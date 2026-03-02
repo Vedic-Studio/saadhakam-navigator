@@ -5,6 +5,7 @@
   "/ancient-wisdom-philosophies/page": "app/ancient-wisdom-philosophies/page.js",
   "/bhagavad-gita-complete-guide/page": "app/bhagavad-gita-complete-guide/page.js",
   "/compare/[slug]/page": "app/compare/[slug]/page.js",
+  "/compare/page": "app/compare/page.js",
   "/faith-finder/page": "app/faith-finder/page.js",
   "/greats/[slug]/page": "app/greats/[slug]/page.js",
   "/greats/page": "app/greats/page.js",

@@ -18,79 +18,78 @@ export interface QuizOption {
 export const quizQuestions: QuizQuestion[] = [
   {
     id: 1,
-    question:
-      "When you feel lost or uncertain, what brings you the most comfort?",
+    question: "When you feel the weight of existence or uncertainty, where does your mind instinctively turn?",
     options: [
       {
         id: "1a",
-        text: "Reading philosophy or exploring deep questions about meaning",
+        text: "Toward analysis—trying to strip away the confusion to find the logical truth.",
         weights: { inquiry: 3, devotion: 0, ritual: 0, discipline: 0 },
       },
       {
         id: "1b",
-        text: "Praying or surrendering to a higher power",
+        text: "Toward surrender—looking for a presence or power to hold and guide you.",
         weights: { inquiry: 0, devotion: 3, ritual: 0, discipline: 0 },
       },
       {
         id: "1c",
-        text: "Following a familiar routine or ritual",
+        text: "Toward structure—reclaiming peace through familiar, sacred rhythms and tradition.",
         weights: { inquiry: 0, devotion: 0, ritual: 3, discipline: 0 },
       },
       {
         id: "1d",
-        text: "Meditating or practicing mindfulness",
+        text: "Toward silence—turning inward to master the internal noise through direct practice.",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 3 },
       },
     ],
   },
   {
     id: 2,
-    question: "How do you prefer to spend your free time?",
+    question: "How do you most often find yourself exploring the 'deeper side' of life?",
     options: [
       {
         id: "2a",
-        text: "Reading books, watching documentaries, learning new things",
+        text: "Through the intellect—studying maps of consciousness and the logic of the sages.",
         weights: { inquiry: 3, devotion: 0, ritual: 0, discipline: 0 },
       },
       {
         id: "2b",
-        text: "Listening to devotional music, visiting temples or sacred places",
+        text: "Through the heart—listening to sacred music, chanting, or feeling the pull of the Divine.",
         weights: { inquiry: 0, devotion: 3, ritual: 0, discipline: 0 },
       },
       {
         id: "2c",
-        text: "Following a structured routine, keeping things organized",
+        text: "Through the will—establishing a rigorous daily discipline and sticking to it.",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 3 },
       },
       {
         id: "2d",
-        text: "Participating in ceremonies, festivals, or cultural traditions",
+        text: "Through the sacred—participating in ceremonies that connect you to an ancient lineage.",
         weights: { inquiry: 0, devotion: 0, ritual: 3, discipline: 0 },
       },
     ],
   },
   {
     id: 3,
-    question: "What type of spiritual practice feels most natural to you?",
+    question: "When you imagine 'Self-Realization,' what does the experience look like to you?",
     options: [
       {
         id: "3a",
-        text: "Self-inquiry and contemplation",
+        text: "A sudden, clear insight that dissolves all confusion and doubt.",
         weights: { inquiry: 3, devotion: 0, ritual: 0, discipline: 0 },
       },
       {
         id: "3b",
-        text: "Chanting mantras or singing devotional songs",
+        text: "A total merging into a boundless ocean of love and grace.",
         weights: { inquiry: 0, devotion: 3, ritual: 0, discipline: 0 },
       },
       {
         id: "3c",
-        text: "Performing rituals, puja, or ceremonies",
+        text: "A state of perfect alignment with the cosmic laws and my sacred duty.",
         weights: { inquiry: 0, devotion: 0, ritual: 3, discipline: 0 },
       },
       {
         id: "3d",
-        text: "Yoga, meditation, or breathing exercises",
+        text: "A profound, unshakeable stillness of mind and absolute self-mastery.",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 3 },
       },
     ],
@@ -123,26 +122,26 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 5,
-    question: "What aspect of spirituality fascinates you most?",
+    question: "Which of these concepts most excites your curiosity?",
     options: [
       {
         id: "5a",
-        text: "Understanding the nature of reality and consciousness",
+        text: "The bridge between modern physics and ancient non-duality.",
         weights: { inquiry: 3, devotion: 0, ritual: 0, discipline: 0 },
       },
       {
         id: "5b",
-        text: "Experiencing divine love and devotion",
+        text: "The mystical relationship between the seeker and the Beloved.",
         weights: { inquiry: 0, devotion: 3, ritual: 0, discipline: 0 },
       },
       {
         id: "5c",
-        text: "Sacred rituals, symbols, and ceremonies",
+        text: "The science of sacred geometry and the power of ritual space.",
         weights: { inquiry: 0, devotion: 0, ritual: 3, discipline: 0 },
       },
       {
         id: "5d",
-        text: "Personal transformation and self-mastery",
+        text: "The biology of awakening—mastering prana and the nervous system.",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 3 },
       },
     ],
@@ -491,19 +490,43 @@ export const determineResult = (scores: QuizScore): QuizResult => {
   };
 };
 
+export const pathMetadata = {
+  inquiry: {
+    name: "The Way of Inquiry",
+    archetype: "The Analyst of Reality",
+    slogan: "Truth is found through the fire of discrimination.",
+    longDescription: "You are naturally drawn to the 'Jnana' path—the yoga of the intellect. You don't want to just believe; you want to know. Your mind is a sharp instrument designed to cut through the illusions (Maya) of life to find the unchanging Brahman beneath. For you, study and contemplation are not chores, but the highest form of worship.",
+    icon: "Brain",
+    themeColor: "amber",
+  },
+  devotion: {
+    name: "The Way of Devotion",
+    archetype: "The Relational Seeker",
+    slogan: "Love is the shortest path to the Divine.",
+    longDescription: "You resonate with 'Bhakti'—the path of the heart. For you, the Divine is not an abstract concept, but a living Presence to be loved, served, and surrendered to. Your emotions are your greatest spiritual asset. In your world, the sense of separation dissolves not through logic, but through the overwhelming sweetness of divine grace.",
+    icon: "Heart",
+    themeColor: "rose",
+  },
+  ritual: {
+    name: "The Way of Action",
+    archetype: "The Alchemist of Action",
+    slogan: "Sacred order leads to internal sovereignty.",
+    longDescription: "You align with 'Karma' and 'Kriya'—the path of sacred action. You believe that how we move through the world and interact with tradition matters. You find stability in ritual, duty, and the preservation of sacred rhythms. For you, the mundane is the laboratory of the soul, and every action is an opportunity to align with 'Rita' (Cosmic Order).",
+    icon: "Sparkles",
+    themeColor: "orange",
+  },
+  discipline: {
+    name: "The Way of Practice",
+    archetype: "The Architect of Mind",
+    slogan: "Mastery of self is the only true freedom.",
+    longDescription: "You are a 'Raja Yogi'—one who seeks mastery over the inner architecture of mind and energy. You value systematic training, breath-work, and the direct, silent experience of consciousness. You don't seek meaning in stories; you seek it in the raw, vibrant stillness of your own being.",
+    icon: "Zap",
+    themeColor: "indigo",
+  }
+};
+
 export const getResultDescription = (
   path: "inquiry" | "devotion" | "ritual" | "discipline",
 ): string => {
-  const descriptions: Record<string, string> = {
-    inquiry:
-      "Your spiritual path is one of deep inquiry and contemplation. You're naturally drawn to understanding the nature of reality, consciousness, and the self. You find meaning through philosophical exploration and self-inquiry.",
-    devotion:
-      "Your spiritual path is one of heart-centered devotion. You feel a natural love for the Divine and find meaning in worship, surrender, and sacred relationship. Your practice flows from love and emotional connection.",
-    ritual:
-      "Your spiritual path honors tradition and sacred action. You find power in precise ritual performance, ceremony, and the structured observance of spiritual rites. Your practice connects you to ancient wisdom.",
-    discipline:
-      "Your spiritual path is one of methodical cultivation. You're drawn to systematic practice, training the mind and body through structured approaches. Your practice emphasizes self-mastery and consistent effort.",
-  };
-
-  return descriptions[path];
+  return pathMetadata[path].longDescription;
 };

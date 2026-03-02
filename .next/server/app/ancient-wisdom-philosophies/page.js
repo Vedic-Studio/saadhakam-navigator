@@ -1,5 +1,5 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/ancient-wisdom-philosophies/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__a59f6a03._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__ae1d18b3._.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_d1cab7aa._.js")
 R.c("server/chunks/ssr/Developer_Sadhaka_887b7f5e._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__5385fbb2._.js")

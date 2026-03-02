@@ -17,12 +17,12 @@ const footerLinks = {
   start: [
     { label: "Find Your Path", href: "/faith-finder" },
     { label: "Bhagavad Gita Guide", href: "/texts/bhagavad-gita" },
-    { label: "Vedanta Guide", href: "/vedanta-guide" },
+    { label: "Vedanta Guide", href: "/philosophies/vedanta" },
   ],
   learn: [
-    { label: "What is Vedanta?", href: "/what-is-vedanta" },
-    { label: "Yoga Sutras", href: "/yoga-sutras-complete-guide" },
-    { label: "Upanishads", href: "/upanishads-core-wisdom" },
+    { label: "What is Vedanta?", href: "/philosophies/vedanta" },
+    { label: "Yoga Sutras", href: "/texts/yoga-sutras" },
+    { label: "Upanishads", href: "/texts/upanishads" },
   ],
 };
 

@@ -34,7 +34,7 @@ export function HeroSectionVariantC() {
 
                     {/* Call to Action */}
                     <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4 animate-fade-up" style={{ animationDelay: "0.4s" }}>
-                        <Link href="/pathfinder">
+                        <Link href="/faith-finder">
                             <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white border-0 h-14 px-8 rounded-full text-lg font-medium shadow-lg shadow-emerald-900/20 transition-all hover:scale-105">
                                 Become Your Own Guru
                                 <ArrowRight className="ml-2 w-5 h-5" />

@@ -135,6 +135,12 @@
       "namedRegex": "^/bhagavad\\-gita\\-complete\\-guide(?:/)?$"
     },
     {
+      "page": "/compare",
+      "regex": "^/compare(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/compare(?:/)?$"
+    },
+    {
       "page": "/faith-finder",
       "regex": "^/faith\\-finder(?:/)?$",
       "routeKeys": {},

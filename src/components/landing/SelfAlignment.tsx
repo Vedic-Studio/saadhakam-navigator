@@ -120,7 +120,7 @@ export function SelfAlignment() {
                     return (
                       <Link 
                         key={path.id}
-                        href="/pathfinder"
+                        href="/faith-finder"
                         className="group"
                       >
                         <div className="bg-white/10 hover:bg-white/20 rounded-xl p-4 transition-colors h-full">
@@ -139,7 +139,7 @@ export function SelfAlignment() {
                   })}
                 </div>
 
-                <Link href="/pathfinder">
+                <Link href="/faith-finder">
                   <Button 
                     size="lg" 
                     className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90"

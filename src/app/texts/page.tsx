@@ -4,7 +4,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { texts } from "@/data/texts";
+import { comparisons } from "@/data/comparisons";
 import { ArrowRight, BookOpen, Scroll, Star } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -94,6 +96,42 @@ export default function TextsPage() {
                   </CardFooter>
                 </Card>
               ))}
+            </div>
+            <div className="mt-24 pt-16 border-t border-border">
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                  <h2 className="font-display text-3xl font-bold text-foreground mb-2">
+                    Compare Sacred Texts
+                  </h2>
+                  <p className="text-muted-foreground">
+                    Deep dives into the philosophical connections and differences between key scriptures.
+                  </p>
+                </div>
+                <Link href="/compare">
+                  <Button variant="outline" className="gap-2">
+                    View all comparisons <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {comparisons
+                  .filter((c) => c.category === "Text vs Text")
+                  .slice(0, 4)
+                  .map((item) => (
+                    <Link key={item.slug} href={`/compare/${item.slug}`}>
+                      <div className="p-4 rounded-xl border border-border/50 bg-card hover:border-primary/30 transition-all group h-full">
+                        <Badge variant="outline" className="text-[10px] uppercase tracking-wider mb-2 opacity-70 group-hover:opacity-100">
+                          {item.category}
+                        </Badge>
+                        <h3 className="font-display font-bold text-sm text-foreground group-hover:text-primary transition-colors">
+                          {item.title}
+                        </h3>
+                      </div>
+                    </Link>
+                  ))
+                }
+              </div>
             </div>
           </div>
         </section>

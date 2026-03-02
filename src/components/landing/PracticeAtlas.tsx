@@ -116,7 +116,7 @@ export function PracticeAtlas() {
                         </div>
 
                         <div className="flex gap-3 pt-2">
-                          <Link href="/pathfinder" className="flex-1">
+                          <Link href="/faith-finder" className="flex-1">
                             <Button className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
                               Find Your Practice
                               <ArrowRight className="ml-2 w-4 h-4" />
