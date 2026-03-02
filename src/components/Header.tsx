@@ -12,11 +12,10 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
-  { label: "Philosophies", href: "/philosophies" },
-  { label: "Traditions", href: "/traditions" },
-  { label: "Greats", href: "/greats" },
-  { label: "Texts", href: "/texts" },
-  { label: "Faith Finder", href: "/faith-finder" },
+  { label: "Philosophies", href: "/ancient-wisdom-philosophies" },
+  { label: "Texts", href: "/sacred-texts-teachings" },
+  { label: "Practices", href: "/practical-spiritual-practices" },
+  { label: "Traditions", href: "/spiritual-traditions-paths" },
 ];
 
 export function Header() {
@@ -34,8 +33,8 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
+        ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+        : "bg-transparent"
         }`}
     >
       <div className="container-padding mx-auto">

@@ -1,5 +1,5 @@
 var R=require("../../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/texts/bhagavad-gita/chapter-[chapter]/shloka-[shloka]/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__3e8bd0b1._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__a9998de1._.js")
 R.c("server/chunks/ssr/Developer_Sadhaka_e6f7b16b._.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_6663c9e9._.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_d1cab7aa._.js")

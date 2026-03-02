@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { bgShlokas, getBgShlokaById } from "@/data/bgShlokas";
 import { getBgChapterByNumber } from "@/data/bgChapters";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export async function generateStaticParams() {
   return bgShlokas.map((shloka) => ({
@@ -79,27 +80,14 @@ export default function BgShlokaPage({
       />
 
       {/* Breadcrumbs */}
-      <nav className="text-sm mb-8 text-neutral-500">
-        <Link href="/" className="hover:text-primary transition-colors">
-          Home
-        </Link>
-        <span className="mx-2">/</span>
-        <Link
-          href="/texts/bhagavad-gita"
-          className="hover:text-primary transition-colors"
-        >
-          Bhagavad Gita
-        </Link>
-        <span className="mx-2">/</span>
-        <Link
-          href={`/texts/bhagavad-gita/chapter-${shloka.chapter}`}
-          className="hover:text-primary transition-colors"
-        >
-          Chapter {shloka.chapter}
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="text-neutral-900">Verse {shloka.verse}</span>
-      </nav>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Bhagavad Gita", href: "/texts/bhagavad-gita" },
+          { label: `Chapter ${shloka.chapter}`, href: `/texts/bhagavad-gita/chapter-${shloka.chapter}` },
+          { label: `Verse ${shloka.verse}`, href: `/texts/bhagavad-gita/chapter-${shloka.chapter}/shloka-${shloka.verse}` },
+        ]}
+      />
 
       <header className="mb-12 border-b border-neutral-200 pb-12 text-center">
         <div className="text-primary font-bold tracking-[0.2em] mb-4 text-sm uppercase">

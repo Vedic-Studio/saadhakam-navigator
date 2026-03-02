@@ -1,1 +1,0 @@
-self.__SSG_MANIFEST=new Set(["\u002F[slug]","\u002Fcompare\u002F[slug]","\u002Fgreats\u002F[slug]","\u002Fphilosophies\u002F[slug]","\u002Fpractices\u002F[practice]\u002Ffor\u002F[goal]","\u002Fsitemap\u002F[__metadata_id__]","\u002Ftexts\u002F[slug]","\u002Ftopics\u002F[topic]","\u002Ftraditions\u002F[slug]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

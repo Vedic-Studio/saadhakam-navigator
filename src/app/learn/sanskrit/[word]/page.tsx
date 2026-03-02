@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { sanskritVocab, getSanskritWordBySlug } from "@/data/sanskritVocab";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export async function generateStaticParams() {
   return sanskritVocab.map((word) => ({
@@ -63,20 +64,13 @@ export default function SanskritLexiconPage({
       />
 
       {/* Breadcrumbs */}
-      <nav className="text-sm mb-8 text-neutral-500">
-        <Link href="/" className="hover:text-primary transition-colors">
-          Home
-        </Link>
-        <span className="mx-2">/</span>
-        <Link
-          href="/learn/sanskrit"
-          className="hover:text-primary transition-colors"
-        >
-          Sanskrit Lexicon
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="text-neutral-900">{word.wordEnglish}</span>
-      </nav>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Sanskrit Lexicon", href: "/learn/sanskrit" },
+          { label: word.wordEnglish, href: `/learn/sanskrit/${word.slug}` },
+        ]}
+      />
 
       <header className="mb-12 text-center pb-12 border-b border-neutral-200">
         {/* Pronunciation Block */}

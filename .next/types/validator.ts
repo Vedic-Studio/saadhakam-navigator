@@ -45,6 +45,15 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
+// Validate ../../src/app/ancient-wisdom-philosophies/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/ancient-wisdom-philosophies">> = Specific
+  const handler = {} as typeof import("../../src/app/ancient-wisdom-philosophies/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/bhagavad-gita-complete-guide/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/bhagavad-gita-complete-guide">> = Specific
@@ -90,6 +99,15 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
+// Validate ../../src/app/learn/sanskrit/[word]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/learn/sanskrit/[word]">> = Specific
+  const handler = {} as typeof import("../../src/app/learn/sanskrit/[word]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/">> = Specific
@@ -117,10 +135,37 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
+// Validate ../../src/app/practical-spiritual-practices/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/practical-spiritual-practices">> = Specific
+  const handler = {} as typeof import("../../src/app/practical-spiritual-practices/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/practices/[practice]/for/[goal]/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/practices/[practice]/for/[goal]">> = Specific
   const handler = {} as typeof import("../../src/app/practices/[practice]/for/[goal]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/sacred-texts-teachings/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/sacred-texts-teachings">> = Specific
+  const handler = {} as typeof import("../../src/app/sacred-texts-teachings/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../src/app/spiritual-traditions-paths/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/spiritual-traditions-paths">> = Specific
+  const handler = {} as typeof import("../../src/app/spiritual-traditions-paths/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

@@ -38,6 +38,14 @@
       "namedRegex": "^/greats/(?<nxtPslug>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/learn/sanskrit/[word]",
+      "regex": "^/learn/sanskrit/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPword": "nxtPword"
+      },
+      "namedRegex": "^/learn/sanskrit/(?<nxtPword>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/philosophies/[slug]",
       "regex": "^/philosophies/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -115,6 +123,12 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/ancient-wisdom-philosophies",
+      "regex": "^/ancient\\-wisdom\\-philosophies(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/ancient\\-wisdom\\-philosophies(?:/)?$"
+    },
+    {
       "page": "/bhagavad-gita-complete-guide",
       "regex": "^/bhagavad\\-gita\\-complete\\-guide(?:/)?$",
       "routeKeys": {},
@@ -139,10 +153,28 @@
       "namedRegex": "^/philosophies(?:/)?$"
     },
     {
+      "page": "/practical-spiritual-practices",
+      "regex": "^/practical\\-spiritual\\-practices(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/practical\\-spiritual\\-practices(?:/)?$"
+    },
+    {
       "page": "/robots.txt",
       "regex": "^/robots\\.txt(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/robots\\.txt(?:/)?$"
+    },
+    {
+      "page": "/sacred-texts-teachings",
+      "regex": "^/sacred\\-texts\\-teachings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sacred\\-texts\\-teachings(?:/)?$"
+    },
+    {
+      "page": "/spiritual-traditions-paths",
+      "regex": "^/spiritual\\-traditions\\-paths(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/spiritual\\-traditions\\-paths(?:/)?$"
     },
     {
       "page": "/texts",

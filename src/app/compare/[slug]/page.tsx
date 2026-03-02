@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 interface Props {
   params: { slug: string };
@@ -37,20 +38,55 @@ export default function ComparisonPage({ params }: Props) {
     notFound();
   }
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `What is the main difference between ${comp.entityA} and ${comp.entityB}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: comp.tldr || `The comparison between ${comp.entityA} and ${comp.entityB} highlights key differences in their philosophical approach and practical application.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Which is better: ${comp.entityA} or ${comp.entityB}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Neither is objectively "better." Both ${comp.entityA} and ${comp.entityB} offer valid, time-tested paths. The right choice depends entirely on your personal psychological temperament, current life stage, and spiritual goals.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Are ${comp.entityA} and ${comp.entityB} from the same tradition?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `While they often interact within the broader context of Eastern philosophy, ${comp.entityA} and ${comp.entityB} represent distinct approaches or conceptual frameworks.`,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
 
       <main className="flex-grow pt-24 pb-16">
         <article className="container-padding max-w-4xl mx-auto">
           {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
-            <Link href="/" className="hover:text-foreground transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            <span className="text-foreground">Compare</span>
-          </div>
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Compare", href: "/compare" },
+              { label: comp.title, href: `/compare/${comp.slug}` },
+            ]}
+          />
 
           <div className="mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary-foreground text-xs font-semibold uppercase tracking-wider mb-6">
