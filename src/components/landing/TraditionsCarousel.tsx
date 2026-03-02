@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -82,7 +82,7 @@ export function TraditionsCarousel() {
                     </div>
                   </div>
 
-                  <Link to={`/traditions/${tradition.slug}`}>
+                  <Link href={`/traditions/${tradition.slug}`}>
                     <Button variant="ghost" className="w-full justify-between hover:text-primary">
                       Read more
                       <ArrowRight className="w-4 h-4" />
@@ -96,7 +96,7 @@ export function TraditionsCarousel() {
 
         {/* View all link */}
         <div className="text-center mt-8 md:mt-12">
-          <Link to="/traditions">
+          <Link href="/traditions">
             <Button variant="outline" size="lg" className="border-primary/20">
               Explore All Traditions
               <ArrowRight className="ml-2 w-4 h-4" />

@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Scroll, History, Sparkles } from "lucide-react";

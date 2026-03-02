@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
 
@@ -25,14 +27,14 @@ export function ConversionSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <Link to="/pathfinder">
+          <Link href="/pathfinder">
             <Button size="lg" className="h-16 px-10 rounded-full text-lg bg-primary text-primary-foreground hover:bg-primary/90 shadow-2xl shadow-primary/20 hover:scale-105 transition-transform duration-300">
               Start with Sadhaka
               <ArrowRight className="ml-2 w-6 h-6" />
             </Button>
           </Link>
 
-          <Link to="/download">
+          <Link href="/download">
             <Button size="lg" variant="outline" className="h-16 px-10 rounded-full text-lg border-white/10 hover:bg-white/5 hover:text-foreground text-muted-foreground transition-colors">
               <Download className="mr-2 w-5 h-5" />
               Download App

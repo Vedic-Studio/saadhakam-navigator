@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { greats } from "@/data/greats";
 import { ArrowRight, Infinity, Sparkles, Flame, Sun, Feather } from "lucide-react";
@@ -79,7 +79,7 @@ export function GreatsSection() {
                         </p>
                       </div>
 
-                      <Link to={`/greats/${great.slug}`}>
+                      <Link href={`/greats/${great.slug}`}>
                         <Button variant="ghost" className="w-full justify-between hover:text-primary">
                           Read more
                           <ArrowRight className="w-4 h-4" />
@@ -103,7 +103,7 @@ export function GreatsSection() {
 
         {/* View all link */}
         <div className="text-center mt-12">
-          <Link to="/greats">
+          <Link href="/greats">
             <Button variant="outline" size="lg" className="border-primary/20">
               Explore All Greats
               <ArrowRight className="ml-2 w-4 h-4" />

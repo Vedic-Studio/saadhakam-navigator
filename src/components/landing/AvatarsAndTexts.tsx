@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { texts } from "@/data/texts";
@@ -116,7 +116,7 @@ export function AvatarsAndTexts() {
                   <p className="text-primary-foreground/80 mb-6">
                     {spotlightText.summary}
                   </p>
-                  <Link to={`/texts/${spotlightText.slug}`}>
+                  <Link href={`/texts/${spotlightText.slug}`}>
                     <Button className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
                       Explore the Gita by Life Situation
                       <ArrowRight className="ml-2 w-4 h-4" />
@@ -133,7 +133,7 @@ export function AvatarsAndTexts() {
                 return (
                   <Link 
                     key={text.slug}
-                    to={`/texts/${text.slug}`}
+                    href={`/texts/${text.slug}`}
                     className="group"
                   >
                     <Card className="bg-card border-border/50 h-full card-hover">
@@ -156,7 +156,7 @@ export function AvatarsAndTexts() {
 
             {/* View all link */}
             <div className="mt-6">
-              <Link to="/texts">
+              <Link href="/texts">
                 <Button variant="outline" className="w-full border-primary/20">
                   View All Sacred Texts
                   <ArrowRight className="ml-2 w-4 h-4" />

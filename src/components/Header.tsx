@@ -1,16 +1,22 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 
 const navLinks = [
   { label: "Philosophies", href: "/philosophies" },
   { label: "Traditions", href: "/traditions" },
-  { label: "Practices", href: "/#practices" },
   { label: "Greats", href: "/greats" },
   { label: "Texts", href: "/texts" },
-  { label: "A/B Testing", href: "/variant-selector" },
+  { label: "Faith Finder", href: "/faith-finder" },
 ];
 
 export function Header() {
@@ -28,16 +34,19 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-        : "bg-transparent"
+          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+          : "bg-transparent"
         }`}
     >
       <div className="container-padding mx-auto">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <img src="/favicon.svg" alt="Sadhaka Logo" className="w-8 h-8 rounded-full bg-primary p-1" />
+          <Link href="/" className="flex items-center gap-2">
+            <img
+              src="/favicon.svg"
+              alt="Sadhaka Logo"
+              className="w-8 h-8 rounded-full bg-primary p-1"
+            />
             <span className="font-display text-xl font-semibold text-foreground">
               Sadhaka
             </span>
@@ -48,7 +57,7 @@ export function Header() {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
-                to={link.href}
+                href={link.href}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
@@ -58,8 +67,8 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Link to="/pathfinder">
-              <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-saffron">
+            <Link href="/faith-finder">
+              <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
                 Start Your Path
               </Button>
             </Link>
@@ -80,7 +89,7 @@ export function Header() {
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
-                      to={link.href}
+                      href={link.href}
                       onClick={() => setIsOpen(false)}
                       className="text-lg font-medium text-foreground hover:text-primary transition-colors py-2"
                     >
@@ -89,7 +98,7 @@ export function Header() {
                   ))}
                 </nav>
                 <div className="mt-8">
-                  <Link to="/pathfinder" onClick={() => setIsOpen(false)}>
+                  <Link href="/faith-finder" onClick={() => setIsOpen(false)}>
                     <Button className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
                       Start Your Path
                     </Button>

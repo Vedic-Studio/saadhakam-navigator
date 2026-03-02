@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowRight, Brain, Eye, Scale, Shuffle, Infinity, Sparkles } from "lucide-react";
 
 const DARSHANAS = [

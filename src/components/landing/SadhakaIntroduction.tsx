@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sparkles, ArrowRight } from "lucide-react";
 
@@ -34,7 +36,7 @@ export function SadhakaIntroduction() {
                             <h3 className="font-semibold text-foreground">Sadhaka AI</h3>
                             <p className="text-xs text-muted-foreground">Always here to guide you</p>
                         </div>
-                        <Link to="/app">
+                        <Link href="/app">
                             <Button variant="outline" size="sm" className="gap-2 border-white/10 hover:bg-white/5">
                                 Ask Sadhaka <ArrowRight className="w-4 h-4" />
                             </Button>
@@ -48,7 +50,7 @@ export function SadhakaIntroduction() {
 
                 <div className="pt-8">
                     <p className="text-sm text-muted-foreground mb-4">Explore the full capabilities of the Sadhaka App</p>
-                    <Link to="/app">
+                    <Link href="/app">
                         <Button variant="link" className="text-amber-400 hover:text-amber-300 gap-2">
                             View App Features <ArrowRight className="w-4 h-4" />
                         </Button>

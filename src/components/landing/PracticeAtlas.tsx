@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Circle, Brain, Music, Flame, HandHeart, BookOpen, Leaf, Moon, ArrowRight, Clock } from "lucide-react";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -116,7 +116,7 @@ export function PracticeAtlas() {
                         </div>
 
                         <div className="flex gap-3 pt-2">
-                          <Link to="/pathfinder" className="flex-1">
+                          <Link href="/pathfinder" className="flex-1">
                             <Button className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
                               Find Your Practice
                               <ArrowRight className="ml-2 w-4 h-4" />

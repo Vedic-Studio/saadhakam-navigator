@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Search, Heart, Flame, Dumbbell } from "lucide-react";
@@ -120,7 +120,7 @@ export function SelfAlignment() {
                     return (
                       <Link 
                         key={path.id}
-                        to="/pathfinder"
+                        href="/pathfinder"
                         className="group"
                       >
                         <div className="bg-white/10 hover:bg-white/20 rounded-xl p-4 transition-colors h-full">
@@ -139,7 +139,7 @@ export function SelfAlignment() {
                   })}
                 </div>
 
-                <Link to="/pathfinder">
+                <Link href="/pathfinder">
                   <Button 
                     size="lg" 
                     className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90"

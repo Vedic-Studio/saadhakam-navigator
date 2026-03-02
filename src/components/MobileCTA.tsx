@@ -1,5 +1,7 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, X } from "lucide-react";
 
@@ -10,11 +12,8 @@ export function MobileCTA() {
   useEffect(() => {
     const handleScroll = () => {
       if (isDismissed) return;
-      
       const scrollPosition = window.scrollY;
       const viewportHeight = window.innerHeight;
-      
-      // Show after scrolling past first viewport
       setIsVisible(scrollPosition > viewportHeight * 0.5);
     };
 
@@ -22,21 +21,20 @@ export function MobileCTA() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isDismissed]);
 
-  // Respect reduced motion preference
-  const prefersReducedMotion = typeof window !== "undefined" && 
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (!isVisible || isDismissed) return null;
 
   return (
-    <div 
-      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/95 backdrop-blur-md border-t border-border shadow-lg ${
-        prefersReducedMotion ? "" : "animate-slide-in-right"
-      }`}
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-40 md:hidden p-4 bg-background/95 backdrop-blur-md border-t border-border shadow-lg ${prefersReducedMotion ? "" : "animate-slide-in-right"
+        }`}
     >
       <div className="flex items-center gap-3">
-        <Link to="/pathfinder" className="flex-1">
-          <Button 
+        <Link href="/faith-finder" className="flex-1">
+          <Button
             size="lg"
             className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90"
           >

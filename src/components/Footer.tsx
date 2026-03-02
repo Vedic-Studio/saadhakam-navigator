@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -9,19 +11,18 @@ const footerLinks = {
   explore: [
     { label: "Philosophies", href: "/philosophies" },
     { label: "Traditions", href: "/traditions" },
-    { label: "Practices", href: "/#practices" },
     { label: "Greats", href: "/greats" },
     { label: "Sacred Texts", href: "/texts" },
   ],
   start: [
-    { label: "Find Your Path", href: "/pathfinder" },
-    { label: "Create Practice Plan", href: "/start" },
+    { label: "Find Your Path", href: "/faith-finder" },
     { label: "Bhagavad Gita Guide", href: "/texts/bhagavad-gita" },
+    { label: "Vedanta Guide", href: "/vedanta-guide" },
   ],
-  about: [
-    { label: "Our Approach", href: "#" },
-    { label: "Sources & Lineages", href: "#" },
-    { label: "Contact", href: "#" },
+  learn: [
+    { label: "What is Vedanta?", href: "/what-is-vedanta" },
+    { label: "Yoga Sutras", href: "/yoga-sutras-complete-guide" },
+    { label: "Upanishads", href: "/upanishads-core-wisdom" },
   ],
 };
 
@@ -35,7 +36,7 @@ export function Footer() {
     if (!email) return;
 
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
       title: "Subscribed!",
@@ -53,21 +54,23 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/favicon.svg" alt="Sadhaka Logo" className="w-10 h-10 rounded-full bg-secondary p-1" />
+              <img
+                src="/favicon.svg"
+                alt="Sadhaka Logo"
+                className="w-10 h-10 rounded-full bg-secondary p-1"
+              />
               <span className="font-display text-2xl font-semibold">
                 Sadhaka
               </span>
             </div>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">
-              A respectful guide for Western seekers exploring the paths, philosophies,
-              and practices of Sanatan Dharma.
+              A respectful guide for seekers exploring the paths, philosophies, and
+              practices of Sanatan Dharma — powered by authentic wisdom.
             </p>
 
             {/* Newsletter signup */}
             <div>
-              <p className="text-sm font-medium mb-3">
-                Subscribe to our newsletter
-              </p>
+              <p className="text-sm font-medium mb-3">Subscribe to our newsletter</p>
               <form onSubmit={handleSubmit} className="flex gap-2">
                 <div className="relative flex-1">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -98,7 +101,7 @@ export function Footer() {
               {footerLinks.explore.map((link) => (
                 <li key={link.href}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
                   >
                     {link.label}
@@ -114,7 +117,7 @@ export function Footer() {
               {footerLinks.start.map((link) => (
                 <li key={link.href}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
                   >
                     {link.label}
@@ -125,12 +128,12 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">About</h3>
+            <h3 className="font-semibold mb-4">Learn</h3>
             <ul className="space-y-3">
-              {footerLinks.about.map((link) => (
+              {footerLinks.learn.map((link) => (
                 <li key={link.href}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
                   >
                     {link.label}
@@ -154,12 +157,8 @@ export function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
-            <p>
-              © {new Date().getFullYear()} Sadhaka. Created with reverence for the tradition.
-            </p>
-            <p>
-              Content drawn from authentic sources within Sanatan Dharma.
-            </p>
+            <p>© {new Date().getFullYear()} Sadhaka. Created with reverence for the tradition.</p>
+            <p>Content drawn from authentic sources within Sanatan Dharma.</p>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Leaf } from "lucide-react";
 
@@ -25,14 +25,14 @@ export function ConversionSectionVariantE() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                    <Link to="/pathfinder">
+                    <Link href="/pathfinder">
                         <Button size="lg" className="h-16 px-10 rounded-full text-lg bg-green-600 text-green-50 hover:bg-green-700 shadow-2xl shadow-green-900/20 hover:scale-105 transition-transform duration-300">
                             Find Inner Peace
                             <ArrowRight className="ml-2 w-6 h-6" />
                         </Button>
                     </Link>
 
-                    <Link to="/download">
+                    <Link href="/download">
                         <Button size="lg" variant="outline" className="h-16 px-10 rounded-full text-lg border-white/10 hover:bg-white/5 hover:text-foreground text-muted-foreground transition-colors">
                             <Download className="mr-2 w-5 h-5" />
                             Download App

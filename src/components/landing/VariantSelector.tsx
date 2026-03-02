@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Beaker, Heart, User, Star, Leaf, Zap } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 interface Variant {
     id: string;
