@@ -144,6 +144,15 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
+// Validate ../../src/app/texts/bhagavad-gita/chapter-[chapter]/shloka-[shloka]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/texts/bhagavad-gita/chapter-[chapter]/shloka-[shloka]">> = Specific
+  const handler = {} as typeof import("../../src/app/texts/bhagavad-gita/chapter-[chapter]/shloka-[shloka]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/texts/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/texts">> = Specific
