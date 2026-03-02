@@ -8,7 +8,53 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-S3DHYPPG9R');
+    gtag('config', 'G-S3DHYPPG9R', {
+      send_page_view: true,
+      cookie_flags: 'SameSite=None;Secure'
+    });
+
+    // ── Custom event helpers exposed globally for React components ──────────
+    window.sadhaka = {
+      // Faith Finder funnel events
+      quizStart: () => gtag('event', 'quiz_start', {
+        event_category: 'faith_finder',
+        event_label: 'quiz_started'
+      }),
+      quizComplete: (path, scores) => gtag('event', 'quiz_complete', {
+        event_category: 'faith_finder',
+        event_label: path,
+        primary_path: path,
+        score_inquiry: scores?.inquiry || 0,
+        score_devotion: scores?.devotion || 0,
+        score_ritual: scores?.ritual || 0,
+        score_discipline: scores?.discipline || 0
+      }),
+      emailCapture: (path) => gtag('event', 'email_capture', {
+        event_category: 'faith_finder',
+        event_label: path
+      }),
+
+      // Content engagement events
+      articleRead: (slug, pillar) => gtag('event', 'article_view', {
+        event_category: 'content',
+        event_label: slug,
+        content_pillar: pillar || 'unknown'
+      }),
+      ctaClick: (label, destination) => gtag('event', 'cta_click', {
+        event_category: 'engagement',
+        event_label: label,
+        destination: destination
+      }),
+
+      // App engagement
+      appOpen: () => gtag('event', 'app_open', {
+        event_category: 'activation'
+      }),
+      pathExplore: (path) => gtag('event', 'path_explore', {
+        event_category: 'activation',
+        event_label: path
+      })
+    };
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
