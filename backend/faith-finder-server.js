@@ -17,13 +17,13 @@ const quizSubmissions = new Map();
 
 // Email configuration (in production, use environment variables)
 const emailConfig = {
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.SMTP_PORT) || 587,
-    secure: false,
-    auth: {
-        user: process.env.SMTP_USER || process.env.EMAIL_USER,
-        pass: process.env.SMTP_PASS || process.env.EMAIL_PASSWORD,
-    },
+  host: process.env.SMTP_HOST || 'smtp.gmail.com',
+  port: parseInt(process.env.SMTP_PORT) || 587,
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER || process.env.EMAIL_USER,
+    pass: process.env.SMTP_PASS || process.env.EMAIL_PASSWORD,
+  },
 };
 
 // Create email transporter
@@ -31,92 +31,92 @@ const transporter = nodemailer.createTransport(emailConfig);
 
 // Helper function to get path description
 const getPathDescription = (path) => {
-    const descriptions = {
-        inquiry: "Your spiritual path is one of deep inquiry and contemplation. You're naturally drawn to understanding the nature of reality, consciousness, and the self through philosophical exploration and self-inquiry.",
-        devotion: "Your spiritual path is one of heart-centered devotion. You feel a natural love for the Divine and find meaning in worship, surrender, and sacred relationship.",
-        ritual: "Your spiritual path honors tradition and sacred action. You find power in precise ritual performance, ceremony, and the structured observance of spiritual rites.",
-        discipline: "Your spiritual path is one of methodical cultivation. You're drawn to systematic practice, training the mind and body through structured approaches.",
-    };
-    return descriptions[path] || '';
+  const descriptions = {
+    inquiry: "Your spiritual path is one of deep inquiry and contemplation. You're naturally drawn to understanding the nature of reality, consciousness, and the self through philosophical exploration and self-inquiry.",
+    devotion: "Your spiritual path is one of heart-centered devotion. You feel a natural love for the Divine and find meaning in worship, surrender, and sacred relationship.",
+    ritual: "Your spiritual path honors tradition and sacred action. You find power in precise ritual performance, ceremony, and the structured observance of spiritual rites.",
+    discipline: "Your spiritual path is one of methodical cultivation. You're drawn to systematic practice, training the mind and body through structured approaches.",
+  };
+  return descriptions[path] || '';
 };
 
 // Helper function to get path title
 const getPathTitle = (path) => {
-    const titles = {
-        inquiry: "Inquiry-led Path",
-        devotion: "Devotion-led Path",
-        ritual: "Ritual-led Path",
-        discipline: "Discipline-led Path",
-    };
-    return titles[path] || '';
+  const titles = {
+    inquiry: "Inquiry-led Path",
+    devotion: "Devotion-led Path",
+    ritual: "Ritual-led Path",
+    discipline: "Discipline-led Path",
+  };
+  return titles[path] || '';
 };
 
 // API: Submit quiz and get results
 app.post('/api/faith-finder/submit', async (req, res) => {
-    try {
-        const { email, result } = req.body;
+  try {
+    const { email, result } = req.body;
 
-        if (!email || !result) {
-            return res.status(400).json({ error: 'Email and result are required' });
-        }
-
-        // Store submission
-        const submissionId = Date.now().toString();
-        quizSubmissions.set(submissionId, {
-            email,
-            result,
-            timestamp: new Date().toISOString(),
-        });
-
-        // Send immediate email
-        await sendImmediateEmail(email, result);
-
-        // Schedule nurture sequence emails (in production, use a job queue)
-        scheduleNurtureEmails(email, result, submissionId);
-
-        res.json({
-            success: true,
-            submissionId,
-            message: 'Quiz submitted successfully. Check your email for your complete report.',
-        });
-    } catch (error) {
-        console.error('Error submitting quiz:', error);
-        res.status(500).json({ error: 'Failed to submit quiz' });
+    if (!email || !result) {
+      return res.status(400).json({ error: 'Email and result are required' });
     }
+
+    // Store submission
+    const submissionId = Date.now().toString();
+    quizSubmissions.set(submissionId, {
+      email,
+      result,
+      timestamp: new Date().toISOString(),
+    });
+
+    // Send immediate email
+    await sendImmediateEmail(email, result);
+
+    // Schedule nurture sequence emails (in production, use a job queue)
+    scheduleNurtureEmails(email, result, submissionId);
+
+    res.json({
+      success: true,
+      submissionId,
+      message: 'Quiz submitted successfully. Check your email for your complete report.',
+    });
+  } catch (error) {
+    console.error('Error submitting quiz:', error);
+    res.status(500).json({ error: 'Failed to submit quiz' });
+  }
 });
 
 // API: Get quiz questions
 app.get('/api/faith-finder/questions', (req, res) => {
-    const questionsPath = path.join(__dirname, '../src/data/faithFinderQuiz.ts');
+  const questionsPath = path.join(__dirname, '../src/data/faithFinderQuiz.ts');
 
-    // For now, return a simple structure
-    res.json({
-        questions: quizQuestions || [],
-    });
+  // For now, return a simple structure
+  res.json({
+    questions: quizQuestions || [],
+  });
 });
 
 // API: Get quiz result by ID
 app.get('/api/faith-finder/result/:id', (req, res) => {
-    const { id } = req.params;
-    const submission = quizSubmissions.get(id);
+  const { id } = req.params;
+  const submission = quizSubmissions.get(id);
 
-    if (!submission) {
-        return res.status(404).json({ error: 'Result not found' });
-    }
+  if (!submission) {
+    return res.status(404).json({ error: 'Result not found' });
+  }
 
-    res.json(submission);
+  res.json(submission);
 });
 
 // Email: Immediate result email
 async function sendImmediateEmail(email, result) {
-    const pathTitle = getPathTitle(result.primaryPath);
-    const pathDescription = getPathDescription(result.primaryPath);
+  const pathTitle = getPathTitle(result.primaryPath);
+  const pathDescription = getPathDescription(result.primaryPath);
 
-    const mailOptions = {
-        from: process.env.EMAIL_FROM || 'noreply@sadhaka.com',
-        to: email,
-        subject: 'Your Spiritual Path Results',
-        html: `
+  const mailOptions = {
+    from: process.env.EMAIL_FROM || 'noreply@opensadhaka.com',
+    to: email,
+    subject: 'Your Spiritual Path Results',
+    html: `
       <!DOCTYPE html>
       <html>
       <head>
@@ -179,65 +179,65 @@ async function sendImmediateEmail(email, result) {
 
             <div class="cta">
               <p>Over the next 30 days, we'll send you personalized guidance to help you begin your journey.</p>
-              <a href="https://sadhaka.com/faith-finder" class="button">View Full Results</a>
+              <a href="https://opensadhaka.com/faith-finder" class="button">View Full Results</a>
             </div>
           </div>
         </div>
       </body>
       </html>
     `,
-    };
+  };
 
-    try {
-        await transporter.sendMail(mailOptions);
-        console.log('Immediate email sent to:', email);
-    } catch (error) {
-        console.error('Error sending immediate email:', error);
-    }
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log('Immediate email sent to:', email);
+  } catch (error) {
+    console.error('Error sending immediate email:', error);
+  }
 }
 
 // Schedule nurture emails
 function scheduleNurtureEmails(email, result, submissionId) {
-    const nurtureDays = [1, 3, 7, 14, 30];
+  const nurtureDays = [1, 3, 7, 14, 30];
 
-    nurtureDays.forEach(day => {
-        setTimeout(() => {
-            sendNurtureEmail(email, result, day);
-        }, day * 24 * 60 * 60 * 1000); // Convert days to milliseconds
-    });
+  nurtureDays.forEach(day => {
+    setTimeout(() => {
+      sendNurtureEmail(email, result, day);
+    }, day * 24 * 60 * 60 * 1000); // Convert days to milliseconds
+  });
 }
 
 // Send nurture email
 async function sendNurtureEmail(email, result, day) {
-    const pathTitle = getPathTitle(result.primaryPath);
+  const pathTitle = getPathTitle(result.primaryPath);
 
-    let subject, content;
+  let subject, content;
 
-    switch (day) {
-        case 1:
-            subject = 'Day 1: Starting Your Spiritual Journey';
-            content = `
+  switch (day) {
+    case 1:
+      subject = 'Day 1: Starting Your Spiritual Journey';
+      content = `
         <h2>Welcome to Your Journey</h2>
         <p>Namaste! You've discovered that your path is the ${pathTitle}. Today, let's take the first step.</p>
         <h3>Your First Practice</h3>
         <p>Based on your path, we recommend starting with: <strong>${result.recommendations.practices[0]}</strong></p>
         <p>Set aside just 10 minutes today to try this practice. Don't worry about doing it perfectly—just begin.</p>
-        <p><a href="https://sadhaka.com/faith-finder">Learn more about your path</a></p>
+        <p><a href="https://opensadhaka.com/faith-finder">Learn more about your path</a></p>
       `;
-            break;
-        case 3:
-            subject = 'Day 3: Deepening Your Practice';
-            content = `
+      break;
+    case 3:
+      subject = 'Day 3: Deepening Your Practice';
+      content = `
         <h2>Three Days In</h2>
         <p>How has your first practice been? Remember, consistency matters more than intensity.</p>
         <h3>Expanding Your Understanding</h3>
         <p>Today, learn about one of the traditions aligned with your path: <strong>${result.recommendations.traditions[0]}</strong></p>
         <p>Understanding the context of your practice helps deepen your experience.</p>
       `;
-            break;
-        case 7:
-            subject = 'Day 7: One Week of Practice';
-            content = `
+      break;
+    case 7:
+      subject = 'Day 7: One Week of Practice';
+      content = `
         <h2>One Week Complete!</h2>
         <p>Congratulations on completing your first week. This is significant progress.</p>
         <h3>Reflecting on Your Journey</h3>
@@ -249,10 +249,10 @@ async function sendNurtureEmail(email, result, day) {
         </ul>
         <p>Consider adding a second practice: <strong>${result.recommendations.practices[1] || 'Meditation'}</strong></p>
       `;
-            break;
-        case 14:
-            subject = 'Day 14: Two Weeks of Growth';
-            content = `
+      break;
+    case 14:
+      subject = 'Day 14: Two Weeks of Growth';
+      content = `
         <h2>Two Weeks Down</h2>
         <p>You're building momentum! Your ${pathTitle} is becoming more familiar.</p>
         <h3>Going Deeper</h3>
@@ -260,10 +260,10 @@ async function sendNurtureEmail(email, result, day) {
         <p><strong>${result.recommendations.philosophies[0]}</strong></p>
         <p>Understanding the 'why' behind your practice can transform it from routine to revelation.</p>
       `;
-            break;
-        case 30:
-            subject = 'Day 30: One Month of Spiritual Practice';
-            content = `
+      break;
+    case 30:
+      subject = 'Day 30: One Month of Spiritual Practice';
+      content = `
         <h2>One Month Complete!</h2>
         <p>You've established a spiritual practice. This is a meaningful achievement.</p>
         <h3>Your Journey Ahead</h3>
@@ -275,16 +275,16 @@ async function sendNurtureEmail(email, result, day) {
           <li>Connect with a community or teacher</li>
           <li>Consider deepening your study of ${result.recommendations.philosophies[0]}</li>
         </ul>
-        <p><a href="https://sadhaka.com">Explore more on Sadhaka</a></p>
+        <p><a href="https://opensadhaka.com">Explore more on Sadhaka</a></p>
       `;
-            break;
-    }
+      break;
+  }
 
-    const mailOptions = {
-        from: process.env.EMAIL_FROM || 'noreply@sadhaka.com',
-        to: email,
-        subject,
-        html: `
+  const mailOptions = {
+    from: process.env.EMAIL_FROM || 'noreply@opensadhaka.com',
+    to: email,
+    subject,
+    html: `
       <!DOCTYPE html>
       <html>
       <head>
@@ -305,31 +305,31 @@ async function sendNurtureEmail(email, result, day) {
             <span class="day-badge">Day ${day}</span>
             ${content}
             <p style="margin-top: 30px; text-align: center;">
-              <a href="https://sadhaka.com/faith-finder" style="display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 5px;">View Your Results</a>
+              <a href="https://opensadhaka.com/faith-finder" style="display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 5px;">View Your Results</a>
             </p>
           </div>
         </div>
       </body>
       </html>
     `,
-    };
+  };
 
-    try {
-        await transporter.sendMail(mailOptions);
-        console.log(`Day ${day} nurture email sent to:`, email);
-    } catch (error) {
-        console.error(`Error sending Day ${day} nurture email:`, error);
-    }
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Day ${day} nurture email sent to:`, email);
+  } catch (error) {
+    console.error(`Error sending Day ${day} nurture email:`, error);
+  }
 }
 
 // Health check
 app.get('/health', (req, res) => {
-    res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Faith Finder server running on port ${PORT}`);
+  console.log(`Faith Finder server running on port ${PORT}`);
 });
 
 module.exports = app;

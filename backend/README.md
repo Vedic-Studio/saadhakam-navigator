@@ -30,7 +30,7 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
-EMAIL_FROM=noreply@sadhaka.com
+EMAIL_FROM=noreply@opensadhaka.com
 ```
 
 For Gmail, you'll need to create an App Password:
