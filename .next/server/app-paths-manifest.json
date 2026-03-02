@@ -1,0 +1,23 @@
+{
+  "/[slug]/page": "app/[slug]/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/bhagavad-gita-complete-guide/page": "app/bhagavad-gita-complete-guide/page.js",
+  "/compare/[slug]/page": "app/compare/[slug]/page.js",
+  "/faith-finder/page": "app/faith-finder/page.js",
+  "/greats/[slug]/page": "app/greats/[slug]/page.js",
+  "/greats/page": "app/greats/page.js",
+  "/page": "app/page.js",
+  "/philosophies/[slug]/page": "app/philosophies/[slug]/page.js",
+  "/philosophies/page": "app/philosophies/page.js",
+  "/practices/[practice]/for/[goal]/page": "app/practices/[practice]/for/[goal]/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/texts/[slug]/page": "app/texts/[slug]/page.js",
+  "/texts/bhagavad-gita/chapter-[chapter]/page": "app/texts/bhagavad-gita/chapter-[chapter]/page.js",
+  "/texts/page": "app/texts/page.js",
+  "/topics/[topic]/page": "app/topics/[topic]/page.js",
+  "/traditions/[slug]/page": "app/traditions/[slug]/page.js",
+  "/traditions/page": "app/traditions/page.js",
+  "/yoga-sutras-complete-guide/page": "app/yoga-sutras-complete-guide/page.js"
+}

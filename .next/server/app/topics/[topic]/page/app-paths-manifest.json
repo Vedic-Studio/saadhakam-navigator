@@ -1,0 +1,3 @@
+{
+  "/topics/[topic]/page": "app/topics/[topic]/page.js"
+}

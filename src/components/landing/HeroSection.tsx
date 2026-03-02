@@ -42,9 +42,11 @@ export function HeroSection() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="h-14 px-8 rounded-full text-lg border-white/10 hover:bg-white/5 text-foreground hover:text-white backdrop-blur-sm">
-              Explore Wisdom
-            </Button>
+            <Link href="/texts">
+              <Button variant="outline" size="lg" className="h-14 px-8 rounded-full text-lg border-white/10 hover:bg-white/5 text-foreground hover:text-white backdrop-blur-sm">
+                Explore Wisdom
+              </Button>
+            </Link>
           </div>
 
           {/* Trust Indicators */}

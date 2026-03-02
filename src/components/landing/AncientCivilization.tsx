@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -32,10 +33,12 @@ export function AncientCivilization() {
                         We bring this history to life — from the science of Sanskrit to the advanced governance of Ram Rajya.
                     </p>
 
-                    <Button className="bg-white text-black hover:bg-white/90 h-16 px-10 rounded-full text-lg font-medium shadow-2xl shadow-amber-900/40 transition-transform hover:scale-105">
-                        Explore Our Heritage
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
+                    <Link href="/traditions">
+                        <Button className="bg-white text-black hover:bg-white/90 h-16 px-10 rounded-full text-lg font-medium shadow-2xl shadow-amber-900/40 transition-transform hover:scale-105">
+                            Explore Our Heritage
+                            <ArrowRight className="ml-2 w-5 h-5" />
+                        </Button>
+                    </Link>
                 </div>
 
                 {/* Stats Bar */}

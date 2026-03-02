@@ -14,120 +14,165 @@ import type { QuizResult } from "@/data/faithFinderQuiz";
 type QuizState = "intro" | "quiz" | "results";
 
 export default function FaithFinderPage() {
-    const [quizState, setQuizState] = useState<QuizState>("intro");
-    const [result, setResult] = useState<QuizResult | null>(null);
+  const [quizState, setQuizState] = useState<QuizState>("intro");
+  const [result, setResult] = useState<QuizResult | null>(null);
 
-    const handleStartQuiz = () => setQuizState("quiz");
-    const handleQuizComplete = (quizResult: QuizResult) => {
-        setResult(quizResult);
-        setQuizState("results");
-    };
-    const handleRestart = () => {
-        setQuizState("intro");
-        setResult(null);
-    };
+  const handleStartQuiz = () => setQuizState("quiz");
+  const handleQuizComplete = (quizResult: QuizResult) => {
+    setResult(quizResult);
+    setQuizState("results");
+  };
+  const handleRestart = () => {
+    setQuizState("intro");
+    setResult(null);
+  };
 
-    return (
-        <div className="min-h-screen bg-background">
-            <Header />
-            <main className="pt-20">
-                {/* Intro Section */}
-                {quizState === "intro" && (
-                    <div className="py-16 px-4 sm:px-6 lg:px-8">
-                        <div className="max-w-4xl mx-auto">
-                            {/* Hero */}
-                            <div className="text-center mb-12">
-                                <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                                    <Sparkles className="w-4 h-4" />
-                                    Faith Finder Quiz
-                                </div>
-                                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                                    Discover Your Spiritual Path
-                                </h1>
-                                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-                                    Your spiritual path isn't random—it emerges from your nature,
-                                    tendencies, and how you naturally approach the sacred. Take
-                                    this 2-minute quiz to discover which direction calls to you.
-                                </p>
-                                <Button onClick={handleStartQuiz} size="lg" className="gap-2">
-                                    Start the Quiz
-                                    <ArrowRight className="w-4 h-4" />
-                                </Button>
-                            </div>
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main className="pt-20">
+        {/* Intro Section */}
+        {quizState === "intro" && (
+          <div className="py-16 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              {/* Hero */}
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                  <Sparkles className="w-4 h-4" />
+                  Faith Finder Quiz
+                </div>
+                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+                  Discover Your Spiritual Path
+                </h1>
+                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+                  Your spiritual path isn't random—it emerges from your nature,
+                  tendencies, and how you naturally approach the sacred. Take
+                  this 2-minute quiz to discover which direction calls to you.
+                </p>
+                <Button onClick={handleStartQuiz} size="lg" className="gap-2">
+                  Start the Quiz
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </div>
 
-                            {/* What to expect */}
-                            <Card className="bg-muted/30 border-dashed mb-12">
-                                <CardContent className="p-8">
-                                    <h2 className="font-display text-2xl font-semibold text-foreground text-center mb-6">
-                                        What to Expect
-                                    </h2>
-                                    <div className="grid md:grid-cols-3 gap-6">
-                                        {[
-                                            { n: 1, title: "15 Questions", desc: "Thoughtful questions about your preferences, tendencies, and what resonates with you." },
-                                            { n: 2, title: "Instant Results", desc: "Discover your primary spiritual path and get personalized recommendations." },
-                                            { n: 3, title: "Detailed Report", desc: "Get a complete PDF with traditions, practices, and a 30-day journey plan." },
-                                        ].map(({ n, title, desc }) => (
-                                            <div className="text-center" key={n}>
-                                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                                                    <span className="text-xl font-bold text-primary">{n}</span>
-                                                </div>
-                                                <h3 className="font-semibold text-foreground mb-2">{title}</h3>
-                                                <p className="text-sm text-muted-foreground">{desc}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
-
-                            {/* The Four Paths */}
-                            <div className="mb-12">
-                                <h2 className="font-display text-2xl font-semibold text-foreground text-center mb-8">
-                                    The Four Spiritual Paths
-                                </h2>
-                                <div className="grid md:grid-cols-2 gap-6">
-                                    {[
-                                        { color: "indigo", icon: Compass, title: "Inquiry-led Path", desc: "For those who question deeply. Drawn to understanding reality, consciousness, and self through investigation and contemplation." },
-                                        { color: "rose", icon: Sparkles, title: "Devotion-led Path", desc: "For those whose hearts overflow. Natural love for the Divine, finding meaning in worship, surrender, and sacred relationship." },
-                                        { color: "amber", icon: Sparkles, title: "Ritual-led Path", desc: "For those who honor tradition. Finding power in sacred action, ceremony, and the precise performance of spiritual rites." },
-                                        { color: "emerald", icon: RefreshCw, title: "Discipline-led Path", desc: "For those who cultivate methodically. Drawn to systematic practice, training the mind and body through structured approaches." },
-                                    ].map(({ color, icon: Icon, title, desc }) => (
-                                        <Card key={title} className={`border-2 bg-${color}-500/5 border-${color}-500/20`}>
-                                            <CardContent className="p-6">
-                                                <div className="flex items-start gap-4">
-                                                    <div className={`w-12 h-12 rounded-xl bg-${color}-500/10 flex items-center justify-center flex-shrink-0`}>
-                                                        <Icon className={`w-6 h-6 text-${color}-600`} />
-                                                    </div>
-                                                    <div>
-                                                        <h3 className="font-display text-lg font-semibold text-foreground mb-2">{title}</h3>
-                                                        <p className="text-sm text-muted-foreground">{desc}</p>
-                                                    </div>
-                                                </div>
-                                            </CardContent>
-                                        </Card>
-                                    ))}
-                                </div>
-                            </div>
+              {/* What to expect */}
+              <Card className="bg-muted/30 border-dashed mb-12">
+                <CardContent className="p-8">
+                  <h2 className="font-display text-2xl font-semibold text-foreground text-center mb-6">
+                    What to Expect
+                  </h2>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {[
+                      {
+                        n: 1,
+                        title: "15 Questions",
+                        desc: "Thoughtful questions about your preferences, tendencies, and what resonates with you.",
+                      },
+                      {
+                        n: 2,
+                        title: "Instant Results",
+                        desc: "Discover your primary spiritual path and get personalized recommendations.",
+                      },
+                      {
+                        n: 3,
+                        title: "Detailed Report",
+                        desc: "Get a complete PDF with traditions, practices, and a 30-day journey plan.",
+                      },
+                    ].map(({ n, title, desc }) => (
+                      <div className="text-center" key={n}>
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                          <span className="text-xl font-bold text-primary">
+                            {n}
+                          </span>
                         </div>
-                    </div>
-                )}
+                        <h3 className="font-semibold text-foreground mb-2">
+                          {title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">{desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
 
-                {/* Quiz Section */}
-                {quizState === "quiz" && (
-                    <div className="py-16 px-4 sm:px-6 lg:px-8">
-                        <div className="max-w-3xl mx-auto">
-                            <QuizContainer onComplete={handleQuizComplete} />
+              {/* The Four Paths */}
+              <div className="mb-12">
+                <h2 className="font-display text-2xl font-semibold text-foreground text-center mb-8">
+                  The Four Spiritual Paths
+                </h2>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {[
+                    {
+                      color: "indigo",
+                      icon: Compass,
+                      title: "Inquiry-led Path",
+                      desc: "For those who question deeply. Drawn to understanding reality, consciousness, and self through investigation and contemplation.",
+                    },
+                    {
+                      color: "rose",
+                      icon: Sparkles,
+                      title: "Devotion-led Path",
+                      desc: "For those whose hearts overflow. Natural love for the Divine, finding meaning in worship, surrender, and sacred relationship.",
+                    },
+                    {
+                      color: "amber",
+                      icon: Sparkles,
+                      title: "Ritual-led Path",
+                      desc: "For those who honor tradition. Finding power in sacred action, ceremony, and the precise performance of spiritual rites.",
+                    },
+                    {
+                      color: "emerald",
+                      icon: RefreshCw,
+                      title: "Discipline-led Path",
+                      desc: "For those who cultivate methodically. Drawn to systematic practice, training the mind and body through structured approaches.",
+                    },
+                  ].map(({ color, icon: Icon, title, desc }) => (
+                    <Card
+                      key={title}
+                      className={`border-2 bg-${color}-500/5 border-${color}-500/20`}
+                    >
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div
+                            className={`w-12 h-12 rounded-xl bg-${color}-500/10 flex items-center justify-center flex-shrink-0`}
+                          >
+                            <Icon className={`w-6 h-6 text-${color}-600`} />
+                          </div>
+                          <div>
+                            <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+                              {title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              {desc}
+                            </p>
+                          </div>
                         </div>
-                    </div>
-                )}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
-                {/* Results Section */}
-                {quizState === "results" && result && (
-                    <div className="py-16 px-4 sm:px-6 lg:px-8">
-                        <ResultsPage result={result} onRestart={handleRestart} />
-                    </div>
-                )}
-            </main>
-            <Footer />
-        </div>
-    );
+        {/* Quiz Section */}
+        {quizState === "quiz" && (
+          <div className="py-16 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto">
+              <QuizContainer onComplete={handleQuizComplete} />
+            </div>
+          </div>
+        )}
+
+        {/* Results Section */}
+        {quizState === "results" && result && (
+          <div className="py-16 px-4 sm:px-6 lg:px-8">
+            <ResultsPage result={result} onRestart={handleRestart} />
+          </div>
+        )}
+      </main>
+      <Footer />
+    </div>
+  );
 }

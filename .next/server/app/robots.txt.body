@@ -1,0 +1,24 @@
+User-Agent: *
+Allow: /
+Disallow: /variant-a
+Disallow: /variant-b
+Disallow: /variant-c
+Disallow: /variant-d
+Disallow: /variant-e
+Disallow: /variant-f
+Disallow: /variant-selector
+Disallow: /start
+
+User-Agent: Googlebot
+Allow: /
+
+User-Agent: Bingbot
+Allow: /
+
+User-Agent: Twitterbot
+Allow: /
+
+User-Agent: facebookexternalhit
+Allow: /
+
+Sitemap: https://opensadhaka.com/sitemap.xml

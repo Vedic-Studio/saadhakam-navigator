@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRight, Brain, Eye, Scale, Shuffle, Infinity, Sparkles } from "lucide-react";
 
 const DARSHANAS = [
@@ -69,9 +70,10 @@ export function PhilosophyGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {DARSHANAS.map((school, index) => (
-            <div
+            <Link
+              href={`/philosophies/${school.sanskrit.toLowerCase()}`}
               key={school.sanskrit}
-              className="group relative bg-card/30 border border-white/10 rounded-2xl p-8 hover:bg-card/50 transition-colors duration-300"
+              className="group relative bg-card/30 border border-white/10 rounded-2xl p-8 hover:bg-card/50 transition-colors duration-300 block"
             >
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${school.color} group-hover:scale-110 transition-transform duration-300`}>
                 <school.icon className="w-6 h-6" />
@@ -94,7 +96,7 @@ export function PhilosophyGrid() {
               <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-2 group-hover:translate-x-0">
                 <ArrowRight className="w-5 h-5 text-muted-foreground" />
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

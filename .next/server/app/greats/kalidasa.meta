@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/greats/layout,_N_T_/greats/[slug]/layout,_N_T_/greats/[slug]/page,_N_T_/greats/kalidasa"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/greats/$d$slug/__PAGE__",
+    "/greats/$d$slug",
+    "/greats",
+    "/_index",
+    "/_head"
+  ]
+}

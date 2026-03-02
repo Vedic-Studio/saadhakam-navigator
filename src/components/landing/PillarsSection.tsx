@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Scroll, History, Sparkles } from "lucide-react";
 
@@ -13,7 +14,8 @@ const PILLARS = [
         description: "Sanatan Dharma is not just a religion, but the accumulated wisdom of one of humanity's oldest continuous civilizations. It offers a sophisticated framework for understanding the universe, from atomic theory (Vaisheshika) to the nature of consciousness (Vedanta).",
         icon: History,
         color: "bg-amber-500/10 text-amber-500",
-        image: "/assets/generated/ancient_temple_shiva_1770394209985.png"
+        image: "/assets/generated/ancient_temple_shiva_1770394209985.png",
+        href: "/philosophies"
     },
     {
         id: 2,
@@ -22,7 +24,8 @@ const PILLARS = [
         description: "Discover the precision of Sanskrit. More than a language, it is a perfectly structured system of sound and vibration designed to resonate with the laws of nature. Every syllable has a precise effect on the mind and body.",
         icon: Scroll,
         color: "bg-indigo-500/10 text-indigo-400",
-        image: "/assets/generated/sanskrit_scroll_v2_1770394373001.png"
+        image: "/assets/generated/sanskrit_scroll_v2_1770394373001.png",
+        href: "/topics"
     },
     {
         id: 3,
@@ -31,7 +34,8 @@ const PILLARS = [
         description: "We honor the Itihasa—Ramayana and Mahabharata—as historical records of great epochs. These are not mere stories, but accounts of our ancestors, full of practical governance, military strategy, and dharmic leadership.",
         icon: BookOpen,
         color: "bg-emerald-500/10 text-emerald-500",
-        image: "/assets/generated/history_warrior_v2_1770394411156.png"
+        image: "/assets/generated/history_warrior_v2_1770394411156.png",
+        href: "/texts"
     },
     {
         id: 4,
@@ -40,7 +44,8 @@ const PILLARS = [
         description: "Philosophy must be lived. Through Shlokas, Sadhana, and connection to authentic Lineages (Sampradayas), we transform intellectual knowledge into realized experience. This is the path of the Sadhaka.",
         icon: Sparkles,
         color: "bg-rose-500/10 text-rose-500",
-        image: "/assets/generated/meditating_sage_v2_1770394394352.png"
+        image: "/assets/generated/meditating_sage_v2_1770394394352.png",
+        href: "/practices"
     }
 ];
 
@@ -101,9 +106,11 @@ export function PillarsSection() {
                                 </p>
 
                                 <div className="pt-6 relative z-10">
-                                    <Button variant="link" className="text-amber-400 hover:text-amber-300 p-0 h-auto text-lg font-medium group">
-                                        Discover more <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                    </Button>
+                                    <Link href={pillar.href}>
+                                        <Button variant="link" className="text-amber-400 hover:text-amber-300 p-0 h-auto text-lg font-medium group">
+                                            Discover more <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                        </Button>
+                                    </Link>
                                 </div>
                             </div>
 

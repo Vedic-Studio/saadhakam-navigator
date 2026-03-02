@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 
@@ -67,9 +68,10 @@ export function TeachingsCarousel() {
             >
                 <div className="flex gap-6 mx-auto">
                     {TEACHINGS.map((teaching, index) => (
-                        <div
+                        <Link
+                            href="/texts"
                             key={index}
-                            className="relative group min-w-[300px] md:min-w-[400px] h-[500px] rounded-3xl overflow-hidden snap-center cursor-pointer transition-all duration-500 hover:scale-[1.02]"
+                            className="relative group min-w-[300px] md:min-w-[400px] h-[500px] rounded-3xl overflow-hidden snap-center cursor-pointer transition-all duration-500 hover:scale-[1.02] block"
                         >
                             {/* Background Image */}
                             <div className="absolute inset-0">
@@ -96,7 +98,7 @@ export function TeachingsCarousel() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                     {/* Padding for last item */}
                     <div className="w-6 md:w-0 shrink-0" />

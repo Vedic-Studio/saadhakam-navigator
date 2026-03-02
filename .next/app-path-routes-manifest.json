@@ -1,0 +1,23 @@
+{
+  "/[slug]/page": "/[slug]",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/bhagavad-gita-complete-guide/page": "/bhagavad-gita-complete-guide",
+  "/compare/[slug]/page": "/compare/[slug]",
+  "/faith-finder/page": "/faith-finder",
+  "/greats/[slug]/page": "/greats/[slug]",
+  "/greats/page": "/greats",
+  "/page": "/",
+  "/philosophies/[slug]/page": "/philosophies/[slug]",
+  "/philosophies/page": "/philosophies",
+  "/practices/[practice]/for/[goal]/page": "/practices/[practice]/for/[goal]",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/texts/[slug]/page": "/texts/[slug]",
+  "/texts/bhagavad-gita/chapter-[chapter]/page": "/texts/bhagavad-gita/chapter-[chapter]",
+  "/texts/page": "/texts",
+  "/topics/[topic]/page": "/topics/[topic]",
+  "/traditions/[slug]/page": "/traditions/[slug]",
+  "/traditions/page": "/traditions",
+  "/yoga-sutras-complete-guide/page": "/yoga-sutras-complete-guide"
+}
