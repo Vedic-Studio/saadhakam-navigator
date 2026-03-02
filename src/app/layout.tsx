@@ -62,6 +62,9 @@ export const metadata: Metadata = {
     alternates: {
         canonical: siteUrl,
     },
+    verification: {
+        google: 'YOUR_GSC_CODE_HERE', // TODO: Add real Google Search Console verification code
+    }
 };
 
 // Organization structured data — site-wide
@@ -73,7 +76,9 @@ const organizationSchema = {
     description:
         "Your AI-powered companion for exploring Sanatan Dharma, Bhagavad Gita, Vedas, and ancient spiritual wisdom.",
     sameAs: [
-        // Add social URLs when available
+        "https://twitter.com/opensadhaka",
+        "https://instagram.com/opensadhaka",
+        "https://youtube.com/@opensadhaka"
     ],
 };
 

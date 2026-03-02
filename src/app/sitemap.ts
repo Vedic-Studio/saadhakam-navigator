@@ -4,6 +4,7 @@ import { traditions } from "@/data/traditions";
 import { texts } from "@/data/texts";
 import { greats } from "@/data/greats";
 import { practices } from "@/data/practices";
+import { concepts } from "@/data/concepts";
 
 const baseUrl = "https://opensadhaka.com";
 
@@ -191,11 +192,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.75,
     }));
 
+    // Dynamic concepts pages (pSEO)
+    const conceptPages: MetadataRoute.Sitemap = concepts.flatMap((c) => [
+        {
+            url: `${baseUrl}/what-is-${c.slug}`,
+            lastModified: now,
+            changeFrequency: "monthly" as const,
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/${c.slug}-meaning`,
+            lastModified: now,
+            changeFrequency: "monthly" as const,
+            priority: 0.8,
+        }
+    ]);
+
     return [
         ...staticPages,
         ...philosophyPages,
         ...traditionPages,
         ...textPages,
         ...greatPages,
+        ...conceptPages,
     ];
 }

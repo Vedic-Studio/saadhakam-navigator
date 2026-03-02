@@ -3,8 +3,21 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download } from "lucide-react";
+import { useABTest } from "@/hooks/useABTest";
 
 export function ConversionSection() {
+  const headlineVariant = useABTest({
+    experimentId: "conversion_headline_v1",
+    variants: ["guru", "self", "healing", "power"]
+  });
+
+  const headlines: Record<string, string> = {
+    guru: "Let the Masters Guide You.",
+    self: "Awaken the Guru Within.",
+    healing: "Find Peace in a Chaotic World.",
+    power: "Unlock the Dormant Potential of Your Consciousness."
+  };
+
   return (
     <section className="relative py-32 overflow-hidden bg-background">
       {/* Background Gradients */}
@@ -16,8 +29,8 @@ export function ConversionSection() {
       <div className="absolute top-1/2 right-10 w-64 h-64 bg-primary/10 rounded-full blur-[80px]" />
 
       <div className="container-padding mx-auto max-w-4xl relative z-10 text-center">
-        <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 tracking-tight">
-          Your Guru Awaits.
+        <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-8 tracking-tight">
+          {headlines[headlineVariant]}
         </h2>
 
         <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">

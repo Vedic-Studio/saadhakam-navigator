@@ -83,8 +83,8 @@ export function VariantSelector() {
                         <div
                             key={variant.id}
                             className={`relative group cursor-pointer transition-all duration-300 ${selectedVariant === variant.id
-                                    ? "ring-2 ring-primary scale-105"
-                                    : "hover:scale-105 hover:shadow-lg"
+                                ? "ring-2 ring-primary scale-105"
+                                : "hover:scale-105 hover:shadow-lg"
                                 }`}
                             onClick={() => setSelectedVariant(variant.id)}
                         >
@@ -115,7 +115,7 @@ export function VariantSelector() {
                                         className="text-primary hover:text-primary/80"
                                         asChild
                                     >
-                                        <Link to={variant.path}>View</Link>
+                                        <Link href={variant.path}>View</Link>
                                     </Button>
                                 </div>
                             </div>

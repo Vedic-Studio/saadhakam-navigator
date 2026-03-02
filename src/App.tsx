@@ -30,13 +30,11 @@ import VedantaGuide from "./pages/vedanta-guide";
 import AdvaitaVedantaExplained from "./pages/advaita-vedanta-explained";
 import HowToStartJapa from "./pages/how-to-start-japa";
 import TenPowerfulSanskritMantras from "./pages/10-powerful-sanskrit-mantras";
-import YogaSutrasCompleteGuide from "./pages/yoga-sutras-complete-guide";
 import UpanishadsCoreWisdom from "./pages/upanishads-core-wisdom";
 import BuddhistMeditationTechniques from "./pages/buddhist-meditation-techniques";
 import SufiMysticismPathOfLove from "./pages/sufi-mysticism-path-of-love";
 import TaoistPhilosophyWayOfHarmony from "./pages/taoist-philosophy-way-of-harmony";
 import BhagavadGitaChapter1 from "./pages/bhagavad-gita-chapter-1";
-import BhagavadGitaCompleteGuide from "./pages/bhagavad-gita-complete-guide";
 import SacredTextsHub from "./pages/sacred-texts";
 import SpiritualPracticesHub from "./pages/spiritual-practices";
 import SpiritualTraditionsHub from "./pages/spiritual-traditions";
@@ -82,13 +80,11 @@ const App = () => (
           <Route path="/advaita-vedanta-explained" element={<AdvaitaVedantaExplained />} />
           <Route path="/how-to-start-japa" element={<HowToStartJapa />} />
           <Route path="/10-powerful-sanskrit-mantras" element={<TenPowerfulSanskritMantras />} />
-          <Route path="/yoga-sutras-complete-guide" element={<YogaSutrasCompleteGuide />} />
           <Route path="/upanishads-core-wisdom" element={<UpanishadsCoreWisdom />} />
           <Route path="/buddhist-meditation-techniques" element={<BuddhistMeditationTechniques />} />
           <Route path="/sufi-mysticism-path-of-love" element={<SufiMysticismPathOfLove />} />
           <Route path="/taoist-philosophy-way-of-harmony" element={<TaoistPhilosophyWayOfHarmony />} />
           <Route path="/bhagavad-gita-chapter-1" element={<BhagavadGitaChapter1 />} />
-          <Route path="/bhagavad-gita-complete-guide" element={<BhagavadGitaCompleteGuide />} />
           <Route path="/sacred-texts-teachings" element={<SacredTextsHub />} />
           <Route path="/practical-spiritual-practices" element={<SpiritualPracticesHub />} />
           <Route path="/spiritual-traditions-paths" element={<SpiritualTraditionsHub />} />

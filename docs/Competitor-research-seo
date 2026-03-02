@@ -1,0 +1,546 @@
+# Sādhaka (opensadhaka.com) — Competitor + SEO / pSEO Playbook (India + Global Spirituality)
+
+**Date:** 2026-03-02  
+**Goal:** Map direct + indirect competitors across spirituality sub-branches (yoga, kriya, tantra, meditation, Vedanta, bhakti, etc.), extract their **SEO mechanics**, and convert those insights into a **buildable pSEO framework** for Sādhaka.
+
+> Note on the “ultimate pSEO guide + exclusions” already created: this playbook assumes that guide exists and is the **source of truth** for:
+> - forbidden topics / claims / safety constraints  
+> - content quality thresholds  
+> - legal constraints (copyright, medical claims, religious sensitivities, etc.)
+>
+> **Work order:** apply exclusions *first* (Section 1), then build the pSEO system (Sections 6–10).
+
+---
+
+## 0) What can/can’t be asserted without paid SEO datasets
+
+This playbook can reliably cover, using public evidence:
+- competitor list + URLs
+- visible positioning (from homepage messaging)
+- **SEO approach as manifested in site architecture** (URL patterns, sitemaps, localization, content types, indexing intent)
+- pSEO templates inferred from sitemap patterns (topics, categories, location pages, teacher pages, etc.)
+
+What cannot be **truthfully** provided without external ranking data (Ahrefs/Semrush/GSC access or a SERP scraping pipeline):
+- “keywords they are ranking for” (as in actual Google rankings & positions)
+- verified traffic volumes / traffic channel attribution
+
+**Solution:** Section 9 provides a concrete “keyword + ranking extraction pipeline” your coding agent can implement (using Search Console for your own site + SERP APIs for competitors).
+
+---
+
+## 1) Exclusions-first checklist (apply your existing exclusions)
+
+Create a repo file: `seo/exclusions.md` and make the generator fail closed when exclusions are violated.
+
+**1.1 Content safety & policy guardrails (generic, adapt to your existing guide)**
+- Avoid medical claims (“cures”, “treats”, “heals”) unless you have a medical compliance framework.
+- Treat tantra content carefully:
+  - separate “classical tantra / Shaiva-Shakta philosophy” from “sexual tantra” queries
+  - decide whether sexual content is excluded entirely (recommended for broad distribution).
+- Avoid publishing copyrighted translations of scriptures; prefer:
+  - summaries + commentary
+  - quotations within fair-use limits (jurisdiction-dependent)
+  - links to public-domain translations where applicable
+- No defamation / “cult” framing; use neutral comparative language.
+
+**1.2 Brand/legal**
+- Don’t impersonate lineages / organizations.
+- Use nominative fair use in “X vs Y” pages (and keep them factual + respectful).
+
+**1.3 Generator-level enforcement**
+- Maintain:
+  - `disallowed_topics[]`
+  - `disallowed_claim_patterns[]`
+  - `sensitive_topics_require_review[]` (human QA gate)
+- Add CI check that blocks merges if generated pages contain banned patterns.
+
+---
+
+## 2) Sādhaka’s current positioning (observed from live HTML)
+
+Sādhaka currently positions as: **“Your Spiritual Companion”** with a **Faith Finder quiz** and “personalized guidance”.
+
+**Implication:** current site appears to be a JS-first landing experience (single-page), which usually means:
+- minimal indexable text per route unless SSR/prerendered
+- no long-form content surface
+- missing “topic authority” footprint compared to content-heavy competitors
+
+**Immediate SEO requirement:** ship an SSR/prerendered content layer (Section 6) + sitemap/robots + scalable pSEO templates.
+
+---
+
+## 3) Competitor universe (direct + indirect)
+
+### 3.1 Direct competitors (spiritual discovery + practice libraries + guided journeys)
+These compete with Sādhaka’s likely future product: *path discovery + guidance + practice content + community*.
+
+- **Insight Timer** — https://insighttimer.com  
+  Massive marketplace + library + pSEO at scale (topics, retreats, creator pages, tracks). Their robots.txt points to a sitemap index.[cite:77]
+- **Heartfulness** — https://heartfulness.org  
+  Practice system + events + retreats + app distribution pages.[cite:95]
+- **Isha (Sadhguru)** — https://isha.sadhguru.org/yoga/  
+  Large editorial library (yoga, meditation, spirituality) + program pages.[cite:79][cite:168]
+- **Art of Living** — https://www.artofliving.org  
+  Enormous multi-country + multi-language footprint; strong “wisdom/lifestyle” content hubs and program funnels. robots.txt declares sitemap index and LLM-specific docs.[cite:90]
+- **Yoga International** — https://yogainternational.com  
+  Subscription content library (articles/classes/profiles/ecourses) — often outcompetes in informational yoga queries.
+
+### 3.2 Indirect competitors (own attention + SERP real estate)
+These may not “do spirituality matching”, but they dominate queries you will want:
+- **Yoga content publishers**: YogaBasics (poses/definitions), Yoga Journal, etc.
+- **Meditation apps**: Calm, Headspace, Waking Up
+- **Retreat marketplaces**: BookYogaRetreats, RetreatGuru, etc.
+- **Lineage orgs**: SRF/Yogananda, Vipassana (Dhamma), ISKCON, Chinmaya Mission, Vedanta orgs
+- **Tantra schools**: Tantra Illuminated, etc.[cite:141]
+
+---
+
+## 4) Competitor deep dives (what to copy / what to avoid)
+
+> For each competitor: **Positioning → SEO surface → pSEO templates → monetization funnel → build notes**
+
+### 4.1 Insight Timer — “marketplace + library + pSEO engine”
+**URL:** https://insighttimer.com  
+**Evidence (sitemaps):**
+- Their robots.txt exposes sitemap index.[cite:77]
+- “Meditation topics” pages exist at `/meditation-topics/{topic}` (e.g., sleep, stress, anxiety).[cite:77]
+- Retreat pages show programmatic combinations: `/retreats/{category}/{country}` (e.g., meditation/india).[cite:0]
+- They have multiple specialized sitemaps including AI-labeled ones (e.g., `ai-meditation-topics.xml`).[cite:166]
+
+**Positioning (inferred):**
+- broad “everyday wellbeing” + sleep/anxiety/stress + spirituality
+- creator marketplace (publishers/teachers)
+- courses + tracks + worksheets + retreats
+
+**SEO approach (what matters):**
+1. **Taxonomy-led growth**: “topics” become durable landing pages.
+2. **UGC + creator pages**: each teacher/publisher becomes an indexable entity page.
+3. **Combinatorial pSEO**: retreats = `category x country` matrix.[cite:0]
+4. **Internationalization**: multiple language sitemaps in sitemap index (tracks by locale) (visible in sitemap index listing pattern).
+
+**Programmatic page patterns to replicate:**
+- `/topics/{topic}` hub pages
+- `/teachers/{teacher}` profile pages
+- `/teachers/{teacher}/sessions/{session}` (content pages)
+- `/retreats/{category}/{geo}` directory pages
+- `/courses/{course}` pages
+
+**Build notes for Sādhaka:**
+- Implement **entity graph**: Topic ↔ Practice ↔ Tradition ↔ Teacher ↔ Text ↔ Goal ↔ Difficulty
+- Your pSEO should generate:
+  - topic hubs
+  - practice explainers
+  - tradition overviews
+  - curated “pathways” (topic clusters) that mimic courses
+
+---
+
+### 4.2 Art of Living — “multi-country, multi-language content + program funnel”
+**URL:** https://www.artofliving.org  
+**Evidence:**
+- robots.txt declares sitemap index + “llms.txt” endpoints.[cite:90]
+- sitemap index includes country-level sitemaps (global + each country).[cite:90]
+- India sitemap index lists sub-sitemaps like `health.xml`, `events.xml`, `festivals.xml`, etc. (seen via public sitemap structure).
+- India health sitemap contains many editorial URLs and also structured sections like `/lifestyle/...` and other content types.[cite:119]
+
+**Positioning:**
+- breathwork + meditation (flagship programs) + lifestyle wisdom
+- heavy trust building via testimonials, press, and organization scale messaging
+
+**SEO approach:**
+1. **Localization moat**: country/language subfolders (e.g., `in-en`, `us-en`, etc.) and country sitemaps.
+2. **Evergreen informational content**: lifestyle/health/festival explainers that capture high-volume queries.
+3. **Course funnel integration**: informational pages internally route to “Courses” / registration.
+
+**pSEO patterns to replicate (Sādhaka version):**
+- festival/explainers: “What is Navratri” type pages
+- practice explainers: pranayama/breathwork techniques
+- “benefits of X” pages, but written carefully with exclusions
+
+**Build notes:**
+- Your pSEO should have **geo-aware pages** only if you have real local offerings (otherwise it becomes thin/duplicate).
+- Copy the **content hub architecture**, not the exact broad lifestyle sprawl—unless Sādhaka intentionally becomes lifestyle.
+
+---
+
+### 4.3 Isha (Yoga) — “structured categories + massive editorial + video integration”
+**URL:** https://isha.sadhguru.org/yoga/  
+**Evidence:**
+- yoga category sitemap lists top-level hubs like:
+  - `/yoga-articles/`, `/meditations/`, `/yoga-programs/`, `/yoga-for-beginners/`, etc.[cite:79]
+- yoga programs page enumerates program pages (Inner Engineering, Hatha Yoga, Surya Kriya, etc.).[cite:168]
+- they use specialized sitemaps (image/video) in the yoga section.[cite:75]
+
+**Positioning:**
+- authority teacher + classical framing
+- strong differentiation by naming practices (Surya Kriya, Bhuta Shuddhi, etc.)
+
+**SEO approach:**
+1. **Category hubs** → **articles** → **program pages** (clear ladder)
+2. **Video SEO**: embedded YouTube videos surfaced via video sitemap structure.[cite:75]
+3. **Beginner pathways**: “new to yoga” + FAQs + “how to start” structure (high conversion intent)
+
+**pSEO patterns to replicate:**
+- “Practice X” pages with:
+  - what it is
+  - how to do (steps)
+  - prerequisites / contraindications (careful)
+  - duration, frequency
+  - common mistakes
+  - “next practices” internal links (graph-based)
+
+**Build notes:**
+- A “practice library” with structured data + prerequisites is a major moat.
+- If Sādhaka’s differentiator is “path matching,” build:
+  - `/{tradition}/pathways/{goal}` pages
+  - `/{practice}/for/{goal}` pages (generated from graph + rules)
+
+---
+
+### 4.4 Heartfulness — “practice system + events + app distribution”
+**URL:** https://heartfulness.org  
+**Evidence:**
+- India English sitemap shows core pages like:
+  - `/heartfulness-practices`, `/events`, `/retreats`, `/heartfulness-app`, etc.[cite:95]
+
+**Positioning:**
+- simple practice system, trainer network, retreats, app
+
+**SEO approach:**
+- less pSEO-heavy (as observed via the small visible sitemap sample), more brand + events + conversion pages
+
+**Build notes:**
+- If Sādhaka wants offline expansion later, plan for:
+  - `centers` / `teachers` / `events` schema early (Section 7)
+
+---
+
+### 4.5 Tantra Illuminated — “niche authority + subscription courses”
+**URL:** https://www.tantrailluminated.org  
+**Evidence:** site positions itself as “Classical Tantra online learning platform”, offering on-demand courses + community.[cite:141]
+
+**Positioning:**
+- depth + legitimacy + “classical tantra” framing
+
+**SEO approach (likely):**
+- niche topic clusters (Trika Shaivism, scripture commentary, practice foundations)
+- conversion to subscription trial
+
+**Build notes for Sādhaka:**
+- Tantra is best treated as **high-E-E-A-T** (Experience, Expertise, Authoritativeness, Trust) and may require:
+  - author bios
+  - citations to primary texts
+  - careful exclusions
+
+---
+
+## 5) Competitor inventory (starter list by segment)
+
+> This is intentionally broad; treat it as your “crawl target list”. Your agent should extend it.
+
+### 5.1 India-first / India-rooted spiritual orgs & platforms
+- Isha Yoga — https://isha.sadhguru.org/yoga/ [cite:79]  
+- Art of Living — https://www.artofliving.org [cite:90]  
+- Heartfulness — https://heartfulness.org [cite:95]  
+- Brahma Kumaris (org) — https://www.brahmakumaris.com  
+- Chinmaya Mission — https://www.chinmayamission.com  
+- Chinmaya International Foundation courses — https://chinfo.org/online-courses/ [cite:138]  
+- Ramakrishna Mission / local maths (varies) — e.g., https://rkmath.org [cite:137]  
+- The Yoga Institute — https://theyogainstitute.org  
+- Bihar School of Yoga — https://www.biharyoga.net  
+- ISKCON — https://iskcon.org  
+- Osho — https://www.osho.com  
+
+### 5.2 Global meditation / spirituality apps & libraries
+- Insight Timer — https://insighttimer.com [cite:77]  
+- Calm — https://www.calm.com  
+- Headspace — https://www.headspace.com  
+- Waking Up — https://www.wakingup.com  
+
+### 5.3 Yoga publishers / education subscriptions
+- Yoga International — https://yogainternational.com  
+- YogaBasics — https://www.yogabasics.com (has public sitemap endpoint)[cite:163]
+
+### 5.4 Kriya / Vedanta / lineage-based learning
+- Self-Realization Fellowship (Kriya lessons) — https://yogananda.org/kriya-yoga-lessons [cite:152]  
+- Ananda (India) — https://anandaindia.org/learn-kriya-yoga/ [cite:143]  
+- Kriya Yoga International — https://www.kriya.org [cite:176]  
+- Vedanta Academy info — https://vedanta.info/vedanta-academy/ [cite:140]  
+
+### 5.5 Tantra / niche schools
+- Tantra Illuminated — https://www.tantrailluminated.org [cite:141]  
+- (Many others exist; treat tantra as “review-gated” per exclusions.)
+
+---
+
+## 6) SEO architecture for Sādhaka (what to build)
+
+### 6.1 Core principle: build an “Entity Graph + Page Factory”
+Competitors that win at scale (Insight Timer, Art of Living, Isha) do some version of:
+- define entities (topics/practices/teachers/traditions)
+- define relationships
+- generate many consistent pages
+
+**Proposed entity types**
+- `Tradition` (e.g., Vedanta, Bhakti, Tantra, Kriya, Yoga, Buddhism, Jain, Sikh spirituality)
+- `Practice` (asana, pranayama, japa, trataka, nyasa, meditation styles, etc.)
+- `Text` (Gita, Yoga Sutras, Upanishads, etc.)
+- `Teacher/Lineage` (as neutral “influencer/teacher” entities; avoid claiming authority)
+- `Goal/Intent` (sleep, anxiety, focus, devotion, self-inquiry, etc.)
+- `Ritual/Festival` (Navratri, Maha Shivaratri, etc.)
+- `Place` (only if you genuinely have location relevance: retreats, centers, events)
+
+### 6.2 Page types (MVP → scale)
+**MVP (highest ROI)**
+1. `/spiritual-paths/{path}` (Sādhaka’s unique differentiator; “Faith Finder” output pages)
+2. `/practices/{practice}` (what/why/how)
+3. `/topics/{topic}` (hub pages like Insight Timer)[cite:77]
+4. `/traditions/{tradition}` (overview + internal linking)
+5. `/guides/{guide}` (hand-curated cornerstone content)
+
+**Scale pSEO (graph-driven)**
+- `/practices/{practice}/for/{goal}`
+- `/traditions/{tradition}/practices/{practice}`
+- `/texts/{text}/themes/{theme}`
+- `/compare/{x}-vs-{y}` (strictly factual + exclusion-safe)
+
+### 6.3 Technical requirements (non-negotiable)
+- SSR or prerender for all SEO routes (Next.js/Remix/Astro—anything that outputs HTML)
+- Clean canonical URLs
+- `robots.txt` + `sitemap.xml` (split sitemaps by type when large)
+- structured data (Section 7)
+- internal linking rules (Section 8)
+
+---
+
+## 7) Metadata + Schema playbook (for the agent)
+
+### 7.1 Title & description formula library
+Define deterministic templates:
+- Practice page title:
+  - `{Practice}: Meaning, How to Practice, Benefits, & Beginner Guide | Sādhaka`
+- Topic hub:
+  - `{Topic} Spiritual Practices & Guided Pathways | Sādhaka`
+- Tradition:
+  - `{Tradition}: Overview, Core Ideas, Practices, Texts & Pathways | Sādhaka`
+
+Descriptions: 150–160 chars, include:
+- what it is
+- who it’s for
+- CTA (quiz / pathway)
+
+### 7.2 JSON-LD schema (minimum set)
+- `WebSite` + `SearchAction`
+- `Organization`
+- `BreadcrumbList`
+- `Article` (for guides)
+- `FAQPage` (for practice Q&A blocks)
+- `HowTo` (only when you truly provide step-by-step instructions)
+- `VideoObject` (if embedding video; Isha surfaces video systematically)[cite:75]
+- `Event` (only if real events)
+- `Person` (teachers/authors)
+
+---
+
+## 8) Internal linking & “topic authority” system
+
+### 8.1 Build a linking rules engine
+Given a page (practice/topic/tradition), always render:
+- “Related practices” (3–8)
+- “Common goals” (3–8)
+- “Next steps” (pathway)
+- “Foundational texts” (if applicable)
+- “Safety / exclusions” notes (if required)
+
+### 8.2 Cluster design (example)
+For `tantra` (if allowed per exclusions):
+- `/traditions/tantra`
+  - `/practices/mantra-japa`
+  - `/practices/yantra`
+  - `/texts/vijnana-bhairava-tantra` (summary, not full text)
+  - `/topics/shakti`
+  - `/guides/classical-tantra-beginners`
+
+---
+
+## 9) “Keywords they rank for” — build the extraction pipeline (agent-ready)
+
+Because competitor rankings aren’t reliably accessible from public HTML, implement this:
+
+### 9.1 Competitor keyword discovery (2-pass)
+**Pass A: sitemap-driven seed keywords**
+- Fetch competitor sitemap(s)
+- Extract URL slugs
+- Convert slugs to candidate queries:
+  - `what is {slug}`
+  - `{slug} meaning`
+  - `{slug} benefits`
+  - `{slug} how to`
+  - `{slug} meditation`
+- Store in `data/keyword_seeds.csv` with columns:
+  - `competitor_domain, url, template_type, seed_keyword`
+
+**Pass B: SERP validation**
+- Use a SERP API (or controlled scraping) to check:
+  - is competitor in top 10/20?
+  - who else ranks?
+  - snippet type (AI overview / featured snippet / video)
+- Store in `data/keyword_rankings.csv`:
+  - `keyword, locale, device, competitor_domain, rank, url, serp_features[]`
+
+### 9.2 Your own site (Sādhaka) keywords
+- Connect Search Console
+- Export queries/pages weekly
+- Use this to drive:
+  - new pSEO pages
+  - refresh cycles
+  - internal linking updates
+
+---
+
+## 10) Programmatic SEO templates (copy-worthy patterns)
+
+### 10.1 Patterns observed in competitors (evidence-based)
+- **Topic hubs** (`/meditation-topics/{topic}`) are a major scale lever (Insight Timer).[cite:77]
+- **Combinatorial geo pages** (`/retreats/{category}/{country}`) expand long-tail coverage.[cite:0]
+- **Category hubs → article libraries** (Isha yoga categories).[cite:79]
+- **Multi-country sitemap strategy** to scale localization (Art of Living).[cite:90]
+
+### 10.2 Sādhaka’s pSEO template catalog (suggested)
+Create templates with strict minimum content requirements to avoid thin pages.
+
+**A) Practice template** (`/practices/{practice}`)
+Sections:
+- Definition (2–4 paragraphs)
+- “Who is it for?” (bullets)
+- “How it’s practiced” (steps or principles)
+- Common questions (FAQ)
+- Related practices
+- Suggested pathway CTA (Faith Finder result deep link)
+
+**B) Topic hub template** (`/topics/{topic}`)
+Sections:
+- Topic overview
+- Recommended practices (cards)
+- Recommended traditions (cards)
+- 3–5 guides
+- “Start here” CTA
+
+**C) Tradition template** (`/traditions/{tradition}`)
+Sections:
+- Core ideas
+- Practices
+- Texts
+- Misconceptions (careful language)
+- Pathways (beginner/intermediate)
+
+**D) Practice-for-goal template** (`/practices/{practice}/for/{goal}`)
+Rules-driven: only generate when:
+- practice is appropriate for goal per your knowledge base
+- exclusions allow it
+- you can write a non-medical, non-claimy explanation
+
+---
+
+## 11) Traffic generation channels competitors rely on (what to replicate)
+
+Even without traffic analytics, the *distribution primitives* are visible:
+
+- **YouTube as a content engine + embed strategy**  
+  Isha’s yoga pages embed YouTube videos and maintain video-specific indexing.[cite:75]
+- **Massive editorial libraries**  
+  Art of Living and Isha both run huge informational footprints.[cite:79][cite:90]
+- **Marketplace mechanics**  
+  Insight Timer scales via creators + topics + tracks + courses + retreats.[cite:77][cite:0]
+- **Localization**  
+  Art of Living uses country/language structure at scale.[cite:90]
+
+**Sādhaka recommendation:** pick 1–2 primary channels initially:
+- SEO + Email (best compounding)
+- SEO + YouTube (if you can sustain consistent video)
+- SEO + community (Discord/Slack/Circle) if the product supports it
+
+---
+
+## 12) “How they built it” — implementation patterns to copy
+
+### 12.1 Sitemap strategy (ship early)
+- `sitemap_index.xml`
+  - `sitemap_practices.xml`
+  - `sitemap_topics.xml`
+  - `sitemap_traditions.xml`
+  - `sitemap_guides.xml`
+  - `sitemap_paths.xml`
+- Keep each < 50k URLs; split by `-1`, `-2` if needed.
+
+### 12.2 Localization strategy (only when justified)
+Art of Living scales by country sitemaps.[cite:90]  
+For Sādhaka:
+- start with `en` only
+- add `hi` later only if you can support:
+  - translated UI + translated content
+  - hreflang + canonicalization rules
+  - culturally appropriate wording
+
+### 12.3 Content storage format
+- Keep a structured content DB (Postgres) + export to static routes
+- Or content-as-code:
+  - `/content/practices/{practice}.mdx`
+  - `/content/topics/{topic}.mdx`
+- For pSEO at scale: store structured facts in JSON, render via templates.
+
+---
+
+## 13) Agent task list (ready-to-ticket)
+
+### Phase 1 — Foundations (1–2 weeks)
+1. **Add SSR/prerendered SEO routes** for:
+   - `/practices/*`, `/topics/*`, `/traditions/*`, `/guides/*`, `/spiritual-paths/*`
+2. Implement `robots.txt` + `sitemap_index.xml`
+3. Implement metadata framework (title/description canonical)
+4. Implement JSON-LD baseline: WebSite, Organization, BreadcrumbList
+5. Build exclusions enforcement in generator (fail closed)
+
+### Phase 2 — Entity graph + pSEO MVP (2–4 weeks)
+6. Create entity schema + seed dataset:
+   - `practices`, `topics`, `traditions`, `goals`, `texts`
+7. Build Page Factory:
+   - templates A/B/C (Section 10)
+8. Add internal linking engine + “related” rules
+9. Add FAQ blocks + FAQPage schema for selected pages
+
+### Phase 3 — Competitive keyword pipeline (ongoing)
+10. Implement sitemap crawler for competitor list
+11. Implement keyword seed extractor from URLs
+12. Implement SERP rank checker + store results
+13. Weekly “content gap” report:
+   - high-value keywords where competitors rank and Sādhaka has no page
+
+### Phase 4 — Scale & defensibility
+14. Add video strategy + VideoObject schema where applicable
+15. Add community/creator layer (optional) to create UGC-based growth loops (Insight Timer pattern).[cite:77]
+16. Add “pathway” pages as Sādhaka moat (personalized journeys)
+
+---
+
+## 14) Appendix — Evidence snippets (why these competitors matter)
+
+- Insight Timer exposes sitemap index in robots.txt and uses topic pages like `/meditation-topics/{topic}`.[cite:77]  
+- Insight Timer has programmatic retreat category x country pages like `/retreats/meditation/india`.[cite:0]  
+- Art of Living’s robots.txt declares sitemap index and specialized `llms.txt` endpoints.[cite:90]  
+- Isha yoga exposes category hubs via sitemap (`/yoga-articles/`, `/meditations/`, `/yoga-programs/`).[cite:79]  
+- Isha yoga program pages are explicitly enumerated (Inner Engineering, Hatha Yoga, etc.).[cite:168]  
+- Isha uses specialized image/video sitemap structures in its yoga section.[cite:75]  
+- Heartfulness India English sitemap includes key conversion pages (`heartfulness-practices`, `events`, `heartfulness-app`).[cite:95]  
+- Tantra Illuminated explicitly positions as a classical tantra online learning subscription platform.[cite:141]
+
+---
+
+## Next step (what’s needed from you to make this “complete”)
+To produce the “keywords they rank for” and “traffic sources” sections with real numbers:
+- Provide access (exports are enough) to:
+  - Ahrefs/Semrush competitor reports **OR**
+  - a SERP API budget + target geos (IN/US/UK) + language set
+- Provide your existing “ultimate pSEO guide” exclusions so this playbook can be hardened into a strict generator spec.
+
+Until then, this document is a **buildable SEO architecture + competitor pattern map**, with a concrete pipeline to compute rankings programmatically.

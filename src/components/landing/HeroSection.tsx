@@ -3,8 +3,32 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, MessageSquare } from "lucide-react";
+import { useABTest } from "@/hooks/useABTest";
 
 export function HeroSection() {
+  const headlineVariant = useABTest({
+    experimentId: "hero_headline_v1",
+    variants: ["ancient", "inner_void", "guide"]
+  });
+
+  const headlines: Record<string, React.ReactNode> = {
+    ancient: (
+      <>
+        The Only Standing Dharma After <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-400 to-amber-200">10,000 Years</span>
+      </>
+    ),
+    inner_void: (
+      <>
+        You Have Mastered the Outer World. <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-400 to-amber-200">Now Conquer the Inner.</span>
+      </>
+    ),
+    guide: (
+      <>
+        The Wisdom of the Rishis. <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-400 to-amber-200">The Precision of AI.</span>
+      </>
+    )
+  };
+
   return (
     <section className="relative min-h-screen flex items-center bg-background overflow-hidden pt-20">
       {/* Background gradients */}
@@ -26,7 +50,7 @@ export function HeroSection() {
 
           {/* Main Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] tracking-tight animate-fade-up">
-            The Only Standing Dharma After <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-400 to-amber-200">10,000 Years</span>
+            {headlines[headlineVariant]}
           </h1>
 
           {/* Subheadline */}
