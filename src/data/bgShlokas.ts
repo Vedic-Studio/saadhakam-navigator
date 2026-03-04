@@ -15,9 +15,12 @@ export interface BgShloka {
   practicalApplication: string;
 }
 
+import { chapter1Shlokas } from "./bgShlokasCh1";
+
 // Partial seeding for development.
 // Real data should be seeded from public domain datasets like BhagavadGita.io Open Data.
 export const bgShlokas: BgShloka[] = [
+  ...chapter1Shlokas,
   {
     id: "1.1",
     chapter: 1,

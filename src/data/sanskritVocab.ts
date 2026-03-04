@@ -1,3 +1,5 @@
+import { newSanskritVocab } from "./sanskritVocabBatch";
+
 export interface UsageExample {
   textContext: string; // e.g., "Bhagavad Gita 2.40"
   quoteSanskrit: string;
@@ -2948,6 +2950,7 @@ export const sanskritVocab: SanskritWord[] = [
     summary:
       "Arati is the devotional ceremony in which light is offered to a deity to dispel ignorance and invoke grace.",
   },
+  ...newSanskritVocab,
 ];
 
 export function getSanskritWordBySlug(slug: string): SanskritWord | undefined {

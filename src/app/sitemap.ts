@@ -11,6 +11,7 @@ import { practiceGoals } from "@/data/practiceGoals";
 import { bgChapters } from "@/data/bgChapters";
 import { bgShlokas } from "@/data/bgShlokas";
 import { sanskritVocab } from "@/data/sanskritVocab";
+import { articles } from "@/data/articles";
 
 const baseUrl = "https://opensadhaka.com";
 
@@ -28,6 +29,7 @@ export async function generateSitemaps() {
     { id: "practices" },
     { id: "shlokas" },
     { id: "sanskrit" },
+    { id: "articles" },
   ];
 }
 
@@ -148,6 +150,18 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
         },
         {
           url: `${baseUrl}/how-to-choose-a-mantra`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.75,
+        },
+        {
+          url: `${baseUrl}/non-duality-vs-dualism`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.75,
+        },
+        {
+          url: `${baseUrl}/shaivism-vs-vaishnavism`,
           lastModified: now,
           changeFrequency: "monthly",
           priority: 0.75,
@@ -303,6 +317,14 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: "monthly",
         priority: 0.85,
+      }));
+
+    case "articles":
+      return articles.map((a) => ({
+        url: `${baseUrl}${a.route}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.8,
       }));
 
     default:

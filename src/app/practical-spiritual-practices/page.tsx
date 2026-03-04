@@ -3,6 +3,12 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight, Flower2, HandHeart, Activity, Eye } from "lucide-react";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
     title: "Practical Spiritual Practices | Sadhaka",
@@ -41,8 +47,44 @@ const practices = [
 ];
 
 export default function SpiritualPracticesPage() {
+    const faqs = [
+        {
+            question: "What is Sadhana?",
+            answer: "Sadhana is the Sanskrit word for daily spiritual practice. It translates roughly to 'the means of accomplishing something.' Unlike attending a weekly service, Sadhana implies a disciplined, daily effort (like meditation, Japa, or yoga) undertaken to purify the mind and achieve self-realization."
+        },
+        {
+            question: "How long should I meditate each day?",
+            answer: "For beginners, the ancient texts recommend consistency over duration. Starting with just 10-15 minutes a day during 'Brahma Muhurta' (the quiet hours before dawn) is highly effective. 40 continuous days of a short practice builds a much stronger neural and spiritual foundation than sporadic hours of intense meditation."
+        },
+        {
+            question: "Do I need a Guru to start a spiritual practice?",
+            answer: "While a qualified Guru is traditionally considered essential for advanced initiation (Diksha) and navigating the profound depths of consciousness, it is absolutely not required to begin. Foundational practices like mindfulness, basic Mantra Japa (like Om), and Karma Yoga can and should be started immediately by anyone."
+        },
+        {
+            question: "What is the best spiritual practice for a busy person?",
+            answer: "Karma Yoga (the yoga of action) intertwined with simple Mantra Japa. By mentally offering the results of your daily work to the Divine, and repeating a mantra during idle moments (like commuting or cooking), you turn your entire busy life into a continuous spiritual practice without needing extra hours."
+        }
+    ];
+
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    };
+
     return (
-        <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
+        <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header />
 
             <main className="flex-grow pt-32 pb-16">
@@ -96,6 +138,32 @@ export default function SpiritualPracticesPage() {
                                 </Link>
                             </div>
                         ))}
+                    </div>
+
+                    {/* SEo / FAQ Section */}
+                    <div className="pt-16 border-t border-border mt-8">
+                        <div className="text-center mb-12">
+                            <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+                                Frequently Asked Questions
+                            </h2>
+                            <p className="text-muted-foreground max-w-2xl mx-auto">
+                                Common questions about building a daily spiritual practice (Sadhana).
+                            </p>
+                        </div>
+                        <div className="max-w-3xl mx-auto mb-20 text-left">
+                            <Accordion type="single" collapsible className="w-full">
+                                {faqs.map((faq, index) => (
+                                    <AccordionItem key={index} value={`item-${index}`}>
+                                        <AccordionTrigger className="text-left font-semibold text-lg hover:text-primary">
+                                            {faq.question}
+                                        </AccordionTrigger>
+                                        <AccordionContent className="text-muted-foreground leading-relaxed">
+                                            {faq.answer}
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
                     </div>
 
                 </div>

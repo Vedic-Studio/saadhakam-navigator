@@ -8,6 +8,12 @@ import { comparisons } from "@/data/comparisons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
   title: "Spiritual Traditions & Lineages of Sanatan Dharma",
@@ -31,8 +37,44 @@ export const metadata: Metadata = {
 };
 
 export default function TraditionsPage() {
+  const faqs = [
+    {
+      question: "What is a Sampradaya?",
+      answer: "A Sampradaya is a traditional lineage of spiritual teaching in Sanatan Dharma. It involves a succession of masters and disciples (parampara) that preserves and transmits a specific theology, set of rituals, and interpretation of the scriptures."
+    },
+    {
+      question: "What are the four main denominations of Hinduism?",
+      answer: "The four largest denominations are Vaishnavism (worship of Vishnu/Krishna), Shaivism (worship of Shiva), Shaktism (worship of the Divine Mother/Devi), and Smartism (which treats five or six major deities as equal manifestations of the one Brahman)."
+    },
+    {
+      question: "Can I follow multiple traditions?",
+      answer: "Yes. Historically, the Smart tradition was founded by Adi Shankaracharya explicitly to synthesize the worship of multiple deities. Even outside of Smartism, many Hindus worship deities across sectarian lines, though they may have a primary 'Ishta Devata' (chosen deity)."
+    },
+    {
+      question: "What is the difference between Shaivism and Vaishnavism?",
+      answer: "Philosophically, many Shaiva schools lean toward non-dualism (Advaita), viewing liberation as the recognition of one's identity with Shiva. Many Vaishnava schools lean toward dualism (Dvaita) or qualified non-dualism, viewing liberation as the eternal, devoted relationship between the individual soul and Vishnu."
+    }
+  ];
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main className="pt-20">
         <section className="py-16 px-4 sm:px-6 lg:px-8">
@@ -41,10 +83,11 @@ export default function TraditionsPage() {
               <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
                 Spiritual Traditions — Paths to the Divine
               </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Sanatan Dharma encompasses diverse living traditions, each
-                offering a complete path to liberation through its own
-                practices, teachers, and sacred lineages.
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
+                Philosophy in the East was never meant to remain purely academic. A philosophy must be lived, and a <strong>Sampradaya</strong> (tradition/lineage) is the living ecosystem that turns abstract truth into a walkable path. It provides the rituals, the mantras, the ethical boundaries, and the succession of realized teachers (Parampara).
+              </p>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+                While Western religions often split over theological disagreements into separate religions entirely, Sanatan Dharma expanded to contain its diversity. Explore the major spiritual rivers of India—from the devotional ecstasy of <strong>Vaishnavism</strong>, to the mystical depths of <strong>Shaivism</strong>, the fierce power of <strong>Shaktism</strong>, and the synthesizing logic of <strong>Smartism</strong>.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -111,6 +154,33 @@ export default function TraditionsPage() {
                 }
               </div>
             </div>
+
+            {/* SEo / FAQ Section */}
+            <div className="mt-24 pt-16 border-t border-border">
+              <div className="text-center mb-12">
+                <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Understanding the spiritual lineages and paths of India.
+                </p>
+              </div>
+              <div className="max-w-3xl mx-auto">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, index) => (
+                    <AccordionItem key={index} value={`item-${index}`}>
+                      <AccordionTrigger className="text-left font-semibold text-lg hover:text-primary">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
+
           </div>
         </section>
       </main>

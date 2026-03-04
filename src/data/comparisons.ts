@@ -1,3 +1,6 @@
+import { newComparisons } from "./comparisons_new1";
+import { newComparisons2 } from "./comparisons_new2";
+
 export type ComparisonCategory =
   | "Philosophy vs Philosophy"
   | "Practice vs Practice"
@@ -1791,6 +1794,8 @@ export const comparisons: Comparison[] = [
 <p>Study <strong>Patanjali</strong> if you find that your emotions are unreliable and you seek a path based on logic, anatomy, and replicable sensory control. He will give you the "ground" that allows your love to be more than just a passing feeling.</p>
     `,
   },
+  ...newComparisons,
+  ...newComparisons2,
 ];
 
 

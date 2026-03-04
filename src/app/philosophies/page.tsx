@@ -5,19 +5,15 @@ import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Infinity, Eye, Heart, Crown, Layers, Focus, Flame, Scale } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { philosophies } from "@/data/philosophies";
 import { comparisons } from "@/data/comparisons";
-import {
-  ArrowRight,
-  Infinity,
-  Eye,
-  Heart,
-  Crown,
-  Layers,
-  Focus,
-  Flame,
-  Scale,
-} from "lucide-react";
 
 
 export const metadata: Metadata = {
@@ -57,8 +53,44 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 export default function PhilosophiesPage() {
+  const faqs = [
+    {
+      question: "What are the 6 Darshanas in Indian philosophy?",
+      answer: "The six orthodox (Astika) schools of Hindu philosophy are Nyaya (logic), Vaisheshika (atomism), Samkhya (dualism), Yoga (practice), Mimamsa (ritualism), and Vedanta (non-dualism/inquiry). All six accept the authority of the Vedas."
+    },
+    {
+      question: "What is the difference between Vedanta and Samkhya?",
+      answer: "Samkhya is strictly dualistic, asserting that the universe consists of two independent eternal realities: Purusha (pure consciousness) and Prakriti (matter). Vedanta asserts that there is ultimately only one reality (Brahman), and everything else is either an expression or an illusion of that singular source."
+    },
+    {
+      question: "Is Yoga a religion or a philosophy?",
+      answer: "Yoga is one of the six classical Darshanas (philosophical schools) of India, systematized by Patanjali. While it is deeply spiritual, it operates as a practical, experiential science of the mind rather than a belief-based religion. Its primary goal is Chitta Vritti Nirodha (stilling the fluctuations of the mind)."
+    },
+    {
+      question: "What does 'Orthodox' (Astika) mean in Indian philosophy?",
+      answer: "In the context of ancient Indian philosophy, 'Astika' simply means a school that accepts the epistemic authority of the Vedas as a valid source of knowledge. 'Nastika' schools (like Buddhism, Jainism, and Charvaka materialism) rejected Vedic authority, though they often shared similar goals like liberation (Moksha)."
+    }
+  ];
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main className="pt-20">
         <section className="py-16 px-4 sm:px-6 lg:px-8">
@@ -67,10 +99,12 @@ export default function PhilosophiesPage() {
               <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
                 The Six Darshanas — Schools of Indian Philosophy
               </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                The six orthodox schools (darshanas) and their offshoots form
-                the philosophical foundation. Each offers a unique lens for
-                understanding reality, self, and liberation.
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
+                The Sanskrit word for philosophy is <strong>Darshana</strong>, which means "vision" or "a way of seeing."
+                Unlike Western philosophy, which historically prioritized intellectual consistency, Indian philosophy has always been soteriological—its ultimate goal is <strong>Moksha (liberation)</strong> from human suffering.
+              </p>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+                The <strong>Six Orthodox Schools (Shad Darshanas)</strong>—Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, and Vedanta—form the intellectual bedrock of Sanatan Dharma. Though they differ radically in their metaphysics, ranging from strict dualism to absolute monism, they all accept the foundational authority of the Vedas and offer a rigorous, tested pathway to self-realization.
               </p>
             </div>
 
@@ -156,6 +190,33 @@ export default function PhilosophiesPage() {
                 }
               </div>
             </div>
+
+            {/* SEo / FAQ Section */}
+            <div className="mt-24 pt-16 border-t border-border">
+              <div className="text-center mb-12">
+                <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Common questions regarding the fundamental schools of Indian philosophy.
+                </p>
+              </div>
+              <div className="max-w-3xl mx-auto">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, index) => (
+                    <AccordionItem key={index} value={`item-${index}`}>
+                      <AccordionTrigger className="text-left font-semibold text-lg hover:text-primary">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
+
           </div>
         </section>
 

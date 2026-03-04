@@ -5,9 +5,15 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ArrowRight, BookOpen, Scroll, Star } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { texts } from "@/data/texts";
 import { comparisons } from "@/data/comparisons";
-import { ArrowRight, BookOpen, Scroll, Star } from "lucide-react";
 
 export const metadata: Metadata = {
   title:
@@ -33,8 +39,44 @@ export const metadata: Metadata = {
 };
 
 export default function TextsPage() {
+  const faqs = [
+    {
+      question: "What is the difference between Shruti and Smriti texts?",
+      answer: "Shruti means 'that which is heard.' It refers to the Vedas and Upanishads, which are considered eternal truths directly revealed to ancient seers (Rishis). Smriti means 'that which is remembered.' It includes texts like the Bhagavad Gita, the Epics (Ramayana and Mahabharata), and the Puranas, which are of human authorship and designed to explain Shruti concepts to the masses."
+    },
+    {
+      question: "Which Hindu text should a beginner read first?",
+      answer: "The Bhagavad Gita is universally recommended as the starting point. It synthesizes the profound philosophy of the Upanishads into a practical, 700-verse dialogue about duty, action, and devotion, making it highly accessible for modern readers."
+    },
+    {
+      question: "Are the Upanishads part of the Vedas?",
+      answer: "Yes. The Upanishads form the final section of the Vedas, known as Vedanta (the end of the Veda). While the early parts of the Vedas focus on rituals and hymns (Karma Kanda), the Upanishads focus entirely on philosophical inquiry and self-knowledge (Jnana Kanda)."
+    },
+    {
+      question: "How many Puranas are there?",
+      answer: "There are 18 Maha Puranas (Major Puranas) and 18 Upa Puranas (Minor Puranas). They are vast encylopedic texts containing mythology, cosmology, genealogies of gods and kings, and detailed geographical info, with the Srimad Bhagavatam being the most famous."
+    }
+  ];
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main className="pt-20">
         <section className="py-16 px-4 sm:px-6 lg:px-8">
@@ -43,10 +85,11 @@ export default function TextsPage() {
               <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
                 Navigate the Ocean of Wisdom — Sacred Texts
               </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                The Vedas, Upanishads, and Gita form the eternal foundation of
-                Sanatan Dharma. Each text is a doorway to a different facet of
-                the infinite.
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
+                The library of Sanatan Dharma is vast, categorized fundamentally into two branches: <strong>Shruti</strong> (revelation) and <strong>Smriti</strong> (tradition). Unlike Western religions centered around a single historical book, the Dharmic tradition relies on an interconnected ecosystem of texts mapping out philosophy, ritual, psychology, and devotion.
+              </p>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+                From the rigorous metaphysical inquiry of the <strong>Upanishads</strong> to the battlefield pragmatism of the <strong>Bhagavad Gita</strong>, each text serves a different spiritual temperament. Explore the foundational scriptures below to find the entry point that resonates with your path.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -133,6 +176,33 @@ export default function TextsPage() {
                 }
               </div>
             </div>
+
+            {/* SEo / FAQ Section */}
+            <div className="mt-24 pt-16 border-t border-border">
+              <div className="text-center mb-12">
+                <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Common questions regarding the structure and origins of Sanatan Dharma texts.
+                </p>
+              </div>
+              <div className="max-w-3xl mx-auto">
+                <Accordion type="single" collapsible className="w-full">
+                  {faqs.map((faq, index) => (
+                    <AccordionItem key={index} value={`item-${index}`}>
+                      <AccordionTrigger className="text-left font-semibold text-lg hover:text-primary">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
+
           </div>
         </section>
       </main>

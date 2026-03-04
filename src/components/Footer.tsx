@@ -13,16 +13,18 @@ const footerLinks = {
     { label: "Traditions", href: "/traditions" },
     { label: "Greats", href: "/greats" },
     { label: "Sacred Texts", href: "/texts" },
+    { label: "Compare", href: "/compare" },
   ],
   start: [
     { label: "Find Your Path", href: "/faith-finder" },
-    { label: "Bhagavad Gita Guide", href: "/texts/bhagavad-gita" },
-    { label: "Vedanta Guide", href: "/philosophies/vedanta" },
+    { label: "Bhagavad Gita", href: "/texts/bhagavad-gita" },
+    { label: "Sanskrit Lexicon", href: "/learn/sanskrit" },
   ],
-  learn: [
-    { label: "What is Vedanta?", href: "/philosophies/vedanta" },
-    { label: "Yoga Sutras", href: "/texts/yoga-sutras" },
-    { label: "Upanishads", href: "/texts/upanishads" },
+  articles: [
+    { label: "What is Vedanta?", href: "/what-is-vedanta" },
+    { label: "How to Start Japa", href: "/how-to-start-japa" },
+    { label: "10 Sanskrit Mantras", href: "/10-powerful-sanskrit-mantras" },
+    { label: "Daily Spiritual Routine", href: "/daily-spiritual-routine-beginners" },
   ],
 };
 
@@ -128,9 +130,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Learn</h3>
+            <h3 className="font-semibold mb-4">Articles</h3>
             <ul className="space-y-3">
-              {footerLinks.learn.map((link) => (
+              {footerLinks.articles.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -142,6 +144,7 @@ export function Footer() {
               ))}
             </ul>
           </div>
+
         </div>
 
         {/* Sanskrit quote */}
