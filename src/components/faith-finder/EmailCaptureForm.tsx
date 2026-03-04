@@ -21,7 +21,6 @@ export const EmailCaptureForm = ({ result, onSuccess }: EmailCaptureFormProps) =
         setLoading(true);
 
         try {
-            // In a real implementation, this would call the backend API
             const response = await fetch('/api/faith-finder/submit', {
                 method: 'POST',
                 headers: {
@@ -35,6 +34,21 @@ export const EmailCaptureForm = ({ result, onSuccess }: EmailCaptureFormProps) =
 
             if (!response.ok) {
                 throw new Error('Failed to submit email');
+            }
+
+            const data = (await response.json()) as { id?: string };
+            if (data?.id) {
+                if (typeof window !== "undefined" && typeof window.sadhaka?.emailCapture === "function") {
+                    window.sadhaka.emailCapture(result.primaryPath);
+                }
+
+                // Shareable results URL
+                window.location.href = `/faith-finder/results/${data.id}`;
+                return;
+            }
+
+            if (typeof window !== "undefined" && typeof window.sadhaka?.emailCapture === "function") {
+                window.sadhaka.emailCapture(result.primaryPath);
             }
 
             onSuccess();

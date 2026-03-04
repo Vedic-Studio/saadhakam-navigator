@@ -22,12 +22,28 @@
   },
   "dynamicRoutes": [
     {
+      "page": "/api/faith-finder/result/[id]",
+      "regex": "^/api/faith\\-finder/result/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/faith\\-finder/result/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/compare/[slug]",
       "regex": "^/compare/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPslug": "nxtPslug"
       },
       "namedRegex": "^/compare/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/faith-finder/results/[id]",
+      "regex": "^/faith\\-finder/results/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/faith\\-finder/results/(?<nxtPid>[^/]+?)(?:/)?$"
     },
     {
       "page": "/greats/[slug]",
@@ -127,6 +143,12 @@
       "regex": "^/ancient\\-wisdom\\-philosophies(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/ancient\\-wisdom\\-philosophies(?:/)?$"
+    },
+    {
+      "page": "/api/faith-finder/submit",
+      "regex": "^/api/faith\\-finder/submit(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/faith\\-finder/submit(?:/)?$"
     },
     {
       "page": "/bhagavad-gita-complete-guide",

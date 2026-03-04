@@ -952,7 +952,8 @@ export const sanskritVocab: SanskritWord[] = [
       },
       {
         textContext: "Bhagavad Gita 2.53",
-        quoteSanskrit: "श्रुतिविप्रतिपन्ना ते यदा स्थास्यति निश्चला । समाधावचला बुद्धिस्तदा योगमवाप्स्यसि ॥",
+        quoteSanskrit:
+          "श्रुतिविप्रतिपन्ना ते यदा स्थास्यति निश्चला । समाधावचला बुद्धिस्तदा योगमवाप्स्यसि ॥",
         quoteTranslation:
           "When your intellect, bewildered by the scriptures, remains steady and immovable in Samadhi, then you will attain Yoga.",
         explanation:
@@ -1026,7 +1027,8 @@ export const sanskritVocab: SanskritWord[] = [
       },
       {
         textContext: "Bhagavad Gita 17.16",
-        quoteSanskrit: "मनःप्रसादः सौम्यत्वं मौनमात्मविनिग्रहः । भावसंशुद्धिरित्येतत्तपो मानसमुच्यते ॥",
+        quoteSanskrit:
+          "मनःप्रसादः सौम्यत्वं मौनमात्मविनिग्रहः । भावसंशुद्धिरित्येतत्तपो मानसमुच्यते ॥",
         quoteTranslation:
           "Serenity of mind, gentleness, silence, self-control, and purity of thought—this is called the austerity (Tapas) of the mind.",
         explanation:
@@ -1092,7 +1094,8 @@ export const sanskritVocab: SanskritWord[] = [
     usageExamples: [
       {
         textContext: "Guru Gita (Skanda Purana)",
-        quoteSanskrit: "गुरुर्ब्रह्मा गुरुर्विष्णुर्गुरुर्देवो महेश्वरः । गुरुः साक्षात् परब्रह्म तस्मै श्रीगुरवे नमः ॥",
+        quoteSanskrit:
+          "गुरुर्ब्रह्मा गुरुर्विष्णुर्गुरुर्देवो महेश्वरः । गुरुः साक्षात् परब्रह्म तस्मै श्रीगुरवे नमः ॥",
         quoteTranslation:
           "The Guru is Brahma, the Guru is Vishnu, the Guru is Maheshvara (Shiva). The Guru is verily the Supreme Absolute (Parabrahman); to that revered Guru, my salutations.",
         explanation:
@@ -1100,7 +1103,8 @@ export const sanskritVocab: SanskritWord[] = [
       },
       {
         textContext: "Bhagavad Gita 4.34",
-        quoteSanskrit: "तद्विद्धि प्रणिपातेन परिप्रश्नेन सेवया । उपदेक्ष्यन्ति ते ज्ञानं ज्ञानिनस्तत्त्वदर्शिनः ॥",
+        quoteSanskrit:
+          "तद्विद्धि प्रणिपातेन परिप्रश्नेन सेवया । उपदेक्ष्यन्ति ते ज्ञानं ज्ञानिनस्तत्त्वदर्शिनः ॥",
         quoteTranslation:
           "Acquire this knowledge by humbly approaching a master, by sincere inquiry, and by service. The wise, who have seen the Truth, will instruct you.",
         explanation:
@@ -1165,7 +1169,8 @@ export const sanskritVocab: SanskritWord[] = [
     usageExamples: [
       {
         textContext: "Mandukya Upanishad 1",
-        quoteSanskrit: "ओमित्येतदक्शरमिदँ सर्वं तस्योपव्याख्यानं भूतं भवद्भविश्यदिति सर्वमोङ्कार एव",
+        quoteSanskrit:
+          "ओमित्येतदक्शरमिदँ सर्वं तस्योपव्याख्यानं भूतं भवद्भविश्यदिति सर्वमोङ्कार एव",
         quoteTranslation:
           "Om—this syllable is this whole world. The past, the present, and the future—everything is just the syllable Om.",
         explanation:
@@ -1173,7 +1178,8 @@ export const sanskritVocab: SanskritWord[] = [
       },
       {
         textContext: "Rig Veda 3.62.10 (Gayatri Mantra)",
-        quoteSanskrit: "तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्",
+        quoteSanskrit:
+          "तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्",
         quoteTranslation:
           "Let us meditate on the glorious splendor of the divine Sun; may He illuminate our minds.",
         explanation:
@@ -1239,7 +1245,8 @@ export const sanskritVocab: SanskritWord[] = [
     usageExamples: [
       {
         textContext: "Bhagavad Gita 3.19",
-        quoteSanskrit: "तस्मादसक्तः सततं कार्यं कर्म समाचर । असक्तो ह्याचरन्कर्म परमाप्नोति पूरुषः ॥",
+        quoteSanskrit:
+          "तस्मादसक्तः सततं कार्यं कर्म समाचर । असक्तो ह्याचरन्कर्म परमाप्नोति पूरुषः ॥",
         quoteTranslation:
           "Therefore, without attachment, always perform your duty efficiently. By performing work without attachment, a person attains the Supreme.",
         explanation:
@@ -1315,7 +1322,8 @@ export const sanskritVocab: SanskritWord[] = [
       },
       {
         textContext: "Bhagavad Gita 6.25",
-        quoteSanskrit: "शनैः शनैरुपरमेद्बुद्ध्या धृतिगृहीतया । आत्मसंस्थं मनः कृत्वा न किञ्चिदपि चिन्तयेत् ॥",
+        quoteSanskrit:
+          "शनैः शनैरुपरमेद्बुद्ध्या धृतिगृहीतया । आत्मसंस्थं मनः कृत्वा न किञ्चिदपि चिन्तयेत् ॥",
         quoteTranslation:
           "Gradually, step by step, one should become situated in trance by means of intelligence sustained by full conviction (Dharana). Fixing the mind on the Self alone, one should think of nothing else.",
         explanation:
@@ -1325,7 +1333,8 @@ export const sanskritVocab: SanskritWord[] = [
     relatedWords: ["yoga", "samadhi", "chakra", "mantra"],
     faqs: [
       {
-        question: "What is the difference between Dharana and Dhyana (Meditation)?",
+        question:
+          "What is the difference between Dharana and Dhyana (Meditation)?",
         answer:
           "Dharana is the 'effort' to concentrate. It is like an intermittent flow of water drops. When that concentration becomes a smooth, effortless, unbroken stream (like pouring oil), it becomes Dhyana.",
       },
@@ -1470,7 +1479,8 @@ export const sanskritVocab: SanskritWord[] = [
     relatedWords: ["maya", "brahman", "moksha", "guru"],
     faqs: [
       {
-        question: "If life is just God's 'play', why is there so much suffering?",
+        question:
+          "If life is just God's 'play', why is there so much suffering?",
         answer:
           "In a drama or a video game, conflict, difficulty, and 'villains' make the game engaging. Suffering occurs because we forget we are actors playing a role, and we take our finite ego-character too seriously.",
       },
@@ -1487,6 +1497,1456 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Lila represents the joyous, spontaneous, and dramatic play of the Divine, offering a beautiful perspective that views the creation of the universe as an act of ecstatic cosmic sport rather than necessity.",
+  },
+  {
+    slug: "bhakti",
+    wordEnglish: "Bhakti",
+    wordDevanagari: "भक्ति",
+    transliteration: "bhakti",
+    pronunciation: "bhuk-tee",
+    etymology: {
+      root: "bhaj (भज्)",
+      rootMeaning: "to share, divide, belong to, or serve",
+      formationExplanation:
+        "Bhakti implies a relationship of sharing or belonging—it is the participation of the individual soul in the life of the Divine.",
+    },
+    primaryMeanings: [
+      "Devotion or love for God",
+      "Attachment or participation",
+      "Spiritual service (Seva)",
+      "Pious devotion as a means of liberation",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Bhagavad Gita",
+        meaning:
+          "Presented as the easiest and most direct path to the Divine, accessible to all regardless of caste or knowledge, characterized by total surrender.",
+      },
+      {
+        tradition: "Narada Bhakti Sutras",
+        meaning:
+          "Defined as 'Parama-prema-rupa'—the nature of supreme love for God, which is its own reward and leads to immortality.",
+      },
+      {
+        tradition: "Srimad Bhagavatam",
+        meaning:
+          "Identifies nine forms of Bhakti (Navavidha Bhakti), ranging from hearing about the Lord (Shravanam) to total self-offering (Atmanivedanam).",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 9.26",
+        quoteSanskrit: "पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति",
+        quoteTranslation:
+          "Whosoever offers Me with devotion a leaf, a flower, a fruit, or even water—that I accept, offered with love by the pure-hearted.",
+        explanation:
+          "Krishna emphasizes that the external value of an offering is irrelevant; it is the Bhakti (devotional intent) that sanctifies the gift.",
+      },
+      {
+        textContext: "Narada Bhakti Sutra 2",
+        quoteSanskrit: "सा त्वस्मिन् परमप्रेमरूपा",
+        quoteTranslation:
+          "That (Bhakti) is of the nature of supreme love for That (God).",
+        explanation:
+          "The quintessential definition of Bhakti as not just ritual worship, but an all-consuming, transcendent love.",
+      },
+    ],
+    relatedWords: ["yoga", "seva", "mantra", "avatara"],
+    faqs: [
+      {
+        question: "Is Bhakti just about emotions?",
+        answer:
+          "No. While it involves the heart, true Bhakti includes 'Para-Bhakti' (highest devotion) which is inseparable from Jñāna (knowledge of the Divine nature).",
+      },
+      {
+        question: "What are the nine types of Bhakti?",
+        answer:
+          "Hearing, Chanting, Remembering, Serving the feet, Worshiping, Praying, Servant-mood, Friendship, and Self-surrender.",
+      },
+      {
+        question: "How is Bhakti Yoga different from Jnana Yoga?",
+        answer:
+          "Bhakti Yoga uses the power of love and personal relationship with a deity, while Jnana Yoga uses discrimination and self-inquiry. Ultimately, both lead to the same destination.",
+      },
+    ],
+    summary:
+      "Bhakti is the path of supreme love and devotion to the Divine, serving as a powerful and accessible means to achieve spiritual liberation and union.",
+  },
+  {
+    slug: "jnana",
+    wordEnglish: "Jnana",
+    wordDevanagari: "ज्ञान",
+    transliteration: "jñāna",
+    pronunciation: "gyah-nah",
+    etymology: {
+      root: "jñā (ज्ञा)",
+      rootMeaning: "to know, understand, or experience",
+      formationExplanation:
+        "In a spiritual context, Jñāna is not intellectual information, but a direct, experiential realization of the ultimate truth.",
+    },
+    primaryMeanings: [
+      "Transcendental knowledge",
+      "Spiritual wisdom",
+      "Realization of the Self (Atman)",
+      "Discrimination between the real and unreal",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Advaita Vedanta",
+        meaning:
+          "Direct realization that the individual soul (Atman) is identical to the universal reality (Brahman). This knowledge is what 'burns' away karma.",
+      },
+      {
+        tradition: "Bhagavad Gita",
+        meaning:
+          "Characterized as the 'sacred fire' that purifies all actions and leads to the highest peace.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 4.38",
+        quoteSanskrit: "न हि ज्ञानेन सदृशं पवित्रमिह विद्यते",
+        quoteTranslation:
+          "In this world, there is nothing as purifying as knowledge.",
+        explanation:
+          "This famous verse asserts that while ritual and action are useful, only the dawn of spiritual wisdom truly cleanses the soul of its core ignorance.",
+      },
+      {
+        textContext: "Upanishad",
+        quoteSanskrit: "ऋते ज्ञानान्न मुक्तिः",
+        quoteTranslation: "Without knowledge, there is no liberation.",
+        explanation:
+          "A foundational philosophical axiom stating that since bondage is caused by ignorance (Avidya), only its opposite—Jnana—can bring freedom.",
+      },
+    ],
+    relatedWords: ["viveka", "brahman", "atman", "avidya"],
+    faqs: [
+      {
+        question: "Is Jnana the same as worldly knowledge?",
+        answer:
+          "No. Worldly knowledge (Apara-Vidya) is information about objects. Jñāna (Para-Vidya) is the subjective experience of the Knower and the Ground of all existence.",
+      },
+      {
+        question: "Can Jnana be attained through books?",
+        answer:
+          "Books and scriptures (Shastras) point the way, but Jñāna must be matured through contemplation (Manana) and deep meditation (Nididhyasana) until it becomes a living experience.",
+      },
+    ],
+    summary:
+      "Jnana is the supreme spiritual wisdom and direct realization of the ultimate truth that frees the soul from the cycle of birth and death.",
+  },
+  {
+    slug: "sadhana",
+    wordEnglish: "Sadhana",
+    wordDevanagari: "साधना",
+    transliteration: "sādhanā",
+    pronunciation: "sah-dhu-nah",
+    etymology: {
+      root: "sādh (साध्)",
+      rootMeaning: "to be completed, to succeed, or to go straight to a goal",
+      formationExplanation:
+        "Sādhana is the disciplined practice that 'leads to the goal' of Self-realization or God-realization.",
+    },
+    primaryMeanings: [
+      "Spiritual discipline or practice",
+      "A means of achieving something",
+      "Dedicated pursuit of a spiritual goal",
+      "A systematic religious practice",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Yoga",
+        meaning:
+          "The systematic application of the eight limbs to refine the mind and body for Samadhi.",
+      },
+      {
+        tradition: "Tantra",
+        meaning:
+          "The use of ritual, mantra, and visualization to transform the practitioner's consciousness into the Divine consciousness.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Modern Spiritual Wisdom",
+        quoteSanskrit: "साधनात् साध्यं लभ्यते",
+        quoteTranslation: "Through practice, the goal is attained.",
+        explanation:
+          "A simple but profound principle: spirituality is not theoretical; it requires consistent, daily application to bear fruit.",
+      },
+    ],
+    relatedWords: ["tapas", "yoga", "bhakti", "seva"],
+    faqs: [
+      {
+        question: "What is a Daily Sadhana?",
+        answer:
+          "A daily routine consisting of practices like meditation, prayer, mantra chanting, or scriptural study, usually performed early in the morning (Brahma Muhurta).",
+      },
+      {
+        question: "What is the difference between a practitioner and a Sadhu?",
+        answer:
+          "A 'Sadhaka' is one who is actively practicing; a 'Sadhu' is one who has matured in that practice and often dedicated their whole life to it.",
+      },
+    ],
+    summary:
+      "Sadhana is the essential, disciplined spiritual practice that bridges the gap between theoretical knowledge and direct experience of the Divine.",
+  },
+  {
+    slug: "shanti",
+    wordEnglish: "Shanti",
+    wordDevanagari: "शान्ति",
+    transliteration: "śānti",
+    pronunciation: "shahn-tee",
+    etymology: {
+      root: "śam (शम्)",
+      rootMeaning: "to be calm, quiet, or extinguished",
+      formationExplanation:
+        "Shanti is the state of tranquility that arises when the 'fires' of passion, frustration, and dualistic thought are stilled.",
+    },
+    primaryMeanings: [
+      "Peace or tranquility",
+      "Absence of mental disturbance",
+      "Bliss of the Self",
+      "A formal prayer for peace",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Upanishadic Mantras",
+        meaning:
+          "Often repeated three times ('Shanti, Shanti, Shanti') to invoke peace in the three realms: the physical (Adhibhautika), the subtle/mental (Adhidaivika), and the spiritual (Adhyatmika).",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 2.70",
+        quoteSanskrit: "स शान्तिमाप्नोति न कामकामी",
+        quoteTranslation: "He attains peace, not he who desires desires.",
+        explanation:
+          "Krishna explains that peace is not found by fulfilling cravings, but by allowing desires to enter the mind without disturbing its depth—like rivers entering the ocean.",
+      },
+    ],
+    relatedWords: ["samadhi", "yoga", "atman"],
+    faqs: [
+      {
+        question: "Why is 'Shanti' repeated three times?",
+        answer:
+          "To mitigate disturbances from three sources: natural disasters/others, supernatural/mental forces, and one's own internal struggles.",
+      },
+      {
+        question: "Is Shanti just the absence of noise?",
+        answer:
+          "No. Shanti is a positive state of spiritual fullness. It is the peace that 'surpasses understanding,' rooted in the realization of the eternal Self.",
+      },
+    ],
+    summary:
+      "Shanti is the profound, spiritual peace and tranquility that represents the natural state of the soul when free from worldly agitation.",
+  },
+  {
+    slug: "om",
+    wordEnglish: "Om / Aum",
+    wordDevanagari: "ॐ",
+    transliteration: "oṃ",
+    pronunciation: "ohm",
+    etymology: {
+      root: "Derived from 'av' (अव्)",
+      rootMeaning: "to protect, sustain, or favor",
+      formationExplanation:
+        "Om is the syllable that contains all other sounds, representing the totality of the universe and the Divine.",
+    },
+    primaryMeanings: [
+      "The primordial sound (Pranava)",
+      "The symbol of Brahman",
+      "The vibration of the universe",
+      "The beginning and end of all prayers",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Mandukya Upanishad",
+        meaning:
+          "The most detailed analysis of Om, equating its three sounds (A-U-M) with the three states of consciousness (Waking, Dreaming, Deep Sleep) and the silence (Turiya) beyond.",
+      },
+      {
+        tradition: "Yoga Sutras",
+        meaning:
+          "Patanjali identifies Om as the designator (Vachaka) of Ishvara (God). Chanting it with focus leads to the removal of obstacles and the realization of consciousness.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Mandukya Upanishad 1",
+        quoteSanskrit: "ओमित्येतदक्षरमिदं सर्वं",
+        quoteTranslation: "All this is the syllable Om.",
+        explanation:
+          "The Upanishad opens with the bold claim that the entire cosmos—past, present, and future—is nothing but a transformation of the primordial vibration represented by Om.",
+      },
+    ],
+    relatedWords: ["mantra", "brahman", "samadhi", "prana"],
+    faqs: [
+      {
+        question: "What do the letters A, U, and M represent?",
+        answer:
+          "A represents the waking state and creation; U represents the dreaming state and preservation; M represents deep sleep and dissolution.",
+      },
+      {
+        question: "Is Om a religious symbol?",
+        answer:
+          "While central to Hinduism, Buddhism, and Jainism, Om is considered a universal phonetic signature of the cosmos, making its vibration accessible to all seekers.",
+      },
+    ],
+    summary:
+      "Om is the sacred primordial vibration of the universe, representing the absolute reality and the interconnectedness of all existence.",
+  },
+  {
+    slug: "guna",
+    wordEnglish: "Guna",
+    wordDevanagari: "गुण",
+    transliteration: "guṇa",
+    pronunciation: "goo-nah",
+    etymology: {
+      root: "guṇa (गुण)",
+      rootMeaning: "string, thread, or quality",
+      formationExplanation:
+        "Gunas are the 'threads' that weave the fabric of the material world (Prakriti).",
+    },
+    primaryMeanings: [
+      "Qualities of nature",
+      "Attributes of the mind and body",
+      "Virtue or merit",
+      "Secondary or subordinate element",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Samkhya & Yoga",
+        meaning:
+          "The three fundamental forces of nature: Sattva (purity/light), Rajas (activity/passion), and Tamas (inertia/darkness). Everything in the material world is a mix of these three.",
+      },
+      {
+        tradition: "Bhagavad Gita",
+        meaning:
+          "Explains how the Gunas bind the soul to the body and how spiritual evolution involves moving from Tamas to Rajas, then to Sattva, and finally becoming 'Gunatita' (transcending all three).",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 14.5",
+        quoteSanskrit: "सत्त्वं रजस्तम इति गुणाः प्रकृतिसम्भवाः",
+        quoteTranslation:
+          "Sattva, Rajas, and Tamas—these gunas, born of Prakriti, bind the soul.",
+        explanation:
+          "Krishna identifies the components of the world that distract the soul from its true, infinite nature and tie it to the finite identity of the body.",
+      },
+    ],
+    relatedWords: ["maya", "karma", "samsara"],
+    faqs: [
+      {
+        question: "What are the characteristics of the three Gunas?",
+        answer:
+          "Sattva is clarity and calm; Rajas is ambition and restlessness; Tamas is laziness and confusion.",
+      },
+      {
+        question: "Can we live without the Gunas?",
+        answer:
+          "Not while having a body and mind. However, we can choose to cultivate Sattva to make the mind a mirror for the soul, and ultimately realize our identity as the witness (Purusha) who is beyond the Gunas.",
+      },
+    ],
+    summary:
+      "Gunas are the three fundamental qualities or forces (Sattva, Rajas, Tamas) that govern the nature of the mind and the physical universe.",
+  },
+  {
+    slug: "vairagya",
+    wordEnglish: "Vairagya",
+    wordDevanagari: "वैराग्य",
+    transliteration: "vairāgya",
+    pronunciation: "vie-rah-gyah",
+    etymology: {
+      root: "vi + rañj (रञ्ज्)",
+      rootMeaning: "without + color or passion",
+      formationExplanation:
+        "It literally means the fading of the 'coloring' of the mind by worldly attractions and repulsions.",
+    },
+    primaryMeanings: [
+      "Dispassion or non-attachment",
+      "Freedom from worldly desires",
+      "Objectivity toward life's ups and downs",
+      "Spiritual renunciation",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Yoga Sutras",
+        meaning:
+          "One of the two pillars of spiritual growth (along with Abhyasa/Practice). It is the mastery of the mind that no longer thirsts for seen or unseen objects.",
+      },
+      {
+        tradition: "Vedanta",
+        meaning:
+          "One of the four requirements for a seeker (Sadhana Chatushtaya), helping to turn the attention inward away from the temporary world.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 6.35",
+        quoteSanskrit: "अभ्यासेन तु कौन्तेय वैराग्येण च गृह्यते",
+        quoteTranslation:
+          "By practice (Abhyasa) and dispassion (Vairagya), the mind is controlled.",
+        explanation:
+          "Krishna admits to Arjuna that the mind is difficult to tame, but these two 'wings'—consistent effort and non-attachment—make it possible.",
+      },
+    ],
+    relatedWords: ["viveka", "sadhana", "yoga", "moksha"],
+    faqs: [
+      {
+        question: "Does Vairagya mean I have to leave my family?",
+        answer:
+          "No. True Vairagya is internal. It is not about leaving the world, but about 'leaving the worldliness'—the dependency on external things for your inner happiness.",
+      },
+      {
+        question: "Is Vairagya the same as indifference?",
+        answer:
+          "No. Indifference is cold and often based on aversion. Vairagya is based on wisdom—knowing that objects are temporary and don't define your true Self.",
+      },
+    ],
+    summary:
+      "Vairagya is the spiritual quality of dispassion and internal non-attachment, allowing for clear discernment and steady focus on the eternal.",
+  },
+  {
+    slug: "viveka",
+    wordEnglish: "Viveka",
+    wordDevanagari: "विवेक",
+    transliteration: "viveka",
+    pronunciation: "vi-vay-kah",
+    etymology: {
+      root: "vi + vic (विच्)",
+      rootMeaning: "to separate, distinguish, or sift",
+      formationExplanation:
+        "Viveka is the keen intellectual and intuitive ability to separate the essential from the non-essential.",
+    },
+    primaryMeanings: [
+      "Discrimination or discernment",
+      "Right judgment",
+      "Separating the Real from the Unreal",
+      "Distinguishing between Atman and non-Atman",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Vedanta",
+        meaning:
+          "The first of the four qualifications (Sadhana Chatushtaya). It specifically refers to 'Nitya-Anitya-Vastu-Viveka'—the discernment between the Eternal and the Temporary.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Vivekachudamani",
+        quoteSanskrit: "विवेकः कस्य वा न स्यात्",
+        quoteTranslation: "Who indeed does not need discrimination?",
+        explanation:
+          "Adi Shankaracharya's famous text, the 'Crest-Jewel of Discrimination,' begins with the premise that Viveka is the master key to spiritual evolution.",
+      },
+    ],
+    relatedWords: ["vairagya", "jnana", "brahman"],
+    faqs: [
+      {
+        question: "How do I practice Viveka in daily life?",
+        answer:
+          "By frequently asking, 'Is this feeling/object/situation permanent or temporary? Does it belong to my true Self or to the changing world of Maya?'",
+      },
+      {
+        question: "How are Viveka and Vairagya related?",
+        answer:
+          "Viveka is the 'seeing' (discernment) and Vairagya is the 'doing' (non-attachment). You first see that something is temporary (Viveka), then you naturally stop leaning on it for permanent happiness (Vairagya).",
+      },
+    ],
+    summary:
+      "Viveka is the spiritual faculty of discrimination, enabling the seeker to distinguish between the eternal reality and the transient appearances of the world.",
+  },
+  {
+    slug: "purushartha",
+    wordEnglish: "Purushartha",
+    wordDevanagari: "पुरुषार्थ",
+    transliteration: "puruṣārtha",
+    pronunciation: "poo-roo-shart-huh",
+    etymology: {
+      root: "purusha + artha",
+      rootMeaning: "human being + purpose/aim/value",
+      formationExplanation:
+        "Purushartha represents the integrated set of goals that make for a complete and fulfilling human life.",
+    },
+    primaryMeanings: [
+      "The four goals of human life",
+      "Purpose of existence",
+      "Human endeavor",
+      "Value system for a balanced life",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Vedic Ethics",
+        meaning:
+          "The framework for a balanced life: Dharma (righteousness), Artha (prosperity), Kama (pleasure), and Moksha (liberation). Spiritual growth involves pursuing the first three in a way that leads to the fourth.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Classical Wisdom",
+        quoteSanskrit: "धर्मार्थकाममोक्षाणां",
+        quoteTranslation:
+          "Righteousness, prosperity, pleasure, and liberation.",
+        explanation:
+          "The traditional listing of the four aims, showing that Hinduism does not reject material wealth or pleasure, but places them within a larger spiritual context.",
+      },
+    ],
+    relatedWords: ["dharma", "moksha", "karma"],
+    faqs: [
+      {
+        question: "Are all four Purusharthas equally important?",
+        answer:
+          "Dharma is the foundation; Artha and Kama must be pursued according to Dharma. Moksha is considered the 'Parama-Purushartha'—the supreme goal.",
+      },
+      {
+        question: "Can I skip the first three and go straight to Moksha?",
+        answer:
+          "Some do (renunciates/Sanyasis), but for most, the first three provide the 'field' for maturing one's desires and responsibilities until the heart is ready for absolute freedom.",
+      },
+    ],
+    summary:
+      "Purushartha is the comprehensive Vedic framework for a balanced life, harmonizing material needs, emotional desires, and ethical duties with the ultimate goal of spiritual liberation.",
+  },
+  {
+    slug: "avatara",
+    wordEnglish: "Avatara",
+    wordDevanagari: "अवतार",
+    transliteration: "avatāra",
+    pronunciation: "uh-vuh-tah-rah",
+    etymology: {
+      root: "ava + tṛ (तृ)",
+      rootMeaning: "down + to cross or pass",
+      formationExplanation:
+        "An Avatāra is a 'descent' of the Divine into the physical world to restore order and guide humanity.",
+    },
+    primaryMeanings: [
+      "Divine incarnation",
+      "Descent of God into human form",
+      "Manifestation of the Absolute in a finite form",
+      "Restoration of Dharma",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Bhagavad Gita",
+        meaning:
+          "Krishna explains that the Unborn takes on a birth through His own power (Maya) whenever righteousness declines.",
+      },
+      {
+        tradition: "Vaishnavism",
+        meaning:
+          "Primarily focused on the Dashavatara (ten incarnations) of Vishnu, each responding to a specific cosmic crisis.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 4.8",
+        quoteSanskrit: "परित्राणाय साधूनां विनाशाय च दुष्कृताम्",
+        quoteTranslation:
+          "For the protection of the good and the destruction of the wicked... I am born age after age.",
+        explanation:
+          "The clear statement of the purpose of an Avatāra: to protect those on the path of Dharma and restore the moral pivot of the world.",
+      },
+    ],
+    relatedWords: ["dharma", "bhakti", "lila"],
+    faqs: [
+      {
+        question: "Is an Avatāra a normal person who became God?",
+        answer:
+          "No. According to tradition, an Avatāra is the Supreme Divine who voluntarily limits Himself to a form, while remaining fully conscious of His infinite nature.",
+      },
+      {
+        question: "What is the difference between a Guru and an Avatāra?",
+        answer:
+          "A Guru is one who has realized God; an Avatāra is Ged who has descended to teach the world. A Guru points to the Divine; the Avatāra is the Divine manifested.",
+      },
+    ],
+    summary:
+      "Avatara is the divine 'descent' or incarnation of the Supreme Reality into the world to uphold righteousness and guide seekers toward truth.",
+  },
+  {
+    slug: "kundalini",
+    wordEnglish: "Kundalini",
+    wordDevanagari: "कुण्डलिनी",
+    transliteration: "kuṇḍalinī",
+    pronunciation: "kun-duh-lee-nee",
+    etymology: {
+      root: "kuṇḍala (कुण्डल)",
+      rootMeaning: "coiled, ring, or earring",
+      formationExplanation:
+        "Literally 'the coiled one', referring to the dormant spiritual energy lying at the base of the spine.",
+    },
+    primaryMeanings: [
+      "Primal energy or Shakti",
+      "Serpent power",
+      "Dormant spiritual potential",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Tantra & Hatha Yoga",
+        meaning:
+          "The evolutionary force of consciousness in the human body, which when awakened travels up the susumna nadi to unite with Shiva at the crown.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Hatha Yoga Pradipika",
+        quoteSanskrit: "सुप्ता गुरुप्रसादेन यदा जागर्ति कुण्डली",
+        quoteTranslation:
+          "When the sleeping Kundalini awakens by the grace of the Guru...",
+        explanation:
+          "Describes the pivotal moment when the dormant potential is activated, beginning the process of profound spiritual transformation.",
+      },
+    ],
+    relatedWords: ["chakra", "prana", "nadi"],
+    faqs: [
+      {
+        question: "Is Kundalini dangerous?",
+        answer:
+          "If awakened forcefully without proper physical and mental purification, it can cause imbalances. Traditional texts strongly recommend guidance from a qualified Guru.",
+      },
+      {
+        question: "Where does Kundalini reside?",
+        answer:
+          "It is said to lie dormant at the Muladhara (root) chakra at the base of the spine, coiled three and a half times.",
+      },
+    ],
+    summary:
+      "Kundalini is the dormant, primal spiritual energy resting at the base of the spine that, when awakened, leads to profound states of realization.",
+  },
+  {
+    slug: "nadi",
+    wordEnglish: "Nadi",
+    wordDevanagari: "नाडी",
+    transliteration: "nāḍī",
+    pronunciation: "nah-dee",
+    etymology: {
+      root: "nāḍ (नाड्)",
+      rootMeaning: "tube, pipe, or channel",
+      formationExplanation:
+        "Refers to the subtle energy channels through which Prana flows.",
+    },
+    primaryMeanings: ["Energy channel", "Subtle nerve", "Flow or current"],
+    philosophicalContexts: [
+      {
+        tradition: "Yoga & Ayurveda",
+        meaning:
+          "The pathways of the subtle body (sukshma sharira) that carry life force. There are said to be 72,000 nadis, the most important being Ida, Pingala, and Sushumna.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Shiva Samhita",
+        quoteSanskrit: "द्वासप्ततिसहस्राणि नाड्यो",
+        quoteTranslation: "There are seventy-two thousand nadis...",
+        explanation:
+          "Highlights the immense complexity and subtlety of the human energy system.",
+      },
+    ],
+    relatedWords: ["prana", "chakra", "kundalini"],
+    faqs: [
+      {
+        question: "What are the three main nadis?",
+        answer:
+          "Ida (left/lunar/cooling), Pingala (right/solar/heating), and Sushumna (central/spiritual).",
+      },
+    ],
+    summary:
+      "Nadis are the subtle energetic channels in the body through which Prana (life force) flows.",
+  },
+  {
+    slug: "kosha",
+    wordEnglish: "Kosha",
+    wordDevanagari: "कोश",
+    transliteration: "kośa",
+    pronunciation: "koh-shah",
+    etymology: {
+      root: "kuś (कुश्)",
+      rootMeaning: "to enclose or cover",
+      formationExplanation: "Refers to a sheath or covering.",
+    },
+    primaryMeanings: ["Sheath or layer", "Covering", "Treasury or receptacle"],
+    philosophicalContexts: [
+      {
+        tradition: "Vedanta (Taittiriya Upanishad)",
+        meaning:
+          "The five layers that veil the pure Atman, ranging from the gross physical body to the subtle body of bliss.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Taittiriya Upanishad",
+        quoteSanskrit: "अन्नमयो प्राणमयो मनोमयो विज्ञानमयो आनन्दमयः",
+        quoteTranslation:
+          "The sheaths of food, vital air, mind, intellect, and bliss.",
+        explanation:
+          "The classical enumeration of the Panchakosha (five sheaths) that map human existence from the most dense to most subtle.",
+      },
+    ],
+    relatedWords: ["atman", "prana", "jnana"],
+    faqs: [
+      {
+        question: "What are the five Koshas?",
+        answer:
+          "Annamaya (Food/Physical), Pranamaya (Energy/Breath), Manomaya (Mind/Emotions), Vijnanamaya (Wisdom/Intellect), and Anandamaya (Bliss).",
+      },
+    ],
+    summary:
+      "Koshas are the five concentric subtle sheaths that veil the pure consciousness of the Atman.",
+  },
+  {
+    slug: "mudra",
+    wordEnglish: "Mudra",
+    wordDevanagari: "मुद्रा",
+    transliteration: "mudrā",
+    pronunciation: "moo-drah",
+    etymology: {
+      root: "mud (मुद्)",
+      rootMeaning: "joy or delight",
+      formationExplanation:
+        "Literally 'that which gives joy', referring to gestures that seal energy and invite divine presence.",
+    },
+    primaryMeanings: [
+      "Seal or gesture",
+      "Symbolic hand position",
+      "Energy lock",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Tantra & Yoga",
+        meaning:
+          "Specific body or hand positions used to channel and seal the flow of Prana during meditation and rituals.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Gheranda Samhita",
+        quoteSanskrit: "मुद्राभ्यासेन योगिनां",
+        quoteTranslation: "By the practice of mudras by the yogis...",
+        explanation:
+          "Emphasizes the importance of mudras in advanced yogic practices for stabilizing the mind and energy.",
+      },
+    ],
+    relatedWords: ["prana", "asana", "puja"],
+    faqs: [
+      {
+        question: "Are mudras only done with the hands?",
+        answer:
+          "No. While hand mudras are most common, there are also postural mudras involving the whole body, eyes, or tongue.",
+      },
+    ],
+    summary:
+      "Mudras are symbolic gestures or energy seals, often performed with the hands, used to direct Prana and deepen meditation.",
+  },
+  {
+    slug: "bandha",
+    wordEnglish: "Bandha",
+    wordDevanagari: "बन्ध",
+    transliteration: "bandha",
+    pronunciation: "bun-dhah",
+    etymology: {
+      root: "bandh (बन्ध्)",
+      rootMeaning: "to bind, tie, or lock",
+      formationExplanation:
+        "Refers to the practice of 'locking' or binding energy within the body.",
+    },
+    primaryMeanings: [
+      "Lock or seal",
+      "Bondage or binding",
+      "Muscular contraction in yoga",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Hatha Yoga",
+        meaning:
+          "Specific muscular locks used to control and direct the flow of Prana and Apana, preventing energy from dissipating.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Hatha Yoga Pradipika",
+        quoteSanskrit: "मूलबन्धो जालन्धरो उड्डीयानः",
+        quoteTranslation: "Mula Bandha, Jalandhara Bandha, Uddiyana Bandha.",
+        explanation:
+          "The three primary locks used by yogis to awaken sleeping energy and direct it up the central channel.",
+      },
+    ],
+    relatedWords: ["prana", "mudra", "kundalini"],
+    faqs: [
+      {
+        question: "What are the core Bandhas?",
+        answer:
+          "Mula Bandha (Root Lock), Uddiyana Bandha (Abdominal Lock), and Jalandhara Bandha (Throat Lock). When done together, it is called Maha Bandha.",
+      },
+    ],
+    summary:
+      "Bandhas are specific energetic locks or muscular contractions used in Yoga to contain and direct vital life force.",
+  },
+  {
+    slug: "asana",
+    wordEnglish: "Asana",
+    wordDevanagari: "आसन",
+    transliteration: "āsana",
+    pronunciation: "ah-suh-nuh",
+    etymology: {
+      root: "ās (आस्)",
+      rootMeaning: "to sit or remain",
+      formationExplanation: "Literally 'a seat' or 'a seated posture'.",
+    },
+    primaryMeanings: [
+      "Posture",
+      "Seat",
+      "The physical practice of Yoga",
+      "The third limb of Patanjali's Ashtanga Yoga",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Yoga Sutras",
+        meaning:
+          "Defined simply as a 'steady and comfortable posture' meant for meditation.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Yoga Sutras 2.46",
+        quoteSanskrit: "स्थिरसुखमासनम्",
+        quoteTranslation: "Posture should be steady and comfortable.",
+        explanation:
+          "Patanjali's sole instruction on physical posture: it must be stable enough to sit for hours and comfortable enough to forget the body.",
+      },
+    ],
+    relatedWords: ["yoga", "pranayama", "dharana"],
+    faqs: [
+      {
+        question: "Are Asanas meant for exercise?",
+        answer:
+          "In modern times, yes. But traditionally, Asanas were primarily meant to purify the subtle body and allow one to sit pain-free in meditation for extended periods.",
+      },
+    ],
+    summary:
+      "Asana is the physical posture or seat in Yoga, designed to bring steadiness, health, and lightness to the body.",
+  },
+  {
+    slug: "pranayama",
+    wordEnglish: "Pranayama",
+    wordDevanagari: "प्राणायाम",
+    transliteration: "prāṇāyāma",
+    pronunciation: "prah-nah-yah-mah",
+    etymology: {
+      root: "prāṇa (प्राण) + āyāma (आयाम)",
+      rootMeaning: "life force + extension/expansion",
+      formationExplanation:
+        "The extension, regulation, and control of the vital life force.",
+    },
+    primaryMeanings: [
+      "Breath control",
+      "Expansion of life force",
+      "The fourth limb of Ashtanga Yoga",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Yoga Sutras",
+        meaning:
+          "The deliberate regulation of inhalation, exhalation, and retention. It is said to remove the veil covering the inner light.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Yoga Sutras 2.52",
+        quoteSanskrit: "ततः क्षीयते प्रकाशावरणम्",
+        quoteTranslation: "Thereby the covering of the light is destroyed.",
+        explanation:
+          "Patanjali explains the ultimate benefit of Pranayama: it clears the energetic impurities that obscure the mind's natural clarity.",
+      },
+    ],
+    relatedWords: ["prana", "asana", "nadi"],
+    faqs: [
+      {
+        question: "Is Pranayama just deep breathing?",
+        answer:
+          "No. While it involves breathing exercises, its goal is to control the subtle Prana, often utilizing breath retention (Kumbhaka) to awaken energy.",
+      },
+    ],
+    summary:
+      "Pranayama is the yogic science of breath control, designed to expand and regulate the vital life force energy.",
+  },
+  {
+    slug: "ojas",
+    wordEnglish: "Ojas",
+    wordDevanagari: "ओजस्",
+    transliteration: "ojas",
+    pronunciation: "oh-juhs",
+    etymology: {
+      root: "vaj (वज्)",
+      rootMeaning: "to be strong or vigorous",
+      formationExplanation: "Refers to bodily strength, vitality, or luster.",
+    },
+    primaryMeanings: [
+      "Vitality or vigor",
+      "Immunity and strength",
+      "The subtle essence of the reproductive fluid",
+      "Spiritual luster",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Ayurveda & Yoga",
+        meaning:
+          "The ultrafine, subtle essence of all bodily tissues. It grants immunity, physical strength, and an 'aura' of glowing health.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Ayurvedic Texts",
+        quoteSanskrit: "ओजो वर्धयते",
+        quoteTranslation: "It increases Ojas.",
+        explanation:
+          "Often used in Ayurveda to describe foods or practices (like meditation and celibacy) that build the deepest reserves of vital energy.",
+      },
+    ],
+    relatedWords: ["tejas", "prana", "sadhana"],
+    faqs: [
+      {
+        question: "Why do yogis care about Ojas?",
+        answer:
+          "Ojas acts as the biological foundation for spiritual endurance. Without it, the nervous system cannot handle the high energy generated by deep meditation.",
+      },
+    ],
+    summary:
+      "Ojas is the subtle essence of vitality and immunity in the body, providing the foundation for physical health and spiritual strength.",
+  },
+  {
+    slug: "tejas",
+    wordEnglish: "Tejas",
+    wordDevanagari: "तेजस्",
+    transliteration: "tejas",
+    pronunciation: "tay-juhs",
+    etymology: {
+      root: "tij (तिज्)",
+      rootMeaning: "to be sharp, bright, or piercing",
+      formationExplanation: "Refers to the quality of radiant light or fire.",
+    },
+    primaryMeanings: [
+      "Radiance or brilliance",
+      "Inner fire",
+      "Spiritual luster",
+      "Sharpness of intellect",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Ayurveda & Yoga",
+        meaning:
+          "The subtle essence of fire in the body. It governs cellular intelligence, digestion of food and ideas, and gives a radiant glow to the practitioner.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Spiritual Metaphor",
+        quoteSanskrit: "तेजस्वि नावधीतमस्तु",
+        quoteTranslation: "May our study be brilliant with Tejas.",
+        explanation:
+          "A common Upanishadic invocation praying that study generates inner brilliance and piercing clarity rather than just dull information.",
+      },
+    ],
+    relatedWords: ["ojas", "prana", "tapas"],
+    faqs: [
+      {
+        question: "What is the difference between Prana, Tejas, and Ojas?",
+        answer:
+          "Prana is the subtle vital energy, Tejas is the subtle fire (radiance/clarity), and Ojas is the subtle water/earth (vitality/immunity).",
+      },
+    ],
+    summary:
+      "Tejas is the subtle element of inner fire and radiance, bestowing clarity, brilliance, and a luminous presence.",
+  },
+  {
+    slug: "bindu",
+    wordEnglish: "Bindu",
+    wordDevanagari: "बिन्दु",
+    transliteration: "bindu",
+    pronunciation: "bin-doo",
+    etymology: {
+      root: "bind (बिन्द्)",
+      rootMeaning: "to split or cleave",
+      formationExplanation: "Literally means a drop, point, or dot.",
+    },
+    primaryMeanings: [
+      "Point or dot",
+      "The seed of creation",
+      "The focal point in a Yantra",
+      "The center of consciousness",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Tantra & Sri Vidya",
+        meaning:
+          "The dimensionless point from which all spatial manifestation expands. It represents the unmanifest, ultimate Shiva-Shakti union.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Tantric Texts",
+        quoteSanskrit: "बिन्दु नाद कला",
+        quoteTranslation: "The Point, the Sound, the Radiance.",
+        explanation:
+          "The triad of manifestation in Tantra. Bindu is the compacted seed.",
+      },
+    ],
+    relatedWords: ["yantra", "chakra", "mantra"],
+    faqs: [
+      {
+        question: "What does the Bindu represent on a Yantra?",
+        answer:
+          "The absolute center dot of a Yantra is the Bindu. It represents the source of all existence and the point where the mind must focus to transcend duality.",
+      },
+    ],
+    summary:
+      "Bindu is the infinite, dimensionless point or seed from which all creation emerges and into which it dissolves.",
+  },
+  {
+    slug: "japa",
+    wordEnglish: "Japa",
+    wordDevanagari: "जप",
+    transliteration: "japa",
+    pronunciation: "juh-puh",
+    etymology: {
+      root: "jap (जप्)",
+      rootMeaning: "to mutter, whisper, or repeat inwardly",
+      formationExplanation:
+        "The act of repeated chanting or reciting of a mantra.",
+    },
+    primaryMeanings: [
+      "Repetition of a mantra",
+      "Muttering prayers",
+      "Meditative chanting",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Bhakti & Tantra",
+        meaning:
+          "One of the most effective spiritual practices. It purifies the mind by constantly steering it back to the Divine sound.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 10.25",
+        quoteSanskrit: "यज्ञानां जपयज्ञोऽस्मि",
+        quoteTranslation:
+          "Of sacrifices, I am the sacrifice of Japa (silent repetition).",
+        explanation:
+          "Krishna elevates Japa above all elaborate external rituals, making the internal repetition of the divine name the supreme offering.",
+      },
+    ],
+    relatedWords: ["mantra", "bhakti", "sadhana"],
+    faqs: [
+      {
+        question: "Does Japa have to be spoken out loud?",
+        answer:
+          "No. Japa can be audible (Vaikhari), whispered (Upamshu), or entirely mental (Manasika). Mental Japa is considered the most powerful.",
+      },
+    ],
+    summary:
+      "Japa is the spiritual practice of repeatedly chanting or meditating upon a sacred mantra or divine name.",
+  },
+  {
+    slug: "puja",
+    wordEnglish: "Puja",
+    wordDevanagari: "पूजा",
+    transliteration: "pūjā",
+    pronunciation: "poo-jah",
+    etymology: {
+      root: "pūj (पूज्)",
+      rootMeaning: "to honor, worship, or revere",
+      formationExplanation: "The act of showing reverence to the Divine.",
+    },
+    primaryMeanings: ["Worship", "Ritual offering", "Adoration and honor"],
+    philosophicalContexts: [
+      {
+        tradition: "Agamas & Bhakti Traditions",
+        meaning:
+          "The loving offering of light, flowers, food, and water to a deity. It is the outer expression of inner devotion.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhakti Framework",
+        quoteSanskrit: "षोडशोपचार पूजा",
+        quoteTranslation: "Sixteen-fold worship.",
+        explanation:
+          "The traditional sequence of offering 16 types of services to a deity, mirroring how one would treat a royal guest.",
+      },
+    ],
+    relatedWords: ["bhakti", "seva", "mantra", "arati"],
+    faqs: [
+      {
+        question: "Do Hindus worship idols in Puja?",
+        answer:
+          "The 'idol' (Murti) is used as a focal point or physical receptacle for the Divine presence. The worship is directed entirely at the omnipresent God invoked within the image.",
+      },
+    ],
+    summary:
+      "Puja is the loving ritual worship and offering of reverence to a deity, guru, or divine concept.",
+  },
+  {
+    slug: "yajna",
+    wordEnglish: "Yajna",
+    wordDevanagari: "यज्ञ",
+    transliteration: "yajña",
+    pronunciation: "yuhg-nyuh",
+    etymology: {
+      root: "yaj (यज्)",
+      rootMeaning: "to worship, sacrifice, or offer",
+      formationExplanation: "The act of offering or sacrificing.",
+    },
+    primaryMeanings: [
+      "Fire sacrifice",
+      "Ritual offering",
+      "Selfless action",
+      "Worship",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Vedic Rituals",
+        meaning:
+          "The oldest Vedic ritual, involving offerings into the sacred fire (Agni) while chanting Vedic mantras.",
+      },
+      {
+        tradition: "Bhagavad Gita",
+        meaning:
+          "Expanded from mere fire rituals to mean any selfless action performed for the greater good and offered to the Supreme.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 3.9",
+        quoteSanskrit: "यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः",
+        quoteTranslation:
+          "The world is bound by action unless performed for the sake of Yajna (sacrifice).",
+        explanation:
+          "Action without selfish motive is the true Yajna, breaking the binding chains of karma.",
+      },
+    ],
+    relatedWords: ["karma", "dharma", "puja"],
+    faqs: [
+      {
+        question: "Is Yajna just a fire ritual?",
+        answer:
+          "Historically yes, but philosophically, any act of dedicating your resources or energy for an unselfish, higher purpose is considered Yajna.",
+      },
+    ],
+    summary:
+      "Yajna originally refers to Vedic fire sacrifices, but philosophically implies any selfless action or duty offered to the Divine.",
+  },
+  {
+    slug: "kirtan",
+    wordEnglish: "Kirtan",
+    wordDevanagari: "कीर्तन",
+    transliteration: "kīrtana",
+    pronunciation: "keer-tun",
+    etymology: {
+      root: "kīrt (कीर्त्)",
+      rootMeaning: "to praise, celebrate, or glorify",
+      formationExplanation: "The act of praising.",
+    },
+    primaryMeanings: [
+      "Devotional singing",
+      "Congregational chanting",
+      "Glorification of God's names",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Bhakti Movement",
+        meaning:
+          "A dynamic, musical form of Bhakti Yoga. It involves call-and-response chanting of divine names.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhakti Literature",
+        quoteSanskrit: "कलौ नास्त्येव नास्त्येव नास्त्येव गतिरन्यथा",
+        quoteTranslation:
+          "In the Kali Yuga, there is no other way, no other way, no other way.",
+        explanation:
+          "Many texts state that congregational chanting (Sankirtana) is the easiest path to liberation in the modern age.",
+      },
+    ],
+    relatedWords: ["bhakti", "japa", "mantra"],
+    faqs: [
+      {
+        question: "How is Kirtan different from Bhajan?",
+        answer:
+          "A Bhajan is usually a song sung by a solo artist to an audience, while Kirtan is specifically call-and-response, inviting everyone to sing together.",
+      },
+    ],
+    summary:
+      "Kirtan is the joyous, congregational singing and chanting of divine names, used as a primary practice in Bhakti Yoga.",
+  },
+  {
+    slug: "dhyana",
+    wordEnglish: "Dhyana",
+    wordDevanagari: "ध्यान",
+    transliteration: "dhyāna",
+    pronunciation: "dhyah-nuh",
+    etymology: {
+      root: "dhyai (ध्यै)",
+      rootMeaning: "to meditate, contemplate, or think of",
+      formationExplanation: "The continuous flow of attention.",
+    },
+    primaryMeanings: [
+      "Meditation",
+      "Contemplation",
+      "The seventh limb of Patanjali's Ashtanga Yoga",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Yoga Sutras",
+        meaning:
+          "Defined as the uninterrupted, unbroken flow of concentration on an object.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Yoga Sutras 3.2",
+        quoteSanskrit: "तत्र प्रत्ययैकतानता ध्यानम्",
+        quoteTranslation:
+          "An unbroken flow of knowledge in that object is Dhyana.",
+        explanation:
+          "Patanjali's definition of meditation: when the mind maintains continuous focus without any break.",
+      },
+    ],
+    relatedWords: ["dharana", "samadhi", "yoga"],
+    faqs: [
+      {
+        question: "Is Dhyana the same as concentration?",
+        answer:
+          "No, concentration (Dharana) is the effort to keep the mind on an object. Dhyana is the effortless, continuous flow once concentration is achieved.",
+      },
+    ],
+    summary:
+      "Dhyana is the state of deep, unbroken meditation and contemplation where the mind completely merges into its point of focus.",
+  },
+  {
+    slug: "yantra",
+    wordEnglish: "Yantra",
+    wordDevanagari: "यन्त्र",
+    transliteration: "yantra",
+    pronunciation: "yun-truh",
+    etymology: {
+      root: "yam (यम्)",
+      rootMeaning: "to hold, control, or sustain",
+      formationExplanation:
+        "An instrument for holding, controlling, and focusing energy.",
+    },
+    primaryMeanings: [
+      "Mystical diagram",
+      "Sacred geometry",
+      "Instrument or machine",
+      "Visual tool for meditation",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Tantra & Agama",
+        meaning:
+          "The visual embodiment of a deity or mantra, composed of geometrical shapes like triangles and circles representing cosmic forces.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Sri Vidya",
+        quoteSanskrit: "श्री चक्र (Sri Chakra/Sri Yantra)",
+        quoteTranslation: "The Auspicious Wheel.",
+        explanation:
+          "The most famous of all yantras, representing the union of the divine masculine and feminine.",
+      },
+    ],
+    relatedWords: ["mantra", "bindu", "tantra"],
+    faqs: [
+      {
+        question: "What is the relationship between Mantra and Yantra?",
+        answer:
+          "Mantra is the sound-body of the Divine; Yantra is the visual-body. They are intrinsically connected.",
+      },
+    ],
+    summary:
+      "A Yantra is a sacred geometric diagram used as a visual tool for concentration, representing cosmic forces and deities.",
+  },
+  {
+    slug: "sankalpa",
+    wordEnglish: "Sankalpa",
+    wordDevanagari: "सङ्कल्प",
+    transliteration: "saṅkalpa",
+    pronunciation: "sun-kul-puh",
+    etymology: {
+      root: "sam (सम्) + kḷp (क्लृप्)",
+      rootMeaning: "completely/together + to form or resolve",
+      formationExplanation: "To form a resolve or set a firm intention.",
+    },
+    primaryMeanings: [
+      "Intention, resolve, or vow",
+      "Willpower",
+      "A solemn purpose",
+      "Declaration of intent before a ritual",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Yoga Nidra & Rituals",
+        meaning:
+          "A short, positive statement or vow repeated mentally. It acts as a seed planted deep in the subconscious.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Vedic Rituals",
+        quoteSanskrit: "मम इष्टकामनार्थं सङ्कल्पम् अहम् करिष्ये",
+        quoteTranslation:
+          "For the fulfillment of my desired goal, I make this resolve.",
+        explanation:
+          "Every major Hindu ritual or Puja begins with a Sankalpa, stating the time, place, and purpose of the action.",
+      },
+    ],
+    relatedWords: ["karma", "puja", "tapas"],
+    faqs: [
+      {
+        question: "How do you make a good Sankalpa?",
+        answer:
+          "It should be short, positive (stating what you want, not what you don't want), in the present tense, and deeply meaningful.",
+      },
+    ],
+    summary:
+      "Sankalpa is a firm spiritual intention, vow, or resolve made to align the mind and energy toward a specific purpose.",
+  },
+  {
+    slug: "darshan",
+    wordEnglish: "Darshan",
+    wordDevanagari: "दर्शन",
+    transliteration: "darśana",
+    pronunciation: "dur-shun",
+    etymology: {
+      root: "dṛś (दृश्)",
+      rootMeaning: "to see or perceive",
+      formationExplanation: "The act of seeing, or a perspective.",
+    },
+    primaryMeanings: [
+      "Auspicious sight or viewing",
+      "Experiencing the presence of the Divine or a Guru",
+      "A system of philosophy",
+      "Vision",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Bhakti & Temple Culture",
+        meaning:
+          "The reciprocal act of seeing a deity or holy person and being seen by them, resulting in a transmission of spiritual grace.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Spiritual Culture",
+        quoteSanskrit: "देव दर्शन (Deva Darshan)",
+        quoteTranslation: "The sight of the Deity.",
+        explanation:
+          "Going to a temple is generally not called 'prayer', but 'going for Darshan'—the act of visually absorbing the presence of the Divine.",
+      },
+    ],
+    relatedWords: ["guru", "puja", "jnana"],
+    faqs: [
+      {
+        question: "How does Darshan work?",
+        answer:
+          "It is believed that the eyes are conduits for spiritual energy. An awakened being or consecrated deity transmits a direct, silent blessing to anyone who gazes upon them with devotion.",
+      },
+    ],
+    summary:
+      "Darshan means 'vision' or 'auspicious sight'; receiving Darshan implies a direct spiritual exchange of grace through the act of seeing.",
+  },
+  {
+    slug: "prasad",
+    wordEnglish: "Prasad",
+    wordDevanagari: "प्रसाद",
+    transliteration: "prasāda",
+    pronunciation: "pruh-sahd",
+    etymology: {
+      root: "pra (प्र) + sad (सद्)",
+      rootMeaning: "forth + to sit or settle",
+      formationExplanation:
+        "Literally 'clearness, brightness, or serenity'. It evolved to mean a 'favor' or 'grace'.",
+    },
+    primaryMeanings: [
+      "Divine grace or favor",
+      "Blessed food offered to God",
+      "Tranquility of mind",
+      "A gift from the Guru",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Bhakti Traditions",
+        meaning:
+          "Food that has been offered to God in worship. It is believed to carry the vibrations of the Deity and is distributed as a tangible form of Divine blessing.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 2.65",
+        quoteSanskrit: "प्रसादे सर्वदुःखानां हानिरस्योपजायते",
+        quoteTranslation:
+          "In that tranquility (Prasada), the destruction of all sorrows occurs.",
+        explanation:
+          "Krishna uses the term to describe the profound serenity of a peaceful mind that has conquered the senses.",
+      },
+    ],
+    relatedWords: ["puja", "bhakti", "shanti"],
+    faqs: [
+      {
+        question: "Can anything be Prasad?",
+        answer:
+          "Traditionally, pure vegetarian food, fruits, or sweets are offered. However, a spiritual lesson or an object from a holy place can also be viewed as 'Prasad' (Divine Grace).",
+      },
+    ],
+    summary:
+      "Prasad refers to Divine grace or favor, most commonly manifesting as the blessed food distributed after ritual worship.",
+  },
+  {
+    slug: "arati",
+    wordEnglish: "Arati",
+    wordDevanagari: "आरती",
+    transliteration: "āratī",
+    pronunciation: "ah-ruh-tee",
+    etymology: {
+      root: "ā (आ) + ratikā (रतिका)",
+      rootMeaning: "complete + love/attachment",
+      formationExplanation:
+        "Alternatively sourced from 'aratrika' (the light that removes darkness).",
+    },
+    primaryMeanings: [
+      "Ritual waving of lights",
+      "Ceremony of adoration",
+      "Offering of fire",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Hindu Rituals",
+        meaning:
+          "The culminating act of a Puja where a lamp is waved before the deity. It symbolizes the offering of one's own soul and the dispelling of ignorance.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Temple Worship",
+        quoteSanskrit: "नीराजन (Nirajana)",
+        quoteTranslation: "Illuminating.",
+        explanation:
+          "The classical Sanskrit term for Arati. The flame waved represents the five elements of the world and the light of consciousness.",
+      },
+    ],
+    relatedWords: ["puja", "bhakti", "kirtan"],
+    faqs: [
+      {
+        question: "Why do people place their hands over the Arati flame?",
+        answer:
+          "By cupping their hands over the flame after it has been offered to the deity and touching their eyes or head, devotees receive the purifying energy and blessing of the Divine.",
+      },
+    ],
+    summary:
+      "Arati is the devotional ceremony in which light is offered to a deity to dispel ignorance and invoke grace.",
   },
 ];
 

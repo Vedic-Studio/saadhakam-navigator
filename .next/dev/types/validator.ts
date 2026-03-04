@@ -101,6 +101,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/faith-finder/results/[id]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/faith-finder/results/[id]">> = Specific
+  const handler = {} as typeof import("../../../src/app/faith-finder/results/[id]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/greats/[slug]/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/greats/[slug]">> = Specific
@@ -258,6 +267,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/yoga-sutras-complete-guide">> = Specific
   const handler = {} as typeof import("../../../src/app/yoga-sutras-complete-guide/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/api/faith-finder/result/[id]/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/faith-finder/result/[id]">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/faith-finder/result/[id]/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

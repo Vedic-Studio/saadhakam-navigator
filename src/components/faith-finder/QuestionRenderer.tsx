@@ -16,7 +16,7 @@ export const QuestionRenderer = ({ question, selectedOption, onAnswer }: Questio
     }
 
     return (
-        <div className="space-y-8 animate-in fade-in slide-in-from-right-5 duration-500">
+        <div className="space-y-8">
             <div className="space-y-2">
                 <span className="text-sm font-medium text-orange-600/70 uppercase tracking-widest">Contemplation</span>
                 <h2 className="text-3xl font-display font-bold text-foreground leading-tight">
