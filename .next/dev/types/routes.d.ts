@@ -4,7 +4,7 @@
 type AppRoutes = "/" | "/[slug]" | "/ancient-wisdom-philosophies" | "/bhagavad-gita-complete-guide" | "/compare" | "/compare/[slug]" | "/faith-finder" | "/faith-finder/results/[id]" | "/greats" | "/greats/[slug]" | "/learn/sanskrit/[word]" | "/philosophies" | "/philosophies/[slug]" | "/practical-spiritual-practices" | "/practices/[practice]/for/[goal]" | "/sacred-texts-teachings" | "/spiritual-traditions-paths" | "/texts" | "/texts/[slug]" | "/texts/bhagavad-gita/chapter-[chapter]" | "/texts/bhagavad-gita/chapter-[chapter]/shloka-[shloka]" | "/topics/[topic]" | "/traditions" | "/traditions/[slug]" | "/yoga-sutras-complete-guide"
 type AppRouteHandlerRoutes = "/api/faith-finder/result/[id]" | "/api/faith-finder/submit"
 type PageRoutes = never
-type LayoutRoutes = "/"
+type LayoutRoutes = "/" | "/faith-finder/results/[id]"
 type RedirectRoutes = never
 type RewriteRoutes = never
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes | AppRouteHandlerRoutes
@@ -45,6 +45,7 @@ export type ParamsOf<Route extends Routes> = ParamMap[Route]
 
 interface LayoutSlotMap {
   "/": never
+  "/faith-finder/results/[id]": never
 }
 
 

@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { QuizResult, calculateScore, determineResult } from "@/data/faithFinderQuiz";
+import { QuizResult, calculateScore, determineResult, quizQuestions } from "@/data/faithFinderQuiz";
 import { QuestionRenderer } from "./QuestionRenderer";
 import { ResultsPreview } from "./ResultsPreview";
 
@@ -19,7 +19,7 @@ export const QuizContainer = ({ onComplete }: QuizContainerProps) => {
     const [answers, setAnswers] = useState<Record<number, string>>({});
     const [step, setStep] = useState<Step>("question");
 
-    const totalQuestions = 15;
+    const totalQuestions = quizQuestions.length;
     const progress = ((currentQuestion + 1) / totalQuestions) * 100;
 
     const scores = useMemo(() => calculateScore(answers), [answers]);

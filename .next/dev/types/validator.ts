@@ -294,6 +294,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 
 
 
+// Validate ../../../src/app/faith-finder/results/[id]/layout.tsx
+{
+  type __IsExpected<Specific extends LayoutConfig<"/faith-finder/results/[id]">> = Specific
+  const handler = {} as typeof import("../../../src/app/faith-finder/results/[id]/layout.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/layout.tsx
 {
   type __IsExpected<Specific extends LayoutConfig<"/">> = Specific
