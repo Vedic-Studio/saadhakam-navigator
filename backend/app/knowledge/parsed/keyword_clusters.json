@@ -1,0 +1,224 @@
+{
+  "source": {
+    "path": "/Users/ankitmishra/Developer/Sadhaka/plans/seo-content-strategy-sadhaka.md",
+    "title": "Sadhaka SEO Content Strategy"
+  },
+  "pillars": [
+    {
+      "pillar": "Ancient Wisdom & Philosophies",
+      "rationale": "**Rationale:** Western audiences are increasingly searching for deeper philosophical frameworks beyond surface-level mindfulness. This pillar addresses the \"what is\" and \"why\" questions about Eastern wisdom.",
+      "subtopics": [
+        "Vedanta and non-dual philosophy",
+        "Advaita Vedanta for beginners",
+        "Kashmir Shaivism and consciousness",
+        "Great sages and their teachings",
+        "Ancient philosophical frameworks"
+      ],
+      "quick_win_topics": [
+        {
+          "topic": "| What is Vedanta? A Complete Beginner's Guide",
+          "target_keyword": "what is vedanta",
+          "buyer_stage": "Awareness",
+          "content_type": "Hub/Spoke"
+        },
+        {
+          "topic": "| Advaita Vedanta Explained Simply",
+          "target_keyword": "advaita vedanta explained",
+          "buyer_stage": "Awareness",
+          "content_type": "Use-Case"
+        },
+        {
+          "topic": "| Who is Adi Shankaracharya? His Life and Teachings",
+          "target_keyword": "adi shankaracharya biography",
+          "buyer_stage": "Awareness",
+          "content_type": "Use-Case"
+        },
+        {
+          "topic": "| Non-duality vs Dualism: Understanding the Difference",
+          "target_keyword": "non dual vs dual philosophy",
+          "buyer_stage": "Consideration",
+          "content_type": "Comparison"
+        },
+        {
+          "topic": "| Kashmir Shaivism: The Philosophy of Recognition",
+          "target_keyword": "kashmir shaivism explained",
+          "buyer_stage": "Awareness",
+          "content_type": "Use-Case"
+        }
+      ]
+    },
+    {
+      "pillar": "Practical Spiritual Practices",
+      "rationale": "**Rationale:** High-intent searches from people actively looking for techniques to implement. This is where people are ready to take action.",
+      "subtopics": [
+        "Meditation techniques (Dhyana)",
+        "Mantra chanting (Japa)",
+        "Daily spiritual routines",
+        "Yoga philosophy beyond asana",
+        "Breathwork and pranayama"
+      ],
+      "quick_win_topics": [
+        {
+          "topic": "| How to Start Japa Meditation: Complete Guide",
+          "target_keyword": "how to start japa meditation",
+          "buyer_stage": "Implementation",
+          "content_type": "Tutorial"
+        },
+        {
+          "topic": "| Mantra Chanting for Beginners: Step-by-Step",
+          "target_keyword": "mantra chanting for beginners",
+          "buyer_stage": "Implementation",
+          "content_type": "Tutorial"
+        },
+        {
+          "topic": "| Daily Spiritual Routine for Beginners",
+          "target_keyword": "daily spiritual routine",
+          "buyer_stage": "Implementation",
+          "content_type": "Template"
+        },
+        {
+          "topic": "| Dhyana Meditation: Ancient Practice for Modern Minds",
+          "target_keyword": "dhyana meditation technique",
+          "buyer_stage": "Awareness",
+          "content_type": "Use-Case"
+        },
+        {
+          "topic": "| 10 Powerful Sanskrit Mantras and Their Meanings",
+          "target_keyword": "sanskrit mantras with meaning",
+          "buyer_stage": "Awareness",
+          "content_type": "Listicle"
+        }
+      ]
+    },
+    {
+      "pillar": "Sacred Texts & Teachings",
+      "rationale": "**Rationale:** People searching for specific texts, verses, and interpretations. This establishes authority and provides deep, referenceable content.",
+      "subtopics": [
+        "Bhagavad Gita explanations",
+        "Upanishad wisdom",
+        "Key Sanskrit verses explained",
+        "How to approach ancient texts",
+        "Modern applications of ancient wisdom"
+      ],
+      "quick_win_topics": [
+        {
+          "topic": "| Bhagavad Gita Chapter 1 Summary: Arjuna's Dilemma",
+          "target_keyword": "bhagavad gita chapter 1 summary",
+          "buyer_stage": "Awareness",
+          "content_type": "Hub/Spoke"
+        },
+        {
+          "topic": "| Key Teachings from the Upanishads Explained",
+          "target_keyword": "upanishad teachings explained",
+          "buyer_stage": "Awareness",
+          "content_type": "Hub/Spoke"
+        },
+        {
+          "topic": "",
+          "target_keyword": "Tat Tvam Asi\": Meaning and Significance | \"tat tvam asi meaning",
+          "buyer_stage": "Awareness",
+          "content_type": "Deep Dive"
+        },
+        {
+          "topic": "| How to Read the Bhagavad Gita for Beginners",
+          "target_keyword": "how to read bhagavad gita",
+          "buyer_stage": "Implementation",
+          "content_type": "Tutorial"
+        },
+        {
+          "topic": "| 10 Most Important Sanskrit Verses for Spiritual Growth",
+          "target_keyword": "important sanskrit verses",
+          "buyer_stage": "Awareness",
+          "content_type": "Listicle"
+        }
+      ]
+    },
+    {
+      "pillar": "Spiritual Traditions & Paths",
+      "rationale": "**Rationale:** Helps people understand different approaches and find what resonates with them. Addresses the \"which path is right for me\" question.",
+      "subtopics": [
+        "Shaivism: Shiva worship and philosophy",
+        "Shaktism: Divine feminine wisdom",
+        "Vaishnavism: Devotion and bhakti",
+        "Choosing your spiritual path",
+        "Understanding different lineages"
+      ],
+      "quick_win_topics": [
+        {
+          "topic": "| Shaivism vs Vaishnavism: Understanding the Differences",
+          "target_keyword": "shaivism vs vaishnavism",
+          "buyer_stage": "Consideration",
+          "content_type": "Comparison"
+        },
+        {
+          "topic": "| Shaktism: Understanding the Divine Feminine in Hinduism",
+          "target_keyword": "shaktism divine feminine",
+          "buyer_stage": "Awareness",
+          "content_type": "Use-Case"
+        },
+        {
+          "topic": "| Which Spiritual Path is Right for Me?",
+          "target_keyword": "which spiritual path for me",
+          "buyer_stage": "Consideration",
+          "content_type": "Interactive"
+        },
+        {
+          "topic": "| The 5 Acts of Shiva in Kashmir Shaivism",
+          "target_keyword": "5 acts of shiva",
+          "buyer_stage": "Awareness",
+          "content_type": "Deep Dive"
+        },
+        {
+          "topic": "| Panchakshari Mantra: Meaning and Practice",
+          "target_keyword": "panchakshari mantra meaning",
+          "buyer_stage": "Implementation",
+          "content_type": "Tutorial"
+        }
+      ]
+    }
+  ],
+  "long_tail_keywords": {
+    "for_beginners": [
+      "\"vedanta for beginners\"",
+      "\"japa meditation for beginners\"",
+      "\"how to start spiritual practice\"",
+      "\"sanskrit for beginners\"",
+      "\"eastern philosophy for westerners\""
+    ],
+    "how_to": [
+      "\"how to chant om namah shivaya\"",
+      "\"how to practice self inquiry\"",
+      "\"how to read upanishads\"",
+      "\"how to choose a mantra\"",
+      "\"how to meditate on breath\""
+    ],
+    "meaning_of": [
+      "\"meaning of tat tvam asi\"",
+      "\"meaning of om namah shivaya\"",
+      "\"meaning of brahman\"",
+      "\"meaning of atman\"",
+      "\"meaning of maya in vedanta\""
+    ],
+    "best_for": [
+      "\"best meditation for anxiety vedanta\"",
+      "\"best mantra for beginners\"",
+      "\"best book on advaita vedanta\"",
+      "\"best practice for self realization\"",
+      "\"best upanishad to start with\""
+    ],
+    "vs_comparison": [
+      "\"advaita vs dvaita\"",
+      "\"japa vs silent meditation\"",
+      "\"shaivism vs vaishnavism\"",
+      "\"vedanta vs buddhism\"",
+      "\"karma yoga vs bhakti yoga\""
+    ],
+    "question_based": [
+      "\"what is the difference between atman and brahman\"",
+      "\"why chant mantras 108 times\"",
+      "\"what are the four paths of yoga\"",
+      "\"who founded advaita vedanta\"",
+      "\"what is the goal of vedanta\""
+    ]
+  }
+}
