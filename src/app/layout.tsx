@@ -75,15 +75,34 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Sadhaka",
-  url: siteUrl,
-  description:
-    "Your AI-powered companion for exploring Sanatan Dharma, Bhagavad Gita, Vedas, and ancient spiritual wisdom.",
-  sameAs: [
+  "@id": `${siteUrl}/#organization`,
+  "name": "Sadhaka",
+  "url": siteUrl,
+  "logo": {
+    "@type": "ImageObject",
+    "url": `${siteUrl}/logo.png`,
+    "width": 600,
+    "height": 60
+  },
+  "description": "Sadhaka is a comprehensive AI-powered spiritual encyclopedia and practitioner platform dedicated to 10,000 years of Sanatan Dharma wisdom, including Vedas, Upanishads, and Yoga philosophy.",
+  "sameAs": [
     "https://twitter.com/opensadhaka",
     "https://instagram.com/opensadhaka",
     "https://youtube.com/@opensadhaka",
+    "https://github.com/opensadhaka",
+    "https://www.linkedin.com/company/opensadhaka",
+    "https://www.crunchbase.com/organization/sadhaka",
+    "https://en.wikipedia.org/wiki/Sanatan_Dharma"
   ],
+  "knowsAbout": [
+    "Sanatan Dharma",
+    "Bhagavad Gita",
+    "Vedanta",
+    "Yoga Sutras",
+    "Sanskrit Philology",
+    "Vedic Philosophy",
+    "Meditation Techniques"
+  ]
 };
 
 const websiteSchema = {

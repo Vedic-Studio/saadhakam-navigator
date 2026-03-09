@@ -25,30 +25,30 @@ export const metadata: Metadata = {
 const methods = [
     {
         name: "Japa (Mantra Repetition)",
-        summary: "A mantra gives the mind a concrete anchor. It is the best starting point for a distracted or overloaded nervous system, functioning as a mental handrail rather than demanding immediate stillness.",
-        bestFor: "Noisy minds, beginners struggling with silent sitting, and devotion-oriented temperaments.",
-        firstStep: "Repeat one mantra for 108 counts with gentle breath awareness.",
+        summary: "Japa involves the rhythmic repetition of a sacred sound or 'mantra' to anchor the wandering mind. In the Vedic tradition, the mantra is not just a word but a 'vibrational tool' designed to override the default mode network (DMN). By providing a concrete, repetitive task, Japa functions as a 'mental handrail' for those with overactive, high-velocity thought patterns. It is structurally the most robust starting point for practitioners who find silent sitting to be a source of increased anxiety rather than peace.",
+        bestFor: "Noisy, high-chatter minds, beginners with high 'mental momentum,' and devotionally inclined temperaments.",
+        firstStep: "Select a foundational mantra like 'Om Namah Shivaya' or 'So-Ham' and repeat for 108 counts using a mala.",
         href: "/how-to-start-japa",
     },
     {
-        name: "Breath-led Meditation",
-        summary: "Regulates the nervous system before deeper stillness is required. It works by changing physiology first, which in turn slows down the psychological momentum.",
-        bestFor: "High physical restlessness, bodily tension, and those needing emotional regulation.",
-        firstStep: "Engage in 5 to 10 minutes of slow, regulated breathing before attempting to sit silently.",
+        name: "Pranayama-led Meditation",
+        summary: "This method prioritizes biological regulation over psychological stillness. By utilizing specific breathing ratios—such as the 1:2 exhale-to-inhale ratio—practitioners can directly stimulate the Vagus nerve and shift the nervous system from a sympathetic (fight-or-flight) to a parasympathetic (rest-and-digest) state. This is 'physiological meditation': you change the air, then the blood, and only then the mind. It is essential for those whose primary obstacle is physical restlessness or somatic tension.",
+        bestFor: "High physical restlessness, bodily tension, and those requiring immediate stress reduction.",
+        firstStep: "Engage in 5 minutes of 'Box Breathing' (4-4-4-4) before attempting to watch the mind.",
         href: "/yoga-sutras-complete-guide",
     },
     {
-        name: "Dhyana (Silent Meditation)",
-        summary: "The practice of resting in witness-awareness. This becomes accessible once the mind has already developed some baseline stability and is no longer being pulled violently by thought.",
-        bestFor: "Seekers with naturally calmer temperaments who are drawn to observation.",
-        firstStep: "Stabilize your posture and return awareness to the witnessing mind.",
+        name: "Dhyana (Witness Awareness)",
+        summary: "Dhyana is the practice of resting as the 'Sakshi'—the silent witness. Unlike Japa or Pranayama, it provides no external or internal 'crutch.' You simply observe thoughts and sensations as they arise and dissolve, without interference. This requires a baseline of mental stability; if the mind is a storm, Dhyana is like trying to watch the waves from within the water. Once stability is achieved, this method leads directly to the core of classical Yoga and self-realization.",
+        bestFor: "Intermediate practitioners, naturally steady temperaments, and those seeking pure observation.",
+        firstStep: "Maintain an upright posture and observe the transition between each thought without label or judgment.",
         href: "/which-meditation-for-me",
     },
     {
-        name: "Self-Inquiry",
-        summary: "Turns contemplation into a direct meditative method. Instead of anchoring on a mantra or breath, the attention is turned entirely toward the source of the sense of self.",
-        bestFor: "Analytical seekers, contemplative practitioners, and philosophically inclined minds.",
-        firstStep: "Ask ‘Who am I?’ and return attention exclusively to the feeling of existing.",
+        name: "Atma-Vichara (Self-Inquiry)",
+        summary: "Self-Inquiry is a 'direct path' popularized by Sri Ramana Maharshi. Instead of focusing on an object (breath, sound, light), the attention is turned back on the subject itself. By asking 'To whom does this thought arise?' and tracking the 'I-thought' back to its source, the practitioner deconstructs the ego-identity in real-time. It is highly analytical yet entirely non-intellectual, making it the preferred method for the philosophically rigorous and those seeking the fastest exit from dualistic perception.",
+        bestFor: "Analytical seekers, contemplative minds, and those prioritize Truth over comfort.",
+        firstStep: "Turn attention to the feeling of 'I am' and ignore all arising mental content.",
         href: "/what-is-vedanta",
     },
 ];
@@ -65,22 +65,22 @@ const faqs = [
     {
         question: "What meditation style is best for beginners?",
         answer:
-            "For most beginners, Japa or breath-led meditation is easiest because both provide an immediate anchor. Silent meditation becomes easier after some stability has been built.",
+            "Most beginners fail because they start with silent meditation (Dhyana). For the modern, digital mind, Japa or Pranayama-led meditation is significantly more effective because both provide an immediate 'job' for the mind to do, reducing the frustration of initial failure.",
     },
     {
         question: "What meditation style is best for anxiety?",
         answer:
-            "Breath-led meditation is often the best starting point for anxiety because it works through the nervous system directly before asking the mind to become still.",
+            "Anxiety is a physiological event. Therefore, Pranayama-led meditation is the direct antidote. By slowing the breath, you signal safety to the nervous system, which naturally collapses the psychological feedback loop of anxious thinking.",
     },
     {
-        question: "What meditation style is best for analytical people?",
+        question: "How long should I practice a style before switching?",
         answer:
-            "Self-inquiry usually suits analytical people best because it turns contemplation into a direct meditative method focused on consciousness and identity.",
+            "Commitment is more important than the specific style. We recommend a 40-day 'Mandala'—practicing one method consistently for 40 days to actually observe the neurological shifts before deciding if it's the right fit for your temperament.",
     },
     {
         question: "Can I combine more than one meditation style?",
         answer:
-            "Yes. A common and effective sequence is breath regulation first, Japa second, and silent meditation or self-inquiry last.",
+            "Yes. A common and effective sequence is: 5 minutes of Pranayama (to ground), 10 minutes of Japa (to focus), and 5 minutes of silent Dhyana (to rest in that focus).",
     },
 ];
 
@@ -127,114 +127,175 @@ export default function BestMeditationStylePage() {
                         ]}
                     />
 
-                    <header className="mb-12 mt-6 rounded-3xl border border-white/5 bg-white/[0.02] p-10">
-                        <h1 className="font-display text-4xl md:text-6xl font-bold mb-5">Best Meditation Style for Your Personality</h1>
-                        <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mb-6">
-                            <strong className="text-foreground">TL;DR:</strong> The best meditation style matches the current architecture of your nervous system. If your mind is noisy or overloaded, start with <strong className="text-foreground">Japa</strong> (mantra repetition) to give it an anchor. If your body is restless, use <strong className="text-foreground">breath-led meditation</strong> to regulate your physiology first. If your mind is already somewhat stable, practice <strong className="text-foreground">Dhyana</strong> (silent observation). If you are highly analytical, use <strong className="text-foreground">self-inquiry</strong> to turn contemplation into direct investigation.
-                        </p>
-                        <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                            Most meditation advice fails because it assumes there is only one type of mind. If you tell a highly anxious person to sit in silent observation, you aren't teaching them to meditate—you are building a pressure cooker. Below are the four primary paths, categorized by the specific temperament they serve best.
-                        </p>
+                    <header className="mb-12 mt-6">
+                        <h1 className="font-display text-5xl md:text-7xl font-bold mb-8 tracking-tight">Best Meditation Style for <span className="text-orange-500">Your Personality</span></h1>
+                        <div className="grid md:grid-cols-3 gap-8 items-start">
+                            <div className="md:col-span-2 space-y-6">
+                                <p className="text-2xl text-foreground font-medium leading-tight">
+                                    Most meditation advice fails because it assumes there is only one type of mind.
+                                </p>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    If you tell a highly anxious person to sit in silent observation, you aren't teaching them to meditate—you are building a pressure cooker. Authentic spiritual practice recognizes that the path to stillness must match the current architecture of your nervous system and your innate mental tendencies (Vasanas).
+                                </p>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    Below we categorize the four primary meditation methodologies of Sanatan Dharma by the specific temperaments they serve. One is not "better" than the other; they are different tools for different terrains.
+                                </p>
+                            </div>
+                            <div className="bg-orange-600/10 border border-orange-500/20 rounded-2xl p-6 hidden md:block">
+                                <h3 className="text-orange-400 font-bold mb-2 uppercase text-xs tracking-widest">The Core Insight</h3>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    "Meditation is the art of giving the mind a job it likes, until it doesn't need a job anymore."
+                                </p>
+                            </div>
+                        </div>
                     </header>
 
-                    <section className="mb-12">
-                        <h2 className="font-display text-3xl font-bold mb-6">Recommended meditation options</h2>
-                        <div className="space-y-5">
+                    <section className="mb-20">
+                        <h2 className="font-display text-4xl font-bold mb-10 text-center">Pathways to Stillness</h2>
+                        <div className="grid md:grid-cols-2 gap-8">
                             {methods.map((method, index) => (
-                                <article key={method.name} className="rounded-2xl border border-border/60 bg-card p-7">
-                                    <div className="text-sm uppercase tracking-[0.2em] text-orange-400 font-semibold mb-2">Option {index + 1}</div>
-                                    <h3 className="text-2xl font-semibold mb-3">{method.name}</h3>
-                                    <p className="text-muted-foreground leading-relaxed mb-4">{method.summary}</p>
-                                    <div className="grid md:grid-cols-2 gap-5 text-sm mb-5">
-                                        <p className="text-muted-foreground"><strong className="text-foreground">Best for:</strong> {method.bestFor}</p>
-                                        <p className="text-muted-foreground"><strong className="text-foreground">First step:</strong> {method.firstStep}</p>
+                                <article key={method.name} className="flex flex-col rounded-3xl border border-border/60 bg-card p-8 hover:border-orange-500/30 transition-all group shadow-sm hover:shadow-xl">
+                                    <div className="w-12 h-12 rounded-2xl bg-orange-600/10 flex items-center justify-center text-orange-500 font-bold mb-6 group-hover:bg-orange-600 group-hover:text-white transition-all text-xl">
+                                        {index + 1}
+                                    </div>
+                                    <h3 className="text-3xl font-display font-bold mb-4">{method.name}</h3>
+                                    <p className="text-muted-foreground leading-relaxed mb-8 flex-grow">
+                                        {method.summary}
+                                    </p>
+                                    <div className="space-y-4 mb-8 pt-6 border-t border-border/40">
+                                        <div>
+                                            <span className="text-xs uppercase tracking-widest text-orange-400 font-bold block mb-1">Best For</span>
+                                            <p className="text-sm text-foreground font-medium">{method.bestFor}</p>
+                                        </div>
+                                        <div>
+                                            <span className="text-xs uppercase tracking-widest text-orange-400 font-bold block mb-1">Starting Practice</span>
+                                            <p className="text-sm text-foreground font-medium">{method.firstStep}</p>
+                                        </div>
                                     </div>
                                     <TrackedLink
                                         href={method.href}
                                         eventLabel={`chooser_option:best-meditation-style-for-your-personality:${method.href}`}
                                         trackPathName={method.href.replace(/^\//, "")}
-                                        className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold"
+                                        className="inline-flex items-center text-orange-400 hover:text-orange-300 font-bold group-hover:translate-x-1 transition-transform"
                                     >
-                                        Learn this method <ArrowRight className="ml-2 w-4 h-4" />
+                                        Unlock This Method <ArrowRight className="ml-2 w-5 h-5" />
                                     </TrackedLink>
                                 </article>
                             ))}
                         </div>
                     </section>
 
-                    <section className="mb-12 rounded-3xl border border-border/60 bg-card p-8 overflow-x-auto">
-                        <h2 className="font-display text-3xl font-bold mb-6">Quick chooser table</h2>
-                        <table className="w-full text-left min-w-[760px]">
-                            <thead>
-                                <tr className="border-b border-border">
-                                    <th className="py-3 pr-4">Meditation style</th>
-                                    <th className="py-3 pr-4">Best for</th>
-                                    <th className="py-3 pr-4">Difficulty</th>
-                                    <th className="py-3">Best starting instruction</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="border-b border-border/50">
-                                    <td className="py-4 pr-4 font-medium">Japa</td>
-                                    <td className="py-4 pr-4 text-muted-foreground">Distracted or overloaded minds</td>
-                                    <td className="py-4 pr-4 text-muted-foreground">Low</td>
-                                    <td className="py-4 text-muted-foreground">Repeat a mantra with a count or mala</td>
-                                </tr>
-                                <tr className="border-b border-border/50">
-                                    <td className="py-4 pr-4 font-medium">Breath-led meditation</td>
-                                    <td className="py-4 pr-4 text-muted-foreground">Anxiety and physical restlessness</td>
-                                    <td className="py-4 pr-4 text-muted-foreground">Low</td>
-                                    <td className="py-4 text-muted-foreground">Regulate breath before sitting silently</td>
-                                </tr>
-                                <tr className="border-b border-border/50">
-                                    <td className="py-4 pr-4 font-medium">Dhyana</td>
-                                    <td className="py-4 pr-4 text-muted-foreground">Quiet, steady minds</td>
-                                    <td className="py-4 pr-4 text-muted-foreground">Medium</td>
-                                    <td className="py-4 text-muted-foreground">Maintain stable attention without mantra</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-4 pr-4 font-medium">Self-Inquiry</td>
-                                    <td className="py-4 pr-4 text-muted-foreground">Contemplative and philosophical minds</td>
-                                    <td className="py-4 pr-4 text-muted-foreground">Medium-High</td>
-                                    <td className="py-4 text-muted-foreground">Investigate the source of the “I” sense</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <section className="mb-20 prose prose-invert max-w-none border-y border-border/40 py-20">
+                        <div className="max-w-3xl mx-auto">
+                            <h2 className="font-display text-4xl font-bold mb-10 text-center">The Biology of Stillness</h2>
+                            <p className="text-xl leading-relaxed mb-8">
+                                Modern neuroscience confirms what the Vedic masters taught thousands of years ago: the mind is an instrument tied to the breath (Prana).
+                                When the nervous system is in a high-beta state (stress/anxiety), the cognitive ability to "just sit" is essentially offline.
+                            </p>
+                            <div className="grid md:grid-cols-2 gap-10 bg-muted/20 p-8 rounded-3xl border border-border/40 mb-10">
+                                <div>
+                                    <h4 className="text-orange-400 font-bold mb-2">The Scientific View</h4>
+                                    <p className="text-sm leading-relaxed text-muted-foreground">
+                                        Meditation activates the Anterior Cingulate Cortex (ACC) and the Prefrontal Cortex (PFC), while dampening the Amygdala. If the Amygdala is overactive, you must use breath or sound (mantra) to modulate it before cognitive stillness is possible.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 className="text-orange-400 font-bold mb-2">The Vedic View</h4>
+                                    <p className="text-sm leading-relaxed text-muted-foreground">
+                                        The mind (Manas) is like a mirror. If the dust of "Rajas" (activity/passion) is high, the mirror is obscured. You don't try to see the reflection; you first clean the dust using active practices like Kriya or Japa.
+                                    </p>
+                                </div>
+                            </div>
+                            <p className="text-lg text-muted-foreground leading-relaxed text-center italic">
+                                "You don't fight the mind to reach stillness; you negotiate with the body to allow it."
+                            </p>
+                        </div>
                     </section>
 
-                    <section className="mb-12 rounded-3xl border border-orange-900/40 bg-orange-950/20 p-8 text-center">
-                        <h2 className="font-display text-3xl font-bold mb-4">Want a personalized meditation recommendation?</h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-                            Use the Faith Finder to match your temperament to practices and traditions instead of guessing from generic meditation advice.
-                        </p>
-                        <TrackedLink
-                            href="/faith-finder"
-                            eventLabel="chooser_cta:best-meditation-style-for-your-personality:faith-finder"
-                            trackPathName="faith-finder"
-                            className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold"
-                        >
-                            Get Practice Recommendations <ArrowRight className="ml-2 w-4 h-4" />
-                        </TrackedLink>
+                    <section className="mb-20 rounded-3xl bg-muted/10 border border-border/60 p-10 overflow-hidden relative">
+                        <h2 className="font-display text-4xl font-bold mb-10 text-center">Quick Decision Matrix</h2>
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left min-w-[760px] relative z-10">
+                                <thead>
+                                    <tr className="border-b border-border">
+                                        <th className="py-4 pr-6 text-orange-400 font-bold uppercase tracking-widest text-xs">Meditation style</th>
+                                        <th className="py-4 pr-6 text-orange-400 font-bold uppercase tracking-widest text-xs">Best for</th>
+                                        <th className="py-4 pr-6 text-orange-400 font-bold uppercase tracking-widest text-xs">Difficulty</th>
+                                        <th className="py-4 text-orange-400 font-bold uppercase tracking-widest text-xs">Starting Trigger</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="text-lg">
+                                    <tr className="border-b border-border/50">
+                                        <td className="py-6 pr-6 font-bold">Japa</td>
+                                        <td className="py-6 pr-6 text-muted-foreground">Overwhelmed/Loud minds</td>
+                                        <td className="py-6 pr-6 text-muted-foreground">Entry-Level</td>
+                                        <td className="py-6 text-muted-foreground font-medium">Mantra repetition</td>
+                                    </tr>
+                                    <tr className="border-b border-border/50">
+                                        <td className="py-6 pr-6 font-bold">Pranayama</td>
+                                        <td className="py-6 pr-6 text-muted-foreground">Physically restless</td>
+                                        <td className="py-6 pr-6 text-muted-foreground">Entry-Level</td>
+                                        <td className="py-6 text-muted-foreground font-medium">Breath regulation</td>
+                                    </tr>
+                                    <tr className="border-b border-border/50">
+                                        <td className="py-6 pr-6 font-bold">Dhyana</td>
+                                        <td className="py-6 pr-6 text-muted-foreground">Steady/Stable temperaments</td>
+                                        <td className="py-6 pr-6 text-muted-foreground">Intermediate</td>
+                                        <td className="py-6 text-muted-foreground font-medium">Silent observation</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-6 pr-6 font-bold">Atma-Vichara</td>
+                                        <td className="py-6 pr-6 text-muted-foreground">Highly analytical/Skeptical</td>
+                                        <td className="py-6 pr-6 text-muted-foreground">Advanced</td>
+                                        <td className="py-6 text-muted-foreground font-medium">Investigating the "I"</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </section>
 
-                    <section className="mb-12 rounded-3xl border border-border/60 bg-card p-8">
-                        <h2 className="font-display text-3xl font-bold mb-6">Frequently asked questions</h2>
-                        <div className="grid md:grid-cols-2 gap-5">
+                    <section className="mb-20 grid md:grid-cols-2 gap-12 items-center rounded-3xl border border-orange-900/40 bg-orange-950/10 p-12">
+                        <div>
+                            <h2 className="font-display text-4xl font-bold mb-6">Match Your Nature</h2>
+                            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                                Individual temperament is the single greatest predictor of spiritual success.
+                                Our <strong>Faith Finder</strong> assessment maps your psychological profile to the specific lineages and practices that were engineered for your type.
+                            </p>
+                            <TrackedLink
+                                href="/faith-finder"
+                                eventLabel="chooser_cta:best-meditation-style-for-your-personality:faith-finder"
+                                trackPathName="faith-finder"
+                                className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-8 py-4 text-white font-bold text-lg transition-all"
+                            >
+                                Get Personalized Practice <ArrowRight className="ml-2 w-5 h-5" />
+                            </TrackedLink>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="bg-muted p-4 rounded-xl text-center"><span className="block text-2xl font-bold text-orange-500">4</span><span className="text-xs text-muted-foreground uppercase">Key Paths</span></div>
+                            <div className="bg-muted p-4 rounded-xl text-center"><span className="block text-2xl font-bold text-orange-500">12+</span><span className="text-xs text-muted-foreground uppercase">Lineages</span></div>
+                            <div className="bg-muted p-4 rounded-xl text-center"><span className="block text-2xl font-bold text-orange-500">100%</span><span className="text-xs text-muted-foreground uppercase">Neutral</span></div>
+                            <div className="bg-muted p-4 rounded-xl text-center"><span className="block text-2xl font-bold text-orange-500">AI</span><span className="text-xs text-muted-foreground uppercase">Powered</span></div>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="font-display text-4xl font-bold mb-10 text-center">Frequently Asked Questions</h2>
+                        <div className="grid md:grid-cols-2 gap-6">
                             {faqs.map((faq) => (
-                                <div key={faq.question} className="rounded-2xl border border-white/5 bg-background/60 p-6">
-                                    <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
-                                    <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                                <div key={faq.question} className="rounded-2xl border border-border/40 bg-card/40 p-8 shadow-sm">
+                                    <h3 className="text-xl font-bold mb-4">{faq.question}</h3>
+                                    <p className="text-muted-foreground leading-relaxed italic border-l-2 border-orange-500/30 pl-4">{faq.answer}</p>
                                 </div>
                             ))}
                         </div>
                     </section>
 
-                    <section className="mb-12 rounded-3xl border border-border/60 bg-card p-8">
-                        <h2 className="font-display text-3xl font-bold mb-6">Authoritative references</h2>
-                        <ul className="space-y-3">
+                    <section className="rounded-2xl border border-border/60 bg-muted/5 p-8">
+                        <h2 className="font-display text-2xl font-bold mb-6">Authoritative references</h2>
+                        <ul className="grid md:grid-cols-2 gap-4">
                             {references.map((reference) => (
                                 <li key={reference.href}>
-                                    <a href={reference.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-medium">
+                                    <a href={reference.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-muted-foreground hover:text-orange-400 font-medium transition-colors">
                                         {reference.label}
                                         <ExternalLink className="w-4 h-4" />
                                     </a>

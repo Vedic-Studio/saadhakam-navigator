@@ -1,455 +1,195 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  BookOpen,
-  List,
-  Target,
-  ArrowRight,
-  Share2,
-  Compass,
-} from "lucide-react";
+import { ArrowRight, BookOpen, Flame, Shield, Sword, Users } from "lucide-react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Bhagavad Gita Complete Guide | Summaries, Key Teachings & Philosophy",
-  description:
-    "The ultimate guide to the Bhagavad Gita. Explore chapter summaries, core philosophical concepts like Karma and Dharma, and practical applications for modern life.",
-  keywords: [
-    "bhagavad gita",
-    "bhagavad gita guide",
-    "bhagavad gita summary",
-    "arjuna",
-    "krishna",
-    "karma yoga",
-    "bhakti yoga",
-    "jnana yoga",
-    "sanatan dharma",
-  ],
+  title: "The Bhagavad Gita | The Ultimate Guide to Self-Mastery",
+  description: "Explore the profound teachings of the Bhagavad Gita. From the paths of Devotion, Knowledge, and Action to the practical application of Dharma in crisis.",
   alternates: {
     canonical: "https://opensadhaka.com/bhagavad-gita-complete-guide",
   },
   openGraph: {
-    title: "Bhagavad Gita Complete Guide | Sadhaka",
-    description:
-      "Explore the profound teachings of the Bhagavad Gita, chapter by chapter.",
+    title: "The Bhagavad Gita: A Manual for Living in the World",
+    description: "Join Arjuna and Krishna on the battlefield of Kurukshetra to discover the eternal wisdom of the soul.",
     url: "https://opensadhaka.com/bhagavad-gita-complete-guide",
+    type: "article",
   },
 };
 
+const chapters = [
+  { num: 1, title: "Arjuna Vishada Yoga", desc: "The Yoga of Despair. Arjuna faces the moral crisis of war and surrenders to Krishna." },
+  { num: 2, title: "Sankhya Yoga", desc: "The Yoga of Knowledge. Krishna explains the immortality of the soul and the nature of duty." },
+  { num: 3, title: "Karma Yoga", desc: "The Yoga of Action. The secret of performing work without attachment to the results." },
+  { num: 4, title: "Jnana Karma Sannyasa Yoga", desc: "The Yoga of Wisdom. The historical lineage of yoga and the fire of knowledge." },
+  { num: 7, title: "Jnana Vijnana Yoga", desc: "The Yoga of Knowledge and Realization. Krishna's nature as the source of all energy." },
+  { num: 11, title: "Vishwarupa Darshana Yoga", desc: "The Vision of the Universal Form. Arjuna sees the terrifying totality of God." },
+  { num: 12, title: "Bhakti Yoga", desc: "The Yoga of Devotion. The qualities of a true devotee and the path of love." },
+  { num: 18, title: "Moksha Sannyasa Yoga", desc: "The Yoga of Liberation. The final summary of duty, renunciation, and total surrender." }
+];
+
 export default function BhagavadGitaGuidePage() {
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://opensadhaka.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Sacred Texts",
-        item: "https://opensadhaka.com/texts",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Bhagavad Gita Complete Guide",
-        item: "https://opensadhaka.com/bhagavad-gita-complete-guide",
-      },
-    ],
-  };
-
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline:
-      "Bhagavad Gita Complete Guide | Summaries, Key Teachings & Philosophy",
-    decription:
-      "The ultimate guide to the Bhagavad Gita. Explore chapter summaries, core philosophical concepts like Karma and Dharma, and practical applications for modern life.",
-    author: {
-      "@type": "Organization",
-      name: "Sadhaka",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Sadhaka",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://opensadhaka.com/favicon.ico",
-      },
-    },
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How many chapters are in the Bhagavad Gita?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The Bhagavad Gita consists of 18 chapters and exactly 700 shlokas (verses). It is a dialogue between Prince Arjuna and Lord Krishna on the battlefield of Kurukshetra.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What is the core message of the Bhagavad Gita?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The central message is to perform one's righteous duty (Dharma) without attachment to the results or fruits of those actions (Nishkama Karma). Through selfless action, devotion, or knowledge, one can attain spiritual liberation (Moksha).",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What are the three main paths (Yogas) described in the Gita?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The Gita outlines Karma Yoga (the path of selfless action), Jnana Yoga (the path of knowledge), and Bhakti Yoga (the path of loving devotion to the Divine) as methods to attain spiritual union and liberation.",
-        },
-      },
-    ],
-  };
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <ContentPageTracker slug="bhagavad-gita-complete-guide" pillar="sacred-texts" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
 
-      <main className="pt-20">
-        {/* Hero */}
-        <section className="bg-primary/5 py-20 px-4 sm:px-6 lg:px-8 border-b border-border/40">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-4 text-sm text-primary font-bold uppercase tracking-widest">
-              Sacred Text Guide
-            </div>
-            <h1 className="font-display text-4xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight">
-              The Complete Guide to the{" "}
-              <span className="text-secondary">Bhagavad Gita</span>
+      <main className="flex-grow pt-24 pb-16">
+        <div className="container-padding max-w-5xl mx-auto">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Sacred Texts", href: "/texts" },
+              { label: "Bhagavad Gita Complete Guide", href: "/bhagavad-gita-complete-guide" },
+            ]}
+          />
+
+          <header className="mb-16 mt-8">
+            <h1 className="font-display text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
+              The Song of <span className="text-orange-500 italic">Dharma</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed">
-              Discover the wisdom of the ultimate spiritual dialogue. Your
-              comprehensive resource for chapters, themes, and practical life
-              applications.
+            <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
+              The Bhagavad Gita is not a call to war, but a manual for choosing correctly when every option feels like a failure.
             </p>
-          </div>
-        </section>
+          </header>
 
-        <section className="py-16 px-4 sm:px-6 lg:px-8 pb-20">
-          <div className="max-w-4xl mx-auto space-y-16">
-            {/* Intro Section */}
-            <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
-              <p>
-                The Bhagavad Gita, often referred to simply as the Gita, is a
-                700-verse Hindu scripture that is part of the epic Mahabharata.
-                Dated to the second half of the first millennium BCE, it is
-                considered one of the holy scriptures of Sanatan Dharma.
-              </p>
-              <p>
-                Rather than a passive text, the Gita is an intense dialogue
-                taking place on a battlefield—a profound metaphor for the
-                ethical and moral struggles of human life. At the brink of the
-                Kurukshetra war, Prince Arjuna is overcome with despair
-                regarding the violence and death his war against his own kindred
-                will cause. He turns to his charioteer and guide, Lord Krishna,
-                for answers. Check out our{" "}
-                <TrackedLink
-                  href="/what-is-dharma"
-                  eventLabel="gita_guide:intro:dharma"
-                  trackPathName="dharma"
-                  className="text-primary font-medium hover:underline"
-                >
-                  guide on Dharma
-                </TrackedLink>{" "}
-                for more context.
-              </p>
-            </div>
-
-            {/* Core Themes */}
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <Compass className="w-8 h-8 text-secondary" />
-                <h2 className="text-3xl font-display font-bold text-foreground">
-                  Core Philosophical Themes
-                </h2>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card className="border-border/50 shadow-sm">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold font-sans text-foreground mb-3 flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm">
-                        1
-                      </span>
-                      Dharma (Duty)
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Krishna urges Arjuna to fulfill his Kshatriya (warrior)
-                      duty to uphold Dharma in the face of tyranny, explaining
-                      that failing to act is a violation of cosmic order.
-                    </p>
-                    <TrackedLink
-                      href="/what-is-dharma"
-                      eventLabel="gita_guide:theme:dharma"
-                      trackPathName="dharma"
-                      className="text-sm text-primary font-medium mt-3 inline-block hover:underline"
-                    >
-                      Learn more about Dharma →
-                    </TrackedLink>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-border/50 shadow-sm">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold font-sans text-foreground mb-3 flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm">
-                        2
-                      </span>
-                      Karma Yoga
-                    </h3>
-                    <p className="text-muted-foreground">
-                      The Yoga of Action. Acting according to one's duty without
-                      being attached to the fruits or results of those actions
-                      (Nishkama Karma).
-                    </p>
-                    <TrackedLink
-                      href="/what-is-karma"
-                      eventLabel="gita_guide:theme:karma"
-                      trackPathName="karma"
-                      className="text-sm text-primary font-medium mt-3 inline-block hover:underline"
-                    >
-                      Learn more about Karma →
-                    </TrackedLink>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-border/50 shadow-sm">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold font-sans text-foreground mb-3 flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm">
-                        3
-                      </span>
-                      Bhakti Yoga
-                    </h3>
-                    <p className="text-muted-foreground">
-                      The Yoga of Devotion. The highest path of unconditional
-                      love and surrender to the Supreme Divine, seeing God
-                      within all beings.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-border/50 shadow-sm">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold font-sans text-foreground mb-3 flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm">
-                        4
-                      </span>
-                      Jnana Yoga
-                    </h3>
-                    <p className="text-muted-foreground">
-                      The Yoga of Knowledge. Realizing the eternal nature of the{" "}
-                      <TrackedLink
-                        href="/what-is-atman"
-                        eventLabel="gita_guide:theme:atman"
-                        trackPathName="atman"
-                        className="text-primary hover:underline"
-                      >
-                        Atman (Soul)
-                      </TrackedLink>{" "}
-                      and its oneness with{" "}
-                      <TrackedLink
-                        href="/what-is-brahman"
-                        eventLabel="gita_guide:theme:brahman"
-                        trackPathName="brahman"
-                        className="text-primary hover:underline"
-                      >
-                        Brahman
-                      </TrackedLink>
-                      .
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-
-            {/* Chapter Breakdown */}
-            <div className="bg-card border border-border/50 rounded-2xl overflow-hidden shadow-sm">
-              <div className="p-8 border-b border-border/50 bg-muted/20">
-                <div className="flex items-center gap-3">
-                  <List className="w-8 h-8 text-secondary" />
-                  <h2 className="text-3xl font-display font-bold text-foreground">
-                    The 18 Chapters
-                  </h2>
-                </div>
-                <p className="text-muted-foreground mt-2">
-                  A high-level summary of the journey through the Gita.
+          <section className="mb-20">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-display font-bold mb-6">The Battlefield of the Mind</h2>
+                <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+                  While contextually set in the middle of a civil war on the field of Kurukshetra, the Gita is widely interpreted as a psychological allegory. The battlefield represents the human heart; the chariot is the body; the five horses are the senses; Arjuna is the individual soul (Jiva); and Krishna is the indwelling Divine Witness (Atman).
+                </p>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  The "crisis" of Arjuna—his sudden paralysis and refusal to act—is the existential crisis of every seeker. How do we live and act in a world full of complexity and moral ambiguity without losing our peace or accumulating karmic debt? Krishna's answer is a multi-path synthesis known as <strong className="text-foreground">Integral Yoga</strong>.
                 </p>
               </div>
-              <div className="divide-y divide-border/50">
-                {/* Normally we'd map over a data file, but for the guide we outline the thirds */}
-                <div className="p-6 sm:p-8 hover:bg-muted/10 transition-colors">
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    First Six Chapters: Karma Yoga
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Focuses primarily on the nature of action, the eternity of
-                    the soul (Atman), and the introduction of selfless service.
-                    Arjuna faces his grief, and Krishna explains that the body
-                    is temporary but the soul is eternal.
-                  </p>
+              <div className="bg-muted/30 border border-border/50 rounded-3xl p-10 grid grid-cols-2 gap-4 text-center">
+                <div className="p-6 bg-background rounded-2xl border border-border/20">
+                  <Flame className="mx-auto mb-2 text-orange-500" />
+                  <h4 className="font-bold text-sm">Action</h4>
                 </div>
-                <div className="p-6 sm:p-8 hover:bg-muted/10 transition-colors">
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    Middle Six Chapters: Bhakti Yoga
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Shifts to the grandeur of God (Ishvara). Krishna reveals his
-                    universal, magnificent form (Vishvarupa) in Chapter 11. It
-                    establishes devotion and surrender as the most direct path
-                    to liberation.
-                  </p>
+                <div className="p-6 bg-background rounded-2xl border border-border/20">
+                  <Users className="mx-auto mb-2 text-orange-500" />
+                  <h4 className="font-bold text-sm">Devotion</h4>
                 </div>
-                <div className="p-6 sm:p-8 hover:bg-muted/10 transition-colors">
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    Last Six Chapters: Jnana Yoga
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Focuses on philosophical knowledge, describing the three
-                    Gunas (modes of nature: Sattva, Rajas, Tamas), the
-                    difference between the material world and pure
-                    consciousness, and the culmination of surrender.
-                  </p>
+                <div className="p-6 bg-background rounded-2xl border border-border/20">
+                  <BookOpen className="mx-auto mb-2 text-orange-500" />
+                  <h4 className="font-bold text-sm">Wisdom</h4>
+                </div>
+                <div className="p-6 bg-background rounded-2xl border border-border/20">
+                  <Shield className="mx-auto mb-2 text-orange-500" />
+                  <h4 className="font-bold text-sm">Dharma</h4>
                 </div>
               </div>
             </div>
+          </section>
 
-            {/* Practical Application */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <Target className="w-8 h-8 text-secondary" />
-                <h2 className="text-3xl font-display font-bold text-foreground">
-                  Practical Application Today
-                </h2>
+          <section className="mb-20 bg-muted/20 rounded-3xl p-10 border border-border/40">
+            <h2 className="text-3xl font-display font-bold mb-10 text-center">The Yoga Triumvirate</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                  <Sword className="text-orange-500 w-5 h-5" />
+                  Karma Yoga
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">The path of selfless action. Krishna instructs: "Your right is only to work, never to its fruits." By surrendering the outcome, the work itself becomes a meditation.</p>
+                <Link href="/choose-between-bhakti-jnana-karma-raja-yoga" className="text-xs font-black uppercase text-orange-400 hover:text-orange-500 transition-colors">View Path Guide</Link>
               </div>
-              <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
-                <p>
-                  The brilliance of the Gita is its accessibility. You don't
-                  need to be a monk to practice its teachings. It is
-                  specifically designed for the householder—the person living in
-                  the world, with responsibilities, facing difficult choices.
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                  <Users className="text-orange-500 w-5 h-5" />
+                  Bhakti Yoga
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">The path of devotion. For those of emotional temperament, the realization of God through surrendered love and constant remembrance is the highest path.</p>
+                <Link href="/choose-between-bhakti-jnana-karma-raja-yoga" className="text-xs font-black uppercase text-orange-400 hover:text-orange-500 transition-colors">View Path Guide</Link>
+              </div>
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                  <BookOpen className="text-orange-500 w-5 h-5" />
+                  Jnana Yoga
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">The path of knowledge. Using discrimination to separate the Self from the non-self, the Jnani burns all karma in the fire of wisdom.</p>
+                <Link href="/choose-between-bhakti-jnana-karma-raja-yoga" className="text-xs font-black uppercase text-orange-400 hover:text-orange-500 transition-colors">View Path Guide</Link>
+              </div>
+            </div>
+          </section>
+
+          <section className="mb-20">
+            <h2 className="text-4xl font-display font-bold mb-12">Essential Chapters</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {chapters.map((ch) => (
+                <div key={ch.num} className="p-8 rounded-2xl border border-border/40 bg-card hover:border-orange-500/20 transition-all">
+                  <div className="flex justify-between items-start mb-4">
+                    <h4 className="font-bold text-lg text-foreground">{ch.title}</h4>
+                    <span className="text-xs font-black text-orange-500/40 uppercase tracking-widest">Chapter {ch.num}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed italic">{ch.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="mb-20">
+            <div className="bg-orange-600/5 border border-orange-500/10 rounded-3xl p-10 flex flex-col md:flex-row gap-12 items-center">
+              <div className="md:w-1/3 text-center">
+                <div className="text-6xl font-display font-black text-orange-500 mb-2">16:21</div>
+                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">The Three Gateways to Hell</p>
+              </div>
+              <div className="md:w-2/3">
+                <p className="text-xl text-muted-foreground leading-relaxed mb-6 italic">
+                  "Triple is the gateway to hell, destructive of the self — Lust, Anger, and Greed; therefore, one should abandon these three."
                 </p>
-                <ul>
-                  <li>
-                    <strong>Focus on the Effort, Not the Outcome:</strong>{" "}
-                    Anxiety comes from worrying about results. Focus intensely
-                    on doing your best right now.
-                  </li>
-                  <li>
-                    <strong>Find Your Duty:</strong> Align your career and life
-                    choices with your natural inclinations and principles.
-                  </li>
-                  <li>
-                    <strong>Maintain Equanimity:</strong> Treat success and
-                    failure, heat and cold, pleasure and pain with an even mind.
-                  </li>
-                </ul>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Krishna's warning is practical. These three states "color" the mind so intensely that they make it impossible to see Dharma (duty) or the Truth. Spiritual progress begins with purifying these gates.
+                </p>
               </div>
             </div>
+          </section>
 
-            {/* FAQ */}
-            <div className="border-t border-border/50 pt-16">
-              <h2 className="text-3xl font-display font-bold text-foreground mb-8 text-center">
-                Frequently Asked Questions
-              </h2>
-              <div className="space-y-6 max-w-3xl mx-auto">
-                <div className="bg-card p-6 rounded-xl border border-border/50">
-                  <h3 className="text-lg font-bold text-foreground mb-2">
-                    How many chapters and verses are in the Bhagavad Gita?
-                  </h3>
-                  <p className="text-muted-foreground">
-                    The Gita consists of 18 chapters and exactly 700 verses
-                    (shlokas). It makes up chapters 23 to 40 of the Bhishma
-                    Parva book of the Mahabharata epic.
-                  </p>
-                </div>
-                <div className="bg-card p-6 rounded-xl border border-border/50">
-                  <h3 className="text-lg font-bold text-foreground mb-2">
-                    What is the core message of the Bhagavad Gita?
-                  </h3>
-                  <p className="text-muted-foreground">
-                    The central message is to perform your righteous duty
-                    (Dharma) with discipline and dedication, without acting out
-                    of attachment to the fruits or rewards of that labor. This
-                    path of selfless action is called Karma Yoga.
-                  </p>
-                </div>
-                <div className="bg-card p-6 rounded-xl border border-border/50">
-                  <h3 className="text-lg font-bold text-foreground mb-2">
-                    Did the battle of Kurukshetra really happen?
-                  </h3>
-                  <p className="text-muted-foreground">
-                    While it is rooted in historical events of ancient India,
-                    spiritual masters emphasize that the true battlefield is
-                    psychological—it represents the inner war between our divine
-                    nature (righteousness, kindness) and our lower nature (ego,
-                    greed, anger).
-                  </p>
-                </div>
-              </div>
+          <div className="rounded-3xl bg-orange-600 p-12 text-center text-white shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+              <Sword size={400} className="rotate-45 translate-x-32" />
             </div>
-
-            {/* CTA */}
-            <div className="text-center pt-8">
-              <h3 className="text-2xl font-bold font-display text-foreground mb-6">
-                Ready to read the sacred text?
-              </h3>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <TrackedLink
-                  href="/texts/bhagavad-gita"
-                  eventLabel="gita_guide:cta:texts"
-                  trackPathName="bhagavad-gita"
-                >
-                  <Button size="lg" className="w-full sm:w-auto shadow-lg">
-                    Explore Chapters & Shlokas{" "}
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </TrackedLink>
-                <TrackedLink
-                  href="/faith-finder"
-                  eventLabel="gita_guide:cta:faith-finder"
-                  trackPathName="sacred-texts"
-                >
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="w-full sm:w-auto"
-                  >
-                    Take the Spiritual Path Quiz
-                  </Button>
-                </TrackedLink>
-              </div>
+            <h2 className="text-4xl md:text-6xl font-display font-black mb-6 relative z-10">Choose Your Path.</h2>
+            <p className="text-xl text-orange-50 max-w-2xl mx-auto mb-10 relative z-10 font-medium">
+              The Gita declares that there are as many paths to the Divine as there are human temperaments. Which one matches yours?
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+              <TrackedLink
+                href="/faith-finder"
+                eventLabel="gita_guide:footer:quiz"
+                trackPathName="sacred-texts"
+                className="px-10 py-5 bg-white text-orange-600 font-bold rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95"
+              >
+                Take the Path Quiz
+              </TrackedLink>
+              <TrackedLink
+                href="/texts/bhagavad-gita"
+                eventLabel="gita_guide:footer:texts"
+                trackPathName="bhagavad-gita"
+                className="px-10 py-5 bg-orange-700 text-white border border-orange-400/30 font-bold rounded-2xl transition-all hover:bg-orange-800"
+              >
+                Read the Full Verses
+              </TrackedLink>
             </div>
           </div>
-        </section>
+
+          <footer className="mt-20 pt-10 border-t border-border/40 text-center">
+            <p className="text-sm text-muted-foreground italic mb-4 uppercase tracking-widest font-bold">Recommended Translations</p>
+            <div className="flex flex-wrap justify-center gap-6 text-xs font-bold text-muted-foreground/60 uppercase tracking-wide">
+              <span>Eknath Easwaran</span>
+              <span>Swami Prabhavananda</span>
+              <span>S. Radhakrishnan</span>
+              <span>Winthrop Sargeant (Transliterated)</span>
+            </div>
+          </footer>
+        </div>
       </main>
+
       <Footer />
     </div>
   );

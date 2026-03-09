@@ -1,97 +1,156 @@
+import type { Metadata } from "next";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Flame, Heart, Sparkles, Shield, Compass, Users } from "lucide-react";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
 import { getArticleBySlug } from "@/data/articles";
-import { ArticleLayout } from "@/components/ArticleLayout";
-import { buildArticleMetadata } from "@/lib/seo";
 
 const meta = getArticleBySlug("shaivism-vs-vaishnavism")!;
 
-export const metadata = buildArticleMetadata(meta);
+export const metadata: Metadata = {
+    title: "Shaivism vs. Vaishnavism | The Two Great Paths Compared",
+    description: "Comparing the two largest traditions of Sanatan Dharma: Shaivism (Shiva) and Vaishnavism (Vishnu). Explore their philosophies, practices, and goals.",
+    alternates: { canonical: "https://opensadhaka.com/shaivism-vs-vaishnavism" },
+};
 
 export default function ShaivismVsVaishnavismPage() {
     return (
-        <ArticleLayout meta={meta} pillarLabel="Spiritual Traditions" pillarHref="/spiritual-traditions-paths">
-            <p>
-                Within the vast ecosystem of Sanatan Dharma, two great streams have shaped the devotional landscape of India for over two millennia: the path of Shiva and the path of Vishnu. Together, their followers constitute the overwhelming majority of Hindu practitioners worldwide.
-            </p>
-            <p>
-                These are not simply different preferences for different gods. They represent distinct cosmologies, distinct philosophies of liberation, distinct aesthetic and emotional modes of relating to the Divine — and, especially in South India, distinct philosophical schools with rigorous intellectual traditions. Understanding the difference is not merely academic: it is understanding how billions of people have organized their inner lives.
-            </p>
+        <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <ContentPageTracker slug="shaivism-vs-vaishnavism" pillar="traditions" />
+            <Header />
 
-            <h2>Shaivism: The Path of Shiva</h2>
-            <p>
-                <strong>Shaivism</strong> (Sanskrit: Shaiva, from Shiva) is the tradition that recognizes Shiva as the Supreme Being — not merely one deity among many, but the absolute, the cosmic consciousness itself. Its roots reach back to the Vedic Rudra, and it has evolved into an extraordinarily diverse family of traditions.
-            </p>
-            <p>
-                Who is Shiva? At the mythological level: the great Yogi of the Himalayas, the cosmic dancer (Nataraja), the destroyer who clears the way for regeneration, the lord of time, the husband of Parvati. At the philosophical level: pure consciousness (Chit), the witness, the ground of all being, that which is uncreated and imperishable.
-            </p>
-            <p>
-                The name itself: <em>Shiva</em> means "the auspicious one," or more etymologically, "the good" — related to the state of ultimate well-being that is liberation.
-            </p>
+            <main className="flex-grow pt-24 pb-16">
+                <div className="container-padding max-w-5xl mx-auto">
+                    <Breadcrumbs
+                        items={[
+                            { label: "Home", href: "/" },
+                            { label: "Traditions", href: "/traditions" },
+                            { label: "Shaivism vs Vaishnavism", href: "/shaivism-vs-vaishnavism" },
+                        ]}
+                    />
 
-            <h3>The Major Schools of Shaivism</h3>
-            <ul>
-                <li><strong>Shaiva Siddhanta</strong> — The dominant tradition of South India. Dualistic: God (Pati), souls (Pasus), and bonds (Pasas) are three distinct eternal realities. Liberation is the soul's recognition of its relationship with Shiva.</li>
-                <li><strong>Kashmir Shaivism</strong> — The most philosophically sophisticated Shaiva school. Non-dual: Shiva is the one consciousness; everything is his Shakti (divine energy in play). The universe is Shiva's Lila in full recognizing himself. Liberation is recognition (Pratyabhijna) of one's own nature as Shiva.</li>
-                <li><strong>Vira Shaivism / Lingayat</strong> — Reform tradition from Karnataka, founded by Basavanna (12th c.). Devotional, egalitarian, centered on wearing a personal Linga.</li>
-                <li><strong>Nath Sampradaya</strong> — Emphasizes yogic practice, Kundalini, and the internal ascent through the chakras to Shiva-consciousness.</li>
-            </ul>
+                    <header className="mb-16 mt-8">
+                        <h1 className="font-display text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
+                            Two <span className="text-primary italic text-6xl md:text-7xl">Great</span> Streams.
+                        </h1>
+                        <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight border-l-4 border-primary/30 pl-8 py-2">
+                            The path of Shiva and the path of Vishnu: two distinct cosmologies, two emotional modes, one ultimate destination.
+                        </p>
+                    </header>
 
-            <h2>Vaishnavism: The Path of Vishnu</h2>
-            <p>
-                <strong>Vaishnavism</strong> (Sanskrit: Vaishnava, from Vishnu) takes Vishnu — and his avatars, especially Krishna and Rama — as the Supreme Being. It is numerically the largest Hindu denomination globally, represented in every major region of India and in Hindu diaspora communities worldwide.
-            </p>
-            <p>
-                Who is Vishnu? At the mythological level: the preserver of cosmic order (Dharma), the one who incarnates whenever adharma prevails, the husband of Lakshmi. At the philosophical level in Vaishnavism: the personal Brahman — infinite, omniscient, supremely blissful, the source and sustainer of all existence.
-            </p>
+                    <section className="mb-20">
+                        <div className="bg-muted/30 border border-border/40 rounded-3xl p-10 md:p-16">
+                            <h2 className="text-3xl font-display font-bold mb-10 text-center">Core Temperaments</h2>
+                            <div className="grid md:grid-cols-2 gap-12">
+                                <div className="space-y-6">
+                                    <div className="p-8 bg-background rounded-2xl border border-border/20 group hover:border-orange-500/50 transition-colors">
+                                        <Flame className="text-orange-500 mb-4 w-10 h-10" />
+                                        <h3 className="text-2xl font-bold mb-3">Shaivism (The Yogi)</h3>
+                                        <p className="text-muted-foreground leading-relaxed">
+                                            Centered on Shiva as the Supreme. The path of <strong>Asceticism</strong>, inner silence, and the dissolution of the ego into pure consciousness.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="space-y-6">
+                                    <div className="p-8 bg-background rounded-2xl border border-border/20 group hover:border-blue-500/50 transition-colors">
+                                        <Heart className="text-blue-500 mb-4 w-10 h-10" />
+                                        <h3 className="text-2xl font-bold mb-3">Vaishnavism (The Bhakta)</h3>
+                                        <p className="text-muted-foreground leading-relaxed">
+                                            Centered on Vishnu and his avatars (Krishna/Rama). The path of <strong>Devotion</strong>, relationship, and the preservation of cosmic order (Dharma).
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-            <h3>The Major Schools of Vaishnavism</h3>
-            <ul>
-                <li><strong>Sri Vaishnavism</strong> (Ramanujacharya) — Vishishtadvaita philosophy. Vishnu/Narayana as the one qualified Brahman. Centered in South India, with the great Vaishnava temple traditions.</li>
-                <li><strong>Madhva Sampradaya / Dvaita</strong> (Madhvacharya) — Strict dualism. Vishnu as eternally distinct from the soul and the world. Strong in Karnataka; ISKCON's Gaudiya Vaishnavism traces philosophical lineage to Madhva.</li>
-                <li><strong>Gaudiya Vaishnavism</strong> (Chaitanya Mahaprabhu, 16th c.) — The tradition made globally famous by ISKCON. Krishna-centered, Achintya Bhedabheda (inconceivable difference-in-unity) philosophy. Emphasis on Bhakti (devotion) as both means and end.</li>
-                <li><strong>Pushtimarga</strong> (Vallabhacharya) — Pure grace-focused, Shuddhadvaita philosophy, centered on Krishna of Vrindavan.</li>
-            </ul>
+                    <section className="mb-20">
+                        <h2 className="text-4xl font-display font-bold mb-12">Comparison Matrix</h2>
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left border-collapse border border-border/40 rounded-3xl overflow-hidden">
+                                <thead className="bg-muted/50">
+                                    <tr>
+                                        <th className="p-6 font-bold text-foreground">Feature</th>
+                                        <th className="p-6 font-bold text-orange-500 italic">Shaivism</th>
+                                        <th className="p-6 font-bold text-blue-500 italic">Vaishnavism</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-border/40">
+                                    <tr>
+                                        <td className="p-6 font-bold text-foreground">View of Reality</td>
+                                        <td className="p-6 text-muted-foreground">Typically Non-Dual (Advaita)</td>
+                                        <td className="p-6 text-muted-foreground">Typically Qualified or Dual (Dvaita)</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="p-6 font-bold text-foreground">Goal of Soul</td>
+                                        <td className="p-6 text-muted-foreground">Identity with the Absolute</td>
+                                        <td className="p-6 text-muted-foreground">Eternal Relationship with God</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="p-6 font-bold text-foreground">Primary Sadhana</td>
+                                        <td className="p-6 text-muted-foreground">Meditation & Yoga</td>
+                                        <td className="p-6 text-muted-foreground">Bhakti & Service</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="p-6 font-bold text-foreground">Symbolism</td>
+                                        <td className="p-6 text-muted-foreground">The Linga (Unmanifest)</td>
+                                        <td className="p-6 text-muted-foreground">The Murti (Manifest Avatars)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
 
-            <h2>Key Philosophical Differences</h2>
+                    <section className="mb-20">
+                        <h2 className="text-4xl font-display font-bold mb-12">Beyond Selection</h2>
+                        <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
+                            <p>
+                                The debate between Shaivism and Vaishnavism is not a conflict of "right vs. wrong," but a choice of temperament. Historical synthesis, such as the <strong>Harihara</strong> form (half Shiva, half Vishnu), reminds us that these are two lenses looking at the same source.
+                            </p>
+                            <p>
+                                The Smarta tradition, stabilized by Adi Shankaracharya, explicitly worships both—alongside Devi, Ganesha, and Surya—as manifestations of the one Brahman.
+                            </p>
+                        </div>
+                    </section>
 
-            <h3>View of the Self</h3>
-            <p>
-                Most Shaiva schools (especially Kashmir) tend toward non-dual or near-non-dual positions: the individual self is ultimately identical to or inseparable from Shiva-consciousness. Most Vaishnava schools maintain a real distinction between the individual soul and God — liberation is about relationship, not merger.
-            </p>
+                    <section className="mt-20 pt-20 border-t border-border/40 max-w-3xl mx-auto">
+                        <h2 className="text-4xl font-display font-bold mb-12 text-center">Frequently Asked Questions</h2>
+                        <Accordion type="single" collapsible className="w-full">
+                            {[
+                                {
+                                    q: "Is Shiva or Vishnu higher?",
+                                    a: "In their respective traditions, each is seen as the Supreme. In the synthesizing Smarta tradition and Advaita Vedanta, they are seen as equal manifestations of the one formless Brahman."
+                                },
+                                {
+                                    q: "What is the difference in liberation?",
+                                    a: "Shaivism often views liberation as 'Sayujya' (merging) or recognition of identity. Vaishnavism often views it as 'Salokya' (living in the same realm) or 'Samipya' (nearness) to the Divine, preserving the soul's ability to love God."
+                                },
+                                {
+                                    q: "Can I practice both?",
+                                    a: "Yes. Many Hindus worship both Shiva and Vishnu. The choice of a 'primary' deity (Ishta Devata) is simply a way to deepen focus, not to exclude other divine forms."
+                                }
+                            ].map((faq, i) => (
+                                <AccordionItem key={i} value={`item-${i}`} className="border-border/40 px-4">
+                                    <AccordionTrigger className="text-lg font-bold hover:text-primary transition-colors text-left">{faq.q}</AccordionTrigger>
+                                    <AccordionContent className="text-muted-foreground leading-relaxed text-base">{faq.a}</AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </section>
+                </div>
+            </main>
 
-            <h3>View of Liberation</h3>
-            <p>
-                In the dominant Shaiva traditions: liberation (Mukti or Moksha) is the recognition that one's nature is already Shiva. Nothing is added, nothing is achieved — the veil of ignorance lifts. In most Vaishnava traditions: liberation is the soul's arrival in the direct presence of Vishnu, in a state of eternal bliss. The soul retains its identity but experiences God directly.
-            </p>
-
-            <h3>Role of Devotion</h3>
-            <p>
-                Both traditions are deeply devotional. But in Vaishnavism, Bhakti (devotion) is the path itself — the direct means of liberation. In many Shaiva traditions, especially Kashmir Shaivism, Bhakti is important but is ultimately subsumed into Jnana (knowledge/recognition) as the final step.
-            </p>
-
-            <h2>Historical Relations: Conflict and Synthesis</h2>
-            <p>
-                The two traditions have had a complicated historical relationship. Medieval India saw real sectarian tensions — Shaiva and Vaishnava kings favoring their traditions at the expense of the other, with occasional episodes of genuine conflict.
-            </p>
-            <p>
-                The most enduring synthesis was Shankaracharya's <strong>Shanmata</strong> system: the recognition of Shiva, Vishnu, Devi, Ganesha, Surya, and Skanda as equal manifestations of one Supreme. The Smarta tradition that follows this framework allows both Shiva and Vishnu to be worshipped as the Supreme by practitioners of different temperaments — a theological ecumenism that has made Smartism the most eclectic of Indonesia's four major Hindu denominations.
-            </p>
-            <p>
-                The Harihara form — literally half-Shiva (with Shiva's matted locks) and half-Vishnu (with Vishnu's crown) — has been worshipped for centuries as a declaration that the sectarian boundary is conventional, not ultimate.
-            </p>
-
-            <h2>Which Path is Right for You?</h2>
-            <p>
-                The question is one of temperament, not correctness:
-            </p>
-            <p>
-                <strong>Shaiva tendencies:</strong> Drawn to silence, dissolution, the mystical, yogic practice, asceticism, the image of the meditating sage. Comfortable with the dissolution of the ego-sense as liberation. Value investigation and direct experience over scripture and relationship.
-            </p>
-            <p>
-                <strong>Vaishnava tendencies:</strong> Drawn to devotional love, service, the personal relationship with God, the image of the devoted servant or lover. More comfortable maintaining the lover-beloved distinction as eternally fruitful. Value scripture, community (Satsanga), and surrender over solitary inquiry.
-            </p>
-            <p>
-                The 5-minute Faith Finder quiz can help you identify your natural spiritual temperament and which tradition's practices are likely to resonate most strongly with you.
-            </p>
-        </ArticleLayout>
+            <Footer />
+        </div>
     );
 }

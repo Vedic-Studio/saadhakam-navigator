@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getConceptBySlug, getAllConcepts } from "@/data/concepts";
 import { getSanskritWordBySlug } from "@/data/sanskritVocab";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
   BookOpen,
@@ -15,6 +17,8 @@ import {
   Target,
   BookMarked,
   Share2,
+  Telescope,
+  Compass,
 } from "lucide-react";
 
 function resolveConceptRoute(slug: string) {
@@ -68,41 +72,26 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-
   const { conceptSlug, pageType } = resolveConceptRoute(slug);
-
   if (!pageType || !conceptSlug) return {};
 
   const concept = getConceptBySlug(conceptSlug);
   if (!concept) return {};
 
   const conceptName = getConceptDisplayName(concept.sanskritWord, concept.slug);
-  const canonicalPath = `/what-is-${concept.slug}`;
-  const title = `What is ${conceptName}? Meaning, Definition & Vedic Context`;
-  const description = `Learn what ${conceptName} means in Sanatan Dharma, including its definition, philosophical role, practical application, related concepts, and scriptural context.`;
+  const title = `What is ${conceptName}? Meaning & Vedic Context | Sadhaka`;
+  const description = concept.shortDefinition;
 
   return {
     title,
     description,
-    keywords: [
-      conceptSlug,
-      conceptName.toLowerCase(),
-      `what is ${conceptName.toLowerCase()}`,
-      `${conceptName.toLowerCase()} meaning`,
-      `${conceptName.toLowerCase()} definition`,
-      "definition",
-      "sanatan dharma",
-      "hindu philosophy",
-      ...concept.tags,
-    ],
     alternates: {
-      canonical: `https://opensadhaka.com${canonicalPath}`,
+      canonical: `https://opensadhaka.com/what-is-${concept.slug}`,
     },
-    robots: pageType === "meaning" ? { index: false, follow: true } : undefined,
     openGraph: {
       title,
       description,
-      url: `https://opensadhaka.com${canonicalPath}`,
+      url: `https://opensadhaka.com/what-is-${concept.slug}`,
     },
   };
 }
@@ -113,7 +102,6 @@ export default async function PseoConceptPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const { conceptSlug, pageType } = resolveConceptRoute(slug);
 
   if (!pageType || !conceptSlug) notFound();
@@ -126,37 +114,11 @@ export default async function PseoConceptPage({
   }
 
   const isWhatIs = pageType === "what-is";
-  const sanskritOnly = concept.sanskritWord.split(" ")[0];
   const conceptName = getConceptDisplayName(concept.sanskritWord, concept.slug);
   const sanskritEntry = getSanskritWordBySlug(concept.slug);
   const relatedConceptEntries = concept.relatedConcepts
     .map((relatedSlug) => getConceptBySlug(relatedSlug))
     .filter(Boolean) as NonNullable<ReturnType<typeof getConceptBySlug>>[];
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://opensadhaka.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Concepts",
-        item: "https://opensadhaka.com/learn",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: isWhatIs ? `What is ${sanskritOnly}` : `${sanskritOnly} Meaning`,
-        item: `https://opensadhaka.com/${slug}`,
-      },
-    ],
-  };
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -164,7 +126,7 @@ export default async function PseoConceptPage({
     mainEntity: [
       {
         "@type": "Question",
-        name: `What is the short definition of ${sanskritOnly}?`,
+        name: `What is the spiritual definition of ${conceptName}?`,
         acceptedAnswer: {
           "@type": "Answer",
           text: concept.shortDefinition,
@@ -172,15 +134,7 @@ export default async function PseoConceptPage({
       },
       {
         "@type": "Question",
-        name: `What is the English translation of ${sanskritOnly}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: concept.englishTranslation,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How does ${sanskritOnly} apply practically?`,
+        name: `How is ${conceptName} applied in spiritual practice?`,
         acceptedAnswer: {
           "@type": "Answer",
           text: concept.practicalApplication,
@@ -189,215 +143,138 @@ export default async function PseoConceptPage({
     ],
   };
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: `What is ${conceptName}?`,
-    description: concept.shortDefinition,
-    url: `https://opensadhaka.com/what-is-${concept.slug}`,
-    mainEntityOfPage: `https://opensadhaka.com/what-is-${concept.slug}`,
-    author: { "@type": "Organization", name: "Sadhaka" },
-    publisher: { "@type": "Organization", name: "Sadhaka" },
-    about: [
-      {
-        "@type": "Thing",
-        name: conceptName,
-      },
-    ],
-  };
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <ContentPageTracker slug={concept.slug} pillar="concepts" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
       <Header />
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="bg-muted/30 py-16 px-4 sm:px-6 lg:px-8 border-b">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-4 text-sm text-primary font-medium uppercase tracking-wider">
-              Sanskrit & Philosophy Explorer
-            </div>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
-              {isWhatIs ? `What is ${conceptName}?` : `${conceptName} Meaning`}
+
+      <main className="flex-grow pt-24 pb-16">
+        <div className="container-padding max-w-5xl mx-auto">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Concepts", href: "/learn" },
+              { label: conceptName, href: `/what-is-${concept.slug}` },
+            ]}
+          />
+
+          <header className="mb-16 mt-8">
+            <div className="text-primary font-black uppercase tracking-widest text-xs mb-4">Concept Explorer</div>
+            <h1 className="font-display text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
+              {isWhatIs ? `What is ` : ""}<span className="text-primary italic">{conceptName}</span>?
             </h1>
-            <p className="text-xl md:text-2xl text-secondary font-medium mb-4">
+            <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-4 leading-relaxed max-w-3xl border-l-4 border-primary/30 pl-8 py-2">
               {concept.sanskritWord} — {concept.englishTranslation}
             </p>
-            <p className="text-lg text-muted-foreground mx-auto max-w-2xl">
+            <div className="text-lg text-muted-foreground max-w-2xl mt-8">
               {concept.shortDefinition}
-            </p>
-            <p className="text-sm text-muted-foreground mx-auto max-w-2xl mt-4">
-              This is the philosophical explainer for {conceptName}: use this page for
-              meaning, Vedic context, and practical understanding. For etymology,
-              transliteration, and textual usage, use the Sanskrit lexicon entry.
-            </p>
-          </div>
-        </section>
+            </div>
+          </header>
 
-        {/* Main Content */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8 pb-20">
-          <div className="max-w-4xl mx-auto space-y-12">
-            {/* Deep Dive Definition */}
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <h2 className="flex items-center gap-3 text-3xl font-display text-foreground font-bold mb-6">
-                <BookOpen className="text-primary w-8 h-8" />
-                {isWhatIs ? "Understanding It Deeply" : "Origin and Context"}
+          <section className="mb-20">
+            <div className="bg-muted/30 border border-border/40 rounded-3xl p-10 md:p-16">
+              <h2 className="flex items-center gap-4 text-3xl font-display font-bold mb-10">
+                <BookOpen className="text-primary w-10 h-10" />
+                Deep Understanding
               </h2>
-              <p className="leading-relaxed text-muted-foreground">
-                {concept.longDescription}
-              </p>
-              <p className="leading-relaxed text-muted-foreground mt-4">
-                {concept.roleInPhilosophy}
-              </p>
-            </div>
-
-            {/* Two Column Grid */}
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card className="bg-card border-border/50 shadow-sm hover:shadow-md transition-shadow">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Lightbulb className="w-6 h-6 text-secondary" />
-                    <h3 className="font-display text-2xl font-semibold text-foreground">
-                      Core Principles
-                    </h3>
-                  </div>
-                  <ul className="space-y-4">
-                    {concept.keyPrinciples.map((principle, index) => (
-                      <li key={index} className="flex gap-4 items-start">
-                        <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 text-sm font-bold mt-0.5">
-                          {index + 1}
-                        </span>
-                        <span className="text-muted-foreground leading-snug">
-                          {principle}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-card border-border/50 shadow-sm hover:shadow-md transition-shadow">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Target className="w-6 h-6 text-secondary" />
-                    <h3 className="font-display text-2xl font-semibold text-foreground">
-                      Practical Application
-                    </h3>
-                  </div>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {concept.practicalApplication}
-                  </p>
-
-                  <div className="mt-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <BookMarked className="w-5 h-5 text-secondary" />
-                      <h4 className="font-sans font-semibold text-foreground">
-                        Found In Texts
-                      </h4>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {concept.sourceTexts.map((text) => (
-                        <span
-                          key={text}
-                          className="px-3 py-1.5 bg-muted rounded-md text-sm text-foreground font-medium"
-                        >
-                          {text}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Internal Linking & Next Steps */}
-            <div className="pt-8 border-t border-border/50">
-              <h3 className="text-2xl font-bold font-display text-foreground mb-6">
-                Keep Exploring
-              </h3>
-              <div className="flex flex-wrap gap-4 mb-8">
-                {relatedConceptEntries.map((relatedConcept) => (
-                  <TrackedLink
-                    key={relatedConcept.slug}
-                    href={`/what-is-${relatedConcept.slug}`}
-                    eventLabel={`concept_related_link:${concept.slug}:${relatedConcept.slug}`}
-                    trackPathName={relatedConcept.slug}
-                    className="inline-flex items-center gap-2 group"
-                  >
-                    <span className="px-5 py-3 rounded-xl border border-border bg-card hover:bg-muted/50 transition-colors text-foreground font-medium shadow-sm flex items-center gap-2">
-                      <Share2 className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                      What is {humanizeSlug(relatedConcept.slug)}?
-                    </span>
-                  </TrackedLink>
-                ))}
+              <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
+                <p className="mb-6">{concept.longDescription}</p>
+                <p className="italic border-l-2 border-primary/20 pl-6 py-2">{concept.roleInPhilosophy}</p>
               </div>
-
-              {sanskritEntry && (
-                <Card className="mb-8 bg-secondary/5 border-secondary/20">
-                  <CardContent className="p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                    <div>
-                      <h4 className="text-lg font-bold text-foreground mb-1">
-                        Need the linguistic and etymology angle?
-                      </h4>
-                      <p className="text-muted-foreground">
-                        Read the Sanskrit lexicon entry for {conceptName} to explore transliteration, root meaning, and scriptural usage.
-                      </p>
-                    </div>
-                    <TrackedLink
-                      href={`/learn/sanskrit/${concept.slug}`}
-                      eventLabel={`concept_to_lexicon:${concept.slug}`}
-                      trackPathName={concept.slug}
-                      className="inline-flex items-center gap-2 rounded-lg border border-secondary/30 px-4 py-2 text-sm font-semibold text-foreground hover:bg-secondary/10 transition-colors"
-                    >
-                      Open Sanskrit entry
-                      <ArrowRight className="w-4 h-4" />
-                    </TrackedLink>
-                  </CardContent>
-                </Card>
-              )}
-
-              <Card className="bg-primary/5 border-primary/20">
-                <CardContent className="p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-                  <div>
-                    <h4 className="text-xl font-bold font-display text-foreground mb-2">
-                      Discover Your Spiritual Path
-                    </h4>
-                    <p className="text-muted-foreground">
-                      Take our 2-minute Faith Finder assessment to find which
-                      philosophies and practices align with you.
-                    </p>
-                  </div>
-                  <TrackedLink
-                    href="/faith-finder"
-                    eventLabel={`concept_cta:${concept.slug}:faith-finder`}
-                    trackPathName={concept.slug}
-                    className="shrink-0"
-                  >
-                    <Button
-                      size="lg"
-                      className="shadow-lg hover:shadow-xl transition-all"
-                    >
-                      Take Assessment <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </TrackedLink>
-                </CardContent>
-              </Card>
             </div>
+          </section>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-20">
+            <Card className="rounded-3xl border-border/40 bg-card/50 backdrop-blur-sm overflow-hidden">
+              <CardContent className="p-10">
+                <div className="flex items-center gap-4 mb-8">
+                  <Lightbulb className="w-8 h-8 text-primary" />
+                  <h3 className="text-2xl font-display font-bold">Core Principles</h3>
+                </div>
+                <ul className="space-y-6">
+                  {concept.keyPrinciples.map((p, i) => (
+                    <li key={i} className="flex gap-4 items-start">
+                      <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 text-xs font-bold mt-1">{i + 1}</span>
+                      <span className="text-muted-foreground font-medium leading-relaxed">{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-3xl border-border/40 bg-card/50 backdrop-blur-sm overflow-hidden">
+              <CardContent className="p-10">
+                <div className="flex items-center gap-4 mb-8">
+                  <Target className="w-8 h-8 text-secondary" />
+                  <h3 className="text-2xl font-display font-bold">In Practice</h3>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-10 font-medium">
+                  {concept.practicalApplication}
+                </p>
+                <div>
+                  <div className="text-xs font-black uppercase tracking-widest text-muted-foreground mb-4">Foundational Texts</div>
+                  <div className="flex flex-wrap gap-2">
+                    {concept.sourceTexts.map(t => (
+                      <Badge key={t} variant="outline" className="px-4 py-2 rounded-xl text-foreground/80 border-border/40">{t}</Badge>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
-        </section>
+
+          <section className="mb-20 pt-20 border-t border-border/40">
+            <h2 className="text-3xl font-display font-bold mb-10">Keep Exploring</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedConceptEntries.map((related) => (
+                <TrackedLink key={related.slug} href={`/what-is-${related.slug}`} eventLabel={`concept_related:${concept.slug}`} trackPathName={related.slug}>
+                  <div className="p-6 rounded-2xl border border-border/40 bg-card hover:border-primary/40 transition-all flex items-center justify-between group h-full">
+                    <span className="font-bold text-foreground group-hover:text-primary transition-colors">What is {humanizeSlug(related.slug)}?</span>
+                    <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  </div>
+                </TrackedLink>
+              ))}
+            </div>
+          </section>
+
+          {sanskritEntry && (
+            <div className="rounded-3xl bg-neutral-900 p-10 md:p-16 text-white shadow-2xl relative overflow-hidden group mb-20">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
+                <div className="flex-grow text-center md:text-left">
+                  <h3 className="text-3xl md:text-5xl font-display font-black mb-6">Need the linguistic angle?</h3>
+                  <p className="text-xl text-neutral-400 max-w-xl font-medium leading-relaxed">
+                    Explore the Sanskrit root etymology, transliteration, and precise scriptural usage for <span className="text-primary">{conceptName}</span> in our lexicon.
+                  </p>
+                </div>
+                <TrackedLink href={`/learn/sanskrit/${concept.slug}`} eventLabel={`concept_to_lexicon:${concept.slug}`} trackPathName={concept.slug}>
+                  <Button size="lg" className="h-16 px-10 rounded-2xl bg-white text-black hover:bg-neutral-200 font-black shadow-xl">
+                    Open Sanskrit Entry
+                  </Button>
+                </TrackedLink>
+              </div>
+            </div>
+          )}
+
+          <div className="rounded-3xl bg-primary p-12 text-center text-primary-foreground shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+              <Compass size={400} className="rotate-12 -translate-x-32" />
+            </div>
+            <h2 className="text-4xl md:text-6xl font-display font-black mb-6 relative z-10 italic">Your Path Awaits.</h2>
+            <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 relative z-10 font-medium">
+              Take our 2-minute assessment to find which philosophies and practices align with your temperament.
+            </p>
+            <TrackedLink href="/faith-finder" eventLabel="concept_footer:cta" trackPathName="faith-finder" className="relative z-10 inline-block px-12 py-6 bg-white text-primary font-black rounded-2xl shadow-xl hover:scale-105 transition-transform active:scale-95">
+              Find My Path <ArrowRight className="inline-block ml-2 w-5 h-5" />
+            </TrackedLink>
+          </div>
+        </div>
       </main>
+
       <Footer />
     </div>
   );

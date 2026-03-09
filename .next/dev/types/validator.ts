@@ -182,6 +182,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/difference-between-yoga-and-vedanta/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/difference-between-yoga-and-vedanta">> = Specific
+  const handler = {} as typeof import("../../../src/app/difference-between-yoga-and-vedanta/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/faith-finder/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/faith-finder">> = Specific

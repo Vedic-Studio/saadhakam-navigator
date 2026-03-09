@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { Badge } from "@/components/ui/badge";
 import { traditions } from "@/data/traditions";
 import { comparisons } from "@/data/comparisons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Compass, Shield, Users, Heart, Flame, Sparkles } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -16,186 +17,123 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "Spiritual Traditions & Lineages of Sanatan Dharma",
-  description:
-    "Explore the major spiritual traditions and sampradayas of Sanatan Dharma—Shaivism, Vaishnavism, Shaktism, and more. Find your path.",
-  keywords: [
-    "spiritual traditions",
-    "sampradaya",
-    "shaivism",
-    "vaishnavism",
-    "shaktism",
-    "sanatan dharma",
-  ],
+  title: "Spiritual Traditions & Sampradayas | Paths of Sanatan Dharma",
+  description: "Explore the major spiritual traditions (Sampradayas) of India: Shaivism, Vaishnavism, Shaktism, and Smartism. Find the path that fits your temperament.",
   alternates: { canonical: "https://opensadhaka.com/traditions" },
-  openGraph: {
-    title: "Spiritual Traditions of Sanatan Dharma | Sadhaka",
-    description:
-      "Explore Shaivism, Vaishnavism, Shaktism, and other sacred lineages.",
-    url: "https://opensadhaka.com/traditions",
-  },
 };
 
 export default function TraditionsPage() {
-  const faqs = [
-    {
-      question: "What is a Sampradaya?",
-      answer: "A Sampradaya is a traditional lineage of spiritual teaching in Sanatan Dharma. It involves a succession of masters and disciples (parampara) that preserves and transmits a specific theology, set of rituals, and interpretation of the scriptures."
-    },
-    {
-      question: "What are the four main denominations of Hinduism?",
-      answer: "The four largest denominations are Vaishnavism (worship of Vishnu/Krishna), Shaivism (worship of Shiva), Shaktism (worship of the Divine Mother/Devi), and Smartism (which treats five or six major deities as equal manifestations of the one Brahman)."
-    },
-    {
-      question: "Can I follow multiple traditions?",
-      answer: "Yes. Historically, the Smart tradition was founded by Adi Shankaracharya explicitly to synthesize the worship of multiple deities. Even outside of Smartism, many Hindus worship deities across sectarian lines, though they may have a primary 'Ishta Devata' (chosen deity)."
-    },
-    {
-      question: "What is the difference between Shaivism and Vaishnavism?",
-      answer: "Philosophically, many Shaiva schools lean toward non-dualism (Advaita), viewing liberation as the recognition of one's identity with Shiva. Many Vaishnava schools lean toward dualism (Dvaita) or qualified non-dualism, viewing liberation as the eternal, devoted relationship between the individual soul and Vishnu."
-    }
-  ];
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       <ContentPageTracker slug="traditions" pillar="traditions" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <Header />
-      <main className="pt-20">
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Spiritual Traditions — Paths to the Divine
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-                Philosophy in the East was never meant to remain purely academic. A philosophy must be lived, and a <strong>Sampradaya</strong> (tradition/lineage) is the living ecosystem that turns abstract truth into a walkable path. It provides the rituals, the mantras, the ethical boundaries, and the succession of realized teachers (Parampara).
-              </p>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
-                While Western religions often split over theological disagreements into separate religions entirely, Sanatan Dharma expanded to contain its diversity. Explore the major spiritual rivers of India—from the devotional ecstasy of <strong>Vaishnavism</strong>, to the mystical depths of <strong>Shaivism</strong>, the fierce power of <strong>Shaktism</strong>, and the synthesizing logic of <strong>Smartism</strong>.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <main className="flex-grow pt-24 pb-16">
+        <div className="container-padding max-w-7xl mx-auto">
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Traditions", href: "/traditions" },
+            ]}
+          />
+
+          <header className="mb-16 mt-8 max-w-4xl">
+            <h1 className="font-display text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
+              The Rivers <span className="text-secondary italic">to the</span> Ocean.
+            </h1>
+            <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight border-l-4 border-secondary/30 pl-8 py-2">
+              A <strong>Sampradaya</strong> is a living ecosystem—a lineage that turns abstract philosophy into a walkable, breathing path.
+            </p>
+          </header>
+
+          <section className="mb-20">
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mb-12">
+              While Western religions often split over theology, Sanatan Dharma expanded to contain it. Whether you are drawn to the meditative silence of <strong>Shaivism</strong>, the devotional ecstasy of <strong>Vaishnavism</strong>, or the fierce power of <strong>Shaktism</strong>, every tradition is a valid river flowing to the same ultimate ocean.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {traditions.map((tradition) => (
-                <Card
-                  key={tradition.slug}
-                  className="bg-card border-border/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-primary/10 hover:shadow-lg"
-                >
-                  <CardContent className="p-6">
-                    <h2 className="font-display text-xl font-semibold text-foreground mb-2">
+                <Card key={tradition.slug} className="group overflow-hidden border-border/40 hover:border-secondary/40 transition-all bg-card/50 backdrop-blur-sm">
+                  <CardContent className="p-8">
+                    <h2 className="font-display text-3xl font-bold text-foreground mb-4">
                       {tradition.title}
                     </h2>
-                    <p className="text-muted-foreground">{tradition.summary}</p>
+                    <p className="text-muted-foreground leading-relaxed mb-6">
+                      {tradition.summary}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {tradition.slug === 'shaivism' && <Badge variant="secondary">Monistic</Badge>}
+                      {tradition.slug === 'vaishnavism' && <Badge variant="secondary">Devotional</Badge>}
+                      {tradition.slug === 'shaktism' && <Badge variant="secondary">Energetic</Badge>}
+                    </div>
                   </CardContent>
-                  <CardFooter className="px-6 pb-6 pt-0">
-                    <TrackedLink
-                      href={`/traditions/${tradition.slug}`}
-                      eventLabel={`traditions_index:${tradition.slug}`}
-                      trackPathName={tradition.slug}
-                      className="w-full"
-                    >
-                      <Button
-                        variant="ghost"
-                        className="w-full justify-between hover:text-primary"
-                      >
-                        Explore <ArrowRight className="w-4 h-4" />
+                  <CardFooter className="px-8 pb-8 pt-0">
+                    <TrackedLink href={`/traditions/${tradition.slug}`} eventLabel={`traditions_index:${tradition.slug}`} trackPathName={tradition.slug} className="w-full">
+                      <Button className="w-full h-12 rounded-xl group-hover:bg-secondary group-hover:text-secondary-foreground transition-all">
+                        Explore Lineage <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
                     </TrackedLink>
                   </CardFooter>
                 </Card>
               ))}
             </div>
-            <div className="mt-24 pt-16 border-t border-border">
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                <div>
-                  <h2 className="font-display text-3xl font-bold text-foreground mb-2">
-                    Compare Traditions
-                  </h2>
-                  <p className="text-muted-foreground">
-                    Deep dives into the relationships between major spiritual paths and schools.
-                  </p>
-                </div>
-                <TrackedLink
-                  href="/compare"
-                  eventLabel="traditions:compare_index"
-                  trackPathName="comparisons"
-                >
-                  <Button variant="outline" className="gap-2">
-                    View all comparisons <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </TrackedLink>
-              </div>
+          </section>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {comparisons
-                  .filter((c) => c.category === "Philosophy vs Philosophy" || c.category === "Path vs Path")
-                  .slice(4, 8)
-                  .map((item) => (
-                    <TrackedLink
-                      key={item.slug}
-                      href={`/compare/${item.slug}`}
-                      eventLabel={`traditions:comparison:${item.slug}`}
-                      trackPathName={item.category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
-                    >
-                      <div className="p-4 rounded-xl border border-border/50 bg-card hover:border-primary/30 transition-all group h-full">
-                        <Badge variant="outline" className="text-[10px] uppercase tracking-wider mb-2 opacity-70 group-hover:opacity-100">
-                          {item.category}
-                        </Badge>
-                        <h3 className="font-display font-bold text-sm text-foreground group-hover:text-primary transition-colors">
-                          {item.title}
-                        </h3>
+          <section className="mb-20 pt-20 border-t border-border/40">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+              <div className="max-w-xl">
+                <h2 className="text-4xl font-display font-bold mb-4">Path Comparison</h2>
+                <p className="text-muted-foreground">Understanding the nuances, overlaps, and historical debates between major sampradayas.</p>
+              </div>
+              <TrackedLink href="/compare" eventLabel="traditions:compare_index" trackPathName="comparisons">
+                <Button variant="outline" className="h-12 rounded-xl border-dashed">View Comparison Hub</Button>
+              </TrackedLink>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {comparisons
+                .filter((c) => c.category === "Philosophy vs Philosophy" || c.category === "Path vs Path")
+                .slice(4, 8)
+                .map((item) => (
+                  <TrackedLink key={item.slug} href={`/compare/${item.slug}`} eventLabel={`traditions:comparison:${item.slug}`} trackPathName="compare">
+                    <div className="p-6 rounded-2xl border border-border/40 bg-card hover:border-secondary/40 transition-all h-full flex flex-col justify-between group">
+                      <h3 className="font-bold text-foreground group-hover:text-secondary transition-colors">{item.title}</h3>
+                      <div className="mt-4 flex items-center text-xs font-black uppercase tracking-widest text-muted-foreground group-hover:text-foreground">
+                        Compare <ArrowRight className="ml-2 w-3 h-3" />
                       </div>
-                    </TrackedLink>
-                  ))
+                    </div>
+                  </TrackedLink>
+                ))}
+            </div>
+          </section>
+
+          <section className="mt-20 pt-20 border-t border-border/40 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-display font-bold mb-12 text-center">Essential Questions</h2>
+            <Accordion type="single" collapsible className="w-full">
+              {[
+                {
+                  q: "What is a Sampradaya?",
+                  a: "A Sampradaya is a living lineage of spiritual teaching. It ensures that wisdom is not just read from books, but transmitted from a realized teacher (Guru) to a dedicated student (Shishya) in an unbroken chain (Parampara)."
+                },
+                {
+                  q: "Can I follow more than one tradition?",
+                  a: "Yes. In Sanatan Dharma, it is common to have a 'primary' tradition (Nishta) while respecting and occasionally practicing the rituals of others. The Smarta tradition explicitly synthesizes multiple paths."
+                },
+                {
+                  q: "How do I choose a path?",
+                  a: "Traditional guidance suggests checking your 'Varna' (temperament) and 'Ishta Devata' (the form of the Divine that naturally attracts you). The Faith Finder assessment can help identify these natural leanings."
                 }
-              </div>
-            </div>
-
-            {/* SEo / FAQ Section */}
-            <div className="mt-24 pt-16 border-t border-border">
-              <div className="text-center mb-12">
-                <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                  Frequently Asked Questions
-                </h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Understanding the spiritual lineages and paths of India.
-                </p>
-              </div>
-              <div className="max-w-3xl mx-auto">
-                <Accordion type="single" collapsible className="w-full">
-                  {faqs.map((faq, index) => (
-                    <AccordionItem key={index} value={`item-${index}`}>
-                      <AccordionTrigger className="text-left font-semibold text-lg hover:text-primary">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground leading-relaxed">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            </div>
-
-          </div>
-        </section>
+              ].map((faq, i) => (
+                <AccordionItem key={i} value={`item-${i}`} className="border-border/40 px-4">
+                  <AccordionTrigger className="text-lg font-bold hover:text-secondary transition-colors text-left">{faq.q}</AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed text-base">{faq.a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+        </div>
       </main>
+
       <Footer />
     </div>
   );
