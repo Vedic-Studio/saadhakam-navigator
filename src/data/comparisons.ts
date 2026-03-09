@@ -1798,5 +1798,6 @@ export const comparisons: Comparison[] = [
   ...newComparisons2,
 ];
 
-
-
+export function getComparisonBySlug(slug: string): Comparison | undefined {
+  return comparisons.find((c) => c.slug === slug);
+}

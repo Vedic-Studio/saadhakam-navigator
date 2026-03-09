@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 
-const siteUrl = "https://opensadhaka.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://opensadhaka.com";
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-S3DHYPPG9R";
+const gscVerificationCode =
+  process.env.GSC_VERIFICATION?.trim() ||
+  process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -62,9 +66,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
-  verification: {
-    google: "YOUR_GSC_CODE_HERE", // TODO: Add real Google Search Console verification code
-  },
+  verification: gscVerificationCode ? { google: gscVerificationCode } : undefined,
 };
 
 // Organization structured data — site-wide
@@ -121,17 +123,97 @@ export default function RootLayout({
       <body>
         {/* Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-S3DHYPPG9R"
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
           strategy="afterInteractive"
         />
         <Script id="ga4-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-S3DHYPPG9R', {
+            window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+            window.gtag('js', new Date());
+            window.gtag('config', '${gaMeasurementId}', {
               page_path: window.location.pathname,
             });
+          `}
+        </Script>
+        <Script id="sadhaka-analytics-bridge" strategy="afterInteractive">
+          {`
+            (function () {
+              var safeStringify = function (value) {
+                try {
+                  return JSON.stringify(value || {});
+                } catch (e) {
+                  return '{}';
+                }
+              };
+
+              var sendEvent = function (eventName, params) {
+                if (typeof window.gtag === 'function') {
+                  window.gtag('event', eventName, params || {});
+                }
+              };
+
+              window.sadhaka = window.sadhaka || {};
+
+              window.sadhaka.quizStart = function () {
+                sendEvent('faith_finder_quiz_start', {
+                  quiz_name: 'faith_finder',
+                });
+              };
+
+              window.sadhaka.quizComplete = function (path, scores) {
+                sendEvent('faith_finder_quiz_complete', {
+                  primary_path: path || 'unknown',
+                  scores_json: safeStringify(scores),
+                });
+              };
+
+              window.sadhaka.emailCapture = function (path) {
+                sendEvent('faith_finder_email_capture', {
+                  primary_path: path || 'unknown',
+                });
+              };
+
+              window.sadhaka.quizResultView = function (path, source) {
+                sendEvent('faith_finder_result_view', {
+                  primary_path: path || 'unknown',
+                  source: source || 'unknown',
+                });
+              };
+
+              window.sadhaka.shareResult = function (path, source) {
+                sendEvent('faith_finder_result_share', {
+                  primary_path: path || 'unknown',
+                  source: source || 'unknown',
+                });
+              };
+
+              window.sadhaka.articleRead = function (slug, pillar) {
+                sendEvent('seo_article_read', {
+                  article_slug: slug || 'unknown',
+                  article_pillar: pillar || 'unknown',
+                });
+              };
+
+              window.sadhaka.ctaClick = function (label, destination) {
+                sendEvent('cta_click', {
+                  cta_label: label || 'unknown',
+                  cta_destination: destination || '',
+                });
+              };
+
+              window.sadhaka.appOpen = function () {
+                sendEvent('app_open', {
+                  surface: 'web',
+                });
+              };
+
+              window.sadhaka.pathExplore = function (path) {
+                sendEvent('path_explore', {
+                  path_name: path || 'unknown',
+                });
+              };
+            })();
           `}
         </Script>
         {children}

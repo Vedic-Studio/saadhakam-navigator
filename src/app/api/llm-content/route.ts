@@ -6,6 +6,7 @@ import { getConceptBySlug } from "@/data/concepts";
 import { getPracticeBySlug } from "@/data/practices";
 import { getGreatBySlug } from "@/data/greats";
 import { getTopicBySlug } from "@/data/topics";
+import { getComparisonBySlug } from "@/data/comparisons";
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
@@ -57,14 +58,11 @@ ${p.recommendedTexts.map(t => `- ${t}`).join("\n")}
 ${t.description}
 
 ## Core Practices
-${t.corePractices.map(p => `- ${p}`).join("\n")}
+${t.primaryPractices.map((p: string) => `- ${p}`).join("\n")}
 
 ## Practical Guidance
 - **Who it suits:** ${t.whoItSuits}
 - **How to start:** ${t.howToStart}
-
-## Key Texts
-${t.keyTexts.map(text => `- ${text}`).join("\n")}
 `;
                 break;
             }
@@ -77,14 +75,14 @@ ${t.keyTexts.map(text => `- ${text}`).join("\n")}
 **Summary:** ${t.summary}
 
 ## Description
-${t.description}
+${t.overview}
 
 ## Core Subjects
-${t.coreSubjects.map(s => `- ${s}`).join("\n")}
+${t.themes.map((s: string) => `- ${s}`).join("\n")}
 
 ## Quick Facts
-- **Who should read:** ${t.whoShouldRead}
-- **How to study:** ${t.howToStudy}
+- **Who should read:** ${t.whoItSuitsFor}
+- **How to study:** ${t.howToApproach}
 `;
                 break;
             }
@@ -139,17 +137,17 @@ ${p.benefits.map(b => `- ${b}`).join("\n")}
                 if (!g) break;
                 title = g.name;
                 content = `
-# ${g.name} (${g.lifespan})
+# ${g.name} (${g.era})
 **Summary:** ${g.summary}
 
 ## Description
 ${g.description}
 
 ## Key Teachings
-${g.keyTeachings.map(t => `- ${t}`).join("\n")}
+${g.keyTeachings.map((t: string) => `- ${t}`).join("\n")}
 
 ## Impact
-${g.impact}
+${g.relevanceToday}
 `;
                 break;
             }
@@ -170,25 +168,38 @@ ${t.content}
 `;
                 break;
             }
+            case "comparisons": {
+                const c = getComparisonBySlug(slug);
+                if (!c) break;
+                title = c.title;
+                content = `
+# ${c.title}
+**TL;DR:** ${c.tldr || c.metaDescription}
+
+## Content
+${c.content}
+`;
+                break;
+            }
         }
 
         if (!content) {
-            return new NextResponse(\`# Entity Not Found\n\nThe requested \${type} "\${slug}" could not be found or does not have a Markdown rendering configured.\`, { status: 404 });
+            return new NextResponse(`# Entity Not Found\n\nThe requested ${type} "${slug}" could not be found or does not have a Markdown rendering configured.`, { status: 404 });
+        }
+
+        // Wrap the entity with LLM-friendly metadata
+        const finalMarkdown = `<!-- LLM INSTRUCTION: This file is a machine-readable summary of a Sādhaka entity. -->
+${content.trim()}`;
+
+        return new NextResponse(finalMarkdown, {
+            headers: {
+                "Content-Type": "text/markdown; charset=utf-8",
+                "Cache-Control": "public, max-age=86400, s-maxage=86400",
+            },
+        });
+
+    } catch (error) {
+        console.error("Error generating LLM content:", error);
+        return new NextResponse("Internal Server Error", { status: 500 });
     }
-
-    // Wrap the entity with LLM-friendly metadata
-    const finalMarkdown = \`<!-- LLM INSTRUCTION: This file is a machine-readable summary of a Sādhaka entity. -->
-\${content.trim()}\`;
-
-    return new NextResponse(finalMarkdown, {
-      headers: {
-        "Content-Type": "text/markdown; charset=utf-8",
-        "Cache-Control": "public, max-age=86400, s-maxage=86400",
-      },
-    });
-
-  } catch (error) {
-    console.error("Error generating LLM content:", error);
-    return new NextResponse("Internal Server Error", { status: 500 });
-  }
 }

@@ -74,6 +74,9 @@ export async function GET() {
             } else if (map.id === "topics") {
                 const item = topics.find(t => t.slug === slug);
                 if (item) { title = item.name; summary = item.summary; }
+            } else if (map.id === "comparisons") {
+                const item = comparisons.find(c => c.slug === slug);
+                if (item) { title = item.title; summary = item.tldr || item.metaDescription; }
             }
 
             const summaryText = summary ? `: ${summary}` : "";

@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Brain, Heart, Sparkles, Zap, Share2, Download, Mail, CheckCircle2, Copy } from "lucide-react";
+import { Brain, Heart, Sparkles, Zap, Share2, Mail, CheckCircle2 } from "lucide-react";
 import { QuizResult, pathMetadata } from "@/data/faithFinderQuiz";
 import { EmailCaptureForm } from "./EmailCaptureForm";
 
@@ -48,20 +46,6 @@ const pathColors = {
     },
 };
 
-const pathTitles = {
-    inquiry: "Inquiry-led Path",
-    devotion: "Devotion-led Path",
-    ritual: "Ritual-led Path",
-    discipline: "Discipline-led Path",
-};
-
-const pathDescriptions = {
-    inquiry: "Your spiritual journey is guided by deep inquiry and contemplation. You seek to understand the nature of reality, consciousness, and the self through philosophical exploration and self-inquiry.",
-    devotion: "Your spiritual journey flows from the heart. You feel a natural love for the Divine and find meaning in worship, surrender, and sacred relationship. Your practice is rooted in love and emotional connection.",
-    ritual: "Your spiritual journey honors tradition and sacred action. You find power in precise ritual performance, ceremony, and the structured observance of spiritual rites. Your practice connects you to ancient wisdom.",
-    discipline: "Your spiritual journey is one of methodical cultivation. You're drawn to systematic practice, training the mind and body through structured approaches. Your practice emphasizes self-mastery and consistent effort.",
-};
-
 export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
     const [copied, setCopied] = useState(false);
     const IconComponent = pathIcons[result.primaryPath];
@@ -72,6 +56,10 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
     const handleShare = async () => {
         const shareText = `I discovered my spiritual path is ${metadata.name}! Take the Faith Finder Quiz to discover yours.`;
         const shareUrl = window.location.href;
+
+        if (typeof window !== "undefined" && typeof window.sadhaka?.shareResult === "function") {
+            window.sadhaka.shareResult(result.primaryPath, "results_page");
+        }
 
         if (navigator.share) {
             try {

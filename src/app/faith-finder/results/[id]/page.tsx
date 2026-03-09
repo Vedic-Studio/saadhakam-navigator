@@ -74,8 +74,11 @@ export default function FaithFinderResultsPage() {
                 setResult(data.result);
 
                 // analytics (optional)
-                if (typeof window !== "undefined" && typeof window.sadhaka?.ctaClick === "function") {
-                    window.sadhaka.ctaClick("results_view", `/faith-finder/results/${id}`);
+                if (
+                    typeof window !== "undefined" &&
+                    typeof window.sadhaka?.quizResultView === "function"
+                ) {
+                    window.sadhaka.quizResultView(data.result.primaryPath, "share_page");
                 }
             } catch (e) {
                 if (cancelled) return;
@@ -98,6 +101,14 @@ export default function FaithFinderResultsPage() {
         const text = result
             ? `I discovered my spiritual path is ${pathMetadata[result.primaryPath].name}. Take the quiz:`
             : "Take the Faith Finder quiz:";
+
+        if (
+            result &&
+            typeof window !== "undefined" &&
+            typeof window.sadhaka?.shareResult === "function"
+        ) {
+            window.sadhaka.shareResult(result.primaryPath, "share_button");
+        }
 
         if (navigator.share) {
             try {

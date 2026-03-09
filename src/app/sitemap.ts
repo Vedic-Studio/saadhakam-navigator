@@ -95,12 +95,6 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
           priority: 0.8,
         },
         {
-          url: `${baseUrl}/vedanta-guide`,
-          lastModified: now,
-          changeFrequency: "monthly",
-          priority: 0.8,
-        },
-        {
           url: `${baseUrl}/bhagavad-gita-complete-guide`,
           lastModified: now,
           changeFrequency: "monthly",
@@ -114,12 +108,6 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
         },
         {
           url: `${baseUrl}/yoga-sutras-complete-guide`,
-          lastModified: now,
-          changeFrequency: "monthly",
-          priority: 0.8,
-        },
-        {
-          url: `${baseUrl}/upanishads-core-wisdom`,
           lastModified: now,
           changeFrequency: "monthly",
           priority: 0.8,
@@ -189,6 +177,30 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
           lastModified: now,
           changeFrequency: "monthly",
           priority: 0.8,
+        },
+        {
+          url: `${baseUrl}/spiritual-paths-explained`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.78,
+        },
+        {
+          url: `${baseUrl}/inquiry-vs-devotion-path`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.78,
+        },
+        {
+          url: `${baseUrl}/which-meditation-for-me`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.78,
+        },
+        {
+          url: `${baseUrl}/starting-spiritual-practice`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.78,
         },
       ];
 
