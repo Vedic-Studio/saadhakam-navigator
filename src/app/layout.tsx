@@ -110,6 +110,22 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = window.gtag || gtag;
+              gtag('js', new Date());
+
+              gtag('config', '${gaMeasurementId}');
+            `,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
@@ -121,20 +137,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-          strategy="beforeInteractive"
-        />
-        <Script id="google-tag" strategy="beforeInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = window.gtag || gtag;
-            gtag('js', new Date());
-
-            gtag('config', '${gaMeasurementId}');
-          `}
-        </Script>
         <Script id="sadhaka-analytics-bridge" strategy="afterInteractive">
           {`
             (function () {
