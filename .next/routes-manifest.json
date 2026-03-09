@@ -174,6 +174,66 @@
       "destination": "/what-is-rta",
       "statusCode": 308,
       "regex": "^(?!/_next)/rta-meaning(?:/)?$"
+    },
+    {
+      "source": "/mantra-meaning",
+      "destination": "/what-is-mantra",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/mantra-meaning(?:/)?$"
+    },
+    {
+      "source": "/japa-meaning",
+      "destination": "/what-is-japa",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/japa-meaning(?:/)?$"
+    },
+    {
+      "source": "/dhyana-meaning",
+      "destination": "/what-is-dhyana",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/dhyana-meaning(?:/)?$"
+    },
+    {
+      "source": "/sadhana-meaning",
+      "destination": "/what-is-sadhana",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/sadhana-meaning(?:/)?$"
+    },
+    {
+      "source": "/om-meaning",
+      "destination": "/what-is-om",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/om-meaning(?:/)?$"
+    },
+    {
+      "source": "/guna-meaning",
+      "destination": "/what-is-guna",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/guna-meaning(?:/)?$"
+    },
+    {
+      "source": "/avatara-meaning",
+      "destination": "/what-is-avatara",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/avatara-meaning(?:/)?$"
+    },
+    {
+      "source": "/tapas-meaning",
+      "destination": "/what-is-tapas",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/tapas-meaning(?:/)?$"
+    },
+    {
+      "source": "/dharana-meaning",
+      "destination": "/what-is-dharana",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/dharana-meaning(?:/)?$"
+    },
+    {
+      "source": "/lila-meaning",
+      "destination": "/what-is-lila",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/lila-meaning(?:/)?$"
     }
   ],
   "headers": [],
@@ -238,6 +298,14 @@
         "nxtPslug": "nxtPslug"
       },
       "namedRegex": "^/philosophies/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/practices/[practice]",
+      "regex": "^/practices/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPpractice": "nxtPpractice"
+      },
+      "namedRegex": "^/practices/(?<nxtPpractice>[^/]+?)(?:/)?$"
     },
     {
       "page": "/practices/[practice]/for/[goal]",
@@ -327,6 +395,12 @@
       "namedRegex": "^/advaita\\-vedanta\\-explained(?:/)?$"
     },
     {
+      "page": "/advaita-vs-dvaita",
+      "regex": "^/advaita\\-vs\\-dvaita(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/advaita\\-vs\\-dvaita(?:/)?$"
+    },
+    {
       "page": "/ancient-wisdom-philosophies",
       "regex": "^/ancient\\-wisdom\\-philosophies(?:/)?$",
       "routeKeys": {},
@@ -409,6 +483,12 @@
       "regex": "^/daily\\-spiritual\\-routine\\-beginners(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/daily\\-spiritual\\-routine\\-beginners(?:/)?$"
+    },
+    {
+      "page": "/difference-between-yoga-and-vedanta",
+      "regex": "^/difference\\-between\\-yoga\\-and\\-vedanta(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/difference\\-between\\-yoga\\-and\\-vedanta(?:/)?$"
     },
     {
       "page": "/faith-finder",
@@ -534,6 +614,12 @@
       "regex": "^/traditions(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/traditions(?:/)?$"
+    },
+    {
+      "page": "/vedanta-vs-tantra",
+      "regex": "^/vedanta\\-vs\\-tantra(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/vedanta\\-vs\\-tantra(?:/)?$"
     },
     {
       "page": "/what-is-vedanta",

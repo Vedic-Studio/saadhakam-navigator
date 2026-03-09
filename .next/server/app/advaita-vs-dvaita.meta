@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/advaita-vs-dvaita/layout,_N_T_/advaita-vs-dvaita/page,_N_T_/advaita-vs-dvaita"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/advaita-vs-dvaita/__PAGE__",
+    "/advaita-vs-dvaita",
+    "/_index",
+    "/_head"
+  ]
+}

@@ -83,6 +83,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/advaita-vs-dvaita/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/advaita-vs-dvaita">> = Specific
+  const handler = {} as typeof import("../../../src/app/advaita-vs-dvaita/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/ancient-wisdom-philosophies/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/ancient-wisdom-philosophies">> = Specific
@@ -317,6 +326,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/practices/[practice]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/practices/[practice]">> = Specific
+  const handler = {} as typeof import("../../../src/app/practices/[practice]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/sacred-texts-teachings/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/sacred-texts-teachings">> = Specific
@@ -420,6 +438,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/traditions">> = Specific
   const handler = {} as typeof import("../../../src/app/traditions/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/vedanta-vs-tantra/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/vedanta-vs-tantra">> = Specific
+  const handler = {} as typeof import("../../../src/app/vedanta-vs-tantra/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

@@ -441,6 +441,56 @@
         "source": "/rta-meaning",
         "destination": "/what-is-rta",
         "permanent": true
+      },
+      {
+        "source": "/mantra-meaning",
+        "destination": "/what-is-mantra",
+        "permanent": true
+      },
+      {
+        "source": "/japa-meaning",
+        "destination": "/what-is-japa",
+        "permanent": true
+      },
+      {
+        "source": "/dhyana-meaning",
+        "destination": "/what-is-dhyana",
+        "permanent": true
+      },
+      {
+        "source": "/sadhana-meaning",
+        "destination": "/what-is-sadhana",
+        "permanent": true
+      },
+      {
+        "source": "/om-meaning",
+        "destination": "/what-is-om",
+        "permanent": true
+      },
+      {
+        "source": "/guna-meaning",
+        "destination": "/what-is-guna",
+        "permanent": true
+      },
+      {
+        "source": "/avatara-meaning",
+        "destination": "/what-is-avatara",
+        "permanent": true
+      },
+      {
+        "source": "/tapas-meaning",
+        "destination": "/what-is-tapas",
+        "permanent": true
+      },
+      {
+        "source": "/dharana-meaning",
+        "destination": "/what-is-dharana",
+        "permanent": true
+      },
+      {
+        "source": "/lila-meaning",
+        "destination": "/what-is-lila",
+        "permanent": true
       }
     ]
   },

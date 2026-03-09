@@ -20,24 +20,24 @@ export const greats: Great[] = [
     era: "8th century CE",
     title: "Systematizer of Advaita Vedanta",
     summary:
-      "Philosopher-saint who consolidated non-dual Vedanta and established monasteries across India.",
+      "The 32-year-old philosopher who unified India's spiritual geography and codified non-dualism.",
     whatTheyClarified:
-      "That Brahman alone is real, the world is apparent, and the individual self is none other than Brahman.",
+      "That your separate identity is a misunderstanding. There is only one Consciousness, appearing as many.",
     description:
-      "Adi Shankaracharya is arguably the most influential Hindu philosopher. In a short life (traditionally 32 years), he traveled across India, debated other schools, wrote extensive commentaries on the Upanishads, Brahma Sutras, and Bhagavad Gita, composed devotional hymns, and established the four mathas (monasteries) that continue today.",
+      "Adi Shankaracharya is the definitive architect of Non-Dualism. In just three decades, he walked the length of India, defeated every major school of thought in public debate, and established four monasteries (Mathas) that remain the cardinal pillars of Hindu philosophy 1,200 years later.",
     keyTeachings: [
-      "Brahma satyam jagan mithya—Brahman is real, the world is apparent",
-      "Jivo brahmaiva naparah—The individual self is Brahman alone",
-      "Liberation comes through knowledge (jnana), removing ignorance (avidya)",
-      "The mahavakyas reveal non-dual truth",
+      "The World as Superimposition — Reality is the rope; the world is the snake we mistakenly see upon it.",
+      "The Self as Brahman — Your innermost awareness (Atman) is identical to the cosmic absolute.",
+      "Inquiry over Ritual — Liberation isn't earned through action, but realized through systematic self-inquiry (Jnana).",
+      "The Mahavakyas — Four 'Great Sayings' that serve as the definitive technical pointers to truth.",
     ],
     relevanceToday:
-      "Shankara's clear articulation of non-duality provides a coherent philosophical framework for understanding consciousness and reality. His works remain essential for serious students of Vedanta.",
+      "Shankara's analysis of consciousness is strikingly similar to modern 'Hard Problem' debates. He offers a rigorous, logical path for those who find devotional religion too emotional and secular materialism too shallow.",
     recommendedWorks: [
-      "Vivekachudamani",
-      "Atma Bodha",
+      "Vivekachudamani (Crest Jewel of Discrimination)",
+      "Atma Bodha (Self-Knowledge)",
       "Bhaja Govindam",
-      "Commentary on Brahma Sutras",
+      "Commentary on the Brahma Sutras",
     ],
     tags: ["philosophical", "non-dual", "foundational"],
     icon: "Infinity",
@@ -48,23 +48,23 @@ export const greats: Great[] = [
     era: "10th-11th century CE",
     title: "Master of Kashmir Shaivism and Aesthetics",
     summary:
-      "Polymath who synthesized Tantric Shaivism and made groundbreaking contributions to aesthetics.",
+      "The polymath who proved that spiritual liberation and aesthetic rapture are the same phenomenon.",
     whatTheyClarified:
-      "That all experience is consciousness in play, and aesthetic rapture mirrors spiritual liberation.",
+      "That the world isn't an illusion to be escaped, but a vibration to be celebrated.",
     description:
-      "Abhinavagupta was a towering figure of Kashmir Shaivism—philosopher, mystic, musician, and literary critic. He synthesized various Shaiva and Shakta tantric traditions into a coherent non-dual philosophy, while also writing the definitive work on Indian aesthetics.",
+      "Abhinavagupta was a towering genius of Kashmir Shaivism. He synthesized dozens of tantric lineages into a 'Path of Recognition.' To him, every experience—from the taste of honey to the heat of anger—is a doorway to the Absolute if approached with total awareness.",
     keyTeachings: [
-      "The universe is Shiva's self-expression (svatantrya)",
-      "Recognition (pratyabhijna) of one's true nature liberates",
-      "Aesthetic rapture (rasa) parallels spiritual bliss",
-      "All states of consciousness are doorways to the absolute",
+      "Svatantrya (Absolute Freedom) — Consciousness is not passive; it is a dynamic, creative power.",
+      "Recognition (Pratyabhijna) — You don't need to 'become' Shiva; you need to recognize you already are.",
+      "Rasa-Evolution — Aesthetic beauty is a 'preview' of spiritual bliss. Art is a laboratory for awakening.",
+      "The Tantric Embrace — Nothing is excluded. The body and the mind are spiritual instruments, not obstacles.",
     ],
     relevanceToday:
-      "Abhinavagupta offers an integrative vision where art, beauty, and pleasure can be paths to awakening. His non-dual philosophy welcomes all of life as sacred.",
+      "Abhinavagupta is the antidote to dry asceticism. He speaks to the modern creator, artist, and householder who wants a path that includes their body, their career, and their appreciation of beauty.",
     recommendedWorks: [
-      "Tantraloka",
+      "Tantraloka (The Light of Tantra)",
       "Paratrishika Vivarana",
-      "Abhinavabharati",
+      "Abhinavabharati (The definitive text on Rasa theory)",
       "Paramarthasara",
     ],
     tags: ["mystical", "tantric", "aesthetic"],
@@ -76,24 +76,24 @@ export const greats: Great[] = [
     era: "1863-1902 CE",
     title: "Modern Prophet of Vedanta",
     summary:
-      "Key figure in revival of Hinduism and introduction of Vedanta to the West.",
+      "The first global voice of Sanatan Dharma who bridged the gap between ancient sanyasa and modern life.",
     whatTheyClarified:
-      "That Vedanta is practical, universal, and empowering—religion must serve humanity.",
+      "That spirituality must be practical, fearless, and oriented toward service.",
     description:
-      "Swami Vivekananda, chief disciple of Sri Ramakrishna, electrified the 1893 World Parliament of Religions and spent years teaching in the West. He founded the Ramakrishna Mission, combining contemplative practice with social service, and reframed Hindu philosophy for the modern world.",
+      "Swami Vivekananda electrified the 1893 World Parliament of Religions and spent his final years building a bridge between East and West. He insisted that any religion that doesn't feed the hungry or empower the weak is no religion at all.",
     keyTeachings: [
-      "Each soul is potentially divine; the goal is to manifest that divinity",
-      "All religions lead to the same truth—tolerance is essential",
-      "Practical Vedanta: spirituality must address real-world suffering",
-      "Strength and fearlessness are spiritual virtues",
+      "The Potential Divinity of the Soul — Your default state is perfection; the work is to uncover it.",
+      "Universalism — Every spiritual path is a valid trajectory toward the same non-dual center.",
+      "Practical Vedanta — High philosophy is useless if it doesn't manifest as compassion and social service.",
+      "Man-Making Education — Spirituality means building characters that are 'strong as steel and soft as butter.'",
     ],
     relevanceToday:
-      "Vivekananda's vision of confident, practical spirituality that serves humanity remains deeply relevant. He showed how ancient wisdom can address modern challenges.",
+      "Vivekananda is the patron saint of the 'Modern Monk.' He offers a blueprint for how to be deeply rooted in tradition while being fully engaged with science, technology, and social progress.",
     recommendedWorks: [
-      "Complete Works of Swami Vivekananda",
       "Jnana Yoga",
-      "Raja Yoga",
+      "Raja Yoga (The definitive guide to Patanjali for the modern mind)",
       "Karma Yoga",
+      "Bhakti Yoga",
     ],
     tags: ["modern", "practical", "universal"],
     icon: "Flame",
@@ -102,25 +102,25 @@ export const greats: Great[] = [
     slug: "sri-aurobindo",
     name: "Sri Aurobindo",
     era: "1872-1950 CE",
-    title: "Philosopher of Integral Yoga and Human Evolution",
+    title: "Philosopher of Integral Yoga",
     summary:
-      "Revolutionary-turned-sage who developed a comprehensive vision of spiritual evolution.",
+      "The revolutionary who saw that humanity is not a finished product, but an evolutionary bridge.",
     whatTheyClarified:
-      "That humanity is evolving toward a higher consciousness, and yoga is conscious participation in that evolution.",
+      "That we aren't just here to 'escape' the world, but to bring higher consciousness into it.",
     description:
-      "Sri Aurobindo began as a freedom fighter against British rule, then withdrew to Pondicherry for intensive spiritual practice. He developed Integral Yoga—a comprehensive path seeking not escape but transformation of life. His philosophical works present a vast evolutionary vision.",
+      "Sri Aurobindo moved from frontline political revolution to an internal life-revolution. He developed a vast evolutionary cosmology where mind, life, and body are transformed by a 'Supermind'—bringing heaven down to earth rather than seeking to leave earth for heaven.",
     keyTeachings: [
-      "Evolution is moving toward higher consciousness (Supramental)",
-      "Integral Yoga: transformation of mind, life, and body",
-      "The Divine is both transcendent and immanent",
-      "Earth-life can manifest divine perfection",
+      "Spiritual Evolution — Consciousness is evolving through us. We are the 'middle-term' of a larger process.",
+      "Integral Yoga — A path that synthesizes all methods to transform the entire person, not just the spirit.",
+      "The Supramental Descent — The possibility of a brand new, divinized consciousness taking root on Earth.",
+      "Transformation over Escape — The goal is to make life divine, not to leave life for the Divine.",
     ],
     relevanceToday:
-      "Aurobindo's evolutionary spirituality speaks to those seeking meaning in cosmic and planetary terms. His integral approach synthesizes multiple paths.",
+      "Aurobindo provides the philosophical framework for the 'Post-Human' or 'Trans-Human' quest, but grounds it in deep spiritual realization rather than just silicon and software.",
     recommendedWorks: [
-      "The Life Divine",
-      "Synthesis of Yoga",
-      "Savitri",
+      "The Life Divine (A vast metaphysical architecture)",
+      "The Synthesis of Yoga",
+      "Savitri (An epic spiritual poem)",
       "Essays on the Gita",
     ],
     tags: ["integral", "evolutionary", "philosophical"],
@@ -129,27 +129,27 @@ export const greats: Great[] = [
   {
     slug: "kalidasa",
     name: "Kalidasa",
-    era: "4th-5th century CE (approx.)",
+    era: "4th-5th century CE",
     title: "Poet-Sage of Sanskrit Literature",
     summary:
-      "Greatest Sanskrit poet whose works fuse aesthetic beauty with spiritual depth.",
+      "The writer who proved that the most sophisticated art is the shortest path to the most profound truth.",
     whatTheyClarified:
-      "That poetry and beauty are vehicles for truth—that art can reveal the sacred.",
+      "That aesthetic perfection is a form of spiritual discipline (Sadhana).",
     description:
-      "Kalidasa represents the peak of Sanskrit literary achievement. His plays and poems display extraordinary beauty of language while conveying profound spiritual truths. His works remain the gold standard of Sanskrit literature and continue to inspire.",
+      "Kalidasa is the Shakespeare of Sanskrit. His dramas and poems use the most exquisite linguistic precision to reveal the subtle movements of the soul and the divine life visible in the natural world.",
     keyTeachings: [
-      "Beauty (soundarya) reveals truth",
-      "Nature as manifestation of the divine",
-      "The rasas (aesthetic emotions) as doorways to experience",
-      "Dharma operating through human drama",
+      "Soundarya (Beauty) as Truth — External beauty is a pointer to the internal perfection of the source.",
+      "Nature as Companion — The environment isn't a backdrop; it is a conscious participant in the spiritual drama.",
+      "Dharmic Resonance — Life's choices and conflicts are the friction that generates spiritual heat.",
+      "The Perfection of Form — High art requires as much discipline as high meditation.",
     ],
     relevanceToday:
-      "Kalidasa demonstrates that the aesthetic and the spiritual are not separate. His works show how art at its highest can convey truth and transform consciousness.",
+      "Kalidasa reminds us that the spiritual life doesn't have to be austere or ugly. He is for those who find the Divine in literature, cinema, and the overwhelming beauty of the natural world.",
     recommendedWorks: [
-      "Shakuntala",
-      "Meghaduta",
-      "Kumarasambhava",
-      "Raghuvamsha",
+      "Abhigyanashakuntalam (The Recognition of Shakuntala)",
+      "Meghadutam (The Cloud Messenger)",
+      "Kumarasambhavam (The Birth of the War-God)",
+      "Raghuvamsham",
     ],
     tags: ["literary", "aesthetic", "classical"],
     icon: "Feather",

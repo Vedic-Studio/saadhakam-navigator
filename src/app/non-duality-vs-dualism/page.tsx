@@ -9,97 +9,90 @@ export const metadata = buildArticleMetadata(meta);
 export default function NonDualityVsDualismPage() {
     return (
         <ArticleLayout meta={meta} pillarLabel="Ancient Wisdom" pillarHref="/ancient-wisdom-philosophies">
-            <p>
-                At the heart of every spiritual tradition is a foundational question about reality's basic nature: <em>Is everything ultimately One, or is it fundamentally Two?</em> This is not an abstract curiosity — your answer shapes your entire understanding of suffering, liberation, God, self, and the purpose of spiritual practice.
+            <p className="lead text-xl font-medium mb-8">
+                The most important question you will ever ask is hidden inside your spiritual practice: <em>Are you trying to reach God, or are you trying to realize you never left?</em>
             </p>
             <p>
-                The debate between non-duality and dualism is the great fault line of Indian philosophy, running through 3,000 years of Vedantic debate and continuing in the living traditions today. Understanding it illuminates not just philosophy, but the structure of every spiritual path you might walk.
-            </p>
-
-            <h2>Non-Duality (Advaita): "Not-Two"</h2>
-            <p>
-                The Sanskrit term <strong>Advaita</strong> means "not-two." It does not say "one" — which would imply a countable thing — but "not-two," which points to a reality prior to the very distinction between one and many.
-            </p>
-            <p>
-                Adi Shankaracharya's systematic articulation is the classic statement: Ultimate reality (Brahman) is singular, infinite consciousness. Apparent multiplicity — you, me, the chair, the sun, the entire universe — is a superimposition on Brahman, like the appearance of many waves on a single, undivided ocean.
-            </p>
-            <p>
-                The individual self (Atman) is not separate from Brahman. This is not a poetic metaphor — it is the direct assertion of identity. The Upanishadic declaration is unambiguous: <em>Aham Brahmasmi</em> — I am Brahman.
-            </p>
-            <p>
-                Suffering, on this view, arises from Avidya — the fundamental ignorance of one's true nature. We suffer because we believe we are separate. Liberation is the removal of this ignorance through self-knowledge, not through any external process or achievement.
+                This isn't an abstract curiosity. Your answer creates the fundamental "logic" of your path. It determines whether you pray to a beloved, inquire into a void, or serve a master. In Indian philosophy, this is the great fault line between <strong>Non-Duality (Advaita)</strong> and <strong>Dualism (Dvaita)</strong>.
             </p>
 
-            <h2>Classical Dualism (Dvaita): "Two Eternal Realities"</h2>
+            <h2 className="text-3xl font-display font-bold mt-12 mb-6 text-primary">Advaita: The Logic of "Not-Two"</h2>
             <p>
-                Madhvacharya (1238–1317 CE) built the most rigorous dualist Vedantic system. His central claim: there are two categories of reality that are eternally, irreducibly distinct — God (Vishnu) and individual souls. These can never merge, can never become one.
+                The Sanskrit term <strong>Advaita</strong> literally means "not-two." It doesn't say "one"—which would imply a countable thing—but "not-two," pointing to a reality prior to the very concept of number.
             </p>
             <p>
-                His system (Dvaita Vedanta) actually enumerates five fundamental distinctions (Panchabhedas):
-            </p>
-            <ol>
-                <li>Between God and individual soul (Jiva)</li>
-                <li>Between God and matter (Jada)</li>
-                <li>Between individual soul and matter</li>
-                <li>Between individual souls</li>
-                <li>Between different material objects</li>
-            </ol>
-            <p>
-                All five are real, eternal, and irreducible. Liberation (Mukti) in Dvaita is not the dissolution of the self into God — it is the soul's awakening to its true nature as a blissful dependent of Vishnu, in eternal devotional relationship. The self remains itself; it just recognizes its subordinate relationship to the Supreme.
+                Adi Shankaracharya's articulation is the definitive technical statement: Ultimate reality (Brahman) is singular, infinite consciousness. Everything else—the stars, your thoughts, this screen—is a superimposition. It is the appearance of many waves on a single, undivided ocean.
             </p>
             <p>
-                This framework powers the Bhakti tradition's most devotional expressions: the soul as lover, God as beloved; the devotee as servant, God as master. The emotional richness of this relationship-as-liberation is precisely what non-dualism, in Madhva's view, destroys.
+                In this framework, your individual self (Atman) is not separate from Brahman. This is not a poetic metaphor; it is a direct claim of identity. <em>Aham Brahmasmi</em>—I am Brahman. Suffering, then, is simply <strong>Avidya</strong>: the fundamental ignorance of your true nature. You don't need to "gain" liberation; you need to remove the misunderstanding that you are bound.
             </p>
 
-            <h2>Vishishtadvaita: The Middle Territory</h2>
+            <h2 className="text-3xl font-display font-bold mt-12 mb-6 text-orange-500">Dvaita: The Geometry of Relationship</h2>
             <p>
-                Ramanujacharya's (1017–1137 CE) qualified non-dualism (<strong>Vishishtadvaita</strong> — "non-duality of the qualified") occupies the philosophical middle ground, and resolves many of the apparent contradictions between the other two:
+                Madhvacharya (13th century) saw the non-dual claim as a destruction of love. His system, <strong>Dvaita</strong>, asserts that God (Vishnu) and individual souls are eternally, irreducibly distinct. They can never merge.
             </p>
             <p>
-                Brahman (= Vishnu) is the ultimate reality — this much Ramanuja agrees with Shankara. But Brahman is not a featureless, attribute-less absolute. Brahman is fully characterized by infinite auspicious qualities — omniscience, bliss, compassion. And Brahman's "body" includes the individual souls (Chit) and the material universe (Achit).
+                He identified five fundamental distinctions (Panchabhedas) that are real and eternal:
             </p>
-            <p>
-                The cells in your body are real — they are genuinely distinct — but they are not separate from your body. Similarly, souls and the world are genuinely real and distinct from each other, but they are not separate from Brahman. They inhere within Brahman as a body inheres within and is animated by a self.
-            </p>
-            <p>
-                Liberation: the individual soul attains an eternal relationship of blissful nearness to Vishnu, retaining its distinct identity, never merging but inseparably connected.
-            </p>
-
-            <h2>The Samkhya System: Classical Indian Dualism</h2>
-            <p>
-                Before the Vedantic schools, the <strong>Samkhya</strong> philosophy (one of the six orthodox schools of Indian philosophy) articulated the most complete dualistic metaphysics in Indian thought:
-            </p>
-            <ul>
-                <li><strong>Purusha</strong> — pure consciousness, the witness. Unchanging, inactive, plural (each individual is a distinct Purusha).</li>
-                <li><strong>Prakriti</strong> — primal matter, the field of all activity, change, and suffering. Composed of three Gunas (qualities): Sattva (purity), Rajas (activity), Tamas (inertia).</li>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">God vs. Individual Soul</li>
+                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">God vs. Matter</li>
+                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">Soul vs. Matter</li>
+                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">Soul vs. Soul</li>
+                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">Matter vs. Matter</li>
             </ul>
             <p>
-                Suffering is explained as Purusha's false identification with Prakriti's modifications. Liberation is the definitive recognition: "I am Purusha, not Prakriti. The activity, the suffering, the mind — these are Prakriti, not me." The Purusha stands as a witness, untouched.
-            </p>
-            <p>
-                Patanjali's Yoga Sutras are built on this Samkhya foundation — which is why yoga and Vedanta, though closely related in practice, operate from different metaphysical starting points.
+                For the Dualist, liberation (Mukti) is not dissolution into an absolute. It is the soul's awakening to its true nature as a blissful, dependent servant of the Divine. You remain yourself; you simply recognize your subordinate place in the cosmic hierarchy. This is the metaphysical engine of the <strong>Bhakti</strong> (devotional) traditions.
             </p>
 
-            <h2>The Practical Difference: How You Practice</h2>
+            <h2 className="text-3xl font-display font-bold mt-12 mb-6">Vishishtadvaita: The Middle Path</h2>
             <p>
-                This is not merely academic. The metaphysical position you hold shapes what spiritual target you're aiming for and how you relate to your practice:
+                Ramanujacharya (11th century) created a synthesis: <strong>Qualified Non-Dualism</strong>. He agreed that Brahman is the only reality, but insisted that Brahman has internal parts—namely, souls and the world.
             </p>
-            <ul>
-                <li><strong>Non-dual practitioner:</strong> Meditates to recognize what is already the case — that separation is conceptual, not ultimate. Liberation is not achievement but recognition. No "other" to approach.</li>
-                <li><strong>Dual practitioner:</strong> Cultivates relationship with a personal God who is genuinely other, genuinely capable of grace, genuinely other than self. Liberation as reunion, as deepening relationship.</li>
-                <li><strong>Vishishtadvaita practitioner:</strong> Combines both — holds devotional relationship with a personal God while understanding that this very relationship is grounded in an ultimate non-separation.</li>
-            </ul>
+            <p>
+                Think of the relationship between your body and your cells. Your cells are real and distinct from one another, yet they are not separate from "you." They inhere within you. Similarly, we are the "body" of God. We are distinct, but inseparable.
+            </p>
 
-            <h2>Which is True?</h2>
+            <h2 className="text-3xl font-display font-bold mt-12 mb-6">The Practice: Inquiry vs. Devotion</h2>
             <p>
-                The tradition's answer, interestingly, is: both — depending on the level of analysis. Shankaracharya maintained that dualism is valid at the Vyavaharika (conventional) level. It is practically true that you and God appear separate, that cause and effect operate, that devotion and worship make sense. But at the Paramarthika (ultimate) level, none of these distinctions hold.
+                This isn't academic history; it's a diagnostic for your own temperament (Guna):
+            </p>
+            <div className="grid md:grid-cols-2 gap-8 my-12">
+                <div className="space-y-4">
+                    <h3 className="text-xl font-bold flex items-center gap-2">
+                        <div className="w-2 h-8 bg-primary rounded-full"></div>
+                        The Non-Dual Path
+                    </h3>
+                    <p className="text-muted-foreground">
+                        You meditate to recognize what is already the case. Separation is a conceptual error. You use <strong>Jnana</strong> (inquiry) to see through the illusion of the "I".
+                    </p>
+                </div>
+                <div className="space-y-4">
+                    <h3 className="text-xl font-bold flex items-center gap-2">
+                        <div className="w-2 h-8 bg-orange-500 rounded-full"></div>
+                        The Dual Path
+                    </h3>
+                    <p className="text-muted-foreground">
+                        You cultivate a relationship with a Personal God who is genuinely Other. You use <strong>Bhakti</strong> (devotion) to bridge the gap through love and surrender.
+                    </p>
+                </div>
+            </div>
+
+            <h2 className="text-3xl font-display font-bold mt-12 mb-6">The Synthesis</h2>
+            <p>
+                Is everything One, or is it Two? The tradition's most sophisticated answer is: <em>It depends on where you are standing.</em>
             </p>
             <p>
-                The question "which is true?" may be less important than the question "which path fits my temperament?" A heart-oriented person for whom love and relationship are the primary modes of being will find dualism's framework more alive and sustaining. An inquiry-oriented person for whom the dissolution of the separate-self feels like the deepest calling will find non-duality more precise.
+                Shankaracharya admitted that at the conventional (Vyavaharika) level, dualism is practically true. You must eat, you must act, and you should probably pray. But at the ultimate (Paramarthika) level, none of those distinctions hold.
             </p>
             <p>
-                The Bhagavad Gita offers this resolution (12.2-5): the devotional path to a personal God is "better" in the sense of being more accessible — while the path of the formless absolute is "more difficult." Both reach the same destination.
+                The Bhagavad Gita (12.2-5) suggests that while the path of the formless Absolute is the ultimate truth, the path of the personal God is more accessible for human beings. One is the destination; the other is the vehicle.
             </p>
+            <div className="mt-16 p-8 bg-primary/5 border border-primary/20 rounded-3xl">
+                <p className="text-lg leading-relaxed mb-0">
+                    Which path makes your heart beat faster? Does the thought of "dissolving" into the Absolute feel like liberation, or like a loss of love? The answer to that question is more important than any philosophical system. It is the compass for your entire life's work.
+                </p>
+            </div>
         </ArticleLayout>
     );
 }

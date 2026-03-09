@@ -10,9 +10,9 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Spiritual Masters & Gurus | Saints of Sanatan Dharma",
+  title: "Legacy of Light: The Great Masters of Sanatan Dharma | Sadhaka",
   description:
-    "Explore the greatest spiritual masters, saints, and philosophers of Sanatan Dharma. Learn from Adi Shankaracharya, Swami Vivekananda, Sri Aurobindo, and more.",
+    "Meet the sages, philosophers, and saints who preserved the flame of Dharma through the ages. From Adi Shankaracharya to Swami Vivekananda.",
   keywords: [
     "spiritual masters",
     "gurus",
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     "shankaracharya",
     "vivekananda",
     "sanatan dharma",
+    "ancient wisdom",
   ],
   alternates: { canonical: "https://opensadhaka.com/greats" },
   openGraph: {
@@ -38,14 +39,17 @@ export default function GreatsPage() {
       <main className="pt-20">
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Spiritual Masters of Sanatan Dharma
+            <div className="text-center mb-16 px-4">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                The Heritage of Wisdom
+              </div>
+              <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-8 tracking-tight">
+                Legacy of <span className="text-primary italic">Light</span>
               </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                From Adi Shankaracharya's non-dual genius to Vivekananda's
-                practical Vedanta — learn from the teachers who shaped the
-                tradition.
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
+                Meet the sages, philosophers, and saints who preserved the flame of Dharma
+                through the ages. Ancient wisdom, transmitted through a living lineage
+                of realized masters.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

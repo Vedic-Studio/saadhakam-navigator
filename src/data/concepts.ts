@@ -610,6 +610,226 @@ export const concepts: Concept[] = [
     sourceTexts: ["Rig Veda", "Brahmanas", "early Vedic literature"],
     tags: ["vedic", "order", "cosmic-law", "foundational"],
   },
+  {
+    slug: "mantra",
+    sanskritWord: "मन्त्र (Mantra)",
+    englishTranslation: "Sacred Sound / Instrument of the Mind",
+    shortDefinition:
+      "A sacred sound, phrase, or syllable used to focus the mind, refine consciousness, and invoke a specific spiritual force or divine presence.",
+    longDescription:
+      "Mantra comes from roots that suggest both mind and instrument. In practice, a mantra is not just a meaningful sentence to repeat. It is a disciplined sound-form that carries psychological, devotional, and sometimes initiatory power. In Vedic and yogic traditions, mantras are used to gather a scattered mind, align inner energy, and tune the seeker toward a deeper layer of awareness than ordinary thought can reach.",
+    keyPrinciples: [
+      "A mantra works through repetition, attention, and inner receptivity",
+      "Sound is treated as a carrier of consciousness, not merely information",
+      "Different mantras support different aims such as clarity, devotion, protection, or awakening",
+      "The value of mantra deepens with sincerity, steadiness, and correct relationship to practice",
+    ],
+    roleInPhilosophy:
+      "Mantra occupies a central place across Vedic ritual, Tantra, Bhakti, and Yoga. It bridges language and transcendence by treating sound as a direct medium of transformation rather than only a vehicle for conceptual meaning.",
+    practicalApplication:
+      "A seeker may use mantra in daily japa, meditation, prayer, or breath-linked repetition. The practical effect is simple but profound: the mind gets a sacred object to return to, emotional turbulence softens, and ordinary attention begins to take on devotional or contemplative depth.",
+    relatedConcepts: ["japa", "om", "bhakti", "dhyana"],
+    sourceTexts: ["Mandukya Upanishad", "Rig Veda", "Bhagavad Gita"],
+    tags: ["sound", "practice", "devotion", "meditation"],
+  },
+  {
+    slug: "japa",
+    sanskritWord: "जप (Japa)",
+    englishTranslation: "Repetition of Sacred Sound",
+    shortDefinition:
+      "The repeated chanting or inward repetition of a mantra as a focused spiritual practice.",
+    longDescription:
+      "Japa is one of the most accessible and durable practices in the Hindu spiritual world. Rather than asking the seeker to master abstract philosophy at the beginning, it gives the mind a simple sacred rhythm: repeat, return, repeat again. This repetition gradually reduces distraction, purifies emotional habit, and builds a living relationship with the divine name or mantra being repeated.",
+    keyPrinciples: [
+      "Japa trains attention through repetition rather than force",
+      "It can be practiced aloud, softly, or entirely mentally",
+      "Consistency matters more than dramatic intensity",
+      "Over time the mantra begins to shape mood, memory, and identity from within",
+    ],
+    roleInPhilosophy:
+      "Japa is praised in Bhakti, Tantra, and Yoga as a practice that unites devotion and concentration. It is especially important because it works for householders and beginners as well as for advanced practitioners.",
+    practicalApplication:
+      "In daily life, japa can be done with a mala, during a morning sit, on a walk, or in silent pauses throughout the day. It is especially effective for seekers who struggle with restless thought, emotional noise, or the need for a simple daily anchor.",
+    relatedConcepts: ["mantra", "bhakti", "sadhana", "dhyana"],
+    sourceTexts: ["Bhagavad Gita", "Bhakti literature", "Mantra Shastra"],
+    tags: ["practice", "chanting", "devotion", "daily-discipline"],
+  },
+  {
+    slug: "dhyana",
+    sanskritWord: "ध्यान (Dhyana)",
+    englishTranslation: "Meditation / Sustained Contemplation",
+    shortDefinition:
+      "A state of continuous meditative flow in which attention rests steadily on its object without frequent interruption.",
+    longDescription:
+      "Dhyana is usually translated as meditation, but classical usage is more precise. It is not the first moment of trying to concentrate. It is what happens when attention becomes more continuous, less jerky, and less entangled in side-thoughts. In this sense, Dhyana is not merely relaxation. It is disciplined interior steadiness that allows deeper perception and eventually opens toward absorption and insight.",
+    keyPrinciples: [
+      "Dhyana follows concentration but is more continuous and effortless",
+      "It stabilizes awareness by reducing fragmentation of attention",
+      "Meditation is not escape but clearer contact with reality",
+      "Sustained practice turns brief calm into a repeatable inner capacity",
+    ],
+    roleInPhilosophy:
+      "Dhyana is central to the Yoga tradition and also essential across Vedantic, Buddhist, and tantric contemplative systems. It marks the maturation of inward practice from effortful focus to lived meditative continuity.",
+    practicalApplication:
+      "A practitioner develops Dhyana through posture, breath, mantra, and regular sitting. In ordinary life, its fruits show up as less reactivity, cleaner attention, deeper listening, and the ability to remain inwardly steady without going numb.",
+    relatedConcepts: ["dharana", "samadhi", "mantra", "raja-yoga"],
+    sourceTexts: ["Yoga Sutras", "Bhagavad Gita", "Upanishads"],
+    tags: ["meditation", "attention", "yoga", "contemplation"],
+  },
+  {
+    slug: "sadhana",
+    sanskritWord: "साधना (Sadhana)",
+    englishTranslation: "Spiritual Practice / Disciplined Path",
+    shortDefinition:
+      "The intentional, repeated spiritual discipline through which a seeker turns aspiration into lived transformation.",
+    longDescription:
+      "Sadhana is the difference between admiring spiritual ideas and actually letting them shape a life. It refers to the disciplined pattern of practice by which the seeker works on mind, heart, body, and conduct. A sadhana can include meditation, mantra, prayer, study, service, ritual, ethical restraint, and teacher-guided observances. What matters is not complexity but repeatability and sincerity.",
+    keyPrinciples: [
+      "Sadhana converts inspiration into structure",
+      "Small daily discipline usually outruns occasional intensity",
+      "A true practice shapes conduct, not only inner states",
+      "The right sadhana fits temperament, stage of life, and spiritual aim",
+    ],
+    roleInPhilosophy:
+      "Across Yoga, Bhakti, Vedanta, and Tantra, Sadhana is the operational side of spiritual life. Philosophy provides orientation; sadhana provides the means by which that orientation becomes real.",
+    practicalApplication:
+      "For most seekers, sadhana means choosing a manageable daily rhythm: perhaps morning mantra, short meditation, scripture reflection, and one act of conscious service. The practice becomes a container strong enough to hold growth even when motivation fluctuates.",
+    relatedConcepts: ["japa", "tapas", "dhyana", "seva"],
+    sourceTexts: ["Bhagavad Gita", "Yoga texts", "Tantric manuals"],
+    tags: ["practice", "discipline", "path", "transformation"],
+  },
+  {
+    slug: "om",
+    sanskritWord: "ॐ (Om)",
+    englishTranslation: "Primordial Sound / Sacred Syllable",
+    shortDefinition:
+      "The primordial sacred syllable that symbolizes total reality and serves as a sonic gateway to meditation and divine remembrance.",
+    longDescription:
+      "Om is treated in Hindu traditions as far more than an opening sound before prayer. It is a condensed symbol of the whole field of existence: waking, dreaming, deep sleep, and the silence beyond them. Because of that, Om functions both philosophically and practically. It is a teaching about reality, and it is a practice that can steady the mind, refine breath, and reorient awareness toward what is fundamental.",
+    keyPrinciples: [
+      "Om symbolizes totality rather than one isolated object or deity",
+      "Its sound-form and silence are both significant",
+      "It can be used as a mantra, meditative anchor, and philosophical symbol",
+      "The value of Om lies in reverent attention, not mechanical chanting alone",
+    ],
+    roleInPhilosophy:
+      "The Mandukya Upanishad makes Om one of the most philosophically dense symbols in the Hindu world, linking it directly with consciousness and Brahman. Yogic traditions also use it as a direct support for meditative inwardness.",
+    practicalApplication:
+      "A seeker may chant Om at the start of meditation, link it with exhalation, or contemplate its meaning as a way to shift from mental noise toward interior spaciousness. It is especially helpful when practice needs a simple, universal, and non-complex entry point.",
+    relatedConcepts: ["mantra", "brahman", "dhyana", "ishvara"],
+    sourceTexts: ["Mandukya Upanishad", "Yoga Sutras", "Upanishads"],
+    tags: ["sound", "symbol", "meditation", "absolute"],
+  },
+  {
+    slug: "guna",
+    sanskritWord: "गुण (Guna)",
+    englishTranslation: "Qualities of Nature / Constituent Forces",
+    shortDefinition:
+      "The three foundational qualities of material nature—Sattva, Rajas, and Tamas—that shape mind, behavior, and experience.",
+    longDescription:
+      "The doctrine of the Gunas gives Hindu philosophy one of its most practical psychological maps. Rather than treating every mood as personal destiny, it shows that experience is often a moving mixture of clarity, activity, and inertia. Sattva illumines, Rajas agitates, and Tamas obscures. Everything from food and habits to work style and spiritual practice can be understood through these shifting proportions.",
+    keyPrinciples: [
+      "Sattva brings clarity, harmony, and lightness",
+      "Rajas drives movement, ambition, and restlessness",
+      "Tamas creates heaviness, dullness, and resistance",
+      "Spiritual growth often begins by observing these forces instead of identifying with them",
+    ],
+    roleInPhilosophy:
+      "The Gunas are central in Samkhya and deeply integrated into the Bhagavad Gita's account of psychology, ethics, and spiritual evolution. They explain why the same world produces very different forms of action, motivation, and consciousness.",
+    practicalApplication:
+      "A practitioner uses the Guna framework to adjust food, sleep, study, work, company, and practice. The aim is not perfection but movement toward more Sattva—because a clearer inner instrument makes wisdom, devotion, and steadier action easier.",
+    relatedConcepts: ["yoga", "karma", "maya", "tapas"],
+    sourceTexts: ["Bhagavad Gita", "Samkhya teachings", "Ayurvedic literature"],
+    tags: ["psychology", "nature", "ethics", "self-observation"],
+  },
+  {
+    slug: "avatara",
+    sanskritWord: "अवतार (Avatara)",
+    englishTranslation: "Divine Descent / Incarnation",
+    shortDefinition:
+      "A manifestation of the Divine that descends into the world to restore order, protect Dharma, and guide beings toward truth.",
+    longDescription:
+      "Avatara literally suggests a descent. In Hindu thought, it refers to the Divine taking accessible form within history rather than remaining only transcendent. This is not merely a mythic device. It expresses a philosophical conviction that reality is not indifferent to disorder. When confusion, adharma, or imbalance becomes severe, the Divine can become visible, relational, and historically active.",
+    keyPrinciples: [
+      "An avatara appears in response to moral and spiritual imbalance",
+      "The divine descent is compassionate, not accidental",
+      "Avatara theology makes the transcendent personally accessible",
+      "The form may be historical, symbolic, cosmic, or devotional depending on tradition",
+    ],
+    roleInPhilosophy:
+      "The concept is especially important in Vaishnava traditions and in the Bhagavad Gita, where Krishna presents divine manifestation as a recurring response to the decline of Dharma. It links theology, ethics, and devotion in a single idea.",
+    practicalApplication:
+      "For practitioners, Avatara is not only a doctrine about past events. It shapes devotion, trust, and moral courage. If the Divine can enter history, then spiritual life is not abstract; guidance, grace, and intervention remain possible within ordinary human struggle.",
+    relatedConcepts: ["dharma", "bhakti", "ishvara", "lila"],
+    sourceTexts: ["Bhagavad Gita", "Puranas", "Vaishnava literature"],
+    tags: ["theology", "devotion", "divine", "dharma"],
+  },
+  {
+    slug: "tapas",
+    sanskritWord: "तपस् (Tapas)",
+    englishTranslation: "Austerity / Spiritual Heat / Discipline",
+    shortDefinition:
+      "The purifying heat generated by disciplined effort, restraint, and voluntary acceptance of constructive difficulty.",
+    longDescription:
+      "Tapas is often misunderstood as harsh self-denial. More accurately, it is the willingness to bear useful friction for the sake of inner refinement. The word carries the sense of heat, and that image matters: just as heat can purify metal, disciplined effort can burn through laziness, compulsion, indulgence, and inner softness that keeps practice shallow. Tapas is intensity governed by purpose, not punishment.",
+    keyPrinciples: [
+      "Tapas means chosen discipline, not self-harm",
+      "Growth often requires friction that comfort alone cannot provide",
+      "It strengthens will, steadiness, and ethical seriousness",
+      "When balanced well, tapas clarifies rather than hardens the practitioner",
+    ],
+    roleInPhilosophy:
+      "Tapas appears across Yoga, Vedic, and ascetic traditions as a force of purification and spiritual potency. In the Yoga Sutras it is one of the key personal observances that helps prepare the seeker for deeper realization.",
+    practicalApplication:
+      "Modern tapas may look like waking for practice when the mind resists, keeping speech truthful under pressure, reducing indulgent habits, or maintaining consistency when enthusiasm drops. Its test is simple: does the discipline make the person clearer, kinder, and stronger?",
+    relatedConcepts: ["sadhana", "vairagya", "guna", "yoga"],
+    sourceTexts: ["Yoga Sutras", "Bhagavad Gita", "Vedic literature"],
+    tags: ["discipline", "practice", "purification", "willpower"],
+  },
+  {
+    slug: "dharana",
+    sanskritWord: "धारणा (Dharana)",
+    englishTranslation: "Concentration / Mental Holding",
+    shortDefinition:
+      "The disciplined act of holding the mind steadily on one chosen object, point, or field of attention.",
+    longDescription:
+      "Dharana is often translated as concentration, but in the yogic context it means more than trying hard to focus. It is the deliberate binding of attention to a chosen locus so the mind stops leaking energy into distraction. If Dhyana is the unbroken flow of meditation, Dharana is the threshold practice that makes that flow possible. It trains the mind to remain where it is placed rather than running after every impulse, image, or memory.",
+    keyPrinciples: [
+      "Dharana gathers scattered attention into one intentional stream",
+      "It is effortful at first because the ordinary mind has momentum toward distraction",
+      "The object may be breath, mantra, image, chakra, or subtle inquiry",
+      "Steady concentration becomes the basis for deeper meditation and inner absorption",
+    ],
+    roleInPhilosophy:
+      "In classical Yoga, Dharana is the sixth limb of the eightfold path and marks the shift from outer preparation to serious inner practice. It shows that liberation is not merely a matter of belief, but of training consciousness to become stable, subtle, and available to truth.",
+    practicalApplication:
+      "A modern seeker practices Dharana by returning again and again to one object without drama: one mantra, one breath pattern, one visual point, one field of prayer. Over time this strengthens attention, reduces compulsive mental switching, and makes meditation less vague and more real.",
+    relatedConcepts: ["dhyana", "samadhi", "mantra", "pranayama"],
+    sourceTexts: ["Yoga Sutras", "Bhagavad Gita", "Tantric texts"],
+    tags: ["concentration", "attention", "yoga", "meditation"],
+  },
+  {
+    slug: "lila",
+    sanskritWord: "लीला (Lila)",
+    englishTranslation: "Divine Play / Cosmic Playfulness",
+    shortDefinition:
+      "The vision of creation and divine activity as a spontaneous play of consciousness rather than a mechanical act of necessity.",
+    longDescription:
+      "Lila is one of the most beautiful ideas in Hindu thought because it changes the emotional texture of metaphysics. Instead of imagining reality as a dead machine or a burdened moral system alone, Lila suggests that existence also has a dimension of play, expression, and creative freedom. In devotional traditions, the stories of Krishna and other divine manifestations are not just events to analyze. They are revelations of how the Divine delights in relationship, beauty, love, and participation.",
+    keyPrinciples: [
+      "Creation can be understood as expression, not only obligation or mechanism",
+      "Divine play does not deny suffering, but reframes existence as more than suffering",
+      "Lila invites devotion because it makes the Divine relational and living",
+      "The seeker is not outside the play but already participating in it",
+    ],
+    roleInPhilosophy:
+      "Lila is especially powerful in Bhakti and Vaishnava theology, but its influence reaches further. It softens purely abstract metaphysics and gives spiritual life aesthetic, relational, and existential warmth. The world may still involve Maya, karma, and struggle, yet Lila reminds the seeker that reality is not exhausted by problem-language alone.",
+    practicalApplication:
+      "Practically, Lila helps loosen the ego's grim seriousness. A seeker can still fulfill duty, endure suffering, and pursue liberation, but with less hardness and self-importance. The frame shifts from 'I must control everything' to 'I must participate sincerely in a reality larger, wiser, and more alive than my private plans.'",
+    relatedConcepts: ["bhakti", "avatara", "maya", "ishvara"],
+    sourceTexts: ["Bhagavata Purana", "Brahma Sutras", "Bhakti literature"],
+    tags: ["divine-play", "devotion", "theology", "cosmos"],
+  },
 ];
 
 export function getConceptBySlug(slug: string): Concept | undefined {

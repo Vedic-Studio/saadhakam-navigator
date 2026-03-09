@@ -1,5 +1,5 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/choose-between-bhakti-jnana-karma-raja-yoga/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__dc7381dd._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__23ebc0d0._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_4b63a0e1._.js")
 R.c("server/chunks/ssr/_5d584927._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__3efcf052._.js")

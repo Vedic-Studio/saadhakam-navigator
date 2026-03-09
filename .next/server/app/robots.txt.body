@@ -24,23 +24,44 @@ Allow: /
 User-Agent: GPTBot
 Allow: /
 
+User-Agent: OAI-SearchBot
+Allow: /
+
+User-Agent: ChatGPT-User
+Allow: /
+
 User-Agent: ClaudeBot
-Allow: /
-
-User-Agent: PerplexityBot
-Allow: /
-
-User-Agent: GoogleOther
 Allow: /
 
 User-Agent: anthropic-ai
 Allow: /
 
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: Google-Extended
+Allow: /
+
+User-Agent: GoogleOther
+Allow: /
+
+User-Agent: Applebot-Extended
+Allow: /
+
+User-Agent: Amazonbot
+Allow: /
+
+User-Agent: FacebookBot
+Allow: /
+
 User-Agent: cohere-ai
 Allow: /
 
+User-Agent: Bytespider
+Disallow: /
+
 User-Agent: CCBot
-Allow: /
+Disallow: /
 
 Sitemap: https://opensadhaka.com/sitemap.xml
 Sitemap: https://opensadhaka.com/llms.txt

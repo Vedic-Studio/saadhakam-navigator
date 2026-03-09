@@ -1,8 +1,18 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { practices, getPracticeBySlug } from "@/data/practices";
-import { practiceGoals, getPracticeGoalBySlug } from "@/data/practiceGoals";
+import { getPracticeGoalBySlug } from "@/data/practiceGoals";
 import Link from "next/link";
+import {
+  ArrowLeft,
+  Sparkles,
+  PlayCircle,
+  Zap,
+  CheckCircle2,
+  AlertCircle,
+  Compass,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export async function generateStaticParams() {
@@ -63,113 +73,124 @@ export default function PracticeForGoalPage({
   }
 
   return (
-    <div className="container mx-auto px-4 py-16 max-w-4xl">
-      <ContentPageTracker slug={`${practice.slug}-for-${goal.slug}`} pillar="practice-goal" />
-      {/* Breadcrumbs Placeholder */}
-      <nav className="text-sm mb-8 text-neutral-500">
-        <Link href="/" className="hover:text-primary transition-colors">
-          Home
-        </Link>
-        <span className="mx-2">/</span>
-        <Link
-          href="/practices"
-          className="hover:text-primary transition-colors"
-        >
-          Practices
-        </Link>
-        <span className="mx-2">/</span>
-        <span className="text-neutral-900">
-          {practice.title} for {goal.name}
-        </span>
-      </nav>
-
-      <header className="mb-12 border-b border-neutral-200 pb-12">
-        <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-          {practice.title} for {goal.name}
-        </h1>
-        <p className="text-xl text-neutral-600 leading-relaxed mb-8">
-          {goal.summary}
-        </p>
-        <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
-          <h2 className="text-xl font-semibold mb-3 flex items-center gap-2">
-            What is {practice.title}?{" "}
-            <span className="font-normal text-lg tracking-widest bg-dark text-white rounded px-2">
-              {practice.sanskritName}
+    <main className="pt-24 pb-20">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-orange-500/5 to-transparent relative overflow-hidden text-center">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <nav aria-label="Breadcrumb" className="mb-12 flex justify-center">
+            <Link
+              href="/practical-spiritual-practices"
+              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-orange-400 transition-colors bg-background/50 backdrop-blur-sm px-4 py-2 rounded-full border border-border/50"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Practices
+            </Link>
+          </nav>
+          <div className="mb-4 inline-flex items-center gap-3">
+            <span className="px-3 py-1 bg-orange-500/10 text-orange-400 rounded-full text-xs font-bold uppercase tracking-widest border border-orange-500/20">
+              {practice.title}
             </span>
-          </h2>
-          <p className="text-neutral-700 leading-relaxed">
-            {practice.whatItIs}
+            <span className="text-muted-foreground">×</span>
+            <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-widest border border-primary/20">
+              {goal.name}
+            </span>
+          </div>
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-8 tracking-tight">
+            Refining <span className="text-orange-500 italic">{goal.name}</span> <br className="hidden md:block" />
+            through <span className="text-primary italic">{practice.title}</span>
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            {goal.summary}
           </p>
         </div>
-      </header>
-
-      <div className="prose prose-lg prose-neutral max-w-none">
-        {/* The Unique Alignment Block (Required per rules) */}
-        <h2 className="text-3xl font-bold mt-12 mb-6 text-neutral-900">
-          Why use {practice.title} for {goal.name.toLowerCase()}?
-        </h2>
-        <div className="text-lg">
-          {/* Placeholder for AI/Dynamic combination block */}
-          <p>
-            The practice of <strong>{practice.title.toLowerCase()}</strong> is
-            uniquely suited for <strong>{goal.name.toLowerCase()}</strong>
-            because it addresses the root causes on a subtle (pranic) and
-            intellectual (vijnanamaya) level. While modern approaches to{" "}
-            {goal.name.toLowerCase()} often focus purely on the psychological,
-            Sanatan Dharma views the mind-body complex holistically.{" "}
-            {practice.title} operates by redirecting the thought waves (
-            <em>vrittis</em>) and anchoring the practitioner in present-moment
-            awareness, thereby naturally resolving the dissonance that causes
-            distress or lack of {goal.name.toLowerCase()}.
-          </p>
-          <p className="mt-4">{goal.description}</p>
-        </div>
-
-        <h2 className="text-3xl font-bold mt-12 mb-6 text-neutral-900">
-          How To Begin
-        </h2>
-        <div className="bg-neutral-50 p-8 rounded-3xl border border-neutral-100">
-          <p className="mb-6 text-lg">{practice.howToBegin}</p>
-          <h3 className="text-xl font-semibold mb-3 mt-6">
-            Expected Technical Benefits:
-          </h3>
-          <ul className="space-y-3 list-disc list-inside marker:text-primary pl-4">
-            {practice.benefits.map((benefit, i) => (
-              <li key={i}>{benefit}</li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Important Exclusions Guardrail Notice */}
-        <div className="mt-12 bg-amber-50 p-6 rounded-2xl text-amber-900 text-sm border border-amber-200">
-          <strong>Medical Disclaimer:</strong> Sādhaka provides traditional
-          spiritual perspectives and practices. This content regarding{" "}
-          {goal.name.toLowerCase()} is for educational and spiritual purposes
-          and is not a substitute for professional medical or mental health
-          advice. Please consult a qualified healthcare provider for clinical
-          treatment.
-        </div>
-      </div>
-
-      {/* Pathway CTA */}
-      <section className="mt-16 bg-neutral-900 p-10 rounded-3xl text-center text-white">
-        <h2 className="text-3xl font-bold mb-4">
-          Is {practice.title} right for you?
-        </h2>
-        <p className="text-neutral-300 max-w-2xl mx-auto mb-8">
-          Take our Faith Finder quiz and get a personalized path outlining
-          exactly which practices match your personality (Gunas) and life stage
-          (Ashrama).
-        </p>
-        <TrackedLink
-          href="/faith-finder"
-          eventLabel={`practice_goal:${practice.slug}:${goal.slug}:faith-finder`}
-          trackPathName={practice.slug}
-          className="inline-block bg-white text-neutral-900 font-bold px-8 py-4 rounded-full hover:scale-105 transition-transform"
-        >
-          Find Your Path
-        </TrackedLink>
       </section>
-    </div>
+
+      <section className="px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto space-y-16">
+
+          {/* The Alignment Logic */}
+          <div className="glass-card p-8 md:p-12 rounded-[2rem] border border-white/5 bg-white/[0.02]">
+            <h2 className="text-3xl font-display font-bold mb-8 flex items-center gap-3">
+              <Sparkles className="w-6 h-6 text-orange-400" />
+              The Mechanical Alignment
+            </h2>
+            <div className="prose prose-invert prose-orange max-w-none text-lg leading-relaxed text-muted-foreground space-y-6">
+              <p>
+                We often treat <strong>{goal.name.toLowerCase()}</strong> as an external problem to be solved through force. But in the Dharmic laboratory, we see it as a mechanical dissonance in the <em>Pranamaya Kosha</em> (your energetic body).
+              </p>
+              <div className="bg-orange-500/5 rounded-2xl p-6 border border-orange-500/20 text-foreground italic font-medium">
+                "The goal is not to suppress the symptom, but to alter the internal environment that allows it to persist."
+              </div>
+              <p>
+                <strong>{practice.title}</strong> works because it shifts your primary anchor. Instead of being swept away by the <em>Vrittis</em> (thought-waves) of {goal.name.toLowerCase()}, you utilize {practice.title} as a fixed point in consciousness. It is a foundational rewiring—moving from reactive habit to conscious presence.
+              </p>
+            </div>
+          </div>
+
+          {/* Implementation Step-by-Step */}
+          <div className="space-y-8">
+            <h2 className="text-3xl font-display font-bold text-center mb-12">The Integrated Protocol</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="p-8 rounded-3xl border border-white/5 bg-card">
+                <div className="w-12 h-12 rounded-2xl bg-orange-500/10 flex items-center justify-center mb-6">
+                  <PlayCircle className="w-6 h-6 text-orange-400" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Activation Sequence</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {practice.howToBegin.split('.')[0]}. Build the physical container before you start the internal work. If the seat is stable, the mind follows.
+                </p>
+              </div>
+
+              <div className="p-8 rounded-3xl border border-white/5 bg-card">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+                  <Zap className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">Primary Outcomes</h3>
+                <ul className="space-y-3">
+                  {practice.benefits.slice(0, 3).map((benefit, i) => (
+                    <li key={i} className="flex gap-3 text-sm text-muted-foreground">
+                      <CheckCircle2 className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="bg-amber-500/5 border border-amber-500/20 p-8 rounded-3xl">
+            <div className="flex gap-4 items-start">
+              <AlertCircle className="w-6 h-6 text-amber-500 flex-shrink-0" />
+              <div>
+                <h4 className="font-bold text-amber-500 mb-2 uppercase tracking-wider text-sm">Medical Disclaimer</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Sādhaka provides traditional spiritual perspectives and practices. This content regarding {goal.name.toLowerCase()} is for educational and spiritual purposes and is not a substitute for professional medical or mental health advice.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="bg-muted/30 p-12 rounded-[2.5rem] text-center border border-white/5 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-700">
+              <Compass className="w-48 h-48" />
+            </div>
+            <h2 className="text-3xl font-display font-bold mb-6">Deepen Your Alignment</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+              Get a personalized path that matches {practice.title} with your specific life stage and gunas.
+            </p>
+            <TrackedLink
+              href="/faith-finder"
+              eventLabel={`practice_goal:${practice.slug}:${goal.slug}:faith-finder`}
+              trackPathName={practice.slug}
+            >
+              <Button size="lg" className="px-10 h-16 rounded-2xl font-bold text-lg bg-orange-500 hover:bg-orange-600 shadow-xl shadow-orange-500/20">
+                Find Your Personal Path
+              </Button>
+            </TrackedLink>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

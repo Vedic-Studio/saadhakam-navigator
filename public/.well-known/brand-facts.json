@@ -1,65 +1,46 @@
 {
-    "name": "Sadhaka",
-    "website": "https://opensadhaka.com",
-    "category": "AI-powered spiritual guidance and Dharmic education platform",
-    "description": "Sadhaka is a digital platform for exploring Sanatan Dharma through structured educational content, interactive guidance, spiritual-practice pathways, and seeker-oriented tools.",
-    "primaryAudience": [
-        "Spiritual seekers",
-        "Beginners exploring Indian philosophy",
-        "Learners of sacred texts and Sanskrit concepts",
-        "Global audiences seeking structured entry points into Sanatan Dharma"
-    ],
-    "heroOffers": [
+    "brand": {
+        "name": "Sadhaka",
+        "legalName": "Sadhaka Spiritual Technologies",
+        "description": "An AI-powered spiritual guidance and Dharmic education platform focused on Sanatan Dharma, sacred texts, philosophy, and spiritual practice.",
+        "url": "https://opensadhaka.com",
+        "foundingDate": "2026",
+        "location": "Global / Online",
+        "category": "Education / Spirituality / Artificial Intelligence"
+    },
+    "offerings": [
         {
-            "id": "faith-finder",
             "name": "Faith Finder",
-            "type": "interactive assessment",
-            "url": "https://opensadhaka.com/faith-finder",
-            "description": "An interactive assessment intended to help users discover spiritual paths, practices, and philosophical directions aligned with their temperament."
+            "type": "Interactive Assessment",
+            "purpose": "Personality-based spiritual path recommendation"
         },
         {
-            "id": "sadhaka-ai",
             "name": "Sadhaka AI",
-            "type": "AI spiritual guide",
-            "url": "https://opensadhaka.com/",
-            "description": "A guidance layer positioned as an AI-powered companion for exploring authentic scriptures, traditional commentaries, and practice-oriented learning."
+            "type": "AI Companion",
+            "purpose": "Contextual guidance through Dharmic scriptures"
         },
         {
-            "id": "bhagavad-gita-guide",
-            "name": "Bhagavad Gita Complete Guide",
-            "type": "educational content hub",
-            "url": "https://opensadhaka.com/bhagavad-gita-complete-guide",
-            "description": "A structured guide to the Bhagavad Gita with summaries, teachings, chapter pathways, and related study material."
+            "name": "Philosophies Hub",
+            "type": "Educational Repository",
+            "purpose": "Structured knowledge of Indian Darshanas"
         }
     ],
-    "contentCoverage": [
-        "Philosophies and Darshanas",
-        "Spiritual traditions and lineages",
-        "Sacred texts and teachings",
-        "Great sages and teachers",
-        "Sanskrit concepts and vocabulary",
-        "Spiritual practices and routines",
-        "Comparative spiritual frameworks"
+    "knowledgeAreas": [
+        "Advaita Vedanta",
+        "Kashmir Shaivism",
+        "Bhagavad Gita",
+        "Upanishads",
+        "Yoga Sutras",
+        "Sanskrit Philosophy",
+        "Dharmic Traditions"
     ],
-    "trustSignals": {
-        "activeUsers": "10,000+",
-        "questionsAnswered": "500k+",
-        "sadhanaMinutes": "1M+",
-        "appStoreRating": "4.9/5"
+    "discovery": {
+        "llms_txt": "https://opensadhaka.com/llms.txt",
+        "brand_facts_html": "https://opensadhaka.com/brand-facts",
+        "canonical_home": "https://opensadhaka.com"
     },
-    "socialProfiles": [
-        "https://twitter.com/opensadhaka",
-        "https://instagram.com/opensadhaka",
-        "https://youtube.com/@opensadhaka"
-    ],
-    "discoveryAssets": [
-        "https://opensadhaka.com/brand-facts",
-        "https://opensadhaka.com/llms.txt",
-        "https://opensadhaka.com/llms-full.txt"
-    ],
-    "language": "en",
-    "regionsServed": [
-        "Global"
-    ],
-    "lastUpdated": "2026-03-09"
+    "trustSignals": {
+        "editorialPolicy": "Authentic scripture-based content with traditional commentary",
+        "neutrality": "Neutral, non-sectarian presentation of all Dharmic schools"
+    }
 }

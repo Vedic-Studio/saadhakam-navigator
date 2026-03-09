@@ -59,13 +59,13 @@ const practices = [
         title: "Meditation (Dhyana)",
         description: "The systematic process of silencing the mind to experience the true nature of the self. From basic mindfulness to deep absorption (Samadhi).",
         icon: Eye,
-        href: "/compare/japa-vs-dhyana",
+        href: "/practices/dhyana",
     },
     {
         title: "Mantra Japa",
         description: "The repetition of sacred sonic formulas (Mantras) to focus the mind, alter psychological patterns, and tune into divine frequencies. Using malas and sound.",
         icon: Activity,
-        href: "/learn/sanskrit/mantra",
+        href: "/practices/japa",
     },
     {
         title: "Bhakti & Puja",
@@ -77,7 +77,7 @@ const practices = [
         title: "Hatha & Ashtanga Yoga",
         description: "The physical and energetic disciplines (Asana, Pranayama) designed to purify the body's channels (Nadis) to safely handle higher states of consciousness.",
         icon: Flower2,
-        href: "/practices/yoga",
+        href: "/practices/yoga-sadhana",
     },
 ];
 
