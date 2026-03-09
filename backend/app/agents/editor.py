@@ -29,6 +29,20 @@ DIMENSION_WEIGHTS: Dict[str, float] = {
     "eeat_signals": 0.05,
 }
 
+# Actionable hints per dimension for revision notes
+REVISION_HINTS: Dict[str, str] = {
+    "content_depth": "Add more words. Expand with concrete examples, scripture references, or practice steps.",
+    "factual_accuracy": "Include at least one named text (e.g. Bhagavad Gita, Upanishads) and a tradition name (e.g. Advaita Vedanta).",
+    "voice_consistency": "Remove banned words (delve, leverage, utilize, robust, seamless, transformative). Use plain, direct language.",
+    "seo_structure": "Ensure exactly one H1, at least 3 H2s, 2+ H3s, and 3+ internal markdown links like [text](/path).",
+    "aead_compliance": "Add a clear definition sentence ('X is...'), step-by-step practice guidance, and 5+ FAQ questions ending with '?'.",
+    "exclusion_safety": "Remove any medical cure claims and ensure a disclaimer is present if goals are sensitive.",
+    "ai_detection_risk": "Remove 'in conclusion', 'in today's', 'ever-evolving', 'let's delve'. Vary sentence lengths significantly.",
+    "uniqueness": "Increase lexical diversity. Avoid repeating the same filler paragraph. Use synonyms and specific terms.",
+    "readability": "Shorten long sentences (target average ≤18 words). Break dense paragraphs.",
+    "eeat_signals": "Add attribution signals: name a source, lineage, commentary, or tradition for authority cues.",
+}
+
 
 @dataclass
 class ExclusionCheckResult:
@@ -124,6 +138,56 @@ class EditorAgent(BaseAgent):
             dimensions=dimensions,
             violations=violations,
         )
+
+    def generate_revision_notes(
+        self,
+        scorecard: "QualityScorecard",
+        threshold: float = 7.0,
+    ) -> str:
+        """
+        Generate actionable revision notes when total_score < threshold.
+        Returns empty string if content already passes.
+        """
+        if scorecard.total_score >= threshold and scorecard.passed:
+            return ""
+
+        # Collect lowest-scoring dimensions (by absolute score, weighted by importance)
+        scored = sorted(
+            scorecard.dimensions.items(),
+            key=lambda kv: kv[1].score * DIMENSION_WEIGHTS.get(kv[0], 0.05),
+        )
+        # Top 3 worst
+        worst = scored[:3]
+
+        notes_lines = [
+            f"Content scored {scorecard.total_score:.2f}/10 (threshold {threshold:.1f}). "
+            "Please address these issues in the re-draft:",
+            "",
+        ]
+        for name, dim in worst:
+            hint = REVISION_HINTS.get(name, "Improve this dimension.")
+            notes_lines.append(f"**{name.replace('_', ' ').title()}** (score {dim.score:.1f}): {hint}")
+            notes_lines.append(f"  Editor note: {dim.notes}")
+            notes_lines.append("")
+
+        if scorecard.violations:
+            notes_lines.append("**Policy Violations (must fix):**")
+            for v in scorecard.violations:
+                notes_lines.append(f"- {v}")
+
+        return "\n".join(notes_lines).strip()
+
+    def score_with_notes(
+        self,
+        content: str,
+        request: "GenerateRequest",
+        threshold: float | None = None,
+    ) -> tuple["QualityScorecard", str]:
+        """Convenience: score content AND generate revision notes in one call."""
+        scorecard = self.score(content, request)
+        effective_threshold = threshold if threshold is not None else 7.0
+        notes = self.generate_revision_notes(scorecard, threshold=effective_threshold)
+        return scorecard, notes
 
     def _score_content_depth(self, content: str, request: GenerateRequest) -> Tuple[float, str]:
         page_rule = self.knowledge_store.get_content_rules(request.page_type)

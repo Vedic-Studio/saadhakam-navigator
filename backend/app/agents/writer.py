@@ -1,9 +1,9 @@
-"""Writer agent for Phase 1 (topic -> draft content)."""
+"""Writer agent — topic → draft content. Accepts ResearchBrief from Research Agent."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import List
+from typing import TYPE_CHECKING, List, Optional
 
 import httpx
 
@@ -12,6 +12,9 @@ from app.knowledge.store import KnowledgeStore, get_knowledge_store
 from app.models.schemas import GenerateRequest
 
 from .base import BaseAgent
+
+if TYPE_CHECKING:
+    from app.agents.research import ResearchBrief
 
 
 @dataclass
@@ -26,24 +29,32 @@ class WriterAgent(BaseAgent):
         self.settings = get_settings()
         self.knowledge_store = knowledge_store or get_knowledge_store()
 
-    async def generate(self, request: GenerateRequest) -> WriterResult:
-        prompt = self._build_prompt(request)
+    async def generate(
+        self,
+        request: GenerateRequest,
+        *,
+        research_brief: Optional["ResearchBrief"] = None,
+        revision_notes: Optional[str] = None,
+    ) -> WriterResult:
+        prompt = self._build_prompt(request, research_brief=research_brief, revision_notes=revision_notes)
 
         if self.settings.anthropic_api_key:
             try:
                 content = await self._generate_with_anthropic(prompt)
                 return WriterResult(content=content, prompt_preview=prompt[:1500])
             except Exception:
-                # Safe fallback for local dev and key/network failures.
                 pass
 
         deterministic = self._generate_deterministic(request)
         return WriterResult(content=deterministic, prompt_preview=prompt[:1500])
 
-    def _build_prompt(self, request: GenerateRequest) -> str:
-        page_rule = self.knowledge_store.get_content_rules(request.page_type)
-        required_sections = page_rule.required_sections if page_rule else []
-
+    def _build_prompt(
+        self,
+        request: GenerateRequest,
+        *,
+        research_brief: Optional["ResearchBrief"] = None,
+        revision_notes: Optional[str] = None,
+    ) -> str:
         skills_text = "\n\n".join(
             [
                 self.load_skill("writer/base.md"),
@@ -51,15 +62,20 @@ class WriterAgent(BaseAgent):
             ]
         ).strip()
 
-        knowledge_text = (
-            f"Page type: {request.page_type}\n"
-            f"Topic: {request.topic}\n"
-            f"Goal: {request.goal or 'general'}\n"
-            f"Min words: {page_rule.min_word_count if page_rule else 'n/a'}\n"
-            f"Required sections: {required_sections}\n"
-            f"Sensitive goals: {self.knowledge_store.get_sensitive_goals()}\n"
-            f"Disclaimer: {self.knowledge_store.get_disclaimer_text() or ''}\n"
-        )
+        if research_brief is not None:
+            knowledge_text = research_brief.to_text()
+        else:
+            page_rule = self.knowledge_store.get_content_rules(request.page_type)
+            required_sections = page_rule.required_sections if page_rule else []
+            knowledge_text = (
+                f"Page type: {request.page_type}\n"
+                f"Topic: {request.topic}\n"
+                f"Goal: {request.goal or 'general'}\n"
+                f"Min words: {page_rule.min_word_count if page_rule else 'n/a'}\n"
+                f"Required sections: {required_sections}\n"
+                f"Sensitive goals: {self.knowledge_store.get_sensitive_goals()}\n"
+                f"Disclaimer: {self.knowledge_store.get_disclaimer_text() or ''}\n"
+            )
 
         parts = self.assemble_prompt_parts(skills_text=skills_text, knowledge_text=knowledge_text)
         fallback_soul = (
@@ -67,13 +83,17 @@ class WriterAgent(BaseAgent):
             "SEO-structured content."
         )
 
+        task_section = "[TASK]\nGenerate complete markdown content with clear H2 sections, FAQ, and at least 3 internal links."
+        if revision_notes:
+            task_section += f"\n\n[REVISION NOTES FROM EDITOR]\n{revision_notes}\n\nPlease address all revision notes above in this re-draft."
+
         return "\n\n".join(
             [
                 f"[SOUL]\n{parts.soul or fallback_soul}",
                 f"[MEMORY]\n{parts.memory}",
                 f"[SKILLS]\n{parts.skills}",
                 f"[KNOWLEDGE]\n{parts.knowledge}",
-                "[TASK]\nGenerate complete markdown content with clear H2 sections, FAQ, and at least 3 internal links.",
+                task_section,
             ]
         )
 

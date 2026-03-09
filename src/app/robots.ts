@@ -34,7 +34,39 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "facebookexternalhit",
         allow: "/",
       },
+      {
+        userAgent: "GPTBot",
+        allow: "/",
+      },
+      {
+        userAgent: "ClaudeBot",
+        allow: "/",
+      },
+      {
+        userAgent: "PerplexityBot",
+        allow: "/",
+      },
+      {
+        userAgent: "GoogleOther",
+        allow: "/",
+      },
+      {
+        userAgent: "anthropic-ai",
+        allow: "/",
+      },
+      {
+        userAgent: "cohere-ai",
+        allow: "/",
+      },
+      {
+        userAgent: "CCBot",
+        allow: "/",
+      },
     ],
-    sitemap: [`${baseUrl}/sitemap.xml`],
+    sitemap: [
+      `${baseUrl}/sitemap.xml`,
+      `${baseUrl}/llms.txt`,
+      `${baseUrl}/llms-full.txt`,
+    ],
   };
 }

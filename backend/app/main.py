@@ -9,10 +9,12 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes.generate import router as generate_router
 from app.api.routes.knowledge import router as knowledge_router
+from app.api.routes.pipelines import router as pipelines_router
 from app.config import get_settings
 from app.db.base import Base
 from app.db.session import engine
 from app.knowledge.store import get_knowledge_store
+import app.models  # noqa: F401 — registers ORM models with SQLAlchemy metadata
 
 settings = get_settings()
 
@@ -41,6 +43,7 @@ app.add_middleware(
 
 app.include_router(generate_router, prefix=settings.api_prefix)
 app.include_router(knowledge_router, prefix=settings.api_prefix)
+app.include_router(pipelines_router, prefix=settings.api_prefix)
 
 
 @app.get("/health")

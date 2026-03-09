@@ -1,0 +1,2 @@
+- Threads starting with "What is X" perform worse than "The real meaning of X".
+- Use bullet points sparingly in threads.
