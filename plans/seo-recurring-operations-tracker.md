@@ -73,12 +73,22 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
 - `next.config.ts` rewrite maps `/<INDEXNOW_KEY>.txt` → `/api/indexnow` when `INDEXNOW_KEY` is set.
 - `src/app/api/indexnow/route.ts` returns plain-text key body and 404 when `INDEXNOW_KEY` is missing.
 - `src/app/api/indexnow/submit/route.ts` provides authenticated (optional token) single/batch URL submission to Bing + Yandex IndexNow endpoints.
+- `src/app/api/indexnow/submit/route.ts` also returns Google Search Console URL Inspection deep links (`inspectUrl`) per submitted URL to speed up manual “Request Indexing” operations.
+- `src/app/layout.tsx` is configured for Google Search Console ownership verification via `GSC_VERIFICATION` / `NEXT_PUBLIC_GSC_VERIFICATION` metadata tags.
 - Canonical key verification URL to ping after deploy:
   - `https://opensadhaka.com/<INDEXNOW_KEY>.txt`
 - Functional API endpoint (internal mapping target):
   - `https://opensadhaka.com/api/indexnow`
 - URL submission endpoint (automation target):
   - `POST https://opensadhaka.com/api/indexnow/submit`
+
+### Search Console Operational Setup (Current + Next Step)
+- **Implemented now:** each `POST /api/indexnow/submit` response includes `searchConsole.requestIndexingLinks[]` with a ready-to-open `inspectUrl` for each accepted URL.
+- **Property resolution:** set `GSC_PROPERTY` to either:
+  - `sc-domain:opensadhaka.com` (recommended), or
+  - full URL-prefix property (`https://opensadhaka.com/`).
+  - If omitted, app defaults to `sc-domain:<site-host>`.
+- **Runbook use:** after every publish, call IndexNow submit endpoint once, then open each returned `inspectUrl` and click **Request Indexing**.
 
 ---
 
@@ -100,6 +110,7 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
 | Date | Cadence | Actions Completed | Outcome | Next Actions |
 |---|---|---|---|---|
 | 2026-03-09 | Weekly | Initial tracker created, technical SEO and Faith Finder analytics improvements applied | Baseline established | Continue weekly publishing + index submission |
+| 2026-03-09 | Weekly | Expanded the 4 pillar hub pages with richer editorial copy, FAQ/collection schema, and direct internal links to quick-win/supporting articles | Stronger Task 8/9 cluster architecture and crawl paths for pillar ↔ spoke discovery | Continue refreshing remaining quick-win articles, submit updated URLs through IndexNow/GSC, and monitor indexing/ranking movement |
 
 ---
 

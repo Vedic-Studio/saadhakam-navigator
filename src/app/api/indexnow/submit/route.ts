@@ -24,6 +24,7 @@ const INDEXNOW_PROVIDERS: { name: ProviderName; endpoint: string }[] = [
 
 const DEFAULT_SITE_URL = "https://opensadhaka.com";
 const MAX_URLS_PER_REQUEST = 50;
+const SEARCH_CONSOLE_INSPECT_ENDPOINT = "https://search.google.com/search-console/inspect";
 
 function sanitizeSiteOrigin(siteUrl: string): string {
     try {
@@ -32,6 +33,35 @@ function sanitizeSiteOrigin(siteUrl: string): string {
     } catch {
         return DEFAULT_SITE_URL;
     }
+}
+
+function resolveSearchConsoleProperty(siteOrigin: string): string {
+    const configured = process.env.GSC_PROPERTY?.trim();
+
+    if (!configured) {
+        return `sc-domain:${new URL(siteOrigin).host}`;
+    }
+
+    if (configured.startsWith("sc-domain:")) {
+        return configured;
+    }
+
+    if (configured.startsWith("http://") || configured.startsWith("https://")) {
+        return `${sanitizeSiteOrigin(configured)}/`;
+    }
+
+    if (/^[a-z0-9.-]+$/i.test(configured)) {
+        return `sc-domain:${configured}`;
+    }
+
+    return configured;
+}
+
+function buildSearchConsoleInspectUrl(url: string, property: string): string {
+    const endpoint = new URL(SEARCH_CONSOLE_INSPECT_ENDPOINT);
+    endpoint.searchParams.set("resource_id", property);
+    endpoint.searchParams.set("id", url);
+    return endpoint.toString();
 }
 
 function extractUrlsFromPayload(payload: unknown): string[] {
@@ -137,6 +167,7 @@ async function submitUrlToProvider(
 export async function GET() {
     const key = process.env.INDEXNOW_KEY?.trim();
     const siteOrigin = sanitizeSiteOrigin(process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL);
+    const searchConsoleProperty = resolveSearchConsoleProperty(siteOrigin);
 
     return NextResponse.json({
         configured: Boolean(key),
@@ -154,6 +185,15 @@ export async function GET() {
             auth: process.env.INDEXNOW_SUBMIT_TOKEN
                 ? "Set x-indexnow-token or Authorization: Bearer <token>"
                 : "No token required (INDEXNOW_SUBMIT_TOKEN not set)",
+            searchConsole: {
+                property: searchConsoleProperty,
+                inspectExample: buildSearchConsoleInspectUrl(
+                    `${siteOrigin}/what-is-vedanta`,
+                    searchConsoleProperty,
+                ),
+                note:
+                    "Open inspect URL(s) and click Request Indexing in Search Console. Google does not support a general-purpose auto-indexing API for all page types.",
+            },
         },
     });
 }
@@ -176,6 +216,7 @@ export async function POST(request: NextRequest) {
 
     const siteOrigin = sanitizeSiteOrigin(process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL);
     const keyLocation = `${siteOrigin}/${key}.txt`;
+    const searchConsoleProperty = resolveSearchConsoleProperty(siteOrigin);
 
     let payload: unknown;
     try {
@@ -232,6 +273,15 @@ export async function POST(request: NextRequest) {
         successfulProviderCalls,
         failedProviderCalls: totalProviderCalls - successfulProviderCalls,
         keyLocation,
+        searchConsole: {
+            property: searchConsoleProperty,
+            requestIndexingLinks: normalized.map((url) => ({
+                url,
+                inspectUrl: buildSearchConsoleInspectUrl(url, searchConsoleProperty),
+            })),
+            note:
+                "Open each inspectUrl and click Request Indexing in Google Search Console.",
+        },
         droppedInvalidUrls: invalid,
         results,
     });

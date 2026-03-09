@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
-import { ArrowRight, Book, Flame, ScrollText, Library } from "lucide-react";
+import { ArrowRight, Book, Compass, Flame, Library, ScrollText } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Sacred Texts & Teachings of Sanatan Dharma | Sadhaka",
@@ -11,7 +11,41 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://opensadhaka.com/sacred-texts-teachings",
     },
+    openGraph: {
+        title: "Sacred Texts & Teachings of Sanatan Dharma | Sadhaka",
+        description:
+            "A beginner-friendly guide to the Bhagavad Gita, Upanishads, Vedas, epics, and Sanskrit wisdom traditions.",
+        url: "https://opensadhaka.com/sacred-texts-teachings",
+        type: "website",
+    },
 };
+
+const featuredGuides = [
+    {
+        title: "Bhagavad Gita Complete Guide",
+        description:
+            "A broad entry point into the Gita, its structure, key themes, and why it remains the most practical scripture for modern seekers.",
+        href: "/bhagavad-gita-complete-guide",
+    },
+    {
+        title: "Bhagavad Gita Chapter 1: Arjuna's Dilemma",
+        description:
+            "Understand why the Gita begins with collapse, grief, and moral confusion rather than immediate enlightenment.",
+        href: "/bhagavad-gita-chapter-1",
+    },
+    {
+        title: "10 Powerful Sanskrit Mantras",
+        description:
+            "Explore how sacred sound functions as living scripture in the form of memorized, repeated, embodied speech.",
+        href: "/10-powerful-sanskrit-mantras",
+    },
+    {
+        title: "How to Start Japa Meditation",
+        description:
+            "Bridge textual study and lived practice by learning how scriptural mantras enter daily spiritual discipline.",
+        href: "/how-to-start-japa",
+    },
+];
 
 const textGroups = [
     {
@@ -40,9 +74,91 @@ const textGroups = [
     },
 ];
 
+const readingPath = [
+    {
+        title: "Start with the Bhagavad Gita",
+        description:
+            "It is the most accessible bridge between philosophy, action, devotion, and real human conflict.",
+    },
+    {
+        title: "Use epics to understand Dharma in motion",
+        description:
+            "Texts like the Mahabharata and Ramayana teach through characters, dilemmas, and consequence rather than abstract theory alone.",
+    },
+    {
+        title: "Approach the Upanishads after orientation",
+        description:
+            "They are dense, luminous, and transformative — but far easier once you know the basic vocabulary of Atman, Brahman, Karma, and Dharma.",
+    },
+    {
+        title: "Let practice interpret the text",
+        description:
+            "Mantra, meditation, and reflection turn scriptural ideas from concepts into insight.",
+    },
+];
+
+const faqs = [
+    {
+        question: "What Hindu scripture should a beginner read first?",
+        answer:
+            "The Bhagavad Gita is usually the best starting point because it combines philosophy, ethics, devotion, and practice in one text. It speaks directly to the dilemmas of ordinary life.",
+    },
+    {
+        question: "What is the difference between Shruti and Smriti?",
+        answer:
+            "Shruti refers to the revealed texts, especially the Vedas and Upanishads. Smriti refers to remembered or authored texts such as epics, Puranas, and law or commentary traditions that apply Vedic insight to lived life.",
+    },
+    {
+        question: "Why are there so many sacred texts in Sanatan Dharma?",
+        answer:
+            "Because the tradition grew across thousands of years, different regions, teacher lineages, and spiritual needs. Instead of one final book, it preserves a living library suited to different temperaments and stages of practice.",
+    },
+    {
+        question: "Do I need Sanskrit to benefit from these texts?",
+        answer:
+            "No, but learning a few key terms dramatically improves understanding. Even simple words like Dharma, Karma, Atman, and Moksha carry meanings that are richer than their common English approximations.",
+    },
+];
+
 export default function SacredTextsPage() {
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+            },
+        })),
+    };
+
+    const collectionSchema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: "Sacred Texts & Teachings of Sanatan Dharma",
+        description:
+            "A pillar hub for the Bhagavad Gita, Upanishads, Vedas, Sanskrit mantras, and scriptural study guides.",
+        url: "https://opensadhaka.com/sacred-texts-teachings",
+        hasPart: featuredGuides.map((guide, index) => ({
+            "@type": "Article",
+            position: index + 1,
+            name: guide.title,
+            url: `https://opensadhaka.com${guide.href}`,
+        })),
+    };
+
     return (
         <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+            />
             <Header />
 
             <main className="flex-grow pt-32 pb-16">
@@ -71,7 +187,42 @@ export default function SacredTextsPage() {
                             <em>Bhagavad Gita</em> and the <em>Ramayana</em> serve as the living heartbeat of
                             the tradition for billions of people today.
                         </p>
+                        <p>
+                            If you are unsure where to begin, start with the <Link href="/bhagavad-gita-complete-guide">Bhagavad
+                                Gita Complete Guide</Link>, then go chapter-by-chapter beginning with <Link href="/bhagavad-gita-chapter-1">Arjuna’s
+                                    Dilemma</Link>. Pair that study with sound-based practice through <Link href="/10-powerful-sanskrit-mantras">Sanskrit
+                                        mantras</Link> or <Link href="/how-to-start-japa">Japa meditation</Link> so the texts become
+                            experiential, not merely intellectual.
+                        </p>
                     </div>
+
+                    <section className="mb-24">
+                        <div className="flex items-center gap-3 mb-6">
+                            <Compass className="w-6 h-6 text-orange-500" />
+                            <h2 className="font-display text-3xl md:text-4xl font-bold">Start with these study paths</h2>
+                        </div>
+                        <p className="text-lg text-muted-foreground max-w-3xl mb-10">
+                            These pages turn a massive scriptural tradition into a practical, beginner-friendly reading sequence.
+                        </p>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {featuredGuides.map((guide) => (
+                                <Link
+                                    key={guide.href}
+                                    href={guide.href}
+                                    className="glass-card rounded-3xl border border-white/5 p-8 hover:border-orange-500/30 transition-all duration-300 group"
+                                >
+                                    <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-orange-300 transition-colors">
+                                        {guide.title}
+                                    </h3>
+                                    <p className="text-muted-foreground text-lg mb-6">{guide.description}</p>
+                                    <span className="inline-flex items-center text-orange-400 font-semibold">
+                                        Read guide
+                                        <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                    </span>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
 
                     {/* Hub Grid */}
                     <div className="grid md:grid-cols-2 gap-8 mb-24">
@@ -97,6 +248,43 @@ export default function SacredTextsPage() {
                             </div>
                         ))}
                     </div>
+
+                    <section className="mb-24">
+                        <div className="bg-gradient-to-br from-orange-950/20 to-background border border-orange-900/30 rounded-3xl p-10 md:p-12">
+                            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">How to read these texts without overwhelm</h2>
+                            <p className="text-lg text-muted-foreground mb-10 max-w-3xl">
+                                The goal is not to read everything. The goal is to let the right texts shape your understanding, practice, and inner life.
+                            </p>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {readingPath.map((item, index) => (
+                                    <div key={item.title} className="rounded-2xl border border-white/5 bg-black/10 p-6">
+                                        <div className="text-orange-400 text-sm font-semibold uppercase tracking-wide mb-3">
+                                            Step {index + 1}
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                                        <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="pt-16 border-t border-border">
+                        <div className="text-center mb-12">
+                            <h2 className="font-display text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                            <p className="text-muted-foreground max-w-2xl mx-auto">
+                                Common beginner questions about reading Hindu scriptures and approaching sacred knowledge responsibly.
+                            </p>
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {faqs.map((faq) => (
+                                <div key={faq.question} className="rounded-2xl border border-border/60 bg-card p-6">
+                                    <h3 className="text-lg font-semibold mb-3">{faq.question}</h3>
+                                    <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
 
                 </div>
             </main>

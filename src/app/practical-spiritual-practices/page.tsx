@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
-import { ArrowRight, Flower2, HandHeart, Activity, Eye } from "lucide-react";
+import { ArrowRight, Flower2, HandHeart, Activity, Eye, Compass } from "lucide-react";
 import {
     Accordion,
     AccordionContent,
@@ -17,7 +17,41 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "https://opensadhaka.com/practical-spiritual-practices",
     },
+    openGraph: {
+        title: "Practical Spiritual Practices | Sadhaka",
+        description:
+            "Learn Japa, meditation, daily Sadhana, mantra practice, and beginner-friendly spiritual routines rooted in Sanatan Dharma.",
+        url: "https://opensadhaka.com/practical-spiritual-practices",
+        type: "website",
+    },
 };
+
+const featuredGuides = [
+    {
+        title: "How to Start Japa Meditation",
+        description:
+            "A step-by-step guide to mantra repetition, using a Mala, choosing a mantra, and building consistency.",
+        href: "/how-to-start-japa",
+    },
+    {
+        title: "Daily Spiritual Routine for Beginners",
+        description:
+            "A realistic beginner Sadhana that fits modern life while keeping the spirit of traditional practice intact.",
+        href: "/daily-spiritual-routine-beginners",
+    },
+    {
+        title: "How to Choose a Mantra",
+        description:
+            "Match mantra, temperament, and intention so your practice becomes focused instead of scattered.",
+        href: "/how-to-choose-a-mantra",
+    },
+    {
+        title: "10 Powerful Sanskrit Mantras",
+        description:
+            "A curated list of classic mantras with meanings, use-cases, and suggestions for daily repetition.",
+        href: "/10-powerful-sanskrit-mantras",
+    },
+];
 
 const practices = [
     {
@@ -66,6 +100,29 @@ export default function SpiritualPracticesPage() {
         }
     ];
 
+    const learningPath = [
+        {
+            title: "Stabilize your schedule first",
+            body:
+                "A short daily practice beats an occasional intense one. Fix a time, a seat, and a minimum duration before you optimize technique.",
+        },
+        {
+            title: "Choose one anchor practice",
+            body:
+                "For most beginners that means Japa, breath-led meditation, or a short daily routine that can survive a busy week.",
+        },
+        {
+            title: "Add meaning, not just mechanics",
+            body:
+                "Learn what your mantra, prayer, or method is doing philosophically. Understanding deepens attention and protects against mechanical repetition.",
+        },
+        {
+            title: "Expand only after consistency",
+            body:
+                "When the practice feels stable, add scripture study, longer sits, kirtan, puja, or comparison reading like Japa vs Dhyana.",
+        },
+    ];
+
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -79,11 +136,30 @@ export default function SpiritualPracticesPage() {
         }))
     };
 
+    const collectionSchema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: "Practical Spiritual Practices",
+        description:
+            "A pillar hub for Japa, meditation, daily Sadhana, mantra practice, and beginner-friendly spiritual routines.",
+        url: "https://opensadhaka.com/practical-spiritual-practices",
+        hasPart: featuredGuides.map((guide, index) => ({
+            "@type": "Article",
+            position: index + 1,
+            name: guide.title,
+            url: `https://opensadhaka.com${guide.href}`,
+        })),
+    };
+
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
             />
             <Header />
 
@@ -112,7 +188,42 @@ export default function SpiritualPracticesPage() {
                             engaged in Sadhana is a <strong>Sadhaka</strong>. Below you will find the dominant practices
                             utilized by yogis and householders alike for thousands of years.
                         </p>
+                        <p>
+                            If you want a practical starting sequence, begin with <Link href="/how-to-start-japa">How to
+                                Start Japa Meditation</Link>, pair it with a simple <Link href="/daily-spiritual-routine-beginners">daily
+                                    spiritual routine</Link>, and then refine your focus with <Link href="/how-to-choose-a-mantra">How
+                                        to Choose a Mantra</Link>. For many beginners, that combination is enough to create a real,
+                            sustainable practice within two weeks.
+                        </p>
                     </div>
+
+                    <section className="mb-24">
+                        <div className="flex items-center gap-3 mb-6">
+                            <Compass className="w-6 h-6 text-orange-500" />
+                            <h2 className="font-display text-3xl md:text-4xl font-bold">Your practical starting set</h2>
+                        </div>
+                        <p className="text-lg text-muted-foreground max-w-3xl mb-10">
+                            These guides are designed to help a modern seeker move from curiosity to actual daily Sadhana.
+                        </p>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {featuredGuides.map((guide) => (
+                                <Link
+                                    key={guide.href}
+                                    href={guide.href}
+                                    className="glass-card rounded-3xl border border-white/5 p-8 hover:border-orange-500/30 transition-all duration-300 group"
+                                >
+                                    <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-orange-300 transition-colors">
+                                        {guide.title}
+                                    </h3>
+                                    <p className="text-muted-foreground text-lg mb-6">{guide.description}</p>
+                                    <span className="inline-flex items-center text-orange-400 font-semibold">
+                                        Read guide
+                                        <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                    </span>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
 
                     {/* Hub Grid */}
                     <div className="grid md:grid-cols-2 gap-8 mb-24">
@@ -140,7 +251,28 @@ export default function SpiritualPracticesPage() {
                         ))}
                     </div>
 
-                    {/* SEo / FAQ Section */}
+                    <section className="mb-24">
+                        <div className="bg-gradient-to-br from-orange-950/20 to-background border border-orange-900/30 rounded-3xl p-10 md:p-12">
+                            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">How to build a practice that lasts</h2>
+                            <p className="text-lg text-muted-foreground mb-10 max-w-3xl">
+                                The biggest practical mistake beginners make is trying to master too many practices at once.
+                                Use this progression to build depth before variety.
+                            </p>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                {learningPath.map((item, index) => (
+                                    <div key={item.title} className="rounded-2xl border border-white/5 bg-black/10 p-6">
+                                        <div className="text-orange-400 text-sm font-semibold uppercase tracking-wide mb-3">
+                                            Principle {index + 1}
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                                        <p className="text-muted-foreground leading-relaxed">{item.body}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* SEO / FAQ Section */}
                     <div className="pt-16 border-t border-border mt-8">
                         <div className="text-center mb-12">
                             <h2 className="font-display text-3xl font-bold text-foreground mb-4">
