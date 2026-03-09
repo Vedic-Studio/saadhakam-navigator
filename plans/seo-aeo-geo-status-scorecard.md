@@ -1,8 +1,15 @@
 # SEO, AEO, GEO Status Scorecard
 
-Last Updated: 2026-03-09  
+Last Updated: 2026-03-09 (Reviewed: 2026-03-09)  
 Site: `opensadhaka.com`  
 Scope: SEO foundations, pSEO, AEO/GEO, indexing operations, analytics, and validation.
+
+> **Companion Documents:**
+> - `plans/seo-aeo-geo-execution-roadmap.md` — Execution plan and priorities
+> - `plans/google-search-baseline-review-2026-03-09.md` — GSC/GA4 baseline data
+> - `plans/pseo-template-decision-matrix.md` — Template-by-template decisions
+> - `plans/aeo-prompt-testing-matrix.md` — AI prompt testing protocol
+> - `plans/seo-recurring-operations-tracker.md` — Recurring operations cadence
 
 ---
 
@@ -68,10 +75,81 @@ Examples:
 | Content SEO / topical authority | Build pillar + spoke content clusters | Medium | Low-Medium | Low | Good early rollout, still early-stage performance proof |
 | Programmatic SEO (pSEO) | Scale long-tail/entity coverage | Medium | Low | Low | Real implementation exists, but far from full target scale |
 | GEO / LLM discoverability | Help AI systems crawl and understand the site | High | Medium | Low | Good infra in place, limited citation proof |
-| AEO recommendation layer | Influence AI answer/recommendation outputs | Low | Low | Low | Major planned pieces still missing |
+| AEO recommendation layer | Influence AI answer/recommendation outputs | High | Low | Low | Brand facts + answer hubs live, needs prompt testing |
 | Indexing operations | Fast discovery of new/updated pages | High | Medium | Low-Medium | Strong infra, depends on consistent use |
 | Analytics + SEO measurement | Prove traffic, ranking, and conversion impact | Medium | Low-Medium | Low | Instrumentation exists; reporting layer is thin |
 | Recurring SEO automation | Run and validate SEO work reliably | Low-Medium | Low | Low | Tracker and plan exist, automation not fully implemented |
+
+---
+
+## 3.1) Google Search Baseline Data (2026-03-09)
+
+> Source: `plans/google-search-baseline-review-2026-03-09.md`
+
+### Search Console — Last 28 Days
+
+| Metric | Value |
+|---|---:|
+| Total Impressions | 29 |
+| Total Clicks | 1 |
+| CTR | 3.45% |
+| Average Position | 13.45 |
+| Page Types with Visibility | Homepage only |
+
+### Page-Type Visibility Breakdown
+
+| Page Type | Impressions | Clicks | CTR | Avg Position |
+|---|---:|---:|---:|---:|
+| Homepage | 29 | 1 | 3.45% | 13.45 |
+| Editorial articles | 0 | 0 | — | — |
+| Answer hubs | 0 | 0 | — | — |
+| Brand facts | 0 | 0 | — | — |
+| Concept pages | 0 | 0 | — | — |
+| Sanskrit word pages | 0 | 0 | — | — |
+| Gita chapter pages | 0 | 0 | — | — |
+| Gita shloka pages | 0 | 0 | — | — |
+| Comparison pages | 0 | 0 | — | — |
+| Practice-goal pages | 0 | 0 | — | — |
+
+### GA4 Baseline — Last 28 Days
+
+| Metric | Value |
+|---|---:|
+| Organic landing page sessions | 0 rows returned |
+| Tracked custom events | 0 rows returned |
+
+### Tracked Events Queried
+
+- `faith_finder_quiz_start`
+- `faith_finder_quiz_complete`
+- `faith_finder_email_capture`
+- `faith_finder_result_view`
+- `faith_finder_result_share`
+- `seo_article_read`
+- `cta_click`
+- `app_open`
+- `path_explore`
+
+### Baseline Interpretation
+
+| Initiative | Current Signal |
+|---|---|
+| Technical SEO | Implemented, but still awaiting broader search response |
+| Content SEO | Little to no confirmed search visibility yet |
+| pSEO | No evidence of traction yet in GSC baseline |
+| AEO answer hubs | Built, but too early for measurable search/AI response |
+| Brand facts | Built, but not yet visible in baseline |
+| Faith Finder analytics | Instrumented in code, not yet visible in GA4 baseline |
+| Measurement system | Working technically, but current dataset is sparse |
+
+### Key Insight
+
+> **Search visibility is currently concentrated on the homepage, while deeper SEO/AEO assets and tracked funnel events have not yet produced measurable baseline volume.**
+
+This means the site is still in the **foundation / early discovery phase**, not in the optimization-at-scale phase. The priority is:
+1. Indexing and discovery validation
+2. Event validation in production
+3. Proof that non-homepage pages are starting to earn impressions
 
 ---
 
@@ -295,10 +373,32 @@ Scale long-tail coverage with repeatable templates and entity pages.
 - [x] Sanskrit learning templates exist
 - [x] comparison templates exist
 - [x] pSEO URLs appear in sitemap
-- [ ] template-by-template thin-content risk reviewed
+- [x] template-by-template thin-content risk reviewed (see `plans/pseo-template-decision-matrix.md`)
 - [ ] indexed coverage verified by template type
 - [ ] cannibalization review performed
 - [ ] full backlog scale reached
+
+### Template Decision Matrix (from `plans/pseo-template-decision-matrix.md`)
+
+| Template | Decision | Content Depth | Schema | Action Required |
+|---|---|---|---|---|
+| Concept Pages (`what-is-*`) | **SCALE NOW** ✅ | 9/10 | FAQPage, Article, BreadcrumbList | Expand to 50+ concepts |
+| Sanskrit Lexicon | **SCALE NOW** ✅ | 9/10 | FAQPage, DefinedTerm | Expand to match concepts |
+| BG Shloka Pages | **SCALE NOW** ✅ | 9/10 | FAQPage | Verify seeding, fix placeholder |
+| Comparison Pages | **IMPROVE** ⚠️ | 7/10 | FAQPage (generic) | Fix thin content, add unique FAQs |
+| BG Chapter Pages | **IMPROVE** ⚠️ | 6/10 | None | Add FAQ schema, expand summaries |
+| Practice-Goal Pages | **IMPROVE** ⚠️ | 5/10 | None | Develop unique content model |
+
+### Current pSEO Scale
+
+| Template | URLs Generated | Status |
+|---|---:|---|
+| Concept Pages | 22 | Ready to scale |
+| Sanskrit Lexicon | Matches concepts | Ready to scale |
+| BG Chapters | 18 | Needs improvement |
+| BG Shlokas | Depends on seeding | Ready to scale |
+| Comparisons | Multiple | Needs content audit |
+| Practice-Goal | 11 | Needs content model |
 
 ### How to validate completion
 - Count generated URLs per template type
@@ -397,30 +497,35 @@ The workflow in `.agents/workflows/answer-engine-optimization.md` calls for:
 - external citations / third-party mentions
 
 ### Evidence found in the repo
-Strong planning references exist, but implementation appears limited.
+All core AEO assets are now implemented.
 
 ### What is complete
-- some FAQ and collection schemas support answerability
-- overall structured content helps AEO indirectly
+- `/brand-facts` page with Organization, AboutPage, and FAQPage schemas
+- `/.well-known/brand-facts.json` machine-readable brand facts
+- `/best-spiritual-path-for-beginners` answer hub with ItemList + FAQPage schemas
+- `/choose-between-bhakti-jnana-karma-raja-yoga` answer hub with chooser framework
+- `/best-meditation-style-for-your-personality` answer hub with chooser framework
+- AEO prompt testing matrix defined (`plans/aeo-prompt-testing-matrix.md`)
+- FAQ and collection schemas support answerability
+- External authoritative references linked from answer hubs
 
-### What is missing / weak
-- no `brand-facts` page found
-- no `/.well-known/brand-facts.json` found
-- no answer hub pages clearly built to the workflow
-- no clear evidence of third-party citation strategy implementation
+### What is partial
+- No formal third-party citation campaign yet
+- Prompt testing needs to be run and results recorded
 
 ### Current status
-- **Implementation:** Low
+- **Implementation:** High
 - **Validation:** Low
 - **Success proof:** Low
 
 ### Completion checklist
-- [ ] answer intent map created
-- [ ] answer hub pages published
-- [ ] `/brand-facts` page published
-- [ ] `/.well-known/brand-facts.json` published
-- [ ] recommendation-specific schema added
+- [x] answer intent map created (via prompt testing matrix)
+- [x] answer hub pages published (3 hubs live)
+- [x] `/brand-facts` page published
+- [x] `/.well-known/brand-facts.json` published
+- [x] recommendation-specific schema added (ItemList, FAQPage)
 - [ ] third-party citation campaign underway
+- [ ] prompt testing executed with baseline results
 
 ### How to validate completion
 - confirm files/pages exist
@@ -636,24 +741,46 @@ Most important next step is not building more pages blindly. It is proving what 
 
 ---
 
-## Priority 2 — Close the AEO gap
+## Priority 2 — Close the AEO gap ✅ COMPLETE
 GEO infrastructure is ahead of AEO implementation.
 
-### Do next
-- create `/brand-facts`
-- create `/.well-known/brand-facts.json`
-- create answer hub pages for high-intent question patterns
-- define repeatable prompt tests for AI assistants
+### Completed
+- [x] created `/brand-facts` page with comprehensive schemas
+- [x] created `/.well-known/brand-facts.json` machine-readable file
+- [x] created 3 answer hub pages for high-intent question patterns:
+  - `/best-spiritual-path-for-beginners`
+  - `/choose-between-bhakti-jnana-karma-raja-yoga`
+  - `/best-meditation-style-for-your-personality`
+- [x] defined repeatable prompt tests for AI assistants (`plans/aeo-prompt-testing-matrix.md`)
+
+### Remaining
+- [ ] Run prompt tests and record baseline results
+- [ ] Third-party citation strategy
 
 ---
 
-## Priority 3 — Expand pSEO only after template validation
+## Priority 3 — Expand pSEO only after template validation 🔄 IN PROGRESS
 Do not scale page counts aggressively until current templates prove they index and earn impressions.
 
+### Completed
+- [x] audited thin-content risk by template type (see `plans/pseo-template-decision-matrix.md`)
+- [x] assigned scale/improve/pause decisions per template
+- [x] defined expansion sequence
+
+### Decisions Summary
+| Template | Decision |
+|---|---|
+| Concept Pages | **SCALE NOW** ✅ |
+| Sanskrit Lexicon | **SCALE NOW** ✅ |
+| BG Shloka Pages | **SCALE NOW** ✅ |
+| Comparison Pages | **IMPROVE** ⚠️ |
+| BG Chapter Pages | **IMPROVE** ⚠️ |
+| Practice-Goal Pages | **IMPROVE** ⚠️ |
+
 ### Do next
-- audit thin-content risk by template type
-- confirm indexing rate of existing pSEO pages
-- expand only the templates that show positive signals
+- confirm indexing rate of existing pSEO pages (GSC data needed)
+- expand SCALE NOW templates (concepts, lexicon, shlokas)
+- improve weak templates before scaling
 
 ---
 
@@ -716,10 +843,12 @@ The tracker already defines the right operating model. The next step is to make 
 - [ ] identify which page types are indexed vs excluded
 
 ### Near-term
-- [ ] build `brand-facts` page
-- [ ] build `/.well-known/brand-facts.json`
-- [ ] define 3–5 answer-hub targets
+- [x] build `brand-facts` page
+- [x] build `/.well-known/brand-facts.json`
+- [x] define 3–5 answer-hub targets (3 hubs live)
 - [ ] run manual AI prompt tests and record results
+- [ ] expand SCALE NOW pSEO templates (concepts, lexicon, shlokas)
+- [ ] improve weak pSEO templates (comparisons, chapters, practice-goal)
 
 ### Later
 - [ ] automate recurring SEO job tracking
@@ -730,21 +859,52 @@ The tracker already defines the right operating model. The next step is to make 
 
 ## 8) Bottom-line read
 
+### Current Phase: Foundation / Early Discovery
+
+Based on the Google Search baseline data (2026-03-09), the site is still in the **foundation / early discovery phase**, not in the optimization-at-scale phase.
+
+### Baseline Reality Check
+
+| Metric | Current Value | Target | Gap |
+|---|---:|---:|---|
+| Total Impressions (28d) | 29 | 1,000+ | Significant |
+| Total Clicks (28d) | 1 | 50+ | Significant |
+| Page Types with Visibility | Homepage only | All major templates | Significant |
+| Organic Landing Pages | 0 rows | Multiple clusters | Significant |
+| Tracked Events in GA4 | 0 rows | All events visible | Validation needed |
+
 ### Strongest areas right now
-- technical SEO foundation
-- indexing workflow infrastructure
-- GEO / LLM crawlability groundwork
-- early pSEO route architecture
+- **Technical SEO foundation** — robots, sitemap, canonicals, metadata, core schema
+- **Indexing workflow infrastructure** — IndexNow endpoints, GSC deep links
+- **GEO / LLM crawlability groundwork** — llms.txt, llms-full.txt, AI bot permissions
+- **AEO recommendation layer** — brand facts, answer hubs, prompt testing matrix (newly complete)
+- **pSEO route architecture** — 6 template types with decision matrix
 
 ### Mid-stage areas
-- content cluster rollout
-- schema coverage
-- analytics instrumentation
+- **Content cluster rollout** — 4 pillars + 10 articles live, expansion ongoing
+- **Schema coverage** — good on articles, gaps on some pSEO templates
+- **Analytics instrumentation** — events defined, needs DebugView validation
 
 ### Weakest / least-complete areas
-- AEO recommendation-layer assets
-- proof-of-success reporting
-- full-scale pSEO execution promised in planning docs
-- automated recurring validation and observability
+- **Search visibility proof** — only homepage shows impressions
+- **GA4 event validation** — 0 events returned in baseline query
+- **pSEO scale execution** — templates exist but far from target scale
+- **Automated recurring operations** — tracker exists, automation not implemented
 
-The project is **well past the planning stage** and **meaningfully implemented**, but it is still early in terms of **evidence-driven validation** and **AI-answer-layer optimization**.
+### Key Insight
+
+> **The infrastructure is now strong enough to measure SEO/AEO performance, but the actual live signal is still very small.**
+
+The priority is:
+1. **Indexing and discovery validation** — Get non-homepage pages indexed
+2. **Event validation in production** — Confirm GA4 events fire correctly
+3. **Proof of impressions** — See non-homepage pages earning impressions
+
+### What this means strategically
+
+- **Do not scale page production faster than validation capacity**
+- **Focus on proof over production** — validate what exists before building more
+- **Prioritize indexing** — submit URLs, check GSC coverage, fix exclusions
+- **Run AEO prompt tests** — establish baseline before optimizing further
+
+The project is **well past the planning stage** and **meaningfully implemented**, but still early in terms of **evidence-driven validation**. The
