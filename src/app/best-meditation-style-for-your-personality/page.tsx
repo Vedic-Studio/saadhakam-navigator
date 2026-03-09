@@ -9,14 +9,14 @@ import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 export const metadata: Metadata = {
     title: "Best Meditation Style for Your Personality | Sadhaka",
     description:
-        "A structured meditation chooser comparing Japa, breath-led meditation, silent Dhyana, and self-inquiry by mind-state, temperament, and beginner fit.",
+        "Most meditation advice assumes there is only one type of mind. Compare Japa, breath-led meditation, silent Dhyana, and self-inquiry to find the best meditation style for your specific temperament and nervous system.",
     alternates: {
         canonical: "https://opensadhaka.com/best-meditation-style-for-your-personality",
     },
     openGraph: {
         title: "Best Meditation Style for Your Personality",
         description:
-            "Compare Japa, breath-led meditation, silent Dhyana, and self-inquiry to find the best meditation style for your personality.",
+            "Most meditation advice assumes there is only one type of mind. Compare Japa, breath-led meditation, silent Dhyana, and self-inquiry to find the best meditation style for your specific temperament and nervous system.",
         url: "https://opensadhaka.com/best-meditation-style-for-your-personality",
         type: "article",
     },
@@ -25,30 +25,30 @@ export const metadata: Metadata = {
 const methods = [
     {
         name: "Japa (Mantra Repetition)",
-        summary: "Usually the best choice for distracted, busy, or emotionally overloaded minds because it gives attention a concrete anchor.",
-        bestFor: "Noisy minds, beginners who struggle with silent sitting, devotion-oriented seekers",
+        summary: "A mantra gives the mind a concrete anchor. It is the best starting point for a distracted or overloaded nervous system, functioning as a mental handrail rather than demanding immediate stillness.",
+        bestFor: "Noisy minds, beginners struggling with silent sitting, and devotion-oriented temperaments.",
         firstStep: "Repeat one mantra for 108 counts with gentle breath awareness.",
         href: "/how-to-start-japa",
     },
     {
         name: "Breath-led Meditation",
-        summary: "Often the best starting point for anxious or physiologically restless people because it regulates the nervous system before deeper stillness.",
-        bestFor: "Stress, anxiety, bodily tension, low emotional regulation",
-        firstStep: "Use 5 to 10 minutes of slow regulated breathing before silent sitting.",
+        summary: "Regulates the nervous system before deeper stillness is required. It works by changing physiology first, which in turn slows down the psychological momentum.",
+        bestFor: "High physical restlessness, bodily tension, and those needing emotional regulation.",
+        firstStep: "Engage in 5 to 10 minutes of slow, regulated breathing before attempting to sit silently.",
         href: "/yoga-sutras-complete-guide",
     },
     {
         name: "Dhyana (Silent Meditation)",
-        summary: "Best for seekers who are naturally drawn to stillness and witness-awareness once the mind is already somewhat stable.",
-        bestFor: "Calmer temperaments, seekers drawn to stillness and observation",
-        firstStep: "Sit quietly, stabilize posture, and return awareness to the witnessing mind.",
+        summary: "The practice of resting in witness-awareness. This becomes accessible once the mind has already developed some baseline stability and is no longer being pulled violently by thought.",
+        bestFor: "Seekers with naturally calmer temperaments who are drawn to observation.",
+        firstStep: "Stabilize your posture and return awareness to the witnessing mind.",
         href: "/which-meditation-for-me",
     },
     {
         name: "Self-Inquiry",
-        summary: "Best for philosophical or contemplative personalities who want meditation centered on direct investigation of consciousness.",
-        bestFor: "Analytical seekers, Vedanta-oriented minds, contemplative practitioners",
-        firstStep: "Ask ‘Who am I?’ and return attention to the source of the sense of self.",
+        summary: "Turns contemplation into a direct meditative method. Instead of anchoring on a mantra or breath, the attention is turned entirely toward the source of the sense of self.",
+        bestFor: "Analytical seekers, contemplative practitioners, and philosophically inclined minds.",
+        firstStep: "Ask ‘Who am I?’ and return attention exclusively to the feeling of existing.",
         href: "/what-is-vedanta",
     },
 ];
@@ -130,10 +130,10 @@ export default function BestMeditationStylePage() {
                     <header className="mb-12 mt-6 rounded-3xl border border-white/5 bg-white/[0.02] p-10">
                         <h1 className="font-display text-4xl md:text-6xl font-bold mb-5">Best Meditation Style for Your Personality</h1>
                         <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mb-6">
-                            <strong className="text-foreground">TL;DR:</strong> if your mind is noisy, start with <strong className="text-foreground">Japa</strong>. If your body and nerves are restless, start with <strong className="text-foreground">breath-led meditation</strong>. If you are naturally still, explore <strong className="text-foreground">Dhyana</strong>. If you are contemplative and philosophical, begin with <strong className="text-foreground">self-inquiry</strong>.
+                            <strong className="text-foreground">TL;DR:</strong> The best meditation style matches the current architecture of your nervous system. If your mind is noisy or overloaded, start with <strong className="text-foreground">Japa</strong> (mantra repetition) to give it an anchor. If your body is restless, use <strong className="text-foreground">breath-led meditation</strong> to regulate your physiology first. If your mind is already somewhat stable, practice <strong className="text-foreground">Dhyana</strong> (silent observation). If you are highly analytical, use <strong className="text-foreground">self-inquiry</strong> to turn contemplation into direct investigation.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                            This page is optimized as a recommendation-style chooser for people and answer engines asking which meditation fits a particular personality or mind-state.
+                            Most meditation advice fails because it assumes there is only one type of mind. If you tell a highly anxious person to sit in silent observation, you aren't teaching them to meditate—you are building a pressure cooker. Below are the four primary paths, categorized by the specific temperament they serve best.
                         </p>
                     </header>
 
