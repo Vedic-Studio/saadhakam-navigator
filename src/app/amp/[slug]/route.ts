@@ -6,6 +6,7 @@ import {
 } from "@/lib/articleContent";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://opensadhaka.com";
+const gaMeasurementId = "G-S3DHYPPG9R";
 
 function escapeHtml(value: string) {
   return value
@@ -79,6 +80,7 @@ function renderAmpHtml(slug: string) {
     <meta property="og:type" content="article">
     <meta name="twitter:card" content="summary_large_image">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <style amp-boilerplate>
       body{visibility:hidden}
     </style>
@@ -187,6 +189,20 @@ function renderAmpHtml(slug: string) {
     <script type="application/ld+json">${jsonToHtmlScript(faqSchema)}</script>
   </head>
   <body>
+    <amp-analytics type="gtag" data-credentials="include">
+      <script type="application/json">
+        ${jsonToHtmlScript({
+    vars: {
+      gtag_id: gaMeasurementId,
+      config: {
+        [gaMeasurementId]: {
+          groups: "default",
+        },
+      },
+    },
+  })}
+      </script>
+    </amp-analytics>
     <main>
       <div class="breadcrumbs">
         <a href="${siteUrl}">Home</a> / <a href="${escapeHtml(content.pillarHref)}">${escapeHtml(content.pillarLabel)}</a> / <span>${escapeHtml(meta.title)}</span>
