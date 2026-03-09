@@ -5,6 +5,7 @@
   "/_not-found/page": "/_not-found",
   "/adi-shankaracharya-life-teachings/page": "/adi-shankaracharya-life-teachings",
   "/advaita-vedanta-explained/page": "/advaita-vedanta-explained",
+  "/amp/[slug]/route": "/amp/[slug]",
   "/ancient-wisdom-philosophies/page": "/ancient-wisdom-philosophies",
   "/api/faith-finder/result/[id]/route": "/api/faith-finder/result/[id]",
   "/api/faith-finder/submit/route": "/api/faith-finder/submit",

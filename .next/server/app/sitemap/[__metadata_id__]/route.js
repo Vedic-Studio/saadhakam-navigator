@@ -1,5 +1,6 @@
 var R=require("../../../chunks/[turbopack]_runtime.js")("server/app/sitemap/[__metadata_id__]/route.js")
 R.c("server/chunks/[root-of-the-server]__bca5f81d._.js")
+R.c("server/chunks/Developer_Sadhaka_src_data_articles_ts_bb55353c._.js")
 R.c("server/chunks/Developer_Sadhaka_src_app_sitemap_ts_328c84c6._.js")
 R.c("server/chunks/[root-of-the-server]__8fde14b5._.js")
 R.c("server/chunks/Developer_Sadhaka_src_data_24658f28._.js")

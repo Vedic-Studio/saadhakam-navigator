@@ -443,6 +443,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../src/app/amp/[slug]/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/amp/[slug]">> = Specific
+  const handler = {} as typeof import("../../src/app/amp/[slug]/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../src/app/api/faith-finder/result/[id]/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/faith-finder/result/[id]">> = Specific

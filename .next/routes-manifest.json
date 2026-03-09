@@ -22,6 +22,14 @@
   },
   "dynamicRoutes": [
     {
+      "page": "/amp/[slug]",
+      "regex": "^/amp/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/amp/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/faith-finder/result/[id]",
       "regex": "^/api/faith\\-finder/result/([^/]+?)(?:/)?$",
       "routeKeys": {

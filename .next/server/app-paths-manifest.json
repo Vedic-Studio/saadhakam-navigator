@@ -5,6 +5,7 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/adi-shankaracharya-life-teachings/page": "app/adi-shankaracharya-life-teachings/page.js",
   "/advaita-vedanta-explained/page": "app/advaita-vedanta-explained/page.js",
+  "/amp/[slug]/route": "app/amp/[slug]/route.js",
   "/ancient-wisdom-philosophies/page": "app/ancient-wisdom-philosophies/page.js",
   "/api/faith-finder/result/[id]/route": "app/api/faith-finder/result/[id]/route.js",
   "/api/faith-finder/submit/route": "app/api/faith-finder/submit/route.js",
