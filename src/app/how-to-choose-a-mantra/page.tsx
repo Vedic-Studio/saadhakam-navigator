@@ -1,22 +1,11 @@
-import { Metadata } from "next";
 import { getArticleBySlug } from "@/data/articles";
 import { ArticleLayout } from "@/components/ArticleLayout";
 import Link from "next/link";
+import { buildArticleMetadata } from "@/lib/seo";
 
 const meta = getArticleBySlug("how-to-choose-a-mantra")!;
 
-export const metadata: Metadata = {
-    title: `${meta.title} | Sadhaka`,
-    description: meta.metaDescription,
-    alternates: { canonical: `https://opensadhaka.com${meta.route}` },
-    openGraph: {
-        title: meta.title,
-        description: meta.metaDescription,
-        url: `https://opensadhaka.com${meta.route}`,
-        type: "article",
-        publishedTime: meta.publishDate,
-    },
-};
+export const metadata = buildArticleMetadata(meta);
 
 export default function HowToChooseMantraPage() {
     return (

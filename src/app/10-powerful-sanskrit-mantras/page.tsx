@@ -1,15 +1,10 @@
-import { Metadata } from "next";
 import { getArticleBySlug } from "@/data/articles";
 import { ArticleLayout } from "@/components/ArticleLayout";
+import { buildArticleMetadata } from "@/lib/seo";
 
 const meta = getArticleBySlug("10-powerful-sanskrit-mantras")!;
 
-export const metadata: Metadata = {
-    title: `${meta.title} | Sadhaka`,
-    description: meta.metaDescription,
-    alternates: { canonical: `https://opensadhaka.com${meta.route}` },
-    openGraph: { title: meta.title, description: meta.metaDescription },
-};
+export const metadata = buildArticleMetadata(meta);
 
 export default function TenMantrasPage() {
     return (
@@ -102,7 +97,7 @@ export default function TenMantrasPage() {
                 The "great mantra" (Mahamantra) of the Gaudiya Vaishnava tradition, popularized globally by ISKCON. "Hare" invokes the divine energy (Hara, the divine feminine), Krishna is the supreme consciousness, Rama is the source of all joy.
             </p>
             <p>
-                Widely used as Kirtan — devotional group chanting — and considered especially potent in the current age (Kali Yuga).
+                Widely used as Kirtan — devotional group chanting — and considered especially potent in the current age (Kali Yoku).
             </p>
 
             <h2>8. Aham Brahmasmi (अहम् ब्रह्मास्मि) — I Am Brahman</h2>
