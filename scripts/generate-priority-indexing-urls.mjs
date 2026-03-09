@@ -8,13 +8,14 @@ const priorityGroups = {
         "/practical-spiritual-practices",
         "/sacred-texts-teachings",
         "/spiritual-traditions-paths",
-    ],
-    knowledgeHubs: [
         "/philosophies",
         "/traditions",
         "/texts",
         "/greats",
+    ],
+    knowledgeHubs: [
         "/compare",
+        "/learn/sanskrit",
     ],
     chooserGuides: [
         "/best-spiritual-path-for-beginners",
@@ -33,7 +34,7 @@ const priorityGroups = {
         "/what-is-moksha",
         "/what-is-samsara",
         "/what-is-maya",
-        "/what-is-bhakti",
+        "/ what-is-bhakti",
         "/what-is-jnana",
         "/what-is-viveka",
         "/what-is-vairagya",
@@ -48,6 +49,7 @@ const priorityGroups = {
         "/what-is-advaita",
         "/what-is-niskama-karma",
         "/what-is-pranayama",
+        "/what-is-vedanta",
     ],
     sanskritLexicon: [
         "/learn/sanskrit/brahman",
@@ -55,18 +57,20 @@ const priorityGroups = {
         "/learn/sanskrit/dharma",
         "/learn/sanskrit/karma",
         "/learn/sanskrit/moksha",
+        "/learn/sanskrit/prana",
     ],
     comparisons: [
+        "/difference-between-yoga-and-vedanta",
+        "/shaivism-vs-vaishnavism",
         "/compare/advaita-vs-dvaita",
         "/compare/karma-vs-dharma",
         "/compare/atman-vs-brahman",
         "/compare/japa-vs-dhyana",
     ],
-    articles: [
-        "/what-is-vedanta",
-        "/advaita-vedanta-explained",
+    prioritizedArticles: [
         "/bhagavad-gita-complete-guide",
         "/yoga-sutras-complete-guide",
+        "/advaita-vedanta-explained",
         "/how-to-start-japa",
         "/daily-spiritual-routine-beginners",
     ],
@@ -74,7 +78,6 @@ const priorityGroups = {
         "/texts/bhagavad-gita",
         "/texts/yoga-sutras",
         "/texts/bhagavad-gita/chapter-1",
-        "/texts/bhagavad-gita/chapter-1/shloka-1",
     ],
 };
 
