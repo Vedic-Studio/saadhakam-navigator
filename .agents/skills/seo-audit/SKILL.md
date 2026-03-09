@@ -54,7 +54,7 @@ Before auditing, understand:
 
 **XML Sitemap**
 - Exists and accessible
-- Submitted to Search Console
+- Submitted to Search Console (IMPORTANT: Do not just submit the sitemap index. Submit individual sitemaps for products, categories, articles, etc., to gain granular indexing insights, especially for large sites)
 - Contains only canonical, indexable URLs
 - Updated regularly
 - Proper formatting
@@ -138,6 +138,15 @@ Before auditing, understand:
 - Consistent structure
 - No unnecessary parameters
 - Lowercase and hyphen-separated
+
+### Answer Engine Optimization (AEO) Readiness
+
+**Check for:**
+- `/.well-known/brand-facts.json` exists and is formatted correctly.
+- Brand-Facts page exists providing Wikipedia-style neutral info.
+- Answer Hub pages exist for core category queries ("best [category]").
+- Presence of specific structured data: `ItemList`, `FAQPage`, and deep `Product` schema (crucial for AI shopping features).
+- Third-party citations on authoritative external sites.
 
 ---
 

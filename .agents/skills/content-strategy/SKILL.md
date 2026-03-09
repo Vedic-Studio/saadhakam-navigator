@@ -21,7 +21,8 @@ Gather this context (ask if not provided):
 - What's the primary goal for content? (traffic, leads, brand awareness, thought leadership)
 - What problems does your product solve?
 
-### 2. Customer Research
+### 2. Customer Research & Answer Intent
+- What long-form questions do customers ask AI (ChatGPT, Perplexity) before buying? Run an **Answer Intent Map** (see `answer-engine-optimization` skill).
 - What questions do customers ask before buying?
 - What objections come up in sales calls?
 - What topics appear repeatedly in support tickets?
