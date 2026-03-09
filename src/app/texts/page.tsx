@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -73,6 +73,7 @@ export default function TextsPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <ContentPageTracker slug="texts" pillar="sacred-texts" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -128,14 +129,19 @@ export default function TextsPage() {
                     </div>
                   </CardContent>
                   <CardFooter className="px-6 pb-6 pt-0">
-                    <Link href={`/texts/${text.slug}`} className="w-full">
+                    <TrackedLink
+                      href={`/texts/${text.slug}`}
+                      eventLabel={`texts_index:${text.slug}`}
+                      trackPathName={text.slug}
+                      className="w-full"
+                    >
                       <Button
                         variant="ghost"
                         className="w-full justify-between hover:text-primary"
                       >
                         Explore Text <ArrowRight className="w-4 h-4" />
                       </Button>
-                    </Link>
+                    </TrackedLink>
                   </CardFooter>
                 </Card>
               ))}
@@ -150,11 +156,15 @@ export default function TextsPage() {
                     Deep dives into the philosophical connections and differences between key scriptures.
                   </p>
                 </div>
-                <Link href="/compare">
+                <TrackedLink
+                  href="/compare"
+                  eventLabel="texts:compare_index"
+                  trackPathName="comparisons"
+                >
                   <Button variant="outline" className="gap-2">
                     View all comparisons <ArrowRight className="w-4 h-4" />
                   </Button>
-                </Link>
+                </TrackedLink>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -162,7 +172,12 @@ export default function TextsPage() {
                   .filter((c) => c.category === "Text vs Text")
                   .slice(0, 4)
                   .map((item) => (
-                    <Link key={item.slug} href={`/compare/${item.slug}`}>
+                    <TrackedLink
+                      key={item.slug}
+                      href={`/compare/${item.slug}`}
+                      eventLabel={`texts:comparison:${item.slug}`}
+                      trackPathName="text-vs-text"
+                    >
                       <div className="p-4 rounded-xl border border-border/50 bg-card hover:border-primary/30 transition-all group h-full">
                         <Badge variant="outline" className="text-[10px] uppercase tracking-wider mb-2 opacity-70 group-hover:opacity-100">
                           {item.category}
@@ -171,7 +186,7 @@ export default function TextsPage() {
                           {item.title}
                         </h3>
                       </div>
-                    </Link>
+                    </TrackedLink>
                   ))
                 }
               </div>

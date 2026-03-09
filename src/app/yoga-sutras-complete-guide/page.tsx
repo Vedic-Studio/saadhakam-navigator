@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -117,6 +117,7 @@ export default function YogaSutrasGuidePage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <ContentPageTracker slug="yoga-sutras-complete-guide" pillar="sacred-texts" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -167,12 +168,14 @@ export default function YogaSutrasGuidePage() {
                 The very second sutra clearly defines its entire methodology:{" "}
                 <em>"Yogas chitta vritti nirodha"</em> — Yoga is the stilling of
                 the changing states of the mind. Check out our{" "}
-                <Link
+                <TrackedLink
                   href="/what-is-yoga"
+                  eventLabel="yoga_sutras_guide:intro:yoga"
+                  trackPathName="yoga"
                   className="text-primary font-medium hover:underline"
                 >
                   guide on Yoga
-                </Link>{" "}
+                </TrackedLink>{" "}
                 for foundational context.
               </p>
             </div>
@@ -216,20 +219,24 @@ export default function YogaSutrasGuidePage() {
                       <strong>Kaivalya</strong>—absolute independence or
                       isolation. It is the realization that the pure
                       consciousness (
-                      <Link
+                      <TrackedLink
                         href="/what-is-atman"
+                        eventLabel="yoga_sutras_guide:theme:atman"
+                        trackPathName="atman"
                         className="text-primary hover:underline"
                       >
                         Purusha or Atman
-                      </Link>
+                      </TrackedLink>
                       ) is distinctly separate from nature, thoughts, and matter
                       (
-                      <Link
+                      <TrackedLink
                         href="/what-is-samsara"
+                        eventLabel="yoga_sutras_guide:theme:samsara"
+                        trackPathName="samsara"
                         className="text-primary hover:underline"
                       >
                         Prakriti
-                      </Link>
+                      </TrackedLink>
                       ).
                     </p>
                   </CardContent>
@@ -347,12 +354,14 @@ export default function YogaSutrasGuidePage() {
                 <ul>
                   <li>
                     <strong>1. Yamas (External restraints):</strong>{" "}
-                    <Link
+                    <TrackedLink
                       href="/what-is-ahimsa"
+                      eventLabel="yoga_sutras_guide:eight_limbs:ahimsa"
+                      trackPathName="ahimsa"
                       className="text-primary hover:underline"
                     >
                       Ahimsa (Non-violence)
-                    </Link>
+                    </TrackedLink>
                     , Truthfulness, Non-stealing, Energy moderation, Non-greed.
                     Establishing harmony directly with the world.
                   </li>
@@ -428,13 +437,21 @@ export default function YogaSutrasGuidePage() {
                 Uncover the ancient practices
               </h3>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/texts/yoga-sutras">
+                <TrackedLink
+                  href="/texts/yoga-sutras"
+                  eventLabel="yoga_sutras_guide:cta:texts"
+                  trackPathName="yoga-sutras"
+                >
                   <Button size="lg" className="w-full sm:w-auto shadow-lg">
                     Explore the Original Sutras{" "}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
-                </Link>
-                <Link href="/faith-finder">
+                </TrackedLink>
+                <TrackedLink
+                  href="/faith-finder"
+                  eventLabel="yoga_sutras_guide:cta:faith-finder"
+                  trackPathName="sacred-texts"
+                >
                   <Button
                     size="lg"
                     variant="outline"
@@ -442,7 +459,7 @@ export default function YogaSutrasGuidePage() {
                   >
                     Find Your Ideal Practice
                   </Button>
-                </Link>
+                </TrackedLink>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@ type AppRoutes = "/" | "/10-powerful-sanskrit-mantras" | "/[slug]" | "/adi-shank
 type AppRouteHandlerRoutes = "/amp/[slug]" | "/api/faith-finder/result/[id]" | "/api/faith-finder/submit" | "/api/indexnow" | "/api/indexnow/submit" | "/api/llm-content" | "/llms-full.txt" | "/llms.txt"
 type PageRoutes = never
 type LayoutRoutes = "/" | "/faith-finder/results/[id]"
-type RedirectRoutes = never
+type RedirectRoutes = "/ahimsa-meaning" | "/atman-meaning" | "/brahman-meaning" | "/dharma-meaning" | "/guru-meaning" | "/karma-meaning" | "/maya-meaning" | "/moksha-meaning" | "/samsara-meaning" | "/yoga-meaning"
 type RewriteRoutes = never
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes | AppRouteHandlerRoutes
 
@@ -16,6 +16,7 @@ interface ParamMap {
   "/10-powerful-sanskrit-mantras": {}
   "/adi-shankaracharya-life-teachings": {}
   "/advaita-vedanta-explained": {}
+  "/ahimsa-meaning": {}
   "/amp/[slug]": { "slug": string; }
   "/ancient-wisdom-philosophies": {}
   "/api/faith-finder/result/[id]": { "id": string; }
@@ -23,32 +24,40 @@ interface ParamMap {
   "/api/indexnow": {}
   "/api/indexnow/submit": {}
   "/api/llm-content": {}
+  "/atman-meaning": {}
   "/best-meditation-style-for-your-personality": {}
   "/best-spiritual-path-for-beginners": {}
   "/bhagavad-gita-chapter-1": {}
   "/bhagavad-gita-complete-guide": {}
+  "/brahman-meaning": {}
   "/brand-facts": {}
   "/choose-between-bhakti-jnana-karma-raja-yoga": {}
   "/compare": {}
   "/compare/[slug]": { "slug": string; }
   "/content-agent": {}
   "/daily-spiritual-routine-beginners": {}
+  "/dharma-meaning": {}
   "/faith-finder": {}
   "/faith-finder/results/[id]": { "id": string; }
   "/greats": {}
   "/greats/[slug]": { "slug": string; }
+  "/guru-meaning": {}
   "/how-to-choose-a-mantra": {}
   "/how-to-start-japa": {}
   "/inquiry-vs-devotion-path": {}
+  "/karma-meaning": {}
   "/learn/sanskrit/[word]": { "word": string; }
   "/llms-full.txt": {}
   "/llms.txt": {}
+  "/maya-meaning": {}
+  "/moksha-meaning": {}
   "/non-duality-vs-dualism": {}
   "/philosophies": {}
   "/philosophies/[slug]": { "slug": string; }
   "/practical-spiritual-practices": {}
   "/practices/[practice]/for/[goal]": { "practice": string; "goal": string; }
   "/sacred-texts-teachings": {}
+  "/samsara-meaning": {}
   "/shaivism-vs-vaishnavism": {}
   "/spiritual-paths-explained": {}
   "/spiritual-traditions-paths": {}
@@ -62,6 +71,7 @@ interface ParamMap {
   "/traditions/[slug]": { "slug": string; }
   "/what-is-vedanta": {}
   "/which-meditation-for-me": {}
+  "/yoga-meaning": {}
   "/yoga-sutras-complete-guide": {}
 }
 

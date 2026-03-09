@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getConceptBySlug, getAllConcepts } from "@/data/concepts";
+import { getSanskritWordBySlug } from "@/data/sanskritVocab";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import {
   ArrowRight,
   BookOpen,
@@ -15,16 +17,49 @@ import {
   Share2,
 } from "lucide-react";
 
+function resolveConceptRoute(slug: string) {
+  if (slug.startsWith("what-is-")) {
+    return {
+      conceptSlug: slug.replace("what-is-", ""),
+      pageType: "what-is" as const,
+    };
+  }
+
+  if (slug.endsWith("-meaning")) {
+    return {
+      conceptSlug: slug.replace("-meaning", ""),
+      pageType: "meaning" as const,
+    };
+  }
+
+  return {
+    conceptSlug: "",
+    pageType: null,
+  };
+}
+
+function getConceptDisplayName(sanskritWord: string, fallbackSlug: string) {
+  const transliterationMatch = sanskritWord.match(/\(([^)]+)\)/);
+  if (transliterationMatch?.[1]) {
+    return transliterationMatch[1];
+  }
+
+  return fallbackSlug
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function humanizeSlug(slug: string) {
+  return slug
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
 export async function generateStaticParams() {
   const concepts = getAllConcepts();
-  const params: { slug: string }[] = [];
-
-  concepts.forEach((concept) => {
-    params.push({ slug: `what-is-${concept.slug}` });
-    params.push({ slug: `${concept.slug}-meaning` });
-  });
-
-  return params;
+  return concepts.map((concept) => ({ slug: `what-is-${concept.slug}` }));
 }
 
 export async function generateMetadata({
@@ -34,51 +69,40 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
 
-  let conceptSlug = "";
-  let pageType: "what-is" | "meaning" | null = null;
-
-  if (slug.startsWith("what-is-")) {
-    conceptSlug = slug.replace("what-is-", "");
-    pageType = "what-is";
-  } else if (slug.endsWith("-meaning")) {
-    conceptSlug = slug.replace("-meaning", "");
-    pageType = "meaning";
-  }
+  const { conceptSlug, pageType } = resolveConceptRoute(slug);
 
   if (!pageType || !conceptSlug) return {};
 
   const concept = getConceptBySlug(conceptSlug);
   if (!concept) return {};
 
-  const isWhatIs = pageType === "what-is";
-  const title = isWhatIs
-    ? `What is ${concept.sanskritWord.split(" ")[0]}? | Meaning, Principles & Usage`
-    : `${concept.sanskritWord.split(" ")[0]} Meaning: Deep Dive into ${concept.englishTranslation}`;
-
-  const description = isWhatIs
-    ? `Discover what ${concept.sanskritWord.split(" ")[0]} truly means in Sanatan Dharma. Read about its key principles, historical context, and practical applications.`
-    : `Explore the profound meaning of ${concept.sanskritWord.split(" ")[0]} (${concept.englishTranslation}). Understand its origins, definition, and role in philosophy.`;
+  const conceptName = getConceptDisplayName(concept.sanskritWord, concept.slug);
+  const canonicalPath = `/what-is-${concept.slug}`;
+  const title = `What is ${conceptName}? Meaning, Definition & Vedic Context`;
+  const description = `Learn what ${conceptName} means in Sanatan Dharma, including its definition, philosophical role, practical application, related concepts, and scriptural context.`;
 
   return {
     title,
     description,
     keywords: [
       conceptSlug,
-      concept.sanskritWord.split(" ")[0].toLowerCase(),
-      "meaning",
+      conceptName.toLowerCase(),
+      `what is ${conceptName.toLowerCase()}`,
+      `${conceptName.toLowerCase()} meaning`,
+      `${conceptName.toLowerCase()} definition`,
       "definition",
       "sanatan dharma",
       "hindu philosophy",
-      "sanskrit words",
       ...concept.tags,
     ],
     alternates: {
-      canonical: `https://opensadhaka.com/${slug}`,
+      canonical: `https://opensadhaka.com${canonicalPath}`,
     },
+    robots: pageType === "meaning" ? { index: false, follow: true } : undefined,
     openGraph: {
       title,
       description,
-      url: `https://opensadhaka.com/${slug}`,
+      url: `https://opensadhaka.com${canonicalPath}`,
     },
   };
 }
@@ -90,24 +114,24 @@ export default async function PseoConceptPage({
 }) {
   const { slug } = await params;
 
-  let conceptSlug = "";
-  let pageType: "what-is" | "meaning" | null = null;
-
-  if (slug.startsWith("what-is-")) {
-    conceptSlug = slug.replace("what-is-", "");
-    pageType = "what-is";
-  } else if (slug.endsWith("-meaning")) {
-    conceptSlug = slug.replace("-meaning", "");
-    pageType = "meaning";
-  }
+  const { conceptSlug, pageType } = resolveConceptRoute(slug);
 
   if (!pageType || !conceptSlug) notFound();
 
   const concept = getConceptBySlug(conceptSlug);
   if (!concept) notFound();
 
+  if (pageType === "meaning") {
+    permanentRedirect(`/what-is-${concept.slug}`);
+  }
+
   const isWhatIs = pageType === "what-is";
-  const sanskritOnly = concept.sanskritWord.split(" ")[0]; // Just the Sanskrit string if "कर्म (Karma)"
+  const sanskritOnly = concept.sanskritWord.split(" ")[0];
+  const conceptName = getConceptDisplayName(concept.sanskritWord, concept.slug);
+  const sanskritEntry = getSanskritWordBySlug(concept.slug);
+  const relatedConceptEntries = concept.relatedConcepts
+    .map((relatedSlug) => getConceptBySlug(relatedSlug))
+    .filter(Boolean) as NonNullable<ReturnType<typeof getConceptBySlug>>[];
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -165,8 +189,26 @@ export default async function PseoConceptPage({
     ],
   };
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `What is ${conceptName}?`,
+    description: concept.shortDefinition,
+    url: `https://opensadhaka.com/what-is-${concept.slug}`,
+    mainEntityOfPage: `https://opensadhaka.com/what-is-${concept.slug}`,
+    author: { "@type": "Organization", name: "Sadhaka" },
+    publisher: { "@type": "Organization", name: "Sadhaka" },
+    about: [
+      {
+        "@type": "Thing",
+        name: conceptName,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <ContentPageTracker slug={concept.slug} pillar="concepts" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -174,6 +216,10 @@ export default async function PseoConceptPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <Header />
       <main className="pt-20">
@@ -184,15 +230,18 @@ export default async function PseoConceptPage({
               Sanskrit & Philosophy Explorer
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
-              {isWhatIs
-                ? `What is ${sanskritOnly}?`
-                : `${sanskritOnly} Meaning`}
+              {isWhatIs ? `What is ${conceptName}?` : `${conceptName} Meaning`}
             </h1>
             <p className="text-xl md:text-2xl text-secondary font-medium mb-4">
               {concept.sanskritWord} — {concept.englishTranslation}
             </p>
             <p className="text-lg text-muted-foreground mx-auto max-w-2xl">
               {concept.shortDefinition}
+            </p>
+            <p className="text-sm text-muted-foreground mx-auto max-w-2xl mt-4">
+              This is the philosophical explainer for {conceptName}: use this page for
+              meaning, Vedic context, and practical understanding. For etymology,
+              transliteration, and textual usage, use the Sanskrit lexicon entry.
             </p>
           </div>
         </section>
@@ -279,19 +328,45 @@ export default async function PseoConceptPage({
                 Keep Exploring
               </h3>
               <div className="flex flex-wrap gap-4 mb-8">
-                {concept.relatedConcepts.map((relatedConcept) => (
-                  <Link
-                    key={relatedConcept}
-                    href={`/what-is-${relatedConcept}`}
+                {relatedConceptEntries.map((relatedConcept) => (
+                  <TrackedLink
+                    key={relatedConcept.slug}
+                    href={`/what-is-${relatedConcept.slug}`}
+                    eventLabel={`concept_related_link:${concept.slug}:${relatedConcept.slug}`}
+                    trackPathName={relatedConcept.slug}
                     className="inline-flex items-center gap-2 group"
                   >
                     <span className="px-5 py-3 rounded-xl border border-border bg-card hover:bg-muted/50 transition-colors text-foreground font-medium shadow-sm flex items-center gap-2">
                       <Share2 className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                      What is {relatedConcept}?
+                      What is {humanizeSlug(relatedConcept.slug)}?
                     </span>
-                  </Link>
+                  </TrackedLink>
                 ))}
               </div>
+
+              {sanskritEntry && (
+                <Card className="mb-8 bg-secondary/5 border-secondary/20">
+                  <CardContent className="p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div>
+                      <h4 className="text-lg font-bold text-foreground mb-1">
+                        Need the linguistic and etymology angle?
+                      </h4>
+                      <p className="text-muted-foreground">
+                        Read the Sanskrit lexicon entry for {conceptName} to explore transliteration, root meaning, and scriptural usage.
+                      </p>
+                    </div>
+                    <TrackedLink
+                      href={`/learn/sanskrit/${concept.slug}`}
+                      eventLabel={`concept_to_lexicon:${concept.slug}`}
+                      trackPathName={concept.slug}
+                      className="inline-flex items-center gap-2 rounded-lg border border-secondary/30 px-4 py-2 text-sm font-semibold text-foreground hover:bg-secondary/10 transition-colors"
+                    >
+                      Open Sanskrit entry
+                      <ArrowRight className="w-4 h-4" />
+                    </TrackedLink>
+                  </CardContent>
+                </Card>
+              )}
 
               <Card className="bg-primary/5 border-primary/20">
                 <CardContent className="p-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -304,14 +379,19 @@ export default async function PseoConceptPage({
                       philosophies and practices align with you.
                     </p>
                   </div>
-                  <Link href="/faith-finder" className="shrink-0">
+                  <TrackedLink
+                    href="/faith-finder"
+                    eventLabel={`concept_cta:${concept.slug}:faith-finder`}
+                    trackPathName={concept.slug}
+                    className="shrink-0"
+                  >
                     <Button
                       size="lg"
                       className="shadow-lg hover:shadow-xl transition-all"
                     >
                       Take Assessment <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
-                  </Link>
+                  </TrackedLink>
                 </CardContent>
               </Card>
             </div>

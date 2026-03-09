@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -119,6 +119,7 @@ export default function BhagavadGitaGuidePage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <ContentPageTracker slug="bhagavad-gita-complete-guide" pillar="sacred-texts" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -170,12 +171,14 @@ export default function BhagavadGitaGuidePage() {
                 regarding the violence and death his war against his own kindred
                 will cause. He turns to his charioteer and guide, Lord Krishna,
                 for answers. Check out our{" "}
-                <Link
+                <TrackedLink
                   href="/what-is-dharma"
+                  eventLabel="gita_guide:intro:dharma"
+                  trackPathName="dharma"
                   className="text-primary font-medium hover:underline"
                 >
                   guide on Dharma
-                </Link>{" "}
+                </TrackedLink>{" "}
                 for more context.
               </p>
             </div>
@@ -202,12 +205,14 @@ export default function BhagavadGitaGuidePage() {
                       duty to uphold Dharma in the face of tyranny, explaining
                       that failing to act is a violation of cosmic order.
                     </p>
-                    <Link
+                    <TrackedLink
                       href="/what-is-dharma"
+                      eventLabel="gita_guide:theme:dharma"
+                      trackPathName="dharma"
                       className="text-sm text-primary font-medium mt-3 inline-block hover:underline"
                     >
                       Learn more about Dharma →
-                    </Link>
+                    </TrackedLink>
                   </CardContent>
                 </Card>
 
@@ -224,12 +229,14 @@ export default function BhagavadGitaGuidePage() {
                       being attached to the fruits or results of those actions
                       (Nishkama Karma).
                     </p>
-                    <Link
+                    <TrackedLink
                       href="/what-is-karma"
+                      eventLabel="gita_guide:theme:karma"
+                      trackPathName="karma"
                       className="text-sm text-primary font-medium mt-3 inline-block hover:underline"
                     >
                       Learn more about Karma →
-                    </Link>
+                    </TrackedLink>
                   </CardContent>
                 </Card>
 
@@ -259,19 +266,23 @@ export default function BhagavadGitaGuidePage() {
                     </h3>
                     <p className="text-muted-foreground">
                       The Yoga of Knowledge. Realizing the eternal nature of the{" "}
-                      <Link
+                      <TrackedLink
                         href="/what-is-atman"
+                        eventLabel="gita_guide:theme:atman"
+                        trackPathName="atman"
                         className="text-primary hover:underline"
                       >
                         Atman (Soul)
-                      </Link>{" "}
+                      </TrackedLink>{" "}
                       and its oneness with{" "}
-                      <Link
+                      <TrackedLink
                         href="/what-is-brahman"
+                        eventLabel="gita_guide:theme:brahman"
+                        trackPathName="brahman"
                         className="text-primary hover:underline"
                       >
                         Brahman
-                      </Link>
+                      </TrackedLink>
                       .
                     </p>
                   </CardContent>
@@ -411,13 +422,21 @@ export default function BhagavadGitaGuidePage() {
                 Ready to read the sacred text?
               </h3>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/texts/bhagavad-gita">
+                <TrackedLink
+                  href="/texts/bhagavad-gita"
+                  eventLabel="gita_guide:cta:texts"
+                  trackPathName="bhagavad-gita"
+                >
                   <Button size="lg" className="w-full sm:w-auto shadow-lg">
                     Explore Chapters & Shlokas{" "}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
-                </Link>
-                <Link href="/faith-finder">
+                </TrackedLink>
+                <TrackedLink
+                  href="/faith-finder"
+                  eventLabel="gita_guide:cta:faith-finder"
+                  trackPathName="sacred-texts"
+                >
                   <Button
                     size="lg"
                     variant="outline"
@@ -425,7 +444,7 @@ export default function BhagavadGitaGuidePage() {
                   >
                     Take the Spiritual Path Quiz
                   </Button>
-                </Link>
+                </TrackedLink>
               </div>
             </div>
           </div>

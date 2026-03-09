@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/c6fc1b3793e78dc0.css","style"]
+0:{"buildId":"woRPFmW9gbreHptCB1uqj","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"what-is-seva","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

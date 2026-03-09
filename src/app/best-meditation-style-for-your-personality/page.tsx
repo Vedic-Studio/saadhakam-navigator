@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
     title: "Best Meditation Style for Your Personality | Sadhaka",
@@ -112,6 +113,7 @@ export default function BestMeditationStylePage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <ContentPageTracker slug="best-meditation-style-for-your-personality" pillar="seo-chooser" />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <Header />
@@ -147,9 +149,14 @@ export default function BestMeditationStylePage() {
                                         <p className="text-muted-foreground"><strong className="text-foreground">Best for:</strong> {method.bestFor}</p>
                                         <p className="text-muted-foreground"><strong className="text-foreground">First step:</strong> {method.firstStep}</p>
                                     </div>
-                                    <Link href={method.href} className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold">
+                                    <TrackedLink
+                                        href={method.href}
+                                        eventLabel={`chooser_option:best-meditation-style-for-your-personality:${method.href}`}
+                                        trackPathName={method.href.replace(/^\//, "")}
+                                        className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold"
+                                    >
                                         Learn this method <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Link>
+                                    </TrackedLink>
                                 </article>
                             ))}
                         </div>
@@ -200,9 +207,14 @@ export default function BestMeditationStylePage() {
                         <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
                             Use the Faith Finder to match your temperament to practices and traditions instead of guessing from generic meditation advice.
                         </p>
-                        <Link href="/faith-finder" className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold">
+                        <TrackedLink
+                            href="/faith-finder"
+                            eventLabel="chooser_cta:best-meditation-style-for-your-personality:faith-finder"
+                            trackPathName="faith-finder"
+                            className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold"
+                        >
                             Get Practice Recommendations <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
+                        </TrackedLink>
                     </section>
 
                     <section className="mb-12 rounded-3xl border border-border/60 bg-card p-8">

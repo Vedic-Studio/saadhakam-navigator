@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
     title: "Best Spiritual Path for Beginners? A Neutral Guide | Sadhaka",
@@ -112,6 +113,7 @@ export default function BestSpiritualPathForBeginnersPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <ContentPageTracker slug="best-spiritual-path-for-beginners" pillar="seo-chooser" />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <Header />
@@ -151,9 +153,14 @@ export default function BestSpiritualPathForBeginnersPage() {
                                         <p className="text-muted-foreground"><strong className="text-foreground">Best for:</strong> {path.bestFor}</p>
                                         <p className="text-muted-foreground"><strong className="text-foreground">First step:</strong> {path.firstStep}</p>
                                     </div>
-                                    <Link href={path.href} className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold">
+                                    <TrackedLink
+                                        href={path.href}
+                                        eventLabel={`chooser_option:best-spiritual-path-for-beginners:${path.href}`}
+                                        trackPathName={path.href.replace(/^\//, "")}
+                                        className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold"
+                                    >
                                         Explore this path <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Link>
+                                    </TrackedLink>
                                 </article>
                             ))}
                         </div>
@@ -204,9 +211,14 @@ export default function BestSpiritualPathForBeginnersPage() {
                         <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
                             If you want a path recommendation based on temperament instead of a generic guide, take the Faith Finder assessment.
                         </p>
-                        <Link href="/faith-finder" className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold">
+                        <TrackedLink
+                            href="/faith-finder"
+                            eventLabel="chooser_cta:best-spiritual-path-for-beginners:faith-finder"
+                            trackPathName="faith-finder"
+                            className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold"
+                        >
                             Take the Faith Finder <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
+                        </TrackedLink>
                     </section>
 
                     <section className="mb-12 rounded-3xl border border-border/60 bg-card p-8">

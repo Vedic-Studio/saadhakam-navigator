@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight, Compass, Droplets, Flame, MountainSnow, Shield } from "lucide-react";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
     title: "Spiritual Traditions & Paths | Sadhaka",
@@ -151,6 +152,7 @@ export default function SpiritualTraditionsPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
+            <ContentPageTracker slug="spiritual-traditions-paths" pillar="pillar-hub" />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -206,9 +208,11 @@ export default function SpiritualTraditionsPage() {
                         </p>
                         <div className="grid md:grid-cols-2 gap-6">
                             {featuredGuides.map((guide) => (
-                                <Link
+                                <TrackedLink
                                     key={guide.href}
                                     href={guide.href}
+                                    eventLabel={`pillar_featured_guide:spiritual-traditions-paths:${guide.href}`}
+                                    trackPathName={guide.href.replace(/^\//, "")}
                                     className="glass-card rounded-3xl border border-white/5 p-8 hover:border-orange-500/30 transition-all duration-300 group"
                                 >
                                     <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-orange-300 transition-colors">
@@ -219,7 +223,7 @@ export default function SpiritualTraditionsPage() {
                                         Read guide
                                         <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </span>
-                                </Link>
+                                </TrackedLink>
                             ))}
                         </div>
                     </section>
@@ -239,12 +243,14 @@ export default function SpiritualTraditionsPage() {
                                 <p className="text-muted-foreground mb-8 text-lg relative z-10">
                                     {tradition.description}
                                 </p>
-                                <Link
+                                <TrackedLink
                                     href={tradition.href}
+                                    eventLabel={`pillar_cluster_link:spiritual-traditions-paths:${tradition.href}`}
+                                    trackPathName={tradition.href.replace(/^\//, "")}
                                     className="inline-flex items-center text-orange-400 font-semibold group-hover:text-orange-300 transition-colors"
                                 >
                                     Explore <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                </Link>
+                                </TrackedLink>
                             </div>
                         ))}
                     </div>

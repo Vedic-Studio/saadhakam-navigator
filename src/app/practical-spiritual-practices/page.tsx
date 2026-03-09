@@ -9,6 +9,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
     title: "Practical Spiritual Practices | Sadhaka",
@@ -153,6 +154,7 @@ export default function SpiritualPracticesPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <ContentPageTracker slug="practical-spiritual-practices" pillar="pillar-hub" />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -207,9 +209,11 @@ export default function SpiritualPracticesPage() {
                         </p>
                         <div className="grid md:grid-cols-2 gap-6">
                             {featuredGuides.map((guide) => (
-                                <Link
+                                <TrackedLink
                                     key={guide.href}
                                     href={guide.href}
+                                    eventLabel={`pillar_featured_guide:practical-spiritual-practices:${guide.href}`}
+                                    trackPathName={guide.href.replace(/^\//, "")}
                                     className="glass-card rounded-3xl border border-white/5 p-8 hover:border-orange-500/30 transition-all duration-300 group"
                                 >
                                     <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-orange-300 transition-colors">
@@ -220,7 +224,7 @@ export default function SpiritualPracticesPage() {
                                         Read guide
                                         <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </span>
-                                </Link>
+                                </TrackedLink>
                             ))}
                         </div>
                     </section>
@@ -241,12 +245,14 @@ export default function SpiritualPracticesPage() {
                                 <p className="text-muted-foreground mb-8 text-lg relative z-10">
                                     {practice.description}
                                 </p>
-                                <Link
+                                <TrackedLink
                                     href={practice.href}
+                                    eventLabel={`pillar_cluster_link:practical-spiritual-practices:${practice.href}`}
+                                    trackPathName={practice.href.replace(/^\//, "")}
                                     className="inline-flex items-center text-orange-400 font-semibold group-hover:text-orange-300 transition-colors"
                                 >
                                     Explore <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                </Link>
+                                </TrackedLink>
                             </div>
                         ))}
                     </div>

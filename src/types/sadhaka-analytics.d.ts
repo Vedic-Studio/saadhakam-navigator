@@ -4,6 +4,7 @@ declare global {
     interface Window {
         gtag?: (...args: unknown[]) => void;
         sadhaka?: {
+            pageView?: (path?: string, title?: string) => void;
             quizStart?: () => void;
             quizComplete?: (path: string, scores: unknown) => void;
             emailCapture?: (path: string) => void;

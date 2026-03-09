@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import { comparisons } from "@/data/comparisons";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 interface Props {
   params: { slug: string };
@@ -22,6 +22,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${comp.title} | Sadhaka Comparisons`,
     description: comp.metaDescription,
+    alternates: {
+      canonical: `https://opensadhaka.com/compare/${comp.slug}`,
+    },
+    openGraph: {
+      title: `${comp.title} | Sadhaka Comparisons`,
+      description: comp.metaDescription,
+      url: `https://opensadhaka.com/compare/${comp.slug}`,
+      type: "article",
+    },
   };
 }
 
@@ -71,6 +80,7 @@ export default function ComparisonPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
+      <ContentPageTracker slug={comp.slug} pillar="comparisons" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -142,9 +152,14 @@ export default function ComparisonPage({ params }: Props) {
               <h2 className="font-display text-2xl md:text-3xl font-bold">
                 More in <span className="text-primary">{comp.category}</span>
               </h2>
-              <Link href="/compare" className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1 group">
+              <TrackedLink
+                href="/compare"
+                eventLabel={`comparison_index_link:${comp.slug}`}
+                trackPathName="compare"
+                className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1 group"
+              >
                 View all <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              </TrackedLink>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -152,7 +167,13 @@ export default function ComparisonPage({ params }: Props) {
                 .filter((c) => c.category === comp.category && c.slug !== comp.slug)
                 .slice(0, 3)
                 .map((item) => (
-                  <Link key={item.slug} href={`/compare/${item.slug}`} className="group h-full">
+                  <TrackedLink
+                    key={item.slug}
+                    href={`/compare/${item.slug}`}
+                    eventLabel={`comparison_related_link:${comp.slug}:${item.slug}`}
+                    trackPathName={item.slug}
+                    className="group h-full"
+                  >
                     <div className="p-5 rounded-2xl border border-border/50 bg-card hover:border-primary/20 transition-all flex flex-col h-full shadow-sm hover:shadow-primary/5">
                       <h3 className="font-display font-bold text-base mb-2 group-hover:text-primary transition-colors">
                         {item.title}
@@ -161,7 +182,7 @@ export default function ComparisonPage({ params }: Props) {
                         {item.tldr}
                       </p>
                     </div>
-                  </Link>
+                  </TrackedLink>
                 ))
               }
             </div>
@@ -178,7 +199,11 @@ export default function ComparisonPage({ params }: Props) {
               our Faith Finder to discover the philosophies and practices that
               align with your unique self.
             </p>
-            <Link href="/faith-finder">
+            <TrackedLink
+              href="/faith-finder"
+              eventLabel={`comparison_cta:${comp.slug}:faith-finder`}
+              trackPathName="faith-finder"
+            >
               <Button
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 rounded-full text-lg shadow-lg shadow-orange-900/20 transition-transform hover:scale-105"
@@ -186,7 +211,7 @@ export default function ComparisonPage({ params }: Props) {
                 Start Your Journey
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-            </Link>
+            </TrackedLink>
           </div>
         </article>
       </main>

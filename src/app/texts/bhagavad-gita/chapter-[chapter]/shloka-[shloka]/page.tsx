@@ -4,6 +4,7 @@ import { bgShlokas, getBgShlokaById } from "@/data/bgShlokas";
 import { getBgChapterByNumber } from "@/data/bgChapters";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export async function generateStaticParams() {
   return bgShlokas.map((shloka) => ({
@@ -73,6 +74,7 @@ export default function BgShlokaPage({
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <ContentPageTracker slug={`bhagavad-gita-${shlokaId}`} pillar="scripture-verse" />
       {/* Inject FAQ Schema */}
       <script
         type="application/ld+json"
@@ -174,12 +176,14 @@ export default function BgShlokaPage({
       <div className="border-t border-neutral-200 pt-12 mt-8 flex flex-col md:flex-row justify-between gap-6">
         <div>
           <h3 className="font-bold text-neutral-900">Chapter Content</h3>
-          <Link
+          <TrackedLink
             href={`/texts/bhagavad-gita/chapter-${shloka.chapter}`}
+            eventLabel={`bg_shloka:${shlokaId}:chapter`}
+            trackPathName={`chapter-${shloka.chapter}`}
             className="text-primary hover:underline"
           >
             View all shlokas in Chapter {shloka.chapter}
-          </Link>
+          </TrackedLink>
         </div>
         <div>
           <h3 className="font-bold text-neutral-900">Have a question?</h3>

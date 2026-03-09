@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { ArrowRight, Brain, Heart } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -47,6 +47,7 @@ const faqSchema = {
 export default function InquiryVsDevotionPathPage() {
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <ContentPageTracker slug="inquiry-vs-devotion-path" pillar="seo-chooser" />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -77,9 +78,14 @@ export default function InquiryVsDevotionPathPage() {
                                 <li>Core practices: self-inquiry, contemplation, Vedanta study</li>
                                 <li>Common challenge: staying in the head without embodied integration</li>
                             </ul>
-                            <Link href="/what-is-vedanta" className="inline-flex items-center text-orange-400 font-semibold">
+                            <TrackedLink
+                                href="/what-is-vedanta"
+                                eventLabel="inquiry_vs_devotion:inquiry:/what-is-vedanta"
+                                trackPathName="inquiry"
+                                className="inline-flex items-center text-orange-400 font-semibold"
+                            >
                                 Explore Inquiry path <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
+                            </TrackedLink>
                         </article>
 
                         <article className="rounded-2xl border border-border/60 bg-card p-8">
@@ -94,9 +100,14 @@ export default function InquiryVsDevotionPathPage() {
                                 <li>Core practices: japa, kirtan, puja, devotional reading</li>
                                 <li>Common challenge: emotional fluctuation and inconsistency</li>
                             </ul>
-                            <Link href="/shaivism-vs-vaishnavism" className="inline-flex items-center text-orange-400 font-semibold">
+                            <TrackedLink
+                                href="/shaivism-vs-vaishnavism"
+                                eventLabel="inquiry_vs_devotion:devotion:/shaivism-vs-vaishnavism"
+                                trackPathName="devotion"
+                                className="inline-flex items-center text-orange-400 font-semibold"
+                            >
                                 Explore Devotion path <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
+                            </TrackedLink>
                         </article>
                     </div>
 
@@ -106,12 +117,14 @@ export default function InquiryVsDevotionPathPage() {
                             Take the Faith Finder and get a clear primary path, plus traditions and
                             practices you can start this week.
                         </p>
-                        <Link
+                        <TrackedLink
                             href="/faith-finder"
+                            eventLabel="inquiry_vs_devotion:cta:faith-finder"
+                            trackPathName="seo-chooser"
                             className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold"
                         >
                             Find My Path <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
+                        </TrackedLink>
                     </section>
                 </div>
             </main>

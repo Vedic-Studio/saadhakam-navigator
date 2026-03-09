@@ -386,5 +386,320 @@ export const newSanskritVocab: SanskritWord[] = [
             }
         ],
         summary: "Samskaras are the deep subconscious impressions and habit-patterns formed by our past actions and thoughts, which drive our future behavior.",
+    },
+    {
+        slug: "ishvara",
+        wordEnglish: "Ishvara",
+        wordDevanagari: "ईश्वर",
+        transliteration: "īśvara",
+        pronunciation: "eesh-vuh-rah",
+        etymology: {
+            root: "īś (ईश्)",
+            rootMeaning: "to rule, own, or have power",
+            formationExplanation: "Ishvara means Lord, ruler, or the governing intelligence that presides over creation.",
+        },
+        primaryMeanings: ["Lord", "Supreme ruler", "Personal God", "Divine governor"],
+        philosophicalContexts: [
+            {
+                tradition: "Yoga Sutras",
+                meaning: "Patanjali presents Ishvara as a special Purusha untouched by karma, affliction, or latent impressions, and devotion to Ishvara as a direct aid to Samadhi.",
+            },
+            {
+                tradition: "Vedanta",
+                meaning: "Ishvara is Brahman viewed through Maya as the intelligent and ordered cause of the universe—the Lord who creates, sustains, and resolves the cosmos.",
+            },
+            {
+                tradition: "Bhakti Traditions",
+                meaning: "Ishvara is the beloved, worshipful Divine approached personally through prayer, mantra, puja, and surrender.",
+            }
+        ],
+        usageExamples: [
+            {
+                textContext: "Yoga Sutras 1.24",
+                quoteSanskrit: "kleśa-karma-vipāka-āśayair aparāmṛṣṭaḥ puruṣa-viśeṣa īśvaraḥ",
+                quoteTranslation: "Ishvara is a special Purusha untouched by afflictions, actions, their fruits, or latent impressions.",
+                explanation: "Patanjali distinguishes Ishvara from conditioned beings, making the Lord a unique source of guidance and contemplative refuge.",
+            },
+            {
+                textContext: "Yoga Sutras 1.23",
+                quoteSanskrit: "īśvara-praṇidhānād vā",
+                quoteTranslation: "Or, through surrender to Ishvara.",
+                explanation: "One of the shortest yet most powerful sutras: surrender to the Lord is presented as a direct method for attaining meditative absorption.",
+            }
+        ],
+        relatedWords: ["brahman", "bhakti", "guru", "mantra"],
+        faqs: [
+            {
+                question: "Is Ishvara the same as Brahman?",
+                answer: "In Vedanta, Ishvara is Brahman viewed as the personal and cosmic Lord associated with creation, while Brahman in the highest sense is the absolute beyond all attributes."
+            },
+            {
+                question: "Why is Ishvara important in Yoga?",
+                answer: "Because surrender to Ishvara helps soften ego, steady the mind, and orient practice around something greater than personal struggle or achievement."
+            }
+        ],
+        summary: "Ishvara is the personal Lord or governing Divine intelligence, approached in yoga and devotion as a source of grace, order, and surrender.",
+    },
+    {
+        slug: "jiva",
+        wordEnglish: "Jiva",
+        wordDevanagari: "जीव",
+        transliteration: "jīva",
+        pronunciation: "jee-vuh",
+        etymology: {
+            root: "jīv (जीव्)",
+            rootMeaning: "to live or be alive",
+            formationExplanation: "Jiva means the living being or individual soul conditioned by embodied existence.",
+        },
+        primaryMeanings: ["Individual soul", "Living being", "Embodied self", "Life principle in the individual"],
+        philosophicalContexts: [
+            {
+                tradition: "Vedanta",
+                meaning: "The Jiva is the individual self appearing under limitation through body, mind, and karma. Schools differ on whether it is ultimately identical with or eternally distinct from Brahman.",
+            },
+            {
+                tradition: "Bhagavad Gita",
+                meaning: "The embodied being journeys through bodies as a person changes garments, carrying tendencies and karmic conditioning forward.",
+            },
+            {
+                tradition: "Bhakti",
+                meaning: "The Jiva is the soul whose fulfillment lies in restoring conscious relationship with the Divine.",
+            }
+        ],
+        usageExamples: [
+            {
+                textContext: "Bhagavad Gita 15.7",
+                quoteSanskrit: "mamaivāṁśo jīva-loke jīva-bhūtaḥ sanātanaḥ",
+                quoteTranslation: "The eternal Jiva in this world is truly a part of Me.",
+                explanation: "Krishna describes the living being as an eternal expression of the Divine, though presently entangled in mind and material nature.",
+            }
+        ],
+        relatedWords: ["atman", "karma", "samsara", "moksha"],
+        faqs: [
+            {
+                question: "How is Jiva different from Atman?",
+                answer: "Atman refers to the pure Self, while Jiva often refers to that same consciousness as it appears conditioned by body, mind, and karma within worldly life."
+            },
+            {
+                question: "Does the Jiva reincarnate?",
+                answer: "Yes. In most Hindu philosophical systems the individual soul continues through cycles of embodiment until liberation is attained."
+            }
+        ],
+        summary: "Jiva is the individual living being or soul as it experiences embodied life under the conditions of karma, mind, and rebirth.",
+    },
+    {
+        slug: "karma-yoga",
+        wordEnglish: "Karma Yoga",
+        wordDevanagari: "कर्म योग",
+        transliteration: "karma-yoga",
+        pronunciation: "kar-mah yoh-gah",
+        etymology: {
+            root: "karma + yuj",
+            rootMeaning: "action + union/discipline",
+            formationExplanation: "The disciplined spiritual path of action performed in a spirit of offering and non-attachment.",
+        },
+        primaryMeanings: ["Yoga of action", "Selfless service through work", "Action without attachment", "Duty as spiritual path"],
+        philosophicalContexts: [
+            {
+                tradition: "Bhagavad Gita",
+                meaning: "Karma Yoga is the path of performing one's duty fully while relinquishing attachment to the fruits of action, thereby avoiding bondage.",
+            },
+            {
+                tradition: "Vedanta",
+                meaning: "Karma Yoga purifies the mind and prepares the seeker for deeper knowledge by reducing egoic attachment and self-centeredness.",
+            }
+        ],
+        usageExamples: [
+            {
+                textContext: "Bhagavad Gita 2.47",
+                quoteSanskrit: "karmaṇy evādhikāras te mā phaleṣu kadācana",
+                quoteTranslation: "You have a right to action alone, never to its fruits.",
+                explanation: "This is the most cited foundation of Karma Yoga: act wholeheartedly, but do not bind your inner peace to the outcome.",
+            }
+        ],
+        relatedWords: ["karma", "dharma", "seva", "niskama-karma"],
+        faqs: [
+            {
+                question: "Does Karma Yoga mean being passive about outcomes?",
+                answer: "No. Karma Yoga asks for full excellence in action; it only removes possessiveness, anxiety, and egoic dependence on the result."
+            },
+            {
+                question: "Who can practice Karma Yoga?",
+                answer: "Anyone who works, serves, creates, leads, or cares for others can practice Karma Yoga by turning action into offering."
+            }
+        ],
+        summary: "Karma Yoga is the path of selfless action in which work becomes spiritual practice through duty, offering, and non-attachment to results.",
+    },
+    {
+        slug: "raja-yoga",
+        wordEnglish: "Raja Yoga",
+        wordDevanagari: "राज योग",
+        transliteration: "rāja-yoga",
+        pronunciation: "rah-jah yoh-gah",
+        etymology: {
+            root: "rāja + yuj",
+            rootMeaning: "royal + union/discipline",
+            formationExplanation: "Called the royal yoga because it aims at sovereign mastery of the inner kingdom of mind and consciousness.",
+        },
+        primaryMeanings: ["Royal yoga", "Meditative yoga", "Yoga of mental mastery", "Classical contemplative path"],
+        philosophicalContexts: [
+            {
+                tradition: "Classical Yoga",
+                meaning: "Raja Yoga is commonly associated with Patanjali's eight-limbed path, emphasizing concentration, meditation, and Samadhi as the road to liberation.",
+            },
+            {
+                tradition: "Modern Yoga Philosophy",
+                meaning: "It denotes the inward, contemplative dimension of yoga in contrast to purely physical or devotional emphasis.",
+            }
+        ],
+        usageExamples: [
+            {
+                textContext: "Yoga Sutras 1.2",
+                quoteSanskrit: "yogaś citta-vṛtti-nirodhaḥ",
+                quoteTranslation: "Yoga is the cessation of the fluctuations of the mind.",
+                explanation: "This foundational sutra captures the essential spirit of Raja Yoga: mastery of the mind through deep inner discipline.",
+            }
+        ],
+        relatedWords: ["yoga", "samadhi", "dhyana", "pranayama"],
+        faqs: [
+            {
+                question: "Is Raja Yoga different from Hatha Yoga?",
+                answer: "Yes. Hatha Yoga emphasizes bodily and energetic preparation, while Raja Yoga emphasizes direct mastery of mind through concentration, meditation, and absorption."
+            },
+            {
+                question: "Why is it called the royal path?",
+                answer: "Because it is considered a direct and sovereign path to mastery of consciousness, culminating in Samadhi and self-realization."
+            }
+        ],
+        summary: "Raja Yoga is the royal path of meditative mastery, training the mind through concentration, meditation, and ultimately Samadhi.",
+    },
+    {
+        slug: "advaita",
+        wordEnglish: "Advaita",
+        wordDevanagari: "अद्वैत",
+        transliteration: "advaita",
+        pronunciation: "ud-vai-tuh",
+        etymology: {
+            root: "a + dvaita",
+            rootMeaning: "not + duality/twoness",
+            formationExplanation: "Advaita literally means non-duality, the absence of any ultimate second reality.",
+        },
+        primaryMeanings: ["Non-duality", "Not-two", "Absolute unity", "Non-dual Vedanta"],
+        philosophicalContexts: [
+            {
+                tradition: "Advaita Vedanta",
+                meaning: "Teaches that Brahman alone is ultimately real and that the apparent separation between self, world, and God is due to ignorance and Maya.",
+            },
+            {
+                tradition: "Upanishadic Interpretation",
+                meaning: "Mahavakyas like Tat Tvam Asi are read as declarations of non-dual identity between Atman and Brahman.",
+            }
+        ],
+        usageExamples: [
+            {
+                textContext: "Vedantic Teaching",
+                quoteSanskrit: "brahma satyam jagan mithyā jīvo brahmaiva nāparaḥ",
+                quoteTranslation: "Brahman alone is real, the world is conditionally apparent, and the individual self is none other than Brahman.",
+                explanation: "A classic Advaitic summary of how ultimate reality, the phenomenal world, and the self are understood in non-dual philosophy.",
+            }
+        ],
+        relatedWords: ["brahman", "atman", "maya", "jnana"],
+        faqs: [
+            {
+                question: "Does Advaita mean the world is unreal?",
+                answer: "It means the world is relatively real within experience but not the ultimate independent reality. Ultimate truth belongs to Brahman alone."
+            },
+            {
+                question: "Is Advaita only an intellectual philosophy?",
+                answer: "No. Its goal is direct realization of non-dual truth through inquiry, contemplation, and liberation from false identification."
+            }
+        ],
+        summary: "Advaita is the non-dual vision that ultimate reality is one without a second, and that apparent separateness is born of ignorance.",
+    },
+    {
+        slug: "niskama-karma",
+        wordEnglish: "Niskama Karma",
+        wordDevanagari: "निष्काम कर्म",
+        transliteration: "niṣkāma-karma",
+        pronunciation: "nish-kah-mah kar-mah",
+        etymology: {
+            root: "niṣ + kāma + karma",
+            rootMeaning: "without + desire + action",
+            formationExplanation: "It refers to action performed without selfish desire for the fruits or rewards.",
+        },
+        primaryMeanings: ["Desireless action", "Action without selfish motive", "Non-attached duty", "Gita-based ethical action"],
+        philosophicalContexts: [
+            {
+                tradition: "Bhagavad Gita",
+                meaning: "Niskama Karma is the essential method of performing duty without becoming bound by expectation, anxiety, or egoistic claim over outcomes.",
+            },
+            {
+                tradition: "Karma Yoga",
+                meaning: "It is the operative inner principle that makes selfless action possible and spiritually transformative.",
+            }
+        ],
+        usageExamples: [
+            {
+                textContext: "Bhagavad Gita 3.19",
+                quoteSanskrit: "tasmād asaktaḥ satataṁ kāryaṁ karma samācara",
+                quoteTranslation: "Therefore, always perform the work that ought to be done without attachment.",
+                explanation: "Krishna frames non-attached action as an ongoing discipline, not a one-time insight.",
+            }
+        ],
+        relatedWords: ["karma", "karma-yoga", "dharma", "seva"],
+        faqs: [
+            {
+                question: "Can I still have goals while practicing Niskama Karma?",
+                answer: "Yes. The practice does not forbid goals; it asks that inner peace and identity not depend on whether those goals are fulfilled."
+            },
+            {
+                question: "Why is Niskama Karma spiritually powerful?",
+                answer: "Because it weakens the ego's claim over action, reduces anxiety, and turns ordinary work into an offering rather than a self-centered transaction."
+            }
+        ],
+        summary: "Niskama Karma is the practice of performing action wholeheartedly while letting go of selfish desire for the fruits of that action.",
+    },
+    {
+        slug: "rta",
+        wordEnglish: "Rta",
+        wordDevanagari: "ऋत",
+        transliteration: "ṛta",
+        pronunciation: "rih-tuh",
+        etymology: {
+            root: "ṛ (ऋ)",
+            rootMeaning: "to move properly, fit, or rise in order",
+            formationExplanation: "Rta signifies the ordered, truthful, and harmonious movement of reality itself.",
+        },
+        primaryMeanings: ["Cosmic order", "Sacred law", "Truth in action", "Universal harmony"],
+        philosophicalContexts: [
+            {
+                tradition: "Rig Vedic Thought",
+                meaning: "Rta is the primordial cosmic order sustaining gods, nature, truth, and ritual correctness. It is the deep pattern behind existence.",
+            },
+            {
+                tradition: "Later Dharmic Thought",
+                meaning: "Dharma is often understood as the lived ethical and social expression of the more primordial cosmic principle called Rta.",
+            }
+        ],
+        usageExamples: [
+            {
+                textContext: "Rig Veda",
+                quoteSanskrit: "ṛtasya panthāḥ",
+                quoteTranslation: "The paths of cosmic order and truth.",
+                explanation: "Vedic seers invoke Rta as the path of alignment, truthfulness, and participation in the universe's sacred rhythm.",
+            }
+        ],
+        relatedWords: ["dharma", "satya", "yajna", "karma"],
+        faqs: [
+            {
+                question: "How is Rta different from Dharma?",
+                answer: "Rta is the primordial cosmic order itself, while Dharma is often the human and ethical way of living in alignment with that order."
+            },
+            {
+                question: "Why does Rta matter today?",
+                answer: "It reminds seekers that truth, ethics, ritual, and nature are not isolated concerns—they all reflect whether life is aligned with reality or not."
+            }
+        ],
+        summary: "Rta is the ancient Vedic principle of cosmic order, truth, and sacred harmony that underlies later concepts such as Dharma.",
     }
 ];

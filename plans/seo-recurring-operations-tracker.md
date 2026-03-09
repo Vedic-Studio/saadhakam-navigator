@@ -13,6 +13,10 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
 - [ ] Verify metadata quality (title, description, canonical, OG/Twitter) for newly published pages
 - [ ] Validate schema output (Article/FAQ/HowTo where applicable)
 - [ ] Trigger indexing submissions for all newly published URLs (IndexNow + Search Console request index)
+- [ ] Review SEO content analytics coverage on newly published or refreshed pages:
+  - `seo_article_read`
+  - `cta_click`
+  - `path_explore`
 - [ ] Review GA4 events for Faith Finder funnel:
   - `faith_finder_quiz_start`
   - `faith_finder_quiz_complete`
@@ -44,6 +48,7 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
 ## 2) New Page Publishing Runbook (Every Publish)
 
 - [ ] Page created with complete metadata and canonical URL
+- [ ] Page includes content analytics instrumentation (`ContentPageTracker` or article tracker + tracked internal CTA links where relevant)
 - [ ] Added to internal linking graph from related hubs/spokes
 - [ ] Included in sitemap output (data-driven or static section)
 - [ ] Verified page renders in production build
@@ -90,6 +95,36 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
   - If omitted, app defaults to `sc-domain:<site-host>`.
 - **Runbook use:** after every publish, call IndexNow submit endpoint once, then open each returned `inspectUrl` and click **Request Indexing**.
 
+### Priority Batch Workflow (Code-Verified)
+- Generate the current priority indexing batch with:
+  - `npm run indexing:priority`
+- Current batch covers:
+  - pillar hubs
+  - knowledge-hub index pages (`/philosophies`, `/traditions`, `/texts`, `/greats`, `/compare`)
+  - chooser guides
+  - evergreen intent-match chooser/support pages
+  - primary concept hubs
+  - Sanskrit lexicon pages
+  - key comparison pages
+  - flagship articles
+  - scripture entry pages + Bhagavad Gita scripture URLs
+- If `INDEXNOW_SUBMIT_TOKEN` is present in the environment, the generated curl command now includes the auth header automatically.
+- Recommended weekly use:
+  1. Run `npm run indexing:priority`
+  2. Submit each generated payload batch to production `/api/indexnow/submit`
+  3. Open the returned `inspectUrl` links in GSC and request indexing for the most important refreshed/new URLs
+  4. Cross-check that these canonical URLs exist in the sitemap and match internal-link targets
+
+### Priority Batch Curation Rules
+- Keep the batch focused on canonical URLs only; avoid deprecated/redirecting variants such as `*-meaning` concept URLs.
+- Prefer URLs that are either:
+  - newly published,
+  - materially refreshed,
+  - core hubs that distribute authority internally, or
+  - proven high-intent pages likely to earn faster indexing/re-crawl.
+- If the total list exceeds the API cap (`MAX_URLS_PER_REQUEST = 50`), the priority script now emits multiple request payloads/curl commands so nothing is silently dropped.
+- Even with batching support, keep the list focused on the most valuable canonical URLs so weekly ops stay practical.
+
 ---
 
 ## 4) KPI Snapshot (Track Monthly)
@@ -112,6 +147,10 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
 | 2026-03-09 | Weekly | Initial tracker created, technical SEO and Faith Finder analytics improvements applied | Baseline established | Continue weekly publishing + index submission |
 | 2026-03-09 | Weekly | Expanded the 4 pillar hub pages with richer editorial copy, FAQ/collection schema, and direct internal links to quick-win/supporting articles | Stronger Task 8/9 cluster architecture and crawl paths for pillar ↔ spoke discovery | Continue refreshing remaining quick-win articles, submit updated URLs through IndexNow/GSC, and monitor indexing/ranking movement |
 | 2026-03-09 | Weekly | Refreshed 4 priority quick-win articles (`advaita-vedanta-explained`, `bhagavad-gita-chapter-1`, `daily-spiritual-routine-beginners`, `how-to-choose-a-mantra`) with richer scannable sections, tighter internal links, and stronger article metadata/schema | Improved Task 9 article quality and cluster connectivity from article ↔ pillar ↔ support pages | Refresh the remaining quick-win articles, then resubmit updated URLs through IndexNow/GSC and watch for indexing + CTR movement |
+| 2026-03-09 | Weekly | Expanded analytics coverage across remaining SEO content templates and widened the priority indexing batch to include hub indexes, chooser-support pages, and scripture/text entry pages | Stronger GA4 coverage for SEO surfaces and a more operationally useful canonical indexing batch | Validate live events in GA4 DebugView, submit refreshed priority batch in production, and monitor crawl/indexing pickup |
+| 2026-03-09 | Weekly | Expanded concept hubs from the initial seed set to 22 canonical `what-is-*` entries, added safety filtering so concept cross-links only render valid concept destinations, and promoted the strongest new concept URLs into the priority indexing batch | Stronger concept-layer topical coverage with safer internal linking and a fuller canonical recrawl set | Add missing lexicon counterparts for the newest concept-only entries (`avidya`, `ishvara`, `jiva`, `karma-yoga`, `raja-yoga`) and continue the next concept wave |
+| 2026-03-09 | Weekly | Added a second concept wave (`advaita`, `ahamkara`, `niskama-karma`, `pranayama`, `rta`) and cleaned invalid concept cross-link references so the concept graph now resolves cleanly | Better topical depth, safer internal navigation, and stronger support for concept-cluster authority building | Add lexicon counterparts where strategically useful and continue the next concept expansion wave around devotion, texts, and practice terms |
+| 2026-03-09 | Weekly | Added lexicon counterparts for the highest-priority concept-only terms and upgraded the priority indexing script to emit multiple request batches when the canonical queue exceeds the API limit | Concept ↔ lexicon coverage is now complete for current concept hubs, and indexing ops no longer risk silent URL truncation | Submit both priority batches in production, then validate live crawl/indexing pickup for the newest concept and lexicon URLs |
 
 ---
 

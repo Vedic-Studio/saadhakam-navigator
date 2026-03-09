@@ -35,8 +35,8 @@ export const articles: ArticleMeta[] = [
         primaryKeyword: "what is vedanta",
         relatedLinks: [
             { text: "Advaita vs Dvaita: The Core Debate", href: "/compare/advaita-vs-dvaita" },
-            { text: "What is Brahman?", href: "/learn/sanskrit/brahman" },
-            { text: "What is Atman?", href: "/learn/sanskrit/atman" },
+            { text: "What is Brahman?", href: "/what-is-brahman" },
+            { text: "What is Atman?", href: "/what-is-atman" },
             { text: "Explore the Six Darshanas", href: "/philosophies" },
         ],
         faqs: [
@@ -214,7 +214,7 @@ export const articles: ArticleMeta[] = [
             { text: "Bhagavad Gita Complete Guide", href: "/bhagavad-gita-complete-guide" },
             { text: "Read BG Chapter 1 in Detail", href: "/texts/bhagavad-gita/chapter-1" },
             { text: "Sacred Texts & Teachings Hub", href: "/sacred-texts-teachings" },
-            { text: "What is Dharma?", href: "/learn/sanskrit/dharma" },
+            { text: "What is Dharma?", href: "/what-is-dharma" },
         ],
         faqs: [
             {
@@ -332,7 +332,7 @@ export const articles: ArticleMeta[] = [
             { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
             { text: "Advaita vs Dvaita", href: "/compare/advaita-vs-dvaita" },
             { text: "Explore Great Sages", href: "/greats" },
-            { text: "What is Maya?", href: "/learn/sanskrit/maya" },
+            { text: "What is Maya?", href: "/what-is-maya" },
         ],
         faqs: [
             {
@@ -509,7 +509,7 @@ export const articles: ArticleMeta[] = [
             { text: "Advaita vs Dvaita Vedanta", href: "/compare/advaita-vs-dvaita" },
             { text: "Advaita vs Vishishtadvaita", href: "/compare/advaita-vs-vishishtadvaita" },
             { text: "Stoicism vs Vedanta", href: "/compare/stoicism-vs-vedanta" },
-            { text: "What is Brahman?", href: "/learn/sanskrit/brahman" },
+            { text: "What is Brahman?", href: "/what-is-brahman" },
         ],
         faqs: [
             {

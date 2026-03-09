@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
     title: "How to Choose Between Bhakti, Jnana, Karma, and Raja Yoga | Sadhaka",
@@ -112,6 +113,7 @@ export default function ChooseBetweenYogaPathsPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <ContentPageTracker slug="choose-between-bhakti-jnana-karma-raja-yoga" pillar="seo-chooser" />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <Header />
@@ -168,9 +170,14 @@ export default function ChooseBetweenYogaPathsPage() {
                                     <p className="text-muted-foreground leading-relaxed mb-4">{option.chooser}</p>
                                     <p className="text-sm text-muted-foreground mb-2"><strong className="text-foreground">Strength:</strong> {option.strength}</p>
                                     <p className="text-sm text-muted-foreground mb-5"><strong className="text-foreground">Challenge:</strong> {option.challenge}</p>
-                                    <Link href={option.href} className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold">
+                                    <TrackedLink
+                                        href={option.href}
+                                        eventLabel={`chooser_option:choose-between-bhakti-jnana-karma-raja-yoga:${option.href}`}
+                                        trackPathName={option.href.replace(/^\//, "")}
+                                        className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold"
+                                    >
                                         Explore this path <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Link>
+                                    </TrackedLink>
                                 </article>
                             ))}
                         </div>
@@ -181,9 +188,14 @@ export default function ChooseBetweenYogaPathsPage() {
                         <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
                             Use the Faith Finder to identify your dominant orientation and get a practical starting point instead of trying to choose only from theory.
                         </p>
-                        <Link href="/faith-finder" className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold">
+                        <TrackedLink
+                            href="/faith-finder"
+                            eventLabel="chooser_cta:choose-between-bhakti-jnana-karma-raja-yoga:faith-finder"
+                            trackPathName="faith-finder"
+                            className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold"
+                        >
                             Get My Path Recommendation <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
+                        </TrackedLink>
                     </section>
 
                     <section className="mb-12 rounded-3xl border border-border/60 bg-card p-8">

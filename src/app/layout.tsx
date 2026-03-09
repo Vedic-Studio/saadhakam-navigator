@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Script from "next/script";
 import "./globals.css";
+import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://opensadhaka.com";
 const gaMeasurementId = "G-S3DHYPPG9R";
@@ -121,7 +123,7 @@ export default function RootLayout({
               window.gtag = window.gtag || gtag;
               gtag('js', new Date());
 
-              gtag('config', '${gaMeasurementId}');
+              gtag('config', '${gaMeasurementId}', { send_page_view: false });
             `,
           }}
         />
@@ -155,6 +157,15 @@ export default function RootLayout({
               };
 
               window.sadhaka = window.sadhaka || {};
+
+              window.sadhaka.pageView = function (path, title) {
+                sendEvent('page_view', {
+                  page_path: path || window.location.pathname,
+                  page_title: title || document.title,
+                  page_location: window.location.href,
+                  page_referrer: document.referrer || undefined,
+                });
+              };
 
               window.sadhaka.quizStart = function () {
                 sendEvent('faith_finder_quiz_start', {
@@ -217,6 +228,9 @@ export default function RootLayout({
             })();
           `}
         </Script>
+        <Suspense fallback={null}>
+          <AnalyticsTracker />
+        </Suspense>
         {children}
       </body>
     </html>

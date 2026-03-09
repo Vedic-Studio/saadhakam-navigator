@@ -261,20 +261,12 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
       }));
 
     case "concepts":
-      return concepts.flatMap((c) => [
-        {
-          url: `${baseUrl}/what-is-${c.slug}`,
-          lastModified: now,
-          changeFrequency: "monthly",
-          priority: 0.8,
-        },
-        {
-          url: `${baseUrl}/${c.slug}-meaning`,
-          lastModified: now,
-          changeFrequency: "monthly",
-          priority: 0.8,
-        },
-      ]);
+      return concepts.map((c) => ({
+        url: `${baseUrl}/what-is-${c.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.9,
+      }));
 
     case "comparisons":
       return comparisons.map((c) => ({
@@ -352,7 +344,7 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
         url: `${baseUrl}/learn/sanskrit/${word.slug}`,
         lastModified: now,
         changeFrequency: "monthly",
-        priority: 0.85,
+        priority: 0.72,
       }));
 
     case "articles":

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -42,6 +42,7 @@ export default function CompareIndexPage() {
 
     return (
         <div className="min-h-screen bg-background">
+            <ContentPageTracker slug="compare" pillar="comparisons" />
             <Header />
             <main className="pt-20">
                 <section className="py-16 px-4 sm:px-6 lg:px-8">
@@ -89,7 +90,12 @@ export default function CompareIndexPage() {
                                                     </p>
                                                 </CardContent>
                                                 <CardFooter className="px-6 pb-6 pt-0">
-                                                    <Link href={`/compare/${item.slug}`} className="w-full">
+                                                    <TrackedLink
+                                                        href={`/compare/${item.slug}`}
+                                                        eventLabel={`compare_index:${item.slug}`}
+                                                        trackPathName={item.category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+                                                        className="w-full"
+                                                    >
                                                         <Button
                                                             variant="ghost"
                                                             className="w-full justify-between hover:bg-primary/5 group-hover:text-primary border border-transparent group-hover:border-primary/20"
@@ -97,7 +103,7 @@ export default function CompareIndexPage() {
                                                             Depth Analysis
                                                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                                         </Button>
-                                                    </Link>
+                                                    </TrackedLink>
                                                 </CardFooter>
                                             </Card>
                                         ))}

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { practices, getPracticeBySlug } from "@/data/practices";
 import { practiceGoals, getPracticeGoalBySlug } from "@/data/practiceGoals";
 import Link from "next/link";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export async function generateStaticParams() {
   // Generate valid combinations
@@ -63,6 +64,7 @@ export default function PracticeForGoalPage({
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <ContentPageTracker slug={`${practice.slug}-for-${goal.slug}`} pillar="practice-goal" />
       {/* Breadcrumbs Placeholder */}
       <nav className="text-sm mb-8 text-neutral-500">
         <Link href="/" className="hover:text-primary transition-colors">
@@ -159,12 +161,14 @@ export default function PracticeForGoalPage({
           exactly which practices match your personality (Gunas) and life stage
           (Ashrama).
         </p>
-        <Link
+        <TrackedLink
           href="/faith-finder"
+          eventLabel={`practice_goal:${practice.slug}:${goal.slug}:faith-finder`}
+          trackPathName={practice.slug}
           className="inline-block bg-white text-neutral-900 font-bold px-8 py-4 rounded-full hover:scale-105 transition-transform"
         >
           Find Your Path
-        </Link>
+        </TrackedLink>
       </section>
     </div>
   );

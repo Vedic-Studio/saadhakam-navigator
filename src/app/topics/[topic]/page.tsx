@@ -4,6 +4,7 @@ import { topics, getTopicBySlug } from "@/data/topics";
 import { getPracticeBySlug } from "@/data/practices";
 import { getTraditionsBySlugs } from "@/data/traditions";
 import Link from "next/link";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export async function generateStaticParams() {
   return topics.map((topic) => ({
@@ -55,6 +56,7 @@ export default function TopicHubPage({
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <ContentPageTracker slug={topic.slug} pillar="topics" />
       {/* Breadcrumbs Component Placeholder */}
       <nav className="text-sm mb-8 text-neutral-500">
         <Link href="/" className="hover:text-primary transition-colors">
@@ -87,9 +89,11 @@ export default function TopicHubPage({
             {recommendedPractices.map(
               (practice) =>
                 practice && (
-                  <Link
+                  <TrackedLink
                     href={`/practices/${practice.slug}`}
                     key={practice.slug}
+                    eventLabel={`topic:${topic.slug}:practice:${practice.slug}`}
+                    trackPathName={practice.slug}
                     className="group p-6 rounded-2xl border border-neutral-200 hover:border-primary hover:shadow-sm transition-all bg-white"
                   >
                     <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
@@ -101,7 +105,7 @@ export default function TopicHubPage({
                     <p className="text-neutral-600 text-sm">
                       {practice.summary}
                     </p>
-                  </Link>
+                  </TrackedLink>
                 ),
             )}
           </div>
@@ -112,9 +116,11 @@ export default function TopicHubPage({
           <h2 className="text-2xl font-bold mb-6">Associated Traditions</h2>
           <div className="grid gap-4">
             {traditions.map((tradition: any) => (
-              <Link
+              <TrackedLink
                 href={`/traditions/${tradition.slug}`}
                 key={tradition.slug}
+                eventLabel={`topic:${topic.slug}:tradition:${tradition.slug}`}
+                trackPathName={tradition.slug}
                 className="group p-6 rounded-2xl border border-neutral-200 hover:border-primary hover:shadow-sm transition-all bg-white"
               >
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
@@ -123,7 +129,7 @@ export default function TopicHubPage({
                 <p className="text-neutral-600 text-sm line-clamp-2">
                   {tradition.description}
                 </p>
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </section>
@@ -137,12 +143,14 @@ export default function TopicHubPage({
           {topic.name.toLowerCase()} align best with your current lifestyle and
           spiritual goals.
         </p>
-        <Link
+        <TrackedLink
           href="/faith-finder"
+          eventLabel={`topic:${topic.slug}:faith-finder`}
+          trackPathName={topic.slug}
           className="inline-block bg-white text-neutral-900 font-semibold px-8 py-4 rounded-full hover:scale-105 transition-transform"
         >
           Start the Quiz
-        </Link>
+        </TrackedLink>
       </section>
     </div>
   );

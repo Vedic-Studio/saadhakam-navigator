@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight, Book, Compass, Flame, Library, ScrollText } from "lucide-react";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
     title: "Sacred Texts & Teachings of Sanatan Dharma | Sadhaka",
@@ -151,6 +152,7 @@ export default function SacredTextsPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
+            <ContentPageTracker slug="sacred-texts-teachings" pillar="pillar-hub" />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -206,9 +208,11 @@ export default function SacredTextsPage() {
                         </p>
                         <div className="grid md:grid-cols-2 gap-6">
                             {featuredGuides.map((guide) => (
-                                <Link
+                                <TrackedLink
                                     key={guide.href}
                                     href={guide.href}
+                                    eventLabel={`pillar_featured_guide:sacred-texts-teachings:${guide.href}`}
+                                    trackPathName={guide.href.replace(/^\//, "")}
                                     className="glass-card rounded-3xl border border-white/5 p-8 hover:border-orange-500/30 transition-all duration-300 group"
                                 >
                                     <h3 className="text-2xl font-display font-bold mb-3 group-hover:text-orange-300 transition-colors">
@@ -219,7 +223,7 @@ export default function SacredTextsPage() {
                                         Read guide
                                         <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </span>
-                                </Link>
+                                </TrackedLink>
                             ))}
                         </div>
                     </section>
@@ -239,12 +243,14 @@ export default function SacredTextsPage() {
                                 <p className="text-muted-foreground mb-8 text-lg relative z-10">
                                     {group.description}
                                 </p>
-                                <Link
+                                <TrackedLink
                                     href={group.href}
+                                    eventLabel={`pillar_cluster_link:sacred-texts-teachings:${group.href}`}
+                                    trackPathName={group.href.replace(/^\//, "")}
                                     className="inline-flex items-center text-orange-400 font-semibold group-hover:text-orange-300 transition-colors"
                                 >
                                     Explore <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                </Link>
+                                </TrackedLink>
                             </div>
                         ))}
                     </div>

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -35,6 +35,7 @@ const steps = [
 export default function StartingSpiritualPracticePage() {
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <ContentPageTracker slug="starting-spiritual-practice" pillar="seo-chooser" />
             <Header />
             <main className="flex-grow pt-28 pb-16">
                 <div className="container-padding max-w-4xl mx-auto">
@@ -65,15 +66,30 @@ export default function StartingSpiritualPracticePage() {
                             Then evolve based on what actually works for your temperament.
                         </p>
                         <div className="flex flex-wrap justify-center gap-3">
-                            <Link href="/how-to-start-japa" className="inline-flex items-center rounded-full border border-border bg-card px-5 py-2.5 font-medium">
+                            <TrackedLink
+                                href="/how-to-start-japa"
+                                eventLabel="starting_spiritual_practice:japa:/how-to-start-japa"
+                                trackPathName="practical-practices"
+                                className="inline-flex items-center rounded-full border border-border bg-card px-5 py-2.5 font-medium"
+                            >
                                 Learn Japa <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
-                            <Link href="/daily-spiritual-routine-beginners" className="inline-flex items-center rounded-full border border-border bg-card px-5 py-2.5 font-medium">
+                            </TrackedLink>
+                            <TrackedLink
+                                href="/daily-spiritual-routine-beginners"
+                                eventLabel="starting_spiritual_practice:routine:/daily-spiritual-routine-beginners"
+                                trackPathName="practical-practices"
+                                className="inline-flex items-center rounded-full border border-border bg-card px-5 py-2.5 font-medium"
+                            >
                                 Daily Routine Guide <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
-                            <Link href="/faith-finder" className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-5 py-2.5 text-white font-semibold">
+                            </TrackedLink>
+                            <TrackedLink
+                                href="/faith-finder"
+                                eventLabel="starting_spiritual_practice:cta:faith-finder"
+                                trackPathName="seo-chooser"
+                                className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-5 py-2.5 text-white font-semibold"
+                            >
                                 Find My Path <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
+                            </TrackedLink>
                         </div>
                     </section>
                 </div>

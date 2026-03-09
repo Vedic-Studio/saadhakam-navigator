@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ArrowRight, Clock, BookOpen } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ArticleReadTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { ArticleMeta } from "@/data/articles";
 
 interface ArticleLayoutProps {
@@ -59,6 +59,7 @@ export function ArticleLayout({
 
     return (
         <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
+            <ArticleReadTracker slug={meta.slug} pillar={meta.pillar} />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -114,15 +115,17 @@ export function ArticleLayout({
                             <ul className="space-y-3">
                                 {meta.relatedLinks.map((link) => (
                                     <li key={link.href}>
-                                        <Link
+                                        <TrackedLink
                                             href={link.href}
+                                            eventLabel={`article_related_link:${meta.slug}:${link.href}`}
+                                            trackPathName={meta.pillar}
                                             className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-colors group"
                                         >
                                             <span className="text-sm font-medium group-hover:text-orange-400 transition-colors">
                                                 {link.text}
                                             </span>
                                             <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-orange-400 group-hover:translate-x-1 transition-all" />
-                                        </Link>
+                                        </TrackedLink>
                                     </li>
                                 ))}
                             </ul>
@@ -155,15 +158,15 @@ export function ArticleLayout({
                         <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
                             Take the Faith Finder — a 5-minute quiz that maps your temperament to the specific tradition, practice, and philosophy within Sanatan Dharma that fits you.
                         </p>
-                        <Link href="/faith-finder">
-                            <Button
-                                size="lg"
-                                className="bg-orange-500 text-white hover:bg-orange-600 h-14 px-8 rounded-full text-lg shadow-lg shadow-orange-900/20 transition-transform hover:scale-105"
-                            >
-                                Start the Faith Finder
-                                <ArrowRight className="ml-2 w-5 h-5" />
-                            </Button>
-                        </Link>
+                        <TrackedLink
+                            href="/faith-finder"
+                            eventLabel={`article_cta:${meta.slug}:faith-finder`}
+                            trackPathName={meta.pillar}
+                            className="inline-flex items-center justify-center bg-orange-500 text-white hover:bg-orange-600 h-14 px-8 rounded-full text-lg shadow-lg shadow-orange-900/20 transition-transform hover:scale-105"
+                        >
+                            Start the Faith Finder
+                            <ArrowRight className="ml-2 w-5 h-5" />
+                        </TrackedLink>
                     </div>
                 </article>
             </main>

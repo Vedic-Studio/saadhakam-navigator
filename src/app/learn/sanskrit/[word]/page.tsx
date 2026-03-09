@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { sanskritVocab, getSanskritWordBySlug } from "@/data/sanskritVocab";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { getConceptBySlug } from "@/data/concepts";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export async function generateStaticParams() {
   return sanskritVocab.map((word) => ({
@@ -16,16 +18,31 @@ export async function generateMetadata({
   params: { word: string };
 }): Promise<Metadata> {
   const word = getSanskritWordBySlug(params.word);
+  const concept = getConceptBySlug(params.word);
 
   if (!word) {
     return { title: "Sanskrit Word Not Found" };
   }
 
   return {
-    title: `What is ${word.wordEnglish}? Meaning & Philosophy in Sanatan Dharma`,
-    description: `Learn the spiritual meaning, etymology, and usage of ${word.wordDevanagari} (${word.wordEnglish}) in the Vedas, Bhagavad Gita, and Yoga philosophy.`,
+    title: `${word.wordEnglish} in Sanskrit: Etymology, Meaning & Scriptural Usage | Sadhaka`,
+    description: concept
+      ? `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings. For the broader philosophical explainer, see the concept guide as well.`
+      : `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings in Sanatan Dharma.`,
+    keywords: [
+      `${word.wordEnglish.toLowerCase()} in sanskrit`,
+      `${word.wordEnglish.toLowerCase()} etymology`,
+      `${word.wordEnglish.toLowerCase()} meaning`,
+      word.transliteration.toLowerCase(),
+      "sanskrit lexicon",
+    ],
     alternates: {
       canonical: `https://opensadhaka.com/learn/sanskrit/${word.slug}`,
+    },
+    openGraph: {
+      title: `${word.wordEnglish} in Sanskrit`,
+      description: `Lexicon-style breakdown of ${word.wordEnglish}: etymology, transliteration, usage, and scriptural context.`,
+      url: `https://opensadhaka.com/learn/sanskrit/${word.slug}`,
     },
   };
 }
@@ -36,6 +53,7 @@ export default function SanskritLexiconPage({
   params: { word: string };
 }) {
   const word = getSanskritWordBySlug(params.word);
+  const concept = getConceptBySlug(params.word);
 
   if (!word) {
     notFound();
@@ -55,12 +73,26 @@ export default function SanskritLexiconPage({
     })),
   };
 
+  const definedTermSchema = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name: word.wordEnglish,
+    description: word.summary,
+    url: `https://opensadhaka.com/learn/sanskrit/${word.slug}`,
+    inDefinedTermSet: "https://opensadhaka.com/learn/sanskrit",
+  };
+
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <ContentPageTracker slug={word.slug} pillar="sanskrit-lexicon" />
       {/* Inject FAQ Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermSchema) }}
       />
 
       {/* Breadcrumbs */}
@@ -88,7 +120,33 @@ export default function SanskritLexiconPage({
           <span className="w-1.5 h-1.5 rounded-full bg-neutral-300"></span>
           <span>{word.pronunciation}</span>
         </div>
+        <p className="text-neutral-600 max-w-2xl mx-auto mt-6 text-base leading-relaxed">
+          This page is the lexicon view: it focuses on Sanskrit roots, transliteration, scriptural quotations, and how the term is used across traditions.
+        </p>
       </header>
+
+      {concept && (
+        <section className="mb-12 rounded-3xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-neutral-900 mb-2">
+                Need the broader philosophical explainer?
+              </h2>
+              <p className="text-neutral-700 leading-relaxed">
+                Read the concept guide for {word.wordEnglish} if you want the fuller Vedic context, practical application, and related philosophy links.
+              </p>
+            </div>
+            <TrackedLink
+              href={`/what-is-${word.slug}`}
+              eventLabel={`lexicon_to_concept:${word.slug}`}
+              trackPathName={word.slug}
+              className="inline-flex shrink-0 items-center justify-center rounded-full bg-neutral-900 px-6 py-3 font-semibold text-white hover:bg-neutral-800 transition-colors"
+            >
+              Read concept guide
+            </TrackedLink>
+          </div>
+        </section>
+      )}
 
       <div className="prose prose-lg prose-neutral max-w-none">
         {/* Etymology & Root */}
@@ -208,12 +266,14 @@ export default function SanskritLexiconPage({
           <strong>Faith Finder</strong> quiz to discover the specific daily
           practices (Sadhana) to bring these concepts to life.
         </p>
-        <Link
+        <TrackedLink
           href="/faith-finder"
+          eventLabel={`lexicon_cta:${word.slug}:faith-finder`}
+          trackPathName={word.slug}
           className="inline-block bg-white text-neutral-900 font-bold px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-transform hover:shadow-xl"
         >
           Discover Your Practice
-        </Link>
+        </TrackedLink>
       </section>
     </div>
   );

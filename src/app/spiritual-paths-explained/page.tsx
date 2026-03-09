@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { ArrowRight, Compass, Heart, Brain, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -78,6 +78,7 @@ const faqSchema = {
 export default function SpiritualPathsExplainedPage() {
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <ContentPageTracker slug="spiritual-paths-explained" pillar="seo-chooser" />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -105,12 +106,14 @@ export default function SpiritualPathsExplainedPage() {
                                 <path.icon className="w-8 h-8 text-orange-500 mb-4" />
                                 <h2 className="text-2xl font-semibold mb-3">{path.title}</h2>
                                 <p className="text-muted-foreground mb-6 leading-relaxed">{path.description}</p>
-                                <Link
+                                <TrackedLink
                                     href={path.href}
+                                    eventLabel={`spiritual_paths_explained:${path.title}:${path.href}`}
+                                    trackPathName={path.title.toLowerCase().replace(/\s+/g, "-")}
                                     className="inline-flex items-center text-orange-400 font-semibold hover:text-orange-300"
                                 >
                                     Explore this path <ArrowRight className="ml-2 w-4 h-4" />
-                                </Link>
+                                </TrackedLink>
                             </article>
                         ))}
                     </div>
@@ -121,12 +124,14 @@ export default function SpiritualPathsExplainedPage() {
                             Take the Faith Finder Quiz to discover your dominant spiritual path,
                             recommended traditions, and practices to start right now.
                         </p>
-                        <Link
+                        <TrackedLink
                             href="/faith-finder"
+                            eventLabel="spiritual_paths_explained:cta:faith-finder"
+                            trackPathName="seo-chooser"
                             className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold"
                         >
                             Take the Faith Finder <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
+                        </TrackedLink>
                     </section>
                 </div>
             </main>

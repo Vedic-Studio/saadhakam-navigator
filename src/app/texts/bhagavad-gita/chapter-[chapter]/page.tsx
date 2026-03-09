@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { bgChapters, getBgChapterByNumber } from "@/data/bgChapters";
 import { getBgShlokasByChapter } from "@/data/bgShlokas";
 import Link from "next/link";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export async function generateStaticParams() {
   return bgChapters.map((ch) => ({
@@ -48,6 +49,7 @@ export default function BgChapterPage({
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
+      <ContentPageTracker slug={`bhagavad-gita-chapter-${chapter.chapterNumber}`} pillar="scripture" />
       {/* Breadcrumbs Placeholder */}
       <nav className="text-sm mb-8 text-neutral-500">
         <Link href="/" className="hover:text-primary transition-colors">
@@ -124,9 +126,11 @@ export default function BgChapterPage({
 
         <div className="grid gap-4">
           {shlokas.map((shloka) => (
-            <Link
+            <TrackedLink
               key={shloka.id}
               href={`/texts/bhagavad-gita/chapter-${chapter.chapterNumber}/shloka-${shloka.verse}`}
+              eventLabel={`bg_chapter:${chapter.chapterNumber}:shloka:${shloka.verse}`}
+              trackPathName={`chapter-${chapter.chapterNumber}`}
               className="group block bg-white border border-neutral-200 rounded-2xl p-6 hover:shadow-md hover:border-primary transition-all"
             >
               <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -142,7 +146,7 @@ export default function BgChapterPage({
                   </p>
                 </div>
               </div>
-            </Link>
+            </TrackedLink>
           ))}
 
           {shlokas.length === 0 && (

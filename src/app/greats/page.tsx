@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { Badge } from "@/components/ui/badge";
 import { greats } from "@/data/greats";
 import { comparisons } from "@/data/comparisons";
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
 export default function GreatsPage() {
   return (
     <div className="min-h-screen bg-background">
+      <ContentPageTracker slug="greats" pillar="greats" />
       <Header />
       <main className="pt-20">
         <section className="py-16 px-4 sm:px-6 lg:px-8">
@@ -68,14 +69,19 @@ export default function GreatsPage() {
                     </p>
                   </CardContent>
                   <CardFooter className="px-6 pb-6 pt-0">
-                    <Link href={`/greats/${great.slug}`} className="w-full">
+                    <TrackedLink
+                      href={`/greats/${great.slug}`}
+                      eventLabel={`greats_index:${great.slug}`}
+                      trackPathName={great.slug}
+                      className="w-full"
+                    >
                       <Button
                         variant="ghost"
                         className="w-full justify-between hover:text-primary"
                       >
                         Learn More <ArrowRight className="w-4 h-4" />
                       </Button>
-                    </Link>
+                    </TrackedLink>
                   </CardFooter>
                 </Card>
               ))}
@@ -90,11 +96,15 @@ export default function GreatsPage() {
                     Deep dives into the unique styles and teachings of history's greatest gurus.
                   </p>
                 </div>
-                <Link href="/compare">
+                <TrackedLink
+                  href="/compare"
+                  eventLabel="greats:compare_index"
+                  trackPathName="comparisons"
+                >
                   <Button variant="outline" className="gap-2">
                     View all comparisons <ArrowRight className="w-4 h-4" />
                   </Button>
-                </Link>
+                </TrackedLink>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -102,7 +112,12 @@ export default function GreatsPage() {
                   .filter((c) => c.category === "Teacher vs Teacher")
                   .slice(0, 4)
                   .map((item) => (
-                    <Link key={item.slug} href={`/compare/${item.slug}`}>
+                    <TrackedLink
+                      key={item.slug}
+                      href={`/compare/${item.slug}`}
+                      eventLabel={`greats:comparison:${item.slug}`}
+                      trackPathName="teacher-vs-teacher"
+                    >
                       <div className="p-4 rounded-xl border border-border/50 bg-card hover:border-primary/30 transition-all group h-full">
                         <Badge variant="outline" className="text-[10px] uppercase tracking-wider mb-2 opacity-70 group-hover:opacity-100">
                           {item.category}
@@ -111,7 +126,7 @@ export default function GreatsPage() {
                           {item.title}
                         </h3>
                       </div>
-                    </Link>
+                    </TrackedLink>
                   ))
                 }
               </div>

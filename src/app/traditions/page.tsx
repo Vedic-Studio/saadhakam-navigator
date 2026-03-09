@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { Badge } from "@/components/ui/badge";
 import { traditions } from "@/data/traditions";
 import { comparisons } from "@/data/comparisons";
@@ -71,6 +71,7 @@ export default function TraditionsPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <ContentPageTracker slug="traditions" pillar="traditions" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -103,8 +104,10 @@ export default function TraditionsPage() {
                     <p className="text-muted-foreground">{tradition.summary}</p>
                   </CardContent>
                   <CardFooter className="px-6 pb-6 pt-0">
-                    <Link
+                    <TrackedLink
                       href={`/traditions/${tradition.slug}`}
+                      eventLabel={`traditions_index:${tradition.slug}`}
+                      trackPathName={tradition.slug}
                       className="w-full"
                     >
                       <Button
@@ -113,7 +116,7 @@ export default function TraditionsPage() {
                       >
                         Explore <ArrowRight className="w-4 h-4" />
                       </Button>
-                    </Link>
+                    </TrackedLink>
                   </CardFooter>
                 </Card>
               ))}
@@ -128,11 +131,15 @@ export default function TraditionsPage() {
                     Deep dives into the relationships between major spiritual paths and schools.
                   </p>
                 </div>
-                <Link href="/compare">
+                <TrackedLink
+                  href="/compare"
+                  eventLabel="traditions:compare_index"
+                  trackPathName="comparisons"
+                >
                   <Button variant="outline" className="gap-2">
                     View all comparisons <ArrowRight className="w-4 h-4" />
                   </Button>
-                </Link>
+                </TrackedLink>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -140,7 +147,12 @@ export default function TraditionsPage() {
                   .filter((c) => c.category === "Philosophy vs Philosophy" || c.category === "Path vs Path")
                   .slice(4, 8)
                   .map((item) => (
-                    <Link key={item.slug} href={`/compare/${item.slug}`}>
+                    <TrackedLink
+                      key={item.slug}
+                      href={`/compare/${item.slug}`}
+                      eventLabel={`traditions:comparison:${item.slug}`}
+                      trackPathName={item.category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+                    >
                       <div className="p-4 rounded-xl border border-border/50 bg-card hover:border-primary/30 transition-all group h-full">
                         <Badge variant="outline" className="text-[10px] uppercase tracking-wider mb-2 opacity-70 group-hover:opacity-100">
                           {item.category}
@@ -149,7 +161,7 @@ export default function TraditionsPage() {
                           {item.title}
                         </h3>
                       </div>
-                    </Link>
+                    </TrackedLink>
                   ))
                 }
               </div>

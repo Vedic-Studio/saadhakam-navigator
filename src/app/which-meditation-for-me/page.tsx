@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -47,6 +47,7 @@ const methods = [
 export default function WhichMeditationForMePage() {
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <ContentPageTracker slug="which-meditation-for-me" pillar="seo-chooser" />
             <Header />
             <main className="flex-grow pt-28 pb-16">
                 <div className="container-padding max-w-5xl mx-auto">
@@ -78,12 +79,14 @@ export default function WhichMeditationForMePage() {
                                         <span className="text-foreground font-medium">How to start:</span> {method.start}
                                     </p>
                                 </div>
-                                <Link
+                                <TrackedLink
                                     href={method.href}
+                                    eventLabel={`which_meditation:${method.name}:${method.href}`}
+                                    trackPathName={method.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
                                     className="inline-flex items-center mt-5 text-orange-400 font-semibold"
                                 >
                                     Learn this method <ArrowRight className="ml-2 w-4 h-4" />
-                                </Link>
+                                </TrackedLink>
                             </article>
                         ))}
                     </div>
@@ -106,12 +109,14 @@ export default function WhichMeditationForMePage() {
                         </div>
 
                         <div className="text-center mt-7">
-                            <Link
+                            <TrackedLink
                                 href="/faith-finder"
+                                eventLabel="which_meditation:cta:faith-finder"
+                                trackPathName="seo-chooser"
                                 className="inline-flex items-center rounded-full bg-orange-600 hover:bg-orange-700 px-6 py-3 text-white font-semibold"
                             >
                                 Get Personalized Practice Picks <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
+                            </TrackedLink>
                         </div>
                     </section>
                 </div>

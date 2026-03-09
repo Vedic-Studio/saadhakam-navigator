@@ -105,7 +105,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/Users/ankitmishra",
+    "outputFileTracingRoot": "/Users/ankitmishra/Developer/Sadhaka",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -297,21 +297,155 @@
     "htmlLimitedBots": "[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight",
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
-    "eslint": {
-      "ignoreDuringBuilds": true
-    },
     "turbopack": {
-      "root": "/Users/ankitmishra"
+      "root": "/Users/ankitmishra/Developer/Sadhaka"
     },
     "distDirRoot": ".next",
     "_originalRewrites": {
       "beforeFiles": [],
       "afterFiles": [],
       "fallback": []
-    }
+    },
+    "_originalRedirects": [
+      {
+        "source": "/karma-meaning",
+        "destination": "/what-is-karma",
+        "permanent": true
+      },
+      {
+        "source": "/dharma-meaning",
+        "destination": "/what-is-dharma",
+        "permanent": true
+      },
+      {
+        "source": "/moksha-meaning",
+        "destination": "/what-is-moksha",
+        "permanent": true
+      },
+      {
+        "source": "/samsara-meaning",
+        "destination": "/what-is-samsara",
+        "permanent": true
+      },
+      {
+        "source": "/maya-meaning",
+        "destination": "/what-is-maya",
+        "permanent": true
+      },
+      {
+        "source": "/atman-meaning",
+        "destination": "/what-is-atman",
+        "permanent": true
+      },
+      {
+        "source": "/brahman-meaning",
+        "destination": "/what-is-brahman",
+        "permanent": true
+      },
+      {
+        "source": "/yoga-meaning",
+        "destination": "/what-is-yoga",
+        "permanent": true
+      },
+      {
+        "source": "/ahimsa-meaning",
+        "destination": "/what-is-ahimsa",
+        "permanent": true
+      },
+      {
+        "source": "/guru-meaning",
+        "destination": "/what-is-guru",
+        "permanent": true
+      },
+      {
+        "source": "/bhakti-meaning",
+        "destination": "/what-is-bhakti",
+        "permanent": true
+      },
+      {
+        "source": "/jnana-meaning",
+        "destination": "/what-is-jnana",
+        "permanent": true
+      },
+      {
+        "source": "/viveka-meaning",
+        "destination": "/what-is-viveka",
+        "permanent": true
+      },
+      {
+        "source": "/vairagya-meaning",
+        "destination": "/what-is-vairagya",
+        "permanent": true
+      },
+      {
+        "source": "/samadhi-meaning",
+        "destination": "/what-is-samadhi",
+        "permanent": true
+      },
+      {
+        "source": "/seva-meaning",
+        "destination": "/what-is-seva",
+        "permanent": true
+      },
+      {
+        "source": "/avidya-meaning",
+        "destination": "/what-is-avidya",
+        "permanent": true
+      },
+      {
+        "source": "/ishvara-meaning",
+        "destination": "/what-is-ishvara",
+        "permanent": true
+      },
+      {
+        "source": "/jiva-meaning",
+        "destination": "/what-is-jiva",
+        "permanent": true
+      },
+      {
+        "source": "/karma-yoga-meaning",
+        "destination": "/what-is-karma-yoga",
+        "permanent": true
+      },
+      {
+        "source": "/raja-yoga-meaning",
+        "destination": "/what-is-raja-yoga",
+        "permanent": true
+      },
+      {
+        "source": "/purushartha-meaning",
+        "destination": "/what-is-purushartha",
+        "permanent": true
+      },
+      {
+        "source": "/advaita-meaning",
+        "destination": "/what-is-advaita",
+        "permanent": true
+      },
+      {
+        "source": "/ahamkara-meaning",
+        "destination": "/what-is-ahamkara",
+        "permanent": true
+      },
+      {
+        "source": "/niskama-karma-meaning",
+        "destination": "/what-is-niskama-karma",
+        "permanent": true
+      },
+      {
+        "source": "/pranayama-meaning",
+        "destination": "/what-is-pranayama",
+        "permanent": true
+      },
+      {
+        "source": "/rta-meaning",
+        "destination": "/what-is-rta",
+        "permanent": true
+      }
+    ]
   },
   "appDir": "/Users/ankitmishra/Developer/Sadhaka",
-  "relativeAppDir": "Developer/Sadhaka",
+  "relativeAppDir": "",
   "files": [
     ".next/routes-manifest.json",
     ".next/server/pages-manifest.json",
