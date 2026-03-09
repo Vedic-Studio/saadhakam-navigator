@@ -90,13 +90,13 @@ export const articles: ArticleMeta[] = [
             "Advaita Vedanta teaches that your deepest self and ultimate reality are one. A clear, jargon-free explanation of non-dualism, Maya, Brahman, and the path to self-realization.",
         pillar: "ancient-wisdom",
         publishDate: "2026-03-04",
-        readingTime: 9,
+        readingTime: 10,
         primaryKeyword: "advaita vedanta explained",
         relatedLinks: [
-            { text: "Advaita vs Dvaita Vedanta", href: "/compare/advaita-vs-dvaita" },
-            { text: "Stoicism vs Vedanta", href: "/compare/stoicism-vs-vedanta" },
-            { text: "Mindfulness vs Dhyana", href: "/compare/mindfulness-vs-dhyana" },
-            { text: "What is Maya?", href: "/learn/sanskrit/maya" },
+            { text: "What is Vedanta? A Complete Beginner's Guide", href: "/what-is-vedanta" },
+            { text: "Non-Duality vs Dualism", href: "/non-duality-vs-dualism" },
+            { text: "Adi Shankaracharya: Life & Legacy", href: "/adi-shankaracharya-life-teachings" },
+            { text: "Ancient Wisdom & Philosophies Hub", href: "/ancient-wisdom-philosophies" },
         ],
         faqs: [
             {
@@ -208,13 +208,13 @@ export const articles: ArticleMeta[] = [
             "Chapter 1 of the Bhagavad Gita sets the scene: Arjuna, the great warrior, collapses in grief on the battlefield. A complete explanation of Arjuna Vishada Yoga and its timeless relevance.",
         pillar: "sacred-texts",
         publishDate: "2026-03-04",
-        readingTime: 9,
+        readingTime: 10,
         primaryKeyword: "bhagavad gita chapter 1 summary",
         relatedLinks: [
-            { text: "Read BG Chapter 1 in Detail", href: "/texts/bhagavad-gita/chapter-1" },
-            { text: "What is Dharma?", href: "/learn/sanskrit/dharma" },
-            { text: "What is Karma?", href: "/learn/sanskrit/karma" },
             { text: "Bhagavad Gita Complete Guide", href: "/bhagavad-gita-complete-guide" },
+            { text: "Read BG Chapter 1 in Detail", href: "/texts/bhagavad-gita/chapter-1" },
+            { text: "Sacred Texts & Teachings Hub", href: "/sacred-texts-teachings" },
+            { text: "What is Dharma?", href: "/learn/sanskrit/dharma" },
         ],
         faqs: [
             {
@@ -385,13 +385,13 @@ export const articles: ArticleMeta[] = [
             "Build a sustainable daily spiritual practice (Sadhana) rooted in Sanatan Dharma. A practical guide to morning routine, Japa, meditation, and evening practice — even with a busy modern schedule.",
         pillar: "practical-practices",
         publishDate: "2026-03-04",
-        readingTime: 9,
+        readingTime: 10,
         primaryKeyword: "daily spiritual routine for beginners",
         relatedLinks: [
             { text: "How to Start Japa Meditation", href: "/how-to-start-japa" },
-            { text: "Japa vs Dhyana: Which to Choose", href: "/compare/japa-vs-dhyana" },
-            { text: "What is Sadhana?", href: "/learn/sanskrit/yoga" },
-            { text: "Find Your Spiritual Path", href: "/faith-finder" },
+            { text: "How to Choose a Mantra", href: "/how-to-choose-a-mantra" },
+            { text: "Starting Spiritual Practice", href: "/starting-spiritual-practice" },
+            { text: "Practical Spiritual Practices Hub", href: "/practical-spiritual-practices" },
         ],
         faqs: [
             {
@@ -444,13 +444,13 @@ export const articles: ArticleMeta[] = [
             "Not all mantras are the same — your temperament, intention, and spiritual path determine which mantra is right for you. A practical guide to choosing your personal mantra.",
         pillar: "practical-practices",
         publishDate: "2026-03-04",
-        readingTime: 8,
+        readingTime: 9,
         primaryKeyword: "how to choose a mantra",
         relatedLinks: [
-            { text: "How to Start Japa Meditation", href: "/how-to-start-japa" },
             { text: "10 Powerful Sanskrit Mantras", href: "/10-powerful-sanskrit-mantras" },
-            { text: "Japa vs Dhyana", href: "/compare/japa-vs-dhyana" },
-            { text: "Find Your Faith Path", href: "/faith-finder" },
+            { text: "How to Start Japa Meditation", href: "/how-to-start-japa" },
+            { text: "Which Meditation is Right for Me?", href: "/which-meditation-for-me" },
+            { text: "Practical Spiritual Practices Hub", href: "/practical-spiritual-practices" },
         ],
         faqs: [
             {

@@ -303,7 +303,12 @@ self.__SERVER_FILES_MANIFEST={
     "turbopack": {
       "root": "/Users/ankitmishra"
     },
-    "distDirRoot": ".next"
+    "distDirRoot": ".next",
+    "_originalRewrites": {
+      "beforeFiles": [],
+      "afterFiles": [],
+      "fallback": []
+    }
   },
   "appDir": "/Users/ankitmishra/Developer/Sadhaka",
   "relativeAppDir": "Developer/Sadhaka",

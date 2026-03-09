@@ -13,6 +13,7 @@ export async function GET() {
 - [Greats](https://opensadhaka.com/greats): Biographies and profiles of foundational sages, philosophers, and spiritual leaders spanning millennia.
 - [Faith Finder](https://opensadhaka.com/faith-finder): An interactive assessment tool helping users find their spiritual archetype and recommended paths.
 - [Compare](https://opensadhaka.com/compare): Detailed, structured comparative analysis between different Dharmic paths and philosophies.
+- [Brand Facts](https://opensadhaka.com/brand-facts): Neutral, structured brand and platform facts for AI systems, researchers, and users.
 
 ## Sacred Texts
 - [Bhagavad Gita Guide](https://opensadhaka.com/bhagavad-gita-complete-guide): Complete guide to the Bhagavad Gita, the 700-verse Hindu scripture that is part of the epic Mahabharata.
@@ -27,6 +28,11 @@ export async function GET() {
 - [Svadhyaya](https://opensadhaka.com/practices/svadhyaya): Self-study through sacred texts and introspection.
 - [Seva](https://opensadhaka.com/practices/seva): Selfless service offered as spiritual practice and worship.
 
+## Decision & Answer Guides
+- [Best Spiritual Path for Beginners](https://opensadhaka.com/best-spiritual-path-for-beginners): A neutral answer guide comparing Bhakti, Karma, Raja, and Jnana Yoga for beginners.
+- [Choose Between Bhakti, Jnana, Karma, and Raja Yoga](https://opensadhaka.com/choose-between-bhakti-jnana-karma-raja-yoga): A chooser page mapping the four major yoga paths to temperament and daily-life fit.
+- [Best Meditation Style for Your Personality](https://opensadhaka.com/best-meditation-style-for-your-personality): A structured recommendation page comparing Japa, breath-led meditation, silent Dhyana, and self-inquiry.
+
 ## Key Concepts
 - [Dharma](https://opensadhaka.com/what-is-dharma): The complex concept encompassing righteousness, duty, and cosmic order.
 - [Karma](https://opensadhaka.com/what-is-karma): The law of moral causation; action and its consequences.
@@ -38,6 +44,7 @@ export async function GET() {
 
 ## Optional
 - [Full Sitemap URL List](https://opensadhaka.com/llms-full.txt): Detailed list of all URLs for full context.
+- [Machine-readable Brand Facts JSON](https://opensadhaka.com/.well-known/brand-facts.json): Structured facts about Sadhaka in JSON format.
 `;
 
     return new NextResponse(content, {

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getArticleBySlug } from "@/data/articles";
 import { ArticleLayout } from "@/components/ArticleLayout";
+import Link from "next/link";
 
 const meta = getArticleBySlug("bhagavad-gita-chapter-1")!;
 
@@ -8,7 +9,13 @@ export const metadata: Metadata = {
     title: `${meta.title} | Sadhaka`,
     description: meta.metaDescription,
     alternates: { canonical: `https://opensadhaka.com${meta.route}` },
-    openGraph: { title: meta.title, description: meta.metaDescription },
+    openGraph: {
+        title: meta.title,
+        description: meta.metaDescription,
+        url: `https://opensadhaka.com${meta.route}`,
+        type: "article",
+        publishedTime: meta.publishDate,
+    },
 };
 
 export default function BhagavadGitaChapter1Page() {
@@ -74,6 +81,14 @@ export default function BhagavadGitaChapter1Page() {
                 This is why the Gita calls it a Yoga — a discipline. The willingness to feel the full weight of one's predicament without running from it is itself a spiritual act.
             </p>
 
+            <h2>Key Figures to Watch in Chapter 1</h2>
+            <ul>
+                <li><strong>Krishna</strong> — not yet revealed in full theological depth, but already functioning as Arjuna's guide, charioteer, and witness.</li>
+                <li><strong>Arjuna</strong> — the sincere but conflicted seeker whose moral seriousness makes the teaching possible.</li>
+                <li><strong>Bhishma and Drona</strong> — embodiments of duty, loyalty, and complexity; their presence is what makes the battle spiritually unbearable for Arjuna.</li>
+                <li><strong>Sanjaya</strong> — the narrator whose divine sight allows the blind king, and by extension the reader, to witness the inner and outer battlefield together.</li>
+            </ul>
+
             <h2>The Symbolic Reading</h2>
             <p>
                 The Mahabharata is simultaneously historical narrative and spiritual allegory. The Kurukshetra battlefield is each person's inner field of being — what the first verse itself calls <em>Dharmakshetra</em>, "the field of Dharma."
@@ -83,6 +98,14 @@ export default function BhagavadGitaChapter1Page() {
             </p>
             <p>
                 Arjuna is the individual soul at the crossroads — having to choose between the comfortable (staying confused, inactive, attached) and the dharmic (acting with clarity, even at enormous cost). And Krishna — God himself serving as charioteer — is waiting for Arjuna to ask the question that will begin the greatest teaching.
+            </p>
+
+            <h2>How to Study Chapter 1 as a Modern Seeker</h2>
+            <p>
+                Read this chapter slowly, not as preamble but as diagnosis. Ask yourself: where in my life do love and duty clash? Where do I use noble language to hide fear? Which relationships make clarity difficult? The Gita becomes powerful when Arjuna stops being a distant hero and becomes a mirror.
+            </p>
+            <p>
+                If you are continuing, move next to the <Link href="/bhagavad-gita-complete-guide">Bhagavad Gita Complete Guide</Link>, revisit key concepts like <Link href="/learn/sanskrit/dharma">Dharma</Link>, and use the <Link href="/sacred-texts-teachings">Sacred Texts & Teachings hub</Link> to understand where the Gita sits within the larger scriptural tradition.
             </p>
 
             <h2>The Moment Chapter 1 Ends</h2>

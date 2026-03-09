@@ -1,6 +1,84 @@
 1:"$Sreact.fragment"
 2:I[80238,["/_next/static/chunks/c2c90a60b3864557.js","/_next/static/chunks/f5d3be459c84d3b1.js"],""]
-3:I[13055,["/_next/static/chunks/c2c90a60b3864557.js","/_next/static/chunks/f5d3be459c84d3b1.js"],"default"]
-4:I[30732,["/_next/static/chunks/c2c90a60b3864557.js","/_next/static/chunks/f5d3be459c84d3b1.js"],"default"]
-:HL["/_next/static/chunks/ca8df5a6191651a9.css","style"]
-0:{"buildId":"MX5inBaWj3hlqvp0aJZx7","rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/ca8df5a6191651a9.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/c2c90a60b3864557.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/f5d3be459c84d3b1.js","async":true}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"Sadhaka\",\"url\":\"https://opensadhaka.com\",\"description\":\"Your AI-powered companion for exploring Sanatan Dharma, Bhagavad Gita, Vedas, and ancient spiritual wisdom.\",\"sameAs\":[\"https://twitter.com/opensadhaka\",\"https://instagram.com/opensadhaka\",\"https://youtube.com/@opensadhaka\"]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"Sadhaka\",\"url\":\"https://opensadhaka.com\",\"description\":\"Explore Sanatan Dharma with AI-powered spiritual guidance. Learn Bhagavad Gita, Vedas, and Upanishads.\",\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://opensadhaka.com/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}}"}}]]}],["$","body",null,{"children":[["$","$L2",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-S3DHYPPG9R","strategy":"afterInteractive"}],["$","$L2",null,{"id":"ga4-init","strategy":"afterInteractive","children":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-S3DHYPPG9R', {\n              page_path: window.location.pathname,\n            });\n          "}],["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]]}]]}]]}],"loading":null,"isPartial":false}
+5:I[13055,["/_next/static/chunks/c2c90a60b3864557.js","/_next/static/chunks/f5d3be459c84d3b1.js"],"default"]
+6:I[30732,["/_next/static/chunks/c2c90a60b3864557.js","/_next/static/chunks/f5d3be459c84d3b1.js"],"default"]
+:HL["/_next/static/chunks/ddeef4062a5f50ea.css","style"]
+3:Ta40,
+            (function () {
+              var safeStringify = function (value) {
+                try {
+                  return JSON.stringify(value || {});
+                } catch (e) {
+                  return '{}';
+                }
+              };
+
+              var sendEvent = function (eventName, params) {
+                if (typeof window.gtag === 'function') {
+                  window.gtag('event', eventName, params || {});
+                }
+              };
+
+              window.sadhaka = window.sadhaka || {};
+
+              window.sadhaka.quizStart = function () {
+                sendEvent('faith_finder_quiz_start', {
+                  quiz_name: 'faith_finder',
+                });
+              };
+
+              window.sadhaka.quizComplete = function (path, scores) {
+                sendEvent('faith_finder_quiz_complete', {
+                  primary_path: path || 'unknown',
+                  scores_json: safeStringify(scores),
+                });
+              };
+
+              window.sadhaka.emailCapture = function (path) {
+                sendEvent('faith_finder_email_capture', {
+                  primary_path: path || 'unknown',
+                });
+              };
+
+              window.sadhaka.quizResultView = function (path, source) {
+                sendEvent('faith_finder_result_view', {
+                  primary_path: path || 'unknown',
+                  source: source || 'unknown',
+                });
+              };
+
+              window.sadhaka.shareResult = function (path, source) {
+                sendEvent('faith_finder_result_share', {
+                  primary_path: path || 'unknown',
+                  source: source || 'unknown',
+                });
+              };
+
+              window.sadhaka.articleRead = function (slug, pillar) {
+                sendEvent('seo_article_read', {
+                  article_slug: slug || 'unknown',
+                  article_pillar: pillar || 'unknown',
+                });
+              };
+
+              window.sadhaka.ctaClick = function (label, destination) {
+                sendEvent('cta_click', {
+                  cta_label: label || 'unknown',
+                  cta_destination: destination || '',
+                });
+              };
+
+              window.sadhaka.appOpen = function () {
+                sendEvent('app_open', {
+                  surface: 'web',
+                });
+              };
+
+              window.sadhaka.pathExplore = function (path) {
+                sendEvent('path_explore', {
+                  path_name: path || 'unknown',
+                });
+              };
+            })();
+          0:{"buildId":"3qmk8dgXQ5Jwwm3DDqgZ1","rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/ddeef4062a5f50ea.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/c2c90a60b3864557.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/f5d3be459c84d3b1.js","async":true}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"Sadhaka\",\"url\":\"https://opensadhaka.com\",\"description\":\"Your AI-powered companion for exploring Sanatan Dharma, Bhagavad Gita, Vedas, and ancient spiritual wisdom.\",\"sameAs\":[\"https://twitter.com/opensadhaka\",\"https://instagram.com/opensadhaka\",\"https://youtube.com/@opensadhaka\"]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"Sadhaka\",\"url\":\"https://opensadhaka.com\",\"description\":\"Explore Sanatan Dharma with AI-powered spiritual guidance. Learn Bhagavad Gita, Vedas, and Upanishads.\",\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://opensadhaka.com/search?q={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}}"}}]]}],["$","body",null,{"children":[["$","$L2",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-S3DHYPPG9R","strategy":"afterInteractive"}],["$","$L2",null,{"id":"ga4-init","strategy":"afterInteractive","children":"\n            window.dataLayer = window.dataLayer || [];\n            window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};\n            window.gtag('js', new Date());\n            window.gtag('config', 'G-S3DHYPPG9R', {\n              page_path: window.location.pathname,\n            });\n          "}],["$","$L2",null,{"id":"sadhaka-analytics-bridge","strategy":"afterInteractive","children":"$3"}],"$L4"]}]]}]]}],"loading":null,"isPartial":false}
+4:["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]

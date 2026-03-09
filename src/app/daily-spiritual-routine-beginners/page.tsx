@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getArticleBySlug } from "@/data/articles";
 import { ArticleLayout } from "@/components/ArticleLayout";
+import Link from "next/link";
 
 const meta = getArticleBySlug("daily-spiritual-routine-beginners")!;
 
@@ -8,7 +9,13 @@ export const metadata: Metadata = {
     title: `${meta.title} | Sadhaka`,
     description: meta.metaDescription,
     alternates: { canonical: `https://opensadhaka.com${meta.route}` },
-    openGraph: { title: meta.title, description: meta.metaDescription },
+    openGraph: {
+        title: meta.title,
+        description: meta.metaDescription,
+        url: `https://opensadhaka.com${meta.route}`,
+        type: "article",
+        publishedTime: meta.publishDate,
+    },
 };
 
 export default function DailySpiritualRoutinePage() {
@@ -97,6 +104,32 @@ export default function DailySpiritualRoutinePage() {
                 This 20-minute practice, done consistently every day, will produce measurable transformation within 40 days. Do not underestimate consistency over intensity.
             </p>
 
+            <h2>Two Realistic Daily Templates</h2>
+
+            <h3>The 20-Minute Beginner Routine</h3>
+            <ul>
+                <li>2 minutes: sit, breathe, and settle</li>
+                <li>10 minutes: one round of Japa or guided mantra repetition</li>
+                <li>5 minutes: silent sitting after the mantra</li>
+                <li>3 minutes: set the intention for the day</li>
+            </ul>
+
+            <h3>The 60-Minute Deepening Routine</h3>
+            <ul>
+                <li>10 minutes: purification and preparation</li>
+                <li>10 minutes: pranayama</li>
+                <li>20 minutes: Japa</li>
+                <li>15 minutes: meditation</li>
+                <li>5 minutes: scripture reading or journaling</li>
+            </ul>
+
+            <h2>Three Mistakes That Break Sadhana</h2>
+            <ul>
+                <li><strong>Changing techniques too often.</strong> Depth comes from repetition, not constant novelty.</li>
+                <li><strong>Making the routine too ambitious.</strong> A perfect plan that lasts three days is weaker than a modest plan sustained for months.</li>
+                <li><strong>Waiting for the ideal mood.</strong> Real Sadhana is what you do even when inspiration is low and life is noisy.</li>
+            </ul>
+
             <h2>The Evening Practice</h2>
             <p>
                 Traditional Indian life includes <strong>Sandhyavandanam</strong> at sunset — a twilight practice acknowledging the transition between day and night. A modern equivalent:
@@ -114,6 +147,9 @@ export default function DailySpiritualRoutinePage() {
             </p>
             <p>
                 If you miss a day: do not restart the count in shame. Simply return the next day. If you miss more than a week, restart. The path is not a performance — it is a relationship with yourself.
+            </p>
+            <p>
+                If you need support building the routine, start with <Link href="/how-to-start-japa">How to Start Japa Meditation</Link>, refine your sound practice with <Link href="/how-to-choose-a-mantra">How to Choose a Mantra</Link>, and use <Link href="/starting-spiritual-practice">Starting Spiritual Practice</Link> or the <Link href="/practical-spiritual-practices">Practical Spiritual Practices hub</Link> for the bigger context.
             </p>
         </ArticleLayout>
     );

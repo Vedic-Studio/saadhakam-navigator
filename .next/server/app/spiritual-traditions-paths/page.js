@@ -1,5 +1,5 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/spiritual-traditions-paths/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__6cf4d2c1._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__8a288215._.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_d1cab7aa._.js")
 R.c("server/chunks/ssr/Developer_Sadhaka_08ad153a._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__5a41500a._.js")

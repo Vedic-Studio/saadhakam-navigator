@@ -81,6 +81,30 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
           changeFrequency: "weekly",
           priority: 0.9,
         },
+        {
+          url: `${baseUrl}/brand-facts`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.7,
+        },
+        {
+          url: `${baseUrl}/best-spiritual-path-for-beginners`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.8,
+        },
+        {
+          url: `${baseUrl}/choose-between-bhakti-jnana-karma-raja-yoga`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.8,
+        },
+        {
+          url: `${baseUrl}/best-meditation-style-for-your-personality`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.8,
+        },
         // Static articles
         {
           url: `${baseUrl}/what-is-vedanta`,

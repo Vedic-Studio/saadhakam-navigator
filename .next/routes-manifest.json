@@ -139,6 +139,24 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/10-powerful-sanskrit-mantras",
+      "regex": "^/10\\-powerful\\-sanskrit\\-mantras(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/10\\-powerful\\-sanskrit\\-mantras(?:/)?$"
+    },
+    {
+      "page": "/adi-shankaracharya-life-teachings",
+      "regex": "^/adi\\-shankaracharya\\-life\\-teachings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/adi\\-shankaracharya\\-life\\-teachings(?:/)?$"
+    },
+    {
+      "page": "/advaita-vedanta-explained",
+      "regex": "^/advaita\\-vedanta\\-explained(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/advaita\\-vedanta\\-explained(?:/)?$"
+    },
+    {
       "page": "/ancient-wisdom-philosophies",
       "regex": "^/ancient\\-wisdom\\-philosophies(?:/)?$",
       "routeKeys": {},
@@ -151,16 +169,76 @@
       "namedRegex": "^/api/faith\\-finder/submit(?:/)?$"
     },
     {
+      "page": "/api/indexnow",
+      "regex": "^/api/indexnow(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/indexnow(?:/)?$"
+    },
+    {
+      "page": "/api/indexnow/submit",
+      "regex": "^/api/indexnow/submit(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/indexnow/submit(?:/)?$"
+    },
+    {
+      "page": "/api/llm-content",
+      "regex": "^/api/llm\\-content(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/llm\\-content(?:/)?$"
+    },
+    {
+      "page": "/best-meditation-style-for-your-personality",
+      "regex": "^/best\\-meditation\\-style\\-for\\-your\\-personality(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best\\-meditation\\-style\\-for\\-your\\-personality(?:/)?$"
+    },
+    {
+      "page": "/best-spiritual-path-for-beginners",
+      "regex": "^/best\\-spiritual\\-path\\-for\\-beginners(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/best\\-spiritual\\-path\\-for\\-beginners(?:/)?$"
+    },
+    {
+      "page": "/bhagavad-gita-chapter-1",
+      "regex": "^/bhagavad\\-gita\\-chapter\\-1(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/bhagavad\\-gita\\-chapter\\-1(?:/)?$"
+    },
+    {
       "page": "/bhagavad-gita-complete-guide",
       "regex": "^/bhagavad\\-gita\\-complete\\-guide(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/bhagavad\\-gita\\-complete\\-guide(?:/)?$"
     },
     {
+      "page": "/brand-facts",
+      "regex": "^/brand\\-facts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/brand\\-facts(?:/)?$"
+    },
+    {
+      "page": "/choose-between-bhakti-jnana-karma-raja-yoga",
+      "regex": "^/choose\\-between\\-bhakti\\-jnana\\-karma\\-raja\\-yoga(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/choose\\-between\\-bhakti\\-jnana\\-karma\\-raja\\-yoga(?:/)?$"
+    },
+    {
       "page": "/compare",
       "regex": "^/compare(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/compare(?:/)?$"
+    },
+    {
+      "page": "/content-agent",
+      "regex": "^/content\\-agent(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/content\\-agent(?:/)?$"
+    },
+    {
+      "page": "/daily-spiritual-routine-beginners",
+      "regex": "^/daily\\-spiritual\\-routine\\-beginners(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/daily\\-spiritual\\-routine\\-beginners(?:/)?$"
     },
     {
       "page": "/faith-finder",
@@ -173,6 +251,42 @@
       "regex": "^/greats(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/greats(?:/)?$"
+    },
+    {
+      "page": "/how-to-choose-a-mantra",
+      "regex": "^/how\\-to\\-choose\\-a\\-mantra(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/how\\-to\\-choose\\-a\\-mantra(?:/)?$"
+    },
+    {
+      "page": "/how-to-start-japa",
+      "regex": "^/how\\-to\\-start\\-japa(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/how\\-to\\-start\\-japa(?:/)?$"
+    },
+    {
+      "page": "/inquiry-vs-devotion-path",
+      "regex": "^/inquiry\\-vs\\-devotion\\-path(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/inquiry\\-vs\\-devotion\\-path(?:/)?$"
+    },
+    {
+      "page": "/llms-full.txt",
+      "regex": "^/llms\\-full\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/llms\\-full\\.txt(?:/)?$"
+    },
+    {
+      "page": "/llms.txt",
+      "regex": "^/llms\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/llms\\.txt(?:/)?$"
+    },
+    {
+      "page": "/non-duality-vs-dualism",
+      "regex": "^/non\\-duality\\-vs\\-dualism(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/non\\-duality\\-vs\\-dualism(?:/)?$"
     },
     {
       "page": "/philosophies",
@@ -199,10 +313,28 @@
       "namedRegex": "^/sacred\\-texts\\-teachings(?:/)?$"
     },
     {
+      "page": "/shaivism-vs-vaishnavism",
+      "regex": "^/shaivism\\-vs\\-vaishnavism(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/shaivism\\-vs\\-vaishnavism(?:/)?$"
+    },
+    {
+      "page": "/spiritual-paths-explained",
+      "regex": "^/spiritual\\-paths\\-explained(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/spiritual\\-paths\\-explained(?:/)?$"
+    },
+    {
       "page": "/spiritual-traditions-paths",
       "regex": "^/spiritual\\-traditions\\-paths(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/spiritual\\-traditions\\-paths(?:/)?$"
+    },
+    {
+      "page": "/starting-spiritual-practice",
+      "regex": "^/starting\\-spiritual\\-practice(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/starting\\-spiritual\\-practice(?:/)?$"
     },
     {
       "page": "/texts",
@@ -232,6 +364,18 @@
       "regex": "^/traditions(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/traditions(?:/)?$"
+    },
+    {
+      "page": "/what-is-vedanta",
+      "regex": "^/what\\-is\\-vedanta(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/what\\-is\\-vedanta(?:/)?$"
+    },
+    {
+      "page": "/which-meditation-for-me",
+      "regex": "^/which\\-meditation\\-for\\-me(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/which\\-meditation\\-for\\-me(?:/)?$"
     },
     {
       "page": "/yoga-sutras-complete-guide",

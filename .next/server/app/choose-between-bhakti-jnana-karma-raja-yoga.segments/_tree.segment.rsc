@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/ddeef4062a5f50ea.css","style"]
+0:{"buildId":"3qmk8dgXQ5Jwwm3DDqgZ1","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"choose-between-bhakti-jnana-karma-raja-yoga","paramType":null,"paramKey":"choose-between-bhakti-jnana-karma-raja-yoga","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

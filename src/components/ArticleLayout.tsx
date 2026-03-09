@@ -19,6 +19,9 @@ export function ArticleLayout({
     pillarHref,
     children,
 }: ArticleLayoutProps) {
+    const pageUrl = `https://opensadhaka.com${meta.route}`;
+    const pillarUrl = `https://opensadhaka.com${pillarHref}`;
+
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -37,7 +40,19 @@ export function ArticleLayout({
         "@type": "Article",
         headline: meta.title,
         description: meta.metaDescription,
+        url: pageUrl,
+        mainEntityOfPage: pageUrl,
         datePublished: meta.publishDate,
+        dateModified: meta.publishDate,
+        articleSection: pillarLabel,
+        keywords: [meta.primaryKeyword],
+        about: [{ "@type": "Thing", name: meta.primaryKeyword }],
+        isPartOf: {
+            "@type": "WebPage",
+            name: pillarLabel,
+            url: pillarUrl,
+        },
+        inLanguage: "en",
         author: { "@type": "Organization", name: "Sadhaka" },
         publisher: { "@type": "Organization", name: "Sadhaka", url: "https://opensadhaka.com" },
     };

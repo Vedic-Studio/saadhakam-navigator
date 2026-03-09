@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getArticleBySlug } from "@/data/articles";
 import { ArticleLayout } from "@/components/ArticleLayout";
+import Link from "next/link";
 
 const meta = getArticleBySlug("how-to-choose-a-mantra")!;
 
@@ -8,7 +9,13 @@ export const metadata: Metadata = {
     title: `${meta.title} | Sadhaka`,
     description: meta.metaDescription,
     alternates: { canonical: `https://opensadhaka.com${meta.route}` },
-    openGraph: { title: meta.title, description: meta.metaDescription },
+    openGraph: {
+        title: meta.title,
+        description: meta.metaDescription,
+        url: `https://opensadhaka.com${meta.route}`,
+        type: "article",
+        publishedTime: meta.publishDate,
+    },
 };
 
 export default function HowToChooseMantraPage() {
@@ -79,6 +86,14 @@ export default function HowToChooseMantraPage() {
                 Sit quietly, close your eyes, and mentally repeat each candidate mantra for 2-3 minutes. Observe the felt sense in the body. The right mantra will produce a quality of stillness or warmth or expansion noticeably different from others.
             </p>
 
+            <h2>A Quick Mantra Decision Guide</h2>
+            <ul>
+                <li><strong>If you are devotional and love deity-forms:</strong> start with a Shiva, Vishnu, Devi, or Ganesha mantra that already feels emotionally alive.</li>
+                <li><strong>If you are contemplative and inquiry-oriented:</strong> begin with Om, So'ham, or Aham Brahmasmi.</li>
+                <li><strong>If you are anxious or overstimulated:</strong> choose a calming, simple mantra like So'ham or Om Shanti.</li>
+                <li><strong>If you feel scattered and want discipline:</strong> pick one universally respected mantra and stay with it for 40 days before evaluating the result.</li>
+            </ul>
+
             <h2>Beeja vs Deity vs Mahavakya Mantras</h2>
             <p>
                 Understanding the three main types helps narrow your choice:
@@ -103,6 +118,9 @@ export default function HowToChooseMantraPage() {
             </p>
             <p>
                 Pick one. Sit with it. Give it time to open.
+            </p>
+            <p>
+                Once you choose, pair this guide with <Link href="/how-to-start-japa">How to Start Japa Meditation</Link> so the mantra becomes a real discipline, browse <Link href="/10-powerful-sanskrit-mantras">10 Powerful Sanskrit Mantras</Link> if you still need examples, and use <Link href="/which-meditation-for-me">Which Meditation is Right for Me?</Link> or the <Link href="/practical-spiritual-practices">Practical Spiritual Practices hub</Link> if you are still deciding between sound, silence, devotion, and inquiry.
             </p>
         </ArticleLayout>
     );

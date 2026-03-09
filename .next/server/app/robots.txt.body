@@ -21,4 +21,27 @@ Allow: /
 User-Agent: facebookexternalhit
 Allow: /
 
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: ClaudeBot
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: GoogleOther
+Allow: /
+
+User-Agent: anthropic-ai
+Allow: /
+
+User-Agent: cohere-ai
+Allow: /
+
+User-Agent: CCBot
+Allow: /
+
 Sitemap: https://opensadhaka.com/sitemap.xml
+Sitemap: https://opensadhaka.com/llms.txt
+Sitemap: https://opensadhaka.com/llms-full.txt

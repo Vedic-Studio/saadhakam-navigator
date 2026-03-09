@@ -1,5 +1,5 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/sacred-texts-teachings/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__dfa3bf35._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__ec2a0efa._.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_d1cab7aa._.js")
 R.c("server/chunks/ssr/Developer_Sadhaka_b75e88b0._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__5a41500a._.js")

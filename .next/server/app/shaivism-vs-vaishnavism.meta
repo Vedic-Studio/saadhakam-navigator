@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/shaivism-vs-vaishnavism/layout,_N_T_/shaivism-vs-vaishnavism/page,_N_T_/shaivism-vs-vaishnavism"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/shaivism-vs-vaishnavism/__PAGE__",
+    "/shaivism-vs-vaishnavism",
+    "/_index",
+    "/_head"
+  ]
+}

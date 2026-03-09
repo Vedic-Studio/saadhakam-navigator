@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getArticleBySlug } from "@/data/articles";
 import { ArticleLayout } from "@/components/ArticleLayout";
+import Link from "next/link";
 
 const meta = getArticleBySlug("advaita-vedanta-explained")!;
 
@@ -8,7 +9,13 @@ export const metadata: Metadata = {
     title: `${meta.title} | Sadhaka`,
     description: meta.metaDescription,
     alternates: { canonical: `https://opensadhaka.com${meta.route}` },
-    openGraph: { title: meta.title, description: meta.metaDescription },
+    openGraph: {
+        title: meta.title,
+        description: meta.metaDescription,
+        url: `https://opensadhaka.com${meta.route}`,
+        type: "article",
+        publishedTime: meta.publishDate,
+    },
 };
 
 export default function AdvaitaVedantaPage() {
@@ -79,6 +86,18 @@ export default function AdvaitaVedantaPage() {
             </p>
             <p>
                 Shankaracharya's preparation for this inquiry requires four qualities: Viveka (discriminating between real and unreal), Vairagya (dispassion toward impermanent things), Shatsampat (six virtues including equanimity and faith), and Mumukshutva (intense longing for liberation).
+            </p>
+
+            <h2>Three Common Misunderstandings About Advaita</h2>
+            <ul>
+                <li><strong>Advaita is not nihilism.</strong> It does not say nothing is real. It says the world is real, but not in the separate and absolute way we ordinarily imagine.</li>
+                <li><strong>Advaita is not anti-devotion.</strong> Many Advaitins use Bhakti, prayer, and mantra as essential preparation. Even Shankaracharya wrote deeply devotional hymns.</li>
+                <li><strong>Advaita is not a slogan.</strong> Saying “all is one” is easy. Removing the lived sense of separation through inquiry, discrimination, and practice is the actual work.</li>
+            </ul>
+
+            <h2>A Beginner's Reading Path for Advaita</h2>
+            <p>
+                If this teaching resonates, do not stop at a single article. Begin with <Link href="/what-is-vedanta">What is Vedanta?</Link> for the broader map, then read <Link href="/non-duality-vs-dualism">Non-Duality vs Dualism</Link> to understand the major alternatives, and study <Link href="/adi-shankaracharya-life-teachings">Adi Shankaracharya's life and legacy</Link> to see how Advaita became a durable intellectual and spiritual tradition. For a wider overview, the <Link href="/ancient-wisdom-philosophies">Ancient Wisdom & Philosophies hub</Link> connects this article to the larger ecosystem of Darshanas.
             </p>
 
             <h2>Why Advaita Speaks to the Western Mind</h2>

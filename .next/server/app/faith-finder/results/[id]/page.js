@@ -1,7 +1,7 @@
 var R=require("../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/faith-finder/results/[id]/page.js")
 R.c("server/chunks/ssr/[root-of-the-server]__d1be80f7._.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_d1cab7aa._.js")
-R.c("server/chunks/ssr/Developer_Sadhaka_33eb18fb._.js")
+R.c("server/chunks/ssr/Developer_Sadhaka_d4c0e824._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__5a41500a._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__4f2f558f._.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_22c68528._.js")
@@ -10,6 +10,7 @@ R.c("server/chunks/ssr/Developer_Sadhaka_e323efb4._.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_client_components_5e298701._.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_client_components_builtin_forbidden_d997d675.js")
 R.c("server/chunks/ssr/6a2a8_next_dist_client_components_builtin_unauthorized_f1a06df4.js")
+R.c("server/chunks/ssr/[root-of-the-server]__7be1a238._.js")
 R.c("server/chunks/ssr/aae35__next-internal_server_app_faith-finder_results_[id]_page_actions_52abc2fd.js")
-R.m(80931)
-module.exports=R.m(80931).exports
+R.m(60472)
+module.exports=R.m(60472).exports

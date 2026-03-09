@@ -111,6 +111,7 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
 |---|---|---|---|---|
 | 2026-03-09 | Weekly | Initial tracker created, technical SEO and Faith Finder analytics improvements applied | Baseline established | Continue weekly publishing + index submission |
 | 2026-03-09 | Weekly | Expanded the 4 pillar hub pages with richer editorial copy, FAQ/collection schema, and direct internal links to quick-win/supporting articles | Stronger Task 8/9 cluster architecture and crawl paths for pillar ↔ spoke discovery | Continue refreshing remaining quick-win articles, submit updated URLs through IndexNow/GSC, and monitor indexing/ranking movement |
+| 2026-03-09 | Weekly | Refreshed 4 priority quick-win articles (`advaita-vedanta-explained`, `bhagavad-gita-chapter-1`, `daily-spiritual-routine-beginners`, `how-to-choose-a-mantra`) with richer scannable sections, tighter internal links, and stronger article metadata/schema | Improved Task 9 article quality and cluster connectivity from article ↔ pillar ↔ support pages | Refresh the remaining quick-win articles, then resubmit updated URLs through IndexNow/GSC and watch for indexing + CTR movement |
 
 ---
 

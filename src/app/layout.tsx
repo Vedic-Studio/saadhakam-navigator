@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://opensadhaka.com";
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-S3DHYPPG9R";
+const gaMeasurementId = "G-S3DHYPPG9R";
 const gscVerificationCode =
   process.env.GSC_VERIFICATION?.trim() ||
   process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim();
@@ -110,6 +110,22 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = window.gtag || gtag;
+              gtag('js', new Date());
+
+              gtag('config', '${gaMeasurementId}');
+            `,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
@@ -121,21 +137,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* Google Analytics */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
-            window.gtag('js', new Date());
-            window.gtag('config', '${gaMeasurementId}', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
         <Script id="sadhaka-analytics-bridge" strategy="afterInteractive">
           {`
             (function () {

@@ -14,6 +14,7 @@ const footerLinks = {
     { label: "Greats", href: "/greats" },
     { label: "Sacred Texts", href: "/texts" },
     { label: "Compare", href: "/compare" },
+    { label: "Brand Facts", href: "/brand-facts" },
   ],
   start: [
     { label: "Find Your Path", href: "/faith-finder" },

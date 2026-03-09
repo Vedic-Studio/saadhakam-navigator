@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/10-powerful-sanskrit-mantras/layout,_N_T_/10-powerful-sanskrit-mantras/page,_N_T_/10-powerful-sanskrit-mantras"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/10-powerful-sanskrit-mantras/__PAGE__",
+    "/10-powerful-sanskrit-mantras",
+    "/_index",
+    "/_head"
+  ]
+}
