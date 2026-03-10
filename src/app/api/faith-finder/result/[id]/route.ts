@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getFaithFinderSubmission } from "@/lib/faithFinderStorage";
+import { parseStatelessFaithFinderResultId } from "@/lib/faithFinderResultToken";
 
 export async function GET(
     _request: Request,
@@ -7,6 +8,16 @@ export async function GET(
 ) {
     try {
         const { id } = await context.params;
+
+        const stateless = parseStatelessFaithFinderResultId(id);
+        if (stateless) {
+            return NextResponse.json({
+                id,
+                createdAt: stateless.createdAt,
+                result: stateless.result,
+            });
+        }
+
         const submission = await getFaithFinderSubmission(id);
 
         if (!submission) {

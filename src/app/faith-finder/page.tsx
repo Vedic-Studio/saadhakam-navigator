@@ -74,7 +74,7 @@ export default function FaithFinderPage() {
                       {
                         n: 3,
                         title: "Detailed Report",
-                        desc: "Get a complete PDF with traditions, practices, and a 30-day journey plan.",
+                        desc: "Get a detailed report with traditions, practices, and a spiritual journey plan.",
                       },
                     ].map(({ n, title, desc }) => (
                       <div className="text-center" key={n}>

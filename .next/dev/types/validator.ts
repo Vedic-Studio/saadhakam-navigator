@@ -101,6 +101,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/best-bhagavad-gita-translation-for-beginners/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/best-bhagavad-gita-translation-for-beginners">> = Specific
+  const handler = {} as typeof import("../../../src/app/best-bhagavad-gita-translation-for-beginners/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/best-meditation-style-for-your-personality/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/best-meditation-style-for-your-personality">> = Specific
@@ -141,6 +150,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/brand-facts">> = Specific
   const handler = {} as typeof import("../../../src/app/brand-facts/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/can-i-chant-a-mantra-without-initiation/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/can-i-chant-a-mantra-without-initiation">> = Specific
+  const handler = {} as typeof import("../../../src/app/can-i-chant-a-mantra-without-initiation/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/can-i-practice-vedanta-without-converting/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/can-i-practice-vedanta-without-converting">> = Specific
+  const handler = {} as typeof import("../../../src/app/can-i-practice-vedanta-without-converting/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -452,6 +479,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/what-are-the-upanishads/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/what-are-the-upanishads">> = Specific
+  const handler = {} as typeof import("../../../src/app/what-are-the-upanishads/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/what-is-vedanta/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/what-is-vedanta">> = Specific
@@ -528,6 +564,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/llm-content">> = Specific
   const handler = {} as typeof import("../../../src/app/api/llm-content/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/api/resend/hello/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/resend/hello">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/resend/hello/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

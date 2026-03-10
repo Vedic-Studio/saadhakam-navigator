@@ -224,7 +224,7 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
                                 Get Your Complete Report
                             </h3>
                             <p className="text-muted-foreground">
-                                Receive a detailed PDF report with personalized guidance, resources, and a 30-day spiritual journey plan.
+                                Receive your personalized guidance, recommended resources, and a spiritual journey plan directly in your inbox.
                             </p>
                         </div>
                         <EmailCaptureForm

@@ -33,7 +33,14 @@ export const EmailCaptureForm = ({ result, onSuccess }: EmailCaptureFormProps) =
             });
 
             if (!response.ok) {
-                throw new Error('Failed to submit email');
+                let message = 'Failed to submit email';
+                try {
+                    const err = (await response.json()) as { error?: string };
+                    if (err?.error) message = err.error;
+                } catch {
+                    // ignore json parsing errors and keep generic message
+                }
+                throw new Error(message);
             }
 
             const data = (await response.json()) as { id?: string };
@@ -53,7 +60,7 @@ export const EmailCaptureForm = ({ result, onSuccess }: EmailCaptureFormProps) =
 
             onSuccess();
         } catch (err) {
-            setError('Something went wrong. Please try again.');
+            setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
         } finally {
             setLoading(false);
         }
