@@ -1,3 +1,7 @@
+import { conceptsBatch1 } from "./conceptsBatch1";
+import { conceptsBatch2 } from "./conceptsBatch2";
+import { conceptsBatch3 } from "./conceptsBatch3";
+
 export interface Concept {
   slug: string;
   sanskritWord: string;
@@ -830,6 +834,9 @@ export const concepts: Concept[] = [
     sourceTexts: ["Bhagavata Purana", "Brahma Sutras", "Bhakti literature"],
     tags: ["divine-play", "devotion", "theology", "cosmos"],
   },
+  ...conceptsBatch1,
+  ...conceptsBatch2,
+  ...conceptsBatch3,
 ];
 
 export function getConceptBySlug(slug: string): Concept | undefined {

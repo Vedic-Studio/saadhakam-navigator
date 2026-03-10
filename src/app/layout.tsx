@@ -130,22 +130,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-
-            gtag('config', '${gaMeasurementId}', {
-              send_page_view: false,
-            });
-          `}
-        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -158,8 +142,31 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Script id="sadhaka-analytics-bridge" strategy="afterInteractive">
-          {`
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
+              gtag('js', new Date());
+
+              gtag('config', '${gaMeasurementId}', {
+                send_page_view: false,
+              });
+            `,
+          }}
+        />
+        <Script
+          id="sadhaka-analytics-bridge"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
             (function () {
               var safeStringify = function (value) {
                 try {
@@ -245,8 +252,9 @@ export default function RootLayout({
                 });
               };
             })();
-          `}
-        </Script>
+          `,
+          }}
+        />
         <Suspense fallback={null}>
           <AnalyticsTracker />
         </Suspense>
