@@ -26,5 +26,8 @@ dist-ssr
 *.sln
 *.sw?
 
+# Next.js build output (never commit)
+.next/
+
 # Local Claude worktree metadata (must never be committed)
 .claude/worktrees/
