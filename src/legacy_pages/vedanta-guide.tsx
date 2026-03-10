@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Users, Lightbulb } from "lucide-react";

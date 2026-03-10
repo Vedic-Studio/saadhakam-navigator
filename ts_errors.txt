@@ -1,0 +1,62 @@
+src/app/topics/[topic]/page.tsx(5,10): error TS2724: '"@/data/traditions"' has no exported member named 'getTraditionsBySlugs'. Did you mean 'getTraditionBySlug'?
+src/legacy_pages/adi-shankaracharya-life-teachings.tsx(11,9): error TS2322: Type '{ title: string; subtitle: string; backgroundImage: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/daily-spiritual-routine-beginners.tsx(10,9): error TS2322: Type '{ title: string; subtitle: string; backgroundImage: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/how-to-choose-a-mantra.tsx(10,9): error TS2322: Type '{ title: string; subtitle: string; backgroundImage: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/non-duality-vs-dualism.tsx(52,9): error TS2322: Type '{ title: string; subtitle: string; description: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/shaivism-vs-vaishnavism.tsx(3,53): error TS2305: Module '"lucide-react"' has no exported member 'Lotus'.
+src/legacy_pages/spiritual-practices.tsx(18,17): error TS2322: Type '{ title: string; subtitle: string; description: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/spiritual-practices.tsx(25,17): error TS2322: Type '{ title: string; pillars: { icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; title: string; description: string; }[]; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/spiritual-practices.tsx(52,17): error TS2322: Type '{ title: string; description: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/spiritual-practices.tsx(58,17): error TS2322: Type '{ title: string; faqs: { question: string; answer: string; }[]; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/StotraCategory.tsx(6,56): error TS2307: Cannot find module '@/data/stotras' or its corresponding type declarations.
+src/legacy_pages/StotraCategory.tsx(22,46): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/legacy_pages/StotraCategory.tsx(53,44): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/legacy_pages/StotraCategory.tsx(53,47): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/legacy_pages/StotraCategory.tsx(122,30): error TS7006: Parameter 'stotra' implicitly has an 'any' type.
+src/legacy_pages/StotraCategory.tsx(122,38): error TS7006: Parameter 'idx' implicitly has an 'any' type.
+src/legacy_pages/StotraCategory.tsx(168,25): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/legacy_pages/StotraCategory.tsx(169,22): error TS7006: Parameter 'cat' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(7,82): error TS2307: Cannot find module '@/data/stotras' or its corresponding type declarations.
+src/legacy_pages/StotraDetail.tsx(8,29): error TS2307: Cannot find module '@/data/stotras' or its corresponding type declarations.
+src/legacy_pages/StotraDetail.tsx(17,57): error TS7006: Parameter 'c' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(20,45): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(52,50): error TS7006: Parameter '_' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(52,53): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(153,32): error TS7006: Parameter 'tag' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(197,37): error TS7006: Parameter 'verse' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(197,44): error TS7006: Parameter 'idx' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(275,41): error TS7006: Parameter 'benefit' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(275,50): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(362,45): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/legacy_pages/StotraDetail.tsx(393,39): error TS7006: Parameter 'cat' implicitly has an 'any' type.
+src/legacy_pages/Stotras.tsx(6,43): error TS2307: Cannot find module '@/data/stotras' or its corresponding type declarations.
+src/legacy_pages/Stotras.tsx(36,42): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/legacy_pages/Stotras.tsx(53,50): error TS7006: Parameter 'cat' implicitly has an 'any' type.
+src/legacy_pages/Stotras.tsx(53,55): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/legacy_pages/Stotras.tsx(106,35): error TS7006: Parameter 'cat' implicitly has an 'any' type.
+src/legacy_pages/Stotras.tsx(148,36): error TS7006: Parameter 'stotra' implicitly has an 'any' type.
+src/legacy_pages/Stotras.tsx(171,35): error TS7006: Parameter 'cat' implicitly has an 'any' type.
+src/legacy_pages/Stotras.tsx(172,49): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/legacy_pages/Stotras.tsx(188,37): error TS7006: Parameter 'stotra' implicitly has an 'any' type.
+src/legacy_pages/vedanta-guide.tsx(19,17): error TS2322: Type '{ title: string; subtitle: string; description: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/vedanta-guide.tsx(26,17): error TS2322: Type '{ title: string; pillars: { icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>; title: string; description: string; }[]; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/vedanta-guide.tsx(53,17): error TS2322: Type '{ title: string; description: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/vedanta-guide.tsx(59,17): error TS2322: Type '{ title: string; description: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/legacy_pages/vedanta-guide.tsx(65,17): error TS2322: Type '{ title: string; faqs: { question: string; answer: string; }[]; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.
+src/test/example.test.ts(1,38): error TS2307: Cannot find module 'vitest' or its corresponding type declarations.
+vite.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react-swc' or its corresponding type declarations.
+vitest.config.ts(1,30): error TS2307: Cannot find module 'vitest/config' or its corresponding type declarations.
+vitest.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react-swc' or its corresponding type declarations.

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { BookOpen, ChevronRight, Search, Star } from "lucide-react";

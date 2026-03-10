@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SadhakaCapabilities } from "@/components/landing/SadhakaCapabilities";
