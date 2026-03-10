@@ -11,11 +11,21 @@ export default function HowToChooseMantraPage() {
     return (
         <ArticleLayout meta={meta} pillarLabel="Practical Practices" pillarHref="/practical-spiritual-practices">
             <p>
+                <strong>Direct answer:</strong> choose one simple mantra that matches your temperament (devotional, contemplative, or calming), then practice it daily for 40 days before switching.
+            </p>
+            <p>
                 There are thousands of Sanskrit mantras. Each tradition has its prescribed texts, its lineage-specific syllables, its Beeja mantras and Deity mantras and path-specific invocations. Faced with this abundance, most seekers either pick something arbitrarily, or freeze in indecision and pick nothing.
             </p>
             <p>
                 Neither is necessary. This guide gives you a clear, principled framework for choosing a mantra — drawn from the traditional criteria and adapted for practitioners without access to a guru.
             </p>
+
+            <h2>Best for / Not best for / Where to start</h2>
+            <ul>
+                <li><strong>Best for:</strong> beginners who want a practical way to select one mantra and build consistency.</li>
+                <li><strong>Not best for:</strong> people expecting instant results while changing mantras every few days.</li>
+                <li><strong>Where to start:</strong> test 2–3 universal mantras briefly, choose one that settles your mind, and commit for 40 days.</li>
+            </ul>
 
             <h2>First: What is a Mantra, Really?</h2>
             <p>

@@ -88,11 +88,17 @@ const priorityGroups = {
         "/compare/japa-vs-dhyana",
     ],
     prioritizedArticles: [
+        "/what-is-vedanta",
         "/bhagavad-gita-complete-guide",
         "/yoga-sutras-complete-guide",
         "/advaita-vedanta-explained",
         "/how-to-start-japa",
+        "/how-to-choose-a-mantra",
         "/daily-spiritual-routine-beginners",
+        "/can-i-practice-vedanta-without-converting",
+        "/can-i-chant-a-mantra-without-initiation",
+        "/what-are-the-upanishads",
+        "/best-bhagavad-gita-translation-for-beginners",
     ],
     scripture: [
         "/texts/bhagavad-gita",

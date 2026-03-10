@@ -60,10 +60,22 @@ export default function AdvaitaVedantaPage() {
                         <h1 className="font-display text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
                             Beyond the <span className="text-orange-500 italic block mt-2">Binary Mind</span>
                         </h1>
+                        <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
+                            <strong>Direct answer:</strong> Advaita Vedanta says your deepest Self is not separate from ultimate reality; practice is about removing false identification, not creating a new belief system.
+                        </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             Advaita Vedanta is the philosophical claim that the boundary between "you" and the "universe" is not a physical wall, but a persistent cognitive superimposition.
                         </p>
                     </header>
+
+                    <section className="mb-14 rounded-2xl border border-border/60 bg-card/40 p-8">
+                        <h2 className="font-display text-3xl font-bold mb-6">Best for / Not best for / Where to start</h2>
+                        <ul className="space-y-3 text-muted-foreground">
+                            <li><strong className="text-foreground">Best for:</strong> analytically inclined seekers who want rigorous inquiry into identity, consciousness, and suffering.</li>
+                            <li><strong className="text-foreground">Not best for:</strong> people expecting instant emotional relief without disciplined reflection and contemplative practice.</li>
+                            <li><strong className="text-foreground">Where to start:</strong> learn core terms (Atman, Brahman, Maya), read an accessible Vedanta primer, then apply daily self-inquiry in real situations.</li>
+                        </ul>
+                    </section>
 
                     <div className="grid lg:grid-cols-3 gap-12 mb-20">
                         <div className="lg:col-span-2 space-y-12">

@@ -139,6 +139,9 @@ export default function ChooseBetweenYogaPathsPage() {
                         <h1 className="font-display text-5xl md:text-7xl font-bold mb-8 tracking-tight">The <span className="text-orange-500">Chooser's Guide</span> to the Four Yogas</h1>
                         <div className="grid md:grid-cols-3 gap-8 items-start">
                             <div className="md:col-span-2 space-y-6">
+                                <p className="text-lg text-foreground leading-relaxed">
+                                    <strong>Direct answer:</strong> choose Bhakti if your center is emotion, Karma if your center is action, Raja if your center is discipline, and Jnana if your center is inquiry.
+                                </p>
                                 <p className="text-2xl text-foreground font-medium leading-tight">
                                     Spiritual progress is not about finding the "best" system, but the system that best matches your current psychological momentum.
                                 </p>
@@ -157,6 +160,15 @@ export default function ChooseBetweenYogaPathsPage() {
                             </div>
                         </div>
                     </header>
+
+                    <section className="mb-16 rounded-2xl border border-border/60 bg-card/40 p-8">
+                        <h2 className="font-display text-3xl font-bold mb-6">Best for / Not best for / Where to start</h2>
+                        <ul className="space-y-3 text-muted-foreground">
+                            <li><strong className="text-foreground">Best for:</strong> seekers deciding between paths with one clear temperament-based framework.</li>
+                            <li><strong className="text-foreground">Not best for:</strong> people looking for one universal answer that ignores personality.</li>
+                            <li><strong className="text-foreground">Where to start:</strong> choose one path for 40 days, then review actual fit.</li>
+                        </ul>
+                    </section>
 
                     <section className="mb-20 rounded-3xl border border-border/60 bg-muted/10 p-10 overflow-hidden relative">
                         <h2 className="font-display text-4xl font-bold mb-10 text-center">Master Decision Matrix</h2>

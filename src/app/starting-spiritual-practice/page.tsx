@@ -43,11 +43,23 @@ export default function StartingSpiritualPracticePage() {
                         <h1 className="font-display text-5xl md:text-6xl font-bold mb-6 tracking-tight">
                             Starting Spiritual Practice
                         </h1>
+                        <p className="text-lg text-foreground max-w-3xl mx-auto leading-relaxed mb-4">
+                            <strong>Direct answer:</strong> start with one daily practice you can sustain for 30–40 days (usually Japa + short silence), not with a complex spiritual routine.
+                        </p>
                         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                             If you are overwhelmed by too much advice, begin with this: one
                             practice, one time slot, one month of consistency.
                         </p>
                     </header>
+
+                    <section className="rounded-2xl border border-border/60 bg-card/40 p-6 mb-10">
+                        <h2 className="text-2xl font-semibold mb-4">Best for / Not best for / Where to start</h2>
+                        <ul className="space-y-3 text-muted-foreground leading-relaxed">
+                            <li><strong className="text-foreground">Best for:</strong> beginners who feel confused by too many teachings and need a stable, low-friction starting structure.</li>
+                            <li><strong className="text-foreground">Not best for:</strong> people looking for immediate mystical experiences or a 10-practice routine in week one.</li>
+                            <li><strong className="text-foreground">Where to start:</strong> 10 minutes Japa + 5 minutes silence at the same time daily, then review after 30 days.</li>
+                        </ul>
+                    </section>
 
                     <section className="space-y-5 mb-12">
                         {steps.map((step, idx) => (

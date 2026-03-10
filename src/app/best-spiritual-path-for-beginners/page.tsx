@@ -131,6 +131,9 @@ export default function BestSpiritualPathForBeginnersPage() {
                         <h1 className="font-display text-5xl md:text-7xl font-bold mb-8 tracking-tight">Best Spiritual Path for <span className="text-orange-500">Beginners</span></h1>
                         <div className="grid md:grid-cols-3 gap-8 items-start">
                             <div className="md:col-span-2 space-y-6">
+                                <p className="text-lg text-foreground leading-relaxed">
+                                    <strong>Direct answer:</strong> the best spiritual path for beginners is the one you can sustain daily with low friction — Bhakti for heart-led people, Karma for action-led people, Raja for discipline-led people, and Jnana for inquiry-led people.
+                                </p>
                                 <p className="text-2xl text-foreground font-medium leading-tight italic border-l-4 border-orange-500 pl-6">
                                     "The best spiritual path is the one you can sustain, not the one that sounds the most profound."
                                 </p>
@@ -152,6 +155,15 @@ export default function BestSpiritualPathForBeginnersPage() {
                             </div>
                         </div>
                     </header>
+
+                    <section className="mb-16 rounded-2xl border border-border/60 bg-card/40 p-8">
+                        <h2 className="font-display text-3xl font-bold mb-6">Best for / Not best for / Where to start</h2>
+                        <ul className="space-y-3 text-muted-foreground">
+                            <li><strong className="text-foreground">Best for:</strong> beginners who want one clear path matched to temperament.</li>
+                            <li><strong className="text-foreground">Not best for:</strong> seekers trying to copy someone else's path without testing fit.</li>
+                            <li><strong className="text-foreground">Where to start:</strong> pick one path below and commit for 40 days before switching.</li>
+                        </ul>
+                    </section>
 
                     <section className="mb-20">
                         <h2 className="font-display text-4xl font-bold mb-12 text-center">The Four Foundational Paths</h2>

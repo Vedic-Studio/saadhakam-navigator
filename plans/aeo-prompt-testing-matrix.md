@@ -75,6 +75,16 @@ For each prompt, record:
 - `/best-spiritual-path-for-beginners`
 - `/choose-between-bhakti-jnana-karma-raja-yoga`
 - `/best-meditation-style-for-your-personality`
+- `/starting-spiritual-practice`
+- `/what-is-vedanta`
+- `/advaita-vedanta-explained`
+- `/how-to-start-japa`
+- `/how-to-choose-a-mantra`
+- `/daily-spiritual-routine-beginners`
+- `/can-i-practice-vedanta-without-converting`
+- `/can-i-chant-a-mantra-without-initiation`
+- `/what-are-the-upanishads`
+- `/best-bhagavad-gita-translation-for-beginners`
 - `/llms.txt`
 - `/llms-full.txt`
 

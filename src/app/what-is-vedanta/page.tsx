@@ -60,10 +60,22 @@ export default function WhatIsVedantaPage() {
                         <h1 className="font-display text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
                             The <span className="text-orange-500 italic">End</span> of Knowledge
                         </h1>
+                        <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
+                            <strong>Direct answer:</strong> Vedanta is the philosophical inquiry tradition of the Upanishads that asks who you are beyond body-mind identity and how to live from that clarity.
+                        </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             Vedanta is the system of thought that converts the ritualistic momentum of the Vedas into a direct, logical investigation into the nature of the Self.
                         </p>
                     </header>
+
+                    <section className="mb-14 rounded-2xl border border-border/60 bg-card/40 p-8">
+                        <h2 className="font-display text-3xl font-bold mb-6">Best for / Not best for / Where to start</h2>
+                        <ul className="space-y-3 text-muted-foreground">
+                            <li><strong className="text-foreground">Best for:</strong> seekers who want a structured philosophical path, not just inspirational spirituality.</li>
+                            <li><strong className="text-foreground">Not best for:</strong> people expecting quick emotional comfort without study, reflection, and disciplined practice.</li>
+                            <li><strong className="text-foreground">Where to start:</strong> read Bhagavad Gita with commentary, learn the core Vedanta terms, and pair study with daily self-observation.</li>
+                        </ul>
+                    </section>
 
                     <div className="grid lg:grid-cols-3 gap-12 mb-20">
                         <div className="lg:col-span-2 space-y-12">

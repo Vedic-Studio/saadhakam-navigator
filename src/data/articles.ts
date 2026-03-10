@@ -24,6 +24,162 @@ export interface ArticleMeta {
 
 export const articles: ArticleMeta[] = [
     {
+        slug: "can-i-practice-vedanta-without-converting",
+        route: "/can-i-practice-vedanta-without-converting",
+        title: "Can I Practice Vedanta Without Converting?",
+        metaDescription:
+            "Yes. Vedanta is a philosophy of self-inquiry, not a conversion requirement. Learn what you can practice today, what to avoid, and where to start safely.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-10",
+        readingTime: 7,
+        primaryKeyword: "can i practice vedanta without converting",
+        relatedLinks: [
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+            { text: "What are the Upanishads?", href: "/what-are-the-upanishads" },
+            { text: "Starting Spiritual Practice", href: "/starting-spiritual-practice" },
+        ],
+        faqs: [
+            {
+                question: "Do I need to become Hindu to study Vedanta?",
+                answer:
+                    "No. Vedanta can be studied as a philosophical and contemplative system without religious conversion.",
+            },
+            {
+                question: "Can I practice Vedanta if I follow another religion?",
+                answer:
+                    "Yes. Many people use Vedantic inquiry to deepen awareness while staying rooted in their own faith tradition.",
+            },
+            {
+                question: "What is the safest beginner practice in Vedanta?",
+                answer:
+                    "Start with scriptural study (Gita/Upanishad basics), daily reflection, and simple self-inquiry like 'Who am I beyond roles and thoughts?'",
+            },
+            {
+                question: "What should I avoid in early Vedanta study?",
+                answer:
+                    "Avoid intellectual overload, identity debates, and trying to imitate advanced non-dual language without daily practice.",
+            },
+        ],
+    },
+    {
+        slug: "can-i-chant-a-mantra-without-initiation",
+        route: "/can-i-chant-a-mantra-without-initiation",
+        title: "Can I Chant a Mantra Without Initiation?",
+        metaDescription:
+            "Yes, many universal mantras can be chanted without initiation. Learn which ones are safe to begin with, when initiation helps, and how to start correctly.",
+        pillar: "practical-practices",
+        publishDate: "2026-03-10",
+        readingTime: 7,
+        primaryKeyword: "can i chant a mantra without initiation",
+        relatedLinks: [
+            { text: "How to Start Japa", href: "/how-to-start-japa" },
+            { text: "How to Choose a Mantra", href: "/how-to-choose-a-mantra" },
+            { text: "10 Powerful Sanskrit Mantras", href: "/10-powerful-sanskrit-mantras" },
+            { text: "Daily Spiritual Routine", href: "/daily-spiritual-routine-beginners" },
+        ],
+        faqs: [
+            {
+                question: "Can beginners chant Om or So'ham without initiation?",
+                answer:
+                    "Yes. Universal mantras like Om and So'ham are commonly practiced by beginners without formal initiation.",
+            },
+            {
+                question: "Which mantras usually need guidance first?",
+                answer:
+                    "Certain bija and lineage-specific mantras are traditionally practiced with teacher guidance or initiation.",
+            },
+            {
+                question: "Is initiation mandatory for spiritual benefit?",
+                answer:
+                    "No. Consistent, respectful daily chanting of an appropriate mantra can still be transformative.",
+            },
+            {
+                question: "When should I seek initiation?",
+                answer:
+                    "Seek initiation when your practice is stable, you feel called to one lineage, and you have access to a trustworthy teacher.",
+            },
+        ],
+    },
+    {
+        slug: "what-are-the-upanishads",
+        route: "/what-are-the-upanishads",
+        title: "What Are the Upanishads?",
+        metaDescription:
+            "The Upanishads are the philosophical core of the Vedic tradition, focused on Self, reality, and liberation. A beginner-friendly explanation of what they are and where to start.",
+        pillar: "sacred-texts",
+        publishDate: "2026-03-10",
+        readingTime: 8,
+        primaryKeyword: "what are the upanishads",
+        relatedLinks: [
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+            { text: "Bhagavad Gita Complete Guide", href: "/bhagavad-gita-complete-guide" },
+            { text: "Best Bhagavad Gita Translation for Beginners", href: "/best-bhagavad-gita-translation-for-beginners" },
+        ],
+        faqs: [
+            {
+                question: "Are the Upanishads religious or philosophical texts?",
+                answer:
+                    "Both. They emerge from the Vedic tradition but are primarily philosophical dialogues on consciousness, identity, and ultimate reality.",
+            },
+            {
+                question: "How many Upanishads should a beginner read first?",
+                answer:
+                    "Start with 1–2 approachable texts (like Katha or Isha) using a reliable translation before expanding.",
+            },
+            {
+                question: "Do I need Sanskrit to understand the Upanishads?",
+                answer:
+                    "No. Good translations and guided commentary are enough to begin.",
+            },
+            {
+                question: "What is the main teaching of the Upanishads?",
+                answer:
+                    "That your deepest Self (Atman) is not separate from ultimate reality (Brahman).",
+            },
+        ],
+    },
+    {
+        slug: "best-bhagavad-gita-translation-for-beginners",
+        route: "/best-bhagavad-gita-translation-for-beginners",
+        title: "Best Bhagavad Gita Translation for Beginners",
+        metaDescription:
+            "For most beginners, choose one readable translation with clear notes and stay with it for 30 days. Compare top options by clarity, style, and philosophical depth.",
+        pillar: "sacred-texts",
+        publishDate: "2026-03-10",
+        readingTime: 8,
+        primaryKeyword: "best bhagavad gita translation for beginners",
+        relatedLinks: [
+            { text: "Bhagavad Gita Complete Guide", href: "/bhagavad-gita-complete-guide" },
+            { text: "What are the Upanishads?", href: "/what-are-the-upanishads" },
+            { text: "Starting Spiritual Practice", href: "/starting-spiritual-practice" },
+            { text: "Daily Spiritual Routine", href: "/daily-spiritual-routine-beginners" },
+        ],
+        faqs: [
+            {
+                question: "Which Gita translation is easiest to read first?",
+                answer:
+                    "Choose a clear modern-English version with brief commentary rather than a dense academic edition for your first read.",
+            },
+            {
+                question: "Should beginners start with a literal translation or commentary edition?",
+                answer:
+                    "Most beginners benefit from a balanced version: readable translation plus concise contextual notes.",
+            },
+            {
+                question: "Do I need to compare many versions before starting?",
+                answer:
+                    "No. Pick one suitable translation and read it consistently for 30 days before comparing alternatives.",
+            },
+            {
+                question: "How should I read the Gita as a beginner?",
+                answer:
+                    "Read small daily sections, reflect on one practical takeaway, and connect it to your current life situation.",
+            },
+        ],
+    },
+    {
         slug: "what-is-vedanta",
         route: "/what-is-vedanta",
         title: "What is Vedanta? A Complete Beginner's Guide",

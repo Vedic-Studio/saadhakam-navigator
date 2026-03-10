@@ -131,6 +131,9 @@ export default function BestMeditationStylePage() {
                         <h1 className="font-display text-5xl md:text-7xl font-bold mb-8 tracking-tight">Best Meditation Style for <span className="text-orange-500">Your Personality</span></h1>
                         <div className="grid md:grid-cols-3 gap-8 items-start">
                             <div className="md:col-span-2 space-y-6">
+                                <p className="text-lg text-foreground leading-relaxed">
+                                    <strong>Direct answer:</strong> if your mind is noisy or anxious, start with Japa or breath-led meditation; if your mind is already steady, start with Dhyana; if your nature is analytical, begin with self-inquiry.
+                                </p>
                                 <p className="text-2xl text-foreground font-medium leading-tight">
                                     Most meditation advice fails because it assumes there is only one type of mind.
                                 </p>
@@ -149,6 +152,15 @@ export default function BestMeditationStylePage() {
                             </div>
                         </div>
                     </header>
+
+                    <section className="mb-16 rounded-2xl border border-border/60 bg-card/40 p-8">
+                        <h2 className="font-display text-3xl font-bold mb-6">Best for / Not best for / Where to start</h2>
+                        <ul className="space-y-3 text-muted-foreground">
+                            <li><strong className="text-foreground">Best for:</strong> seekers who want a practical fit between temperament and meditation method instead of one-size-fits-all advice.</li>
+                            <li><strong className="text-foreground">Not best for:</strong> people looking for a single "perfect" method that never changes with life stage or nervous-system condition.</li>
+                            <li><strong className="text-foreground">Where to start:</strong> run one 40-day trial with a single method, then switch only if your attention, steadiness, and consistency are not improving.</li>
+                        </ul>
+                    </section>
 
                     <section className="mb-20">
                         <h2 className="font-display text-4xl font-bold mb-10 text-center">Pathways to Stillness</h2>

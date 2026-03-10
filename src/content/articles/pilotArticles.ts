@@ -533,6 +533,13 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
             {
                 type: "paragraph",
                 content: [
+                    { type: "strong", text: "Direct answer:" },
+                    " start Japa with one simple mantra, one fixed daily time, and one round of 108 repetitions for 40 days before you optimize anything.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
                     "The mind is never still. Even when the body rests, the mind generates an unbroken stream of thoughts — plans, memories, worries, fragments of conversation. Most meditation instruction tells you to \"quiet the mind,\" which to a beginner feels like being told to stop the ocean.",
                 ],
             },
@@ -548,6 +555,28 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                     "The Bhagavad Gita's 10th chapter (verse 25) has Krishna say: ",
                     { type: "em", text: '"Among sacrifices, I am Japa."' },
                     " Among all spiritual offerings, the repetition of the Divine name holds the highest place. This is not metaphor — it is the experiential finding of centuries of practitioners.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Best for / Not best for / Where to start"],
+            },
+            {
+                type: "list",
+                items: [
+                    [
+                        { type: "strong", text: "Best for:" },
+                        " beginners with restless or noisy minds who need a concrete anchor for attention.",
+                    ],
+                    [
+                        { type: "strong", text: "Not best for:" },
+                        " seekers expecting instant silence without repetition, discipline, or consistency.",
+                    ],
+                    [
+                        { type: "strong", text: "Where to start:" },
+                        " choose one universal mantra (like Om or So'ham), do one mala round daily, and review results after 40 days.",
+                    ],
                 ],
             },
             { type: "heading", level: 2, content: ["What is Japa?"] },
@@ -753,6 +782,13 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
             {
                 type: "paragraph",
                 content: [
+                    { type: "strong", text: "Direct answer:" },
+                    " the best beginner spiritual routine is a short, repeatable daily sequence (breath + mantra + silence) you can sustain for at least 30–40 days.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
                     "Most people encounter spirituality as an event — a retreat, a powerful book, a meaningful conversation — and then return to daily life unchanged. The reason is not lack of sincerity. It is lack of structure. Insight without practice fades within days.",
                 ],
             },
@@ -770,6 +806,28 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                 type: "paragraph",
                 content: [
                     "This guide gives you a practical Sadhana framework drawn from the Vedic tradition, adapted for modern practitioners — even those with busy schedules and no background in formal practice.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Best for / Not best for / Where to start"],
+            },
+            {
+                type: "list",
+                items: [
+                    [
+                        { type: "strong", text: "Best for:" },
+                        " beginners who need a practical daily structure instead of occasional motivational spikes.",
+                    ],
+                    [
+                        { type: "strong", text: "Not best for:" },
+                        " people trying to stack too many rituals before building consistency with one stable rhythm.",
+                    ],
+                    [
+                        { type: "strong", text: "Where to start:" },
+                        " a 20-minute morning routine: 3 minutes breath, 10 minutes Japa, 5 minutes silence, 2 minutes intention-setting.",
+                    ],
                 ],
             },
             {
