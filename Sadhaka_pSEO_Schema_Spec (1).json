@@ -1,0 +1,389 @@
+{
+  "file_name": "Sadhaka_pSEO_Schema_Spec",
+  "sheets": [
+    {
+      "name": "Entities",
+      "rows": [
+        [
+          "entity_type",
+          "entity_key",
+          "canonical_slug_pattern",
+          "url_pattern",
+          "schema_primary_type",
+          "schema_secondary_types",
+          "schema_google_feature_target",
+          "required_properties",
+          "recommended_properties",
+          "content_sections",
+          "faq_seed_questions",
+          "internal_link_rules",
+          "title_tag_template",
+          "meta_desc_template",
+          "og_title_template",
+          "og_desc_template",
+          "jsonld_notes",
+          "example_jsonld_skeleton"
+        ],
+        [
+          "Spiritual_Teacher",
+          "teacher_id",
+          "{name-kebab}",
+          "/teachers/{slug}",
+          "ProfilePage",
+          "Person",
+          "Profile page (Discussions/Forums eligibility when applicable)",
+          "ProfilePage.mainEntity; Person.name",
+          "ProfilePage.dateCreated,dateModified; Person.alternateName,description,image,sameAs,identifier",
+          "Intro; Lineage & teachers; Core teachings; Practices taught; Key works; Where to learn; Criticisms & discernment; FAQs",
+          "Who is {name}? | What does {name} teach? | Who was {name}'s guru? | Is {name} associated with {tradition}? | Where is {name}'s main ashram? | What books or talks best represent {name}?",
+          "Link to /practices/{slug} for practices mentioned; link to /concepts/{slug} for Sanskrit terms; link to /sites/{slug} for ashrams/places; link to /shastras/{slug} for cited texts",
+          "{name}: Lineage, Teachings & How to Learn | Sadhaka",
+          "A lineage-aware profile of {name}: teachings, practices, key works, and how Western seekers can engage safely and authentically.",
+          "{name} – Teachings & Lineage",
+          "Teachings, lineage, recommended starting points, and FAQs.",
+          "Use ProfilePage with mainEntity=Person as per Google ProfilePage guidelines.",
+          "{\"@context\": \"https://schema.org\", \"@type\": \"ProfilePage\", \"dateCreated\": \"{dateCreatedISO}\", \"dateModified\": \"{dateModifiedISO}\", \"mainEntity\": {\"@type\": \"Person\", \"name\": \"{name}\", \"alternateName\": [\"{alias1}\", \"{alias2}\"], \"description\": \"{byline}\", \"identifier\": \"{teacher_id}\", \"image\": [\"{img1}\", \"{img2}\", \"{img3}\"], \"sameAs\": [\"{wikipedia}\", \"{wikidata}\", \"{official_site}\"]}}"
+        ],
+        [
+          "Concept",
+          "concept_id",
+          "{term-kebab}",
+          "/concepts/{slug}",
+          "DefinedTerm",
+          "",
+          "Generic rich results (knowledge graph comprehension)",
+          "DefinedTerm.name",
+          "DefinedTerm.description,alternateName,inDefinedTermSet,sameAs,url",
+          "Definition; Etymology; How traditions use it; Western misreadings; Daily-life application; Related terms; FAQs",
+          "What does {term} mean? | What is the difference between {term} and {near_term}? | How do I apply {term} in modern life? | Common misconceptions about {term}?",
+          "Link to teacher pages that define it; link to practices that operationalize it; link to texts where it appears",
+          "{term}: Meaning, Misconceptions & Daily-Life Use | Sadhaka",
+          "A clear explanation of {term}: definition, Sanskrit roots, how it's used across traditions, and practical ways to apply it.",
+          "{term} – Meaning & Practice",
+          "Definition, misconceptions, and real-world application.",
+          "DefinedTerm is suitable for glossary-like pages; optionally group terms via DefinedTermSet.",
+          "{\"@context\": \"https://schema.org\", \"@type\": \"DefinedTerm\", \"name\": \"{term}\", \"alternateName\": [\"{alt1}\", \"{alt2}\"], \"description\": \"{short_definition}\", \"inDefinedTermSet\": {\"@type\": \"DefinedTermSet\", \"name\": \"Sadhaka Glossary\"}, \"sameAs\": [\"{wikipedia}\", \"{wikidata}\"]}"
+        ],
+        [
+          "Spiritual_Practice",
+          "practice_id",
+          "{practice-kebab}",
+          "/practices/{slug}",
+          "HowTo",
+          "",
+          "HowTo rich result (where applicable)",
+          "HowTo.name; (plus visible steps on page)",
+          "HowTo.step,tool,supply,estimatedCost,totalTime,image,video; plus safety sections",
+          "What it is; Who it's for; Prereqs; Contraindications; Step-by-step; Common mistakes; Variations; FAQs",
+          "How do I do {practice}? | Is {practice} safe? | How long should I practice {practice}? | Can beginners do {practice}? | What are common mistakes in {practice}?",
+          "Link to concept pages for key Sanskrit terms; link to teacher/lineage pages; link to course pages if offered",
+          "How to Practice {practice}: Steps, Benefits & Safety | Sadhaka",
+          "Learn {practice}: what it is, benefits, prerequisites, contraindications, and a step-by-step guide rooted in {tradition}.",
+          "How to Practice {practice}",
+          "Steps, benefits, and safety notes.",
+          "Google requires marked-up content be visible and accurate; ensure steps are on page.",
+          "{\"@context\": \"https://schema.org\", \"@type\": \"HowTo\", \"name\": \"How to practice {practice}\", \"description\": \"{short}\", \"totalTime\": \"PT{mins}M\", \"step\": [{\"@type\": \"HowToStep\", \"name\": \"{step1_title}\", \"text\": \"{step1_text}\"}, {\"@type\": \"HowToStep\", \"name\": \"{step2_title}\", \"text\": \"{step2_text}\"}], \"tool\": [\"{tool1}\", \"{tool2}\"], \"supply\": [\"{supply1}\"]}"
+        ],
+        [
+          "Sacred_Site",
+          "site_id",
+          "{site-kebab}-{city-kebab}",
+          "/sites/{slug}",
+          "TouristAttraction",
+          "Place",
+          "Generic (Place comprehension); local-style snippets if enriched",
+          "TouristAttraction.name; Place.address or geo recommended",
+          "openingHours (if applicable), url, image, description, geo, isAccessibleForFree, touristType",
+          "Overview; History; Art & architecture; Spiritual significance; Visiting info; Etiquette; Nearby sites; FAQs",
+          "Why is {site} famous? | Who built {site}? | Best time to visit {site}? | How to reach {site}? | Is {site} safe for solo women travelers?",
+          "Link to concept pages for iconography; link to teachers associated; link to other nearby sites",
+          "{site}: History, Architecture & Spiritual Meaning | Sadhaka",
+          "A deep research profile of {site}: history, art, symbolism, and practical travel tips for Western spiritual travelers.",
+          "{site} – History & Spiritual Meaning",
+          "Research profile + visitor guide.",
+          "Use TouristAttraction; add openingHours only if you can maintain accuracy.",
+          "{\"@context\": \"https://schema.org\", \"@type\": \"TouristAttraction\", \"name\": \"{site}\", \"description\": \"{short}\", \"url\": \"{canonical_url}\", \"geo\": {\"@type\": \"GeoCoordinates\", \"latitude\": \"{lat}\", \"longitude\": \"{lng}\"}, \"address\": {\"@type\": \"PostalAddress\", \"addressLocality\": \"{city}\", \"addressRegion\": \"{state}\", \"addressCountry\": \"IN\"}, \"image\": [\"{img1}\", \"{img2}\"]}"
+        ],
+        [
+          "Sacred_Text",
+          "text_id",
+          "{title-kebab}",
+          "/shastras/{slug}",
+          "Book",
+          "Article",
+          "Generic; potential for book comprehension",
+          "Book.name",
+          "author, datePublished (if known), inLanguage, sameAs, workExample",
+          "What it is; Context; Key teachings; Structure; Recommended translations; Commentary; FAQs",
+          "What is the main message of {text}? | Who wrote {text}? | Best English translation of {text}? | How should beginners read {text}?",
+          "Link to concept pages for key terms; link to teacher/commentary pages; link to practice pages for applied teachings",
+          "{text}: Summary, Meaning, and How to Read | Sadhaka",
+          "A structured beginner-to-intermediate guide to {text}: context, key ideas, recommended translations, and practical relevance.",
+          "{text} – Summary & Meaning",
+          "Context, teachings, and recommended reading path.",
+          "Use Book for canonical work; Article for your explanatory page; ensure markup matches on-page content.",
+          "{\"@context\": \"https://schema.org\", \"@type\": \"Book\", \"name\": \"{text}\", \"author\": {\"@type\": \"Person\", \"name\": \"{author_or_sage}\"}, \"inLanguage\": \"sa\", \"sameAs\": [\"{wikipedia}\", \"{wikidata}\"], \"workExample\": [{\"@type\": \"Book\", \"name\": \"{english_translation_title}\", \"inLanguage\": \"en\"}]}"
+        ],
+        [
+          "Course",
+          "course_id",
+          "{course-kebab}",
+          "/courses/{slug}",
+          "Course",
+          "Organization",
+          "Course list (if you build course list pages)",
+          "Course.name; provider",
+          "description, url, courseCode, hasCourseInstance (for sessions), offers",
+          "What you learn; Syllabus; For whom; Outcomes; Instructor; Lineage; Pricing; FAQs",
+          "Is this course suitable for beginners? | How long is the course? | Is it live or self-paced? | Do I need prior meditation experience?",
+          "Link to practices and concepts taught; link to teacher profile for instructor; link to texts referenced",
+          "{course}: Syllabus, Lineage & Enrollment | Sadhaka",
+          "Enroll in {course}: structured learning in {tradition} with clear outcomes, prerequisites, and weekly practice plan.",
+          "{course} – Enroll",
+          "Syllabus, prerequisites, and outcomes.",
+          "If you want Google Course rich results, follow Course markup patterns; keep instances accurate.",
+          "{\"@context\": \"https://schema.org\", \"@type\": \"Course\", \"name\": \"{course}\", \"description\": \"{short}\", \"provider\": {\"@type\": \"Organization\", \"name\": \"Sadhaka\", \"url\": \"https://opensadhaka.com\"}, \"url\": \"{canonical_url}\"}"
+        ],
+        [
+          "FAQ_Hub",
+          "faqhub_id",
+          "{topic-kebab}-faq",
+          "/faq/{slug}",
+          "FAQPage",
+          "",
+          "FAQ rich result (if eligible)",
+          "FAQPage.mainEntity (Question/Answer pairs)",
+          "Keep Q/A fully visible; avoid policy-violating content",
+          "Topic intro; 8-20 FAQs; Related resources",
+          "What is {topic}? | How do I start with {topic}? | Is {topic} safe? | How long does it take to see results? | Common mistakes?",
+          "Each answer links to a definitive concept/practice/teacher page",
+          "{topic} FAQ: Beginner Answers & Next Steps | Sadhaka",
+          "Clear answers to common questions about {topic}, with safe next steps and links to deeper learning.",
+          "{topic} FAQ",
+          "Beginner-friendly answers and next steps.",
+          "Google requires FAQ content be visible to users; do not mark up hidden Q/A.",
+          "{\"@context\": \"https://schema.org\", \"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"{q1}\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"{a1}\"}}, {\"@type\": \"Question\", \"name\": \"{q2}\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"{a2}\"}}]}"
+        ]
+      ]
+    },
+    {
+      "name": "Attribute_Registry",
+      "rows": [
+        [
+          "attribute_name",
+          "applies_to_entity_types",
+          "data_type",
+          "required",
+          "example_value",
+          "schema_mapping",
+          "validation_rules",
+          "source_priority"
+        ],
+        [
+          "name",
+          "Spiritual_Teacher,Sacred_Text,Sacred_Site,Concept,Course,Spiritual_Practice",
+          "string",
+          "yes",
+          "Ramana Maharshi",
+          "Thing.name",
+          "non-empty; max 120 chars",
+          "Human curated"
+        ],
+        [
+          "alternateName",
+          "Spiritual_Teacher,Concept,Sacred_Text",
+          "string_array",
+          "no",
+          "Bhagavan Ramana",
+          "Thing.alternateName",
+          "0-20 items; each 2-80 chars",
+          "Human curated"
+        ],
+        [
+          "description",
+          "all",
+          "string",
+          "recommended",
+          "A lineage-aware overview for Western seekers.",
+          "Thing.description",
+          "50-400 chars recommended",
+          "LLM drafted + human edit"
+        ],
+        [
+          "sameAs",
+          "Spiritual_Teacher,Sacred_Text,Sacred_Site,Concept",
+          "url_array",
+          "no",
+          "https://www.wikidata.org/wiki/Q12345",
+          "Thing.sameAs",
+          "valid URLs; prefer Wikidata/Wikipedia/official",
+          "Auto + human verify"
+        ],
+        [
+          "dateCreated",
+          "Spiritual_Teacher",
+          "datetime_iso",
+          "no",
+          "2025-12-23T12:34:00-05:00",
+          "ProfilePage.dateCreated",
+          "ISO 8601",
+          "System"
+        ],
+        [
+          "dateModified",
+          "Spiritual_Teacher",
+          "datetime_iso",
+          "no",
+          "2025-12-26T14:53:00-05:00",
+          "ProfilePage.dateModified",
+          "ISO 8601",
+          "System"
+        ],
+        [
+          "practice_steps",
+          "Spiritual_Practice",
+          "object_array",
+          "recommended",
+          "[{name: 'Posture', text: 'Sit comfortably...'}]",
+          "HowTo.step (HowToStep.name, HowToStep.text)",
+          "2-12 steps; each step visible on page",
+          "Human/LLM"
+        ],
+        [
+          "openingHours",
+          "Sacred_Site",
+          "string_array",
+          "no",
+          "Mo-Su 09:00-17:00",
+          "openingHours",
+          "Only if maintained; use schema format",
+          "Human verified"
+        ],
+        [
+          "geo",
+          "Sacred_Site",
+          "object",
+          "recommended",
+          "{lat: 20.0268, lng: 75.1797}",
+          "Place.geo (GeoCoordinates)",
+          "lat -90..90, lng -180..180",
+          "Geo DB"
+        ],
+        [
+          "provider",
+          "Course",
+          "object",
+          "yes",
+          "{name:'Sadhaka', url:'https://opensadhaka.com'}",
+          "Course.provider (Organization)",
+          "must include name,url",
+          "System"
+        ]
+      ]
+    },
+    {
+      "name": "Relations",
+      "rows": [
+        [
+          "relation_type",
+          "from_entity_type",
+          "to_entity_type",
+          "from_fk",
+          "to_fk",
+          "cardinality",
+          "use_cases",
+          "link_anchor_rule",
+          "schema_hint"
+        ],
+        [
+          "TEACHES_PRACTICE",
+          "Spiritual_Teacher",
+          "Spiritual_Practice",
+          "teacher_id",
+          "practice_id",
+          "many-to-many",
+          "Teacher profile shows practices; practice page lists teachers/lineages",
+          "Use practice_name as anchor; add '(as taught in {lineage})' when disambiguating",
+          "Link via about/subjectOf on CreativeWork where appropriate"
+        ],
+        [
+          "MENTIONS_CONCEPT",
+          "Spiritual_Practice",
+          "Concept",
+          "practice_id",
+          "concept_id",
+          "many-to-many",
+          "Explainers auto-link Sanskrit terms; build term graph",
+          "First mention auto-links; subsequent mentions plain text",
+          "DefinedTerm can be referenced from creative works"
+        ],
+        [
+          "ASSOCIATED_SITE",
+          "Spiritual_Teacher",
+          "Sacred_Site",
+          "teacher_id",
+          "site_id",
+          "many-to-many",
+          "Ashram pages link to teachers; teacher pages link to sites",
+          "Use site_name; optionally append city",
+          "Place can be linked via homeLocation/location"
+        ],
+        [
+          "PRIMARY_TEXT",
+          "Spiritual_Teacher",
+          "Sacred_Text",
+          "teacher_id",
+          "text_id",
+          "many-to-many",
+          "Teacher's key texts; text page lists teachers/commentators",
+          "Use text title; add 'commentary' label when relevant",
+          "Book/CreativeWork referenced via subjectOf"
+        ],
+        [
+          "COURSE_TEACHES_PRACTICE",
+          "Course",
+          "Spiritual_Practice",
+          "course_id",
+          "practice_id",
+          "many-to-many",
+          "Course syllabus auto-links to practice pages",
+          "Use practice_name; add week/module context",
+          "Course.teaches (DefinedTerm/Text) or hasCourseInstance"
+        ]
+      ]
+    },
+    {
+      "name": "SD_Checklist",
+      "rows": [
+        [
+          "page_type",
+          "structured_data_blocks",
+          "must_be_visible_on_page",
+          "testing",
+          "notes"
+        ],
+        [
+          "Teacher profile",
+          "ProfilePage(mainEntity=Person)",
+          "Name, bio/description, image if provided",
+          "Rich Results Test; URL Inspection",
+          "Follow Google ProfilePage required/recommended properties."
+        ],
+        [
+          "Practice guide",
+          "HowTo (+ optional FAQPage)",
+          "All steps; any images referenced",
+          "Rich Results Test; validate no mismatched steps",
+          "Keep HowTo steps accurate; avoid marking up content not present."
+        ],
+        [
+          "FAQ hub",
+          "FAQPage",
+          "Q and A content must be accessible to users",
+          "Rich Results Test",
+          "Google FAQ guidelines emphasize visible Q/A and policy compliance."
+        ]
+      ]
+    }
+  ]
+}

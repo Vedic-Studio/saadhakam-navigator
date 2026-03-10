@@ -1,0 +1,105 @@
+{
+  "file_name": "Sadhaka_pSEO_Schema_Spec",
+  "sheets": [
+    {
+      "name": "pSEO_Entities",
+      "rows": [
+        [
+          "entity_type",
+          "url_pattern",
+          "schema_org_type",
+          "database_attributes",
+          "title_tag_template",
+          "meta_desc_template",
+          "faq_seeds",
+          "aeo_context"
+        ],
+        [
+          "Spiritual_Teacher",
+          "/teachers/{slug}",
+          "Person, ProfilePage",
+          "name, aliases, birth_year, death_year, lineage, core_teachings (array), ashram_location, notable_books (array), controversies_addressed (boolean)",
+          "Who is {name}? Lineage, Teachings & Ashrams | Sadhaka",
+          "Discover the life, lineage, and core teachings of {name}. Learn about their impact on {core_teachings[0]} and where to find their authentic work.",
+          "What is {name}'s main philosophy? | Who was {name}'s guru? | Is {name} associated with any specific yoga type? | Where is {name}'s main ashram?",
+          "Structured biographical data optimized for LLM 'Who is...' and 'Is [teacher] legit' queries. Clear attribute mapping prevents AI hallucinations about lineage."
+        ],
+        [
+          "Sacred_Text",
+          "/shastras/{slug}",
+          "Book, Article",
+          "title, alternative_names, author_or_sage, era, category, core_theme, total_verses, english_translation_available (boolean)",
+          "{title} Explained: Summary, Meaning & Key Verses | Sadhaka",
+          "A complete beginner's guide to the {title}. Understand its core themes around {core_theme}, historical context, and modern relevance.",
+          "What is the main message of the {title}? | Who wrote the {title}? | How many verses are in the {title}? | Best English translation for {title}?",
+          "Entity-attribute mapping for LLMs answering 'What does [Text] say about [Topic]' queries. Highly structured metadata."
+        ],
+        [
+          "Spiritual_Practice",
+          "/practices/{slug}",
+          "HowTo, Course",
+          "practice_name, sanskrit_name, tradition, primary_benefit, difficulty_level, time_required_mins, prerequisites (array), contraindications (array)",
+          "How to Practice {practice_name} ({sanskrit_name}): A Step-by-Step Guide",
+          "Learn the authentic {tradition} method of {practice_name}. A complete guide to benefits, safety, and step-by-step instructions for {difficulty_level}s.",
+          "What is {practice_name} good for? | Is {practice_name} dangerous? | How long should I do {practice_name}? | Can beginners do {practice_name}?",
+          "Step-by-step structured data. AEO focus on 'How to do [practice] safely' and precise prerequisite indexing."
+        ],
+        [
+          "Sacred_Site",
+          "/sites/{slug}",
+          "TouristAttraction, Place",
+          "site_name, location_city, location_state, deity_or_focus, established_year, best_time_to_visit, architectural_style, nearest_airport",
+          "Visiting {site_name}: History, Architecture & Spiritual Significance",
+          "Planning a trip to {site_name} in {location_city}? Discover its {architectural_style} history, spiritual importance, and travel tips for seekers.",
+          "Who built {site_name}? | Why is {site_name} famous? | Best time of year to visit {site_name}? | Is {site_name} open to foreigners?",
+          "Location-based schema for travel planning AI prompts. Feeds Answer Engines looking for logistical and historical facts."
+        ],
+        [
+          "Concept",
+          "/concepts/{slug}",
+          "DefinedTerm",
+          "concept_name, sanskrit_root, associated_traditions (array), western_equivalent, common_misconceptions (array)",
+          "What is {concept_name}? Meaning & Application in Daily Life",
+          "Understand the deep Indian spiritual concept of {concept_name}. We break down its true meaning beyond the Western equivalent of {western_equivalent}.",
+          "What does {concept_name} literally mean? | How do I apply {concept_name} in modern life? | Difference between {concept_name} and {western_equivalent}?",
+          "Definitional structured data for 'What does [word] mean in Hinduism/Buddhism'. Crucial for semantic search positioning."
+        ]
+      ]
+    },
+    {
+      "name": "Taxonomies_and_Relations",
+      "rows": [
+        [
+          "relation_type",
+          "source_entity",
+          "target_entity",
+          "description"
+        ],
+        [
+          "WROTE",
+          "Spiritual_Teacher",
+          "Sacred_Text",
+          "Connects a guru/sage to a text they authored or commented on. Enhances internal linking architecture."
+        ],
+        [
+          "TAUGHT_AT",
+          "Spiritual_Teacher",
+          "Sacred_Site",
+          "Connects a teacher to their primary ashram or historical location."
+        ],
+        [
+          "UTILIZES",
+          "Spiritual_Practice",
+          "Concept",
+          "Links a physical/mental practice to its underlying philosophy (e.g., Yoga to Moksha)."
+        ],
+        [
+          "BELONGS_TO",
+          "Sacred_Text",
+          "Concept",
+          "Maps texts to their primary philosophical schools (e.g., Upanishads to Advaita)."
+        ]
+      ]
+    }
+  ]
+}
