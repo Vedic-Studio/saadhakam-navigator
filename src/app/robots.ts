@@ -2,6 +2,20 @@ import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = "https://opensadhaka.com";
+  const sitemapPaths = [
+    "core",
+    "philosophies",
+    "traditions",
+    "texts",
+    "greats",
+    "concepts",
+    "comparisons",
+    "topics",
+    "practices",
+    "shlokas",
+    "sanskrit",
+    "articles",
+  ];
   return {
     rules: [
       {
@@ -92,7 +106,7 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: [
-      `${baseUrl}/sitemap.xml`,
+      ...sitemapPaths.map((path) => `${baseUrl}/sitemap/${path}.xml`),
       `${baseUrl}/llms.txt`,
       `${baseUrl}/llms-full.txt`,
     ],

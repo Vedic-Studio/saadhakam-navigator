@@ -1,2 +1,0 @@
-:HL["/_next/static/chunks/82ea0c79ec3f2bd8.css","style"]
-0:{"buildId":"mTafS7a-2Qj84PN4xWS1d","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"best-meditation-style-for-your-personality","paramType":null,"paramKey":"best-meditation-style-for-your-personality","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
