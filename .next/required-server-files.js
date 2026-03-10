@@ -105,7 +105,7 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/Users/ankitmishra/Developer/Sadhaka",
+    "outputFileTracingRoot": "/Users/ankitmishra",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -298,7 +298,7 @@ self.__SERVER_FILES_MANIFEST={
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "turbopack": {
-      "root": "/Users/ankitmishra/Developer/Sadhaka"
+      "root": "/Users/ankitmishra"
     },
     "distDirRoot": ".next",
     "_originalRewrites": {
@@ -645,7 +645,7 @@ self.__SERVER_FILES_MANIFEST={
     ]
   },
   "appDir": "/Users/ankitmishra/Developer/Sadhaka",
-  "relativeAppDir": "",
+  "relativeAppDir": "Developer/Sadhaka",
   "files": [
     ".next/routes-manifest.json",
     ".next/server/pages-manifest.json",
