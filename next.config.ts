@@ -2,11 +2,6 @@ import type { NextConfig } from "next";
 import { concepts } from "./src/data/concepts";
 
 const nextConfig: NextConfig = {
-    // Allow serving static files from public/
-    // Preserve existing image assets
-    turbopack: {
-        root: "/Users/ankitmishra/Developer/Sadhaka",
-    },
     images: {
         remotePatterns: [
             {
