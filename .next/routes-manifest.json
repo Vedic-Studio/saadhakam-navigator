@@ -234,6 +234,186 @@
       "destination": "/what-is-lila",
       "statusCode": 308,
       "regex": "^(?!/_next)/lila-meaning(?:/)?$"
+    },
+    {
+      "source": "/satya-meaning",
+      "destination": "/what-is-satya",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/satya-meaning(?:/)?$"
+    },
+    {
+      "source": "/prana-meaning",
+      "destination": "/what-is-prana",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/prana-meaning(?:/)?$"
+    },
+    {
+      "source": "/chakra-meaning",
+      "destination": "/what-is-chakra",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/chakra-meaning(?:/)?$"
+    },
+    {
+      "source": "/prajna-meaning",
+      "destination": "/what-is-prajna",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/prajna-meaning(?:/)?$"
+    },
+    {
+      "source": "/shanti-meaning",
+      "destination": "/what-is-shanti",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/shanti-meaning(?:/)?$"
+    },
+    {
+      "source": "/kundalini-meaning",
+      "destination": "/what-is-kundalini",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/kundalini-meaning(?:/)?$"
+    },
+    {
+      "source": "/nadi-meaning",
+      "destination": "/what-is-nadi",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/nadi-meaning(?:/)?$"
+    },
+    {
+      "source": "/kosha-meaning",
+      "destination": "/what-is-kosha",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/kosha-meaning(?:/)?$"
+    },
+    {
+      "source": "/mudra-meaning",
+      "destination": "/what-is-mudra",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/mudra-meaning(?:/)?$"
+    },
+    {
+      "source": "/bandha-meaning",
+      "destination": "/what-is-bandha",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/bandha-meaning(?:/)?$"
+    },
+    {
+      "source": "/asana-meaning",
+      "destination": "/what-is-asana",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/asana-meaning(?:/)?$"
+    },
+    {
+      "source": "/ojas-meaning",
+      "destination": "/what-is-ojas",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/ojas-meaning(?:/)?$"
+    },
+    {
+      "source": "/tejas-meaning",
+      "destination": "/what-is-tejas",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/tejas-meaning(?:/)?$"
+    },
+    {
+      "source": "/bindu-meaning",
+      "destination": "/what-is-bindu",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/bindu-meaning(?:/)?$"
+    },
+    {
+      "source": "/puja-meaning",
+      "destination": "/what-is-puja",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/puja-meaning(?:/)?$"
+    },
+    {
+      "source": "/yajna-meaning",
+      "destination": "/what-is-yajna",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/yajna-meaning(?:/)?$"
+    },
+    {
+      "source": "/kirtan-meaning",
+      "destination": "/what-is-kirtan",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/kirtan-meaning(?:/)?$"
+    },
+    {
+      "source": "/yantra-meaning",
+      "destination": "/what-is-yantra",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/yantra-meaning(?:/)?$"
+    },
+    {
+      "source": "/sankalpa-meaning",
+      "destination": "/what-is-sankalpa",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/sankalpa-meaning(?:/)?$"
+    },
+    {
+      "source": "/darshan-meaning",
+      "destination": "/what-is-darshan",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/darshan-meaning(?:/)?$"
+    },
+    {
+      "source": "/prasad-meaning",
+      "destination": "/what-is-prasad",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/prasad-meaning(?:/)?$"
+    },
+    {
+      "source": "/arati-meaning",
+      "destination": "/what-is-arati",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/arati-meaning(?:/)?$"
+    },
+    {
+      "source": "/purusha-meaning",
+      "destination": "/what-is-purusha",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/purusha-meaning(?:/)?$"
+    },
+    {
+      "source": "/prakriti-meaning",
+      "destination": "/what-is-prakriti",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/prakriti-meaning(?:/)?$"
+    },
+    {
+      "source": "/buddhi-meaning",
+      "destination": "/what-is-buddhi",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/buddhi-meaning(?:/)?$"
+    },
+    {
+      "source": "/manas-meaning",
+      "destination": "/what-is-manas",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/manas-meaning(?:/)?$"
+    },
+    {
+      "source": "/chitta-meaning",
+      "destination": "/what-is-chitta",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/chitta-meaning(?:/)?$"
+    },
+    {
+      "source": "/vritti-meaning",
+      "destination": "/what-is-vritti",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/vritti-meaning(?:/)?$"
+    },
+    {
+      "source": "/klesha-meaning",
+      "destination": "/what-is-klesha",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/klesha-meaning(?:/)?$"
+    },
+    {
+      "source": "/samskara-meaning",
+      "destination": "/what-is-samskara",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/samskara-meaning(?:/)?$"
     }
   ],
   "headers": [],

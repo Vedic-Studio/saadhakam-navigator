@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/82ea0c79ec3f2bd8.css","style"]
+0:{"buildId":"X0tyGrytuUvToe7E4bRCl","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"what-is-prajna","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

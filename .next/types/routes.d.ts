@@ -5,7 +5,7 @@ type AppRoutes = "/" | "/10-powerful-sanskrit-mantras" | "/[slug]" | "/adi-shank
 type AppRouteHandlerRoutes = "/amp/[slug]" | "/api/faith-finder/result/[id]" | "/api/faith-finder/submit" | "/api/indexnow" | "/api/indexnow/submit" | "/api/llm-content" | "/llms-full.txt" | "/llms.txt"
 type PageRoutes = never
 type LayoutRoutes = "/" | "/faith-finder/results/[id]"
-type RedirectRoutes = "/advaita-meaning" | "/ahamkara-meaning" | "/ahimsa-meaning" | "/atman-meaning" | "/avatara-meaning" | "/avidya-meaning" | "/bhakti-meaning" | "/brahman-meaning" | "/dharana-meaning" | "/dharma-meaning" | "/dhyana-meaning" | "/guna-meaning" | "/guru-meaning" | "/ishvara-meaning" | "/japa-meaning" | "/jiva-meaning" | "/jnana-meaning" | "/karma-meaning" | "/karma-yoga-meaning" | "/lila-meaning" | "/mantra-meaning" | "/maya-meaning" | "/moksha-meaning" | "/niskama-karma-meaning" | "/om-meaning" | "/pranayama-meaning" | "/purushartha-meaning" | "/raja-yoga-meaning" | "/rta-meaning" | "/sadhana-meaning" | "/samadhi-meaning" | "/samsara-meaning" | "/seva-meaning" | "/tapas-meaning" | "/vairagya-meaning" | "/viveka-meaning" | "/yoga-meaning"
+type RedirectRoutes = "/advaita-meaning" | "/ahamkara-meaning" | "/ahimsa-meaning" | "/arati-meaning" | "/asana-meaning" | "/atman-meaning" | "/avatara-meaning" | "/avidya-meaning" | "/bandha-meaning" | "/bhakti-meaning" | "/bindu-meaning" | "/brahman-meaning" | "/buddhi-meaning" | "/chakra-meaning" | "/chitta-meaning" | "/darshan-meaning" | "/dharana-meaning" | "/dharma-meaning" | "/dhyana-meaning" | "/guna-meaning" | "/guru-meaning" | "/ishvara-meaning" | "/japa-meaning" | "/jiva-meaning" | "/jnana-meaning" | "/karma-meaning" | "/karma-yoga-meaning" | "/kirtan-meaning" | "/klesha-meaning" | "/kosha-meaning" | "/kundalini-meaning" | "/lila-meaning" | "/manas-meaning" | "/mantra-meaning" | "/maya-meaning" | "/moksha-meaning" | "/mudra-meaning" | "/nadi-meaning" | "/niskama-karma-meaning" | "/ojas-meaning" | "/om-meaning" | "/prajna-meaning" | "/prakriti-meaning" | "/prana-meaning" | "/pranayama-meaning" | "/prasad-meaning" | "/puja-meaning" | "/purusha-meaning" | "/purushartha-meaning" | "/raja-yoga-meaning" | "/rta-meaning" | "/sadhana-meaning" | "/samadhi-meaning" | "/samsara-meaning" | "/samskara-meaning" | "/sankalpa-meaning" | "/satya-meaning" | "/seva-meaning" | "/shanti-meaning" | "/tapas-meaning" | "/tejas-meaning" | "/vairagya-meaning" | "/viveka-meaning" | "/vritti-meaning" | "/yajna-meaning" | "/yantra-meaning" | "/yoga-meaning"
 type RewriteRoutes = never
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes | AppRouteHandlerRoutes
 
@@ -27,21 +27,29 @@ interface ParamMap {
   "/api/indexnow": {}
   "/api/indexnow/submit": {}
   "/api/llm-content": {}
+  "/arati-meaning": {}
+  "/asana-meaning": {}
   "/atman-meaning": {}
   "/avatara-meaning": {}
   "/avidya-meaning": {}
+  "/bandha-meaning": {}
   "/best-meditation-style-for-your-personality": {}
   "/best-spiritual-path-for-beginners": {}
   "/bhagavad-gita-chapter-1": {}
   "/bhagavad-gita-complete-guide": {}
   "/bhakti-meaning": {}
+  "/bindu-meaning": {}
   "/brahman-meaning": {}
   "/brand-facts": {}
+  "/buddhi-meaning": {}
+  "/chakra-meaning": {}
+  "/chitta-meaning": {}
   "/choose-between-bhakti-jnana-karma-raja-yoga": {}
   "/compare": {}
   "/compare/[slug]": { "slug": string; }
   "/content-agent": {}
   "/daily-spiritual-routine-beginners": {}
+  "/darshan-meaning": {}
   "/dharana-meaning": {}
   "/dharma-meaning": {}
   "/dhyana-meaning": {}
@@ -61,22 +69,36 @@ interface ParamMap {
   "/jnana-meaning": {}
   "/karma-meaning": {}
   "/karma-yoga-meaning": {}
+  "/kirtan-meaning": {}
+  "/klesha-meaning": {}
+  "/kosha-meaning": {}
+  "/kundalini-meaning": {}
   "/learn/sanskrit/[word]": { "word": string; }
   "/lila-meaning": {}
   "/llms-full.txt": {}
   "/llms.txt": {}
+  "/manas-meaning": {}
   "/mantra-meaning": {}
   "/maya-meaning": {}
   "/moksha-meaning": {}
+  "/mudra-meaning": {}
+  "/nadi-meaning": {}
   "/niskama-karma-meaning": {}
   "/non-duality-vs-dualism": {}
+  "/ojas-meaning": {}
   "/om-meaning": {}
   "/philosophies": {}
   "/philosophies/[slug]": { "slug": string; }
   "/practical-spiritual-practices": {}
   "/practices/[practice]": { "practice": string; }
   "/practices/[practice]/for/[goal]": { "practice": string; "goal": string; }
+  "/prajna-meaning": {}
+  "/prakriti-meaning": {}
+  "/prana-meaning": {}
   "/pranayama-meaning": {}
+  "/prasad-meaning": {}
+  "/puja-meaning": {}
+  "/purusha-meaning": {}
   "/purushartha-meaning": {}
   "/raja-yoga-meaning": {}
   "/rta-meaning": {}
@@ -84,12 +106,17 @@ interface ParamMap {
   "/sadhana-meaning": {}
   "/samadhi-meaning": {}
   "/samsara-meaning": {}
+  "/samskara-meaning": {}
+  "/sankalpa-meaning": {}
+  "/satya-meaning": {}
   "/seva-meaning": {}
   "/shaivism-vs-vaishnavism": {}
+  "/shanti-meaning": {}
   "/spiritual-paths-explained": {}
   "/spiritual-traditions-paths": {}
   "/starting-spiritual-practice": {}
   "/tapas-meaning": {}
+  "/tejas-meaning": {}
   "/texts": {}
   "/texts/[slug]": { "slug": string; }
   "/texts/bhagavad-gita/chapter-[chapter]": {}
@@ -100,8 +127,11 @@ interface ParamMap {
   "/vairagya-meaning": {}
   "/vedanta-vs-tantra": {}
   "/viveka-meaning": {}
+  "/vritti-meaning": {}
   "/what-is-vedanta": {}
   "/which-meditation-for-me": {}
+  "/yajna-meaning": {}
+  "/yantra-meaning": {}
   "/yoga-meaning": {}
   "/yoga-sutras-complete-guide": {}
 }

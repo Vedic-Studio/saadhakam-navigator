@@ -491,6 +491,156 @@
         "source": "/lila-meaning",
         "destination": "/what-is-lila",
         "permanent": true
+      },
+      {
+        "source": "/satya-meaning",
+        "destination": "/what-is-satya",
+        "permanent": true
+      },
+      {
+        "source": "/prana-meaning",
+        "destination": "/what-is-prana",
+        "permanent": true
+      },
+      {
+        "source": "/chakra-meaning",
+        "destination": "/what-is-chakra",
+        "permanent": true
+      },
+      {
+        "source": "/prajna-meaning",
+        "destination": "/what-is-prajna",
+        "permanent": true
+      },
+      {
+        "source": "/shanti-meaning",
+        "destination": "/what-is-shanti",
+        "permanent": true
+      },
+      {
+        "source": "/kundalini-meaning",
+        "destination": "/what-is-kundalini",
+        "permanent": true
+      },
+      {
+        "source": "/nadi-meaning",
+        "destination": "/what-is-nadi",
+        "permanent": true
+      },
+      {
+        "source": "/kosha-meaning",
+        "destination": "/what-is-kosha",
+        "permanent": true
+      },
+      {
+        "source": "/mudra-meaning",
+        "destination": "/what-is-mudra",
+        "permanent": true
+      },
+      {
+        "source": "/bandha-meaning",
+        "destination": "/what-is-bandha",
+        "permanent": true
+      },
+      {
+        "source": "/asana-meaning",
+        "destination": "/what-is-asana",
+        "permanent": true
+      },
+      {
+        "source": "/ojas-meaning",
+        "destination": "/what-is-ojas",
+        "permanent": true
+      },
+      {
+        "source": "/tejas-meaning",
+        "destination": "/what-is-tejas",
+        "permanent": true
+      },
+      {
+        "source": "/bindu-meaning",
+        "destination": "/what-is-bindu",
+        "permanent": true
+      },
+      {
+        "source": "/puja-meaning",
+        "destination": "/what-is-puja",
+        "permanent": true
+      },
+      {
+        "source": "/yajna-meaning",
+        "destination": "/what-is-yajna",
+        "permanent": true
+      },
+      {
+        "source": "/kirtan-meaning",
+        "destination": "/what-is-kirtan",
+        "permanent": true
+      },
+      {
+        "source": "/yantra-meaning",
+        "destination": "/what-is-yantra",
+        "permanent": true
+      },
+      {
+        "source": "/sankalpa-meaning",
+        "destination": "/what-is-sankalpa",
+        "permanent": true
+      },
+      {
+        "source": "/darshan-meaning",
+        "destination": "/what-is-darshan",
+        "permanent": true
+      },
+      {
+        "source": "/prasad-meaning",
+        "destination": "/what-is-prasad",
+        "permanent": true
+      },
+      {
+        "source": "/arati-meaning",
+        "destination": "/what-is-arati",
+        "permanent": true
+      },
+      {
+        "source": "/purusha-meaning",
+        "destination": "/what-is-purusha",
+        "permanent": true
+      },
+      {
+        "source": "/prakriti-meaning",
+        "destination": "/what-is-prakriti",
+        "permanent": true
+      },
+      {
+        "source": "/buddhi-meaning",
+        "destination": "/what-is-buddhi",
+        "permanent": true
+      },
+      {
+        "source": "/manas-meaning",
+        "destination": "/what-is-manas",
+        "permanent": true
+      },
+      {
+        "source": "/chitta-meaning",
+        "destination": "/what-is-chitta",
+        "permanent": true
+      },
+      {
+        "source": "/vritti-meaning",
+        "destination": "/what-is-vritti",
+        "permanent": true
+      },
+      {
+        "source": "/klesha-meaning",
+        "destination": "/what-is-klesha",
+        "permanent": true
+      },
+      {
+        "source": "/samskara-meaning",
+        "destination": "/what-is-samskara",
+        "permanent": true
       }
     ]
   },
