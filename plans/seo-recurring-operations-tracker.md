@@ -101,6 +101,11 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
 ### Priority Batch Workflow (Code-Verified)
 - Generate the current priority indexing batch with:
   - `npm run indexing:priority`
+- Verify production IndexNow readiness with:
+  - `npm run indexnow:check:prod`
+- Submit all priority batches with machine-readable summary output:
+  - `npm run indexnow:submit:prod`
+  - Result artifact path: `/tmp/indexnow-submit-results.json`
 - Current batch covers:
   - pillar hubs
   - knowledge-hub index pages (`/philosophies`, `/traditions`, `/texts`, `/greats`, `/compare`)
@@ -113,10 +118,18 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
   - scripture entry pages + Bhagavad Gita scripture URLs
 - If `INDEXNOW_SUBMIT_TOKEN` is present in the environment, the generated curl command now includes the auth header automatically.
 - Recommended weekly use:
-  1. Run `npm run indexing:priority`
-  2. Submit each generated payload batch to production `/api/indexnow/submit`
+  1. Run `npm run indexnow:check:prod`
+  2. If readiness passes, run `npm run indexnow:submit:prod`
   3. Open the returned `inspectUrl` links in GSC and request indexing for the most important refreshed/new URLs
   4. Cross-check that these canonical URLs exist in the sitemap and match internal-link targets
+
+### Automated Stop Conditions (for `indexnow:submit:prod`)
+- Non-2xx HTTP from submit endpoint
+- JSON response contains `error`
+- Missing `searchConsole.requestIndexingLinks`
+- Any provider failures when strict mode is enabled (default)
+- Optional relaxed mode for transient provider issues:
+  - `node scripts/submit-priority-indexnow.mjs --allow-provider-failures`
 
 ### Priority Batch Curation Rules
 - Keep the batch focused on canonical URLs only; avoid deprecated/redirecting variants such as `*-meaning` concept URLs.
@@ -159,6 +172,7 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
 | 2026-03-10 | Weekly | Completed first-extraction refresh pass on priority pages (`best-spiritual-path-for-beginners`, `choose-between-bhakti-jnana-karma-raja-yoga`, `best-meditation-style-for-your-personality`, `starting-spiritual-practice`, `what-is-vedanta`, `advaita-vedanta-explained`, `how-to-start-japa`, `how-to-choose-a-mantra`, `daily-spiritual-routine-beginners`) with direct-answer intros and explicit “best for / not best for / where to start” blocks | Priority answer pages now align with AEO writing standard and stronger prompt-intent extraction structure | Submit refreshed URLs through IndexNow + GSC inspection and run prompt-matrix regression across ChatGPT/Perplexity/Claude/Gemini |
 | 2026-03-10 | Weekly | Updated priority indexing batch to include Wave-1 answer pages (`can-i-practice-vedanta-without-converting`, `can-i-chant-a-mantra-without-initiation`, `what-are-the-upanishads`, `best-bhagavad-gita-translation-for-beginners`) and re-ran `npm run indexing:priority` to generate latest 2-batch payloads + GSC inspection links | Indexing ops artifacts are current for newly published and refreshed answer pages | Execute production `POST /api/indexnow/submit` for both batches, then request indexing from returned GSC inspect links |
 | 2026-03-10 | Weekly | Executed production submission attempt for both generated priority batches (50 + 35 URLs). Initial responses showed `Redirecting...`; redirect-followed responses returned `{"error":"INDEXNOW_KEY environment variable not configured"}` for both batches. Also completed representative QA checks confirming canonical pattern + internal-link presence on refreshed/Wave-1 pages and verified Wave-1 routes are present in `src/data/articles.ts` for sitemap/article inclusion. | Controllable proof captured: submission workflow is functioning at endpoint level but blocked by missing production `INDEXNOW_KEY`; content QA checks passed for representative refreshed/Wave-1 set. | Set `INDEXNOW_KEY` in production, redeploy, re-run both batch submissions, then open returned GSC inspect links and request indexing for refreshed + Wave-1 URLs. |
+| 2026-03-10 | Weekly | Added production-ready IndexNow automation scripts: `indexnow:check:prod` (readiness probe) and `indexnow:submit:prod` (batched submit + stop conditions + `/tmp/indexnow-submit-results.json` artifact), and refactored priority URL source into shared config (`scripts/indexnow-priority-config.mjs`). Validation run results: readiness failed with `configured=false`; submit run returned batch status 500 with response error field (expected until `INDEXNOW_KEY` is configured in production). | Ops now has deterministic one-command checks and one-command submission with explicit pass/fail criteria and evidence artifact, reducing manual ambiguity from `Redirecting...` responses. | Configure `INDEXNOW_KEY` (and optional `INDEXNOW_SUBMIT_TOKEN`) in production, redeploy, run `npm run indexnow:check:prod`, then run `npm run indexnow:submit:prod` and process returned GSC inspect links. |
 
 ---
 
