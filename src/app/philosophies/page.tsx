@@ -92,6 +92,36 @@ export default function PhilosophiesPage() {
           </section>
 
           <section className="mb-20 pt-20 border-t border-border/40">
+            <div className="rounded-2xl border border-border/50 bg-card/40 p-6 md:p-8 mb-12">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
+                New: Mantra & Stotra Practice Library
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-3xl">
+                Move from philosophy into practice with curated stotra and sahasranama collections,
+                including verse-by-verse and name-by-name study pages.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <TrackedLink href="/stotras/shiva-tandava-stotram" eventLabel="philosophies:stotra:shiva-tandava" trackPathName="stotras">
+                  <div className="rounded-xl border border-border/50 p-4 hover:border-primary/40 transition-colors h-full">
+                    <p className="font-semibold">Shiva Tandava Stotram</p>
+                    <p className="text-sm text-muted-foreground mt-1">Non-dual depth through a classical Shaiva hymn</p>
+                  </div>
+                </TrackedLink>
+                <TrackedLink href="/stotras/vishnu-sahasranama" eventLabel="philosophies:stotra:vishnu-sahasranama" trackPathName="stotras">
+                  <div className="rounded-xl border border-border/50 p-4 hover:border-primary/40 transition-colors h-full">
+                    <p className="font-semibold">Vishnu Sahasranama</p>
+                    <p className="text-sm text-muted-foreground mt-1">1000 divine names for bhakti and contemplation</p>
+                  </div>
+                </TrackedLink>
+                <TrackedLink href="/stotras/lalita-sahasranama" eventLabel="philosophies:stotra:lalita-sahasranama" trackPathName="stotras">
+                  <div className="rounded-xl border border-border/50 p-4 hover:border-primary/40 transition-colors h-full">
+                    <p className="font-semibold">Lalita Sahasranama</p>
+                    <p className="text-sm text-muted-foreground mt-1">Shakta metaphysics expressed in sacred names</p>
+                  </div>
+                </TrackedLink>
+              </div>
+            </div>
+
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
               <div className="max-w-xl">
                 <h2 className="text-4xl font-display font-bold mb-4">Comparative Logic</h2>

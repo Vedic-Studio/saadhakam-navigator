@@ -91,6 +91,36 @@ export default function GreatsPage() {
               ))}
             </div>
             <div className="mt-24 pt-16 border-t border-border">
+              <div className="rounded-2xl border border-border/50 bg-card/40 p-6 md:p-8 mb-10">
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
+                  New: Stotra & Sahasranama Archive
+                </h2>
+                <p className="text-muted-foreground mb-6 max-w-3xl">
+                  Study the sacred hymns and name traditions honored by many of the masters on this page,
+                  with structured navigation for chanting, memorization, and reflective inquiry.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <TrackedLink href="/stotras/shiva-tandava-stotram" eventLabel="greats:stotra:shiva-tandava" trackPathName="stotras">
+                    <div className="rounded-xl border border-border/50 p-4 hover:border-primary/40 transition-colors h-full">
+                      <p className="font-semibold">Shiva Tandava Stotram</p>
+                      <p className="text-sm text-muted-foreground mt-1">Powerful Shaiva stotra across 16 verse pages</p>
+                    </div>
+                  </TrackedLink>
+                  <TrackedLink href="/stotras/vishnu-sahasranama" eventLabel="greats:stotra:vishnu-sahasranama" trackPathName="stotras">
+                    <div className="rounded-xl border border-border/50 p-4 hover:border-primary/40 transition-colors h-full">
+                      <p className="font-semibold">Vishnu Sahasranama</p>
+                      <p className="text-sm text-muted-foreground mt-1">1000 names with dedicated study pages</p>
+                    </div>
+                  </TrackedLink>
+                  <TrackedLink href="/stotras/lalita-sahasranama" eventLabel="greats:stotra:lalita-sahasranama" trackPathName="stotras">
+                    <div className="rounded-xl border border-border/50 p-4 hover:border-primary/40 transition-colors h-full">
+                      <p className="font-semibold">Lalita Sahasranama</p>
+                      <p className="text-sm text-muted-foreground mt-1">Devi-centered sahasranama for bhakti practice</p>
+                    </div>
+                  </TrackedLink>
+                </div>
+              </div>
+
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
                   <h2 className="font-display text-3xl font-bold text-foreground mb-2">

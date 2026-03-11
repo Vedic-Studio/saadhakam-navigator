@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "indexing:priority": "node scripts/generate-priority-indexing-urls.mjs",
     "indexnow:check:prod": "node scripts/check-indexnow-prod.mjs",
     "indexnow:submit:prod": "node scripts/submit-priority-indexnow.mjs",

@@ -15,6 +15,37 @@ function parseArgs(argv) {
     };
 }
 
+function formatError(error) {
+    if (!(error instanceof Error)) {
+        return { message: String(error) };
+    }
+
+    const details = {
+        name: error.name,
+        message: error.message,
+        stack: error.stack,
+    };
+
+    const cause = error.cause;
+    if (cause && typeof cause === "object") {
+        details.cause = {
+            name: cause.name,
+            message: cause.message,
+            code: cause.code,
+            errno: cause.errno,
+            syscall: cause.syscall,
+            hostname: cause.hostname,
+            address: cause.address,
+            port: cause.port,
+            stack: cause.stack,
+        };
+    } else if (cause) {
+        details.cause = String(cause);
+    }
+
+    return details;
+}
+
 function getHeaders() {
     const headers = { "Content-Type": "application/json" };
     const token = process.env.INDEXNOW_SUBMIT_TOKEN?.trim();
@@ -46,6 +77,7 @@ async function main() {
     const siteOrigin = getSiteOrigin().replace(/\/$/, "");
     const endpoint = `${siteOrigin}/api/indexnow/submit`;
     const headers = getHeaders();
+    const hasToken = Boolean(headers["x-indexnow-token"]);
 
     const { urls } = getPriorityUrls(siteOrigin);
     const batches = splitIntoBatches(urls, MAX_URLS_PER_REQUEST);
@@ -53,6 +85,9 @@ async function main() {
     const runSummary = {
         siteOrigin,
         endpoint,
+        auth: {
+            hasToken,
+        },
         generatedAt: new Date().toISOString(),
         totals: {
             urls: urls.length,
@@ -112,8 +147,10 @@ async function main() {
             runSummary.checks.allResponsesWithoutErrorField = false;
             runSummary.checks.allResponsesWithInspectLinks = false;
             runSummary.checks.allProviderCallsSucceeded = false;
+            const errorDetails = formatError(error);
             entry.response = {
-                error: error instanceof Error ? error.message : String(error),
+                error: errorDetails.message,
+                errorDetails,
             };
         }
 

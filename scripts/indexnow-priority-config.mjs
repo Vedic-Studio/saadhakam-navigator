@@ -108,6 +108,15 @@ export function getPriorityGroups() {
             "/texts/yoga-sutras",
             "/texts/bhagavad-gita/chapter-1",
         ],
+        trackBStotras: [
+            "/stotras/shiva-tandava-stotram",
+            "/stotras/shiva-tandava-stotram/verse-1",
+            "/stotras/shiva-tandava-stotram/verse-2",
+            "/stotras/shiva-tandava-stotram/verse-8",
+            "/stotras/shiva-tandava-stotram/verse-16",
+            "/stotras/vishnu-sahasranama",
+            "/stotras/lalita-sahasranama",
+        ],
     };
 }
 
