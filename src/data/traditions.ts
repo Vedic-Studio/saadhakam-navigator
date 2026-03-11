@@ -218,6 +218,10 @@ export function getTraditionBySlug(slug: string): Tradition | undefined {
   return traditions.find((t) => t.slug === slug);
 }
 
+export function getTraditionsBySlugs(slugs: string[]): Tradition[] {
+  return traditions.filter((t) => slugs.includes(t.slug));
+}
+
 export function getToneColor(tone: Tradition["tone"]): string {
   const colors = {
     devotional: "bg-rose-100 text-rose-800",

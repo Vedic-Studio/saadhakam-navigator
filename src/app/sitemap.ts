@@ -12,6 +12,8 @@ import { bgChapters } from "@/data/bgChapters";
 import { bgShlokas } from "@/data/bgShlokas";
 import { sanskritVocab } from "@/data/sanskritVocab";
 import { articles } from "@/data/articles";
+import { vishnuSahasranamaNames } from "@/data/vishnuSahasranama";
+import { lalitaSahasranamaNames } from "@/data/lalitaSahasranama";
 
 const baseUrl = "https://opensadhaka.com";
 
@@ -30,6 +32,7 @@ export async function generateSitemaps() {
     { id: "shlokas" },
     { id: "sanskrit" },
     { id: "articles" },
+    { id: "stotras" },
   ];
 }
 
@@ -354,6 +357,46 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
         changeFrequency: "monthly",
         priority: 0.8,
       }));
+
+    case "stotras":
+      return [
+        {
+          url: `${baseUrl}/stotras/shiva-tandava-stotram`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.8,
+        },
+        ...Array.from({ length: 16 }, (_, i) => ({
+          url: `${baseUrl}/stotras/shiva-tandava-stotram/verse-${i + 1}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.7,
+        })),
+        {
+          url: `${baseUrl}/stotras/vishnu-sahasranama`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.8,
+        },
+        ...vishnuSahasranamaNames.map((n) => ({
+          url: `${baseUrl}/stotras/vishnu-sahasranama/${n.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.6,
+        })),
+        {
+          url: `${baseUrl}/stotras/lalita-sahasranama`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.8,
+        },
+        ...lalitaSahasranamaNames.map((n) => ({
+          url: `${baseUrl}/stotras/lalita-sahasranama/${n.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.6,
+        })),
+      ];
 
     default:
       return [];

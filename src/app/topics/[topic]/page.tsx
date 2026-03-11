@@ -48,11 +48,7 @@ export default function TopicHubPage({
     .map((p) => getPracticeBySlug(p))
     .filter((p) => !!p);
 
-  // getTraditionsBySlugs function doesn't exist out of box, so stubbing here.
-  // Usually we would import all traditions and filter.
-  const traditions = require("@/data/traditions").traditions.filter((t: any) =>
-    topic.recommendedTraditions.includes(t.slug),
-  );
+  const traditions = getTraditionsBySlugs(topic.recommendedTraditions);
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
@@ -115,7 +111,7 @@ export default function TopicHubPage({
         <section>
           <h2 className="text-2xl font-bold mb-6">Associated Traditions</h2>
           <div className="grid gap-4">
-            {traditions.map((tradition: any) => (
+            {traditions.map((tradition) => (
               <TrackedLink
                 href={`/traditions/${tradition.slug}`}
                 key={tradition.slug}
@@ -124,7 +120,7 @@ export default function TopicHubPage({
                 className="group p-6 rounded-2xl border border-neutral-200 hover:border-primary hover:shadow-sm transition-all bg-white"
               >
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-                  {tradition.name}
+                  {tradition.title}
                 </h3>
                 <p className="text-neutral-600 text-sm line-clamp-2">
                   {tradition.description}

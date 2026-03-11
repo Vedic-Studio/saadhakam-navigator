@@ -435,7 +435,7 @@ export const chapter7Shlokas: BgShloka[] = [
       "Whatever form a devotee desires to worship with faith, I make that very faith steady and unwavering.",
     commentaries: [
       {
-        author:="Ramanuja (Vishishtadvaita)",
+        author: "Ramanuja (Vishishtadvaita)",
         text: "The Lord is the inner controller (antaryāmin) of all hearts. The faith that arises in a devotee toward any sacred form—whether of Shiva, Shakti, or Ganesha—is ultimately granted and sustained by Īśvara Himself. The Lord meets each devotee exactly where they are.",
       },
     ],

@@ -1,100 +1,756 @@
 import { BgShloka } from "./bgShlokas";
 
 export const chapter1Shlokas: BgShloka[] = [
-    {
-        id: "1.2",
-        chapter: 1,
-        verse: 2,
-        sanskritDevanagari: "सञ्जय उवाच |\nदृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा |\nआचार्यमुपसङ्गम्य राजा वचनमब्रवीत् || २ ||",
-        transliteration: "sañjaya uvāca\ndṛṣṭvā tu pāṇḍavānīkaṁ vyūḍhaṁ duryodhanas tadā\nācāryam upasaṅgamya rājā vacanam abravīt",
-        synonyms: "sañjayaḥ uvāca—Sanjaya said; dṛṣṭvā—after seeing; tu—but; pāṇḍava-anīkam—the soldiers of the Pandavas; vyūḍham—arranged in a military phalanx; duryodhanaḥ—King Duryodhana; tadā—at that time; ācāryam—the teacher (Drona); upasaṅgamya—approaching; rājā—the king; vacanam—words; abravīt—spoke.",
-        translation: "Sanjaya said: O King, after looking over the army gathered by the sons of Pandu, King Duryodhana went to his teacher and spoke the following words:",
-        commentaries: [
-            {
-                author: "Swami Gambhirananda (Advaita Vedanta)",
-                text: "Duryodhana, though a king, becomes fearful upon seeing the formidable military arrangement of the Pandavas. He approaches his teacher Drona out of diplomatic cunning, masking his fear with action."
-            }
-        ],
-        practicalApplication: "Like Duryodhana, when our ego faces a genuinely powerful challenge—especially one aligned with truth (Dharma)—it tries to seek external validation and reassurance. Recognizing this tendency in ourselves is the first step toward true inner confidence."
-    },
-    {
-        id: "1.3",
-        chapter: 1,
-        verse: 3,
-        sanskritDevanagari: "पश्यैतां पाण्डुपुत्राणामाचार्य महतीं चमूम् |\nव्यूढां द्रुपदपुत्रेण तव शिष्येण धीमता || ३ ||",
-        transliteration: "paśyaitāṁ pāṇḍu-putrāṇām ācārya mahatīṁ camūm\nvyūḍhāṁ drupada-putreṇa tava śiṣyeṇa dhīmatā",
-        synonyms: "paśya—behold; etām—this; pāṇḍu-putrāṇām—of the sons of Pandu; ācārya—O teacher; mahatīm—great; camūm—military force; vyūḍhām—arranged; drupada-putreṇa—by the son of Drupada; tava—your; śiṣyeṇa—disciple; dhī-matā—very intelligent.",
-        translation: "O my teacher, behold the great army of the sons of Pandu, so expertly arranged by your intelligent disciple, the son of Drupada.",
-        commentaries: [
-            {
-                author: "Ramanuja (Vishishtadvaita)",
-                text: "Duryodhana subtly insults Drona by pointing out that Drupada's son, whom Drona himself trained, is now leading the opposing army. It reveals his political manipulative nature, seeking to anger his teacher into fighting harder."
-            }
-        ],
-        practicalApplication: "When driven by fear and insecurity, the ego often resorts to subtle manipulation and blame. Observing how we communicate when we feel threatened is a profound sadhana."
-    },
-    {
-        id: "1.20",
-        chapter: 1,
-        verse: 20,
-        sanskritDevanagari: "अथ व्यवस्थितान्दृष्ट्वा धार्तराष्ट्रान् कपिध्वजः |\nप्रवृत्ते शस्त्रसम्पाते धनुरुद्यम्य पाण्डवः |\nहृषीकेशं तदा वाक्यमिदमाह महीपते || २० ||",
-        transliteration: "atha vyavasthitān dṛṣṭvā dhārtarāṣṭrān kapi-dhvajaḥ\npravṛtte śastra-sampāte dhanur udyamya pāṇḍavaḥ\nhṛṣīkeśaṁ tadā vākyam idam āha mahī-pate",
-        synonyms: "atha—thereupon; vyavasthitān—situated; dṛṣṭvā—looking upon; dhārtarāṣṭrān—the sons of Dhritarashtra; kapi-dhvajaḥ—he whose flag is marked with Hanuman; pravṛtte—while about to engage; śastra-sampāte—in the release of arrows; dhanuḥ—bow; udyamya—taking up; pāṇḍavaḥ—the son of Pandu (Arjuna); hṛṣīkeśam—unto Lord Krishna; tadā—at that time; vākyam—words; idam—these; āha—said; mahī-pate—O King.",
-        translation: "At that time Arjuna, the son of Pandu, seated in the chariot bearing the flag of Hanuman, took up his bow and prepared to shoot his arrows. O King, after looking at the sons of Dhritarashtra drawn in military array, Arjuna then spoke to Lord Krishna these words:",
-        commentaries: [
-            {
-                author: "Swami Sivananda",
-                text: "Arjuna is ready for the battle. The mention of 'Kapi-dhvaja' (Hanuman on the banner) indicates that Arjuna's cause is righteous, supported by divine forces. This marks the turning point where observation turns into a profound existential crisis."
-            }
-        ],
-        practicalApplication: "Before any major crisis or transformation, there is often a moment of absolute readiness, immediately followed by the collapse of our certainties. This verse captures the exact moment before Arjuna's ego fractures."
-    },
-    {
-        id: "1.21",
-        chapter: 1,
-        verse: 21,
-        sanskritDevanagari: "अर्जुन उवाच |\nसेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत || २१ ||",
-        transliteration: "arjuna uvāca\nsenayor ubhayor madhye rathaṁ sthāpaya me 'cyuta",
-        synonyms: "arjunaḥ uvāca—Arjuna said; senayoḥ—of the armies; ubhayoḥ—both; madhye—between; ratham—the chariot; sthāpaya—please place; me—my; acyuta—O infallible one.",
-        translation: "Arjuna said: O infallible one, please draw my chariot between the two armies so that I may see those present here, who desire to fight.",
-        commentaries: [
-            {
-                author: "Swami Sivananda",
-                text: "Arjuna asserts a sense of control and heroism, demanding to see his enemies. Yet he addresses Krishna as 'Acyuta' (the infallible), subconsciously recognizing that while he may fail or fall in courage, the Divine does not."
-            }
-        ],
-        practicalApplication: "We often ask God or our higher awareness for 'clarity'—asking to see the truth of our situation. We rarely understand how devastating that clarity will be when it arrives."
-    },
-    {
-        id: "1.28",
-        chapter: 1,
-        verse: 28,
-        sanskritDevanagari: "अर्जुन उवाच |\nदृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम् |\nसीदन्ति मम गात्राणि मुखं च परिशुष्यति || २८ ||",
-        transliteration: "arjuna uvāca\ndṛṣṭvemaṁ sva-janaṁ kṛṣṇa yuyutsuṁ samupasthitam\nsīdanti mama gātrāṇi mukhaṁ ca pariśuṣyati",
-        synonyms: "arjunaḥ uvāca—Arjuna said; dṛṣṭvā—after seeing; imam—all these; sva-janam—kinsmen; kṛṣṇa—O Krishna; yuyutsum—all in a fighting spirit; samupasthitam—present; sīdanti—are quivering; mama—my; gātrāṇi—limbs of the body; mukham—mouth; ca—also; pariśuṣyati—is drying up.",
-        translation: "Arjuna said: My dear Krishna, seeing my friends and relatives present before me in such a fighting spirit, I feel the limbs of my body quivering and my mouth drying up.",
-        commentaries: [
-            {
-                author: "Bhaktivedanta Swami (Gaudiya Vaishnavism)",
-                text: "This marks the beginning of Arjuna's vishadayoga (the yoga of dejection). It is not fear of death, but the overwhelming compassion and horror at having to slaughter his own relatives that paralyzes the greatest warrior of the age."
-            }
-        ],
-        practicalApplication: "When we truly see the cost of our worldly attachments, the physical body responds with anxiety and resistance. Spiritual growth often begins precisely at the point where our normal coping mechanisms completely fail."
-    },
-    {
-        id: "1.47",
-        chapter: 1,
-        verse: 47,
-        sanskritDevanagari: "सञ्जय उवाच |\nएवमुक्त्वाऽर्जुनः सङ्ख्ये रथोपस्थ उपाविशत् |\nविसृज्य सशरं चापं शोकसंविग्नमानसः || ४७ ||",
-        transliteration: "sañjaya uvāca\nevam uktvārjunaḥ saṅkhye rathopastha upāviśat\nvisṛjya sa-śaraṁ cāpaṁ śoka-saṁvigna-mānasaḥ",
-        synonyms: "sañjayaḥ uvāca—Sanjaya said; evam—thus; uktvā—saying; arjunaḥ—Arjuna; saṅkhye—in the battlefield; ratha-upasthe—on the seat of the chariot; upāviśat—sat down; visṛjya—putting aside; sa-śaram—along with arrows; cāpam—the bow; śoka—by lamentation; saṁvigna—distressed; mānasaḥ—within the mind.",
-        translation: "Sanjaya said: Having spoken thus on the battlefield, Arjuna cast aside his bow and arrows and sat down on the chariot, his mind overwhelmed with grief.",
-        commentaries: [
-            {
-                author: "Swami Gambhirananda",
-                text: "This verse concludes the first chapter. Arjuna's surrender to grief sets the stage for the teaching. It signifies the complete failure of human intellect to resolve fundamental moral conflicts without divine insight."
-            }
-        ],
-        practicalApplication: "When we lay down our 'weapons'—our defenses, arguments, and illusion of control—and sit down in absolute not-knowing, we create the emptiness required for true teaching to flow in. Our deepest breakdowns are often the preconditions for our breakthroughs."
-    }
+  {
+    id: "1.1",
+    chapter: 1,
+    verse: 1,
+    sanskritDevanagari: "धृतराष्ट्र उवाच\n\nधर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः।\n\nमामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय।।1.1।।",
+    transliteration: "dhṛitarāśhtra uvācha\ndharma-kṣhetre kuru-kṣhetre samavetā yuyutsavaḥ\nmāmakāḥ pāṇḍavāśhchaiva kimakurvata sañjaya",
+    synonyms: "dhṛitarāśhtraḥ uvācha—Dhritarashtra said; dharma-kṣhetre—the land of dharma; kuru-kṣhetre—at Kurukshetra; samavetāḥ—having gathered; yuyutsavaḥ—desiring to fight; māmakāḥ—my sons; pāṇḍavāḥ—the sons of Pandu; cha—and; eva—certainly; kim—what; akurvata—did they do; sañjaya—Sanjay",
+    translation: "Dhritarashtra said, \"What did my people and the sons of Pandu do when they had assembled together, eager for battle, on the holy plain of Kurukshetra, O Sanjaya?\"",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.1 धर्मक्षेत्रे on the holy plain? कुरुक्षेत्रे in Kurukshetra? समवेताः assembled together? युयुत्सवः desirous to fight? मामकाः my people? पाण्डवाः the sons of Pandu? च and? एव also? किम् what? अकुर्वत did do? सञ्जय O Sanjaya.Commentary Dharmakshetra -- that place which protects Dharma is Dharmakshetra. Because it was in the land of the Kurus? it was called Kurukshetra.Sanjaya is one who has conered likes and dislikes and who is impartial.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.1: Dhritarashtra said, \"What did my people and the sons of Pandu do when they had assembled together, eager for battle, on the holy plain of Kurukshetra, O Sanjaya?\"",
+  },
+  {
+    id: "1.2",
+    chapter: 1,
+    verse: 2,
+    sanskritDevanagari: "सञ्जय उवाच\n\nदृष्ट्वा तु पाण्डवानीकं व्यूढं दुर्योधनस्तदा।\n\nआचार्यमुपसङ्गम्य राजा वचनमब्रवीत्।।1.2।।",
+    transliteration: "sañjaya uvācha\ndṛiṣhṭvā tu pāṇḍavānīkaṁ vyūḍhaṁ duryodhanastadā\nāchāryamupasaṅgamya rājā vachanamabravīt",
+    synonyms: "sanjayaḥ uvācha—Sanjay said; dṛiṣhṭvā—on observing; tu—but; pāṇḍava-anīkam—the Pandava army; vyūḍham—standing in a military formation; duryodhanaḥ—King Duryodhan; tadā—then; āchāryam—teacher; upasaṅgamya—approached; rājā—the king; vachanam—words; abravīt—spoke",
+    translation: "Sanjaya said: Having seen the army of the Pandavas drawn up in battle array, King Duryodhana approached his teacher, Drona, and spoke these words.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.2 दृष्ट्वा having seen? तु indeed? पाण्डवानीकम् the army of the Pandavas? व्यूढम् drawn up in battlearray? दुर्योधनः Duryodhana? तदा then? आचार्यम् the teacher? उपसङ्गम्य having approached? राजा the king? वचनम् speech? अब्रवीत् said.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.2: Sanjaya said: Having seen the army of the Pandavas drawn up in battle array, King Duryodhana approached his teacher, Drona, and spoke these words.",
+  },
+  {
+    id: "1.3",
+    chapter: 1,
+    verse: 3,
+    sanskritDevanagari: "पश्यैतां पाण्डुपुत्राणामाचार्य महतीं चमूम्।\n\nव्यूढां द्रुपदपुत्रेण तव शिष्येण धीमता।।1.3।।",
+    transliteration: "paśhyaitāṁ pāṇḍu-putrāṇām āchārya mahatīṁ chamūm\nvyūḍhāṁ drupada-putreṇa tava śhiṣhyeṇa dhīmatā",
+    synonyms: "paśhya—behold; etām—this; pāṇḍu-putrāṇām—of the sons of Pandu; āchārya—respected teacher; mahatīm—mighty; chamūm—army; vyūḍhām—arrayed in a military formation; drupada-putreṇa—son of Drupad, Dhrishtadyumna; tava—by your; śhiṣhyeṇa—disciple; dhī-matā—intelligent",
+    translation: "Behold, O Teacher! This mighty army of the sons of Pandu, arrayed by the son of Drupada, thy wise disciple.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.3 पश्य behold? एताम् this? पाण्डुपुत्राणाम् of the sons of Pandu? आचार्य O Teacher? महतीम् great? चमूम् army? व्यूढाम् arrayed? द्रुपदपुत्रेण son of Drupada? तव शिष्येण by your disciple? धीमता wise.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.3: Behold, O Teacher! This mighty army of the sons of Pandu, arrayed by the son of Drupada, thy wise disciple.",
+  },
+  {
+    id: "1.4",
+    chapter: 1,
+    verse: 4,
+    sanskritDevanagari: "अत्र शूरा महेष्वासा भीमार्जुनसमा युधि।\n\nयुयुधानो विराटश्च द्रुपदश्च महारथः।।1.4।।",
+    transliteration: "atra śhūrā maheṣhvāsā bhīmārjuna-samā yudhi\nyuyudhāno virāṭaśhcha drupadaśhcha mahā-rathaḥ",
+    synonyms: "atra—here; śhūrāḥ—powerful warriors; mahā-iṣhu-āsāḥ—great bowmen; bhīma-arjuna-samāḥ—equal to Bheem and Arjun; yudhi—in military prowess; yuyudhānaḥ—Yuyudhan; virāṭaḥ—Virat; cha—and; drupadaḥ—Drupad; cha—also; mahā-rathaḥ—warriors who could single handedly match the strength of ten thousand ordinary warriors;",
+    translation: "Here are heroes, mighty archers, equal in battle to Bhima and Arjuna, Yuyudhana (Satyaki), Virata, and Drupada—all mighty warriors.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.4 अत्र here? शूराः heroes? महेष्वासाः mighty archers? भीमार्जुनसमाः eal to Bhima and Arjuna? युधि in battle? युयुधानः Yuyudhana? विराटः Virata? च and? द्रुपदः Drupada? च and? महारथः of the great car.Commentary Technically? maharatha means a warrior who is proficient in the science of war and who is able to fight alone with ten thousand archers.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.4: Here are heroes, mighty archers, equal in battle to Bhima and Arjuna, Yuyudhana (Satyaki), Virata, and Drupada—all mighty warriors.",
+  },
+  {
+    id: "1.5",
+    chapter: 1,
+    verse: 5,
+    sanskritDevanagari: "धृष्टकेतुश्चेकितानः काशिराजश्च वीर्यवान्।\n\nपुरुजित्कुन्तिभोजश्च शैब्यश्च नरपुङ्गवः।।1.5।।",
+    transliteration: "dhṛiṣhṭaketuśhchekitānaḥ kāśhirājaśhcha vīryavān\npurujit kuntibhojaśhcha śhaibyaśhcha nara-puṅgavaḥ\nyudhāmanyuśhcha vikrānta uttamaujāśhcha vīryavān",
+    synonyms: "dhṛiṣhṭaketuḥ—Dhrishtaketu; chekitānaḥ—Chekitan; kāśhirājaḥ—Kashiraj; cha—and; vīrya-vān—heroic; purujit—Purujit; kuntibhojaḥ—Kuntibhoj; cha—and; śhaibyaḥ—Shaibya; cha—and; nara-puṅgavaḥ—best of men; yudhāmanyuḥ—Yudhamanyu; cha—and; vikrāntaḥ—courageous; uttamaujāḥ—Uttamauja; cha—and; vīrya-vān—gallant;",
+    translation: "Dhrishtaketu, Chekitana, the valiant king of Kasi, Purujit, Kuntibhoja, and Saibya—the best of men.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.5 धृष्टकेतुः Dhrishtaketu? चेकितानः Chekitana? काशिराजः king of Kasi? च and? वीर्यवान् valiant? पुरुजित् Purujit? कुन्तिभोजः Kuntibhoja? च and? शैब्यः son of Sibi? च and? नरपुङ्गवः the best of men.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.5: Dhrishtaketu, Chekitana, the valiant king of Kasi, Purujit, Kuntibhoja, and Saibya—the best of men.",
+  },
+  {
+    id: "1.6",
+    chapter: 1,
+    verse: 6,
+    sanskritDevanagari: "युधामन्युश्च विक्रान्त उत्तमौजाश्च वीर्यवान्।\n\nसौभद्रो द्रौपदेयाश्च सर्व एव महारथाः।।1.6।।",
+    transliteration: "saubhadro draupadeyāśhcha sarva eva mahā-rathāḥ",
+    synonyms: "saubhadraḥ—the son of Subhadra; draupadeyāḥ—the sons of Draupadi; cha—and; sarve—all; eva—indeed; mahā-rathāḥ—warriors who could single handedly match the strength of ten thousand ordinary warriors",
+    translation: "The strong Yudhamanyu and the brave Uttamaujas, the son of Subhadra (Abhimanyu, the son of Subhadra and Arjuna), and the sons of Draupadi, all of them great charioteers (great heroes).\"",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.6 युधामन्युः Yudhamanyu? च and? विक्रान्तः the strong? उत्तमौजाः Uttamaujas? च and? वीर्यवान् the brave? सौभद्रः the son of Subhadra? द्रौपदेयाः the sons of Draupadi? च and? सर्वे all? एव even? महारथाः great carwarriors.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.6: The strong Yudhamanyu and the brave Uttamaujas, the son of Subhadra (Abhimanyu, the son of Subhadra and Arjuna), and the sons of Draupadi, all of them great charioteers (great hero",
+  },
+  {
+    id: "1.7",
+    chapter: 1,
+    verse: 7,
+    sanskritDevanagari: "अस्माकं तु विशिष्टा ये तान्निबोध द्विजोत्तम।\n\nनायका मम सैन्यस्य संज्ञार्थं तान्ब्रवीमि ते।।1.7।।",
+    transliteration: "asmākaṁ tu viśhiṣhṭā ye tānnibodha dwijottama\nnāyakā mama sainyasya sanjñārthaṁ tānbravīmi te",
+    synonyms: "asmākam—ours; tu—but; viśhiṣhṭāḥ—special; ye—who; tān—them; nibodha—be informed; dwija-uttama—best of Brahmnis; nāyakāḥ—principal generals; mama—our; sainyasya—of army; sanjñā-artham—for information; tān—them; bravīmi—I recount; te—unto you",
+    translation: "Know also, O best among the twice-born! the names of those who are the most distinguished amongst ourselves, the leaders of my army; these I name to you for your information.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.7 अस्माकम् ours? तु also? विशिष्टाः the best? ये who (those)? तान् those? निबोध know (thou)? द्विजोत्तम (O) best among the twicorn ones? नायकाः the leaders? मम my? सैन्यस्य of the army? संज्ञार्थम् for information? तान् them? ब्रवीमि speak? ते to thee.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.7: Know also, O best among the twice-born! the names of those who are the most distinguished amongst ourselves, the leaders of my army; these I name to you for your information.",
+  },
+  {
+    id: "1.8",
+    chapter: 1,
+    verse: 8,
+    sanskritDevanagari: "भवान्भीष्मश्च कर्णश्च कृपश्च समितिञ्जयः।\n\nअश्वत्थामा विकर्णश्च सौमदत्तिस्तथैव च।।1.8।।",
+    transliteration: "bhavānbhīṣhmaśhcha karṇaśhcha kṛipaśhcha samitiñjayaḥ\naśhvatthāmā vikarṇaśhcha saumadattis tathaiva cha",
+    synonyms: "bhavān—yourself; bhīṣhmaḥ—Bheeshma; cha—and; karṇaḥ—Karna; cha—and; kṛipaḥ—Kripa; cha—and; samitim-jayaḥ—victorious in battle; aśhvatthāmā—Ashvatthama; vikarṇaḥ—Vikarna; cha—and; saumadattiḥ—Bhurishrava; tathā—thus; eva—even; cha—also",
+    translation: "\"Thou thyself, Bhishma, Karna, Kripa, the victorious in war, Asvatthama, Vikarna, and Bhurisrava, the son of Somadatta—all these are ready for battle.\"",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.8 भवान् yourself? भीष्मः Bhishma? च and? कर्णः Karna? च and? कृपः Kripa? च and? समितिञ्जयः victorious in war? अश्वत्थामा Asvatthama? the son of Dronacharya? विकर्णः Vikarna? च and? सौमदत्तिः the son of Somadatta? तथा thus? एव even? च and.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.8: \"Thou thyself, Bhishma, Karna, Kripa, the victorious in war, Asvatthama, Vikarna, and Bhurisrava, the son of Somadatta—all these are ready for battle.\"",
+  },
+  {
+    id: "1.9",
+    chapter: 1,
+    verse: 9,
+    sanskritDevanagari: "अन्ये च बहवः शूरा मदर्थे त्यक्तजीविताः।\n\nनानाशस्त्रप्रहरणाः सर्वे युद्धविशारदाः।।1.9।।",
+    transliteration: "anye cha bahavaḥ śhūrā madarthe tyaktajīvitāḥ\nnānā-śhastra-praharaṇāḥ sarve yuddha-viśhāradāḥ",
+    synonyms: "anye—others; cha—also; bahavaḥ—many; śhūrāḥ—heroic warriors; mat-arthe—for my sake; tyakta-jīvitāḥ—prepared to lay down their lives; nānā-śhastra-praharaṇāḥ—equipped with various kinds of weapons; sarve—all; yuddha-viśhāradāḥ—skilled in the art of warfare",
+    translation: "And also many other heroes, ready to give up their lives for my sake, armed with various weapons and missiles, all well-skilled in battle.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.9 अन्ये others? च and? बहवः many? शूराः heroes? मदर्थे for my sake? त्यक्तजीविताः who are ready to give up their lives? नानाशस्त्रप्रहरणाः armed with various weapons and missiles? सर्वे all? युद्धविशारदाः wellskilled in battle.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.9: And also many other heroes, ready to give up their lives for my sake, armed with various weapons and missiles, all well-skilled in battle.",
+  },
+  {
+    id: "1.10",
+    chapter: 1,
+    verse: 10,
+    sanskritDevanagari: "अपर्याप्तं तदस्माकं बलं भीष्माभिरक्षितम्।\n\nपर्याप्तं त्विदमेतेषां बलं भीमाभिरक्षितम्।।1.10।।",
+    transliteration: "aparyāptaṁ tadasmākaṁ balaṁ bhīṣhmābhirakṣhitam\nparyāptaṁ tvidameteṣhāṁ balaṁ bhīmābhirakṣhitam",
+    synonyms: "aparyāptam—unlimited; tat—that; asmākam—ours; balam—strength; bhīṣhma—by Grandsire Bheeshma; abhirakṣhitam—safely marshalled; paryāptam—limited; tu—but; idam—this; eteṣhām—their; balam—strength; bhīma—Bheem; abhirakṣhitam—carefully marshalled",
+    translation: "Our army, marshalled by Bhishma, is insufficient, whereas theirs, marshalled by Bhima, is sufficient.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.10 अपर्याप्तम् insufficient? तत् that? अस्माकम् ours? बलम् army? भीष्माभिरक्षितम् marshalled by Bhishma? पर्याप्तम् sufficient? तु while? इदम् this? एतेषाम् their? बलम् army? भीमाभिरक्षितम् marshalled by Bhima.Commentary The verse is differently interpreted by different commentators. Sridhara Swami takes the word aparyaptam to mean insufficient. Ananda Giri takes it to mean unlimited.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.10: Our army, marshalled by Bhishma, is insufficient, whereas theirs, marshalled by Bhima, is sufficient.",
+  },
+  {
+    id: "1.11",
+    chapter: 1,
+    verse: 11,
+    sanskritDevanagari: "अयनेषु च सर्वेषु यथाभागमवस्थिताः।\n\nभीष्ममेवाभिरक्षन्तु भवन्तः सर्व एव हि।।1.11।।",
+    transliteration: "ayaneṣhu cha sarveṣhu yathā-bhāgamavasthitāḥ\nbhīṣhmamevābhirakṣhantu bhavantaḥ sarva eva hi",
+    synonyms: "ayaneṣhu—at the strategic points; cha—also; sarveṣhu—all; yathā-bhāgam—in respective position; avasthitāḥ—situated; bhīṣhmam—to Grandsire Bheeshma; eva—only; abhirakṣhantu—defend; bhavantaḥ—you; sarve—all; eva hi—even as",
+    translation: "Therefore, do all of you, stationed in your respective positions in the several divisions of the army, protect Bhishma alone.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.11 अयनेषु in the arrays (of the army)? च and? सर्वेषु in all? यथाभागम् according to division? अवस्थिताः being stationed? भीष्मम् Bhishma? एव alone? अभिरक्षन्तु protect? भवन्तः ye? सर्वे all? एव even? हि indeed.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.11: Therefore, do all of you, stationed in your respective positions in the several divisions of the army, protect Bhishma alone.",
+  },
+  {
+    id: "1.12",
+    chapter: 1,
+    verse: 12,
+    sanskritDevanagari: "तस्य संजनयन्हर्षं कुरुवृद्धः पितामहः।\n\nसिंहनादं विनद्योच्चैः शङ्खं दध्मौ प्रतापवान्।।1.12।।",
+    transliteration: "tasya sañjanayan harṣhaṁ kuru-vṛiddhaḥ pitāmahaḥ\nsiṁha-nādaṁ vinadyochchaiḥ śhaṅkhaṁ dadhmau pratāpavān",
+    synonyms: "tasya—his; sañjanayan—causing; harṣham—joy; kuru-vṛiddhaḥ—the grand old man of the Kuru dynasty (Bheeshma); pitāmahaḥ—grandfather; sinha-nādam—lion’s roar; vinadya—sounding; uchchaiḥ—very loudly; śhaṅkham—conch shell; dadhmau—blew; pratāpa-vān—the glorious",
+    translation: "His glorious grandsire, the oldest of the Kauravas, roared like a lion to cheer Duryodhana and blew his conch.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.12 तस्य his (Duryodhanas)? संजयन् causing? हर्षम् joy? कुरुवृद्धः oldest of the Kurus? पितामहः grandfather? सिंहनादम् lions roar? विनद्य having sounded? उच्चैः loudly? शङ्खम् conch? दध्मौ blew? प्रतापवान् the glorious.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.12: His glorious grandsire, the oldest of the Kauravas, roared like a lion to cheer Duryodhana and blew his conch.",
+  },
+  {
+    id: "1.13",
+    chapter: 1,
+    verse: 13,
+    sanskritDevanagari: "ततः शङ्खाश्च भेर्यश्च पणवानकगोमुखाः।\n\nसहसैवाभ्यहन्यन्त स शब्दस्तुमुलोऽभवत्।।1.13।।",
+    transliteration: "tataḥ śhaṅkhāśhcha bheryaśhcha paṇavānaka-gomukhāḥ\nsahasaivābhyahanyanta sa śhabdastumulo ’bhavat",
+    synonyms: "tataḥ—thereafter; śhaṅkhāḥ—conches; cha—and; bheryaḥ—bugles; cha—and; paṇava-ānaka—drums and kettledrums; go-mukhāḥ—trumpets; sahasā—suddenly; eva—indeed; abhyahanyanta—blared forth; saḥ—that; śhabdaḥ—sound; tumulaḥ—overwhelming; abhavat—was",
+    translation: "Then, suddenly, conches, kettledrums, tabors, drums, and cow horns blared forth from the Kaurava side, and the sound was tremendous.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.13 ततः then शङ्खाः conches? च and? भेर्यः kettledrums? च and? पणवानकगोमुखाः tabors? drums and cowhorns? सहसा एव ite suddenly? अभ्यहन्यन्त blared forth? सः that? शब्दः sound? तुमुलः tremendous? अभवत् was.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.13: Then, suddenly, conches, kettledrums, tabors, drums, and cow horns blared forth from the Kaurava side, and the sound was tremendous.",
+  },
+  {
+    id: "1.14",
+    chapter: 1,
+    verse: 14,
+    sanskritDevanagari: "ततः श्वेतैर्हयैर्युक्ते महति स्यन्दने स्थितौ।\n\nमाधवः पाण्डवश्चैव दिव्यौ शङ्खौ प्रदध्मतुः।।1.14।।",
+    transliteration: "tataḥ śhvetairhayairyukte mahati syandane sthitau\nmādhavaḥ pāṇḍavaśhchaiva divyau śhaṅkhau pradadhmatuḥ",
+    synonyms: "tataḥ—then; śhvetaiḥ—by white; hayaiḥ—horses; yukte—yoked; mahati—glorious; syandane—chariot; sthitau—seated; mādhavaḥ—Shree Krishna, the husband of the goddess of fortune, Lakshmi; pāṇḍavaḥ—Arjun; cha—and; eva—also; divyau—Divine; śhaṅkhau—conch shells; pradadhmatuḥ—blew",
+    translation: "Then, Madhava (Krishna) and the son of Pandu (Arjuna), seated in the magnificent chariot yoked with white horses, blew divine conches.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.14 ततः then? श्वेतैः (with) white? हयैः horses? युक्ते yoked? महति magnificent? स्यन्दने in the chariot? स्थितौ seated? माधवः Madhava? पाण्डवः Pandava? the son of Pandu? च and? एव also? दिव्यौ divine? शङ्खौ conches? प्रदध्मतुः blew.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.14: Then, Madhava (Krishna) and the son of Pandu (Arjuna), seated in the magnificent chariot yoked with white horses, blew divine conches.",
+  },
+  {
+    id: "1.15",
+    chapter: 1,
+    verse: 15,
+    sanskritDevanagari: "पाञ्चजन्यं हृषीकेशो देवदत्तं धनंजयः।\n\nपौण्ड्रं दध्मौ महाशङ्खं भीमकर्मा वृकोदरः।।1.15।।",
+    transliteration: "pāñchajanyaṁ hṛiṣhīkeśho devadattaṁ dhanañjayaḥ\npauṇḍraṁ dadhmau mahā-śhaṅkhaṁ bhīma-karmā vṛikodaraḥ",
+    synonyms: "pāñchajanyam—the conch shell named Panchajanya; hṛiṣhīka-īśhaḥ—Shree Krishna, the Lord of the mind and senses; devadattam—the conch shell named Devadutta; dhanam-jayaḥ—Arjun, the winner of wealth; pauṇḍram—the conch named Paundra; dadhmau—blew; mahā-śhaṅkham—mighty conch; bhīma-karmā—one who performs herculean tasks; vṛika-udaraḥ—Bheem, the voracious eater",
+    translation: "Hrishikesha blew the Panchajanya, Arjuna blew the Devadatta, and Bhima, the wolf-bellied doer of terrible deeds, blew the great conch Paundra.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.15 पाञ्चजन्यम् (the conch named) Panchajanya? हृषीकेशः (the Lord of the senses) Krishna? देवदत्तम् (the conch named) Devadatta? धनञ्जयः (the victor of wealth) Arjuna? पौण्ड्रम् (the conch named) Poundra? दध्मौ blew? महाशङ्खम् great conch? भीमकर्मा doer of terrible dees? वृकोदरः (having the belly of a wolf) Bhima.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.15: Hrishikesha blew the Panchajanya, Arjuna blew the Devadatta, and Bhima, the wolf-bellied doer of terrible deeds, blew the great conch Paundra.",
+  },
+  {
+    id: "1.16",
+    chapter: 1,
+    verse: 16,
+    sanskritDevanagari: "अनन्तविजयं राजा कुन्तीपुत्रो युधिष्ठिरः।\n\nनकुलः सहदेवश्च सुघोषमणिपुष्पकौ।।1.16।।",
+    transliteration: "anantavijayaṁ rājā kuntī-putro yudhiṣhṭhiraḥ\nnakulaḥ sahadevaśhcha sughoṣha-maṇipuṣhpakau",
+    synonyms: "ananta-vijayam—the conch named Anantavijay; rājā—king; kuntī-putraḥ—son of Kunti; yudhiṣhṭhiraḥ—Yudhishthir; nakulaḥ—Nakul; sahadevaḥ—Sahadev; cha—and; sughoṣha-maṇipuṣhpakau—the conche shells named Sughosh and Manipushpak;",
+    translation: "King Yudhishthira, the son of Kunti, blew the Anantavijaya; Nakula and Sahadeva blew the Sughosha and the Manipushpaka.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.16 अनन्तविजयम् (the conch named) Anantavijayam? राजा the king? कुन्तीपुत्रः son of Kunti? युधिष्ठिरः Yudhishthira? नकुलः Nakula? सहदेवः Sahadeva? च and? सुघोषमणिपुष्पकौ (the conches named) Sughosha and Manipushpaka.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.16: King Yudhishthira, the son of Kunti, blew the Anantavijaya; Nakula and Sahadeva blew the Sughosha and the Manipushpaka.",
+  },
+  {
+    id: "1.17",
+    chapter: 1,
+    verse: 17,
+    sanskritDevanagari: "काश्यश्च परमेष्वासः शिखण्डी च महारथः।\n\nधृष्टद्युम्नो विराटश्च सात्यकिश्चापराजितः।।1.17।।",
+    transliteration: "kāśhyaśhcha parameṣhvāsaḥ śhikhaṇḍī cha mahā-rathaḥ\ndhṛiṣhṭadyumno virāṭaśhcha sātyakiśh chāparājitaḥ",
+    synonyms: "kāśhyaḥ—King of Kashi; cha—and; parama-iṣhu-āsaḥ—the excellent archer; śhikhaṇḍī—Shikhandi; cha—also; mahā-rathaḥ—warriors who could single handedly match the strength of ten thousand ordinary warriors; dhṛiṣhṭadyumnaḥ—Dhrishtadyumna; virāṭaḥ—Virat; cha—and; sātyakiḥ—Satyaki; cha—and; aparājitaḥ—invincible;",
+    translation: "The king of Kasi, an excellent archer, Sikhandi, the mighty car-warrior, Dhrishtadyumna, Virata, and Satyaki, the unconquered.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.17 काश्यः Kasya? the king of Kasi? च and? परमेष्वासः an excellent archer? शिखण्डी Sikhandi? च and? महारथः mighty carwarrior? धृष्टद्युम्नः Dhrishtadyumna? विराटः Virata? च and? सात्यकिः Satyaki? च and? अपराजितः unconered.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.17: The king of Kasi, an excellent archer, Sikhandi, the mighty car-warrior, Dhrishtadyumna, Virata, and Satyaki, the unconquered.",
+  },
+  {
+    id: "1.18",
+    chapter: 1,
+    verse: 18,
+    sanskritDevanagari: "द्रुपदो द्रौपदेयाश्च सर्वशः पृथिवीपते।\n\nसौभद्रश्च महाबाहुः शङ्खान्दध्मुः पृथक्पृथक्।।1.18।।",
+    transliteration: "drupado draupadeyāśhcha sarvaśhaḥ pṛithivī-pate\nsaubhadraśhcha mahā-bāhuḥ śhaṅkhāndadhmuḥ pṛithak pṛithak",
+    synonyms: "drupadaḥ—Drupad; draupadeyāḥ—the five sons of Draupadi; cha—and; sarvaśhaḥ—all; pṛithivī-pate—Ruler of the earth; saubhadraḥ—Abhimanyu, the son of Subhadra; cha—also; mahā-bāhuḥ—the mighty-armed; śhaṅkhān—conch shells; dadhmuḥ—blew; pṛithak pṛithak—individually",
+    translation: "Drupada and the sons of Draupadi, O Lord of the Earth, and the son of Subhadra, the mighty-armed, blew their conches each separately.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.18 द्रुपदः Drupada? द्रौपदेयाः the sons of Draupadi? च and? सर्वशः all? पृथिवीपते O Lord of the earth? सौभद्रः the son of Subhadra (Abhimanyu)? च and महाबाहुः the mightyarmed? शङ्खान् conches? दध्मुः blew? पृथक् पृथक् separately.Commentary This blowing of conches announced the commencement of the battle.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.18: Drupada and the sons of Draupadi, O Lord of the Earth, and the son of Subhadra, the mighty-armed, blew their conches each separately.",
+  },
+  {
+    id: "1.19",
+    chapter: 1,
+    verse: 19,
+    sanskritDevanagari: "स घोषो धार्तराष्ट्राणां हृदयानि व्यदारयत्।\n\nनभश्च पृथिवीं चैव तुमुलो व्यनुनादयन्।।1.19।।",
+    transliteration: "sa ghoṣho dhārtarāṣhṭrāṇāṁ hṛidayāni vyadārayat\nnabhaśhcha pṛithivīṁ chaiva tumulo nunādayan",
+    synonyms: "saḥ—that; ghoṣhaḥ—sound; dhārtarāṣhṭrāṇām—of Dhritarashtra’s sons; hṛidayāni—hearts; vyadārayat—shattered; nabhaḥ—the sky; cha—and; pṛithivīm—the earth; cha—and; eva—certainly; tumulaḥ—terrific sound; abhyanunādayan—thundering",
+    translation: "The tumultuous sound rent the hearts of Dhritarashtra's party, reverberating through both heaven and earth.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.19 सः that? घोषः uproar? धार्तराष्ट्राणाम् of Dhritarashtras party? हृदयानि hearts? व्यदारयत् rent? नभः sky? च and? पृथिवीम् earth? च and? एव also? तुमुलः tumultuous? व्यनुनादयन् resounding.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.19: The tumultuous sound rent the hearts of Dhritarashtra's party, reverberating through both heaven and earth.",
+  },
+  {
+    id: "1.20",
+    chapter: 1,
+    verse: 20,
+    sanskritDevanagari: "अथ व्यवस्थितान् दृष्ट्वा धार्तराष्ट्रान्कपिध्वजः।\n\nप्रवृत्ते शस्त्रसंपाते धनुरुद्यम्य पाण्डवः।।1.20।।",
+    transliteration: "atha vyavasthitān dṛiṣhṭvā dhārtarāṣhṭrān kapi-dhwajaḥ\npravṛitte śhastra-sampāte dhanurudyamya pāṇḍavaḥ\nhṛiṣhīkeśhaṁ tadā vākyam idam āha mahī-pate",
+    synonyms: "atha—thereupon; vyavasthitān—arrayed; dṛiṣhṭvā—seeing; dhārtarāṣhṭrān—Dhritarashtra’s sons; kapi-dwajaḥ—the Monkey Bannered; pravṛitte—about to commence; śhastra-sampāte—to use the weapons; dhanuḥ—bow; udyamya—taking up; pāṇḍavaḥ—Arjun, the son of Pandu; hṛiṣhīkeśham—to Shree Krishna; tadā—at that time; vākyam—words; idam—these; āha—said; mahī-pate—King",
+    translation: "Then, seeing the people of Dhritarashtra's party standing arrayed and the discharge of weapons about to begin, Arjuna, the son of Pandu whose ensign was a monkey, took up his bow and said the following to Krishna, O Lord of the Earth.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.20 अथ now? व्यवस्थितान् standing arrayed? दृष्ट्वा seeing? धार्तराष्ट्रान् Dhritarashtras party? कपिध्वजः monkeyensigned? प्रवृत्ते about to begin? शस्त्रसंपाते discharge of weapons? धनुः bow? उद्यम्य having taken up? पाण्डवः the son of Pandu? हृषीकेशम् to Hrishikesha? तदा then? वाक्यम् word? इदम् this? आह said? महीपते O Lord of the earth.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.20: Then, seeing the people of Dhritarashtra's party standing arrayed and the discharge of weapons about to begin, Arjuna, the son of Pandu whose ensign was a monkey, took up his bow a",
+  },
+  {
+    id: "1.21",
+    chapter: 1,
+    verse: 21,
+    sanskritDevanagari: "अर्जुन उवाच\n\nहृषीकेशं तदा वाक्यमिदमाह महीपते।\n\nसेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत।।1.21।।",
+    transliteration: "arjuna uvācha\nsenayor ubhayor madhye rathaṁ sthāpaya me ’chyuta",
+    synonyms: "arjunaḥ uvācha—Arjun said; senayoḥ—armies; ubhayoḥ—both; madhye—in the middle; ratham—chariot; sthāpaya—place; me—my; achyuta—Shree Krishna, the infallible One;",
+    translation: "Arjuna said, \"O Krishna, place my chariot in the middle between the two armies, so that I may behold those who stand here, desirous to fight, and know with whom I must fight when the battle is about to commence.\"",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.21 -- 1.22 सेनयोः of the armies? उभयोः of both? मध्ये in the middle? रथम् car? स्थापय place? मे my? अच्युत O Achyuta (O changeless? Krishna)? यावत् while? एतान् these? निरीक्षे behold? अहम् I? योद्धुकामान् desirous to fight? अवस्थितान् standing? कैः with whom? मया by me? सह together? योद्धव्यम् must be fought? अस्मिन् in this? रणसमुद्यमे eve of battle.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.21: Arjuna said, \"O Krishna, place my chariot in the middle between the two armies, so that I may behold those who stand here, desirous to fight, and know with whom I must fight when t",
+  },
+  {
+    id: "1.22",
+    chapter: 1,
+    verse: 22,
+    sanskritDevanagari: "यावदेतान्निरीक्षेऽहं योद्धुकामानवस्थितान्।\n\nकैर्मया सह योद्धव्यमस्मिन्रणसमुद्यमे।।1.22।।",
+    transliteration: "yāvadetān nirīkṣhe ’haṁ yoddhu-kāmān avasthitān\nkairmayā saha yoddhavyam asmin raṇa-samudyame",
+    synonyms: "yāvat—as many as; etān—these; nirīkṣhe—look; aham—I; yoddhu-kāmān—for the battle; avasthitān—arrayed; kaiḥ—with whom; mayā—by me; saha—together; yoddhavyam—must fight; asmin—in this; raṇa-samudyame—great combat",
+    translation: "Arjuna said, \"O Krishna, place my chariot in the middle between the two armies, so that I may behold those who stand here, desirous to fight, and know with whom I must fight when the battle is about to commence.\"",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.21 -- 1.22 सेनयोः of the armies? उभयोः of both? मध्ये in the middle? रथम् car? स्थापय place? मे my? अच्युत O Achyuta (O changeless? Krishna)? यावत् while? एतान् these? निरीक्षे behold? अहम् I? योद्धुकामान् desirous to fight? अवस्थितान् standing? कैः with whom? मया by me? सह together? योद्धव्यम् must be fought? अस्मिन् in this? रणसमुद्यमे eve of battle.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.22: Arjuna said, \"O Krishna, place my chariot in the middle between the two armies, so that I may behold those who stand here, desirous to fight, and know with whom I must fight when t",
+  },
+  {
+    id: "1.23",
+    chapter: 1,
+    verse: 23,
+    sanskritDevanagari: "योत्स्यमानानवेक्षेऽहं य एतेऽत्र समागताः।\n\nधार्तराष्ट्रस्य दुर्बुद्धेर्युद्धे प्रियचिकीर्षवः।।1.23।।",
+    transliteration: "yotsyamānān avekṣhe ’haṁ ya ete ’tra samāgatāḥ\ndhārtarāṣhṭrasya durbuddher yuddhe priya-chikīrṣhavaḥ",
+    synonyms: "yotsyamānān—those who have come to fight; avekṣhe aham—I desire to see; ye—who; ete—those; atra—here; samāgatāḥ—assembled; dhārtarāṣhṭrasya—of Dhritarashtra’s son; durbuddheḥ—evil-minded; yuddhe—in the fight; priya-chikīrṣhavaḥ—wishing to please",
+    translation: "For I desire to observe those who are assembled here to fight, wishing to please in battle the evil-minded Duryodhana—the son of Dhritarashtra.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.23 योत्स्यमानान् with the object of fighting? अवेक्षे observe? अहम् I? ये who? एते those? अत्र here (in this Kurukshetra)? समागताः assembled? धार्तराष्ट्रस्य of the son of Dhritarashtra? दुर्बुद्धेः of the evilminded? युद्धे in battle? प्रियचिकीर्षवः wishing to please.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.23: For I desire to observe those who are assembled here to fight, wishing to please in battle the evil-minded Duryodhana—the son of Dhritarashtra.",
+  },
+  {
+    id: "1.24",
+    chapter: 1,
+    verse: 24,
+    sanskritDevanagari: "संजय उवाच\n\nएवमुक्तो हृषीकेशो गुडाकेशेन भारत।\n\nसेनयोरुभयोर्मध्ये स्थापयित्वा रथोत्तमम्।।1.24।।",
+    transliteration: "sañjaya uvācha\nevam ukto hṛiṣhīkeśho guḍākeśhena bhārata\nsenayor ubhayor madhye sthāpayitvā rathottamam",
+    synonyms: "sañjayaḥ uvācha—Sanjay said; evam—thus; uktaḥ—addressed; hṛiṣhīkeśhaḥ—Shree Krishna, the Lord of the senses; guḍākeśhena—by Arjun, the conqueror of sleep; bhārata—descendant of Bharat; senayoḥ—armies; ubhayoḥ—the two; madhye—between; sthāpayitvā—having drawn; ratha-uttamam—magnificent chariot",
+    translation: "Sanjaya said, Thus addressed by Arjuna, Krishna stationed the best of chariots, O Dhritarashtra, in the midst of the two armies.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.24 एवम् thus? उक्तः addressed? हृषीकेशः Hrishikesha? गुडाकेशेन by Gudakesha (the coneror of sleep? Arjuna)? भारत O Bharata (descendant of king Bharata? Dhritarashtra)? सेनयोः of the armies? उभयोः of both? मध्ये in the middle? स्थापयित्वा having stationed? रथोत्तमम् best of chariots.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.24: Sanjaya said, Thus addressed by Arjuna, Krishna stationed the best of chariots, O Dhritarashtra, in the midst of the two armies.",
+  },
+  {
+    id: "1.25",
+    chapter: 1,
+    verse: 25,
+    sanskritDevanagari: "भीष्मद्रोणप्रमुखतः सर्वेषां च महीक्षिताम्।\n\nउवाच पार्थ पश्यैतान्समवेतान्कुरूनिति।।1.25।।",
+    transliteration: "bhīṣhma-droṇa-pramukhataḥ sarveṣhāṁ cha mahī-kṣhitām\nuvācha pārtha paśhyaitān samavetān kurūn iti",
+    synonyms: "bhīṣhma—Grandsire Bheeshma; droṇa—Dronacharya; pramukhataḥ—in the presence; sarveṣhām—all; cha—and; mahī-kṣhitām—other kings; uvācha—said; pārtha—Arjun, the son of Pritha; paśhya—behold; etān—these; samavetān—gathered; kurūn—descendants of Kuru; iti—thus",
+    translation: "In front of Bhishma and Drona, and all the rulers of the earth, he said: \"O Arjuna, son of Pritha, behold these Kurus gathered together.\"",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.25 भीष्मद्रोणप्रमुखतः in front of Bhishma and Drona? सर्वेषाम् of all? च and? महीक्षिताम् rulers of the earth? उवाच said? पार्थ O Partha? पश्य behold? एतान् these? समवेतान् gathered? कुरून् Kurus? इति thus.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.25: In front of Bhishma and Drona, and all the rulers of the earth, he said: \"O Arjuna, son of Pritha, behold these Kurus gathered together.\"",
+  },
+  {
+    id: "1.26",
+    chapter: 1,
+    verse: 26,
+    sanskritDevanagari: "तत्रापश्यत्स्थितान्पार्थः पितृ़नथ पितामहान्।\n\nआचार्यान्मातुलान्भ्रातृ़न्पुत्रान्पौत्रान्सखींस्तथा।।1.26।।",
+    transliteration: "tatrāpaśhyat sthitān pārthaḥ pitṝīn atha pitāmahān\nāchāryān mātulān bhrātṝīn putrān pautrān sakhīṁs tathā\nśhvaśhurān suhṛidaśh chaiva senayor ubhayor api",
+    synonyms: "tatra—there; apaśhyat—saw; sthitān—stationed; pārthaḥ—Arjun; pitṝīn—fathers; atha—thereafter; pitāmahān—grandfathers; āchāryān—teachers; mātulān—maternal uncles; bhrātṝīn—brothers; putrān—sons; pautrān—grandsons; sakhīn—friends; tathā—also; śhvaśhurān—fathers-in-law; suhṛidaḥ—well-wishers; cha—and; eva—indeed; senayoḥ—armies; ubhayoḥ—in both armies; api—also",
+    translation: "Then, Arjuna (son of Pritha) saw there (in the armies) stationed fathers, grandfathers, teachers, maternal uncles, brothers, sons, grandsons, and friends.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.26 तत्र there? अपश्यत् saw? स्थितान् stationed? पार्थः Partha? पितृ़न् fathers? अथ also? पितामहान्grandfathers? आचार्यान् teachers? मातुलान् maternal uncles? भ्रातृ़न् brothers? पुत्रान् sons? पौत्रान् grandsons? सखीन् friends? तथा too.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.26: Then, Arjuna (son of Pritha) saw there (in the armies) stationed fathers, grandfathers, teachers, maternal uncles, brothers, sons, grandsons, and friends.",
+  },
+  {
+    id: "1.27",
+    chapter: 1,
+    verse: 27,
+    sanskritDevanagari: "श्वशुरान्सुहृदश्चैव सेनयोरुभयोरपि।\n\nतान्समीक्ष्य स कौन्तेयः सर्वान्बन्धूनवस्थितान्।।1.27।।",
+    transliteration: "tān samīkṣhya sa kaunteyaḥ sarvān bandhūn avasthitān\nkṛipayā parayāviṣhṭo viṣhīdann idam abravīt",
+    synonyms: "tān—these; samīkṣhya—on seeing; saḥ—they; kaunteyaḥ—Arjun, the son of Kunti; sarvān—all; bandhūn—relatives; avasthitān—present; kṛipayā—by compassion; parayā—great; āviṣhṭaḥ—overwhelmed; viṣhīdan—deep sorrow; idam—this; abravīt—spoke",
+    translation: "He saw fathers-in-law and friends in both the armies. The son of Kunti, Arjuna, seeing all those kinsmen thus standing arrayed, spoke sorrowfully, deeply filled with pity.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.27 श्वशुरान् fathersinlaw? सुहृदः friends? च and? एव also? सेनयोः in armies? उभयोः (in) both? अपि also? तान् those? समीक्ष्य having seen? सः he? कौन्तेयः Kaunteya? सर्वान् all? बन्धून् relatives? अवस्थितान् standing (arrayed)? कृपया by pity? परया deep? आविष्टः filled? विषीदन् sorrowfully? इदम् this? अब्रवीत् said.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.27: He saw fathers-in-law and friends in both the armies. The son of Kunti, Arjuna, seeing all those kinsmen thus standing arrayed, spoke sorrowfully, deeply filled with pity.",
+  },
+  {
+    id: "1.28",
+    chapter: 1,
+    verse: 28,
+    sanskritDevanagari: "अर्जुन उवाच\n\nकृपया परयाऽऽविष्टो विषीदन्निदमब्रवीत्।\n\nदृष्ट्वेमं स्वजनं कृष्ण युयुत्सुं समुपस्थितम्।।1.28।।",
+    transliteration: "arjuna uvācha\ndṛiṣhṭvemaṁ sva-janaṁ kṛiṣhṇa yuyutsuṁ samupasthitam",
+    synonyms: "arjunaḥ uvācha—Arjun said; dṛiṣhṭvā—on seeing; imam—these; sva-janam—kinsmen; kṛiṣhṇa—Krishna; yuyutsum—eager to fight; samupasthitam—present;",
+    translation: "Arjuna said, \"O Krishna, seeing my kinsmen arrayed here, eager to fight,",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.28 दृष्ट्वा having seen? इमम् these? स्वजनम् kinsmen? कृष्ण O Krishna (the dark one? He who attracts)? युयुत्सुम् eager to fight? समुपस्थितम् arrayed.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.28: Arjuna said, \"O Krishna, seeing my kinsmen arrayed here, eager to fight,",
+  },
+  {
+    id: "1.29",
+    chapter: 1,
+    verse: 29,
+    sanskritDevanagari: "सीदन्ति मम गात्राणि मुखं च परिशुष्यति।\n\nवेपथुश्च शरीरे मे रोमहर्षश्च जायते।।1.29।।",
+    transliteration: "sīdanti mama gātrāṇi mukhaṁ cha pariśhuṣhyati\nvepathuśh cha śharīre me roma-harṣhaśh cha jāyate",
+    synonyms: "sīdanti—quivering; mama—my; gātrāṇi—limbs; mukham—mouth; cha—and; pariśhuṣhyati—is drying up vepathuḥ—shuddering; cha—and; śharīre—on the body; me—my; roma-harṣhaḥ—standing of bodily hair on end; cha—also; jāyate—is happening;",
+    translation: "My limbs fail, my mouth is parched, my body quivers, and my hair stands on end.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.29 सीदन्ति fail? मम my? गात्राणि limbs? मुखम् mouth? च and? परिशुष्यति is parching? वेपथुः shivering? च and? शरीरे in body? मे my? रोमहर्षः horripilation? च and? जायते arises.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.29: My limbs fail, my mouth is parched, my body quivers, and my hair stands on end.",
+  },
+  {
+    id: "1.30",
+    chapter: 1,
+    verse: 30,
+    sanskritDevanagari: "गाण्डीवं स्रंसते हस्तात्त्वक्चैव परिदह्यते।\n\nन च शक्नोम्यवस्थातुं भ्रमतीव च मे मनः।।1.30।।",
+    transliteration: "gāṇḍīvaṁ sraṁsate hastāt tvak chaiva paridahyate\nna cha śhaknomy avasthātuṁ bhramatīva cha me manaḥ",
+    synonyms: "gāṇḍīvam—Arjun’s bow; sraṁsate—is slipping; hastāt—from (my) hand; tvak—skin; cha—and; eva—indeed; paridahyate—is burning all over; na—not; cha—and; śhaknomi—am able; avasthātum—remain steady; bhramati iva—whirling like; cha—and; me—my; manaḥ—mind;",
+    translation: "The Gandiva slips from my hand, and my skin burns all over; I am unable to stand, and my mind is reeling, as it were.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.30 गाण्डीवम् Gandiva? स्रंसते slips? हस्तात् from (my) hand? त्वक् (my) skin? च and? एव also? परिदह्यते burns all over? न not? च and? शक्नोमि (I) am able? अवस्थातुम्? to stand? भ्रमति इव seems whirling? च and? मे my? मनः mind.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.30: The Gandiva slips from my hand, and my skin burns all over; I am unable to stand, and my mind is reeling, as it were.",
+  },
+  {
+    id: "1.31",
+    chapter: 1,
+    verse: 31,
+    sanskritDevanagari: "निमित्तानि च पश्यामि विपरीतानि केशव।\n\nन च श्रेयोऽनुपश्यामि हत्वा स्वजनमाहवे।।1.31।।",
+    transliteration: "nimittāni cha paśhyāmi viparītāni keśhava\nna cha śhreyo ’nupaśhyāmi hatvā sva-janam āhave",
+    synonyms: "nimittāni—omens; cha—and; paśhyāmi—I see; viparītāni—misfortune; keśhava—Shree Krishna, killer of the Keshi demon; na—not; cha—also; śhreyaḥ—good; anupaśhyāmi—I foresee; hatvā—from killing; sva-janam—kinsmen; āhave—in battle",
+    translation: "And I see ill omens, O Kesava. I do not see any good in slaying my kinsmen in battle.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.31 निमित्तानि omens? च and? पश्यामि I see? विपरीतानि adverse? केशव O Kesava? न not? च and? श्रेयः good? अनुपश्यामि (I) see? हत्वा killing? स्वजनम् our peope? आहवे in battle.Commentary Kesava means he who has fine or luxuriant hair.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.31: And I see ill omens, O Kesava. I do not see any good in slaying my kinsmen in battle.",
+  },
+  {
+    id: "1.32",
+    chapter: 1,
+    verse: 32,
+    sanskritDevanagari: "न काङ्क्षे विजयं कृष्ण न च राज्यं सुखानि च।\n\nकिं नो राज्येन गोविन्द किं भोगैर्जीवितेन वा।।1.32।।",
+    transliteration: "na kāṅkṣhe vijayaṁ kṛiṣhṇa na cha rājyaṁ sukhāni cha\nkiṁ no rājyena govinda kiṁ bhogair jīvitena vā",
+    synonyms: "na—nor; kāṅkṣhe—do I desire; vijayam—victory; kṛiṣhṇa—Krishna; na—nor; cha—as well; rājyam—kingdom; sukhāni—happiness; cha—also; kim—what; naḥ—to us; rājyena—by kingdom; govinda—Krishna, he who gives pleasure to the senses, he who is fond of cows; kim—what?; bhogaiḥ—pleasures; jīvitena—life; vā—or;",
+    translation: "I desire not victory, O Krishna, nor kingdom, nor pleasures. What use is dominion to us, O Krishna, or pleasures or even life?",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.32 न not? काङ्क्षे (I) desire? विजयम् victory? कृष्ण O Krishna? न not? च and? राज्यम् kingdom? सुखानि pleasures? च and? किम् what? नः to us? राज्येन by kindom? गोविन्द O Govinda? किम् what? भोगैः by pleasures? जीवितेन life? वा or.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.32: I desire not victory, O Krishna, nor kingdom, nor pleasures. What use is dominion to us, O Krishna, or pleasures or even life?",
+  },
+  {
+    id: "1.33",
+    chapter: 1,
+    verse: 33,
+    sanskritDevanagari: "येषामर्थे काङ्क्षितं नो राज्यं भोगाः सुखानि च।\n\nत इमेऽवस्थिता युद्धे प्राणांस्त्यक्त्वा धनानि च।।1.33।।",
+    transliteration: "yeṣhām arthe kāṅkṣhitaṁ no rājyaṁ bhogāḥ sukhāni cha\nta ime ’vasthitā yuddhe prāṇāṁs tyaktvā dhanāni cha",
+    synonyms: "yeṣhām—for whose; arthe—sake; kāṅkṣhitam—coveted for; naḥ—by us; rājyam—kingdom; bhogāḥ—pleasures; sukhāni—happiness; cha—also; te—they; ime—these; avasthitāḥ—situated; yuddhe—for battle; prāṇān—lives; tyaktvā—giving up; dhanāni—wealth; cha—also",
+    translation: "Those for whose sake we desire kingdom, enjoyments, and pleasures stand here in battle, having renounced life and wealth.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.33 येषाम् of whose? अर्थे sake? काङ्क्षितम् (is) desired? नः by us? राज्यम् kingdom? भोगाः enjoyment? सुखानि pleasures? च and? ते they? इमे these? अवस्थिताः stand? युद्धे in battle? प्राणान् life? त्यक्त्वा having abandoned? धनानि wealth? च and.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.33: Those for whose sake we desire kingdom, enjoyments, and pleasures stand here in battle, having renounced life and wealth.",
+  },
+  {
+    id: "1.34",
+    chapter: 1,
+    verse: 34,
+    sanskritDevanagari: "आचार्याः पितरः पुत्रास्तथैव च पितामहाः।\n\nमातुलाः श्चशुराः पौत्राः श्यालाः सम्बन्धिनस्तथा।।1.34।।",
+    transliteration: "āchāryāḥ pitaraḥ putrās tathaiva cha pitāmahāḥ\nmātulāḥ śhvaśhurāḥ pautrāḥ śhyālāḥ sambandhinas tathā",
+    synonyms: "āchāryāḥ—teachers; pitaraḥ—fathers; putrāḥ—sons; tathā—as well; eva—indeed; cha—also; pitāmahāḥ—grandfathers; mātulāḥ—maternal uncles; śhvaśhurāḥ—fathers-in-law; pautrāḥ—grandsons; śhyālāḥ—brothers-in-law; sambandhinaḥ—kinsmen; tathā—as well;",
+    translation: "Teachers, fathers, sons, and grandfathers, maternal uncles, fathers-in-law, grandsons, brothers-in-law, and other relatives—",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.34 आचार्याः teachers? पितरः fathers? पुत्राः sons? तथा thus? एव also? च and? पितामहाः grandfathers? मातुलाः maternal uncles? श्वशुराः fathersinlaw? पौत्राः grandsons? श्यालाः brothersinlaw? सम्बन्धिनः relatives? तथा as well as.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.34: Teachers, fathers, sons, and grandfathers, maternal uncles, fathers-in-law, grandsons, brothers-in-law, and other relatives—",
+  },
+  {
+    id: "1.35",
+    chapter: 1,
+    verse: 35,
+    sanskritDevanagari: "एतान्न हन्तुमिच्छामि घ्नतोऽपि मधुसूदन।\n\nअपि त्रैलोक्यराज्यस्य हेतोः किं नु महीकृते।।1.35।।",
+    transliteration: "etān na hantum ichchhāmi ghnato ’pi madhusūdana\napi trailokya-rājyasya hetoḥ kiṁ nu mahī-kṛite",
+    synonyms: "etān—these; na—not; hantum—to slay; ichchhāmi—I wish; ghnataḥ—killed; api—even though; madhusūdana—Shree Krishna, killer of the demon Madhu; api—even though; trai-lokya-rājyasya—dominion over three worlds; hetoḥ—for the sake of; kim nu—what to speak of; mahī-kṛite—for the earth",
+    translation: "These I do not wish to kill, O Krishna, even though they kill me, for the sake of dominion over the three worlds; leave alone killing them for the sake of the earth.\"",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.35 एतान् these? न not? हन्तुम् to kill? इच्छामि (I) wish? घ्नतःअपि even if they kill me? मधुसूदन O Madhusudana (the slayer of Madhu? a demon)? अपि even? त्रैलोक्यराज्यस्य dominion over the three worlds? हेतोः for the sake of? किम् how? नु then? महीकृते for the sake of the earth.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.35: These I do not wish to kill, O Krishna, even though they kill me, for the sake of dominion over the three worlds; leave alone killing them for the sake of the earth.\"",
+  },
+  {
+    id: "1.36",
+    chapter: 1,
+    verse: 36,
+    sanskritDevanagari: "निहत्य धार्तराष्ट्रान्नः का प्रीतिः स्याज्जनार्दन।\n\nपापमेवाश्रयेदस्मान्हत्वैतानाततायिनः।।1.36।।",
+    transliteration: "nihatya dhārtarāṣhṭrān naḥ kā prītiḥ syāj janārdana\npāpam evāśhrayed asmān hatvaitān ātatāyinaḥ",
+    synonyms: "nihatya—by killing; dhārtarāṣhṭrān—the sons of Dhritarashtra; naḥ—our; kā—what; prītiḥ—pleasure; syāt—will there be; janārdana—he who looks after the public, Shree Krishna; pāpam—vices; eva—certainly; āśhrayet—must come upon; asmān—us; hatvā—by killing; etān—all these; ātatāyinaḥ—aggressors;",
+    translation: "By killing these sons of Dhritarashtra, what pleasure could be ours, O Janardana? Only sin would accrue to us from killing these felons.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.36 निहत्य having slain? धार्तराष्ट्रान् sons of Dhritarashtra? नः to us? का what? प्रीतिः pleasure? स्यात् may be? जनार्दन O Janardana? पापम् sin? एव only? आश्रयेत् would take hold? अस्मान् to us? हत्वा having killed? एतान् these? आततायिनः felons.Commentary Janardana means one who is worshipped by all for prosperity and salvation -- Krishna.He who sets fire to the house of another? who gives poision? who runs with sword to kill? who has plundered wealth and lands? and who has taken hold of the wife of somody else is an atatayi. Duryodhana had done all these evil actions.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.36: By killing these sons of Dhritarashtra, what pleasure could be ours, O Janardana? Only sin would accrue to us from killing these felons.",
+  },
+  {
+    id: "1.37",
+    chapter: 1,
+    verse: 37,
+    sanskritDevanagari: "तस्मान्नार्हा वयं हन्तुं धार्तराष्ट्रान्स्वबान्धवान्।\n\nस्वजनं हि कथं हत्वा सुखिनः स्याम माधव।।1.37।।",
+    transliteration: "tasmān nārhā vayaṁ hantuṁ dhārtarāṣhṭrān sa-bāndhavān \nsva-janaṁ hi kathaṁ hatvā sukhinaḥ syāma mādhava",
+    synonyms: "tasmāt—hence; na—never; arhāḥ—behoove; vayam—we; hantum—to kill; dhārtarāṣhṭrān—the sons of Dhritarashtra; sva-bāndhavān—along with friends; sva-janam—kinsmen; hi—certainly; katham—how; hatvā—by killing; sukhinaḥ—happy; syāma—will we become; mādhava—Shree Krishna, the husband of Yogmaya",
+    translation: "Therefore, we should not kill the sons of Dhritarashtra, our relatives; for how can we be happy by killing our own kin, O Madhava (Krishna)?",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.37 तस्मात् therefore? न (are) not? अर्हाः justified? वयम् we? हन्तुम् to kill? धार्तराष्ट्रान् the sons of Dhritarashtra? स्वबान्धवान् our relatives? स्वजनम् kinsmen? हि indeed? कथम् how? हत्वा having killed? सुखिनः happy? स्याम may (we) be? माधव O Madhava.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.37: Therefore, we should not kill the sons of Dhritarashtra, our relatives; for how can we be happy by killing our own kin, O Madhava (Krishna)?",
+  },
+  {
+    id: "1.38",
+    chapter: 1,
+    verse: 38,
+    sanskritDevanagari: "यद्यप्येते न पश्यन्ति लोभोपहतचेतसः।\n\nकुलक्षयकृतं दोषं मित्रद्रोहे च पातकम्।।1.38।।",
+    transliteration: "yady apy ete na paśhyanti lobhopahata-chetasaḥ\nkula-kṣhaya-kṛitaṁ doṣhaṁ mitra-drohe cha pātakam",
+    synonyms: "yadi api—even though; ete—they; na—not; paśhyanti—see; lobha—greed; upahata—overpowered; chetasaḥ—thoughts; kula-kṣhaya-kṛitam—in annihilating their relatives; doṣham—fault; mitra-drohe—to wreak treachery upon friends; cha—and; pātakam—sin;",
+    translation: "Though they, with intelligence overpowered by greed, see no evil in the destruction of families and no sin in hostility to friends,",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.38 यद्यपि though? एते these? न not? पश्यन्ति see? लोभोपहतचेतसः with intelligence overpowered by greed? कुलक्षयकृतम् in the destruction of families? दोषम् evil? मित्रद्रोहे in hostility to friends? च and? पातकम् sin.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.38: Though they, with intelligence overpowered by greed, see no evil in the destruction of families and no sin in hostility to friends,",
+  },
+  {
+    id: "1.39",
+    chapter: 1,
+    verse: 39,
+    sanskritDevanagari: "कथं न ज्ञेयमस्माभिः पापादस्मान्निवर्तितुम्।\n\nकुलक्षयकृतं दोषं प्रपश्यद्भिर्जनार्दन।।1.39।।",
+    transliteration: "kathaṁ na jñeyam asmābhiḥ pāpād asmān nivartitum\nkula-kṣhaya-kṛitaṁ doṣhaṁ prapaśhyadbhir janārdana",
+    synonyms: "katham—why; na—not; jñeyam—should be known; asmābhiḥ—we; pāpāt—from sin; asmāt—these; nivartitum—to turn away; kula-kṣhaya—killing the kindered; kṛitam—done; doṣham—crime; prapaśhyadbhiḥ—who can see; janārdana—he who looks after the public, Shree Krishna",
+    translation: "Why should we not, who clearly see the evil in the destruction of families, learn to turn away from this sin, O Janardana (Krishna)?",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.39 कथम् why? न not? ज्ञेयम् should be learnt? अस्माभिः by us? पापात् from sin? अस्मात् this? निवर्तितुम् to turn away? कुलक्षयकृतम् in the destruction of families? दोषम् evil? प्रपश्यद्भिः clearly seeing? जनार्दन O Janardana.Commentary Ignorance of law is no excuse but wanton sinful conduct is a grave crime? unworthy of us? who are wiser.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.39: Why should we not, who clearly see the evil in the destruction of families, learn to turn away from this sin, O Janardana (Krishna)?",
+  },
+  {
+    id: "1.40",
+    chapter: 1,
+    verse: 40,
+    sanskritDevanagari: "कुलक्षये प्रणश्यन्ति कुलधर्माः सनातनाः।\n\nधर्मे नष्टे कुलं कृत्स्नमधर्मोऽभिभवत्युत।।1.40।।",
+    transliteration: "kula-kṣhaye praṇaśhyanti kula-dharmāḥ sanātanāḥ\ndharme naṣhṭe kulaṁ kṛitsnam adharmo ’bhibhavaty uta",
+    synonyms: "kula-kṣhaye—in the destruction of a dynasty; praṇaśhyanti—are vanquished; kula-dharmāḥ—family traditions; sanātanāḥ—eternal; dharme—religion; naṣhṭe—is destroyed; kulam—family; kṛitsnam—the whole; adharmaḥ—irreligion; abhibhavati—overcome; uta—indeed",
+    translation: "In the destruction of a family, the immemorial religious rites of that family perish; on the destruction of spirituality, impiety indeed, overwhelms the whole family.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.40 कुलक्षये in the destruction of a family? प्रणश्यन्ति perish? कुलधर्माः family religious rites? सनातनाः immemorial? धर्मे spirituality? नष्टे being destroyed? कुलम् कृत्स्नम् the whole family? अधर्मः impiety? अभिभवति overcomes? उत indeed.Commentary Dharma -- the duties and ceremonies practised by the family in accordance with the injunctions of the scriptures.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.40: In the destruction of a family, the immemorial religious rites of that family perish; on the destruction of spirituality, impiety indeed, overwhelms the whole family.",
+  },
+  {
+    id: "1.41",
+    chapter: 1,
+    verse: 41,
+    sanskritDevanagari: "अधर्माभिभवात्कृष्ण प्रदुष्यन्ति कुलस्त्रियः।\n\nस्त्रीषु दुष्टासु वार्ष्णेय जायते वर्णसङ्करः।।1.41।।",
+    transliteration: "adharmābhibhavāt kṛiṣhṇa praduṣhyanti kula-striyaḥ\nstrīṣhu duṣhṭāsu vārṣhṇeya jāyate varṇa-saṅkaraḥ",
+    synonyms: "adharma—irreligion; abhibhavāt—preponderance; kṛiṣhṇa—Shree Krishna; praduṣhyanti—become immoral; kula-striyaḥ—women of the family; strīṣhu—of women; duṣhṭāsu—become immoral; vārṣhṇeya—descendant of Vrishni; jāyate—are born; varṇa-saṅkaraḥ—unwanted progeny",
+    translation: "O Krishna, by the prevalence of impiety, the women of the family become corrupt; and, when women are corrupted, O Varshenya (descendant of Vrishni), intermingling of castes arises.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.41 अधर्माभिभवात् from the prevalence of impiety? कृष्ण O Krishna? प्रदुष्यन्ति become corrupt? कुलस्त्रियः the women of the family? स्त्रीषु in women? दुष्टासु (being) corrupt? वार्ष्णेय O Varshneya? जायते arises? वर्णसङ्करः casteadmixture.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.41: O Krishna, by the prevalence of impiety, the women of the family become corrupt; and, when women are corrupted, O Varshenya (descendant of Vrishni), intermingling of castes arises.",
+  },
+  {
+    id: "1.42",
+    chapter: 1,
+    verse: 42,
+    sanskritDevanagari: "सङ्करो नरकायैव कुलघ्नानां कुलस्य च।\n\nपतन्ति पितरो ह्येषां लुप्तपिण्डोदकक्रियाः।।1.42।।",
+    transliteration: "saṅkaro narakāyaiva kula-ghnānāṁ kulasya cha\npatanti pitaro hy eṣhāṁ lupta-piṇḍodaka-kriyāḥ",
+    synonyms: "saṅkaraḥ—unwanted children; narakāya—hellish; eva—indeed; kula-ghnānām—for those who destroy the family; kulasya—of the family; cha—also; patanti—fall; pitaraḥ—ancestors; hi—verily; eṣhām—their; lupta—deprived of; piṇḍodaka-kriyāḥ—performances of sacrificial offerings",
+    translation: "Confusion of castes leads to hell for the slayers of the family, for their forebears fall, deprived of the offerings of rice-balls and libations of water.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.42 सङ्करः confusion of castes? नरकाय for the hell? एव also? कुलघ्नानाम् of the slayers of the family?कुलस्य of the family? च and? पतन्ति fall? पितरः the forefathers? हि verily? एषां their? लुप्तपिण्डोदकक्रियाः deprived of the offerings of ricall and water.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.42: Confusion of castes leads to hell for the slayers of the family, for their forebears fall, deprived of the offerings of rice-balls and libations of water.",
+  },
+  {
+    id: "1.43",
+    chapter: 1,
+    verse: 43,
+    sanskritDevanagari: "दोषैरेतैः कुलघ्नानां वर्णसङ्करकारकैः।\n\nउत्साद्यन्ते जातिधर्माः कुलधर्माश्च शाश्वताः।।1.43।।",
+    transliteration: "doṣhair etaiḥ kula-ghnānāṁ varṇa-saṅkara-kārakaiḥ\nutsādyante jāti-dharmāḥ kula-dharmāśh cha śhāśhvatāḥ",
+    synonyms: "doṣhaiḥ—through evil deeds; etaiḥ—these; kula-ghnānām—of those who destroy the family; varṇa-saṅkara—unwanted progeny; kārakaiḥ—causing; utsādyante—are ruined; jāti-dharmāḥ—social and family welfare activities; kula-dharmāḥ—family traditions; cha—and; śhāśhvatāḥ—eternal",
+    translation: "By these evil deeds of the destroyers of the family, which cause confusion of castes, the eternal religious rites of the caste and the family are destroyed.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.43 दोषैः by evil deeds? एतैः (by) these? कुलघ्नानाम् of the family destroyers? वर्णसङ्करकारकैः causing intermingling of castes? उत्साद्यन्ते are destroyed? जातिधर्माः religious rites of the caste? कुलधर्माः family religious rites? च and? शाश्वताः eternal.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.43: By these evil deeds of the destroyers of the family, which cause confusion of castes, the eternal religious rites of the caste and the family are destroyed.",
+  },
+  {
+    id: "1.44",
+    chapter: 1,
+    verse: 44,
+    sanskritDevanagari: "उत्सन्नकुलधर्माणां मनुष्याणां जनार्दन।\n\nनरकेऽनियतं वासो भवतीत्यनुशुश्रुम।।1.44।।",
+    transliteration: "utsanna-kula-dharmāṇāṁ manuṣhyāṇāṁ janārdana\nnarake ‘niyataṁ vāso bhavatītyanuśhuśhruma",
+    synonyms: "utsanna—destroyed; kula-dharmāṇām—whose family traditions; manuṣhyāṇām—of such human beings; janārdana—he who looks after the public, Shree Krishna; narake—in hell; aniyatam—indefinite; vāsaḥ—dwell; bhavati—is; iti—thus; anuśhuśhruma—I have heard from the learned",
+    translation: "We have heard, O Janardana, that those men in whose families the religious practices have been destroyed are inevitably destined to dwell in hell for an unknown period.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.44 उत्सन्नकुलधर्माणाम् whose family religious practices are destroyed? मनुष्याणाम् of the men? जनार्दन O Janardana? नरके in hell? अनियतं for unknown period? वासः dwelling? भवति is? इति thus? अनुशुश्रुम we have heard.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.44: We have heard, O Janardana, that those men in whose families the religious practices have been destroyed are inevitably destined to dwell in hell for an unknown period.",
+  },
+  {
+    id: "1.45",
+    chapter: 1,
+    verse: 45,
+    sanskritDevanagari: "अहो बत महत्पापं कर्तुं व्यवसिता वयम्।\n\nयद्राज्यसुखलोभेन हन्तुं स्वजनमुद्यताः।।1.45।।",
+    transliteration: "aho bata mahat pāpaṁ kartuṁ vyavasitā vayam\nyad rājya-sukha-lobhena hantuṁ sva-janam udyatāḥ",
+    synonyms: "aho—alas; bata—how; mahat—great; pāpam—sins; kartum—to perform; vyavasitāḥ—have decided; vayam—we; yat—because; rājya-sukha-lobhena—driven by the desire for kingly pleasure; hantum—to kill; sva-janam—kinsmen; udyatāḥ—intending;",
+    translation: "Alas! We are involved in a great sin, for we are prepared to kill our kinsmen, out of greed for the pleasures of a kingdom.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.45 अहो बत alas? महत् great? पापम् sin? कर्तुम् to do? व्यवसिताः prepared? वयम् we? यत् that? राज्यसुखलोभेन by the greed of pleasure of kingdom? हन्तुम् to kill? स्वजनम् kinsmen? उद्यताः prepared.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.45: Alas! We are involved in a great sin, for we are prepared to kill our kinsmen, out of greed for the pleasures of a kingdom.",
+  },
+  {
+    id: "1.46",
+    chapter: 1,
+    verse: 46,
+    sanskritDevanagari: "यदि मामप्रतीकारमशस्त्रं शस्त्रपाणयः।\n\nधार्तराष्ट्रा रणे हन्युस्तन्मे क्षेमतरं भवेत्।।1.46।।",
+    transliteration: "yadi mām apratīkāram aśhastraṁ śhastra-pāṇayaḥ\ndhārtarāṣhṭrā raṇe hanyus tan me kṣhemataraṁ bhavet",
+    synonyms: "yadi—if; mām—me; apratīkāram—unresisting; aśhastram—unarmed; śhastra-pāṇayaḥ—those with weapons in hand; dhārtarāṣhṭrāḥ—the sons of Dhritarashtra; raṇe—on the battlefield; hanyuḥ—shall kill; tat—that; me—to me; kṣhema-taram—better; bhavet—would be",
+    translation: "If the sons of Dhritarashtra, with weapons in hand, should slay me in battle, unresisting and unarmed, that would be better for me.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.46 यदि if? माम् me? अप्रतीकारम् unresisting? अशस्त्रम् unarmed? शस्त्रपाणयः with weapons in hand? धार्तराष्ट्राः the sons of Dhritarashtra? रणे in the battle हन्युः should slay? तत् that? मे of me? क्षेमतरम् better? भवेत् would be.No Commentary.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.46: If the sons of Dhritarashtra, with weapons in hand, should slay me in battle, unresisting and unarmed, that would be better for me.",
+  },
+  {
+    id: "1.47",
+    chapter: 1,
+    verse: 47,
+    sanskritDevanagari: "सञ्जय उवाच\n\nएवमुक्त्वाऽर्जुनः संख्ये रथोपस्थ उपाविशत्।\n\nविसृज्य सशरं चापं शोकसंविग्नमानसः।।1.47।।",
+    transliteration: "sañjaya uvācha\nevam uktvārjunaḥ saṅkhye rathopastha upāviśhat\nvisṛijya sa-śharaṁ chāpaṁ śhoka-saṁvigna-mānasaḥ",
+    synonyms: "sañjayaḥ uvācha—Sanjay said; evam uktvā—speaking thus; arjunaḥ—Arjun; saṅkhye—in the battlefield; ratha upasthe—on the chariot; upāviśhat—sat; visṛijya—casting aside; sa-śharam—along with arrows; chāpam—the bow; śhoka—with grief; saṁvigna—distressed; mānasaḥ—mind",
+    translation: "Sanjaya said, Having thus spoken in the midst of the battlefield, Arjuna cast away his bow and arrow and, his mind overwhelmed with sorrow, sat down on the seat of the chariot.",
+    commentaries: [
+      {
+        author: "Swami Sivananda",
+        text: "1.47 एवम् thus? उक्त्वा having said? अर्जुनः Arjuna? संख्ये in the battle? रथोपस्थे on the seat of the chariot? उपाविशत् sat down? विसृज्य having cast away? सशरम् with arrow? चापम् bow? शोकसंविग्नमानसः with a mind distressed with sorrow.Thus in the Upanishads of the glorious Bhagavad Gita? the science of the Eternal? the scripture of Yoga? the dialogue between Sri Krishna and Arjuna? ends the first discourse entitledThe Yoga of the Despondency of Arjuna.",
+      },
+    ],
+    practicalApplication: "Reflect on Bhagavad Gita 1.47: Sanjaya said, Having thus spoken in the midst of the battlefield, Arjuna cast away his bow and arrow and, his mind overwhelmed with sorrow, sat down on the seat of the chariot.",
+  },
 ];
