@@ -1,0 +1,251 @@
+export interface ShivaTandavaVerse {
+    verse: number;
+    slug: string; // "verse-1" etc.
+    sanskritDevanagari: string;
+    transliteration: string;
+    translation: string;
+    commentary: string;
+    wordMeanings: string;
+}
+
+export const shivaTandavaVerses: ShivaTandavaVerse[] = [
+    {
+        verse: 1,
+        slug: "verse-1",
+        sanskritDevanagari:
+            "जटाटवीगलज्जल प्रवाहपावितस्थले\nगलेऽवलम्ब्य लम्बितां भुजङ्गतुङ्गमालिकाम्।\nडमड्डमड्डमड्डम न्निनादवड्डमर्वयं\nचकार चण्डताण्डवं तनोतु नः शिवः शिवम्॥ १॥",
+        transliteration:
+            "jaṭāṭavīgalajjala pravāhapāvitasthale\ngale'valambyalambatāṁ bhujaṅgatuṅgamālikām\ḍamaḍḍamaḍḍamaḍḍaman nināda vaḍḍamarvayaṁ\ncakāra caṇḍatāṇḍavaṁ tanotu naḥ śivaḥ śivam",
+        wordMeanings:
+            "jaṭā-aṭavī—the forest of matted locks; gala—flowing; jjala—water; pravāha—streams; pāvita—purified; sthale—on the surface; gale—on the neck; avalambya—hanging; lambatām—hanging loosely; bhujaṅga—of serpents; tuṅga—tall/great; mālikām—garland; ḍamaḍ ḍamaḍ—the sound of the ḍamaru drum; ninādava—resonant sound; caṇḍa—fierce; tāṇḍavam—the Tandava dance; tanotu—may He bestow; naḥ—us; śivaḥ—Shiva; śivam—auspiciousness.",
+        translation:
+            "On the places purified by the flow of water cascading from His forest of matted locks, with great serpents hanging loosely like garlands around His neck, resounding the boom of the ḍamaru drum — may Shiva, who performed the fierce Tandava dance, bestow auspiciousness upon us.",
+        commentary:
+            "This opening verse was composed by Ravana to praise Shiva's cosmic dance. The matted locks (Jata) hold the sacred Ganga. The serpents represent conquered fear and time. The ḍamaru drum's sound (Ḍamaḍ) is the primordial sound from which creation emerges. Each image encodes a dimension of Shiva's nature: creator (drum), sustainer (Ganga), and destroyer (dance).",
+    },
+    {
+        verse: 2,
+        slug: "verse-2",
+        sanskritDevanagari:
+            "जटाकटाहसम्भ्रम भ्रमन्निलिम्पनिर्झरी\nविलोलवीचिवल्लरी विराजमानमूर्धनि।\nधगद्धगद्धगज्जलल् ललाटपट्टपावके\nकिशोरचन्द्रशेखरे रतिः प्रतिक्षणं मम॥ २॥",
+        transliteration:
+            "jaṭākaṭāhasambhrama bhramannilimpanirjharī\nvilola vīcivallari virājamāna mūrdhani\ndhagaddhagaddhagajjval lalāṭapaṭṭa pāvake\nkiśora candraśekhare ratiḥ pratikṣaṇaṁ mama",
+        wordMeanings:
+            "jaṭā—matted hair; kaṭāha—basin/vessel; sambhrama—agitation; bhramat—whirling; nilimpa—divine; nirjharī—river (Ganga); vilola—wavering; vīci—waves; vallari—creeper; virājamāna—resplendent; mūrdhani—on the head; dhagat—blazing (sound of fire); lalāṭa—forehead; paṭṭa—surface; pāvake—fire; kiśora—crescent; candra—moon; śekhare—as a crest ornament; ratiḥ—delight; pratikṣaṇam—every moment; mama—my.",
+        translation:
+            "My delight is every moment in Shiva, whose head is adorned with the wavering waves of the divine River Ganga, churning in the basin of His matted locks — and on whose forehead the blazing fire crackles (Dhagad Dhagad), and who wears the crescent moon as His crest jewel.",
+        commentary:
+            "Ravana describes three simultaneous phenomena on Shiva's head: the cascading Ganga (water), the blazing third-eye fire (fire), and the cool crescent moon (coolness). These three contradictory forces — cool water, hot fire, and the ever-waxing-waning moon — coexist peacefully on Shiva. This is the cosmic paradox: Shiva integrates all opposites without contradiction.",
+    },
+    {
+        verse: 3,
+        slug: "verse-3",
+        sanskritDevanagari:
+            "धरारधरेन्द्रनन्दिनी विलासबन्धुबन्धुर\nस्फुरद्दिगन्तसन्तति प्रमोदमानमानसे।\nकृपाकटाक्षधोरणी निरुद्धदुर्धरापदि\nक्वचिद्दिगम्बरे मनो विनोदमेतु वस्तुनि॥ ३॥",
+        transliteration:
+            "dharādhareṁdranandini vilāsabandhubandhura\nsphuraddigantasantati pramodamānamānase\nkṛpākaṭākṣadhōraṇī niruddhadurdharāpadi\nkvacid digambare mano vinodametu vastuni",
+        wordMeanings:
+            "dharā-dhara-indra—mountain king (Himalaya); nandini—daughter (Parvati); vilāsa—play; bandhu—companion; bandhura—graceful; sphurat—shining; diganta—horizon; santati—expanse; pramodamāna—delighted; mānase—in mind; kṛpā—grace; kaṭākṣa—sidelong glance; dhōraṇī—stream; niruddha—checked/removed; durdharā—terrible; āpadi—in calamities; kvacit—some; digambara—sky-clad (Shiva); manaḥ—mind; vinōdam—joy; etu—may obtain; vastuni—in the Reality.",
+        translation:
+            "May my mind find joy in that Reality — the sky-clad Shiva — whose mind is delighted by the sport of the daughter of the mountain-king Himalaya (Parvati), who shines throughout all directions, and whose stream of compassionate sidelong glances removes the most terrible calamities.",
+        commentary:
+            "The verse presents Shiva in his domestic bliss with Parvati alongside his cosmic transcendence. 'Digambara' (sky-clad) means Shiva's garment is the infinite sky itself — He transcends all covering, all limitation. His sidelong glance of grace (Kataksha) is the famous image of divine compassion that removes suffering not through effort but through mere attention.",
+    },
+    {
+        verse: 4,
+        slug: "verse-4",
+        sanskritDevanagari:
+            "जटाभुजङ्गपिङ्गल स्फुरत्फणामणिप्रभा\nकदम्बकुङ्कुमद्रव प्रलिप्तदिग्वधूमुखे।\nमदान्धसिन्धुरस्फुरत् त्वगुत्तरीयमेदुरे\nमनो विनोदमद्भुतं बिभर्तु भूतभर्तरि॥ ४॥",
+        transliteration:
+            "jaṭābhujaṅgapiṅgala sphurattaphaṇāmaṇiprabhā\nkadamba kuṅkumadrava pralidadigvadhūmukhe\nmadāndhasindhurasphurat tvaguttarīyamedure\nmano vinodamadbhutam bibhartu bhūtabhartari",
+        wordMeanings:
+            "jaṭā—matted locks; bhujaṅga—serpent; piṅgala—tawny/golden; sphurat—shining; phaṇā—hood of serpent; maṇi—gem; prabhā—radiance; kadamba—kadamba flower; kuṅkuma—saffron; drava—liquid; pralidita—smeared; dig-vadhū—directions as women; mukhe—face; mada-andha—intoxicated; sindhura—elephant; sphurat—gleaming; tvak—hide; uttarīya—upper garment; medure—dense; mano—mind; vinōdam—joy; adbhutam—wonderful; bibhartu—may hold; bhūta-bhartari—in the Lord of all beings.",
+        translation:
+            "May my mind hold wonderful delight in the Lord of all beings — whose forehead's lustre is like the saffron-liquid-smeared faces of the quarter-directions, illumined by the golden radiance of the gem on the serpent's hood in His matted hair, and who wears the dense hide of an intoxicated elephant as His upper garment.",
+        commentary:
+            "This verse describes Shiva wearing the skin of the elephant demon Gajasura, whom He slew. The elephant represents the mad ego-force of samsara. Shiva wearing it as a garment means He has conquered ego absolutely — not by suppressing it but by transforming it into an ornament. The serpents in His hair with gleaming gems represent kundalini shakti fully awakened.",
+    },
+    {
+        verse: 5,
+        slug: "verse-5",
+        sanskritDevanagari:
+            "सहस्रलोचनप्रभृत्य शेषलेखशेखर\nप्रसूनधूलिधोरणी विधूसराङ्घ्रिपीठभूः।\nभुजङ्गराजमालया निबद्धजाटजूटकः\nश्रियै चिराय जायतां चकोरबन्धुशेखरः॥ ५॥",
+        transliteration:
+            "sahasralochana prabhṛtya śeṣalekha śekhara\nprasūnadūlidhōraṇī vidhūsarāṅghripīṭhabhūḥ\nbhujaṅgarāja mālyayā nibaddha jāṭa jūṭakaḥ\nśriyai cirāya jāyatāṁ cakōrabandhuśekharaḥ",
+        wordMeanings:
+            "sahasra-lochana—thousand-eyed Indra; prabhṛtya—beginning with; śeṣa—the remaining gods; lekha—class; śekhara—whose crest; prasūna—flowers; dhūli—pollen dust; dhōraṇī—stream; vidhūsara—grey/dusty; aṅghri-pīṭha-bhūḥ—ground of the foot-platform; bhujaṅga-rāja—king of serpents; mālyayā—with garland; nibaddha—bound; jāṭa—matted; jūṭaka—locks; śriyai—for prosperity; cirāya—long; jāyatām—may become; cakōra-bandhu—friend of the cakora bird (moon); śekharaḥ—wearing as crest.",
+        translation:
+            "May the moon-crested Shiva — whose footstool is dusty with the pollen of flowers offered by Indra and all the gods bowing at His feet, whose matted locks are bound with the garland of the king of serpents — long bestow prosperity.",
+        commentary:
+            "The cakora bird (Indian partridge) is said to feed on moonbeams. Shiva wears the moon as His crest — He is the friend of all beings who, like the cakora, thirst for divine light. Even Indra, king of the gods, is shown here as simply another devotee at Shiva's feet. This establishes Shiva's supreme status beyond all hierarchies.",
+    },
+    {
+        verse: 6,
+        slug: "verse-6",
+        sanskritDevanagari:
+            "ललाटचत्वरज्वलद् धनञ्जयस्फुलिङ्गभा\nnipīta pañca sāyakam naman nilimpanāyakam।\nसुधामयूखलेखया विराजमानशेखरं\nmahākapāli sampade śirojjaṭālamastunah॥ ६॥",
+        transliteration:
+            "lalāṭa catvara jvalad dhanaṁjaya sphuliṅgabhā\nnipīta pañca sāyakam naman nilimpa nāyakam\nsudhāmayūkha lekhayā virājamāna śekharam\nmahākapāli sampade śiro jjaṭālamastunah",
+        wordMeanings:
+            "lalāṭa—forehead; catvara—square/expanse; jvalat—blazing; dhanaṁjaya—fire; sphuliṅga—sparks; bhā—like; nipīta—drunk/consumed; pañca-sāyakam—the five arrows of Kama; naman—bowing; nilimpa—divine beings; nāyakam—leader; sudhā—nectar; mayūkha—rays; lekhayā—with the line of; virājamāna—resplendent; śekharam—crowned; mahā-kapāli—great skull-bearer; sampade—for wealth/blessings; śiraḥ—head; jaṭā—matted locks; alam—may be enough; astu—be; naḥ—for us.",
+        translation:
+            "May the matted locks on the head of the great skull-bearer Shiva be our prosperity — He before whom the leaders of the divine beings bow, who consumed Kama's five arrows with the blazing sparks of fire from His forehead-expanse, and who is crowned with the line of moonbeams.",
+        commentary:
+            "This verse refers to Shiva's famous destruction of Kama (Desire/Love). When Kama shot his five flower-arrows to disturb Shiva's meditation at the behest of the gods, Shiva opened His third eye and reduced Kama to ashes. Yet paradoxically, Shiva himself is the source of all desire in the universe. He destroys personified Desire to demonstrate that desire finds its resolution only in the absolute.",
+    },
+    {
+        verse: 7,
+        slug: "verse-7",
+        sanskritDevanagari:
+            "करालभालपट्टिकाधगद्धगद्धगज्जवल\nद्धनञ्जयाहुतीकृत प्रचण्डपञ्चसायके।\nधराधरेन्द्रनन्दिनी कुचाग्रचित्रपत्रक\nप्रकल्पनैकशिल्पिनि त्रिलोचने रतिर्मम॥ ७॥",
+        transliteration:
+            "karālabhāla paṭṭikā dhagaddhagaddhagajjvala\nddhanañjayāhutīkṛta pracaṇḍa pañcasāyake\ndharādharendra nandini kucāgra citra patrika\nprakalpanaika śilpini trilocanē ratirmama",
+        wordMeanings:
+            "karāla—terrifying; bhāla—forehead; paṭṭikā—surface; dhagad—blazing sound; jvalat—blazing; dhanañjaya—fire; āhutī-kṛta—offered as oblation; pracaṇḍa—fierce; pañca-sāyake—to the five arrows (of Kama); dharā-dhara-indra—Himalaya; nandini—daughter (Parvati); kuca—breast; agra—top; citra—beautiful; patrikā—painted design; prakalpa—design/art; naika—unique; śilpini—artist; tri-lochane—three-eyed; ratir—delight; mama—mine.",
+        translation:
+            "My delight is in the three-eyed Shiva — who offered the five fierce arrows of Kama as oblation into the blazing fire on His terrible forehead — and who is the unique artist who painted the beautiful designs on the bosom of Parvati, daughter of the Himalayas.",
+        commentary:
+            "This verse celebrates both Shiva the destroyer and Shiva the loving consort. The juxtaposition is intentional: the same third eye that burns Kama to ash is also the consciousness that lovingly perceives and delights in Parvati's beauty. Destruction and love are not opposites in Shaivite philosophy — they are two expressions of the same absolute consciousness.",
+    },
+    {
+        verse: 8,
+        slug: "verse-8",
+        sanskritDevanagari:
+            "नवीनमेघमण्डली निरुद्धदुर्धरस्फुरत्\nकुहूनिशीथिनीतमः प्रबन्धबद्धकन्धरः।\nनिलिम्पनिर्झरीधरस् तनोतु कृत्तिसिन्धुरः\nकलानिधानबन्धुरः श्रियं जगद्धुरन्धरः॥ ८॥",
+        transliteration:
+            "navīna megha maṇḍalī niruddha durdharasphurat\nkuhū niśīthini tamaḥ prabandha baddha kandharaḥ\nnilimpa nirjharīdharas tanotu kṛtti sinduraḥ\nkalānidānabandhurah śriyaṁ jagaddhurhandharaḥ",
+        wordMeanings:
+            "navīna—new; megha—cloud; maṇḍalī—cluster; niruddha—blocked/hiding; durdharā—terrible; sphurat—glowing; kuhū—new moon night; niśīthini—midnight; tamaḥ—darkness; prabandha—continuous; baddha—bound; kandharaḥ—neck/throat; nilimpa—divine; nirjharī—river; dharaḥ—bearer; tanotu—may expand; kṛtti—skin; sindhuraḥ—wearing elephant skin; kalā—crescent moon; nidhāna—repository; bandhurah—beautiful; śriyam—prosperity; jagat—world; dhurhandharaḥ—bearer of the burden.",
+        translation:
+            "May Shiva — whose neck is bound with the deep darkness of the midnight of a new moon, blocked by clusters of new clouds, who bears the divine river, who wears the elephant's hide, who is beautiful with the crescent moon, and who bears the burden of the world — bestow prosperity.",
+        commentary:
+            "The description of the dark throat (Nilakantha) refers to Shiva holding the cosmic poison Halahala in His neck during the churning of the ocean, saving all creation. The darkness of new-moon midnight around His throat is an image of this cosmic self-sacrifice. Shiva holds the poison of suffering so the world can experience sweetness — the archetype of divine compassion through absorption.",
+    },
+    {
+        verse: 9,
+        slug: "verse-9",
+        sanskritDevanagari:
+            "प्रफुल्लनीलपङ्कज प्रपञ्चकालिमप्रभा\nवलम्बिकण्ठकन्दली रुचिप्रबद्धकन्धरम्।\nस्मरच्छिदं पुरच्छिदं भवच्छिदं मखच्छिदं\nगजच्छिदान्धकच्छिदं तमन्तकच्छिदं भजे॥ ९॥",
+        transliteration:
+            "praphulla nīla paṅkaja prapañca kālima prabhā\nvalambikantha kandali ruci prabaddha kandaram\nsmaracchidaṁ puracchidaṁ bhavacchidaṁ makhacchidaṁ\ngajacchidāndhakacchidaṁ tam antakacchidaṁ bhaje",
+        wordMeanings:
+            "praphulla—bloomed; nīla—blue; paṅkaja—lotus; prapañca—universe; kālima—dark blue color; prabhā—radiance; valambikantha—hanging on the neck; kandalī—kadali plant (banana); ruci—beauty; prabaddha—well-bound; kandaram—the neck; smara-cchid—destroyer of Smara (Kama); pura-cchid—destroyer of the three cities; bhava-cchid—cutter of existence/rebirth; makha-cchid—destroyer of the sacrifice (Daksha's yagna); gaja-cchid—destroyer of the elephant (demon); andhaka-cchid—destroyer of Andhaka (demon); tam—Him; antaka-cchid—destroyer of Death (Yama); bhaje—I worship.",
+        translation:
+            "I worship Him — whose neck radiates the deep blue radiance of the fully blossomed blue lotus illumining the universe — the Destroyer of Kama, Destroyer of the three cities (Tripurantaka), Cutter of rebirth's cycle, Destroyer of Daksha's sacrifice, Destroyer of the elephant-demon, Destroyer of Andhaka, Destroyer of Death (Yama) itself.",
+        commentary:
+            "This verse lists Shiva's greatest mythological victories. Each epithet records a cosmic event: destroying Kama (personified desire), burning the three cities (the triple ego), disrupting Daksha's sacrifice (destroying blind orthodoxy), and most profoundly — destroying Death itself (Yamantaka). Shiva is the one reality that transcends even death. This is why liberation (moksha) is associated with Shiva above all others.",
+    },
+    {
+        verse: 10,
+        slug: "verse-10",
+        sanskritDevanagari:
+            "अखर्वसर्वमङ्गला कलाकदम्बमञ्जरी\nरसप्रवाहमाधुरी विजृम्भणामधुव्रतम्।\nस्मरान्तकं पुरान्तकं भवान्तकं मखान्तकं\nगजान्तकान्धकान्तकं तमन्तकान्तकं भजे॥ १०॥",
+        transliteration:
+            "akharva sarvamaṅgalā kalā kadamba mañjarī\nrasa pravāha mādhurī vijṛmbhaṇā madhuvratam\nsmarāntakaṁ purāntakaṁ bhavāntakaṁ makhāntakaṁ\ngajāntakāndhakāntakaṁ tam antakāntakaṁ bhaje",
+        wordMeanings:
+            "akharva—perfect/full; sarva-maṅgalā—all-auspicious; kalā—art forms; kadamba—kadamba flowers; mañjarī—cluster; rasa—essence/sweetness; pravāha—flow; mādhurī—sweetness; vijṛmbhaṇā—blooming; madhu-vratam—devoted to honey (bees); smarāntakam—ender of Smara; purāntakam—ender of the three cities; bhavāntakam—ender of worldly existence; makhāntakam—ender of the sacrifice; gajāntakam—ender of the elephant-demon; andhakāntakam—ender of Andhaka; tam—Him; antakāntakam—ender of Antaka (Death); bhaje—I worship.",
+        translation:
+            "I worship Him — the bee devoted to the flowing sweetness of the cluster of all-auspicious arts — the Ender of Kama, Ender of the three cities, Ender of worldly existence, Ender of Daksha's sacrifice, Ender of the elephant-demon, Ender of Andhaka, Ender of Death itself.",
+        commentary:
+            "This verse closely parallels verse 9 but uses 'anta' (ender) instead of 'cchid' (destroyer), emphasizing that Shiva does not destroy things arbitrarily but brings them to their natural completion. He is 'antakāntaka' — the ender of Death — not because He is immortal in the way beings are, but because He is the consciousness in which the concept of death itself dissolves.",
+    },
+    {
+        verse: 11,
+        slug: "verse-11",
+        sanskritDevanagari:
+            "जयत्वदभ्रविभ्रम भ्रमद्भुजङ्गमश्वस\nद्विनिर्गमत्क्रमस्फुरत् करालभालहव्यवाट्।\nधिमिद्धिमिद्धिमिध्वनन् मृदङ्गतुङ्गमङ्गल\nध्वनिक्रमप्रवर्तित प्रचण्डताण्डवः शिवः॥ ११॥",
+        transliteration:
+            "jayatvadabhra vibhrama bhramad bhujaṅgamaśvasa\ndvinirgamat kramasphurat karāla bhāla havyavāṭ\ndhimid dhimid dhimidhvanan mṛdaṅga tuṅga maṅgala\ndhvani krama pravartita pracaṇḍa tāṇḍavaḥ śivaḥ",
+        wordMeanings:
+            "jayatu—may He be victorious; adabhra—extensive/great; vibhrama—wandering; bhramat—moving; bhujaṅgama—serpents; śvasa—breath; dvinirgamat—exiting; krama—in sequence; sphurat—blazing; karāla—terrible; bhāla—forehead; havyavāṭ—fire; dhimid dhimid—sound of mṛdaṅga; mṛdaṅga—drum; tuṅga—great/high; maṅgala—auspicious; dhvani—sound; krama—sequence; pravartita—set in motion; pracaṇḍa—fierce; tāṇḍavaḥ—Tandava dance; śivaḥ—Shiva.",
+        translation:
+            "May Shiva be victorious — whose terrible forehead-fire blazes with the breath of the great serpents writhing in extensive coils — who performs the fierce Tandava dance set in motion by the auspicious sequence of the great mṛdaṅga's resounding 'dhimid dhimid dhimi' beats.",
+        commentary:
+            "The mṛdaṅga (clay drum) is the instrument of Shiva's Tandava. The rhythmic syllables 'dhimid dhimid dhimi' mimic the actual drum pattern. This verse is unique in making the sound of the dance explicit and audible in the poetry itself — the poem becomes the music of Shiva's dance.",
+    },
+    {
+        verse: 12,
+        slug: "verse-12",
+        sanskritDevanagari:
+            "दृषद्विचित्रतल्पयोर्भुजङ्ग मौक्तिकस्रजोर्\nगरिष्ठरत्नलोष्ठयोः सुहृद्विपक्षपक्षयोः।\nतृणारविन्दचक्षुषोः प्रजामहीमहेन्द्रयोः\nसमप्रवृत्तिकः कदा सदाशिवं भजाम्यहम्॥ १२॥",
+        transliteration:
+            "dṛṣad vicitra talpayorbhujaṅga mauktika srajor\ngariṣṭha ratna loṣṭhayoḥ suhṛd vipakṣa pakṣayoḥ\ntṛṇā ravinda cakṣuṣoḥ prajā mahī mahendrayoḥ\nsama pravṛttikaḥ kadā sadāśivaṁ bhajāmyaham",
+        wordMeanings:
+            "dṛṣat—stone; vicitra—wonderful; talpayoḥ—between bed/couch; bhujaṅga—serpent; mauktika—pearl; srajoḥ—garlands; gariṣṭha—most valuable; ratna—jewel; loṣṭhayoḥ—clod of earth; suhṛt—friend; vipakṣa—enemy; pakṣayoḥ—sides; tṛṇa—blade of grass; aravinda—lotus; cakṣuṣoḥ—eye/vision; prajā—subjects; mahī—earth; mahendrayoḥ—great kings; sama—equal; pravṛttika—conduct; kadā—when; sadāśivam—eternal Shiva; bhajāmi—I worship; aham—I.",
+        translation:
+            "When will I worship the eternal Shiva with equal attitude toward: a stone and a wonderful bed, a serpent-garland and a pearl garland, a most precious jewel and a clod of earth, a friend and an enemy, a blade of grass and a lotus eye, ordinary subjects and great kings?",
+        commentary:
+            "This verse pivots from praising Shiva externally to asking when the devotee himself will achieve Shiva-like equanimity (sama-dṛṣṭi). The practice of equal vision (seeing Brahman equally in a jewel and a clod of earth, in an enemy and a friend) is the hallmark of liberation. Ravana, for all his power, recognized that he had not yet achieved this. This personal admission within a hymn of cosmic praise is one of the most honest and affecting moments in Sanskrit devotional literature.",
+    },
+    {
+        verse: 13,
+        slug: "verse-13",
+        sanskritDevanagari:
+            "कदा निलिम्पनिर्झरी निकुञ्जकोटरे वसन्\nविमुक्तदुर्मतिः सदा शिरःस्थमञ्जलिं वहन्।\nविमुक्तलोललोचनो ललामभाललग्नकः\nशिवेति मन्त्रमुच्चरन् कदा सुखी भवाम्यहम्॥ १३॥",
+        transliteration:
+            "kadā nilimpa nirjharī nikuñja koṭare vasan\nvimukta durmatiḥ sadā śiraḥ stha mañjaliṁ vahan\nvimukta lola locano lalāma bhālalagnakaḥ\nśiveti mantram uccaran kadā sukhī bhavāmyaham",
+        wordMeanings:
+            "kadā—when; nilimpa—divine; nirjharī—river (Ganga); nikuñja—bower/grove; koṭare—in the hollow; vasan—dwelling; vimukta—freed; durmatiḥ—evil thoughts; sadā—always; śiraḥ—head; stha—placed; mañjalim—joined palms; vahan—carrying; vimukta—freed; lola—restless/wandering; locanaḥ—eyes; lalāma—mark on forehead; bhāla—forehead; lagnakaḥ—attached to; śiva—Shiva; iti—thus; mantram—mantra; uccaran—uttering; kadā—when; sukhī—happy; bhavāmi—I become; aham—I.",
+        translation:
+            "When shall I become happy — dwelling in the bower beside the divine Ganga, freed from evil thoughts, ever holding joined palms on my head, with eyes freed from restlessness, devoted to the mark on Shiva's forehead, uttering the mantra 'Shiva'?",
+        commentary:
+            "The final verses of the Tandava Stotram shift from cosmic praise to intensely personal longing for liberation. Ravana — the most powerful king of his age — ends not with triumph but with yearning: 'When shall I be free?' The mark on Shiva's forehead (the sacred ash, vibhuti, or tilaka) becomes the object of meditation. This is the essence of bhakti: even cosmic power is worthless without the peace of the Divine.",
+    },
+    {
+        verse: 14,
+        slug: "verse-14",
+        sanskritDevanagari:
+            "इमं हि नित्यमेवमुक्त मुत्तमोत्तमं स्तवं\nपठन्स्मरन् ब्रुवन्नरो विशुद्धिमेति सन्ततम्।\nहरे गुरौ सुभक्तिमाशु याति नान्यथा गतिं\nविमोहनं हि देहिनां सुशङ्करस्य चिन्तनम्॥ १४॥",
+        transliteration:
+            "imaṁ hi nityam evam uktam uttamottamaṁ stavam\npaṭhan smaran bruvannarō viśuddhimeti santatam\nhare gurau subhaktim āśu yāti nānyathā gatiṁ\nvimōhanaṁ hi dehināṁ suśaṅkarasya cintanam",
+        wordMeanings:
+            "imam—this; hi—indeed; nityam—daily; evam—thus; uktam—spoken; uttamottamam—best of the best; stavam—hymn; paṭhan—reading; smaran—remembering; bruvan—speaking; naraḥ—man; viśuddhim—purification; eti—attains; santatam—constantly; hare—Hara (Shiva); gurau—in the teacher; su-bhaktim—excellent devotion; āśu—quickly; yāti—attains; na—not; anyathā—other; gatim—goal/path; vimōhanam—removing delusion; hi—indeed; dehināṁ—of embodied beings; suśaṅkarasya—of the auspicious Shankara; cintanam—contemplation.",
+        translation:
+            "He who daily reads, remembers, and recites this best of hymns as thus spoken, attains constant purification. He quickly attains excellent devotion to Hara (Shiva) and the Guru, and reaches no other goal. Indeed, contemplation of the auspicious Shankara removes the delusion of all embodied beings.",
+        commentary:
+            "This penultimate verse describes the result of reciting the Tandava Stotram. 'Purification' (viśuddhi) is the primary result — purification of the mind-stuff (citta), which removes the fundamental delusion (vimohana) that binds embodied beings to the cycle of birth and death. The verse emphasizes that devotion to the Guru and devotion to Shiva are not separate paths but the same path.",
+    },
+    {
+        verse: 15,
+        slug: "verse-15",
+        sanskritDevanagari:
+            "पूजावसानसमये दशवक्त्रगीतं\nयः शम्भुपूजनपरं पठति प्रदोषे।\nतस्य स्थिरां रथगजेन्द्रतुरङ्गयुक्तां\nलक्ष्मीं सदैव सुमुखीं प्रददाति शम्भुः॥ १५॥",
+        transliteration:
+            "pūjāvasāna samaye daśavaktra gītaṁ\nyaḥ śambhu pūjana paraṁ paṭhati pradoṣe\ntasya sthirāṁ ratha gajendra turaṅga yuktāṁ\nlakṣmīṁ sadaiva sumukhīṁ pradadāti śambhuḥ",
+        wordMeanings:
+            "pūjā—worship; avasāna—at the end; samaye—at the time; daśa-vaktra—ten-faced (Ravana); gītam—song/hymn; yaḥ—who; śambhu—Shiva; pūjana—worship; param—foremost; paṭhati—recites; pradoṣe—during Pradosha time (1.5 hours before sunset); tasya—his; sthirām—stable/permanent; ratha—chariot; gajendra—king elephant; turaṅga—horses; yuktām—accompanied by; lakṣmīm—Lakshmi (prosperity); sadā—always; eva—indeed; sumukhīm—benevolent; pradadāti—bestows; śambhuḥ—Shiva.",
+        translation:
+            "Whoever recites this song of the ten-faced one (Ravana), composed in praise of Shiva's worship, at the Pradosha time (the auspicious twilight period) — to him Shambhu bestows the always-benevolent Lakshmi accompanied by chariots, king-elephants, and horses (complete royal prosperity).",
+        commentary:
+            "Pradosha is the twilight period 1.5 hours before sunset on the 13th lunar day (Trayodashi) — considered especially sacred for Shiva worship. The promise of Lakshmi's grace alongside Shiva's is significant: in Shaivite tradition, all prosperity ultimately comes from the Divine. Material stability (chariots, elephants, horses) is portrayed as a byproduct of sincere spiritual practice, not as the primary goal.",
+    },
+    {
+        verse: 16,
+        slug: "verse-16",
+        sanskritDevanagari:
+            "शम्भुस्तुति कृपया वीक्ष्य प्रसन्नस्तु श्रीरामचन्द्र।\nरावणेन रचितं स्तोत्रं यः पठेत् शम्भु संनिधौ॥\nसर्वपापविनिर्मुक्तः स याति परमां गतिम्।\nइति श्री रावणकृत शिव ताण्डव स्तोत्रं सम्पूर्णम्॥ १६॥",
+        transliteration:
+            "śambhustutiḥ kṛpayā vīkṣya prasannasthu śrīrāmacandra\nrāvaṇena racitaṁ stotraṁ yaḥ paṭhet śambhu saṁnidhau\nsarvapāpa vinirmuktaḥ sa yāti paramāṁ gatim\niti śrī rāvaṇakṛta śiva tāṇḍava stotraṁ sampūrṇam",
+        wordMeanings:
+            "śambhu—Shiva; stutiḥ—praise; kṛpayā—by grace; vīkṣya—seeing; prasannaḥ—pleased; rāmacandra—Sri Ramachandra; rāvaṇena—by Ravana; racitam—composed; stotram—hymn; yaḥ—who; paṭhet—recites; śambhu—Shiva; saṁnidhau—in the presence of; sarva-pāpa—all sins; vinirmuktaḥ—completely freed; sa—he; yāti—reaches; paramām—supreme; gatim—destination; iti—thus; sampūrṇam—complete.",
+        translation:
+            "Whoever recites this hymn composed by Ravana in the presence of Shambhu is completely freed from all sins and reaches the supreme destination. Thus is complete the Shiva Tandava Stotram composed by the illustrious Ravana.",
+        commentary:
+            "The concluding verse makes a remarkable theological statement: even Ravana's composition — composed by the very king who later abducted Sita — is a vehicle for liberation when recited before Shiva. Ravana was simultaneously a great devotee of Shiva and an enemy of Rama. The tradition preserves this paradox intact: genuine bhakti (devotion) has power regardless of its source, and Shiva's grace transcends moral categorization.",
+    },
+];
+
+export function getShivaTandavaVerseBySlug(slug: string): ShivaTandavaVerse | undefined {
+    return shivaTandavaVerses.find((v) => v.slug === slug);
+}
+
+export function getAdjacentShivaTandavaVerses(verseNum: number): {
+    prev: ShivaTandavaVerse | null;
+    next: ShivaTandavaVerse | null;
+} {
+    const idx = shivaTandavaVerses.findIndex((v) => v.verse === verseNum);
+    return {
+        prev: idx > 0 ? shivaTandavaVerses[idx - 1] : null,
+        next: idx < shivaTandavaVerses.length - 1 ? shivaTandavaVerses[idx + 1] : null,
+    };
+}
