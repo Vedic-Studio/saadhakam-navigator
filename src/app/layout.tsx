@@ -158,6 +158,7 @@ export default function RootLayout({
 
               gtag('config', '${gaMeasurementId}', {
                 send_page_view: false,
+                debug_mode: true,
               });
             `,
           }}
@@ -177,6 +178,7 @@ export default function RootLayout({
               };
 
               var sendEvent = function (eventName, params) {
+                console.log('[Sadhaka Analytics]', eventName, params);
                 if (typeof window.gtag === 'function') {
                   window.gtag('event', eventName, params || {});
                 }
