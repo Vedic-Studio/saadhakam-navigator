@@ -23,6 +23,568 @@ export interface ArticleMeta {
 }
 
 export const articles: ArticleMeta[] = [
+    // ─── Cluster 9: Western Philosophy Bridge ───────────────────────────────
+    {
+        slug: "western-philosophy-and-vedanta",
+        route: "/western-philosophy-and-vedanta",
+        title: "Indian Philosophy vs Western Philosophy: The Vedanta Bridge",
+        metaDescription:
+            "Indian philosophy vs western philosophy: clear differences, core convergences, and how Vedanta reframes consciousness, ethics, and meaning for modern seekers.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 18,
+        primaryKeyword: "indian philosophy vs western philosophy",
+        relatedLinks: [
+            { text: "Vedanta vs Stoicism", href: "/vedanta-vs-stoicism" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+            { text: "What is Maya?", href: "/what-is-maya" },
+            { text: "Advaita in pSEO Hub", href: "/philosophies/advaita-vedanta" },
+            { text: "Shiva Tandava Stotram", href: "/stotras/shiva-tandava-stotram" },
+            { text: "Who is Shiva?", href: "/deities/shiva" },
+        ],
+        faqs: [
+            {
+                question: "What is the main difference between Indian and Western philosophy?",
+                answer:
+                    "Most Western systems prioritize analysis of objects, logic, and social ethics from an observing mind. Indian darshanas centrally include the observer itself—asking what consciousness is, who the self is, and how suffering ends through lived transformation.",
+            },
+            {
+                question: "Is Vedanta similar to Greek philosophy or Stoicism?",
+                answer:
+                    "Vedanta overlaps with Greek and Stoic thought in ethics, self-mastery, and detachment, but it goes further metaphysically by claiming identity of Atman and Brahman (non-dual schools), making liberation a recognition of ultimate reality rather than only a moral discipline.",
+            },
+            {
+                question: "Can Western readers study Vedanta without converting religions?",
+                answer:
+                    "Yes. Vedanta can be studied as a philosophical and contemplative tradition without religious conversion. Many begin with Bhagavad Gita, core Upanishadic ideas, and daily inquiry practices.",
+            },
+            {
+                question: "Why is consciousness central in Indian philosophy?",
+                answer:
+                    "Because Indian systems treat unresolved identity as the root of suffering. If you do not understand the knower, all knowledge remains partial. Vedanta therefore begins with the witness, not merely the world witnessed.",
+            },
+        ],
+    },
+    {
+        slug: "vedanta-vs-stoicism",
+        route: "/vedanta-vs-stoicism",
+        title: "Vedanta vs Stoicism: Similar Discipline, Different Metaphysics",
+        metaDescription:
+            "Vedanta vs Stoicism explained: where they converge on discipline and detachment, where they differ on self, God, consciousness, and liberation.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 12,
+        primaryKeyword: "vedanta vs stoicism",
+        relatedLinks: [
+            { text: "Indian Philosophy vs Western Philosophy", href: "/western-philosophy-and-vedanta" },
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+            { text: "What is Maya?", href: "/what-is-maya" },
+            { text: "Who is Krishna?", href: "/deities/krishna" },
+        ],
+        faqs: [
+            {
+                question: "Is Vedanta the same as Stoicism?",
+                answer:
+                    "No. Both value inner stability and disciplined response, but Stoicism remains primarily ethical-rational, while Vedanta is metaphysical and soteriological, aiming at liberation through knowledge of the Self.",
+            },
+            {
+                question: "What does Stoicism say about self vs Vedanta?",
+                answer:
+                    "Stoicism trains the rational self to align with nature and virtue. Vedanta investigates whether the apparent self is ultimate at all, distinguishing ego-personality from witnessing consciousness (Atman).",
+            },
+            {
+                question: "Can Stoic practice complement Vedantic practice?",
+                answer:
+                    "Yes. Stoic exercises such as voluntary discomfort, cognitive reframing, and reflection can stabilize mind and behavior, making one better prepared for deeper Vedantic inquiry and meditation.",
+            },
+        ],
+    },
+    {
+        slug: "platos-cave-and-maya",
+        route: "/platos-cave-and-maya",
+        title: "Plato's Cave and Maya: Appearance, Reality, and Liberation",
+        metaDescription:
+            "Plato's cave and Maya compared: how Greek philosophy and Vedanta explain illusion, perception, and the path from appearance to truth.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 11,
+        primaryKeyword: "platos cave and maya",
+        relatedLinks: [
+            { text: "What is Maya?", href: "/what-is-maya" },
+            { text: "Western Philosophy and Vedanta", href: "/western-philosophy-and-vedanta" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+            { text: "Consciousness Hard Problem and Vedanta", href: "/consciousness-hard-problem-vedanta" },
+        ],
+        faqs: [
+            {
+                question: "Is Maya the same as Plato's illusion in the cave?",
+                answer:
+                    "They are structurally similar but not identical. Plato emphasizes epistemic ascent from shadows to forms. Vedanta includes that shift and further asks who the knower is, culminating in Self-knowledge.",
+            },
+            {
+                question: "What is liberation in Plato vs Vedanta?",
+                answer:
+                    "In Plato, liberation is turning toward truth and returning to educate society. In Vedanta, liberation is recognition of one's true nature as consciousness, beyond misidentification with body-mind.",
+            },
+            {
+                question: "Why compare Plato and Vedanta today?",
+                answer:
+                    "The comparison helps modern readers move from familiar Western metaphors to deeper non-dual inquiry without losing analytical rigor.",
+            },
+        ],
+    },
+    {
+        slug: "nietzsche-and-vedanta",
+        route: "/nietzsche-and-vedanta",
+        title: "Nietzsche and Vedanta: Will to Power vs Freedom from Ego",
+        metaDescription:
+            "Nietzsche and Vedanta compared on self, suffering, power, meaning, and transcendence — conflict points and surprising convergences.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 12,
+        primaryKeyword: "nietzsche and vedanta",
+        relatedLinks: [
+            { text: "Existentialism and Vedanta", href: "/existentialism-and-vedanta" },
+            { text: "Vedanta vs Stoicism", href: "/vedanta-vs-stoicism" },
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "What is Maya?", href: "/what-is-maya" },
+        ],
+        faqs: [
+            {
+                question: "Does Vedanta reject Nietzsche's critique of herd morality?",
+                answer:
+                    "Not entirely. Vedanta also warns against conformist identity and unconscious conditioning, but it redirects transformation toward freedom from ego rather than ego-intensification.",
+            },
+            {
+                question: "Is Ubermensch similar to Moksha?",
+                answer:
+                    "Only partially. Both imply overcoming ordinary conditioning. Yet Ubermensch remains tied to creative becoming, while Moksha is freedom through recognition of the already-complete Self.",
+            },
+            {
+                question: "Can Nietzsche help a Vedanta student?",
+                answer:
+                    "Yes. Nietzsche can sharpen honesty about resentment, self-deception, and inherited values before one enters deeper contemplative practice.",
+            },
+        ],
+    },
+    {
+        slug: "existentialism-and-vedanta",
+        route: "/existentialism-and-vedanta",
+        title: "Existentialism and Vedanta: Meaning, Anxiety, and the Self",
+        metaDescription:
+            "Existentialism and Vedanta compared: absurdity, freedom, anxiety, and whether meaning is constructed or discovered in consciousness.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 12,
+        primaryKeyword: "existentialism and vedanta",
+        relatedLinks: [
+            { text: "Nietzsche and Vedanta", href: "/nietzsche-and-vedanta" },
+            { text: "Fear of Death Through Advaita", href: "/fear-of-death-advaita-vedanta" },
+            { text: "Dark Night of the Soul", href: "/dark-night-of-the-soul" },
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+        ],
+        faqs: [
+            {
+                question: "Does Vedanta deny existential anxiety?",
+                answer:
+                    "No. Vedanta treats existential anxiety as a valid signal of misidentification, then offers practices to examine who is anxious and what is taken to be threatened.",
+            },
+            {
+                question: "Is meaning created (existentialism) or revealed (Vedanta)?",
+                answer:
+                    "Existentialism often emphasizes creation through choice. Vedanta emphasizes discovery of intrinsic fullness in consciousness, from which ethical action then flows.",
+            },
+            {
+                question: "Can existential and Vedantic methods be combined?",
+                answer:
+                    "Yes. Existential honesty and responsibility can prepare the ground for Vedantic inquiry into the nature of self and reality.",
+            },
+        ],
+    },
+    {
+        slug: "carl-jung-and-vedanta",
+        route: "/carl-jung-and-vedanta",
+        title: "Carl Jung and Vedanta: Individuation, Shadow, and the Self",
+        metaDescription:
+            "Carl Jung and Vedanta compared on psyche, archetypes, ego, shadow integration, and the difference between psychological and spiritual realization.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 11,
+        primaryKeyword: "carl jung and vedanta",
+        relatedLinks: [
+            { text: "Existentialism and Vedanta", href: "/existentialism-and-vedanta" },
+            { text: "What is Maya?", href: "/what-is-maya" },
+            { text: "Who is Shiva?", href: "/deities/shiva" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+        ],
+        faqs: [
+            {
+                question: "Is Jung's Self the same as Atman?",
+                answer:
+                    "They overlap symbolically but differ in scope. Jung's Self is a psychological totality; Atman in Vedanta is pure consciousness beyond the psyche.",
+            },
+            {
+                question: "Why is shadow work relevant to Vedanta seekers?",
+                answer:
+                    "Unintegrated shadow material can distort spiritual language and practice. Psychological honesty reduces bypassing and supports mature inquiry.",
+            },
+            {
+                question: "Do archetypes matter in non-dual practice?",
+                answer:
+                    "Yes at the relative level. Archetypal symbols can guide integration, devotion, and meaning before deeper non-dual stabilization.",
+            },
+        ],
+    },
+    {
+        slug: "neuroscience-of-meditation-hinduism",
+        route: "/neuroscience-of-meditation-hinduism",
+        title: "Neuroscience of Meditation and Hindu Practice: What Evidence Supports",
+        metaDescription:
+            "Neuroscience of meditation through a Hindu lens: what brain research confirms, what it cannot measure, and how japa, dhyana, and bhakti differ.",
+        pillar: "practical-practices",
+        publishDate: "2026-03-12",
+        readingTime: 12,
+        primaryKeyword: "neuroscience of meditation hinduism",
+        relatedLinks: [
+            { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
+            { text: "How to Start Japa", href: "/how-to-start-japa" },
+            { text: "Consciousness Hard Problem and Vedanta", href: "/consciousness-hard-problem-vedanta" },
+            { text: "Mantras Hub", href: "/mantras" },
+        ],
+        faqs: [
+            {
+                question: "Does neuroscience prove meditation works?",
+                answer:
+                    "Evidence strongly supports benefits for attention regulation, stress reduction, and emotional resilience, while effects vary by method and consistency.",
+            },
+            {
+                question: "Can brain scans validate enlightenment?",
+                answer:
+                    "No. Brain correlates can be measured, but first-person realization claims exceed current third-person instrumentation.",
+            },
+            {
+                question: "Are all meditation techniques neurologically identical?",
+                answer:
+                    "No. Focused attention, open monitoring, mantra repetition, and devotional absorption recruit overlapping but distinct cognitive-emotional networks.",
+            },
+        ],
+    },
+    {
+        slug: "consciousness-hard-problem-vedanta",
+        route: "/consciousness-hard-problem-vedanta",
+        title: "Hard Problem of Consciousness and Vedanta: A Non-Dual Response",
+        metaDescription:
+            "The hard problem of consciousness through Vedanta: why subjective experience resists material explanation and how non-dual philosophy reframes the debate.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 13,
+        primaryKeyword: "consciousness hard problem vedanta",
+        relatedLinks: [
+            { text: "Western Philosophy and Vedanta", href: "/western-philosophy-and-vedanta" },
+            { text: "Neuroscience of Meditation and Hinduism", href: "/neuroscience-of-meditation-hinduism" },
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+        ],
+        faqs: [
+            {
+                question: "What is the hard problem of consciousness in simple terms?",
+                answer:
+                    "It asks why and how subjective experience (qualia) arises at all from physical processes, rather than merely explaining behavior or information processing.",
+            },
+            {
+                question: "How does Vedanta approach the hard problem?",
+                answer:
+                    "Vedanta inverts the framing: consciousness is primary, and matter appears within consciousness. The question becomes how apparent limitation arises, not how awareness emerges from non-awareness.",
+            },
+            {
+                question: "Is Vedanta anti-science on consciousness?",
+                answer:
+                    "No. It accepts empirical science within its domain while arguing that first-person awareness requires a broader epistemic model than third-person measurement alone.",
+            },
+        ],
+    },
+
+    // ─── Cluster 11: Deity Bridge for Western Readers ───────────────────────
+    {
+        slug: "hindu-goddess-explained",
+        route: "/hindu-goddess-explained",
+        title: "Hindu Goddess Explained: Devi, Shakti, and the Feminine Divine",
+        metaDescription:
+            "Hindu goddess explained for beginners: who is Devi, what Shakti means, and how Durga, Lakshmi, Saraswati, Kali, and Parvati relate.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-03-12",
+        readingTime: 12,
+        primaryKeyword: "hindu goddess explained",
+        relatedLinks: [
+            { text: "Who is Durga?", href: "/deities/durga" },
+            { text: "Who is Kali?", href: "/deities/kali" },
+            { text: "Who is Lakshmi?", href: "/deities/lakshmi" },
+            { text: "Who is Saraswati?", href: "/deities/saraswati" },
+            { text: "Who is Parvati?", href: "/deities/parvati" },
+        ],
+        faqs: [
+            {
+                question: "Is there one Hindu goddess or many?",
+                answer:
+                    "Both views coexist. Many traditions treat all goddesses as expressions of one Devi or Shakti, while also worshipping distinct forms like Durga, Lakshmi, Saraswati, Kali, and Parvati.",
+            },
+            {
+                question: "What does Shakti mean?",
+                answer:
+                    "Shakti means divine energy or power. In many schools, it is the dynamic aspect of reality through which consciousness manifests as life, mind, and world.",
+            },
+            {
+                question: "Is goddess worship in Hinduism symbolic or literal?",
+                answer:
+                    "For some practitioners, goddess forms are sacred symbols of inner principles. For others, they are living divine presences approached through devotion and ritual. Both approaches are accepted.",
+            },
+        ],
+    },
+    {
+        slug: "ramayana-explained",
+        route: "/ramayana-explained",
+        title: "Ramayana Explained: Story, Characters, and Why It Still Matters",
+        metaDescription:
+            "Ramayana explained for modern readers: key story arc, Rama-Sita-Hanuman-Ravana dynamics, ethical dilemmas, and enduring relevance.",
+        pillar: "sacred-texts",
+        publishDate: "2026-03-12",
+        readingTime: 13,
+        primaryKeyword: "ramayana explained",
+        relatedLinks: [
+            { text: "Who is Rama?", href: "/deities/rama" },
+            { text: "Who is Sita?", href: "/deities/sita" },
+            { text: "Who is Hanuman?", href: "/deities/hanuman" },
+            { text: "Sacred Texts & Teachings", href: "/sacred-texts-teachings" },
+            { text: "Spiritual Traditions & Paths", href: "/spiritual-traditions-paths" },
+        ],
+        faqs: [
+            {
+                question: "Is Ramayana history, mythology, or scripture?",
+                answer:
+                    "In Hindu traditions it functions as sacred Itihasa: a civilizational memory text combining narrative, ethics, devotion, and philosophical teaching.",
+            },
+            {
+                question: "What is the core teaching of the Ramayana?",
+                answer:
+                    "The epic explores dharma under pressure: how to act rightly when every available option carries emotional cost.",
+            },
+            {
+                question: "Why is Hanuman so central to the Ramayana?",
+                answer:
+                    "Hanuman embodies bhakti in action: courage, humility, and total service without egoic claim over outcomes.",
+            },
+        ],
+    },
+
+    // ─── Cluster 12: Sacred Texts (Western Reader Bridge) ───────────────────
+    {
+        slug: "how-to-read-upanishads-western-beginner",
+        route: "/how-to-read-upanishads-western-beginner",
+        title: "How to Read the Upanishads as a Western Beginner",
+        metaDescription:
+            "How to read the Upanishads without overwhelm: best entry texts, translation choices, reading sequence, and practical integration tips.",
+        pillar: "sacred-texts",
+        publishDate: "2026-03-12",
+        readingTime: 11,
+        primaryKeyword: "how to read upanishads for beginners",
+        relatedLinks: [
+            { text: "What Are the Upanishads?", href: "/what-are-the-upanishads" },
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "Best Bhagavad Gita Translation", href: "/best-bhagavad-gita-translation-for-beginners" },
+            { text: "How to Study Indian Philosophy at Home", href: "/how-to-study-indian-philosophy-home" },
+        ],
+        faqs: [
+            {
+                question: "Which Upanishad should I read first?",
+                answer:
+                    "Most beginners start with Isha or Katha Upanishad because they are compact and philosophically clear while still preserving depth.",
+            },
+            {
+                question: "Do I need Sanskrit before reading the Upanishads?",
+                answer:
+                    "No. Reliable translations with commentary are enough to start. Sanskrit study deepens nuance later but is not required initially.",
+            },
+            {
+                question: "How should I read Upanishadic passages practically?",
+                answer:
+                    "Read slowly, note one core insight, and connect it to direct self-observation rather than treating it as abstract metaphysics alone.",
+            },
+        ],
+    },
+    {
+        slug: "vedas-vs-upanishads-explained",
+        route: "/vedas-vs-upanishads-explained",
+        title: "Vedas vs Upanishads Explained: What's the Difference?",
+        metaDescription:
+            "Vedas vs Upanishads explained simply: structure, purpose, ritual vs realization, and why Upanishads are called the philosophical culmination.",
+        pillar: "sacred-texts",
+        publishDate: "2026-03-12",
+        readingTime: 10,
+        primaryKeyword: "vedas vs upanishads",
+        relatedLinks: [
+            { text: "Vedas, Upanishads & Bhagavad Gita Guide", href: "/vedas-upanishads-bhagavad-gita-guide" },
+            { text: "What Are the Upanishads?", href: "/what-are-the-upanishads" },
+            { text: "Sacred Texts & Teachings", href: "/sacred-texts-teachings" },
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+        ],
+        faqs: [
+            {
+                question: "Are the Upanishads separate from the Vedas?",
+                answer:
+                    "The Upanishads are the concluding philosophical sections of the Vedic corpus, not an unrelated scripture family.",
+            },
+            {
+                question: "Why are Upanishads called Vedanta?",
+                answer:
+                    "Vedanta literally means 'end of the Veda'—both in textual placement and in philosophical culmination.",
+            },
+            {
+                question: "Is Vedic study only ritual-focused?",
+                answer:
+                    "No. While early sections include ritual frameworks, the tradition also includes profound philosophical inquiry culminating in the Upanishads.",
+            },
+        ],
+    },
+    {
+        slug: "bhagavad-gita-vs-bible",
+        route: "/bhagavad-gita-vs-bible",
+        title: "Bhagavad Gita vs Bible: A Respectful Comparative Guide",
+        metaDescription:
+            "Bhagavad Gita vs Bible compared respectfully: genre, theology, ethics, salvation/liberation, and how readers can study both deeply.",
+        pillar: "sacred-texts",
+        publishDate: "2026-03-12",
+        readingTime: 12,
+        primaryKeyword: "bhagavad gita vs bible",
+        relatedLinks: [
+            { text: "Bhagavad Gita Complete Guide", href: "/bhagavad-gita-complete-guide" },
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "Can I Practice Vedanta Without Converting?", href: "/can-i-practice-vedanta-without-converting" },
+            { text: "Sacred Texts & Teachings", href: "/sacred-texts-teachings" },
+        ],
+        faqs: [
+            {
+                question: "Is the Bhagavad Gita the 'Hindu Bible'?",
+                answer:
+                    "That phrase is common but imprecise. The Gita is highly central, yet Hindu traditions draw from a broader scriptural ecosystem including Vedas, Upanishads, Itihasas, and Puranas.",
+            },
+            {
+                question: "Can Christians read the Bhagavad Gita?",
+                answer:
+                    "Yes. Many read it comparatively for philosophical and contemplative insight while remaining within their own faith commitments.",
+            },
+            {
+                question: "What is the biggest practical difference in orientation?",
+                answer:
+                    "A key difference is framing: the Gita emphasizes yoga paths and liberation through realization and disciplined action; Biblical traditions often emphasize covenantal relation, grace, and salvation history.",
+            },
+        ],
+    },
+
+    // ─── Cluster 13: Comparative Mysticism ───────────────────────────────────
+    {
+        slug: "vedanta-vs-buddhism",
+        route: "/vedanta-vs-buddhism",
+        title: "Vedanta vs Buddhism: Self, Emptiness, and Liberation Compared",
+        metaDescription:
+            "Vedanta vs Buddhism explained: Atman and Brahman vs Anatman and Sunyata, key overlap in practice, and crucial philosophical differences.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 13,
+        primaryKeyword: "vedanta vs buddhism",
+        relatedLinks: [
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+            { text: "Non-Duality vs Dualism", href: "/non-duality-vs-dualism" },
+            { text: "Western Philosophy and Vedanta", href: "/western-philosophy-and-vedanta" },
+        ],
+        faqs: [
+            {
+                question: "Do Vedanta and Buddhism teach the same thing?",
+                answer:
+                    "They share contemplative depth and diagnostic clarity about suffering, but differ in key metaphysical commitments, especially regarding self and ultimate reality.",
+            },
+            {
+                question: "What is the Atman vs Anatman difference?",
+                answer:
+                    "Advaita Vedanta affirms an ultimate Self (Atman) identical with Brahman; many Buddhist schools deny any permanent self-essence (Anatman).",
+            },
+            {
+                question: "Can a practitioner learn from both traditions?",
+                answer:
+                    "Yes, with conceptual care. Comparative study is most useful when differences are understood clearly rather than collapsed into generic sameness.",
+            },
+        ],
+    },
+    {
+        slug: "christian-mysticism-and-vedanta",
+        route: "/christian-mysticism-and-vedanta",
+        title: "Christian Mysticism and Vedanta: Where They Meet and Diverge",
+        metaDescription:
+            "Christian mysticism and Vedanta compared: contemplative prayer, union, grace, non-duality language, and key theological differences.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 12,
+        primaryKeyword: "christian mysticism and vedanta",
+        relatedLinks: [
+            { text: "Can I Practice Vedanta Without Converting?", href: "/can-i-practice-vedanta-without-converting" },
+            { text: "Vedanta vs Stoicism", href: "/vedanta-vs-stoicism" },
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "Bhagavad Gita vs Bible", href: "/bhagavad-gita-vs-bible" },
+        ],
+        faqs: [
+            {
+                question: "Can Christian contemplatives engage Vedanta?",
+                answer:
+                    "Many do through comparative theology and contemplative dialogue while remaining rooted in Christian faith and sacramental life.",
+            },
+            {
+                question: "Is mystical union the same as Advaitic realization?",
+                answer:
+                    "There are experiential resonances, but doctrinal frameworks differ—especially around personhood, grace, and creator-creation relation.",
+            },
+            {
+                question: "Why compare these traditions respectfully?",
+                answer:
+                    "Comparison can deepen precision and humility, helping seekers avoid both relativism and sectarian dismissal.",
+            },
+        ],
+    },
+    {
+        slug: "sufi-mysticism-and-vedanta",
+        route: "/sufi-mysticism-and-vedanta",
+        title: "Sufi Mysticism and Vedanta: Love, Unity, and the Path Inward",
+        metaDescription:
+            "Sufi mysticism and Vedanta compared through love, remembrance, ego-transcendence, and non-dual language with theological differences.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-12",
+        readingTime: 11,
+        primaryKeyword: "sufi mysticism and vedanta",
+        relatedLinks: [
+            { text: "Vedanta vs Buddhism", href: "/vedanta-vs-buddhism" },
+            { text: "Western Philosophy and Vedanta", href: "/western-philosophy-and-vedanta" },
+            { text: "Who is Krishna?", href: "/deities/krishna" },
+            { text: "How to Start Japa", href: "/how-to-start-japa" },
+        ],
+        faqs: [
+            {
+                question: "Is Sufi remembrance similar to japa?",
+                answer:
+                    "There are practical parallels: repetitive sacred remembrance to refine attention, soften ego, and cultivate devotional presence.",
+            },
+            {
+                question: "Do both traditions teach unity?",
+                answer:
+                    "Both use unity language, but theological framing and metaphysical commitments differ across lineages.",
+            },
+            {
+                question: "Can comparative study support practice?",
+                answer:
+                    "Yes, when done with respect for each tradition's internal grammar and devotional integrity.",
+            },
+        ],
+    },
+
     // ─── Sprint 1: Cluster 1 — Indian Spirituality & Concepts ───────────────
     {
         slug: "what-is-sanatan-dharma",
@@ -1182,6 +1744,45 @@ export const articles: ArticleMeta[] = [
                 question: "How does Chapter 1 relate to modern life?",
                 answer:
                     "Every person faces a Kurukshetra moment — a point where duty and attachment conflict. Career vs family, truth vs social comfort, growth vs security. Chapter 1 is the universal human experience of paralysis before a necessary transformation.",
+            },
+        ],
+    },
+    {
+        slug: "bhagavad-gita-chapter-2",
+        route: "/bhagavad-gita-chapter-2",
+        title: "Bhagavad Gita Chapter 2: Sankhya Yoga Explained",
+        metaDescription:
+            "Bhagavad Gita Chapter 2 explains the immortal Self, Karma Yoga, and equanimity in action. Understand why this chapter is the philosophical core of the Gita.",
+        pillar: "sacred-texts",
+        publishDate: "2026-03-12",
+        readingTime: 10,
+        primaryKeyword: "bhagavad gita chapter 2 summary",
+        relatedLinks: [
+            { text: "Bhagavad Gita Complete Guide", href: "/bhagavad-gita-complete-guide" },
+            { text: "Read BG Chapter 2 in Detail", href: "/texts/bhagavad-gita/chapter-2" },
+            { text: "Bhagavad Gita Chapter 1", href: "/bhagavad-gita-chapter-1" },
+            { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
+        ],
+        faqs: [
+            {
+                question: "What is Bhagavad Gita Chapter 2 mainly about?",
+                answer:
+                    "Chapter 2 (Sankhya Yoga) teaches that the Self is eternal, the body is temporary, and right action should be performed without attachment to results.",
+            },
+            {
+                question: "Why is Chapter 2 considered the core of the Gita?",
+                answer:
+                    "Because it introduces the core doctrines expanded later: Atman, Karma Yoga, equanimity, disciplined intellect, and the ideal of the Sthitaprajna (person of stable wisdom).",
+            },
+            {
+                question: "What does 'you have a right to action, not its fruits' mean?",
+                answer:
+                    "It means focus on effort, duty, and precision of action while releasing psychological dependence on outcomes, which are shaped by many factors beyond individual control.",
+            },
+            {
+                question: "Who is a Sthitaprajna in Chapter 2?",
+                answer:
+                    "A Sthitaprajna is one whose wisdom is steady: not agitated by gain or loss, not driven by compulsive desire, and established in inner clarity.",
             },
         ],
     },

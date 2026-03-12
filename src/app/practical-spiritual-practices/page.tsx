@@ -52,6 +52,18 @@ const featuredGuides = [
             "A curated list of classic mantras with meanings, use-cases, and suggestions for daily repetition.",
         href: "/10-powerful-sanskrit-mantras",
     },
+    {
+        title: "Mantras Library",
+        description:
+            "Browse mantra options by intention, deity focus, and practice format to choose a sustainable daily anchor.",
+        href: "/mantras",
+    },
+    {
+        title: "Neuroscience of Meditation in Hindu Practice",
+        description:
+            "Connect traditional meditation and mantra disciplines with modern findings on attention, stress, and neuroplasticity.",
+        href: "/neuroscience-of-meditation-hinduism",
+    },
 ];
 
 const practices = [

@@ -46,6 +46,12 @@ const featuredGuides = [
             "Bridge textual study and lived practice by learning how scriptural mantras enter daily spiritual discipline.",
         href: "/how-to-start-japa",
     },
+    {
+        title: "Mantras Library",
+        description:
+            "Explore core mantras with meaning, source lineage, usage guidance, and related deity pathways.",
+        href: "/mantras",
+    },
 ];
 
 const textGroups = [
@@ -275,6 +281,22 @@ export default function SacredTextsPage() {
                         </div>
                     </section>
 
+
+
+                    <section className="mb-24">
+                        <div className="bg-gradient-to-br from-orange-950/20 to-background border border-orange-900/30 rounded-3xl p-10 md:p-12">
+                            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Western-reader scripture bridges</h2>
+                            <p className="text-lg text-muted-foreground mb-8 max-w-3xl">
+                                New guidance pages help first-time western readers enter Vedic scripture without overwhelm while keeping fidelity to tradition.
+                            </p>
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <TrackedLink href="/ramayana-explained" eventLabel="pillar_bridge:sacred:ramayana-explained" trackPathName="ramayana-explained" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Ramayana Explained</TrackedLink>
+                                <TrackedLink href="/how-to-read-upanishads-western-beginner" eventLabel="pillar_bridge:sacred:how-to-read-upanishads-western-beginner" trackPathName="how-to-read-upanishads-western-beginner" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">How to Read the Upanishads</TrackedLink>
+                                <TrackedLink href="/vedas-vs-upanishads-explained" eventLabel="pillar_bridge:sacred:vedas-vs-upanishads-explained" trackPathName="vedas-vs-upanishads-explained" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Vedas vs Upanishads Explained</TrackedLink>
+                                <TrackedLink href="/bhagavad-gita-vs-bible" eventLabel="pillar_bridge:sacred:bhagavad-gita-vs-bible" trackPathName="bhagavad-gita-vs-bible" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Bhagavad Gita vs Bible</TrackedLink>
+                            </div>
+                        </div>
+                    </section>
                     <section className="pt-16 border-t border-border">
                         <div className="text-center mb-12">
                             <h2 className="font-display text-3xl font-bold mb-4">Frequently Asked Questions</h2>

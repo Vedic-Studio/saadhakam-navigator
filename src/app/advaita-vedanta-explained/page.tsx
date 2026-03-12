@@ -75,6 +75,17 @@ export default function AdvaitaVedantaPage() {
                             <li><strong className="text-foreground">Not best for:</strong> people expecting instant emotional relief without disciplined reflection and contemplative practice.</li>
                             <li><strong className="text-foreground">Where to start:</strong> learn core terms (Atman, Brahman, Maya), read an accessible Vedanta primer, then apply daily self-inquiry in real situations.</li>
                         </ul>
+                        <div className="mt-8 flex flex-wrap gap-4 text-sm">
+                            <Link href="/western-philosophy-and-vedanta" className="text-orange-400 hover:text-orange-300 transition-colors">
+                                Indian vs Western Philosophy
+                            </Link>
+                            <Link href="/vedanta-vs-stoicism" className="text-orange-400 hover:text-orange-300 transition-colors">
+                                Vedanta vs Stoicism
+                            </Link>
+                            <Link href="/deities/shiva" className="text-orange-400 hover:text-orange-300 transition-colors">
+                                Who is Shiva?
+                            </Link>
+                        </div>
                     </section>
 
                     <div className="grid lg:grid-cols-3 gap-12 mb-20">

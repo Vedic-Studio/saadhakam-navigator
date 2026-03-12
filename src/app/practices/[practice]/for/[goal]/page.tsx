@@ -72,8 +72,36 @@ export default function PracticeForGoalPage({
     notFound();
   }
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `How can ${practice.title} help with ${goal.name.toLowerCase()}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `${practice.title} supports ${goal.name.toLowerCase()} by creating a stable daily anchor and gradually reducing reactive patterns through consistent practice. ${goal.summary}`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `What is a beginner protocol for ${practice.title} for ${goal.name.toLowerCase()}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `${practice.howToBegin} Start small, stay consistent, and review your response after 30–40 days before increasing intensity.`,
+        },
+      },
+    ],
+  };
+
   return (
     <main className="pt-24 pb-20">
+      <ContentPageTracker slug={`practice-${practice.slug}-for-${goal.slug}`} pillar="practice-goal" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-orange-500/5 to-transparent relative overflow-hidden text-center">
         <div className="max-w-4xl mx-auto relative z-10">
           <nav aria-label="Breadcrumb" className="mb-12 flex justify-center">

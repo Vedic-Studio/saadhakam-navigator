@@ -1,96 +1,224 @@
 import { NextResponse } from "next/server";
-import { generateSitemaps, default as getSitemap } from "../sitemap";
 
-// Import all data sources
+// Article metadata (FAQs, descriptions)
+import { articles } from "@/data/articles";
+
+// BG Shlokas (all 18 chapters aggregated)
+import { bgShlokas } from "@/data/bgShlokas";
+
+// Stotra / Sahasranama JSON loaders
+import { loadStotra, loadSahasranama } from "@/lib/stotras";
+
+// pSEO entity data (brief summaries for entity pages)
 import { philosophies } from "@/data/philosophies";
 import { traditions } from "@/data/traditions";
 import { texts } from "@/data/texts";
 import { greats } from "@/data/greats";
 import { practices } from "@/data/practices";
 import { concepts } from "@/data/concepts";
-import { topics } from "@/data/topics";
-import { comparisons } from "@/data/comparisons";
+
+const BASE_URL = "https://www.opensadhaka.com";
 
 export async function GET() {
-    // Generate the sitemap blocks (pulling from logic inside sitemap.ts)
-    const maps = await generateSitemaps();
+    const parts: string[] = [];
 
-    let content = `# Sādhaka Full Context
+    // ── Header ────────────────────────────────────────────────────────────────
+    parts.push(
+        `# opensadhaka.com — Full Content Dump`,
+        `> Generated for LLM ingestion. Source: opensadhaka.com`,
+        `> Methodology: All doctrinal claims cite named primary sources. Commentaries attributed to specific teachers.`,
+        `> For an index of all pages, see: ${BASE_URL}/llms.txt`,
+        `> For per-entity Markdown: GET ${BASE_URL}/api/llm-content?type={type}&slug={slug}`,
+        ``,
+        `---`,
+        ``
+    );
 
-> This file provides a comprehensive list of all Sādhaka documentation and pages for Large Language Models. All linked files below return strict Markdown content optimized for LLM consumption.
-
-`;
-
-    for (const map of maps) {
-        if (map.id === "core" || map.id === "shlokas" || map.id === "sanskrit" || map.id === "articles") {
-            // Skip core/shlokas/articles for the raw markdown endpoint for now, 
-            // since those are handled differently or are static React pages.
-            // We'll just link to their standard HTML counterparts.
-            const sitemapData = await getSitemap({ id: map.id });
-            const sectionName = map.id.charAt(0).toUpperCase() + map.id.slice(1).replace(/([A-Z])/g, " $1");
-            content += `## ${sectionName}\n`;
-            for (const entry of sitemapData) {
-                const urlEnding = entry.url.split("/").pop() || "home";
-                let title = urlEnding.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-                if (urlEnding === "opensadhaka.com" || urlEnding === "") title = "Sādhaka Home";
-                content += `- [${title}](${entry.url})\n`;
+    // ── Editorial Articles ────────────────────────────────────────────────────
+    parts.push(`# EDITORIAL ARTICLES\n`);
+    for (const a of articles) {
+        parts.push(
+            `## ${a.title}`,
+            `URL: ${BASE_URL}${a.route}`,
+            `Pillar: ${a.pillar} | Reading time: ${a.readingTime} min`,
+            ``,
+            a.metaDescription,
+        );
+        if (a.faqs.length > 0) {
+            parts.push(``, `### FAQs`);
+            for (const faq of a.faqs) {
+                parts.push(``, `**Q: ${faq.question}**`, `A: ${faq.answer}`);
             }
-            content += "\n";
-            continue;
         }
-
-        const sitemapData = await getSitemap({ id: map.id });
-        const sectionName = map.id.charAt(0).toUpperCase() + map.id.slice(1).replace(/([A-Z])/g, " $1");
-
-        content += `## ${sectionName}\n`;
-
-        for (const entry of sitemapData) {
-            const slug = entry.url.split("/").pop() || "";
-            let title = slug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-            let summary = "";
-
-            // Find summary based on map.id
-            if (map.id === "philosophies") {
-                const item = philosophies.find(p => p.slug === slug);
-                if (item) { title = item.title; summary = item.summary; }
-            } else if (map.id === "traditions") {
-                const item = traditions.find(t => t.slug === slug);
-                if (item) { title = item.title; summary = item.summary; }
-            } else if (map.id === "texts") {
-                const item = texts.find(t => t.slug === slug);
-                if (item) { title = item.title; summary = item.summary; }
-            } else if (map.id === "greats") {
-                const item = greats.find(g => g.slug === slug);
-                if (item) { title = item.name; summary = item.summary; }
-            } else if (map.id === "practices" && !entry.url.includes("/for/")) {
-                const item = practices.find(p => p.slug === slug);
-                if (item) { title = item.title; summary = item.summary; }
-            } else if (map.id === "concepts") {
-                // handle "what-is-slug" or "slug-meaning"
-                const cleanSlug = slug.replace("what-is-", "").replace("-meaning", "");
-                title = cleanSlug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-                const item = concepts.find(c => c.slug === cleanSlug);
-                if (item) { title = item.sanskritWord || title; summary = item.shortDefinition; }
-            } else if (map.id === "topics") {
-                const item = topics.find(t => t.slug === slug);
-                if (item) { title = item.name; summary = item.summary; }
-            } else if (map.id === "comparisons") {
-                const item = comparisons.find(c => c.slug === slug);
-                if (item) { title = item.title; summary = item.tldr || item.metaDescription; }
-            }
-
-            const summaryText = summary ? `: ${summary}` : "";
-
-            // Rewrite the URL to point to our pure Markdown endpoint
-            // e.g., https://opensadhaka.com/api/llm-content?type=philosophies&slug=advaita
-            const mdUrl = `https://opensadhaka.com/api/llm-content?type=${map.id}&slug=${slug}`;
-
-            content += `- [${title}](${mdUrl})${summaryText}\n`;
-        }
-        content += "\n";
+        parts.push(``);
     }
 
-    return new NextResponse(content, {
+    // ── Bhagavad Gita Shlokas ─────────────────────────────────────────────────
+    parts.push(`---`, ``, `# BHAGAVAD GITA SHLOKAS`, ``);
+    for (const s of bgShlokas) {
+        parts.push(
+            `## BG ${s.chapter}.${s.verse}`,
+            `URL: ${BASE_URL}/texts/bhagavad-gita/chapter-${s.chapter}/shloka-${s.verse}`,
+            ``
+        );
+        if (s.sanskritDevanagari) parts.push(`**Sanskrit:** ${s.sanskritDevanagari}`, ``);
+        if (s.transliteration) parts.push(`**Transliteration:** ${s.transliteration}`, ``);
+        if (s.synonyms) parts.push(`**Word Meanings:** ${s.synonyms}`, ``);
+        if (s.translation) parts.push(`**Translation:** ${s.translation}`, ``);
+        if (s.commentaries?.length > 0) {
+            parts.push(`**Commentaries:**`);
+            for (const c of s.commentaries) {
+                parts.push(`- ${c.author}: ${c.text}`);
+            }
+            parts.push(``);
+        }
+        if (s.practicalApplication) parts.push(`**Practical Application:** ${s.practicalApplication}`, ``);
+    }
+
+    // ── Shiva Tandava Stotram ─────────────────────────────────────────────────
+    const shivaTandava = loadStotra("shiva-tandava-stotram");
+    parts.push(
+        `---`, ``,
+        `# SHIVA TANDAVA STOTRAM`,
+        `Author: ${shivaTandava.author} | Tradition: ${shivaTandava.tradition} | Verses: ${shivaTandava.verseCount}`,
+        ``,
+        shivaTandava.description,
+        ``
+    );
+    for (const v of shivaTandava.verses) {
+        parts.push(
+            `## Shiva Tandava Stotram — Verse ${v.verse}`,
+            `URL: ${BASE_URL}/stotras/shiva-tandava-stotram/${v.slug}`,
+            ``
+        );
+        if (v.sanskritDevanagari) parts.push(`**Sanskrit:** ${v.sanskritDevanagari}`, ``);
+        if (v.transliteration) parts.push(`**Transliteration:** ${v.transliteration}`, ``);
+        if (v.wordMeanings) parts.push(`**Word Meanings:** ${v.wordMeanings}`, ``);
+        if (v.translation) parts.push(`**Translation:** ${v.translation}`, ``);
+        if (v.translationFlow) parts.push(`**Flowing Translation:** ${v.translationFlow}`, ``);
+        if (v.analysis) {
+            parts.push(`**Analysis:**`);
+            if (v.analysis.literary) parts.push(`- Literary: ${v.analysis.literary}`);
+            if (v.analysis.mythological) parts.push(`- Mythological: ${v.analysis.mythological}`);
+            if (v.analysis.philosophical) parts.push(`- Philosophical: ${v.analysis.philosophical}`);
+            parts.push(``);
+        }
+    }
+
+    // ── Vishnu Sahasranama ────────────────────────────────────────────────────
+    const vishnuSahasranama = loadSahasranama("vishnu-sahasranama");
+    parts.push(
+        `---`, ``,
+        `# VISHNU SAHASRANAMA — 1000 DIVINE NAMES OF VISHNU`,
+        `Tradition: ${vishnuSahasranama.tradition}`,
+        ``,
+        vishnuSahasranama.description,
+        ``
+    );
+    for (const n of vishnuSahasranama.names) {
+        parts.push(`## ${n.name} (Name ${n.number})`);
+        parts.push(`URL: ${BASE_URL}/stotras/vishnu-sahasranama/${n.slug}`);
+        parts.push(`**Transliteration:** ${n.transliteration}`);
+        parts.push(`**Meaning:** ${n.meaning}`);
+        if (n.analysis?.mythological) parts.push(`**Mythological:** ${n.analysis.mythological}`);
+        if (n.analysis?.philosophical) parts.push(`**Philosophical:** ${n.analysis.philosophical}`);
+        parts.push(``);
+    }
+
+    // ── Lalita Sahasranama ────────────────────────────────────────────────────
+    const lalitaSahasranama = loadSahasranama("lalita-sahasranama");
+    parts.push(
+        `---`, ``,
+        `# LALITA SAHASRANAMA — 1000 DIVINE NAMES OF THE GODDESS`,
+        `Tradition: ${lalitaSahasranama.tradition}`,
+        ``,
+        lalitaSahasranama.description,
+        ``
+    );
+    for (const n of lalitaSahasranama.names) {
+        parts.push(`## ${n.name} (Name ${n.number})`);
+        parts.push(`URL: ${BASE_URL}/stotras/lalita-sahasranama/${n.slug}`);
+        parts.push(`**Transliteration:** ${n.transliteration}`);
+        parts.push(`**Meaning:** ${n.meaning}`);
+        if (n.analysis?.mythological) parts.push(`**Mythological:** ${n.analysis.mythological}`);
+        if (n.analysis?.philosophical) parts.push(`**Philosophical:** ${n.analysis.philosophical}`);
+        parts.push(``);
+    }
+
+    // ── Entity Summaries ──────────────────────────────────────────────────────
+    parts.push(`---`, ``, `# PHILOSOPHIES`, ``);
+    for (const p of philosophies) {
+        parts.push(
+            `## ${p.title}`,
+            `URL: ${BASE_URL}/philosophies/${p.slug}`,
+            `Markdown: ${BASE_URL}/api/llm-content?type=philosophies&slug=${p.slug}`,
+            ``,
+            p.summary,
+            ``
+        );
+    }
+
+    parts.push(`---`, ``, `# TRADITIONS`, ``);
+    for (const t of traditions) {
+        parts.push(
+            `## ${t.title}`,
+            `URL: ${BASE_URL}/traditions/${t.slug}`,
+            `Markdown: ${BASE_URL}/api/llm-content?type=traditions&slug=${t.slug}`,
+            ``,
+            t.summary,
+            ``
+        );
+    }
+
+    parts.push(`---`, ``, `# SACRED TEXTS`, ``);
+    for (const t of texts) {
+        parts.push(
+            `## ${t.title}`,
+            `URL: ${BASE_URL}/texts/${t.slug}`,
+            `Markdown: ${BASE_URL}/api/llm-content?type=texts&slug=${t.slug}`,
+            ``,
+            t.summary,
+            ``
+        );
+    }
+
+    parts.push(`---`, ``, `# GREAT TEACHERS & SAGES`, ``);
+    for (const g of greats) {
+        parts.push(
+            `## ${g.name}`,
+            `URL: ${BASE_URL}/greats/${g.slug}`,
+            `Markdown: ${BASE_URL}/api/llm-content?type=greats&slug=${g.slug}`,
+            ``,
+            g.summary,
+            ``
+        );
+    }
+
+    parts.push(`---`, ``, `# SPIRITUAL PRACTICES`, ``);
+    for (const p of practices) {
+        parts.push(
+            `## ${p.title} (${p.sanskritName})`,
+            `URL: ${BASE_URL}/practices/${p.slug}`,
+            `Markdown: ${BASE_URL}/api/llm-content?type=practices&slug=${p.slug}`,
+            ``,
+            p.summary,
+            ``
+        );
+    }
+
+    parts.push(`---`, ``, `# CONCEPTS`, ``);
+    for (const c of concepts) {
+        parts.push(
+            `## ${c.sanskritWord} — ${c.englishTranslation}`,
+            `URL: ${BASE_URL}/concepts/${c.slug}`,
+            `Markdown: ${BASE_URL}/api/llm-content?type=concepts&slug=${c.slug}`,
+            ``,
+            c.shortDefinition,
+            ``
+        );
+    }
+
+    return new NextResponse(parts.join("\n"), {
         headers: {
             "Content-Type": "text/plain; charset=utf-8",
             "Cache-Control": "public, max-age=86400, s-maxage=86400, stale-while-revalidate=43200",

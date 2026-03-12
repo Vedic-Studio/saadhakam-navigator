@@ -120,6 +120,21 @@ Each `[slug]/page.tsx` must have:
 
 ---
 
+## LLM / AI Engine Integration
+
+Every pSEO category is automatically discoverable by AI engines via two mechanisms:
+
+1. **Per-entity Markdown**: `GET /api/llm-content?type={category}&slug={slug}` — returns structured Markdown for any entity. Supported types: `philosophies`, `traditions`, `texts`, `concepts`, `practices`, `greats`, `topics`, `comparisons`.
+
+2. **Bulk ingestion** (`/llms-full.txt`): entity summaries for all supported categories are included automatically from the data files.
+
+**When you add a new pSEO category**:
+- Add a case to `src/app/api/llm-content/route.ts` so individual entities are accessible via the endpoint
+- Add an import + summary section to `src/app/llms-full.txt/route.ts` so the category appears in the bulk dump
+- Both files follow the same pattern as existing categories — copy the nearest similar case
+
+---
+
 ## pSEO Schema Spec
 
 Full schema spec is in `Sadhaka_pSEO_Schema_Spec.json` at project root. Refer to this when creating new pSEO data types — it was the original planning document for the programmatic content architecture.

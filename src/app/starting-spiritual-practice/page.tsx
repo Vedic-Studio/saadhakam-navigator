@@ -33,9 +33,33 @@ const steps = [
 ];
 
 export default function StartingSpiritualPracticePage() {
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+            {
+                "@type": "Question",
+                name: "What is the best way to start spiritual practice as a beginner?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Start with one daily practice you can sustain for 30–40 days, usually 10 minutes of Japa followed by 5 minutes of silence at a fixed time.",
+                },
+            },
+            {
+                "@type": "Question",
+                name: "How long should I stay with one beginner spiritual routine before changing it?",
+                acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Stay with one routine for at least 30 days before modifying it. Prioritize consistency and track completion rather than intensity or perfection.",
+                },
+            },
+        ],
+    };
+
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             <ContentPageTracker slug="starting-spiritual-practice" pillar="seo-chooser" />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <Header />
             <main className="flex-grow pt-28 pb-16">
                 <div className="container-padding max-w-4xl mx-auto">

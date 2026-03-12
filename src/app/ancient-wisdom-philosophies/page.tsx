@@ -46,6 +46,36 @@ const featuredGuides = [
             "Meet the philosopher who systematized Advaita and shaped the intellectual map of Sanatan Dharma.",
         href: "/adi-shankaracharya-life-teachings",
     },
+    {
+        title: "Plato's Cave and Maya",
+        description:
+            "Compare Plato's allegory of illusion with Vedanta's framework of Maya and layered reality.",
+        href: "/platos-cave-and-maya",
+    },
+    {
+        title: "Consciousness and the Hard Problem",
+        description:
+            "A Vedantic response to modern consciousness debates and the limits of material explanation.",
+        href: "/consciousness-hard-problem-vedanta",
+    },
+    {
+        title: "Nietzsche and Vedanta",
+        description:
+            "Explore where self-overcoming, meaning, and non-duality converge and sharply diverge.",
+        href: "/nietzsche-and-vedanta",
+    },
+    {
+        title: "Existentialism and Vedanta",
+        description:
+            "Bridge modern existential anxiety with Vedantic clarity on identity, freedom, and suffering.",
+        href: "/existentialism-and-vedanta",
+    },
+    {
+        title: "Carl Jung and Vedanta",
+        description:
+            "A comparative lens on ego, shadow, archetypes, and the Vedantic witness-consciousness.",
+        href: "/carl-jung-and-vedanta",
+    },
 ];
 
 const philosophies = [
@@ -311,6 +341,21 @@ export default function AncientWisdomPage() {
                         </div>
                     </div>
 
+
+
+                    <section className="mb-24">
+                        <div className="bg-gradient-to-br from-orange-950/20 to-background border border-orange-900/30 rounded-3xl p-10 md:p-12">
+                            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Comparative mysticism bridge</h2>
+                            <p className="text-lg text-muted-foreground mb-8 max-w-3xl">
+                                New western-reader comparative pages connect Vedanta with Buddhist, Christian, and Sufi contemplative inquiry.
+                            </p>
+                            <div className="grid md:grid-cols-3 gap-4">
+                                <TrackedLink href="/vedanta-vs-buddhism" eventLabel="pillar_bridge:ancient:vedanta-vs-buddhism" trackPathName="vedanta-vs-buddhism" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Vedanta vs Buddhism</TrackedLink>
+                                <TrackedLink href="/christian-mysticism-and-vedanta" eventLabel="pillar_bridge:ancient:christian-mysticism-and-vedanta" trackPathName="christian-mysticism-and-vedanta" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Christian Mysticism and Vedanta</TrackedLink>
+                                <TrackedLink href="/sufi-mysticism-and-vedanta" eventLabel="pillar_bridge:ancient:sufi-mysticism-and-vedanta" trackPathName="sufi-mysticism-and-vedanta" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Sufi Mysticism and Vedanta</TrackedLink>
+                            </div>
+                        </div>
+                    </section>
                     <section className="pt-16 border-t border-border">
                         <div className="text-center mb-12">
                             <h2 className="font-display text-3xl font-bold mb-4">Frequently Asked Questions</h2>

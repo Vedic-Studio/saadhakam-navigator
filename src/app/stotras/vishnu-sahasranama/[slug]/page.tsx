@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { loadSahasranama, getSahasranamaNameBySlug } from "@/lib/stotras";
+import { ContentPageTracker } from "@/components/ContentAnalytics";
 
 export function generateStaticParams() {
   const sahasranama = loadSahasranama("vishnu-sahasranama");
@@ -27,8 +28,59 @@ export default function VishnuSahasranamaNamePage({ params }: { params: { slug: 
   const name = getSahasranamaNameBySlug(sahasranama, params.slug);
   if (!name) notFound();
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `What is the meaning of Vishnu Sahasranama name ${name.number}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `${name.name} (${name.transliteration}) means: ${name.meaning}`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `How is Vishnu Sahasranama name ${name.number} used in practice?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Traditionally, this name is recited in Vishnu Sahasranama japa and contemplation to internalize its quality and orient the mind toward devotion.`,
+        },
+      },
+    ],
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://opensadhaka.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Vishnu Sahasranama",
+        item: "https://opensadhaka.com/stotras/vishnu-sahasranama",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: `Name ${name.number}`,
+        item: `https://opensadhaka.com/stotras/vishnu-sahasranama/${name.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <ContentPageTracker slug={`vishnu-sahasranama-${name.slug}`} pillar="stotra-name" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Header />
       <main className="flex-grow pt-24 pb-16">
         <div className="container-padding max-w-3xl mx-auto">

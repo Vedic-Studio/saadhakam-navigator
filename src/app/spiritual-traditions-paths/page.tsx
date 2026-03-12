@@ -46,6 +46,12 @@ const featuredGuides = [
             "Use temperament as your guide when choosing among stillness, mantra, devotion, self-inquiry, and embodied practice.",
         href: "/which-meditation-for-me",
     },
+    {
+        title: "Mantras Library",
+        description:
+            "Find mantra pathways by deity, intention, and practice style across Shaiva, Vaishnava, and universal traditions.",
+        href: "/mantras",
+    },
 ];
 
 const traditions = [
@@ -275,6 +281,23 @@ export default function SpiritualTraditionsPage() {
                         </div>
                     </section>
 
+
+
+                    <section className="mb-24">
+                        <div className="bg-gradient-to-br from-orange-950/20 to-background border border-orange-900/30 rounded-3xl p-10 md:p-12">
+                            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Deity and epic bridge cluster</h2>
+                            <p className="text-lg text-muted-foreground mb-8 max-w-3xl">
+                                New Cluster 11 bridge pages connect tradition-level orientation to deity literacy and Ramayana context for western readers.
+                            </p>
+                            <div className="grid md:grid-cols-2 gap-4">
+                                <TrackedLink href="/deities" eventLabel="pillar_bridge:traditions:deities" trackPathName="deities" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Hindu Deities Hub</TrackedLink>
+                                <TrackedLink href="/hindu-goddess-explained" eventLabel="pillar_bridge:traditions:hindu-goddess-explained" trackPathName="hindu-goddess-explained" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Hindu Goddess Explained</TrackedLink>
+                                <TrackedLink href="/deities/shiva" eventLabel="pillar_bridge:traditions:deities-shiva" trackPathName="deities/shiva" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Who is Shiva?</TrackedLink>
+                                <TrackedLink href="/deities/vishnu" eventLabel="pillar_bridge:traditions:deities-vishnu" trackPathName="deities/vishnu" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Who is Vishnu?</TrackedLink>
+                                <TrackedLink href="/ramayana-explained" eventLabel="pillar_bridge:traditions:ramayana-explained" trackPathName="ramayana-explained" className="rounded-2xl border border-white/10 p-5 hover:border-orange-500/40 transition-colors">Ramayana Explained</TrackedLink>
+                            </div>
+                        </div>
+                    </section>
                     <section className="pt-16 border-t border-border">
                         <div className="text-center mb-12">
                             <h2 className="font-display text-3xl font-bold mb-4">Frequently Asked Questions</h2>

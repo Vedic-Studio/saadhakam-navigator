@@ -172,8 +172,17 @@ export default function WhatIsMayaPage() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                                <Link href="/western-philosophy-and-vedanta" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
+                                    Indian vs Western Philosophy <ArrowRight size={16} />
+                                </Link>
+                                <Link href="/vedanta-vs-stoicism" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
+                                    Vedanta vs Stoicism <ArrowRight size={16} />
+                                </Link>
                                 <Link href="/advaita-vedanta-explained" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
                                     Advaita Vedanta Explained <ArrowRight size={16} />
+                                </Link>
+                                <Link href="/deities/shiva" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
+                                    Who is Shiva? <ArrowRight size={16} />
                                 </Link>
                                 <Link href="/what-is-sanatan-dharma" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
                                     What is Sanatan Dharma? <ArrowRight size={16} />

@@ -62,12 +62,48 @@ Use `src/lib/seo/index.ts` helpers (`buildArticleMetadata`, `buildCanonicalUrl`)
 - Written for: AI engines (ChatGPT, Perplexity, Claude) to cite as a direct answer
 - Do NOT use first-person, marketing language, or hedging
 
+### Opening Hook (first paragraph after the AEO block)
+The first body paragraph must open with one of the following — never a generic "In today's world…" or "X is an important topic…" opener:
+- A contrarian reframing of the question ("Most people asking this are actually asking…")
+- A correction of a common Western misreading of the tradition, backed by the primary source
+- A surprising or non-obvious claim from the texts (with citation)
+- A juxtaposition between what the tradition actually says vs. the popular assumption
+
+### Structure: Match User Intent First
+Before choosing section headings, identify the query type and structure accordingly:
+
+| Query type | Structure |
+|------------|-----------|
+| Definitional (`what is X`) | AEO → conceptual breakdown → schools/types/forms → application/practice |
+| How-to (`how to start japa`) | AEO → start with the process steps → then context/background → common mistakes |
+| Comparison (`advaita vs dvaita`) | AEO → lead with the key difference → then elaborate each side → practical implications |
+| Problem/seeker intent (`fear of death`) | AEO → name the symptom/problem → diagnosis from the tradition → the teaching → practice |
+
+Do NOT use generic Wikipedia-style headings ("What is X", "Why X Matters", "Benefits of X", "Conclusion"). Use specific, descriptive headings that reflect the actual content of each section.
+
+### E-E-A-T: Source Fidelity and Credibility Signals
+Every doctrinal or philosophical claim must be grounded in a named primary source:
+- Cite the specific Upanishad (e.g., "Mandukya Upanishad 2"), Gita chapter/verse, Purana, or Sutra
+- When a claim reflects a school's position, name the commentator (e.g., "Adi Shankaracharya in his Brahmasutra Bhashya", "Ramanujacharya's Vishishtadvaita reading")
+- Distinguish clearly between: (a) what the primary text says, (b) what the traditional commentary says, (c) what the article is drawing as an implication
+- Avoid sourcing claims to "Hinduism" or "Vedanta" as a monolith — name the specific tradition/text/teacher
+
+Every article must include a `references` array and render a "Sources & Commentaries" section at the bottom linking to authoritative external sources (Britannica, IEP, university press, Chinmaya/Ramakrishna Mission). This signals editorial rigor to search engines.
+
+### Original Angle: Sadhaka's Unique POV
+Every article must include at least one of the following — this is what differentiates Sadhaka from averaged AI content:
+- **Correction of a common Western misreading**: identify something widely misunderstood in English-language spiritual content and correct it from the primary source (e.g., karma ≠ simple cause-and-effect; maya ≠ illusion in the Western sense)
+- **Cross-tradition comparison**: show how two schools (e.g., Advaita vs. Dvaita, Shaiva vs. Vaishnava) answer the same question differently, citing each
+- **Practical implication drawn from doctrine**: make the philosophical point land in lived experience ("this is what it means for your Tuesday afternoon") — not motivational fluff, but a specific behavioral/perceptual implication
+
 ### Body
 - H2 for major sections, H3 for subsections
-- No keyword stuffing — write for the reader
+- No keyword stuffing — write for the reader; use synonyms and semantically related terms naturally
+- **Paragraph length: maximum 3 sentences per paragraph** in body sections — break up long prose
 - Every factual claim about a text/story: name the source (Purana, Upanishad, Gita chapter)
 - Sanskrit terms: always include IAST transliteration on first use, then English equivalent
 - Prose-first — use bullets/lists sparingly (only for genuine lists, not padded content)
+- **Visual breaks**: include at least one callout block (Sanskrit verse in a styled card, pull-quote, or key-term definition box) every 400–500 words to break up text
 
 ### FAQs
 - Each FAQ must answer a real search query variant

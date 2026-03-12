@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# AI Engine Resources
+# LLM routing file (AI sitemap): https://www.opensadhaka.com/llms.txt
+# Full content dump (for RAG/large-context): https://www.opensadhaka.com/llms-full.txt
+
+Sitemap: https://www.opensadhaka.com/sitemap.xml

@@ -214,6 +214,33 @@ export default async function PhilosophyDetailPage({
               </Card>
 
               {/* CTA */}
+              {philosophy.slug === "advaita" && (
+                <Card className="bg-card border-border/50">
+                  <CardContent className="p-6">
+                    <h2 className="font-display text-xl font-semibold text-foreground mb-4">
+                      Western Bridge + Practice Links
+                    </h2>
+                    <div className="flex flex-wrap gap-3 text-sm">
+                      <Link href="/western-philosophy-and-vedanta" className="text-orange-400 hover:text-orange-300 transition-colors">
+                        Indian vs Western Philosophy
+                      </Link>
+                      <Link href="/vedanta-vs-stoicism" className="text-orange-400 hover:text-orange-300 transition-colors">
+                        Vedanta vs Stoicism
+                      </Link>
+                      <Link href="/deities/shiva" className="text-orange-400 hover:text-orange-300 transition-colors">
+                        Who is Shiva?
+                      </Link>
+                      <Link href="/stotras/shiva-tandava-stotram" className="text-orange-400 hover:text-orange-300 transition-colors">
+                        Shiva Tandava Stotram
+                      </Link>
+                      <Link href="/stotras/vishnu-sahasranama" className="text-orange-400 hover:text-orange-300 transition-colors">
+                        Vishnu Sahasranama
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Link href="/faith-finder" className="flex-1">
                   <Button

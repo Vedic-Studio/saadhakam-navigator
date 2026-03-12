@@ -86,6 +86,22 @@ Current config:
 
 ---
 
+## Static Files in `/public/`
+
+These files are served directly as static assets — do NOT recreate them as Next.js Route Handlers or metadata API files:
+
+| File | Purpose |
+|------|---------|
+| `public/robots.txt` | Crawler rules + LLM file pointers — edit this file directly |
+| `public/favicon.svg` | Site favicon |
+| `public/assets/` | Static images, fonts |
+
+**Do not create `src/app/robots.ts`** — the static `public/robots.txt` takes precedence and includes AI-crawler comment lines that the Next.js metadata API doesn't support.
+
+Note: `/llms.txt` and `/llms-full.txt` are Dynamic Route Handlers (`src/app/llms.txt/route.ts`, `src/app/llms-full.txt/route.ts`) — they appear as `ƒ (Dynamic)` in the build output and are server-rendered on each request (CDN-cached via Cache-Control headers).
+
+---
+
 ## Branch Strategy
 
 - `main` — production, auto-deploys to Vercel. Only merge clean, tested code.

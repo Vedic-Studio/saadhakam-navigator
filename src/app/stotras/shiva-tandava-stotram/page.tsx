@@ -83,6 +83,17 @@ export default function ShivaTandavaStotramPage() {
                         <p className="text-muted-foreground leading-relaxed">
                             The meter is Jagatī (12 syllables per quarter), one of the most demanding Sanskrit meters. Ravana&apos;s command of this meter while under a mountain demonstrates both his extraordinary learning and the power of genuine bhakti. The stotram is traditionally recited during Pradosha time and on Shivaratri.
                         </p>
+                        <div className="mt-6 flex flex-wrap gap-4 text-sm">
+                            <Link href="/deities/shiva" className="text-orange-400 hover:text-orange-300 transition-colors">
+                                Who is Shiva?
+                            </Link>
+                            <Link href="/western-philosophy-and-vedanta" className="text-orange-400 hover:text-orange-300 transition-colors">
+                                Indian vs Western Philosophy
+                            </Link>
+                            <Link href="/vedanta-vs-stoicism" className="text-orange-400 hover:text-orange-300 transition-colors">
+                                Vedanta vs Stoicism
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </main>

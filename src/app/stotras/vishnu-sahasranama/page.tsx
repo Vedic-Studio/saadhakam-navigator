@@ -21,6 +21,20 @@ export default function VishnuSahasranamaPage() {
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Vishnu Sahasranama", href: "/stotras/vishnu-sahasranama" }]} />
           <h1 className="font-display text-4xl md:text-6xl font-black mb-8 mt-8 tracking-tighter">Vishnu Sahasranama</h1>
           <p className="text-muted-foreground mb-8">All 1000 names. Meanings are placeholders for now and can be refined later.</p>
+          <div className="mb-8 flex flex-wrap gap-4 text-sm">
+            <Link href="/deities/krishna" className="text-orange-400 hover:text-orange-300 transition-colors">
+              Who is Krishna?
+            </Link>
+            <Link href="/deities/lakshmi" className="text-orange-400 hover:text-orange-300 transition-colors">
+              Who is Lakshmi?
+            </Link>
+            <Link href="/western-philosophy-and-vedanta" className="text-orange-400 hover:text-orange-300 transition-colors">
+              Indian vs Western Philosophy
+            </Link>
+            <Link href="/vedanta-vs-stoicism" className="text-orange-400 hover:text-orange-300 transition-colors">
+              Vedanta vs Stoicism
+            </Link>
+          </div>
           <div className="space-y-2">
             {sahasranama.names.map((name) => (
               <Link key={name.number} href={`/stotras/vishnu-sahasranama/${name.slug}`} className="block rounded-xl border border-border/40 p-4 hover:border-blue-500/50">

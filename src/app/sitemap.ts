@@ -7,11 +7,12 @@ import { practices } from "@/data/practices";
 import { concepts } from "@/data/concepts";
 import { comparisons } from "@/data/comparisons";
 import { topics } from "@/data/topics";
-import { practiceGoals } from "@/data/practiceGoals";
 import { bgChapters } from "@/data/bgChapters";
 import { bgShlokas } from "@/data/bgShlokas";
 import { sanskritVocab } from "@/data/sanskritVocab";
 import { articles } from "@/data/articles";
+import { deities } from "@/data/deities";
+import { mantras } from "@/data/mantras";
 import { loadSahasranama } from "@/lib/stotras";
 
 const baseUrl = "https://opensadhaka.com";
@@ -32,6 +33,8 @@ export async function generateSitemaps() {
     { id: "sanskrit" },
     { id: "articles" },
     { id: "stotras" },
+    { id: "deities" },
+    { id: "mantras" },
   ];
 }
 
@@ -88,6 +91,18 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
           lastModified: now,
           changeFrequency: "monthly",
           priority: 0.7,
+        },
+        {
+          url: `${baseUrl}/deities`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.9,
+        },
+        {
+          url: `${baseUrl}/mantras`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.9,
         },
         {
           url: `${baseUrl}/best-spiritual-path-for-beginners`,
@@ -205,6 +220,24 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
           priority: 0.8,
         },
         {
+          url: `${baseUrl}/hindu-goddess-explained`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.8,
+        },
+        {
+          url: `${baseUrl}/ramayana-explained`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.8,
+        },
+        {
+          url: `${baseUrl}/vedanta-vs-buddhism`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.8,
+        },
+        {
           url: `${baseUrl}/spiritual-paths-explained`,
           lastModified: now,
           changeFrequency: "monthly",
@@ -231,12 +264,20 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
       ];
 
     case "philosophies":
-      return philosophies.map((p) => ({
-        url: `${baseUrl}/philosophies/${p.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.75,
-      }));
+      return [
+        ...philosophies.map((p) => ({
+          url: `${baseUrl}/philosophies/${p.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.75,
+        })),
+        {
+          url: `${baseUrl}/philosophies/advaita-vedanta`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.72,
+        },
+      ];
 
     case "traditions":
       return traditions.map((t) => ({
@@ -394,6 +435,38 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
           lastModified: now,
           changeFrequency: "monthly" as const,
           priority: 0.6,
+        })),
+      ];
+
+    case "deities":
+      return [
+        {
+          url: `${baseUrl}/deities`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.9,
+        },
+        ...deities.map((deity) => ({
+          url: `${baseUrl}/deities/${deity.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.8,
+        })),
+      ];
+
+    case "mantras":
+      return [
+        {
+          url: `${baseUrl}/mantras`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.9,
+        },
+        ...mantras.map((mantra) => ({
+          url: `${baseUrl}/mantras/${mantra.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.8,
         })),
       ];
 

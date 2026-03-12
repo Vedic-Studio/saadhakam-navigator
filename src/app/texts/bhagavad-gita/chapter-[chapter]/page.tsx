@@ -47,9 +47,65 @@ export default function BgChapterPage({
   // Get shlokas loaded for this chapter
   const shlokas = getBgShlokasByChapter(chapterNum);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `What is Bhagavad Gita Chapter ${chapter.chapterNumber} about?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: chapter.summary,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `What are the key themes in Bhagavad Gita Chapter ${chapter.chapterNumber}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: chapter.keyThemes.join(", "),
+        },
+      },
+    ],
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://opensadhaka.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Bhagavad Gita Guide",
+        item: "https://opensadhaka.com/texts/bhagavad-gita",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: `Chapter ${chapter.chapterNumber}`,
+        item: `https://opensadhaka.com/texts/bhagavad-gita/chapter-${chapter.chapterNumber}`,
+      },
+    ],
+  };
+
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
       <ContentPageTracker slug={`bhagavad-gita-chapter-${chapter.chapterNumber}`} pillar="scripture" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Breadcrumbs Placeholder */}
       <nav className="text-sm mb-8 text-neutral-500">
         <Link href="/" className="hover:text-primary transition-colors">
@@ -84,6 +140,9 @@ export default function BgChapterPage({
 
         <div className="prose prose-lg prose-neutral max-w-none">
           <p className="text-xl leading-relaxed text-neutral-700 bg-neutral-50 p-8 rounded-3xl border border-neutral-100">
+            <strong>Direct answer:</strong> Bhagavad Gita Chapter {chapter.chapterNumber} ({chapter.nameEnglish}) focuses on {chapter.keyThemes.slice(0, 2).join(" and ")}, and teaches {chapter.summary.toLowerCase()}
+          </p>
+          <p className="text-xl leading-relaxed text-neutral-700 bg-neutral-50 p-8 rounded-3xl border border-neutral-100 mt-4">
             <strong>Overview:</strong> {chapter.summary}
           </p>
         </div>
