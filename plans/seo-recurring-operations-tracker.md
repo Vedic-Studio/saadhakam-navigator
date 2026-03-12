@@ -1,7 +1,20 @@
 # SEO & Content Recurring Operations Tracker
 
 Last Updated: 2026-03-09  
+Owner: Sadhaka Search Growth Team  
+Review Cadence: Weekly execution, monthly optimization, quarterly strategy  
+Next Review Due: 2026-03-19  
+Canonical Role: Operating cadence, recurring runbook execution, and evidence log for search operations.  
+Primary Inputs: Publishing queue, GSC/GA4 observations, index submission artifacts, scorecard status signals.  
+Primary Outputs: Execution log updates, KPI snapshots, recurring task completion evidence.  
 Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene, and indexing reliability.
+
+> **Companion Documents:**
+> - `plans/seo-aeo-geo-status-scorecard.md` — Canonical status register
+> - `plans/phasewise-search-growth-master-plan.md` — Strategy sequencing and stop/go gates
+> - `plans/update-seo-scorecard.md` — Step-by-step scorecard/dashboard update runbook
+> - `plans/seo-growth-dashboard.md` — Thin executive summary and freshness panel
+> - `plans/google-api-setup.md` — GSC/GA4 API access and credential setup
 
 ---
 
@@ -42,6 +55,16 @@ Scope: Sadhaka SEO execution, Faith Finder growth content, technical SEO hygiene
 - [ ] Expand comparison/programmatic templates where win rate is proven
 - [ ] Review conversion path from SEO landing pages → Faith Finder → email capture
 - [ ] Update this tracker and retire outdated recurring tasks
+
+### Review & Update Checklist (Weekly Control Pass)
+- [ ] Run priority indexing prep: `npm run indexing:priority`
+- [ ] Verify production indexing readiness: `npm run indexnow:check:prod`
+- [ ] Submit priority batches when ready: `npm run indexnow:submit:prod`
+- [ ] Review watchlist indexing states (`plans/priority-url-watchlist-template.csv`)
+- [ ] Review GSC and GA4 evidence required for status changes
+- [ ] Apply status/evidence updates using `plans/update-seo-scorecard.md`
+- [ ] Update `plans/seo-growth-dashboard.md` freshness table (`Last Updated`, `Next Review Due`)
+- [ ] Append one row to the execution log with outcomes + next actions
 
 ---
 

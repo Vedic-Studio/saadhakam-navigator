@@ -1,15 +1,24 @@
 # SEO, AEO, GEO Status Scorecard
 
 Last Updated: 2026-03-09 (Reviewed: 2026-03-09)  
+Owner: Sadhaka Search Growth Team
+Review Cadence: Monthly (with weekly evidence checks)
+Next Review Due: 2026-03-19
+Canonical Role: Canonical evidence-based status register for SEO, GEO, AEO, indexing, and measurement.
+Primary Inputs: GSC, GA4, priority watchlist, recurring tracker logs, prompt testing matrix.
+Primary Outputs: Initiative status changes, priority decisions, and validation/success readouts.
 Site: `opensadhaka.com`  
 Scope: SEO foundations, pSEO, AEO/GEO, indexing operations, analytics, and validation.
 
 > **Companion Documents:**
+> - `plans/phasewise-search-growth-master-plan.md` — Strategic sequencing and stop/go gates
 > - `plans/seo-aeo-geo-execution-roadmap.md` — Execution plan and priorities
 > - `plans/google-search-baseline-review-2026-03-09.md` — GSC/GA4 baseline data
 > - `plans/pseo-template-decision-matrix.md` — Template-by-template decisions
 > - `plans/aeo-prompt-testing-matrix.md` — AI prompt testing protocol
 > - `plans/seo-recurring-operations-tracker.md` — Recurring operations cadence
+> - `plans/update-seo-scorecard.md` — Step-by-step scorecard maintenance workflow
+> - `plans/seo-growth-dashboard.md` — Thin executive summary and freshness panel
 
 ---
 
@@ -908,3 +917,11 @@ The priority is:
 - **Run AEO prompt tests** — establish baseline before optimizing further
 
 The project is **well past the planning stage** and **meaningfully implemented**, but still early in terms of **evidence-driven validation**. The
+
+---
+
+## 9) Evidence update log
+
+| Date | Updated By | Evidence Sources Reviewed | Sections Updated | Status Change Summary |
+|---|---|---|---|---|
+| 2026-03-09 | Search Growth Team | GSC baseline, GA4 baseline, repository implementation audit | Executive summary, initiative analysis, practical next steps | Initial baseline captured |
