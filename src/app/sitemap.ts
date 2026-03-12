@@ -384,12 +384,20 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
       return shlokaPages;
 
     case "sanskrit":
-      return sanskritVocab.map((word) => ({
-        url: `${baseUrl}/learn/sanskrit/${word.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.72,
-      }));
+      return [
+        {
+          url: `${baseUrl}/learn/sanskrit`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.8,
+        },
+        ...sanskritVocab.map((word) => ({
+          url: `${baseUrl}/learn/sanskrit/${word.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.72,
+        })),
+      ];
 
     case "articles":
       return articles.map((a) => ({

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ArrowRight, BookOpen, ExternalLink, Zap } from "lucide-react";
+import { ArrowRight, BookOpen, Zap } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
@@ -206,15 +206,12 @@ export default function AdvaitaVedantaPage() {
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
                             {references.map((ref) => (
-                                <a
+                                <div
                                     key={ref.href}
-                                    href={ref.href}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="px-6 py-3 rounded-full bg-background border border-border/60 text-sm font-medium hover:border-orange-500/40 hover:text-orange-400 transition-all flex items-center gap-2"
+                                    className="px-6 py-3 rounded-full bg-background border border-border/60 text-sm font-medium text-muted-foreground"
                                 >
-                                    {ref.label} <ExternalLink className="w-3 h-3" />
-                                </a>
+                                    {ref.label}
+                                </div>
                             ))}
                         </div>
                     </section>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
@@ -307,10 +307,9 @@ export default function BestMeditationStylePage() {
                         <ul className="grid md:grid-cols-2 gap-4">
                             {references.map((reference) => (
                                 <li key={reference.href}>
-                                    <a href={reference.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-muted-foreground hover:text-orange-400 font-medium transition-colors">
+                                    <div className="inline-flex items-center text-muted-foreground font-medium">
                                         {reference.label}
-                                        <ExternalLink className="w-4 h-4" />
-                                    </a>
+                                    </div>
                                 </li>
                             ))}
                         </ul>
