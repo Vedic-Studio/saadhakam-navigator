@@ -15,6 +15,16 @@ Primary Outputs: Updated scorecard evidence, refreshed dashboard freshness panel
 > - `plans/phasewise-search-growth-master-plan.md` — Stop/go gates and phase sequencing
 > - `plans/google-api-setup.md` — API credential and access setup
 
+## Purpose
+
+Use this runbook to perform one controlled evidence cycle that keeps the documentation system synchronized without creating duplicate status narratives.
+
+This is the single end-to-end workflow for updating:
+- scorecard (canonical status),
+- dashboard (derived control panel),
+- tracker (execution log),
+- and master-plan gates (only when sequencing changes).
+
 ---
 
 ## 1) When to run this workflow
@@ -162,6 +172,25 @@ Use these conservative thresholds:
 - move **Implemented → Validated** only when external evidence exists (GSC/GA4/provider response)
 - move **Validated → Successful** only when trend-level outcomes appear (not one-off blips)
 - avoid changing status when evidence is partial or ambiguous; log blocker instead
+
+### Practical examples
+
+#### Change **Implemented → Validated** when:
+- `npm run indexnow:submit:prod` returns successful provider responses and URLs are visible in GSC inspection workflows.
+- GA4 priority events are visible in production reports (not only local expectations).
+
+#### Do **not** change yet (log blocker instead) when:
+- IndexNow endpoint is reachable but `INDEXNOW_KEY` is missing in production.
+- Event names exist in code but no GA4 production rows are visible in the review window.
+
+#### Change **Validated → Successful** when:
+- non-homepage template families show sustained impressions/clicks across at least two review windows.
+- conversion-linked SEO signals (e.g., quiz starts/email captures from SEO landings) show repeatable movement.
+
+#### Do **not** change yet (log blocker instead) when:
+- signal is a one-day spike,
+- data is incomplete,
+- or movement cannot be attributed to the initiative under review.
 
 ---
 

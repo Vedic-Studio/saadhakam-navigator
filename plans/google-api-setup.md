@@ -115,12 +115,28 @@ Use this lightweight table during setup:
 
 | Area | Status | Owner | Notes |
 |---|---|---|---|
-| Cloud project + APIs | Blocked / Unblocked | Engineering |  |
-| Service account created | Blocked / Unblocked | Engineering |  |
-| GSC property access granted | Blocked / Unblocked | SEO/Analytics |  |
-| GA4 property access granted | Blocked / Unblocked | Analytics |  |
-| Local key path configured | Blocked / Unblocked | Engineering |  |
-| Verification tests passed | Blocked / Unblocked | Engineering + Analytics |  |
+| Cloud project + APIs | Blocked | Engineering | Confirm project id and API enablement state |
+| Service account created | Blocked | Engineering | Create `sadhaka-search-reporting` service account |
+| GSC property access granted | Blocked | SEO/Analytics | Grant SA email access to `sc-domain:opensadhaka.com` |
+| GA4 property access granted | Blocked | Analytics | Grant SA read access to production GA4 property |
+| Local key path configured | Blocked | Engineering | Place key at `.data/google-service-account.json` |
+| Verification tests passed | Blocked | Engineering + Analytics | Run one successful GSC + GA4 API read per runbook |
+
+### Current setup snapshot (update each control pass)
+
+- **Current State:** Blocked (credentials and property grants pending confirmation)
+- **Primary Blocker Owner:** Engineering + Analytics/Growth
+- **Unblock condition:** All six rows above marked `Unblocked` with dated notes
+
+### Environment variable contract (to keep aligned with scripts)
+
+Record final adopted variable names here once scripts are wired:
+
+| Variable | Expected Value | Status | Notes |
+|---|---|---|---|
+| `GOOGLE_SERVICE_ACCOUNT_KEY_PATH` | `.data/google-service-account.json` | Proposed | Confirm with implementation |
+| `GSC_PROPERTY` | `sc-domain:opensadhaka.com` | Proposed | Confirm property scope |
+| `GA4_PROPERTY_ID` | `<numeric_property_id>` | Proposed | Confirm production property id |
 
 ---
 

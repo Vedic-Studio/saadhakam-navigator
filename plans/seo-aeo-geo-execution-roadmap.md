@@ -3,6 +3,16 @@
 Last Updated: 2026-03-09  
 Companion doc: `plans/seo-aeo-geo-status-scorecard.md`
 
+> **Status: Deprecated (Control-Layer Migration)**
+>
+> This file is retained for historical context only. Active orchestration now lives in:
+> - `plans/phasewise-search-growth-master-plan.md` (strategy + sequencing)
+> - `plans/seo-aeo-geo-status-scorecard.md` (canonical status)
+> - `plans/seo-recurring-operations-tracker.md` (cadence + execution log)
+> - `plans/seo-growth-dashboard.md` (thin control panel)
+>
+> Do not use this file as the active execution source of truth.
+
 ---
 
 ## 1) Purpose

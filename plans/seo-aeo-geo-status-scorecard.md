@@ -1,6 +1,6 @@
 # SEO, AEO, GEO Status Scorecard
 
-Last Updated: 2026-03-09 (Reviewed: 2026-03-09)  
+Last Updated: 2026-03-12 (Reviewed: 2026-03-12)  
 Owner: Sadhaka Search Growth Team
 Review Cadence: Monthly (with weekly evidence checks)
 Next Review Due: 2026-03-19
@@ -12,7 +12,6 @@ Scope: SEO foundations, pSEO, AEO/GEO, indexing operations, analytics, and valid
 
 > **Companion Documents:**
 > - `plans/phasewise-search-growth-master-plan.md` — Strategic sequencing and stop/go gates
-> - `plans/seo-aeo-geo-execution-roadmap.md` — Execution plan and priorities
 > - `plans/google-search-baseline-review-2026-03-09.md` — GSC/GA4 baseline data
 > - `plans/pseo-template-decision-matrix.md` — Template-by-template decisions
 > - `plans/aeo-prompt-testing-matrix.md` — AI prompt testing protocol
@@ -916,7 +915,7 @@ The priority is:
 - **Prioritize indexing** — submit URLs, check GSC coverage, fix exclusions
 - **Run AEO prompt tests** — establish baseline before optimizing further
 
-The project is **well past the planning stage** and **meaningfully implemented**, but still early in terms of **evidence-driven validation**. The
+The project is **well past the planning stage** and **meaningfully implemented**, but still early in terms of **evidence-driven validation**.
 
 ---
 
@@ -925,3 +924,4 @@ The project is **well past the planning stage** and **meaningfully implemented**
 | Date | Updated By | Evidence Sources Reviewed | Sections Updated | Status Change Summary |
 |---|---|---|---|---|
 | 2026-03-09 | Search Growth Team | GSC baseline, GA4 baseline, repository implementation audit | Executive summary, initiative analysis, practical next steps | Initial baseline captured |
+| 2026-03-12 | Search Growth Team | Control-layer document review, master plan/dashboard/tracker/runbook alignment pass | Metadata consistency, companion-doc links, governance clarity | Removed deprecated roadmap dependency and reinforced single-source responsibilities |

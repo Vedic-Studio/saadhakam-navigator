@@ -52,8 +52,9 @@ Primary Outputs: Weekly focus, review priorities, and maintenance navigation lin
 
 | Asset | Role | Last Updated | Next Review Due | Owner | Status Note |
 |---|---|---|---|---|---|
-| `plans/seo-aeo-geo-status-scorecard.md` | Canonical status register | 2026-03-09 | 2026-03-19 | Search Growth Team | Needs evidence refresh cycle |
+| `plans/seo-aeo-geo-status-scorecard.md` | Canonical status register | 2026-03-12 | 2026-03-19 | Search Growth Team | Needs fresh external evidence pass |
 | `plans/phasewise-search-growth-master-plan.md` | Strategic sequencing | 2026-03-12 | 2026-03-26 | Search Growth Team | Current phase plan active |
+| `plans/seo-growth-dashboard.md` | Thin control panel (derived) | 2026-03-12 | 2026-03-19 | Search Growth Team | Keep summary-only; no initiative deep-dives |
 | `plans/seo-recurring-operations-tracker.md` | Execution cadence + log | 2026-03-09 | 2026-03-19 | Search Growth Team | Weekly control checklist added |
 | `plans/update-seo-scorecard.md` | Maintenance runbook | 2026-03-12 | 2026-03-19 | Search Growth Team | New canonical update procedure |
 | `plans/google-api-setup.md` | API setup dependency | 2026-03-12 | 2026-04-12 | Engineering / Analytics | Verify service-account access before automation |
@@ -85,8 +86,9 @@ Primary Outputs: Weekly focus, review priorities, and maintenance navigation lin
 | Date | Artifact | Purpose |
 |---|---|---|
 | 2026-03-09 | `plans/google-search-baseline-review-2026-03-09.md` | Baseline GSC/GA4 state snapshot |
-| 2026-03-10 | `/tmp/indexnow-submit-results.json` (when generated) | Batch submission evidence |
+| 2026-03-10 | `scripts/check-indexnow-prod.mjs` + `scripts/submit-priority-indexnow.mjs` outputs | IndexNow readiness + batched submission evidence loop |
 | 2026-03-12 | `plans/phase5-ga4-event-validation-2026-03-12.md` | Event validation tracking reference |
+| 2026-03-12 | `plans/seo-aeo-geo-status-scorecard.md` (evidence log update row) | Governance and control-layer alignment evidence |
 
 ---
 

@@ -292,3 +292,11 @@ Reference docs:
 - `plans/priority-url-watchlist-template.csv`
 
 This file acts as the orchestration layer across all the above.
+
+---
+
+## 9) Decision History / Plan Changes
+
+| Date | Change | Reason | Impact |
+|---|---|---|---|
+| 2026-03-12 | Established control-layer governance across scorecard, master plan, tracker, dashboard, runbook, and API setup docs | Reduce duplicate status maintenance and enforce single-source ownership per doc | This file remains the only strategy/sequencing source; deprecated roadmap retained only for historical context |
