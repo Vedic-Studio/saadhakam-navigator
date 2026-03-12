@@ -22,7 +22,7 @@ const INDEXNOW_PROVIDERS: { name: ProviderName; endpoint: string }[] = [
     { name: "yandex", endpoint: "https://yandex.com/indexnow" },
 ];
 
-const DEFAULT_SITE_URL = "https://opensadhaka.com";
+const DEFAULT_SITE_URL = "https://www.opensadhaka.com";
 const MAX_URLS_PER_REQUEST = 50;
 const SEARCH_CONSOLE_INSPECT_ENDPOINT = "https://search.google.com/search-console/inspect";
 

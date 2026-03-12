@@ -31,3 +31,4 @@ dist-ssr
 
 # Local Claude worktree metadata (must never be committed)
 .claude/worktrees/
+.vercel

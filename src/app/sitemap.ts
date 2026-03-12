@@ -12,8 +12,7 @@ import { bgChapters } from "@/data/bgChapters";
 import { bgShlokas } from "@/data/bgShlokas";
 import { sanskritVocab } from "@/data/sanskritVocab";
 import { articles } from "@/data/articles";
-import { vishnuSahasranamaNames } from "@/data/vishnuSahasranama";
-import { lalitaSahasranamaNames } from "@/data/lalitaSahasranama";
+import { loadSahasranama } from "@/lib/stotras";
 
 const baseUrl = "https://opensadhaka.com";
 
@@ -378,7 +377,7 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
           changeFrequency: "weekly",
           priority: 0.8,
         },
-        ...vishnuSahasranamaNames.map((n) => ({
+        ...loadSahasranama("vishnu-sahasranama").names.map((n) => ({
           url: `${baseUrl}/stotras/vishnu-sahasranama/${n.slug}`,
           lastModified: now,
           changeFrequency: "monthly" as const,
@@ -390,7 +389,7 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
           changeFrequency: "weekly",
           priority: 0.8,
         },
-        ...lalitaSahasranamaNames.map((n) => ({
+        ...loadSahasranama("lalita-sahasranama").names.map((n) => ({
           url: `${baseUrl}/stotras/lalita-sahasranama/${n.slug}`,
           lastModified: now,
           changeFrequency: "monthly" as const,

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { vishnuSahasranamaNames } from "@/data/vishnuSahasranama";
+import { loadSahasranama } from "@/lib/stotras";
 
 export const metadata: Metadata = {
   title: "Vishnu Sahasranama — 1000 Names",
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function VishnuSahasranamaPage() {
+  const sahasranama = loadSahasranama("vishnu-sahasranama");
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Header />
@@ -21,7 +22,7 @@ export default function VishnuSahasranamaPage() {
           <h1 className="font-display text-4xl md:text-6xl font-black mb-8 mt-8 tracking-tighter">Vishnu Sahasranama</h1>
           <p className="text-muted-foreground mb-8">All 1000 names. Meanings are placeholders for now and can be refined later.</p>
           <div className="space-y-2">
-            {vishnuSahasranamaNames.map((name) => (
+            {sahasranama.names.map((name) => (
               <Link key={name.number} href={`/stotras/vishnu-sahasranama/${name.slug}`} className="block rounded-xl border border-border/40 p-4 hover:border-blue-500/50">
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-sm text-muted-foreground w-12">{name.number}</span>

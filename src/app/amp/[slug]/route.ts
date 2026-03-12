@@ -5,7 +5,7 @@ import {
   jsonToHtmlScript,
 } from "@/lib/articleContent";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://opensadhaka.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
 const gaMeasurementId = "G-S3DHYPPG9R";
 
 function escapeHtml(value: string) {

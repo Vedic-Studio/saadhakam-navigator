@@ -1,4 +1,4 @@
-const DEFAULT_SITE_ORIGIN = "https://opensadhaka.com";
+const DEFAULT_SITE_ORIGIN = "https://www.opensadhaka.com";
 
 function resolveSiteOrigin() {
     return process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_ORIGIN;

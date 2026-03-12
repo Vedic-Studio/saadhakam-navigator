@@ -4,18 +4,16 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import {
-  shivaTandavaVerses,
-  getShivaTandavaVerseBySlug,
-  getAdjacentShivaTandavaVerses,
-} from "@/data/shivaTandavaStotram";
+import { loadStotra, getStotraVerseBySlug, getAdjacentVerses } from "@/lib/stotras";
 
 export function generateStaticParams() {
-  return shivaTandavaVerses.map((v) => ({ verse: v.slug }));
+  const stotra = loadStotra("shiva-tandava-stotram");
+  return stotra.verses.map((v) => ({ verse: v.slug }));
 }
 
 export function generateMetadata({ params }: { params: { verse: string } }): Metadata {
-  const verse = getShivaTandavaVerseBySlug(params.verse);
+  const stotra = loadStotra("shiva-tandava-stotram");
+  const verse = getStotraVerseBySlug(stotra, params.verse);
   if (!verse) return { title: "Verse Not Found" };
   return {
     title: `Shiva Tandava Stotram Verse ${verse.verse} | Sanskrit, Transliteration, Meaning`,
@@ -27,10 +25,11 @@ export function generateMetadata({ params }: { params: { verse: string } }): Met
 }
 
 export default function ShivaTandavaVersePage({ params }: { params: { verse: string } }) {
-  const verse = getShivaTandavaVerseBySlug(params.verse);
+  const stotra = loadStotra("shiva-tandava-stotram");
+  const verse = getStotraVerseBySlug(stotra, params.verse);
   if (!verse) notFound();
 
-  const adjacent = getAdjacentShivaTandavaVerses(verse.verse);
+  const adjacent = getAdjacentVerses(stotra, verse.verse);
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">

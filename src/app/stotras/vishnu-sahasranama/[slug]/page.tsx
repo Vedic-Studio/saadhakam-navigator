@@ -4,14 +4,16 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { vishnuSahasranamaNames, getVishnuSahasranamaNameBySlug } from "@/data/vishnuSahasranama";
+import { loadSahasranama, getSahasranamaNameBySlug } from "@/lib/stotras";
 
 export function generateStaticParams() {
-  return vishnuSahasranamaNames.map((n) => ({ slug: n.slug }));
+  const sahasranama = loadSahasranama("vishnu-sahasranama");
+  return sahasranama.names.map((n) => ({ slug: n.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const name = getVishnuSahasranamaNameBySlug(params.slug);
+  const sahasranama = loadSahasranama("vishnu-sahasranama");
+  const name = getSahasranamaNameBySlug(sahasranama, params.slug);
   if (!name) return { title: "Name Not Found" };
   return {
     title: `Vishnu Sahasranama #${name.number} — ${name.transliteration}`,
@@ -21,7 +23,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 }
 
 export default function VishnuSahasranamaNamePage({ params }: { params: { slug: string } }) {
-  const name = getVishnuSahasranamaNameBySlug(params.slug);
+  const sahasranama = loadSahasranama("vishnu-sahasranama");
+  const name = getSahasranamaNameBySlug(sahasranama, params.slug);
   if (!name) notFound();
 
   return (

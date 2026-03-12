@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 // Constants
 // ============================================================================
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://opensadhaka.com";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
 export const SITE_NAME = "Sadhaka";
 export const SITE_TWITTER = "@opensadhaka";
 export const DEFAULT_LOCALE = "en_US";

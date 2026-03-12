@@ -8,6 +8,42 @@ import {
 
 const OUTPUT_PATH = "/tmp/indexnow-submit-results.json";
 
+function sanitizeOrigin(origin) {
+    try {
+        return new URL(origin).origin.replace(/\/$/, "");
+    } catch {
+        return null;
+    }
+}
+
+function extractOriginFromHint(hint) {
+    if (typeof hint !== "string") return null;
+    const match = hint.match(/https?:\/\/[^/"\s]+/i);
+    if (!match) return null;
+    return sanitizeOrigin(match[0]);
+}
+
+async function resolveSubmissionOrigin(preferredOrigin, headers) {
+    const fallbackOrigin = sanitizeOrigin(preferredOrigin) || "https://www.opensadhaka.com";
+    const endpoint = `${fallbackOrigin}/api/indexnow/submit`;
+
+    try {
+        const response = await fetch(endpoint, {
+            method: "POST",
+            headers,
+            body: JSON.stringify({ urls: ["https://invalid.example.com/diagnostic"] }),
+            redirect: "follow",
+        });
+
+        const text = await response.text();
+        const json = JSON.parse(text);
+        const hintedOrigin = extractOriginFromHint(json?.hint);
+        return hintedOrigin || fallbackOrigin;
+    } catch {
+        return fallbackOrigin;
+    }
+}
+
 function parseArgs(argv) {
     const args = new Set(argv.slice(2));
     return {
@@ -74,9 +110,10 @@ async function submitBatch({ endpoint, batch, headers }) {
 
 async function main() {
     const options = parseArgs(process.argv);
-    const siteOrigin = getSiteOrigin().replace(/\/$/, "");
-    const endpoint = `${siteOrigin}/api/indexnow/submit`;
+    const preferredOrigin = getSiteOrigin().replace(/\/$/, "");
     const headers = getHeaders();
+    const siteOrigin = await resolveSubmissionOrigin(preferredOrigin, headers);
+    const endpoint = `${siteOrigin}/api/indexnow/submit`;
     const hasToken = Boolean(headers["x-indexnow-token"]);
 
     const { urls } = getPriorityUrls(siteOrigin);

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { shivaTandavaVerses } from "@/data/shivaTandavaStotram";
+import { loadStotra } from "@/lib/stotras";
 
 export const metadata: Metadata = {
     title: "Shiva Tandava Stotram: All 16 Verses with Sanskrit, Transliteration & Meaning",
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 };
 
 export default function ShivaTandavaStotramPage() {
+    const stotra = loadStotra("shiva-tandava-stotram");
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             <Header />
@@ -48,7 +49,7 @@ export default function ShivaTandavaStotramPage() {
                     </header>
 
                     <div className="space-y-3">
-                        {shivaTandavaVerses.map((verse) => (
+                        {stotra.verses.map((verse) => (
                             <Link
                                 key={verse.verse}
                                 href={`/stotras/shiva-tandava-stotram/${verse.slug}`}

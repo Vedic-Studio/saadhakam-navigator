@@ -4,7 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://opensadhaka.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
 const gaMeasurementId = "G-S3DHYPPG9R";
 const gscVerificationCode =
   process.env.GSC_VERIFICATION?.trim() ||
