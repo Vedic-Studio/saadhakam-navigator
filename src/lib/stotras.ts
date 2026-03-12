@@ -26,6 +26,7 @@ export interface StotraVerse {
   translation: string;
   /** Flowing literary English rendering — reads like prose-poetry, not word-for-word */
   translationFlow: string;
+  commentary?: string;
   analysis: VerseAnalysis;
 }
 

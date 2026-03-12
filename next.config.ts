@@ -15,11 +15,46 @@ const nextConfig: NextConfig = {
         ignoreBuildErrors: true,
     },
     async redirects() {
-        return concepts.map((concept) => ({
+        const staticRedirects = [
+            {
+                source: "/philosophies/advaita-vedanta",
+                destination: "/philosophies/advaita",
+                permanent: true,
+            },
+            {
+                source: "/compare/advaita-vs-dvaita",
+                destination: "/advaita-vs-dvaita",
+                permanent: true,
+            },
+            {
+                source: "/compare/shaivism-vs-vaishnavism",
+                destination: "/shaivism-vs-vaishnavism",
+                permanent: true,
+            },
+            {
+                source: "/compare/stoicism-vs-vedanta",
+                destination: "/vedanta-vs-stoicism",
+                permanent: true,
+            },
+            {
+                source: "/compare/tantra-vs-vedanta",
+                destination: "/vedanta-vs-tantra",
+                permanent: true,
+            },
+            {
+                source: "/compare/vedanta-vs-buddhism",
+                destination: "/vedanta-vs-buddhism",
+                permanent: true,
+            },
+        ];
+
+        const dynamicRedirects = concepts.map((concept) => ({
             source: `/${concept.slug}-meaning`,
             destination: `/what-is-${concept.slug}`,
             permanent: true,
         }));
+
+        return [...staticRedirects, ...dynamicRedirects];
     },
     async rewrites() {
         const indexNowKey = process.env.INDEXNOW_KEY;

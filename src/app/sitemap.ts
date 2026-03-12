@@ -16,6 +16,13 @@ import { mantras } from "@/data/mantras";
 import { loadSahasranama } from "@/lib/stotras";
 
 const baseUrl = "https://opensadhaka.com";
+const redirectedComparisonSlugs = new Set([
+  "advaita-vs-dvaita",
+  "shaivism-vs-vaishnavism",
+  "stoicism-vs-vedanta",
+  "tantra-vs-vedanta",
+  "vedanta-vs-buddhism",
+]);
 
 // Tell Next.js to generate multiple split sitemaps + an index
 export async function generateSitemaps() {
@@ -264,20 +271,12 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
       ];
 
     case "philosophies":
-      return [
-        ...philosophies.map((p) => ({
-          url: `${baseUrl}/philosophies/${p.slug}`,
-          lastModified: now,
-          changeFrequency: "monthly" as const,
-          priority: 0.75,
-        })),
-        {
-          url: `${baseUrl}/philosophies/advaita-vedanta`,
-          lastModified: now,
-          changeFrequency: "monthly" as const,
-          priority: 0.72,
-        },
-      ];
+      return philosophies.map((p) => ({
+        url: `${baseUrl}/philosophies/${p.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.75,
+      }));
 
     case "traditions":
       return traditions.map((t) => ({
@@ -312,12 +311,14 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
       }));
 
     case "comparisons":
-      return comparisons.map((c) => ({
-        url: `${baseUrl}/compare/${c.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.85,
-      }));
+      return comparisons
+        .filter((c) => !redirectedComparisonSlugs.has(c.slug))
+        .map((c) => ({
+          url: `${baseUrl}/compare/${c.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.85,
+        }));
 
     case "topics":
       return topics.map((t) => ({

@@ -11,9 +11,10 @@ export function generateStaticParams() {
   return stotra.verses.map((v) => ({ verse: v.slug }));
 }
 
-export function generateMetadata({ params }: { params: { verse: string } }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ verse: string }> }): Promise<Metadata> {
+  const { verse: verseSlug } = await params;
   const stotra = loadStotra("shiva-tandava-stotram");
-  const verse = getStotraVerseBySlug(stotra, params.verse);
+  const verse = getStotraVerseBySlug(stotra, verseSlug);
   if (!verse) return { title: "Verse Not Found" };
   return {
     title: `Shiva Tandava Stotram Verse ${verse.verse} | Sanskrit, Transliteration, Meaning`,
@@ -24,9 +25,10 @@ export function generateMetadata({ params }: { params: { verse: string } }): Met
   };
 }
 
-export default function ShivaTandavaVersePage({ params }: { params: { verse: string } }) {
+export default async function ShivaTandavaVersePage({ params }: { params: Promise<{ verse: string }> }) {
+  const { verse: verseSlug } = await params;
   const stotra = loadStotra("shiva-tandava-stotram");
-  const verse = getStotraVerseBySlug(stotra, params.verse);
+  const verse = getStotraVerseBySlug(stotra, verseSlug);
   if (!verse) notFound();
 
   const adjacent = getAdjacentVerses(stotra, verse.verse);

@@ -11,9 +11,10 @@ export function generateStaticParams() {
   return sahasranama.names.map((n) => ({ slug: n.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const sahasranama = loadSahasranama("lalita-sahasranama");
-  const name = getSahasranamaNameBySlug(sahasranama, params.slug);
+  const name = getSahasranamaNameBySlug(sahasranama, slug);
   if (!name) return { title: "Name Not Found" };
   return {
     title: `Lalita Sahasranama #${name.number} — ${name.transliteration}`,
@@ -22,9 +23,10 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function LalitaSahasranamaNamePage({ params }: { params: { slug: string } }) {
+export default async function LalitaSahasranamaNamePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const sahasranama = loadSahasranama("lalita-sahasranama");
-  const name = getSahasranamaNameBySlug(sahasranama, params.slug);
+  const name = getSahasranamaNameBySlug(sahasranama, slug);
   if (!name) notFound();
 
   return (

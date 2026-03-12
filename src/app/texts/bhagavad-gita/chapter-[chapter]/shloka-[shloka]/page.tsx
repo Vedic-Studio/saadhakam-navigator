@@ -16,9 +16,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { chapter: string; shloka: string };
+  params: Promise<{ chapter: string; shloka: string }>;
 }): Promise<Metadata> {
-  const shlokaId = `${params.chapter}.${params.shloka}`;
+  const { chapter, shloka: shlokaParam } = await params;
+  const shlokaId = `${chapter}.${shlokaParam}`;
   const shloka = getBgShlokaById(shlokaId);
 
   if (!shloka) {
@@ -34,12 +35,13 @@ export async function generateMetadata({
   };
 }
 
-export default function BgShlokaPage({
+export default async function BgShlokaPage({
   params,
 }: {
-  params: { chapter: string; shloka: string };
+  params: Promise<{ chapter: string; shloka: string }>;
 }) {
-  const shlokaId = `${params.chapter}.${params.shloka}`;
+  const { chapter, shloka: shlokaParam } = await params;
+  const shlokaId = `${chapter}.${shlokaParam}`;
   const shloka = getBgShlokaById(shlokaId);
 
   if (!shloka) {

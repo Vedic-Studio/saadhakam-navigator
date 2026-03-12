@@ -7,13 +7,15 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { LongformContent } from "@/components/LongformContent";
 
 interface Props {
   params: { slug: string };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const comp = comparisons.find((c) => c.slug === params.slug);
+  const { slug } = await params;
+  const comp = comparisons.find((c) => c.slug === slug);
 
   if (!comp) {
     return { title: "Not Found" };
@@ -40,8 +42,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ComparisonPage({ params }: Props) {
-  const comp = comparisons.find((c) => c.slug === params.slug);
+export default async function ComparisonPage({ params }: Props) {
+  const { slug } = await params;
+  const comp = comparisons.find((c) => c.slug === slug);
 
   if (!comp) {
     notFound();
@@ -138,8 +141,8 @@ export default function ComparisonPage({ params }: Props) {
             </div>
           </div>
 
-          <div
-            className="prose prose-invert prose-orange max-w-none prose-headings:font-display prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h3:text-2xl prose-p:text-lg prose-p:leading-relaxed prose-p:text-muted-foreground mb-20 dangerouslySetInnerHTML"
+          <LongformContent
+            className="mb-20"
             dangerouslySetInnerHTML={{
               __html:
                 comp.content ||

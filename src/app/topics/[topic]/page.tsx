@@ -15,9 +15,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { topic: string };
+  params: Promise<{ topic: string }>;
 }): Promise<Metadata> {
-  const topic = getTopicBySlug(params.topic);
+  const { topic: topicSlug } = await params;
+  const topic = getTopicBySlug(topicSlug);
 
   if (!topic) {
     return { title: "Topic Not Found" };
@@ -32,12 +33,13 @@ export async function generateMetadata({
   };
 }
 
-export default function TopicHubPage({
+export default async function TopicHubPage({
   params,
 }: {
-  params: { topic: string };
+  params: Promise<{ topic: string }>;
 }) {
-  const topic = getTopicBySlug(params.topic);
+  const { topic: topicSlug } = await params;
+  const topic = getTopicBySlug(topicSlug);
 
   if (!topic) {
     notFound();

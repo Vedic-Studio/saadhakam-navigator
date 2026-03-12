@@ -15,6 +15,9 @@ export default function robots(): MetadataRoute.Robots {
     "shlokas",
     "sanskrit",
     "articles",
+    "stotras",
+    "deities",
+    "mantras",
   ];
   return {
     rules: [

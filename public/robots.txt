@@ -2,7 +2,21 @@ User-agent: *
 Allow: /
 
 # AI Engine Resources
-# LLM routing file (AI sitemap): https://www.opensadhaka.com/llms.txt
-# Full content dump (for RAG/large-context): https://www.opensadhaka.com/llms-full.txt
+# LLM routing file (AI sitemap): https://opensadhaka.com/llms.txt
+# Full content dump (for RAG/large-context): https://opensadhaka.com/llms-full.txt
 
-Sitemap: https://www.opensadhaka.com/sitemap.xml
+Sitemap: https://opensadhaka.com/sitemap/core.xml
+Sitemap: https://opensadhaka.com/sitemap/philosophies.xml
+Sitemap: https://opensadhaka.com/sitemap/traditions.xml
+Sitemap: https://opensadhaka.com/sitemap/texts.xml
+Sitemap: https://opensadhaka.com/sitemap/greats.xml
+Sitemap: https://opensadhaka.com/sitemap/concepts.xml
+Sitemap: https://opensadhaka.com/sitemap/comparisons.xml
+Sitemap: https://opensadhaka.com/sitemap/topics.xml
+Sitemap: https://opensadhaka.com/sitemap/practices.xml
+Sitemap: https://opensadhaka.com/sitemap/shlokas.xml
+Sitemap: https://opensadhaka.com/sitemap/sanskrit.xml
+Sitemap: https://opensadhaka.com/sitemap/articles.xml
+Sitemap: https://opensadhaka.com/sitemap/stotras.xml
+Sitemap: https://opensadhaka.com/sitemap/deities.xml
+Sitemap: https://opensadhaka.com/sitemap/mantras.xml

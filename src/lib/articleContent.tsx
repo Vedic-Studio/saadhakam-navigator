@@ -35,6 +35,14 @@ export function renderRichText(content: RichText) {
 
 export function ArticleBlocks({ blocks }: { blocks: ArticleBlock[] }) {
     return blocks.map((block, index) => {
+        if (block.type === "lead") {
+            return (
+                <p key={index} className="article-lead">
+                    {renderRichText(block.content)}
+                </p>
+            );
+        }
+
         if (block.type === "paragraph") {
             return <p key={index}>{renderRichText(block.content)}</p>;
         }
@@ -45,6 +53,32 @@ export function ArticleBlocks({ blocks }: { blocks: ArticleBlock[] }) {
             }
 
             return <h2 key={index}>{renderRichText(block.content)}</h2>;
+        }
+
+        if (block.type === "quote") {
+            return (
+                <blockquote key={index}>
+                    <p>{renderRichText(block.content)}</p>
+                    {block.cite && <cite>{block.cite}</cite>}
+                </blockquote>
+            );
+        }
+
+        if (block.type === "callout") {
+            return (
+                <aside
+                    key={index}
+                    className="article-callout"
+                    data-tone={block.tone ?? "insight"}
+                >
+                    {block.title ? <p className="article-callout-title">{block.title}</p> : null}
+                    <p>{renderRichText(block.content)}</p>
+                </aside>
+            );
+        }
+
+        if (block.type === "separator") {
+            return <hr key={index} />;
         }
 
         return (
@@ -80,12 +114,32 @@ export function richTextToHtml(content: RichText) {
 export function articleBlocksToHtml(blocks: ArticleBlock[]) {
     return blocks
         .map((block) => {
+            if (block.type === "lead") {
+                return `<p class="article-lead">${richTextToHtml(block.content)}</p>`;
+            }
+
             if (block.type === "paragraph") {
                 return `<p>${richTextToHtml(block.content)}</p>`;
             }
 
             if (block.type === "heading") {
                 return `<h${block.level}>${richTextToHtml(block.content)}</h${block.level}>`;
+            }
+
+            if (block.type === "quote") {
+                const cite = block.cite ? `<cite>${escapeHtml(block.cite)}</cite>` : "";
+                return `<blockquote><p>${richTextToHtml(block.content)}</p>${cite}</blockquote>`;
+            }
+
+            if (block.type === "callout") {
+                const title = block.title
+                    ? `<p class="article-callout-title">${escapeHtml(block.title)}</p>`
+                    : "";
+                return `<aside class="article-callout" data-tone="${escapeHtml(block.tone ?? "insight")}">${title}<p>${richTextToHtml(block.content)}</p></aside>`;
+            }
+
+            if (block.type === "separator") {
+                return "<hr />";
             }
 
             return `<ul>${block.items

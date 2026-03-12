@@ -42,10 +42,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { practice: string; goal: string };
+  params: Promise<{ practice: string; goal: string }>;
 }): Promise<Metadata> {
-  const practice = getPracticeBySlug(params.practice);
-  const goal = getPracticeGoalBySlug(params.goal);
+  const { practice: practiceSlug, goal: goalSlug } = await params;
+  const practice = getPracticeBySlug(practiceSlug);
+  const goal = getPracticeGoalBySlug(goalSlug);
 
   if (!practice || !goal) {
     return { title: "Practice for Goal Not Found" };
@@ -60,13 +61,14 @@ export async function generateMetadata({
   };
 }
 
-export default function PracticeForGoalPage({
+export default async function PracticeForGoalPage({
   params,
 }: {
-  params: { practice: string; goal: string };
+  params: Promise<{ practice: string; goal: string }>;
 }) {
-  const practice = getPracticeBySlug(params.practice);
-  const goal = getPracticeGoalBySlug(params.goal);
+  const { practice: practiceSlug, goal: goalSlug } = await params;
+  const practice = getPracticeBySlug(practiceSlug);
+  const goal = getPracticeGoalBySlug(goalSlug);
 
   if (!practice || !goal) {
     notFound();

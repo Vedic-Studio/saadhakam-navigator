@@ -38,7 +38,7 @@ export const articles: ArticleMeta[] = [
             { text: "Vedanta vs Stoicism", href: "/vedanta-vs-stoicism" },
             { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
             { text: "What is Maya?", href: "/what-is-maya" },
-            { text: "Advaita in pSEO Hub", href: "/philosophies/advaita-vedanta" },
+            { text: "Advaita in pSEO Hub", href: "/philosophies/advaita" },
             { text: "Shiva Tandava Stotram", href: "/stotras/shiva-tandava-stotram" },
             { text: "Who is Shiva?", href: "/deities/shiva" },
         ],
@@ -1522,7 +1522,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 10,
         primaryKeyword: "what is vedanta",
         relatedLinks: [
-            { text: "Advaita vs Dvaita: The Core Debate", href: "/compare/advaita-vs-dvaita" },
+            { text: "Advaita vs Dvaita: The Core Debate", href: "/advaita-vs-dvaita" },
             { text: "What is Brahman?", href: "/what-is-brahman" },
             { text: "What is Atman?", href: "/what-is-atman" },
             { text: "Explore the Six Darshanas", href: "/philosophies" },
@@ -1857,7 +1857,7 @@ export const articles: ArticleMeta[] = [
         primaryKeyword: "adi shankaracharya biography",
         relatedLinks: [
             { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
-            { text: "Advaita vs Dvaita", href: "/compare/advaita-vs-dvaita" },
+            { text: "Advaita vs Dvaita", href: "/advaita-vs-dvaita" },
             { text: "Explore Great Sages", href: "/greats" },
             { text: "What is Maya?", href: "/what-is-maya" },
         ],
@@ -2033,9 +2033,9 @@ export const articles: ArticleMeta[] = [
         readingTime: 9,
         primaryKeyword: "non dual vs dual philosophy",
         relatedLinks: [
-            { text: "Advaita vs Dvaita Vedanta", href: "/compare/advaita-vs-dvaita" },
+            { text: "Advaita vs Dvaita Vedanta", href: "/advaita-vs-dvaita" },
             { text: "Advaita vs Vishishtadvaita", href: "/compare/advaita-vs-vishishtadvaita" },
-            { text: "Stoicism vs Vedanta", href: "/compare/stoicism-vs-vedanta" },
+            { text: "Stoicism vs Vedanta", href: "/vedanta-vs-stoicism" },
             { text: "What is Brahman?", href: "/what-is-brahman" },
         ],
         faqs: [
@@ -2092,7 +2092,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 10,
         primaryKeyword: "shaivism vs vaishnavism",
         relatedLinks: [
-            { text: "Shaivism vs Vaishnavism Comparison", href: "/compare/shaivism-vs-vaishnavism" },
+            { text: "Shaivism vs Vaishnavism Comparison", href: "/shaivism-vs-vaishnavism" },
             { text: "Bhakti vs Jnana Yoga", href: "/compare/bhakti-vs-jnana" },
             { text: "Explore Traditions", href: "/traditions" },
             { text: "Find Your Path", href: "/faith-finder" },

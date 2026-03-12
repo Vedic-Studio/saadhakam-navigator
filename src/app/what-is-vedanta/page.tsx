@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight, BookOpen, ExternalLink, GraduationCap, Library } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { LongformContent } from "@/components/LongformContent";
 
 export const metadata: Metadata = {
     title: "What is Vedanta? | The Culmination of Vedic Wisdom",
@@ -81,12 +82,14 @@ export default function WhatIsVedantaPage() {
                         <div className="lg:col-span-2 space-y-12">
                             <section>
                                 <h2 className="text-3xl font-display font-bold mb-6 italic text-orange-400">The Ultimate Diagnosis</h2>
-                                <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    The Vedantic tradition begins with a startling premise: our suffering is not caused by external circumstances, but by a "fundamental error of identity." We mistake the changing layers of our personality—our name, body, and thoughts—for our permanent reality. Vedanta provides the logical tools to strip away these temporary identifications to reveal the changeless awareness beneath.
-                                </p>
-                                <p className="text-xl text-muted-foreground leading-relaxed">
-                                    Chronologically, Vedanta refers to the <strong className="text-foreground">Upanishads</strong>, the final portion of the Vedas composed between 800 and 200 BCE. Philosophically, it refers to the schools of thought that systematized these insights into a coherent worldview that has sustained the intellectual life of the Indian subcontinent for millennia.
-                                </p>
+                                <LongformContent>
+                                    <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+                                        The Vedantic tradition begins with a startling premise: our suffering is not caused by external circumstances, but by a "fundamental error of identity." We mistake the changing layers of our personality—our name, body, and thoughts—for our permanent reality. Vedanta provides the logical tools to strip away these temporary identifications to reveal the changeless awareness beneath.
+                                    </p>
+                                    <p className="text-xl text-muted-foreground leading-relaxed">
+                                        Chronologically, Vedanta refers to the <strong className="text-foreground">Upanishads</strong>, the final portion of the Vedas composed between 800 and 200 BCE. Philosophically, it refers to the schools of thought that systematized these insights into a coherent worldview that has sustained the intellectual life of the Indian subcontinent for millennia.
+                                    </p>
+                                </LongformContent>
                             </section>
 
                             <section className="bg-muted/30 rounded-3xl p-10 border border-border/50">

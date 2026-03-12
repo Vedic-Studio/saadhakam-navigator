@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { LongformContent } from "@/components/LongformContent";
 
 export const metadata: Metadata = {
     title: "How to Study Indian Philosophy at Home: Bhagavad Gita, Yoga Sutras & Vedanta",
@@ -72,7 +73,7 @@ export default function HowToStudyIndianPhilosophyHomePage() {
                         </p>
                     </header>
 
-                    <div className="space-y-14">
+                    <LongformContent className="space-y-14">
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">Step 1: The Bhagavad Gita as Operator&apos;s Manual</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
@@ -116,7 +117,7 @@ export default function HowToStudyIndianPhilosophyHomePage() {
                                 Advaita Vedanta Explained <ArrowRight size={16} />
                             </Link>
                         </div>
-                    </div>
+                    </LongformContent>
 
                     <div className="mt-20 bg-orange-600 rounded-3xl p-12 text-center text-white shadow-2xl">
                         <h2 className="text-4xl lg:text-5xl font-display font-black mb-6">Start the Curriculum.</h2>

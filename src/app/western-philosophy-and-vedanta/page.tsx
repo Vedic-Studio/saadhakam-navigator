@@ -78,7 +78,7 @@ export default function WesternPhilosophyAndVedantaPage() {
                     symbolic study via <Link href="/deities/shiva">Who is Shiva?</Link>.
                 </li>
                 <li>
-                    Deepen philosophical structure with <Link href="/philosophies/advaita-vedanta">Advaita Vedanta</Link> in the pSEO
+                    Deepen philosophical structure with <Link href="/philosophies/advaita">Advaita Vedanta</Link> in the pSEO
                     philosophy hub.
                 </li>
             </ul>

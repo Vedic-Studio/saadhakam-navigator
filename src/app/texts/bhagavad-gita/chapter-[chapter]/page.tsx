@@ -14,9 +14,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { chapter: string };
+  params: Promise<{ chapter: string }>;
 }): Promise<Metadata> {
-  const chapterNum = parseInt(params.chapter, 10);
+  const { chapter: chapterParam } = await params;
+  const chapterNum = parseInt(chapterParam, 10);
   const chapter = getBgChapterByNumber(chapterNum);
 
   if (!chapter) {
@@ -32,12 +33,13 @@ export async function generateMetadata({
   };
 }
 
-export default function BgChapterPage({
+export default async function BgChapterPage({
   params,
 }: {
-  params: { chapter: string };
+  params: Promise<{ chapter: string }>;
 }) {
-  const chapterNum = parseInt(params.chapter, 10);
+  const { chapter: chapterParam } = await params;
+  const chapterNum = parseInt(chapterParam, 10);
   const chapter = getBgChapterByNumber(chapterNum);
 
   if (!chapter) {

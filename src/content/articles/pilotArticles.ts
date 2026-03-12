@@ -10,6 +10,10 @@ export type RichText = RichTextPart[];
 
 export type ArticleBlock =
     | {
+        type: "lead";
+        content: RichText;
+    }
+    | {
         type: "paragraph";
         content: RichText;
     }
@@ -21,6 +25,20 @@ export type ArticleBlock =
     | {
         type: "list";
         items: RichText[];
+    }
+    | {
+        type: "quote";
+        content: RichText;
+        cite?: string;
+    }
+    | {
+        type: "callout";
+        tone?: "insight" | "practice" | "warning";
+        title?: string;
+        content: RichText;
+    }
+    | {
+        type: "separator";
     };
 
 export interface PilotArticleContent {
@@ -37,7 +55,7 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
         pillarHref: "/ancient-wisdom-philosophies",
         blocks: [
             {
-                type: "paragraph",
+                type: "lead",
                 content: [
                     "There is a question that surfaces in every spiritually curious person at some point: ",
                     {
@@ -57,6 +75,14 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                     " (end, conclusion). Vedanta is literally \"the culmination of knowledge\" — the philosophical crown of the vast Vedic tradition. It refers primarily to the ",
                     { type: "em", text: "Upanishads" },
                     ", the innermost teachings at the end of the Vedas, and to the school of thought that systematized and developed those insights over 2,000+ years.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "insight",
+                title: "In one line",
+                content: [
+                    "Vedanta asks a radical question: if your identity is deeper than body and mind, what happens to fear, suffering, and meaning?",
                 ],
             },
             {
@@ -113,6 +139,9 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                         " — 555 aphorisms by Badarayana, systematizing the Upanishadic teachings into a logical sequence. Every Vedanta teacher writes a commentary on these.",
                     ],
                 ],
+            },
+            {
+                type: "separator",
             },
             {
                 type: "heading",
@@ -207,6 +236,11 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                 ],
             },
             {
+                type: "quote",
+                content: [{ type: "em", text: "Tat Tvam Asi" }, " — That Thou Art."],
+                cite: "Chandogya Upanishad",
+            },
+            {
                 type: "heading",
                 level: 2,
                 content: ["The Practice: How Does One \"Do\" Vedanta?"],
@@ -275,7 +309,7 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
         pillarHref: "/ancient-wisdom-philosophies",
         blocks: [
             {
-                type: "paragraph",
+                type: "lead",
                 content: [
                     "Imagine discovering that the boundary between yourself and everything else is not a wall — it is a thought. A deeply conditioned, thoroughly believed, entirely convincing thought. But a thought nonetheless. This is the central claim of Advaita Vedanta, and it changes everything.",
                 ],
@@ -312,6 +346,11 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                 ],
             },
             {
+                type: "quote",
+                content: [{ type: "em", text: "Aham Brahmasmi" }, " — I am Brahman."],
+                cite: "Brihadaranyaka Upanishad",
+            },
+            {
                 type: "heading",
                 level: 2,
                 content: ["Maya: What Advaita Actually Means by \"Illusion\""],
@@ -346,6 +385,14 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                     " (the power to conceal Brahman's true nature from us) and ",
                     { type: "strong", text: "Vikshepa Shakti" },
                     " (the power to project a false appearance onto Brahman). Liberation comes when Avarana is removed — when the concealment lifts and you see the rope for what it is.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "warning",
+                title: "Common pitfall",
+                content: [
+                    "Advaita does not teach indifference to life; it teaches clearer seeing within life. Confusing this leads to spiritual bypassing.",
                 ],
             },
             {
@@ -449,6 +496,9 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                 ],
             },
             {
+                type: "separator",
+            },
+            {
                 type: "heading",
                 level: 2,
                 content: ["A Beginner's Reading Path for Advaita"],
@@ -531,7 +581,7 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
         pillarHref: "/practical-spiritual-practices",
         blocks: [
             {
-                type: "paragraph",
+                type: "lead",
                 content: [
                     { type: "strong", text: "Direct answer:" },
                     " start Japa with one simple mantra, one fixed daily time, and one round of 108 repetitions for 40 days before you optimize anything.",
@@ -556,6 +606,11 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                     { type: "em", text: '"Among sacrifices, I am Japa."' },
                     " Among all spiritual offerings, the repetition of the Divine name holds the highest place. This is not metaphor — it is the experiential finding of centuries of practitioners.",
                 ],
+            },
+            {
+                type: "quote",
+                content: ["\"Among sacrifices, I am Japa.\""],
+                cite: "Bhagavad Gita 10.25",
             },
             {
                 type: "heading",
@@ -629,6 +684,14 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                 type: "paragraph",
                 content: [
                     "The tradition is clear: Manasika Japa is 1,000 times more effective than audible chanting — but only if you have the concentration to sustain it. Start with Vaikhari. Graduate as your practice deepens.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "practice",
+                title: "40-day baseline",
+                content: [
+                    "Pick one mantra and one daily time for 40 days. Avoid switching mantras mid-cycle unless guided by a qualified teacher.",
                 ],
             },
             { type: "heading", level: 2, content: ["Choosing Your Mantra"] },
@@ -772,6 +835,9 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                     "Over time: The mantra transitions from effort to effortlessness. You don't chant the mantra — the mantra chants itself. At this point, Japa is transitioning into Dhyana (meditation) organically.",
                 ],
             },
+            {
+                type: "separator",
+            },
         ],
     },
     "daily-spiritual-routine-beginners": {
@@ -780,7 +846,7 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
         pillarHref: "/practical-spiritual-practices",
         blocks: [
             {
-                type: "paragraph",
+                type: "lead",
                 content: [
                     { type: "strong", text: "Direct answer:" },
                     " the best beginner spiritual routine is a short, repeatable daily sequence (breath + mantra + silence) you can sustain for at least 30–40 days.",
@@ -842,6 +908,11 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                     { type: "em", text: "continuously for a long time, without interruption, with devotion" },
                     " (YS 1.14).",
                 ],
+            },
+            {
+                type: "quote",
+                content: ["Practice becomes firmly grounded when done for a long time, without interruption, and with devotion."],
+                cite: "Yoga Sutras 1.14",
             },
             {
                 type: "paragraph",
@@ -1004,6 +1075,14 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                 ],
             },
             {
+                type: "callout",
+                tone: "practice",
+                title: "Consistency beats complexity",
+                content: [
+                    "If your routine breaks repeatedly, reduce duration before reducing frequency. Daily continuity is the primary lever.",
+                ],
+            },
+            {
                 type: "heading",
                 level: 2,
                 content: ["Two Realistic Daily Templates"],
@@ -1078,6 +1157,9 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                     ],
                     ["One page of scripture before sleep"],
                 ],
+            },
+            {
+                type: "separator",
             },
             { type: "heading", level: 2, content: ["The 40-Day Commitment"] },
             {

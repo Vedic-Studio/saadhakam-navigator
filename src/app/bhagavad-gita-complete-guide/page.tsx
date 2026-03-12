@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { LongformContent } from "@/components/LongformContent";
 import { ArrowRight, BookOpen, Flame, Shield, Sword, Users } from "lucide-react";
 import Link from "next/link";
 
@@ -56,99 +57,101 @@ export default function BhagavadGitaGuidePage() {
             </p>
           </header>
 
-          <section className="mb-20">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-display font-bold mb-6">The Battlefield of the Mind</h2>
-                <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                  While contextually set in the middle of a civil war on the field of Kurukshetra, the Gita is widely interpreted as a psychological allegory. The battlefield represents the human heart; the chariot is the body; the five horses are the senses; Arjuna is the individual soul (Jiva); and Krishna is the indwelling Divine Witness (Atman).
-                </p>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  The "crisis" of Arjuna—his sudden paralysis and refusal to act—is the existential crisis of every seeker. How do we live and act in a world full of complexity and moral ambiguity without losing our peace or accumulating karmic debt? Krishna's answer is a multi-path synthesis known as <strong className="text-foreground">Integral Yoga</strong>.
-                </p>
-              </div>
-              <div className="bg-muted/30 border border-border/50 rounded-3xl p-10 grid grid-cols-2 gap-4 text-center">
-                <div className="p-6 bg-background rounded-2xl border border-border/20">
-                  <Flame className="mx-auto mb-2 text-orange-500" />
-                  <h4 className="font-bold text-sm">Action</h4>
+          <LongformContent>
+            <section className="mb-20">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h2 className="text-3xl font-display font-bold mb-6">The Battlefield of the Mind</h2>
+                  <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+                    While contextually set in the middle of a civil war on the field of Kurukshetra, the Gita is widely interpreted as a psychological allegory. The battlefield represents the human heart; the chariot is the body; the five horses are the senses; Arjuna is the individual soul (Jiva); and Krishna is the indwelling Divine Witness (Atman).
+                  </p>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    The "crisis" of Arjuna—his sudden paralysis and refusal to act—is the existential crisis of every seeker. How do we live and act in a world full of complexity and moral ambiguity without losing our peace or accumulating karmic debt? Krishna's answer is a multi-path synthesis known as <strong className="text-foreground">Integral Yoga</strong>.
+                  </p>
                 </div>
-                <div className="p-6 bg-background rounded-2xl border border-border/20">
-                  <Users className="mx-auto mb-2 text-orange-500" />
-                  <h4 className="font-bold text-sm">Devotion</h4>
-                </div>
-                <div className="p-6 bg-background rounded-2xl border border-border/20">
-                  <BookOpen className="mx-auto mb-2 text-orange-500" />
-                  <h4 className="font-bold text-sm">Wisdom</h4>
-                </div>
-                <div className="p-6 bg-background rounded-2xl border border-border/20">
-                  <Shield className="mx-auto mb-2 text-orange-500" />
-                  <h4 className="font-bold text-sm">Dharma</h4>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="mb-20 bg-muted/20 rounded-3xl p-10 border border-border/40">
-            <h2 className="text-3xl font-display font-bold mb-10 text-center">The Yoga Triumvirate</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
-                  <Sword className="text-orange-500 w-5 h-5" />
-                  Karma Yoga
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">The path of selfless action. Krishna instructs: "Your right is only to work, never to its fruits." By surrendering the outcome, the work itself becomes a meditation.</p>
-                <Link href="/choose-between-bhakti-jnana-karma-raja-yoga" className="text-xs font-black uppercase text-orange-400 hover:text-orange-500 transition-colors">View Path Guide</Link>
-              </div>
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
-                  <Users className="text-orange-500 w-5 h-5" />
-                  Bhakti Yoga
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">The path of devotion. For those of emotional temperament, the realization of God through surrendered love and constant remembrance is the highest path.</p>
-                <Link href="/choose-between-bhakti-jnana-karma-raja-yoga" className="text-xs font-black uppercase text-orange-400 hover:text-orange-500 transition-colors">View Path Guide</Link>
-              </div>
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
-                  <BookOpen className="text-orange-500 w-5 h-5" />
-                  Jnana Yoga
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">The path of knowledge. Using discrimination to separate the Self from the non-self, the Jnani burns all karma in the fire of wisdom.</p>
-                <Link href="/choose-between-bhakti-jnana-karma-raja-yoga" className="text-xs font-black uppercase text-orange-400 hover:text-orange-500 transition-colors">View Path Guide</Link>
-              </div>
-            </div>
-          </section>
-
-          <section className="mb-20">
-            <h2 className="text-4xl font-display font-bold mb-12">Essential Chapters</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {chapters.map((ch) => (
-                <div key={ch.num} className="p-8 rounded-2xl border border-border/40 bg-card hover:border-orange-500/20 transition-all">
-                  <div className="flex justify-between items-start mb-4">
-                    <h4 className="font-bold text-lg text-foreground">{ch.title}</h4>
-                    <span className="text-xs font-black text-orange-500/40 uppercase tracking-widest">Chapter {ch.num}</span>
+                <div className="bg-muted/30 border border-border/50 rounded-3xl p-10 grid grid-cols-2 gap-4 text-center">
+                  <div className="p-6 bg-background rounded-2xl border border-border/20">
+                    <Flame className="mx-auto mb-2 text-orange-500" />
+                    <h4 className="font-bold text-sm">Action</h4>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed italic">{ch.desc}</p>
+                  <div className="p-6 bg-background rounded-2xl border border-border/20">
+                    <Users className="mx-auto mb-2 text-orange-500" />
+                    <h4 className="font-bold text-sm">Devotion</h4>
+                  </div>
+                  <div className="p-6 bg-background rounded-2xl border border-border/20">
+                    <BookOpen className="mx-auto mb-2 text-orange-500" />
+                    <h4 className="font-bold text-sm">Wisdom</h4>
+                  </div>
+                  <div className="p-6 bg-background rounded-2xl border border-border/20">
+                    <Shield className="mx-auto mb-2 text-orange-500" />
+                    <h4 className="font-bold text-sm">Dharma</h4>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </section>
+              </div>
+            </section>
 
-          <section className="mb-20">
-            <div className="bg-orange-600/5 border border-orange-500/10 rounded-3xl p-10 flex flex-col md:flex-row gap-12 items-center">
-              <div className="md:w-1/3 text-center">
-                <div className="text-6xl font-display font-black text-orange-500 mb-2">16:21</div>
-                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">The Three Gateways to Hell</p>
+            <section className="mb-20 bg-muted/20 rounded-3xl p-10 border border-border/40">
+              <h2 className="text-3xl font-display font-bold mb-10 text-center">The Yoga Triumvirate</h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                    <Sword className="text-orange-500 w-5 h-5" />
+                    Karma Yoga
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">The path of selfless action. Krishna instructs: "Your right is only to work, never to its fruits." By surrendering the outcome, the work itself becomes a meditation.</p>
+                  <Link href="/choose-between-bhakti-jnana-karma-raja-yoga" className="text-xs font-black uppercase text-orange-400 hover:text-orange-500 transition-colors">View Path Guide</Link>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                    <Users className="text-orange-500 w-5 h-5" />
+                    Bhakti Yoga
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">The path of devotion. For those of emotional temperament, the realization of God through surrendered love and constant remembrance is the highest path.</p>
+                  <Link href="/choose-between-bhakti-jnana-karma-raja-yoga" className="text-xs font-black uppercase text-orange-400 hover:text-orange-500 transition-colors">View Path Guide</Link>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold flex items-center gap-2 text-foreground">
+                    <BookOpen className="text-orange-500 w-5 h-5" />
+                    Jnana Yoga
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">The path of knowledge. Using discrimination to separate the Self from the non-self, the Jnani burns all karma in the fire of wisdom.</p>
+                  <Link href="/choose-between-bhakti-jnana-karma-raja-yoga" className="text-xs font-black uppercase text-orange-400 hover:text-orange-500 transition-colors">View Path Guide</Link>
+                </div>
               </div>
-              <div className="md:w-2/3">
-                <p className="text-xl text-muted-foreground leading-relaxed mb-6 italic">
-                  "Triple is the gateway to hell, destructive of the self — Lust, Anger, and Greed; therefore, one should abandon these three."
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Krishna's warning is practical. These three states "color" the mind so intensely that they make it impossible to see Dharma (duty) or the Truth. Spiritual progress begins with purifying these gates.
-                </p>
+            </section>
+
+            <section className="mb-20">
+              <h2 className="text-4xl font-display font-bold mb-12">Essential Chapters</h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {chapters.map((ch) => (
+                  <div key={ch.num} className="p-8 rounded-2xl border border-border/40 bg-card hover:border-orange-500/20 transition-all">
+                    <div className="flex justify-between items-start mb-4">
+                      <h4 className="font-bold text-lg text-foreground">{ch.title}</h4>
+                      <span className="text-xs font-black text-orange-500/40 uppercase tracking-widest">Chapter {ch.num}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed italic">{ch.desc}</p>
+                  </div>
+                ))}
               </div>
-            </div>
-          </section>
+            </section>
+
+            <section className="mb-20">
+              <div className="bg-orange-600/5 border border-orange-500/10 rounded-3xl p-10 flex flex-col md:flex-row gap-12 items-center">
+                <div className="md:w-1/3 text-center">
+                  <div className="text-6xl font-display font-black text-orange-500 mb-2">16:21</div>
+                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">The Three Gateways to Hell</p>
+                </div>
+                <div className="md:w-2/3">
+                  <p className="text-xl text-muted-foreground leading-relaxed mb-6 italic">
+                    "Triple is the gateway to hell, destructive of the self — Lust, Anger, and Greed; therefore, one should abandon these three."
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Krishna's warning is practical. These three states "color" the mind so intensely that they make it impossible to see Dharma (duty) or the Truth. Spiritual progress begins with purifying these gates.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </LongformContent>
 
           <div className="rounded-3xl bg-orange-600 p-12 text-center text-white shadow-2xl relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">

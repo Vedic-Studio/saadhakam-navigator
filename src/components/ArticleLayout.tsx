@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { ArrowRight, Clock, BookOpen } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleReadTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { LongformContent } from "@/components/LongformContent";
 import { ArticleMeta } from "@/data/articles";
 
 interface ArticleLayoutProps {
@@ -101,9 +101,9 @@ export function ArticleLayout({
                     </header>
 
                     {/* Article Body */}
-                    <div className="prose prose-invert prose-orange max-w-none prose-headings:font-display prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-14 prose-h2:mb-5 prose-h3:text-2xl prose-p:text-lg prose-p:leading-relaxed prose-p:text-muted-foreground prose-li:text-muted-foreground prose-li:text-lg prose-strong:text-foreground prose-a:text-orange-400 prose-a:no-underline hover:prose-a:text-orange-300 mb-16">
+                    <LongformContent className="mb-16">
                         {children}
-                    </div>
+                    </LongformContent>
 
                     {/* Related Links */}
                     {meta.relatedLinks.length > 0 && (

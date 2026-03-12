@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { LongformContent } from "@/components/LongformContent";
 
 export const metadata: Metadata = {
     title: "How to Start Meditating Daily (Even if You Can't Sit Still)",
@@ -108,7 +109,7 @@ export default function HowToStartMeditatingDailyPage() {
                         </ul>
                     </section>
 
-                    <div className="space-y-14">
+                    <LongformContent className="space-y-14">
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">The Biggest Myth About Meditation</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
@@ -244,7 +245,7 @@ export default function HowToStartMeditatingDailyPage() {
                                 ))}
                             </div>
                         </section>
-                    </div>
+                    </LongformContent>
 
                     <div className="mt-20 bg-orange-600 rounded-3xl p-12 text-center text-white shadow-2xl">
                         <h2 className="text-4xl lg:text-5xl font-display font-black mb-6">Start With Japa.</h2>

@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { LongformContent } from "@/components/LongformContent";
 
 export const metadata: Metadata = {
     title: "How Karma and Dharma Actually Work | Beyond Punishment and Reward",
@@ -93,7 +94,7 @@ export default function HowKarmaDharmaWorkPage() {
                         </p>
                     </header>
 
-                    <div className="space-y-14">
+                    <LongformContent className="space-y-14">
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">What Karma Is (And Isn't)</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
@@ -218,18 +219,19 @@ export default function HowKarmaDharmaWorkPage() {
                             </Link>
                         </div>
 
-                        <section className="mt-16">
-                            <h2 className="text-4xl font-display font-bold mb-12 text-center tracking-tight uppercase">Common Questions</h2>
-                            <div className="grid md:grid-cols-2 gap-6">
-                                {faqs.map((faq) => (
-                                    <div key={faq.question} className="rounded-2xl border border-border/40 bg-card/40 p-8 shadow-sm">
-                                        <h3 className="text-xl font-bold mb-4">{faq.question}</h3>
-                                        <p className="text-muted-foreground leading-relaxed pl-4 border-l-2 border-orange-500/20">{faq.answer}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-                    </div>
+                    </LongformContent>
+
+                    <section className="mt-16">
+                        <h2 className="text-4xl font-display font-bold mb-12 text-center tracking-tight uppercase">Common Questions</h2>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {faqs.map((faq) => (
+                                <div key={faq.question} className="rounded-2xl border border-border/40 bg-card/40 p-8 shadow-sm">
+                                    <h3 className="text-xl font-bold mb-4">{faq.question}</h3>
+                                    <p className="text-muted-foreground leading-relaxed pl-4 border-l-2 border-orange-500/20">{faq.answer}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
 
                     <div className="mt-20 bg-orange-600 rounded-3xl p-12 text-center text-white shadow-2xl">
                         <h2 className="text-4xl lg:text-5xl font-display font-black mb-6">Apply It Starting Today.</h2>

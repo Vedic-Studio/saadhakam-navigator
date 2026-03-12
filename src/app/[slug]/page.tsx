@@ -9,6 +9,7 @@ import { getConceptBySlug, getAllConcepts } from "@/data/concepts";
 import { getSanskritWordBySlug } from "@/data/sanskritVocab";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { LongformContent } from "@/components/LongformContent";
 import { Badge } from "@/components/ui/badge";
 import {
   ArrowRight,
@@ -181,10 +182,10 @@ export default async function PseoConceptPage({
                 <BookOpen className="text-primary w-10 h-10" />
                 Deep Understanding
               </h2>
-              <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground leading-relaxed">
+              <LongformContent>
                 <p className="mb-6">{concept.longDescription}</p>
                 <p className="italic border-l-2 border-primary/20 pl-6 py-2">{concept.roleInPhilosophy}</p>
-              </div>
+              </LongformContent>
             </div>
           </section>
 
