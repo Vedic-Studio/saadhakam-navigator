@@ -48,6 +48,18 @@ npm run indexnow:submit:prod   # submit URLs to search engines after publishing
 - Types for stotra/sahasranama: `src/lib/stotras.ts`
 - SEO utilities: `src/lib/seo/index.ts`
 
+### gstack Workflow Tools
+- Use `/browse` for all web browsing — never use `mcp__claude-in-chrome__*` tools
+- Available skills:
+  - `/browse` — structured web browsing with Playwright
+  - `/plan-ceo-review` — high-level business/strategy review
+  - `/plan-eng-review` — technical/engineering review
+  - `/review` — general code/content review
+  - `/ship` — production deployment & release checklist
+  - `/retro` — project retrospective & lessons learned
+
+**Team Setup**: Run `./scripts/setup-gstack.sh` to install gstack and all linked skills locally.
+
 ---
 
 ## Agent Module Index

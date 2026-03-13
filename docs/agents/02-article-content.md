@@ -141,6 +141,73 @@ Every article must include at least one of the following — this is what differ
 
 ---
 
+## Voice & Tone
+
+This section is mandatory. Read it before writing or rewriting any prose. It takes precedence over any default behavior from content-writing skills.
+
+### Forbidden Phrases (hardban list)
+
+Do not use any of the following in article prose. If you find them in existing content, rewrite:
+
+```
+— used as dramatic flourish mid-sentence ("this teaching — like all great teachings —")
+ultimately  (except in direct quotes from primary sources)
+journey  (as spiritual metaphor: "your spiritual journey", "this journey", "one's journey")
+navigate  (as metaphor: "navigate life", "navigate the darkness", "navigate complexity")
+tapestry  ("rich tapestry of", "tapestry of traditions")
+landscape  ("spiritual landscape", "philosophical landscape", "vast landscape")
+holistic
+testament to
+at its core
+in essence
+it is worth noting
+it is important to note
+delve into
+moreover / furthermore  (as paragraph openers)
+arguably  (as a hedge)
+notably  (as a hedge: "notably different", "notably via")
+```
+
+**Em dashes**: parenthetical grammar use is fine (replacing brackets). The ban is on em dashes used for dramatic effect or stylistic flourish.
+
+---
+
+### Voice Principles (with counter-examples)
+
+**Principle 1: Write with conviction, not hedging.**
+- ❌ "Vedanta arguably offers one of the most holistic frameworks for understanding consciousness."
+- ✅ "Vedanta is not a framework. It is the direct investigation of the one who is asking."
+
+**Principle 2: Diagnose before teaching.**
+- ❌ "Fear of death is a common human experience. Advaita Vedanta offers several insights…"
+- ✅ "The fear most of us call 'fear of death' is not fear of death. It is the ego's dread of its own non-existence — and the ego is the only part of you that is actually temporary."
+
+**Principle 3: Specificity over abstraction. Name the source, school, or commentator.**
+- ❌ "Ancient texts speak of the importance of self-inquiry."
+- ✅ "Mandukya Upanishad verse 7 defines turiya not as a fourth state but as the witness of the other three — Shankaracharya's commentary calls it 'the ever-present background.'"
+
+**Principle 4: Short declarative sentences over long compound ones.**
+- ❌ "Sanatan Dharma, which is the eternal cosmic order that sustains reality itself, is not merely a religion but rather a comprehensive philosophical and spiritual framework that encompasses all aspects of existence."
+- ✅ "Sanatan Dharma is not a religion. It is a description of the structure of reality — how it holds itself together, and how you fit inside it."
+
+**Principle 5: Never motivate. Inform.**
+- ❌ "Start your journey into non-duality today — you have everything you need."
+- ✅ "Where to start: Mandukya Upanishad (12 verses, the shortest Upanishad) with Shankaracharya's Mandukya Karika commentary. Read it once. Then read it again with the commentary."
+
+---
+
+### Tonal Reference
+
+Calibrate voice against these published models:
+
+- **Directness**: *I Am That* (Nisargadatta Maharaj transcripts) — clipped, no ceremony, no warmth-padding
+- **Precision**: *The Economist* — every sentence earns its place, no throat-clearing
+- **Authority**: University press monograph — every claim sourced, no popularist hedging
+
+NOT: Yoga Journal, Chopra Center, Sounds True, or any wellness publication register. If your prose sounds like it belongs in a morning newsletter with a Sanskrit quote header, rewrite it.
+
+---
+
 ## Sprint Backlog
 
 ### Sprint 1 (Highest Priority — SEO foundation)
