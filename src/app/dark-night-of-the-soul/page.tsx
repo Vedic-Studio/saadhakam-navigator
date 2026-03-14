@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Dark Night of the Soul vs Spiritual Bypassing",
         description:
-            "The dark night is not depression. Spiritual bypassing is not enlightenment. A practical guide to navigating the most disorienting stage of the spiritual path.",
+            "The dark night is not depression. Spiritual bypassing is not enlightenment. A practical guide to the most disorienting stage of the spiritual path.",
         url: "https://opensadhaka.com/dark-night-of-the-soul",
         type: "article",
     },
@@ -65,7 +65,7 @@ export default function DarkNightOfTheSoulPage() {
                             The Void Before the <span className="text-orange-500 italic">Dawn</span>
                         </h1>
                         <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
-                            <strong>Direct answer:</strong> A dark night of the soul is a period of profound spiritual desolation where previous belief systems collapse and existence seems meaningless — not depression, but a genuine transition where the ego is dissolving to make room for deeper truth. Spiritual bypassing is the opposite: using spiritual language to <em>avoid</em> this necessary darkness. Learning to distinguish them is essential to genuine growth.
+                            <strong>Direct answer:</strong> A dark night of the soul is a phase where identity and meaning structures collapse during real spiritual maturation. Spiritual bypassing does the opposite: it uses spiritual language to avoid pain, accountability, and unresolved wounds. The first confronts reality; the second escapes it.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             You cannot think your way out of a dark night. You can only let it complete itself.
@@ -79,7 +79,7 @@ export default function DarkNightOfTheSoulPage() {
                                 The phrase comes from the 16th-century Spanish mystic St. John of the Cross, who described a stage in contemplative life where all previous consolations — devotional feelings, mystical experiences, the sense of God's presence — completely withdraw. The soul is left in a barren, disoriented darkness with no obvious path forward.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                In the Indian tradition, analogous experiences are described in the journey through samskara-dissolution — when deeply embedded mental and emotional impressions from this and previous lifetimes begin to surface and release, creating periods of profound instability and apparent meaninglessness.
+                                In the Indian tradition, analogous experiences are described as samskara-dissolution — when deeply embedded mental and emotional impressions from this and previous lifetimes begin to surface and release, creating periods of profound instability and apparent meaninglessness.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed">
                                 Both traditions converge on the same insight: the darkness is not a sign of failure. It is the specific experience of a layer of the ego-self dissolving. The identity structure that had previously provided meaning, security, and orientation is being dismantled. <strong className="text-foreground">The terror is the ego's natural response to its own dissolution.</strong>
@@ -142,9 +142,9 @@ export default function DarkNightOfTheSoulPage() {
                         </section>
 
                         <section>
-                            <h2 className="text-3xl font-display font-bold mb-6">How to Navigate the Dark Night</h2>
+                            <h2 className="text-3xl font-display font-bold mb-6">How to Work Through the Dark Night</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                There is no quick fix for a genuine dark night. The tradition offers practices that support the passage — not to accelerate the end, but to navigate the darkness without adding unnecessary suffering:
+                                There is no quick fix for a genuine dark night. The tradition offers practices that support the passage — not to accelerate the end, but to move through the darkness without adding unnecessary suffering:
                             </p>
                             <div className="space-y-5">
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">

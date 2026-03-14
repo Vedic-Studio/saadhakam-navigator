@@ -97,7 +97,7 @@ export default function VedasUpanishadsGuide() {
                             The <span className="text-orange-500 italic">Library</span> of Eternity
                         </h1>
                         <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
-                            <strong>Direct answer:</strong> India's sacred texts fall into two categories — Shruti (revealed knowledge, including the Vedas and Upanishads) and Smriti (remembered tradition, including the Bhagavad Gita and epics). The Vedas provide the ritual and cosmological foundation; the Upanishads distill the metaphysical core; the Bhagavad Gita applies that metaphysics to ordinary life.
+                            <strong>Direct answer:</strong> India's sacred texts are grouped as Shruti (revealed: Vedas and Upanishads) and Smriti (remembered: Gita, epics, Puranas). The Vedas establish ritual and cosmology, the Upanishads state metaphysics, and the Bhagavad Gita applies those teachings to action, duty, and liberation.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             You don't need to read all of them. You need to understand what each one is for — and then pick the right starting point for where you actually are.
@@ -127,7 +127,7 @@ export default function VedasUpanishadsGuide() {
                                 The Four Vedas
                             </h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                                The Vedas are the oldest stratum of India's sacred literature — composed over thousands of years and transmitted orally with extraordinary precision before being written down. Each Veda is a self-contained world of cosmological speculation, ritual procedure, and philosophical inquiry:
+                                The Vedas are the oldest layer of India's sacred literature, transmitted orally for centuries with strict recitation methods. Each Veda includes cosmology, ritual procedure, and early philosophical inquiry:
                             </p>
                             <div className="grid sm:grid-cols-2 gap-6 mb-8">
                                 {vedas.map((v) => (
@@ -189,7 +189,7 @@ export default function VedasUpanishadsGuide() {
                                 <strong className="text-foreground">The setup:</strong> The warrior Arjuna is about to fight a civil war against his own family and teachers. He collapses in grief and refuses to fight. Krishna, his charioteer, spends the entire Gita answering Arjuna's questions about duty, identity, suffering, action, and the nature of the self.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                                The battlefield (Kurukshetra) is simultaneously literal and symbolic — it represents the mind, where the war between our higher nature (the Pandavas) and our ego-driven impulses (the Kauravas) plays out daily. Arjuna's paralysis is everyman's paralysis in the face of difficult duty.
+                                Kurukshetra is both historical and interpretive. In traditional commentary it can also represent the inner field where clarity and impulse conflict. Arjuna's paralysis is the human problem of duty under emotional overwhelm.
                             </p>
 
                             <h3 className="text-xl font-bold mb-6">The Gita's Three Core Teachings</h3>

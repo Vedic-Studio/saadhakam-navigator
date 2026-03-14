@@ -65,7 +65,7 @@ export default function WhatIsMayaPage() {
                             Seeing Through the <span className="text-orange-500 italic">Matrix</span>
                         </h1>
                         <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
-                            <strong>Direct answer:</strong> Maya is the Vedantic concept of cosmic illusion — the power by which infinite, undivided consciousness (Brahman) appears as a finite, fragmented world of separate objects and persons. Maya doesn't mean the world is fake; it means the world is not what you think it is. Moksha (liberation) is what happens when you see through the projection.
+                            <strong>Direct answer:</strong> Maya is the power by which Brahman appears as a world of separate names and forms. It does not mean "nothing exists." It means what appears is conditionally real, not absolutely real. Moksha is recognition of the underlying non-dual reality.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             Maya is not the claim that fire doesn't burn. It is the insight that fire's burning — and your fear of it — arises from one infinite source that itself is never burned.
@@ -82,7 +82,7 @@ export default function WhatIsMayaPage() {
                                 But this is a mistranslation — or at least a gross oversimplification. The Sanskrit word Maya comes from the root <em>ma</em> — "to measure" or "to create." Maya is the creative power by which the unlimited appears to become limited. It does not erase the world; it describes the status of the world in relation to ultimate reality.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed">
-                                Adi Shankaracharya, the great codifier of Advaita, used the word <em>mithya</em> to describe the world's ontological status. Mithya does not mean "unreal" — it means "neither absolutely real nor absolutely unreal." The world has <em>practical reality</em> (vyavaharika) within the realm of everyday experience, but it lacks <em>ultimate reality</em> (paramarthika) when compared to Brahman, the unchanging ground of all existence.
+                                Adi Shankaracharya, the great codifier of Advaita, used the word <em>mithya</em> to describe the world's ontological status. Mithya does not mean "unreal" — it means "neither absolutely real nor absolutely unreal." The world has <em>practical reality</em> (vyavaharika) within everyday experience, but it is not <em>absolute reality</em> (paramarthika) when compared to Brahman, the unchanging ground of all existence.
                             </p>
                         </section>
 

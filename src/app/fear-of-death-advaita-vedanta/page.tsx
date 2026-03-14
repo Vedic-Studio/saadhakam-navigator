@@ -65,7 +65,7 @@ export default function FearOfDeathAdvaitaPage() {
                             What Happens When the <span className="text-orange-500 italic">Wave</span> Breaks
                         </h1>
                         <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
-                            <strong>Direct answer:</strong> The fear of death, according to Advaita Vedanta, arises from a fundamental case of mistaken identity — believing you are the temporary body and ego rather than the infinite consciousness they arise within. What is not born cannot die. The awareness reading these words right now was not created at birth and will not be destroyed at death.
+                            <strong>Direct answer:</strong> Advaita locates fear of death in mistaken identity: taking body and ego to be the self. What is born and dies is the body-mind complex. The witnessing awareness (Atman) is not produced at birth and is not destroyed at death.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             A wave crashing into the ocean does not destroy the water. It simply returns to what it always was.

@@ -65,7 +65,7 @@ export default function SpiritualAntidoteHustleCulturePage() {
                             Stop <span className="text-orange-500 italic">Finding</span> Your Purpose
                         </h1>
                         <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
-                            <strong>Direct answer:</strong> The modern idea that your purpose must be a globally impactful career or a peak achievement creates massive anxiety. The Bhagavad Gita's concept of Svadharma says your purpose is the duty directly in front of you — the parent, the builder, the teacher, the clerk — done with total attention and zero attachment to how impressive it looks. Purpose is found in the quality of your presence, not the scale of your accomplishments.
+                            <strong>Direct answer:</strong> The Gita rejects achievement as the source of meaning. Svadharma locates purpose in the duty directly in front of you, performed with full attention and reduced attachment to outcomes. Meaning is measured by action quality and inner alignment, not social visibility.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             Hustle culture says meaning comes after you achieve enough. The Gita says meaning is available right now, in how you do what you're already doing.

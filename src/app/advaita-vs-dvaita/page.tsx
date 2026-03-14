@@ -36,8 +36,7 @@ export default function AdvaitaVsDvaitaPage() {
                             Advaita <span className="text-muted-foreground font-light text-4xl md:text-5xl border-x px-4 mx-2">vs</span> Dvaita
                         </h1>
                         <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
-                            One reality or two? The question that divided India's greatest minds for a millennium
-                            stems from how we experience the relationship between the Soul and the Divine.
+                            <strong>Direct answer:</strong> Advaita says Atman and Brahman are identical; Dvaita says the soul and God remain eternally distinct. Both accept the Vedas and Upanishads, but they differ on identity, devotion, and liberation.
                         </p>
                     </div>
                 </section>
@@ -47,9 +46,7 @@ export default function AdvaitaVsDvaitaPage() {
                         <div className="prose prose-invert prose-orange max-w-none space-y-8">
                             <div className="bg-muted/30 p-8 rounded-3xl border border-border/50 mb-12">
                                 <p className="text-lg leading-relaxed first-letter:text-5xl first-letter:font-display first-letter:mr-3 first-letter:float-left first-letter:text-primary">
-                                    At some point in your spiritual life, you encounter the question that has divided India's greatest minds for over a thousand years:
-                                    <em>Is the universe One, or Two?</em> Is your innermost Self the same as God, or forever distinct from God? Your answer changes everything —
-                                    your practice, your prayer, your understanding of suffering, and your vision of liberation.
+                                    Most people treat this as a purely abstract dispute. It is not. If self and God are one, the path centers on knowledge; if they are distinct, the path centers on devotion and dependence.
                                 </p>
                             </div>
 
@@ -59,7 +56,7 @@ export default function AdvaitaVsDvaitaPage() {
                                     <h2 className="text-3xl font-display font-bold">Advaita: Non-Duality</h2>
                                     <p className="text-muted-foreground">
                                         Systematized by <strong>Adi Shankaracharya</strong> (8th century). Advaita means "not-two."
-                                        It asserts that Brahman (Infinite Consciousness) is the only ultimate reality.
+                                        It asserts that Brahman (Infinite Consciousness) is the only absolute reality.
                                     </p>
                                     <blockquote className="border-l-4 border-primary/30 pl-6 italic">
                                         "Brahma satyam jagan mithya... Brahman is real, the world is an appearance."
@@ -91,7 +88,7 @@ export default function AdvaitaVsDvaitaPage() {
                                     <tbody className="divide-y divide-white/5 text-muted-foreground">
                                         <tr>
                                             <td className="p-6 font-bold text-foreground">Ultimate Reality</td>
-                                            <td className="p-6">Only Brahman is ultimately real</td>
+                                            <td className="p-6">Only Brahman is absolutely real</td>
                                             <td className="p-6">God, souls, and matter are all real</td>
                                         </tr>
                                         <tr>
@@ -127,7 +124,7 @@ export default function AdvaitaVsDvaitaPage() {
                                             Choose Advaita if...
                                         </h3>
                                         <p className="text-sm leading-relaxed text-muted-foreground">
-                                            You find that the deepest experience of meditation dissolves the sense of a separate self —
+                                            You find that the deepest experience of meditation dissolves the sense of a separate self,
                                             if "I" and "the universe" collapse into pure, undivided awareness.
                                         </p>
                                     </Card>
@@ -147,7 +144,7 @@ export default function AdvaitaVsDvaitaPage() {
                             <div className="mt-20 bg-muted/20 rounded-3xl p-12 text-center border border-white/5">
                                 <h2 className="text-3xl font-display font-bold mb-6">Explore Your Path</h2>
                                 <p className="text-xl text-muted-foreground max-w-xl mx-auto mb-10">
-                                    Take the Faith Finder assessment to see which philosophical school aligns with your psychological temperament.
+                                    Take the Faith Finder assessment to see which Vedanta school aligns with your psychological temperament.
                                 </p>
                                 <a href="/faith-finder">
                                     <button className="bg-primary text-primary-foreground font-bold px-10 h-16 rounded-2xl hover:scale-105 transition-transform flex items-center mx-auto">

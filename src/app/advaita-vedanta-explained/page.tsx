@@ -64,7 +64,7 @@ export default function AdvaitaVedantaPage() {
                             <strong>Direct answer:</strong> Advaita Vedanta says your deepest Self is not separate from ultimate reality; practice is about removing false identification, not creating a new belief system.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
-                            Advaita Vedanta is the philosophical claim that the boundary between "you" and the "universe" is not a physical wall, but a persistent cognitive superimposition.
+                            Advaita Vedanta states that the boundary between "you" and "the world" is not ontological. It is a cognitive superimposition (adhyasa) corrected through inquiry.
                         </p>
                     </header>
 
@@ -93,10 +93,10 @@ export default function AdvaitaVedantaPage() {
                             <section>
                                 <h2 className="text-3xl font-display font-bold mb-6">The Non-Dual Equation</h2>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    The word <strong className="text-foreground">Advaita</strong> literally translates to "not-two." Unlike dualistic systems that posit a fundamental separation between the Creator and the Created, Advaita asserts that ultimate reality is a singular, indivisible continuum of consciousness. In this framework, your individual soul (Atman) is not a "piece" of the divine, but is identical to the absolute totality (Brahman).
+                                    Most readers think Advaita says, "the world is fake." The primary claim is different: Brahman alone is absolutely real, and the perceived separation between jiva (individual self) and Brahman is due to ignorance (avidya). The Mahavakya "Tat Tvam Asi" (Chandogya Upanishad 6.8.7) is read as identity, not resemblance.
                                 </p>
                                 <p className="text-xl text-muted-foreground leading-relaxed">
-                                    This realization is the central goal of the tradition. It suggests that liberation is not something to be "attained" in the future, but a recognition of a truth that is already present. We suffer because we fail to recognize this underlying unity, identifying instead with the temporary shells of body, ego, and circumstance.
+                                    Realization in Advaita is recognition, not acquisition. Shankara's commentaries describe moksha as knowledge that removes error, the way light removes confusion about a rope seen in dim conditions. Suffering persists when identity is fixed on body, role, and thought rather than witness-consciousness.
                                 </p>
                             </section>
 
@@ -106,7 +106,7 @@ export default function AdvaitaVedantaPage() {
                                     The Rope-Snake Analogy
                                 </h2>
                                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                                    Adi Shankara, the 8th-century master who systematized Advaita, used the analogy of a rope and a snake to explain our misperception of reality. If you see a coiled rope in dim light and mistake it for a snake, your fear is real. Your heart races, and you might run away. The snake, however, has no objective reality; it is a superimposition (Adhyasa) of your mind onto the rope.
+                                    Adi Shankara uses the rope-snake example to explain adhyasa (superimposition). In low light, a rope is misread as a snake; fear, pulse, and avoidance are experientially real, but the snake is not independently real. In the same way, ego-separateness appears compelling while the substrate remains Brahman.
                                 </p>
                                 <div className="grid md:grid-cols-2 gap-6 mt-8">
                                     <div className="bg-background/50 p-6 rounded-2xl border border-border/20">
@@ -123,21 +123,21 @@ export default function AdvaitaVedantaPage() {
                             <section>
                                 <h2 className="text-3xl font-display font-bold mb-6">The Two Tiers of Reality</h2>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    Advaita acknowledges that we live in a world of multiplicity while insisting on underlying unity. To resolve this tension, it establishes two levels of perspective: <strong className="text-foreground">Vyavaharika</strong> (Conventional Reality) and <strong className="text-foreground">Paramarthika</strong> (Absolute Reality).
+                                    Advaita does not deny ordinary experience; it classifies it. Shankara distinguishes <strong className="text-foreground">vyavaharika</strong> (transactional reality) from <strong className="text-foreground">paramarthika</strong> (absolute reality) so ethical action and non-dual metaphysics can both be true at their own level.
                                 </p>
                                 <div className="space-y-4">
                                     <div className="flex gap-4 items-start p-6 rounded-2xl border border-border/40 hover:bg-muted/20 transition-colors">
                                         <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 font-bold shrink-0">1</div>
                                         <div>
                                             <h4 className="font-bold text-lg mb-1">Conventional (The Map)</h4>
-                                            <p className="text-muted-foreground">The realm of time, space, cause, and effect. Here, moral duties, rituals, and personal relationships are real and necessary for spiritual growth.</p>
+                                            <p className="text-muted-foreground">The realm of time, causation, relation, and obligation. Dharma, ritual discipline, and moral responsibility operate fully at this level.</p>
                                         </div>
                                     </div>
                                     <div className="flex gap-4 items-start p-6 rounded-2xl border border-border/40 hover:bg-muted/20 transition-colors">
                                         <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 font-bold shrink-0">2</div>
                                         <div>
-                                            <h4 className="font-bold text-lg mb-1">Absolute (The Terrian)</h4>
-                                            <p className="text-muted-foreground">The realization that only Brahman is ultimately real. From this height, all distinctions of 'me' and 'thee' dissolve into a singular field of being.</p>
+                                            <h4 className="font-bold text-lg mb-1">Absolute (The Terrain)</h4>
+                                            <p className="text-muted-foreground">The standpoint where Brahman alone is real and non-dual. Distinctions between knower, known, and knowing collapse in direct knowledge.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -202,7 +202,7 @@ export default function AdvaitaVedantaPage() {
                     <section className="mb-20 rounded-3xl border border-border/60 bg-muted/5 p-10 text-center">
                         <h2 className="text-3xl font-display font-bold mb-6">Scientific & Philosophical Convergence</h2>
                         <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-10">
-                            Modern physics, specifically in the realm of quantum field theory, increasingly mirrors the Vedantic view of a singular, underlying field from which all distinct particles arise. Similarly, neuroscience suggests that the "ego" is a modular construction of the brain rather than a permanent entity—a finding that directly supports the Advaitic distinction between the changing personality and the unchanging Witness.
+                            Modern analogies from quantum theory and neuroscience can be suggestive, but they are not pramana (valid means of scriptural knowledge) in Vedanta. Use them as heuristic parallels only. Advaita's claims stand on Upanishadic revelation, reasoning, and contemplative verification.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
                             {references.map((ref) => (
@@ -223,7 +223,7 @@ export default function AdvaitaVedantaPage() {
                         <div className="relative z-10 bg-background/95 lg:bg-transparent p-8 lg:p-0 rounded-2xl flex flex-col items-center lg:items-start text-center lg:text-left">
                             <h2 className="text-3xl lg:text-5xl font-display font-black mb-4 tracking-tight">The <span className="text-orange-600 lg:text-white">Final Departure</span> from Duality.</h2>
                             <p className="text-lg lg:text-xl text-muted-foreground lg:text-orange-50 max-w-2xl mb-10">
-                                Advaita is not a set of beliefs to be adopted, but a reality to be recognized. Start your structured journey into non-duality today.
+                                Advaita is not a belief package. It is a method of removing error in self-identity through sravana, manana, and nididhyasana.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                                 <TrackedLink

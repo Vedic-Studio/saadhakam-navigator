@@ -96,7 +96,7 @@ export default function WhatIsSanatanDharmaPage() {
                             The <span className="text-orange-500 italic">Eternal</span> Order
                         </h1>
                         <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
-                            <strong>Direct answer:</strong> Sanatan Dharma means "the eternal order" — the universal cosmic framework of duty, karma, and liberation that predates the geographical label "Hinduism" by millennia. It has no single founder, no single prophet, and no single book. It is a way of understanding reality itself.
+                            <strong>Direct answer:</strong> Sanatan Dharma means "the eternal order." It names the laws and duties that sustain life, mind, and society. It is older than the label "Hinduism," has no single founder, and is expressed through many texts and lineages.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             Hinduism is what outsiders called the people living east of the Indus River. Sanatan Dharma is what those people called the truth they were living.
@@ -126,13 +126,13 @@ export default function WhatIsSanatanDharmaPage() {
                                     The Naming Problem
                                 </h2>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    The word "Hindu" appears nowhere in the sacred texts of India. It is a geographical term — a Persian and Arabic corruption of "Sindhu," the Sanskrit name for the Indus River. When Persian, Greek, and later British observers encountered the vast diversity of spiritual practices in the Indian subcontinent, they grouped them all under the umbrella label "Hinduism" for administrative and taxonomic convenience.
+                                    Most people asking "What is Sanatan Dharma?" are actually asking a naming question. The term "Hindu" does not appear in the Vedas, Upanishads, or Bhagavad Gita. It emerged as a geographical label from "Sindhu," then became a civilizational umbrella in Persian, Greek, and British usage.
                                 </p>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    The people practicing these traditions, however, did not call themselves Hindus. They called their framework <strong className="text-foreground">Sanatan Dharma</strong> — the eternal, unchanging order of the cosmos. This was not nationalism or tribalism; it was a claim about the nature of reality itself. Just as the laws of physics operate independently of which country you are born in, Sanatan Dharma was understood as a universal structure that predated all human civilizations.
+                                    Practitioners described their framework as <strong className="text-foreground">Sanatan Dharma</strong>, the eternal order. This was not an ethnic slogan. It was a claim that reality has a lawful structure, just as gravity is lawful whether you name it or not.
                                 </p>
                                 <p className="text-xl text-muted-foreground leading-relaxed">
-                                    This distinction matters enormously. "Hinduism" is a political and sociological category. "Sanatan Dharma" is a philosophical and spiritual one. Conflating them is like confusing the map with the territory.
+                                    The distinction is not semantic. "Hinduism" functions as a historical and sociological category. "Sanatan Dharma" refers to metaphysics, ethics, and liberation.
                                 </p>
                             </section>
 
@@ -141,7 +141,7 @@ export default function WhatIsSanatanDharmaPage() {
                                     Is Hinduism a Religion or a Way of Life?
                                 </h2>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    Western definitions of "religion" typically require a founding prophet, a canonical holy book, a centralized church, and a defined set of beliefs that members must accept. By every one of these criteria, Sanatan Dharma does not qualify as a "religion" in the Western sense.
+                                    Western definitions of religion often assume one founder, one revealed book, one authority structure, and one binding creed. Sanatan Dharma does not follow that model. It supports multiple sampradayas (lineages), commentarial traditions, and methods of practice under one civilizational framework.
                                 </p>
                                 <div className="overflow-x-auto rounded-2xl border border-border/40 mb-8">
                                     <table className="w-full text-sm">
@@ -182,7 +182,7 @@ export default function WhatIsSanatanDharmaPage() {
                                     </table>
                                 </div>
                                 <p className="text-xl text-muted-foreground leading-relaxed">
-                                    Sanatan Dharma contains traditions that are intensely theistic (like Vaishnavism), non-theistic (like Advaita Vedanta), and agnostic-philosophical (like certain schools of Mimamsa). It has room for the devotional bhakta who worships Vishnu and the non-dualist jnani who insists there is only formless consciousness. This is not contradiction — it is deliberate philosophical pluralism.
+                                    Sanatan Dharma includes strongly theistic schools such as Vaishnavism, non-dual schools such as Advaita Vedanta, and ritual-philosophical schools such as Purva Mimamsa. A Vishnu bhakta and a non-dual jnani disagree on key points, yet both sit inside the same scriptural ecosystem. The pluralism is intentional, not accidental.
                                 </p>
                             </section>
 
@@ -192,7 +192,7 @@ export default function WhatIsSanatanDharmaPage() {
                                     The Four Pillars: Purushartha
                                 </h2>
                                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                                    Instead of commandments or articles of faith, Sanatan Dharma organizes human life around four legitimate goals (<em>Purusharthas</em>) — a map of what it means to live fully and well:
+                                    Instead of a single creed, Sanatan Dharma organizes life through the four purusharthas (human aims). They define what a complete life includes and how those aims are ordered:
                                 </p>
                                 <div className="grid sm:grid-cols-2 gap-6">
                                     {pillars.map((p) => (
@@ -206,53 +206,53 @@ export default function WhatIsSanatanDharmaPage() {
                                     ))}
                                 </div>
                                 <p className="text-base text-muted-foreground mt-8 leading-relaxed italic border-l-4 border-orange-500/30 pl-6">
-                                    Notice that Sanatan Dharma does not reject wealth, pleasure, or desire — it integrates them within a larger framework where liberation (Moksha) is the final, ultimate aim. This is radically different from traditions that treat the material world as inherently sinful.
+                                    Sanatan Dharma does not reject wealth or pleasure. It places both inside dharma and points them toward moksha (liberation). The question is not renunciation first; it is right ordering first.
                                 </p>
                             </section>
 
                             <section>
                                 <h2 className="text-3xl font-display font-bold mb-6">The Cosmic Laws: What Dharma Actually Means</h2>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    The word <em>Dharma</em> comes from the Sanskrit root <em>dhri</em> — "to hold" or "to uphold." Dharma is that which sustains the universe in balance. It operates at multiple levels simultaneously:
+                                    The word <em>Dharma</em> comes from the Sanskrit root <em>dhr</em>, "to uphold." In the Mahabharata and Dharmashastra traditions, dharma means what sustains order and prevents collapse. It operates at multiple levels:
                                 </p>
                                 <ul className="space-y-4 mb-8">
                                     <li className="flex gap-4">
                                         <span className="text-orange-500 font-black text-2xl leading-none mt-1">1</span>
                                         <div>
                                             <strong className="text-foreground">Rita (Cosmic Order)</strong>
-                                            <p className="text-muted-foreground mt-1">The natural laws governing the physical universe — the rhythms of seasons, the orbits of planets, the cycle of day and night. Reality has an inherent order, and living in alignment with it rather than against it is the beginning of wisdom.</p>
+                                            <p className="text-muted-foreground mt-1">The Vedic idea of cosmic order: seasons, cycles, causality, and lawful recurrence. Life becomes coherent when human conduct aligns with this order instead of fighting it.</p>
                                         </div>
                                     </li>
                                     <li className="flex gap-4">
                                         <span className="text-orange-500 font-black text-2xl leading-none mt-1">2</span>
                                         <div>
                                             <strong className="text-foreground">Sadharana Dharma (Universal Ethics)</strong>
-                                            <p className="text-muted-foreground mt-1">Moral principles applicable to all humans regardless of religion, caste, or era: non-violence (Ahimsa), truthfulness (Satya), non-stealing (Asteya), self-restraint (Brahmacharya), and non-possessiveness (Aparigraha). These are the Yamas of Yoga, the universal ethical floor.</p>
+                                            <p className="text-muted-foreground mt-1">Ethical duties valid across role and era: ahimsa (non-harm), satya (truthfulness), asteya (non-stealing), brahmacharya (discipline), and aparigraha (non-grasping). Patanjali lists them as yamas in Yoga Sutra 2.30.</p>
                                         </div>
                                     </li>
                                     <li className="flex gap-4">
                                         <span className="text-orange-500 font-black text-2xl leading-none mt-1">3</span>
                                         <div>
                                             <strong className="text-foreground">Svadharma (Personal Duty)</strong>
-                                            <p className="text-muted-foreground mt-1">Your specific duty arising from your unique nature, role, and circumstances. The duty of a parent differs from that of a student. The duty of a warrior in the battlefield — as Krishna explains to Arjuna in the Bhagavad Gita — differs from the duty of a monk in a monastery. Context is everything.</p>
+                                            <p className="text-muted-foreground mt-1">Duty shaped by your role, capacity, and situation. The Bhagavad Gita frames this through Arjuna's crisis: role-duty cannot be borrowed from someone else's life script.</p>
                                         </div>
                                     </li>
                                 </ul>
                                 <p className="text-xl text-muted-foreground leading-relaxed">
-                                    The Bhagavad Gita's central tension is precisely this: Arjuna does not want to fight his relatives. Krishna's answer is not to overcome sentimentality with logic — it is to remind Arjuna of his Svadharma. A warrior who abandons his duty at the critical moment creates worse karma than a warrior who fights with compassion.
+                                    The Gita's tension is practical, not abstract. Arjuna refuses battle; Krishna redirects him to svadharma and intention. The teaching is not "violence is fine" but "role-duty without egoic attachment is higher than paralysis."
                                 </p>
                             </section>
 
                             <section>
                                 <h2 className="text-3xl font-display font-bold mb-6">Karma and Samsara: The Engine of Rebirth</h2>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    Two concepts are inseparable from Sanatan Dharma: <strong className="text-foreground">Karma</strong> and <strong className="text-foreground">Samsara</strong>. Karma is not cosmic reward-and-punishment — it is the law of cause and effect applied to the soul. Every action, word, and even intention leaves an impression (Samskara) on the subtle body that shapes future circumstances.
+                                    Two ideas are inseparable here: <strong className="text-foreground">karma</strong> and <strong className="text-foreground">samsara</strong>. Karma is not divine reward and punishment. It is moral causation: action, speech, and intention leave samskaras (impressions) that condition future experience.
                                 </p>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    Samsara is the cycle of birth, death, and rebirth that the soul undergoes as it works out its accumulated karma. The goal of Sanatan Dharma is not to earn a comfortable afterlife but to step off the wheel entirely — to achieve Moksha, liberation from the cycle altogether.
+                                    Samsara is the cycle of birth and death conditioned by unresolved karma and desire. The aim is not a better rebirth. The aim is moksha: release from compulsory rebirth through knowledge, discipline, and non-attachment.
                                 </p>
                                 <p className="text-xl text-muted-foreground leading-relaxed">
-                                    This is why Sanatan Dharma places such emphasis on selfless action (Karma Yoga): when you act without attachment to results, you stop accumulating new karma. Over time, existing karma burns away through spiritual practice, and liberation becomes possible.
+                                    This is why Karma Yoga matters in the Gita (2.47, 3.19). Action without clinging to outcomes weakens karmic binding. Practice does not erase causality; it changes your relationship to causality.
                                 </p>
                                 <div className="mt-8 flex flex-col sm:flex-row gap-4">
                                     <Link
@@ -273,31 +273,31 @@ export default function WhatIsSanatanDharmaPage() {
                             <section>
                                 <h2 className="text-3xl font-display font-bold mb-6">How to Practice Sanatan Dharma in the Modern World</h2>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    Sanatan Dharma is not a museum piece or a heritage label. Its core principles are as applicable in a 21st-century office as they were in a Vedic ashram three thousand years ago. The path does not require you to become a monk, move to India, or adopt a new identity.
+                                    Sanatan Dharma is not restricted to temple ritual or inherited identity. Its disciplines apply in ordinary roles: family life, professional life, civic life, contemplative life. You do not need monastic status to practice dharma, karma yoga, or self-inquiry.
                                 </p>
                                 <div className="space-y-6 mb-8">
                                     <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                         <h3 className="font-bold text-lg mb-3 text-orange-400">1. Clarify Your Svadharma</h3>
                                         <p className="text-muted-foreground leading-relaxed">
-                                            Ask honestly: what is your actual duty right now — as a parent, professional, citizen, or seeker? Then do that thing with total commitment and zero attachment to the result. This is Karma Yoga in daily life.
+                                            Identify your present role-duty with precision: parent, manager, student, caregiver, citizen. Then perform that duty without making your self-worth depend on the outcome. That is Karma Yoga in practical terms.
                                         </p>
                                     </div>
                                     <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                         <h3 className="font-bold text-lg mb-3 text-orange-400">2. Study One Primary Text</h3>
                                         <p className="text-muted-foreground leading-relaxed">
-                                            Don't try to read everything at once. Choose one text — the Bhagavad Gita is the most practical starting point — and read it slowly, with a good commentary. Ten minutes a day of real study is worth more than 200 pages of casual skimming.
+                                            Choose one text and one commentary tradition. The Bhagavad Gita with a reliable bhashya is a practical starting point. Slow, repeated reading with notes is better than broad, shallow sampling.
                                         </p>
                                     </div>
                                     <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                         <h3 className="font-bold text-lg mb-3 text-orange-400">3. Practice One of the Four Yogas</h3>
                                         <p className="text-muted-foreground leading-relaxed">
-                                            Sanatan Dharma offers four main paths to Moksha: Jnana Yoga (the path of knowledge and inquiry), Bhakti Yoga (the path of devotion and love), Karma Yoga (the path of selfless action), and Raja Yoga (the path of meditation and mental discipline). Pick the one that matches your temperament and apply it consistently.
+                                            The classical pathways are Jnana Yoga, Bhakti Yoga, Karma Yoga, and Raja Yoga. Temperament determines emphasis; discipline determines results. Pick one primary mode and practice it consistently for months, not days.
                                         </p>
                                     </div>
                                     <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                         <h3 className="font-bold text-lg mb-3 text-orange-400">4. Begin the Yamas</h3>
                                         <p className="text-muted-foreground leading-relaxed">
-                                            Before any advanced practice, Patanjali's Yoga Sutras insist on ethical grounding. Start with Ahimsa (non-violence in thought, speech, and action) and Satya (truthfulness, especially with yourself). These two alone, taken seriously, will transform your life.
+                                            Before advanced practice, stabilize conduct through the yamas in Yoga Sutra 2.30. Start with ahimsa in speech and satya in self-reporting. Ethical instability distorts every higher practice.
                                         </p>
                                     </div>
                                 </div>

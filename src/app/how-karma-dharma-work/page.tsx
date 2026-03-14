@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "How Karma Actually Works: Beyond Punishment and Reward",
         description:
-            "A clear, modern explanation of karma and dharma — what they mean, how they differ, and how to use them to navigate your life.",
+            "A clear, modern explanation of karma and dharma — what they mean, how they differ, and how to apply them in life.",
         url: "https://opensadhaka.com/how-karma-dharma-work",
         type: "article",
     },
@@ -87,7 +87,7 @@ export default function HowKarmaDharmaWorkPage() {
                             The Physics of the <span className="text-orange-500 italic">Soul</span>
                         </h1>
                         <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
-                            <strong>Direct answer:</strong> Karma is the universal law of cause and effect applied to the soul — every action plants a seed that eventually ripens as a future experience. Dharma is the path of right action appropriate to your specific nature and circumstances. Karma is the consequence of whatever you do; Dharma is the quality of what you should do.
+                            <strong>Direct answer:</strong> Karma is moral causation: actions and intentions produce consequences. Dharma is right action for your role, context, and stage of life. Karma describes what follows from action; dharma guides what action is appropriate now.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             Karma is not cosmic punishment. It is physics for the soul — as objective and impersonal as gravity.
@@ -101,7 +101,7 @@ export default function HowKarmaDharmaWorkPage() {
                                 The Western pop-culture version of karma — "you were mean to me so bad things will happen to you" — is a vast oversimplification. In Sanskrit, <em>karma</em> simply means "action." The law of karma is a law of causality: every intentional action, whether physical, verbal, or mental, produces an effect. Some effects ripen quickly (within this lifetime), others slowly (across multiple lifetimes).
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                Crucially, karma is <strong className="text-foreground">not judgment</strong>. There is no cosmic judge assigning rewards and punishments. The system is mechanical, not moral, in the way a thermostat is mechanical: you set the temperature with your actions, and the universe responds accordingly. A person who consistently acts selfishly does not get punished by an external force — they create the internal conditions (habits, perceptions, mental tendencies) that generate suffering.
+                                Karma is <strong className="text-foreground">not judgment</strong>. There is no cosmic judge assigning rewards and punishments. The system is lawful, like any causal process: actions set conditions, and conditions generate outcomes. A person who acts selfishly does not get "cursed" by an outside authority; they reinforce habits and perceptions that generate suffering.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed">
                                 The Bhagavad Gita introduces a liberating refinement: <strong className="text-foreground">it is not action but attachment to the result of action that binds.</strong> Act fully, act excellently — but let go of the fruits. This is Karma Yoga, and it is the central teaching of chapter 3 through 6 of the Gita.
@@ -132,7 +132,7 @@ export default function HowKarmaDharmaWorkPage() {
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">What Dharma Is</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                If karma is the consequence of your actions, dharma is the quality of the actions themselves. The Sanskrit root of <em>dharma</em> is <em>dhri</em> — "to hold" or "to sustain." Dharma is literally "that which holds everything in balance." It operates at several levels:
+                                If karma is consequence, dharma is action quality. The Sanskrit root of <em>dharma</em> is <em>dhr</em>, "to hold" or "to sustain." Dharma means "that which upholds order." It operates at several levels:
                             </p>
                             <ul className="space-y-5 mb-8">
                                 <li className="flex gap-4">
@@ -189,7 +189,7 @@ export default function HowKarmaDharmaWorkPage() {
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h3 className="font-bold text-lg mb-3 text-orange-400">At Work: Karma Yoga in Practice</h3>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        When you work for the paycheck alone, you create anxiety whenever the paycheck feels threatened. When you work for the quality of the work itself — with the paycheck as a natural byproduct — you find both better performance and greater peace. This is exactly what BG 2.47 describes: do your work with full commitment, but don't let your identity hinge on the result.
+                                        When you work only for outcome, anxiety rises each time the outcome is uncertain. When you work for execution quality, performance and steadiness both improve. Bhagavad Gita 2.47 gives the principle: commit to action, do not anchor identity in result.
                                     </p>
                                 </div>
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">

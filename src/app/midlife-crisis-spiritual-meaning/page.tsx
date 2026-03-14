@@ -96,7 +96,7 @@ export default function MidlifeCrisisSpiritualMeaningPage() {
                             The Soul's <span className="text-orange-500 italic">Invitation</span>
                         </h1>
                         <p className="text-lg text-foreground leading-relaxed max-w-3xl mb-4">
-                            <strong>Direct answer:</strong> A midlife crisis is not a psychological defect — it is a natural spiritual transition. The Vedic framework mapped this exact experience 3000 years ago as the shift from the Householder stage (Grihastha) to the Forest Dweller stage (Vanaprastha). The crisis arises when modern culture tells you to solve a spiritual transition with material purchases instead of genuine inward movement.
+                            <strong>Direct answer:</strong> A midlife crisis is often a stage-transition problem, not a defect. Vedic thought frames it as movement from Grihastha (householder) to Vanaprastha (withdrawal and mentoring). Distress rises when inner priorities change but life remains organized around status, accumulation, and comparison.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
                             The midlife crisis is the soul correctly signaling that the first half of life's operating system was never meant to run the second half.
@@ -153,7 +153,7 @@ export default function MidlifeCrisisSpiritualMeaningPage() {
                         </section>
 
                         <section>
-                            <h2 className="text-3xl font-display font-bold mb-6">How to Navigate the Transition</h2>
+                            <h2 className="text-3xl font-display font-bold mb-6">How to Work Through the Transition</h2>
                             <div className="space-y-5">
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h3 className="font-bold text-lg mb-3 text-orange-400">1. Name What Stage You're In</h3>
