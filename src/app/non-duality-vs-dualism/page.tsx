@@ -1,98 +1,136 @@
+import { ArrowRight } from "lucide-react";
 import { getArticleBySlug } from "@/data/articles";
 import { ArticleLayout } from "@/components/ArticleLayout";
+import { TrackedLink } from "@/components/ContentAnalytics";
 import { buildArticleMetadata } from "@/lib/seo";
 
 const meta = getArticleBySlug("non-duality-vs-dualism")!;
 
 export const metadata = buildArticleMetadata(meta);
 
+function ArticleLink({ href, children, eventLabel }: { href: string; children: React.ReactNode; eventLabel: string }) {
+    return (
+        <TrackedLink
+            href={href}
+            eventLabel={eventLabel}
+            trackPathName="ancient-wisdom"
+            className="inline-flex items-center gap-2 font-semibold text-orange-400 transition-colors hover:text-orange-300"
+        >
+            {children}
+            <ArrowRight className="h-4 w-4" />
+        </TrackedLink>
+    );
+}
+
 export default function NonDualityVsDualismPage() {
     return (
         <ArticleLayout meta={meta} pillarLabel="Ancient Wisdom" pillarHref="/ancient-wisdom-philosophies">
-            <p className="lead text-xl font-medium mb-8">
-                The most important question you will ever ask is hidden inside your spiritual practice: <em>Are you trying to reach God, or are you trying to realize you never left?</em>
+            <p>
+                Advaita and Dvaita Vedanta are rival readings of the same scriptural canon — the Upanishads, Bhagavad Gita, and Brahma Sutras. Shankara's Advaita holds that Brahman alone is ultimately real, and apparent difference between individual self and God is produced by ignorance. Madhva's Dvaita holds that God, souls, and world are genuinely distinct at every level, including liberation. This is not a metaphysical preference. It changes what devotion means, what liberation is, and what the tradition counts as the highest spiritual attainment.
             </p>
             <p>
-                This isn't an abstract curiosity. Your answer creates the fundamental "logic" of your path. It determines whether you pray to a beloved, inquire into a void, or serve a master. In Indian philosophy, this is the great fault line between <strong>Non-Duality (Advaita)</strong> and <strong>Dualism (Dvaita)</strong>.
+                Western monism and dualism can help at the level of orientation, but they miss the soteriological stakes. Shankara is not merely saying that everything is one substance. Madhva is not merely defending metaphysical pluralism. Each is offering an account of what the self is, what God is, and what spiritual realization can and cannot mean.
+            </p>
+            <p>
+                That is why the comparison must begin by loosening the imported categories. Non-duality and dualism in India operate inside scriptural commentary, devotional practice, and liberation doctrine. They are lived philosophies, not only speculative positions.
             </p>
 
-            <h2 className="text-3xl font-display font-bold mt-12 mb-6 text-primary">Advaita: The Logic of "Not-Two"</h2>
+            <h2>What Western definitions usually mean</h2>
             <p>
-                The Sanskrit term <strong>Advaita</strong> literally means "not-two." It doesn't say "one"—which would imply a countable thing—but "not-two," pointing to a reality prior to the very concept of number.
+                In standard Western philosophy, monism usually means that reality is fundamentally one, whether as one substance, one absolute, or one underlying principle. Dualism usually means that reality contains two irreducible kinds, as in mind and matter or creator and creation. These categories are legitimate within their own history.
             </p>
             <p>
-                Adi Shankaracharya's articulation is the definitive technical statement: Ultimate reality (Brahman) is singular, infinite consciousness. Everything else—the stars, your thoughts, this screen—is a superimposition. It is the appearance of many waves on a single, undivided ocean.
+                They become misleading when moved too quickly into Indian thought. A Western reader may hear Advaita and think of Spinoza, or hear dualism and think of Descartes. Those analogies can be useful at the outer edge, but they immediately leave out scriptural authority, liberation, the role of ignorance, and the devotional grammar of the traditions being compared.
             </p>
             <p>
-                In this framework, your individual self (Atman) is not separate from Brahman. This is not a poetic metaphor; it is a direct claim of identity. <em>Aham Brahmasmi</em>—I am Brahman. Suffering, then, is simply <strong>Avidya</strong>: the fundamental ignorance of your true nature. You don't need to "gain" liberation; you need to remove the misunderstanding that you are bound.
-            </p>
-
-            <h2 className="text-3xl font-display font-bold mt-12 mb-6 text-orange-500">Dvaita: The Geometry of Relationship</h2>
-            <p>
-                Madhvacharya (13th century) saw the non-dual claim as a destruction of love. His system, <strong>Dvaita</strong>, asserts that God (Vishnu) and individual souls are eternally, irreducibly distinct. They can never merge.
-            </p>
-            <p>
-                He identified five fundamental distinctions (Panchabhedas) that are real and eternal:
-            </p>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
-                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">God vs. Individual Soul</li>
-                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">God vs. Matter</li>
-                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">Soul vs. Matter</li>
-                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">Soul vs. Soul</li>
-                <li className="bg-muted/30 p-4 rounded-xl border border-white/5">Matter vs. Matter</li>
-            </ul>
-            <p>
-                For the Dualist, liberation (Mukti) is not dissolution into an absolute. It is the soul's awakening to its true nature as a blissful, dependent servant of the Divine. You remain yourself; you simply recognize your subordinate place in the cosmic hierarchy. This is the metaphysical engine of the <strong>Bhakti</strong> (devotional) traditions.
+                So the first correction is procedural. Use Western labels cautiously. They indicate shape, not full meaning.
             </p>
 
-            <h2 className="text-3xl font-display font-bold mt-12 mb-6">Vishishtadvaita: The Middle Path</h2>
-            <p>
-                Ramanujacharya (11th century) created a synthesis: <strong>Qualified Non-Dualism</strong>. He agreed that Brahman is the only reality, but insisted that Brahman has internal parts—namely, souls and the world.
-            </p>
-            <p>
-                Think of the relationship between your body and your cells. Your cells are real and distinct from one another, yet they are not separate from "you." They inhere within you. Similarly, we are the "body" of God. We are distinct, but inseparable.
-            </p>
-
-            <h2 className="text-3xl font-display font-bold mt-12 mb-6">The Practice: Inquiry vs. Devotion</h2>
-            <p>
-                This isn't academic history; it's a diagnostic for your own temperament (Guna):
-            </p>
-            <div className="grid md:grid-cols-2 gap-8 my-12">
-                <div className="space-y-4">
-                    <h3 className="text-xl font-bold flex items-center gap-2">
-                        <div className="w-2 h-8 bg-primary rounded-full"></div>
-                        The Non-Dual Path
-                    </h3>
-                    <p className="text-muted-foreground">
-                        You meditate to recognize what is already the case. Separation is a conceptual error. You use <strong>Jnana</strong> (inquiry) to see through the illusion of the "I".
-                    </p>
-                </div>
-                <div className="space-y-4">
-                    <h3 className="text-xl font-bold flex items-center gap-2">
-                        <div className="w-2 h-8 bg-orange-500 rounded-full"></div>
-                        The Dual Path
-                    </h3>
-                    <p className="text-muted-foreground">
-                        You cultivate a relationship with a Personal God who is genuinely Other. You use <strong>Bhakti</strong> (devotion) to bridge the gap through love and surrender.
-                    </p>
-                </div>
-            </div>
-
-            <h2 className="text-3xl font-display font-bold mt-12 mb-6">The Synthesis</h2>
-            <p>
-                Is everything One, or is it Two? The tradition's most sophisticated answer is: <em>It depends on where you are standing.</em>
-            </p>
-            <p>
-                Shankaracharya admitted that at the conventional (Vyavaharika) level, dualism is practically true. You must eat, you must act, and you should probably pray. But at the ultimate (Paramarthika) level, none of those distinctions hold.
-            </p>
-            <p>
-                The Bhagavad Gita (12.2-5) suggests that while the path of the formless Absolute is the ultimate truth, the path of the personal God is more accessible for human beings. One is the destination; the other is the vehicle.
-            </p>
-            <div className="mt-16 p-8 bg-primary/5 border border-primary/20 rounded-3xl">
-                <p className="text-lg leading-relaxed mb-0">
-                    Which path makes your heart beat faster? Does the thought of "dissolving" into the Absolute feel like liberation, or like a loss of love? The answer to that question is more important than any philosophical system. It is the compass for your entire life's work.
+            <div className="article-callout" data-tone="insight">
+                <div className="article-callout-title">Definition box</div>
+                <p>
+                    <strong>Advaita</strong> means not-two and in Shankara's school indicates the non-dual reality of Brahman. <strong>Dvaita</strong> means duality and in Madhva's Vedanta indicates real distinction between God, souls, and world. These are doctrinal systems, not bare numerical claims.
                 </p>
             </div>
+
+            <h2>What Advaita actually claims</h2>
+            <p>
+                Advaita Vedanta, especially in Shankara's commentaries on the Upanishads, Bhagavad Gita, and Brahma Sutras, holds that Brahman alone is ultimately real. The apparent distinction between individual self and Brahman is due to ignorance, <em>avidyā</em>, and superimposition, <em>adhyāsa</em>. Liberation, <em>mokṣa</em>, is not becoming something new but recognizing what was always the case.
+            </p>
+            <p>
+                That claim depends on a layered account of reality. At the transactional level, <em>vyavahārika</em>, ethics, action, worship, and difference all operate. At the absolute level, <em>pāramārthika</em>, Brahman alone is final. This is why Advaita can sustain both rigorous metaphysics and practical life without collapsing into nihilism.
+            </p>
+            <p>
+                The classic Upanishadic declarations matter here. "Tat Tvam Asi" from the <em>Chāndogya Upaniṣad</em> and "Aham Brahmāsmi" from the <em>Bṛhadāraṇyaka Upaniṣad</em> are read as identity statements, not poetic approximations. Shankara's entire system is built around defending this reading. The Mandukya Upanishad's description of Turiya, the fourth state beyond waking, dream, and deep sleep, gives the Advaitic absolute its clearest characterization: <em>na antaḥ-prajñam na bahiṣ-prajñam nobhayataḥ-prajñam</em> — "not inward-knowing, not outward-knowing, not both." The negations are not agnosticism. They define by subtraction what no positive description can exhaust.
+            </p>
+            <p>
+                If you need the full Advaitic architecture, continue into <ArticleLink href="/advaita-vedanta-explained" eventLabel="non-duality:body:advaita">Advaita Vedanta Explained</ArticleLink> and <ArticleLink href="/what-is-brahman" eventLabel="non-duality:body:brahman">What is Brahman</ArticleLink>. Without those concepts, non-duality is too easily reduced to vague oneness talk.
+            </p>
+
+            <h2>What Dvaita actually claims through Madhva</h2>
+            <p>
+                Madhva's Dvaita Vedanta is not a generic assertion that there are many things. It is a specific theological and metaphysical claim that Vishnu is supreme, individual souls are real, the world is real, and their distinctions are real. Madhva famously teaches five real differences, the <em>pañca-bheda</em>, between God and soul, God and matter, soul and soul, soul and matter, and one material entity and another.
+            </p>
+            <p>
+                This means liberation never becomes identity with God in the Advaitic sense. The soul stays distinct even in liberation. Devotion is therefore not a provisional aid later dissolved into non-dual realization. It is structurally final because the relation to God is eternally meaningful.
+            </p>
+            <p>
+                Madhva's reading of scripture is therefore not a diluted form of Vedanta. It is a fully developed rival system. The world is not downgraded to provisional appearance. Difference is not a product of ignorance to be sublated. Difference is constitutive of reality.
+            </p>
+
+            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-6">
+                <p className="mb-0">
+                    <strong>Corrective thesis:</strong> Dvaita is not simply the belief that God and the world feel separate. It is a technical Vedanta school with its own commentarial discipline, scriptural readings, and final account of liberation through real difference.
+                </p>
+            </div>
+
+            <h2>Why the comparison breaks down if you use only Western categories</h2>
+            <p>
+                The comparison breaks down because Western monism and dualism are often framed as questions of substance count. Indian debates are not only asking how many ultimate kinds exist. They are asking what ignorance is, what liberates, whether devotion is provisional or final, and what valid means of knowledge reveal.
+            </p>
+            <p>
+                In Advaita, the decisive issue is whether difference survives ultimate inquiry. In Dvaita, the decisive issue is whether relation to God can be preserved without collapsing into identity. Those are not exhausted by saying one is monism and the other is dualism.
+            </p>
+            <p>
+                Another point of breakdown concerns practice. A metaphysical label in Western philosophy can remain abstract. In Vedanta, doctrine shapes worship, meditation, scriptural reading, and the seeker's entire orientation. One cannot separate ontology from sadhana.
+            </p>
+
+            <h2>What each view leads to spiritually</h2>
+            <p>
+                Advaita leads toward self-inquiry, discrimination between real and unreal, and eventual recognition that the witness is not different from Brahman. Devotion can support the path, but in Shankara's system final liberation is knowledge. The spiritual movement is from superimposition to identity.
+            </p>
+            <p>
+                Dvaita leads toward intensified devotion, dependence on God, scriptural fidelity, and the deepening of a real relation between finite soul and supreme Lord. The spiritual movement is not from relation to identity, but from ignorance and bondage toward purified and fulfilled relation.
+            </p>
+            <p>
+                These are not minor stylistic differences. They shape prayer, meditation, emotional tone, and what counts as realization. A seeker who cannot bear the loss of devotional relation may find Advaita too severe or misunderstood. A seeker pressed by the question of absolute identity may find Dvaita metaphysically insufficient. The traditions know this. That is why they remain distinct.
+            </p>
+
+            <div className="article-callout" data-tone="insight">
+                <div className="article-callout-title">Practical implication</div>
+                <p>
+                    If you are trying to understand which worldview matches your practice, compare this page with <ArticleLink href="/advaita-vs-dvaita" eventLabel="non-duality:body:advaita-dvaita">Advaita vs Dvaita</ArticleLink> and the <ArticleLink href="/philosophies/dvaita" eventLabel="non-duality:body:dvaita-hub">Dvaita philosophy hub</ArticleLink>. The doctrinal decision changes the meaning of devotion and liberation.
+                </p>
+            </div>
+
+            <h2>Why non-duality is not a free pass beyond ethics</h2>
+            <p>
+                One modern distortion says that if all is one, ethics no longer matters. Shankara's own layered account of reality rejects that. At the transactional level, action, duty, and consequence remain fully operative. A realized vision does not authorize negligence or moral collapse.
+            </p>
+            <p>
+                Dvaita, of course, preserves ethics through accountability before a real God and real consequences. Yet the point is important on both sides. Neither system treats liberation as permission to become lawless. Each intensifies seriousness, though through different metaphysical routes.
+            </p>
+            <p>
+                This is one reason the comparison should remain source-grounded. Popular non-duality language often strips away the rigors that made the original doctrine coherent.
+            </p>
+
+            <h2>How to read the disagreement properly</h2>
+            <p>
+                First, read primary commentarial traditions rather than internet paraphrases. Shankara and Madhva are not exchangeable mood boards. Second, ask what each school thinks liberation is. That question clarifies the rest. Third, pay attention to whether devotion is instrument or final relation. That point often reveals the deepest difference.
+            </p>
+            <p>
+                Finally, stop assuming that all Indian philosophy seeks a single mystical oneness. It does not. Indian traditions contain real doctrinal dispute, and that dispute is part of their intellectual seriousness. The goal is not to erase disagreement. The goal is to understand what kind of spiritual life each view makes possible.
+            </p>
         </ArticleLayout>
     );
 }

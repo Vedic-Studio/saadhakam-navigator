@@ -49,6 +49,479 @@ export interface PilotArticleContent {
 }
 
 export const pilotArticleContents: Record<string, PilotArticleContent> = {
+    "bhagavad-gita-complete-guide": {
+        slug: "bhagavad-gita-complete-guide",
+        pillarLabel: "Sacred Texts",
+        pillarHref: "/sacred-texts-teachings",
+        blocks: [
+            {
+                type: "lead",
+                content: [
+                    "Many modern introductions make the Bhagavad Gita sound like a vague self-help manual or a simple defense of warfare. Both readings miss the text. The Gita begins in moral collapse because its real subject is not violence. It is the crisis of action when every available choice carries suffering.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The Bhagavad Gita appears in the Bhishma Parva of the ",
+                    { type: "em", text: "Mahabharata" },
+                    ". Its 700 verses are a dialogue between Arjuna and Krishna on the field of Kurukshetra. The setting is historical and epic. The power of the text is philosophical and existential. Arjuna's paralysis becomes the doorway through which Krishna teaches dharma, yoga, self-knowledge, devotion, renunciation, and liberation.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "insight",
+                title: "The simplest way to frame it",
+                content: [
+                    "The Bhagavad Gita teaches how to act without inner fragmentation. It does not tell you to escape the world. It tells you how to move through duty, conflict, and uncertainty without being owned by them.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["What the Gita is, and what it is not"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The Gita is not a standalone scripture floating without context. It is part of the Mahabharata, one of India's two great ",
+                    { type: "em", text: "Itihasa" },
+                    " texts. That matters because Krishna's teaching is delivered inside a lived crisis, not in a monastery or abstract classroom. The seeker is not removed from history. He is inside it.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "It is also not a single-path manual. Readers who reduce it to only Jnana, only Bhakti, or only Karma Yoga flatten a deliberately synthetic text. In Chapter 3 Krishna insists on action. In Chapter 6 he outlines meditation. In Chapter 12 he praises devotion. In Chapter 18 he integrates them into a mature spiritual psychology.",
+                ],
+            },
+            {
+                type: "quote",
+                content: ["You have a right to action alone, not to its fruits."],
+                cite: "Bhagavad Gita 2.47",
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Why Chapter 1 matters more than beginners expect"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Western readers often rush past Arjuna's collapse to get to the famous verses. That is a mistake. Chapter 1 is not filler. It names the condition that makes spiritual instruction necessary. Arjuna sees teachers, cousins, elders, and friends on both sides of the war. His body shakes. His bow slips. His moral vocabulary stops working.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "This is why the first chapter is called ",
+                    { type: "strong", text: "Arjuna Vishada Yoga" },
+                    ". Vishada means grief, despondency, collapse. The tradition does not hide this state. It calls it yoga because honest breakdown can become the threshold of right seeing. False certainty has to crack before living instruction lands.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "practice",
+                title: "Read Chapter 1 as diagnosis",
+                content: [
+                    "If you have ever known what the right principle is but still felt unable to act, you already understand why Arjuna matters. The Gita begins where moral slogans fail.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["The structure of the 18 chapters"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "A useful beginner map divides the Gita into three movements. First, Krishna reframes the Self and duty. Then he deepens the disciplines of action, knowledge, and meditation. Finally, he reveals the devotional and theological culmination of the teaching.",
+                ],
+            },
+            {
+                type: "list",
+                items: [
+                    [
+                        { type: "strong", text: "Chapters 1–6" },
+                        " establish the crisis, the immortality of the Self, Karma Yoga, renunciation, and meditation.",
+                    ],
+                    [
+                        { type: "strong", text: "Chapters 7–12" },
+                        " expand Krishna's nature, the reality of devotion, and the cosmic vision of the Divine.",
+                    ],
+                    [
+                        { type: "strong", text: "Chapters 13–18" },
+                        " analyze matter, consciousness, the gunas, faith, duty, and final surrender.",
+                    ],
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "That three-part framing is not absolute, but it helps beginners avoid random verse-picking. The text has its own architecture. If you ignore that architecture, you read the Gita as a quote bank rather than a progressive teaching.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["The four teachings most readers need first"],
+            },
+            {
+                type: "heading",
+                level: 3,
+                content: ["1. The Self is not reducible to the body"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Krishna's earliest instruction in Chapter 2 is ontological before it is ethical. The Self is unborn, undying, and not destroyed when the body is destroyed. This is not motivational language. It is the metaphysical basis for courage. If identity is wrongly placed, action becomes fear-driven.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 3,
+                content: ["2. Duty must be performed without egoic ownership"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Karma Yoga does not mean emotional numbness or productivity worship. It means right action without psychological bondage to outcome. Krishna does not tell Arjuna to stop caring. He tells him to stop deriving identity from success, failure, praise, or blame.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 3,
+                content: ["3. Knowledge without discipline collapses"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The Gita repeatedly warns that the senses can overrun the intellect. This is why meditation, dietary moderation, conduct, and disciplined attention matter. Chapter 6 is clear that yoga is not possible for one who lives in extremes.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 3,
+                content: ["4. Devotion is not anti-intellectual"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Modern readers often split devotion and knowledge into opposing camps. The Gita does not. Its Bhakti is not sentimental excess. It is a reorientation of the whole person toward the Divine source. The mature reader sees that devotion can stabilize what dry philosophy cannot.",
+                ],
+            },
+            {
+                type: "quote",
+                content: ["Fix your mind on Me, be devoted to Me, sacrifice to Me, bow to Me."],
+                cite: "Bhagavad Gita 18.65",
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["A chapter map for first-time readers"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "If you do not want to read 18 chapters in a single pass, start strategically. Read ",
+                    { type: "link", text: "Bhagavad Gita Chapter 1", href: "/bhagavad-gita-chapter-1" },
+                    " to feel the crisis, then move to Chapter 2 for the central philosophy, Chapter 3 for Karma Yoga, Chapter 12 for Bhakti, and Chapter 18 for Krishna's synthesis. That path gives you the spine of the text before you return to the rest.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "warning",
+                title: "Do not start by collecting famous verses",
+                content: [
+                    "Popular excerpts can inspire you, but they can also distort the teaching when removed from argument, speaker, and chapter context. Read verse clusters, not isolated slogans.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["How the Gita relates to the Upanishads and Vedanta"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The Gita is often called the practical expression of Upanishadic truth. The Upanishads ask what the Self is. The Gita asks how one lives after hearing that teaching while still embedded in family, polity, responsibility, and action. For this reason it became one of the three canonical Vedanta sources, alongside the Upanishads and Brahma Sutras.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Shankara, Ramanuja, and Madhva all wrote commentaries on the Gita because the text supports multiple theological emphases while still retaining its authority. If you want the larger philosophical map, read ",
+                    { type: "link", text: "What is Vedanta?", href: "/what-is-vedanta" },
+                    ". If you want help choosing an edition, use ",
+                    { type: "link", text: "Best Bhagavad Gita Translation for Beginners", href: "/best-bhagavad-gita-translation-for-beginners" },
+                    ".",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Primary-source anchors every beginner should know"],
+            },
+            {
+                type: "list",
+                items: [
+                    ["2.13 for the changing body and continuing Self"],
+                    ["2.47 for action without attachment to fruits"],
+                    ["3.19 for selfless action"],
+                    ["6.16–17 for moderation in yoga"],
+                    ["11 for the universal form revelation"],
+                    ["12 for the devotional path"],
+                    ["18.66 for surrender as culmination"],
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "These verses are not the whole Gita. They are reliable anchor points for orientation. Study them with a commentary, not just in meme form.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["What the Gita corrects in modern life"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Modern ambition teaches that identity is built from outcomes. The Gita says that is precisely why action becomes bondage. Modern avoidance teaches that if life is complex, one should retreat from responsibility. The Gita rejects that too. Krishna does not reward paralysis simply because it is emotionally sincere.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Its correction is demanding: know the Self, purify motive, act according to dharma, and surrender outcome. That is harder than hustle culture and more honest than passive spirituality. It is also why the Gita has lasted.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "For deeper comparison work, continue into ",
+                    { type: "link", text: "Bhagavad Gita vs Bible", href: "/bhagavad-gita-vs-bible" },
+                    " or the wider ",
+                    { type: "link", text: "Sacred Texts hub", href: "/sacred-texts-teachings" },
+                    ". To connect reading with practice, pair this guide with ",
+                    { type: "link", text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
+                    ".",
+                ],
+            },
+        ],
+    },
+    "spiritual-paths-explained": {
+        slug: "spiritual-paths-explained",
+        pillarLabel: "Spiritual Traditions",
+        pillarHref: "/spiritual-traditions-paths",
+        blocks: [
+            {
+                type: "lead",
+                content: [
+                    "One of the biggest beginner mistakes is assuming there is a single correct spiritual personality. There is not. Traditions become confusing when every seeker is handed the same vocabulary, the same practices, and the same promises regardless of temperament.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Sanatan Dharma has always worked with plurality. The Bhagavad Gita, the Upanishadic tradition, and later sampradayas recognize that seekers differ in mental style, emotional orientation, life-stage, and readiness. That is why some are pulled toward inquiry, others toward devotion, others toward disciplined method, and others toward ritual participation.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "insight",
+                title: "The fast answer",
+                content: [
+                    "A path is not just a belief system. It is the kind of practice that can keep you sincere over time. The right path makes steadiness more likely, not theatrics more impressive.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Why the 'best path' question is usually framed badly"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "People often ask which path is highest. That sounds spiritual, but it usually hides a status question. The real issue is not abstract hierarchy. The real issue is which form of practice reduces self-deception and increases continuity. A path you cannot sustain is not higher for you. It is simply more flattering to your imagination.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The Gita itself resists simplification here. Krishna teaches Jnana, Karma, Dhyana, and Bhakti. The point is not that all differences vanish. The point is that the spiritual life matures through integration, even if one emphasis becomes primary for a given seeker.",
+                ],
+            },
+            {
+                type: "quote",
+                content: ["However men approach Me, even so do I accept them."],
+                cite: "Bhagavad Gita 4.11",
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Path one: Inquiry"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The path of inquiry asks what is real, who the self is, and what remains when thoughts, roles, and identities are examined carefully. Its classical expressions include Vedanta, especially Advaita, and practices such as self-inquiry, contemplative scriptural study, and sustained discrimination between the changing and the unchanging.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "This path suits seekers who are naturally drawn to metaphysical precision. They need conceptual clarity, not because ideas alone liberate, but because confusion blocks contemplation. If you keep asking what consciousness is, why suffering persists, and who is aware of experience, you are probably inquiry-shaped. Start with ",
+                    { type: "link", text: "What is Vedanta?", href: "/what-is-vedanta" },
+                    ".",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "warning",
+                title: "Shadow side of inquiry",
+                content: [
+                    "Unlived inquiry becomes spiritual abstraction. If every insight stays verbal and no practice changes your reactions, the path has become an identity project.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Path two: Devotion"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The path of devotion centers relationship. Here the seeker approaches the Divine through love, surrender, mantra, kirtan, prayer, pilgrimage, and service. Bhakti does not begin from the question, 'What is reality in the abstract?' It begins from the ache to offer oneself fully.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "This path often expresses itself through Vaishnava and Shaiva traditions, deity devotion, and repeated name remembrance. If you feel more transformed by chanting than by metaphysical argument, devotion is not a lesser option. It may be the most honest route available to you. See ",
+                    { type: "link", text: "Shaivism vs Vaishnavism", href: "/shaivism-vs-vaishnavism" },
+                    " for the major devotional families.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Path three: Discipline and method"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Some seekers trust a path more when its stages are concrete. They need posture, breath, sequence, schedule, vow, and repetition. This is the orientation behind many forms of yoga, meditative training, and daily sadhana systems. The person is not uninterested in truth. They simply approach it through methodical shaping of body, breath, and mind.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Such seekers usually do best with a stable routine before they chase visionary experiences. A small daily sequence works better than occasional intensity. Use ",
+                    { type: "link", text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
+                    " and ",
+                    { type: "link", text: "How to Start Japa", href: "/how-to-start-japa" },
+                    " as starting points.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Path four: Ritual and sacred pattern"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Modern readers often underrate ritual because they assume it is empty formalism. In the traditional setting, ritual is embodied theology. It trains attention, reverence, rhythm, and symbolic literacy. Lighting a lamp, offering flowers, reciting stotra, observing fasts, and participating in temple life are not merely cultural leftovers. They shape consciousness through repeated sacred pattern.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "This path helps seekers who need form, beauty, gesture, and communal rhythm to stabilize the heart. It can also serve as a support path for people whose primary orientation is inquiry or devotion but who need bodily participation to avoid spiritual over-intellectualization.",
+                ],
+            },
+            {
+                type: "quote",
+                content: ["Whatever you do, whatever you eat, whatever you offer or give, do that as an offering to Me."],
+                cite: "Bhagavad Gita 9.27",
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["How to tell which path is primary for you right now"],
+            },
+            {
+                type: "list",
+                items: [
+                    ["If clarity pulls you forward, inquiry is likely primary."],
+                    ["If love, prayer, and surrender pull you forward, devotion is likely primary."],
+                    ["If routine and method pull you forward, discipline is likely primary."],
+                    ["If symbol, beauty, and sacred action pull you forward, ritual is likely primary."],
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The key phrase is ",
+                    { type: "em", text: "right now" },
+                    ". Paths can shift. A person may begin in devotion, deepen through disciplined mantra practice, and later enter serious inquiry. Another may begin in philosophy and discover that only devotion softens the ego enough for insight to become real.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "practice",
+                title: "Simple diagnostic",
+                content: [
+                    "Ask which practice you still return to on a difficult day. That answer is usually more trustworthy than the persona you would like to have.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["The role of scripture in choosing a path"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The Bhagavad Gita remains the best cross-path introduction because it refuses to isolate human beings into one method. The Upanishads lean more strongly toward inquiry. Puranic and bhakti literature more openly nourishes devotional life. Ritual manuals and temple liturgies structure sacred participation. A good beginner studies one primary source that stabilizes orientation rather than reading everything at once.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "If you are stuck between options, do not keep comparing in abstraction. Try one stable practice for 30 to 40 days. Read a small amount of aligned scripture. Notice what becomes more honest, more grounded, and more sustainable.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["What not to do"],
+            },
+            {
+                type: "list",
+                items: [
+                    ["Do not build your path around aesthetics alone."],
+                    ["Do not keep switching methods weekly because boredom feels like discernment."],
+                    ["Do not imitate advanced non-dual language if your actual practice is unstable."],
+                    ["Do not treat devotion as childish or inquiry as cold. Both caricatures are false."],
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "If you want a guided next step, use ",
+                    { type: "link", text: "Faith Finder", href: "/faith-finder" },
+                    ". If you already know you are practice-oriented, continue into ",
+                    { type: "link", text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
+                    ". If you suspect inquiry is your home base, begin with ",
+                    { type: "link", text: "What is Vedanta?", href: "/what-is-vedanta" },
+                    ".",
+                ],
+            },
+        ],
+    },
     "what-is-vedanta": {
         slug: "what-is-vedanta",
         pillarLabel: "Ancient Wisdom",
@@ -1202,6 +1675,326 @@ export const pilotArticleContents: Record<string, PilotArticleContent> = {
                         href: "/practical-spiritual-practices",
                     },
                     " for the bigger context.",
+                ],
+            },
+        ],
+    },
+    "vedanta-vs-buddhism": {
+        slug: "vedanta-vs-buddhism",
+        pillarLabel: "Ancient Wisdom",
+        pillarHref: "/ancient-wisdom-philosophies",
+        blocks: [
+            {
+                type: "lead",
+                content: [
+                    "Vedanta and Buddhism are often merged into a single bucket called 'Eastern spirituality.' That shortcut creates false clarity. These traditions share extraordinary depth, but they are not saying the same thing with different accents.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The confusion happens because both traditions critique ego-identity, both value contemplative discipline, and both diagnose suffering as rooted in misperception. Yet once you move from broad mood to doctrinal precision, real differences emerge around selfhood, ultimate reality, scripture, method, and liberation.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "insight",
+                title: "The shortest honest comparison",
+                content: [
+                    "Advaita Vedanta says the deepest Self is real and identical with Brahman. Many Buddhist schools deny any permanent self and treat clinging to such essence as a root error. That is not a minor wording issue. It changes the entire map.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Where they genuinely overlap"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Both traditions are serious about suffering. Neither is satisfied with superficial moral improvement alone. Both insist that ordinary perception is compromised by ignorance, habit, craving, and mistaken identification. Both also value direct insight over inherited opinion.",
+                ],
+            },
+            {
+                type: "list",
+                items: [
+                    ["Both train attention and non-reactivity."],
+                    ["Both require ethical preparation, not just metaphysical talk."],
+                    ["Both see ignorance as central to bondage."],
+                    ["Both hold that liberation requires transformation of perception, not mere belief."],
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "This overlap explains why comparative readers feel an immediate resonance. It does not justify collapsing the traditions. Convergence at the level of practice psychology does not erase divergence at the level of ontology.",
+                ],
+            },
+            {
+                type: "quote",
+                content: ["As a man casts off worn-out garments and puts on new ones, so the embodied self casts off worn-out bodies."],
+                cite: "Bhagavad Gita 2.22",
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["The central difference: Atman and Anatman"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Vedanta, especially Advaita, grounds itself in Upanishadic mahavakyas such as ",
+                    { type: "em", text: "Tat Tvam Asi" },
+                    " and ",
+                    { type: "em", text: "Aham Brahmasmi" },
+                    ". The underlying claim is that the deepest self, Atman, is not the ego or personality but pure consciousness itself. Liberation comes through recognizing that Atman is not separate from Brahman.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Classical Buddhism, by contrast, is famous for ",
+                    { type: "strong", text: "Anatman" },
+                    " or non-self. The Buddha's teaching in texts such as the ",
+                    { type: "em", text: "Anatta-lakkhana Sutta" },
+                    " examines body, feeling, perception, formations, and consciousness and denies that any of them can be claimed as a permanent self. Later Buddhist traditions interpret this with sophistication, but the anti-essentialist thrust remains decisive.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "warning",
+                title: "Common comparison error",
+                content: [
+                    "Saying 'Buddhist emptiness and Vedantic Brahman are basically the same' may feel harmonizing, but it usually means the two traditions have not been read carefully enough on their own terms.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Brahman and Sunyata are not interchangeable"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Vedanta's ultimate reality language points toward Brahman, the absolute, infinite, non-dual ground. Buddhist Madhyamaka uses ",
+                    { type: "strong", text: "Sunyata" },
+                    " or emptiness to deny inherent independent existence. These may converge experientially in some contemplative reports, but doctrinally they arise from different argumentative worlds.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "A Vedantin can accuse Buddhism of collapsing the real into negation. A Buddhist can accuse Vedanta of smuggling back metaphysical essence under the name Brahman. Those critiques are not modern internet inventions. They reflect long histories of debate on the Indian subcontinent.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["How the paths differ in practice emphasis"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Vedanta often centers scriptural hearing, reflection, and contemplation. The classical triad is ",
+                    { type: "strong", text: "Shravana, Manana, Nididhyasana" },
+                    ". Buddhism frequently foregrounds mindfulness, concentration, ethical discipline, dependent origination analysis, and direct observation of impermanence and non-self. These are not exclusive categories, but they reveal distinct pedagogical instincts.",
+                ],
+            },
+            {
+                type: "list",
+                items: [
+                    ["Vedanta asks: who is the witness of experience?"],
+                    ["Buddhism often asks: what in experience can actually be owned as self?"],
+                    ["Vedanta leans toward recognition of an already-real absolute."],
+                    ["Buddhism often leans toward deconstruction of clinging and fabricated identity."],
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Why people still compare them"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The comparison remains useful because each tradition sharpens the reader against lazy assumptions. Vedanta prevents consciousness from being reduced to surface psychology. Buddhism prevents metaphysical language from becoming subtle ego reinforcement. Studied together carefully, they can produce intellectual humility and contemplative seriousness.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "But the order matters. Learn a tradition internally before making bridges. Start with ",
+                    { type: "link", text: "What is Vedanta?", href: "/what-is-vedanta" },
+                    " and ",
+                    { type: "link", text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+                    ". Then compare it with Buddhist thought. Precision protects depth.",
+                ],
+            },
+        ],
+    },
+    "non-duality-vs-dualism": {
+        slug: "non-duality-vs-dualism",
+        pillarLabel: "Ancient Wisdom",
+        pillarHref: "/ancient-wisdom-philosophies",
+        blocks: [
+            {
+                type: "lead",
+                content: [
+                    "The most important philosophical difference on the spiritual path is often hidden under vague language about oneness. Do you approach reality as a final unity or as an eternal relationship between self and God? That distinction shapes practice, theology, and even the emotional texture of liberation.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "In Indian philosophy, the great fault line is between non-duality and dualism. The names most readers meet are ",
+                    { type: "strong", text: "Advaita" },
+                    " and ",
+                    { type: "strong", text: "Dvaita" },
+                    ". Yet the dispute is not just historical. It reaches into prayer, meditation, ethics, and what liberation itself means.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "insight",
+                title: "Quick distinction",
+                content: [
+                    "Non-duality says ultimate reality is not finally divided. Dualism says difference between God, soul, and world is real and enduring. The spiritual consequences are enormous.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["What Advaita means by 'not-two'"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Advaita does not simply say 'everything is one' in a sentimental sense. It says that Brahman alone is ultimately real and that the apparent multiplicity of self and world is a superimposition. The Upanishadic declarations ",
+                    { type: "em", text: "Tat Tvam Asi" },
+                    " and ",
+                    { type: "em", text: "Aham Brahmasmi" },
+                    " become the core contemplative claims.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "In Shankara's articulation, bondage is caused by ignorance, ",
+                    { type: "strong", text: "Avidya" },
+                    ". Liberation is not the production of a new state. It is the removal of a false identification. The classic rope-snake analogy from Advaita helps here. The error lies in mis-seeing what is already present.",
+                ],
+            },
+            {
+                type: "quote",
+                content: ["That thou art."],
+                cite: "Chandogya Upanishad 6.8.7",
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["What Dvaita protects"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Madhvacharya's Dvaita rejects the non-dual collapse of difference. God and soul are not ultimately identical. They are eternally distinct. This difference is not a temporary stage of ignorance. It is built into the structure of reality.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Why does this matter? Because if difference is real, devotion becomes metaphysically stable. Love of God is not a provisional tool to be discarded after realization. It is a permanent relation. Liberation means proximity, surrender, delight, and right dependence, not dissolution of individuality into an impersonal absolute.",
+                ],
+            },
+            {
+                type: "list",
+                items: [
+                    ["God and individual soul are distinct."],
+                    ["God and matter are distinct."],
+                    ["Soul and matter are distinct."],
+                    ["Souls are distinct from one another."],
+                    ["Material entities remain distinct from one another."],
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "These five distinctions, the ",
+                    { type: "strong", text: "Panchabheda" },
+                    ", are central to Madhva's vision. They protect the grammar of devotion and the reality of relational existence.",
+                ],
+            },
+            {
+                type: "callout",
+                tone: "warning",
+                title: "Do not caricature dualism",
+                content: [
+                    "Dualism is not philosophical immaturity. It has its own rigor, scriptural grounding, and spiritual sophistication. Reducing it to 'beginner religion' is a category mistake.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["The middle position: Vishishtadvaita"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Ramanuja's Vishishtadvaita is essential because it shows the debate is not simply two camps yelling past each other. He agrees that Brahman is ultimate, but insists that souls and matter are real attributes or modes of Brahman rather than pure illusion. The common analogy is body and soul. Distinct, yes. Separate, no.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "For many seekers, this middle path feels existentially truer than either pure identity or radical separation. It preserves devotion without abandoning metaphysical unity.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["How these views change practice"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Non-dual practice typically leans toward inquiry, discrimination, and witness-consciousness. Dualist practice often leans toward prayer, name repetition, surrender, and service to a personal Lord. These are not rigid boundaries, but they are real tendencies. Your metaphysics shapes what feels spiritually intelligible.",
+                ],
+            },
+            {
+                type: "list",
+                items: [
+                    ["If you seek recognition of identity with the absolute, non-dual methods will feel coherent."],
+                    ["If you seek loving relation with the Divine, dualist methods will feel coherent."],
+                    ["If both seem partly true, qualified non-dual approaches may offer a bridge."],
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "This is why it helps to read ",
+                    { type: "link", text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+                    ", ",
+                    { type: "link", text: "Adi Shankaracharya", href: "/adi-shankaracharya-life-teachings" },
+                    ", and the larger ",
+                    { type: "link", text: "What is Vedanta?", href: "/what-is-vedanta" },
+                    " guide together rather than in isolation.",
+                ],
+            },
+            {
+                type: "heading",
+                level: 2,
+                content: ["Which one is true?"],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "Traditions answer that differently, obviously. But the better beginner question is often: which view exposes your current blind spot? If you are spiritually proud, devotion may humble you. If you are emotionally dependent on religious imagery, inquiry may mature you. If you are abstracted from embodied devotion, ritual may ground you. If you are chaotic, discipline may save your practice before philosophy even begins.",
+                ],
+            },
+            {
+                type: "paragraph",
+                content: [
+                    "The debate matters because metaphysics is never just theoretical. It determines whether liberation is recognition, relation, or both. It determines what the word 'God' can mean without contradiction. It determines whether the self is finally dissolved, fulfilled, or offered.",
                 ],
             },
         ],

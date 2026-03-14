@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleReadTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
 import { ArticleMeta } from "@/data/articles";
+import { buildArticleSchemas } from "@/lib/seo";
 
 interface ArticleLayoutProps {
     meta: ArticleMeta;
@@ -19,54 +20,22 @@ export function ArticleLayout({
     pillarHref,
     children,
 }: ArticleLayoutProps) {
-    const pageUrl = `https://opensadhaka.com${meta.route}`;
-    const pillarUrl = `https://opensadhaka.com${pillarHref}`;
-
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: meta.faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.answer,
-            },
-        })),
-    };
-
-    const articleSchema = {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        headline: meta.title,
-        description: meta.metaDescription,
-        url: pageUrl,
-        mainEntityOfPage: pageUrl,
-        datePublished: meta.publishDate,
-        dateModified: meta.publishDate,
-        articleSection: pillarLabel,
-        keywords: [meta.primaryKeyword],
-        about: [{ "@type": "Thing", name: meta.primaryKeyword }],
-        isPartOf: {
-            "@type": "WebPage",
-            name: pillarLabel,
-            url: pillarUrl,
-        },
-        inLanguage: "en",
-        author: { "@type": "Organization", name: "Sadhaka" },
-        publisher: { "@type": "Organization", name: "Sadhaka", url: "https://opensadhaka.com" },
-    };
+    const schemas = buildArticleSchemas(meta, pillarLabel, pillarHref);
 
     return (
         <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
             <ArticleReadTracker slug={meta.slug} pillar={meta.pillar} />
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.faq) }}
             />
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }}
             />
             <Header />
 
@@ -95,6 +64,14 @@ export function ArticleLayout({
                         <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6">
                             {meta.title}
                         </h1>
+                        <div className="mb-6 rounded-2xl border border-orange-500/20 bg-orange-500/5 p-5">
+                            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-400 mb-2">
+                                Direct answer
+                            </p>
+                            <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-0">
+                                {meta.aeoAnswer || `${meta.metaDescription} This guide explains ${meta.primaryKeyword} with clear source-grounded distinctions, practical examples, and next-step links for deeper study.`}
+                            </p>
+                        </div>
                         <p className="text-xl text-muted-foreground leading-relaxed">
                             {meta.metaDescription}
                         </p>
@@ -153,18 +130,18 @@ export function ArticleLayout({
                     {/* CTA */}
                     <div className="bg-gradient-to-br from-orange-950/30 to-background rounded-3xl border border-orange-900/30 p-10 text-center">
                         <h2 className="text-3xl font-display font-bold mb-4">
-                            Ready to find your path?
+                            {meta.footerCta?.title || "Ready to find your path?"}
                         </h2>
                         <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-                            Take the Faith Finder — a 5-minute quiz that maps your temperament to the specific tradition, practice, and philosophy within Sanatan Dharma that fits you.
+                            {meta.footerCta?.description || "Take the Faith Finder, a 5-minute quiz that maps your temperament to the specific tradition, practice, and philosophy within Sanatan Dharma that fits you."}
                         </p>
                         <TrackedLink
-                            href="/faith-finder"
-                            eventLabel={`article_cta:${meta.slug}:faith-finder`}
+                            href={meta.footerCta?.href || "/faith-finder"}
+                            eventLabel={`article_cta:${meta.slug}:${meta.footerCta?.href || "/faith-finder"}`}
                             trackPathName={meta.pillar}
                             className="inline-flex items-center justify-center bg-orange-500 text-white hover:bg-orange-600 h-14 px-8 rounded-full text-lg shadow-lg shadow-orange-900/20 transition-transform hover:scale-105"
                         >
-                            Start the Faith Finder
+                            {meta.footerCta?.label || "Start the Faith Finder"}
                             <ArrowRight className="ml-2 w-5 h-5" />
                         </TrackedLink>
                     </div>
