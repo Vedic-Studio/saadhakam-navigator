@@ -5,13 +5,13 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleReadTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
 import { ArticleFeaturedImage } from "@/components/ArticleFeaturedImage";
-import { ArticleMeta } from "@/data/articles";
+import { type ArticleMeta, getPillarConfig } from "@/features/articles";
 import { buildArticleSchemas } from "@/lib/seo";
 
 interface ArticleLayoutProps {
     meta: ArticleMeta;
-    pillarLabel: string;
-    pillarHref: string;
+    pillarLabel?: string;
+    pillarHref?: string;
     children: React.ReactNode; // long-form article body
 }
 
@@ -21,7 +21,10 @@ export function ArticleLayout({
     pillarHref,
     children,
 }: ArticleLayoutProps) {
-    const schemas = buildArticleSchemas(meta, pillarLabel, pillarHref);
+    const pillar = getPillarConfig(meta.pillar);
+    const resolvedPillarLabel = pillarLabel ?? pillar.label;
+    const resolvedPillarHref = pillarHref ?? pillar.href;
+    const schemas = buildArticleSchemas(meta, resolvedPillarLabel, resolvedPillarHref);
 
     return (
         <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
@@ -45,7 +48,7 @@ export function ArticleLayout({
                     <Breadcrumbs
                         items={[
                             { label: "Home", href: "/" },
-                            { label: pillarLabel, href: pillarHref },
+                            { label: resolvedPillarLabel, href: resolvedPillarHref },
                             { label: meta.title, href: meta.route },
                         ]}
                     />
@@ -54,7 +57,7 @@ export function ArticleLayout({
                     <header className="mb-12 mt-6">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 text-orange-400 text-xs font-semibold uppercase tracking-wider">
-                                {pillarLabel}
+                                {resolvedPillarLabel}
                             </span>
                             <span className="flex items-center gap-1 text-muted-foreground text-sm">
                                 <Clock className="w-3.5 h-3.5" />

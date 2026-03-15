@@ -2,20 +2,14 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Flame, Heart, Sparkles, Shield, Compass, Users } from "lucide-react";
+import { ContentPageTracker } from "@/components/ContentAnalytics";
+import { Flame, Heart } from "lucide-react";
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
-import { getArticleBySlug } from "@/data/articles";
-
-const meta = getArticleBySlug("shaivism-vs-vaishnavism")!;
 
 export const metadata: Metadata = {
     title: "Shaivism vs. Vaishnavism | The Two Great Paths Compared",

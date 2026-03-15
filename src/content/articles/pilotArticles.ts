@@ -1,4 +1,4 @@
-import { getArticleBySlug } from "@/data/articles";
+import { getArticleBySlug } from "@/features/articles";
 
 export type RichTextPart =
     | string

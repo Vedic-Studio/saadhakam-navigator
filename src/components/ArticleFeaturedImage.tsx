@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ArticleImage } from "@/data/articles";
+import type { ArticleImage } from "@/features/articles";
 
 interface ArticleFeaturedImageProps {
     image: ArticleImage;

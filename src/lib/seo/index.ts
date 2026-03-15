@@ -269,7 +269,7 @@ export function buildCollectionSchema(meta: CollectionPageSchemaMeta) {
 // Article-Specific Helpers
 // ============================================================================
 
-import type { ArticleMeta } from "@/data/articles";
+import type { ArticleMeta } from "@/features/articles";
 
 /**
  * Build complete metadata for an article from ArticleMeta
