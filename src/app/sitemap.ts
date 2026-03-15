@@ -45,7 +45,9 @@ export async function generateSitemaps() {
   ];
 }
 
-export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
+export default async function sitemap({ id: idProp }: { id: string | Promise<string | undefined> }): Promise<MetadataRoute.Sitemap> {
+  const id = await idProp;
+  if (!id) return [];
   const now = new Date();
 
   switch (id) {
@@ -328,7 +330,7 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
         priority: 0.9,
       }));
 
-    case "practices":
+    case "practices": {
       const combinatorialPages: MetadataRoute.Sitemap = [];
       const validPairs = [
         { p: "japa", g: "anxiety" },
@@ -360,8 +362,9 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
         });
       }
       return combinatorialPages;
+    }
 
-    case "shlokas":
+    case "shlokas": {
       const shlokaPages: MetadataRoute.Sitemap = [];
       // 1. the chapter pages
       for (const ch of bgChapters) {
@@ -382,6 +385,7 @@ export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
         });
       }
       return shlokaPages;
+    }
 
     case "sanskrit":
       return [
