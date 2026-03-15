@@ -1,73 +1,69 @@
-# Welcome to your Lovable project
+# Sadhaka
 
-## Project info
+Sadhaka is a content-rich spiritual knowledge site built on a canonical Next.js App Router frontend with a small FastAPI backend for content-agent workflows. The production-facing web app lives at the repository root. Older Vite/Lovable-era files remain only as quarantined legacy residue and are not the active frontend runtime.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Stack
 
-## How can I edit this code?
+- Frontend: Next.js App Router, React, TypeScript, Tailwind CSS, shadcn/ui
+- Testing: Vitest, Testing Library
+- Backend: FastAPI, SQLAlchemy, Pydantic
+- Content: editorial articles, programmatic entity pages, Bhagavad Gita text, stotras, sahasranamas
 
-There are several ways of editing your application.
+## Frontend runtime boundary
 
-**Use Lovable**
+The root app is the source of truth:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- active frontend app: `src/app`
+- shared UI/components: `src/components`
+- editorial/programmatic content data: `src/data`, `src/content`, `content/`
+- article domain helpers: `src/features/articles`
 
-Changes made via Lovable will be committed automatically to this repo.
+Legacy Vite-era files are intentionally not part of the current runtime:
 
-**Use your preferred IDE**
+- `src/App.tsx`
+- `src/main.tsx`
+- `src/legacy_pages/**`
+- `index.html`
+- `vite.config.ts`
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+These legacy files are currently retained for reference only and should not be used as the basis for new work.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Local development
 
-Follow these steps:
+### Frontend
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Frontend tests
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npm run test:run
+npm run test:coverage
+```
 
-**Use GitHub Codespaces**
+### Backend
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```sh
+cd backend
+poetry install
+poetry run uvicorn app.main:app --reload
+```
 
-## What technologies are used for this project?
+### Backend tests
 
-This project is built with:
+```sh
+cd backend
+poetry run pytest --cov=app --cov-report=term-missing
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Notes on backend startup behavior
 
-## How can I deploy this project?
+The backend no longer assumes startup-time schema creation or knowledge reloads by default. Both behaviors are now explicit via environment flags:
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- `SADHAKA_AUTO_CREATE_SCHEMA_ON_STARTUP`
+- `SADHAKA_KNOWLEDGE_REFRESH_ON_STARTUP`
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This keeps local/test startup lighter and makes schema management more explicit.

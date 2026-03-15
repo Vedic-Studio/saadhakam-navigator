@@ -21,7 +21,8 @@ settings = get_settings()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    Base.metadata.create_all(bind=engine)
+    if settings.auto_create_schema_on_startup:
+        Base.metadata.create_all(bind=engine)
     if settings.knowledge_refresh_on_startup:
         get_knowledge_store().reload()
     yield

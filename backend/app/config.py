@@ -27,7 +27,8 @@ class Settings(BaseSettings):
         ]
     )
 
-    knowledge_refresh_on_startup: bool = True
+    auto_create_schema_on_startup: bool = False
+    knowledge_refresh_on_startup: bool = False
     anthropic_api_key: str | None = None
     anthropic_model: str = "claude-3-5-sonnet-20241022"
 
