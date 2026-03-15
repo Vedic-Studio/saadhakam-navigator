@@ -1,0 +1,554 @@
+[
+  {
+    "slug": "bhagavad-gita-complete-guide",
+    "route": "/bhagavad-gita-complete-guide",
+    "title": "Bhagavad Gita Complete Guide: Chapters, Teachings, and How to Read It",
+    "primaryKeyword": "bhagavad gita complete guide",
+    "pillar": "sacred-texts",
+    "metaDescription": "Bhagavad Gita complete guide for serious beginners: its 18 chapters, 700 verses, core yogas, Arjuna's crisis, and how to read the text without flattening it into battlefield motivation."
+  },
+  {
+    "slug": "spiritual-paths-explained",
+    "route": "/spiritual-paths-explained",
+    "title": "Spiritual Paths Explained: Inquiry, Devotion, Discipline, and Ritual",
+    "primaryKeyword": "spiritual paths explained",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "Spiritual paths explained through the Bhagavad Gita's fourfold framework: Karma, Bhakti, Jnana, and Dhyana, how temperaments differ, and why not every path fits every seeker equally well."
+  },
+  {
+    "slug": "western-philosophy-and-vedanta",
+    "route": "/western-philosophy-and-vedanta",
+    "title": "Indian Philosophy vs Western Philosophy: The Vedanta Bridge",
+    "primaryKeyword": "indian philosophy vs western philosophy",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Indian philosophy vs western philosophy: clear differences, core convergences, and how Vedanta reframes consciousness, ethics, and meaning for modern seekers."
+  },
+  {
+    "slug": "vedanta-vs-stoicism",
+    "route": "/vedanta-vs-stoicism",
+    "title": "Vedanta vs Stoicism: Similar Discipline, Different Metaphysics",
+    "primaryKeyword": "vedanta vs stoicism",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Vedanta vs Stoicism explained: where they converge on discipline and detachment, where they differ on self, God, consciousness, and liberation."
+  },
+  {
+    "slug": "platos-cave-and-maya",
+    "route": "/platos-cave-and-maya",
+    "title": "Plato's Cave and Maya: Why Advaita Goes Beyond Plato's Allegory",
+    "primaryKeyword": "platos cave and maya",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Plato's cave and Maya compared through Republic Book VII, Shankara's adhyasa doctrine, and Advaita's claim that illusion is not only epistemic but ontological."
+  },
+  {
+    "slug": "nietzsche-and-vedanta",
+    "route": "/nietzsche-and-vedanta",
+    "title": "Nietzsche and Vedanta: What His Critique Hits and What It Misses",
+    "primaryKeyword": "nietzsche and vedanta",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Nietzsche and Vedanta compared through ressentiment, ascetic ideals, Advaita, Tantra, and Kashmir Shaivism, with clear distinctions on selfhood, life affirmation, and liberation."
+  },
+  {
+    "slug": "existentialism-and-vedanta",
+    "route": "/existentialism-and-vedanta",
+    "title": "Existentialism and Vedanta: Freedom Begins in Different Places",
+    "primaryKeyword": "existentialism and vedanta",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Existentialism and Vedanta compared through Sartre, anxiety, freedom, essence, and self inquiry, showing why they diagnose human identity from radically different starting points."
+  },
+  {
+    "slug": "carl-jung-and-vedanta",
+    "route": "/carl-jung-and-vedanta",
+    "title": "Carl Jung and Vedanta: Depth Psychology Is Not the Absolute",
+    "primaryKeyword": "carl jung and vedanta",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Carl Jung and Vedanta compared through individuation, archetypes, Zimmer, shadow work, and Advaita's critique that the Absolute cannot be reduced to psychic structure."
+  },
+  {
+    "slug": "neuroscience-of-meditation-hinduism",
+    "route": "/neuroscience-of-meditation-hinduism",
+    "title": "Neuroscience of Meditation and Hindu Practice: What Evidence Supports",
+    "primaryKeyword": "neuroscience of meditation hinduism",
+    "pillar": "practical-practices",
+    "metaDescription": "Neuroscience of meditation through a Hindu lens: what brain research confirms, what it cannot measure, and how japa, dhyana, and bhakti differ."
+  },
+  {
+    "slug": "consciousness-hard-problem-vedanta",
+    "route": "/consciousness-hard-problem-vedanta",
+    "title": "Hard Problem of Consciousness and Vedanta: The Question Changes If Matter Is Not Primary",
+    "primaryKeyword": "consciousness hard problem vedanta",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "The hard problem of consciousness through David Chalmers and Advaita Vedanta, showing why the puzzle looks different once consciousness is treated as primary rather than produced by matter."
+  },
+  {
+    "slug": "hindu-goddess-explained",
+    "route": "/hindu-goddess-explained",
+    "title": "Hindu Goddess Explained: Devi, Shakti, and the Feminine Divine",
+    "primaryKeyword": "hindu goddess explained",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "Hindu goddess explained for beginners: who is Devi, what Shakti means, and how Durga, Lakshmi, Saraswati, Kali, and Parvati relate."
+  },
+  {
+    "slug": "ramayana-explained",
+    "route": "/ramayana-explained",
+    "title": "Ramayana Explained: Story, Characters, and Why It Still Matters",
+    "primaryKeyword": "ramayana explained",
+    "pillar": "sacred-texts",
+    "metaDescription": "Ramayana explained for modern readers: key story arc, Rama-Sita-Hanuman-Ravana dynamics, ethical dilemmas, and enduring relevance."
+  },
+  {
+    "slug": "how-to-read-upanishads-western-beginner",
+    "route": "/how-to-read-upanishads-western-beginner",
+    "title": "How to Read the Upanishads as a Western Beginner",
+    "primaryKeyword": "how to read upanishads for beginners",
+    "pillar": "sacred-texts",
+    "metaDescription": "How to read the Upanishads without overwhelm: best entry texts, translation choices, reading sequence, and practical integration tips."
+  },
+  {
+    "slug": "vedas-vs-upanishads-explained",
+    "route": "/vedas-vs-upanishads-explained",
+    "title": "Vedas vs Upanishads Explained: What's the Difference?",
+    "primaryKeyword": "vedas vs upanishads",
+    "pillar": "sacred-texts",
+    "metaDescription": "Vedas vs Upanishads explained simply: structure, purpose, ritual vs realization, and why Upanishads are called the philosophical culmination."
+  },
+  {
+    "slug": "bhagavad-gita-vs-bible",
+    "route": "/bhagavad-gita-vs-bible",
+    "title": "Bhagavad Gita vs Bible: A Respectful Comparative Guide",
+    "primaryKeyword": "bhagavad gita vs bible",
+    "pillar": "sacred-texts",
+    "metaDescription": "Bhagavad Gita vs Bible compared respectfully: genre, theology, ethics, salvation/liberation, and how readers can study both deeply."
+  },
+  {
+    "slug": "vedanta-vs-buddhism",
+    "route": "/vedanta-vs-buddhism",
+    "title": "Vedanta vs Buddhism: Self, Emptiness, and Liberation Compared",
+    "primaryKeyword": "vedanta vs buddhism",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Vedanta vs Buddhism explained through the Atman and Anatman dispute, Shankara's critique of Buddhist schools, points of convergence, and why their liberation frameworks are not interchangeable."
+  },
+  {
+    "slug": "christian-mysticism-and-vedanta",
+    "route": "/christian-mysticism-and-vedanta",
+    "title": "Christian Mysticism and Vedanta: Resonance in Negation, Divergence in Metaphysics",
+    "primaryKeyword": "christian mysticism and vedanta",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Christian mysticism and Vedanta compared through Meister Eckhart, apophatic theology, grace, union language, and the decisive difference between God language and Nirguna Brahman."
+  },
+  {
+    "slug": "sufi-mysticism-and-vedanta",
+    "route": "/sufi-mysticism-and-vedanta",
+    "title": "Sufi Mysticism and Vedanta: Real Convergence, Non Identical Theology",
+    "primaryKeyword": "sufi mysticism and vedanta",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Sufi mysticism and Vedanta compared through Ibn Arabi, dhikr, fana, unity language, and why wahdat al wujud should not be collapsed into Advaita Vedanta."
+  },
+  {
+    "slug": "what-is-sanatan-dharma",
+    "route": "/what-is-sanatan-dharma",
+    "title": "The True Meaning of Sanatan Dharma (And How It Differs from Hinduism)",
+    "primaryKeyword": "true meaning of sanatan dharma",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Sanatan Dharma means 'the eternal order' — a universal philosophy of dharma, karma, and moksha predating the geographical label 'Hinduism.' Learn what it actually means and how to live it."
+  },
+  {
+    "slug": "how-karma-dharma-work",
+    "route": "/how-karma-dharma-work",
+    "title": "How Karma and Dharma Actually Work | Beyond Punishment and Reward",
+    "primaryKeyword": "how does karma actually work in Hinduism",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Karma is not cosmic punishment — it is the physics of cause and effect for the soul. Dharma is your right action in context. Learn how both actually work in Indian philosophy."
+  },
+  {
+    "slug": "vedas-upanishads-bhagavad-gita-guide",
+    "route": "/vedas-upanishads-bhagavad-gita-guide",
+    "title": "The Ultimate Guide to the Sacred Texts of India: Vedas, Upanishads & Bhagavad Gita",
+    "primaryKeyword": "what are the vedas and upanishads",
+    "pillar": "sacred-texts",
+    "metaDescription": "Understand the Vedas, Upanishads, and Bhagavad Gita — what they are, how they differ, and where to start. The complete beginner's guide to India's sacred scriptures."
+  },
+  {
+    "slug": "what-is-maya",
+    "route": "/what-is-maya",
+    "title": "What is Maya in Indian Philosophy? | Illusion, Reality, and Moksha",
+    "primaryKeyword": "what is maya in indian philosophy",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Maya doesn't mean the world is fake — it means the world is not what you think it is. A clear explanation of maya in Vedanta and how seeing through it leads to moksha."
+  },
+  {
+    "slug": "midlife-crisis-spiritual-meaning",
+    "route": "/midlife-crisis-spiritual-meaning",
+    "title": "The Spiritual Meaning of a Midlife Crisis (And How to Actually Fix It)",
+    "primaryKeyword": "spiritual meaning of midlife crisis",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "A midlife crisis is not a psychological defect — it is a natural spiritual transition. The Vedic system's four life stages (Ashramas) map exactly why it happens and what to do instead."
+  },
+  {
+    "slug": "fear-of-death-advaita-vedanta",
+    "route": "/fear-of-death-advaita-vedanta",
+    "title": "Overcoming the Fear of Death Through Advaita Vedanta",
+    "primaryKeyword": "overcoming fear of death eastern philosophy",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "The fear of death in Eastern philosophy stems from a case of mistaken identity. Advaita Vedanta teaches that you are not the body — and what is not born cannot die."
+  },
+  {
+    "slug": "dark-night-of-the-soul",
+    "route": "/dark-night-of-the-soul",
+    "title": "Dark Night of the Soul vs Spiritual Bypassing: How to Tell the Difference",
+    "primaryKeyword": "how to navigate a dark night of the soul",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "A dark night of the soul is ego dissolution — an invitation, not a breakdown. Spiritual bypassing is using spiritual concepts to avoid genuine suffering. Learn to tell them apart."
+  },
+  {
+    "slug": "spiritual-antidote-to-hustle-culture",
+    "route": "/spiritual-antidote-to-hustle-culture",
+    "title": "The Spiritual Antidote to Hustle Culture: Finding Purpose Without Achieving",
+    "primaryKeyword": "how to find your life purpose spiritually",
+    "pillar": "practical-practices",
+    "metaDescription": "Hustle culture promises meaning through achievement. The Bhagavad Gita disagrees. How to find your life purpose spiritually — without needing to achieve anything first."
+  },
+  {
+    "slug": "how-to-start-meditating-daily",
+    "route": "/how-to-start-meditating-daily",
+    "title": "How to Start Meditating Daily (Even if You Can't Sit Still)",
+    "primaryKeyword": "how to start meditating daily",
+    "pillar": "practical-practices",
+    "metaDescription": "Starting a daily meditation practice doesn't require clearing your mind or sitting for an hour. Learn the four beginner-friendly techniques, the Brahma Muhurta timing advantage, and how to build consistency without willpower."
+  },
+  {
+    "slug": "meditation-for-anxiety-overthinking",
+    "route": "/meditation-for-anxiety-overthinking",
+    "title": "Meditation for Severe Anxiety and Overthinking: What Actually Works",
+    "primaryKeyword": "meditation for severe anxiety and overthinking",
+    "pillar": "practical-practices",
+    "metaDescription": "Meditation reduces anxiety through three physiological pathways — vagal stimulation, cortisol reduction, and thought interruption. But the wrong technique makes anxiety worse. Here's what actually works."
+  },
+  {
+    "slug": "meditation-for-burnout",
+    "route": "/meditation-for-burnout",
+    "title": "The Spiritual Approach to Burnout: Beyond Rest and Recovery",
+    "primaryKeyword": "meditation for corporate burnout spiritual approach",
+    "pillar": "practical-practices",
+    "metaDescription": "Burnout is not cured by vacation. It's a misalignment between your work and your deeper nature. The Bhagavad Gita's Karma Yoga offers the only approach that actually addresses the root."
+  },
+  {
+    "slug": "meditation-for-trauma-survivors",
+    "route": "/meditation-for-trauma-survivors",
+    "title": "Is Meditation Safe for Trauma Survivors? A Trauma-Sensitive Guide",
+    "primaryKeyword": "is meditation safe for trauma survivors",
+    "pillar": "practical-practices",
+    "metaDescription": "Standard meditation isn't always safe for trauma survivors. Closed eyes and silence can trigger flashbacks. Learn trauma-sensitive modifications that build safety first."
+  },
+  {
+    "slug": "what-is-kriya-yoga",
+    "route": "/what-is-kriya-yoga",
+    "title": "What Exactly is Kriya Yoga? The Complete Guide (And Why Not YouTube)",
+    "primaryKeyword": "what exactly is kriya yoga",
+    "pillar": "practical-practices",
+    "metaDescription": "Kriya Yoga is not stretching — it's an ancient science of moving prana up the spine to accelerate spiritual evolution. Learn the real mechanics, the dangers of unguided practice, and how to learn authentically."
+  },
+  {
+    "slug": "kundalini-awakening",
+    "route": "/kundalini-awakening",
+    "title": "Kundalini Awakening: Symptoms, Risks, and How to Navigate It Safely",
+    "primaryKeyword": "kundalini awakening symptoms physical",
+    "pillar": "practical-practices",
+    "metaDescription": "Kundalini awakening produces intense physical and emotional symptoms that can resemble psychosis. Learn the real difference, the risks of forced awakening, and the safe path forward."
+  },
+  {
+    "slug": "what-is-tantra",
+    "route": "/what-is-tantra",
+    "title": "What is Tantra Really About? (Hint: It's Not Just About Sex)",
+    "primaryKeyword": "what is tantra really about",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "Tantra is a vast science of ritual, mantra, and energy that sees the material world as divine. Learn the real philosophy, the difference between left and right hand paths, and what classical Tantra actually teaches."
+  },
+  {
+    "slug": "red-flags-yoga-studios",
+    "route": "/red-flags-yoga-studios",
+    "title": "5 Red Flags in Modern Yoga Studios (And How to Protect Yourself)",
+    "primaryKeyword": "red flags in yoga studios",
+    "pillar": "practical-practices",
+    "metaDescription": "Not all yoga instruction is safe or authentic. Unguided pranayama, guru dynamics, and cult-like environments create real harm. Learn the red flags and which styles are genuinely therapeutic."
+  },
+  {
+    "slug": "how-to-spot-fake-spiritual-guru",
+    "route": "/how-to-spot-fake-spiritual-guru",
+    "title": "How to Spot a Fake Spiritual Guru: The Discernment Matrix",
+    "primaryKeyword": "how to spot a fake spiritual guru",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "A true guru removes ignorance. A fake guru collects followers. Learn the 6 red flags of false spiritual teachers, why scandals keep happening in yoga lineages, and how to find an authentic teacher."
+  },
+  {
+    "slug": "do-you-need-a-guru",
+    "route": "/do-you-need-a-guru",
+    "title": "Do You Need a Guru for Enlightenment? The Ancient vs Modern View",
+    "primaryKeyword": "do you need a guru for enlightenment",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "Traditional Indian philosophy says a guru is ultimately necessary — like a mirror is necessary to see your face. But the guru doesn't have to be a living person. A clear, balanced guide."
+  },
+  {
+    "slug": "ramana-maharshi-who-am-i",
+    "route": "/ramana-maharshi-who-am-i",
+    "title": "Ramana Maharshi's 'Who Am I?' Technique: A Guide to Self-Inquiry",
+    "primaryKeyword": "Ramana Maharshi who am I technique",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Ramana Maharshi's Atma Vichara (Self-Inquiry) is the most direct path to recognizing the Atman. Learn the exact practice, common mistakes, and how Eckhart Tolle's 'Power of Now' maps to Advaita Vedanta."
+  },
+  {
+    "slug": "isha-foundation-sadhguru",
+    "route": "/isha-foundation-sadhguru",
+    "title": "Isha Foundation & Sadhguru: Criticisms, Cult Accusations, and Shambhavi Mahamudra",
+    "primaryKeyword": "is Isha Foundation a cult",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "Is Isha Foundation a cult? A neutral, factual look at Sadhguru's background, the common criticisms of his organization, and whether the core practice — Shambhavi Mahamudra — actually works."
+  },
+  {
+    "slug": "paramahansa-yogananda-teachings",
+    "route": "/paramahansa-yogananda-teachings",
+    "title": "Paramahansa Yogananda's Core Teachings: Kriya Yoga and the Science of God",
+    "primaryKeyword": "Paramahansa Yogananda teachings summary",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "Yogananda introduced Kriya Yoga to the West in the 1920s. Learn his core teachings on the scientific approach to God-realization, the spine as the highway of consciousness, and how his work compares to Art of Living's Sudarshan Kriya."
+  },
+  {
+    "slug": "spiritual-travel-india-guide",
+    "route": "/spiritual-travel-india-guide",
+    "title": "How to Plan a Spiritual Trip to India: The Complete Guide",
+    "primaryKeyword": "how to choose an ashram in india",
+    "pillar": "practical-practices",
+    "metaDescription": "Plan a spiritual trip to India without getting scammed or burnt out. Best time to go, Ayush Visa vs tourist visa, how to choose an authentic ashram, and what to expect culturally."
+  },
+  {
+    "slug": "rishikesh-vs-dharamshala",
+    "route": "/rishikesh-vs-dharamshala",
+    "title": "Rishikesh vs Dharamshala: Choosing Your Spiritual Basecamp in India",
+    "primaryKeyword": "rishikesh vs dharamshala for spirituality",
+    "pillar": "practical-practices",
+    "metaDescription": "Rishikesh is Hindu yoga on the Ganges. Dharamshala is Tibetan Buddhist in the Himalayas. Which is right for your practice? A practical comparison with ashrams, costs, safety, and vibe."
+  },
+  {
+    "slug": "silent-meditation-retreats-india",
+    "route": "/silent-meditation-retreats-india",
+    "title": "Silent Meditation Retreats in India: The Complete Guide to Vipassana and Beyond",
+    "primaryKeyword": "silent meditation retreats in india",
+    "pillar": "practical-practices",
+    "metaDescription": "India offers the world's most rigorous silent retreats — 10-day Vipassana at Dhamma Giri, Bodh Gaya, and more. What to expect, how to survive Day 3, and where to go for your level."
+  },
+  {
+    "slug": "indian-ashram-etiquette-packing",
+    "route": "/indian-ashram-etiquette-packing",
+    "title": "Indian Ashram Etiquette, Packing List, and Temple Rules",
+    "primaryKeyword": "what to pack for an indian ashram",
+    "pillar": "practical-practices",
+    "metaDescription": "Visiting an Indian ashram or Hindu temple requires knowing the unspoken rules: dress modestly, remove shoes, accept prasad with the right hand, observe silence. The complete practical guide."
+  },
+  {
+    "slug": "sacred-sites-india",
+    "route": "/sacred-sites-india",
+    "title": "Sacred Sites in India: Varanasi, Tiruvannamalai, Auroville & Kerala",
+    "primaryKeyword": "spiritual things to do in varanasi",
+    "pillar": "practical-practices",
+    "metaDescription": "Beyond yoga capitals: Varanasi for confronting mortality, Tiruvannamalai for self-inquiry, Auroville for integral yoga, and Kerala for Ayurvedic Panchakarma. The advanced spiritual itinerary."
+  },
+  {
+    "slug": "kailasa-temple-ellora",
+    "route": "/kailasa-temple-ellora",
+    "title": "How Was the Kailasa Temple Built? The Ellora Cave 16 Mystery",
+    "primaryKeyword": "how was kailasa temple built",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "The Kailasa Temple at Ellora is the largest monolithic structure in the world — carved top-down from a single basalt cliff face. How ancient Indian engineers achieved this remains astonishing."
+  },
+  {
+    "slug": "kailasa-vs-ajanta-caves",
+    "route": "/kailasa-vs-ajanta-caves",
+    "title": "Kailasa Temple vs Ajanta Caves: Which Should You Visit?",
+    "primaryKeyword": "kailasa temple vs ajanta caves",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "Ajanta has India's greatest ancient paintings. Ellora has the Kailasa Temple — the world's largest monolithic carving. Both are UNESCO sites near Aurangabad. Here is how to choose."
+  },
+  {
+    "slug": "south-india-temple-architecture",
+    "route": "/south-india-temple-architecture",
+    "title": "South India Temple Architecture: Brihadeeswarar, Meenakshi & Dravidian Design",
+    "primaryKeyword": "brihadeeswarar temple mysteries",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "South Indian Dravidian temples feature towering Gopurams, city-sized complexes, and engineering feats like the Brihadeeswarar's shadowless 80-ton capstone. A guide to Tamil Nadu's living temple architecture."
+  },
+  {
+    "slug": "most-powerful-shiva-temples-india",
+    "route": "/most-powerful-shiva-temples-india",
+    "title": "The Most Powerful Shiva Temples in India: Jyotirlingas Guide",
+    "primaryKeyword": "most powerful shiva temples in india",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "The 12 Jyotirlingas are India's most sacred Shiva temples — sites where Shiva appeared as an infinite column of light. Kedarnath, Kashi Vishwanath, Somnath: what each site offers and why it matters."
+  },
+  {
+    "slug": "how-to-study-indian-philosophy-home",
+    "route": "/how-to-study-indian-philosophy-home",
+    "title": "How to Study Indian Philosophy at Home: Bhagavad Gita, Yoga Sutras & Vedanta",
+    "primaryKeyword": "how to study the bhagavad gita",
+    "pillar": "practical-practices",
+    "metaDescription": "Building a real Indian philosophy curriculum at home: start with the Bhagavad Gita, progress to Patanjali's Yoga Sutras, then Advaita Vedanta. The correct sequence, best commentaries, and daily study structure."
+  },
+  {
+    "slug": "online-yoga-teacher-training-worth-it",
+    "route": "/online-yoga-teacher-training-worth-it",
+    "title": "Is an Online Yoga Teacher Training (YTT) Actually Worth It?",
+    "primaryKeyword": "is a yoga teacher training worth it",
+    "pillar": "practical-practices",
+    "metaDescription": "Online YTT is worth it for deepening personal practice, learning yoga history, and anatomy study on a budget. Not ideal for studio teaching physical adjustments. Honest breakdown of 200hr vs 500hr YTT."
+  },
+  {
+    "slug": "how-to-learn-sanskrit",
+    "route": "/how-to-learn-sanskrit",
+    "title": "How to Learn Sanskrit for Yoga Teachers and Spiritual Seekers",
+    "primaryKeyword": "sanskrit for yoga teachers online course",
+    "pillar": "practical-practices",
+    "metaDescription": "Sanskrit for yoga teachers: start with Devanagari script recognition (Language Curry app), then structured pronunciation courses for sutra chanting. Why English cannot translate Dharma, Maya, or Prana."
+  },
+  {
+    "slug": "celebrity-spiritual-courses-review",
+    "route": "/celebrity-spiritual-courses-review",
+    "title": "Are Celebrity Spiritual Courses Worth the Money? Honest Review",
+    "primaryKeyword": "deepak chopra meditation course review",
+    "pillar": "practical-practices",
+    "metaDescription": "Celebrity spiritual courses (Deepak Chopra, etc.) offer high production value and accessibility for beginners but are often overpriced relative to free alternatives. What to look for instead."
+  },
+  {
+    "slug": "can-i-practice-vedanta-without-converting",
+    "route": "/can-i-practice-vedanta-without-converting",
+    "title": "Can I Practice Vedanta Without Converting?",
+    "primaryKeyword": "can i practice vedanta without converting",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "No formal conversion is required to begin Vedanta, but respectful study still means honoring its Hindu and Vedic roots. Learn what is not required, what is required, and how beginners can enter honestly."
+  },
+  {
+    "slug": "can-i-chant-a-mantra-without-initiation",
+    "route": "/can-i-chant-a-mantra-without-initiation",
+    "title": "Can I Chant a Mantra Without Initiation?",
+    "primaryKeyword": "can i chant a mantra without initiation",
+    "pillar": "practical-practices",
+    "metaDescription": "Yes, many public mantras are beginner-safe without initiation, but not all mantras belong to the same category. Learn the difference between universal, public, and restricted mantras, when diksha matters, and how to start respectfully."
+  },
+  {
+    "slug": "what-are-the-upanishads",
+    "route": "/what-are-the-upanishads",
+    "title": "What Are the Upanishads?",
+    "primaryKeyword": "what are the upanishads",
+    "pillar": "sacred-texts",
+    "metaDescription": "The Upanishads are the culminating philosophical portions of the Vedic corpus, not a separate rival scripture family. Learn what they are, what they teach, where beginners should start, and how to read them responsibly."
+  },
+  {
+    "slug": "best-bhagavad-gita-translation-for-beginners",
+    "route": "/best-bhagavad-gita-translation-for-beginners",
+    "title": "Best Bhagavad Gita Translation for Beginners",
+    "primaryKeyword": "best bhagavad gita translation for beginners",
+    "pillar": "sacred-texts",
+    "metaDescription": "For most beginners, choose one readable translation with clear notes and stay with it for 30 days. Compare top options by clarity, style, and philosophical depth."
+  },
+  {
+    "slug": "what-is-vedanta",
+    "route": "/what-is-vedanta",
+    "title": "What is Vedanta? A Complete Beginner's Guide",
+    "primaryKeyword": "what is vedanta",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Vedanta is the philosophical crown of the Vedas, exploring the nature of ultimate reality (Brahman) and the self (Atman). A complete beginner's guide to Advaita, Dvaita, and Vishishtadvaita."
+  },
+  {
+    "slug": "advaita-vedanta-explained",
+    "route": "/advaita-vedanta-explained",
+    "title": "Advaita Vedanta Explained Simply for Western Minds",
+    "primaryKeyword": "advaita vedanta explained",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Advaita Vedanta teaches that your deepest self and ultimate reality are one. A clear, jargon-free explanation of non-dualism, Maya, Brahman, and the path to self-realization."
+  },
+  {
+    "slug": "how-to-start-japa",
+    "route": "/how-to-start-japa",
+    "title": "How to Start Japa Meditation: A Complete Step-by-Step Guide",
+    "primaryKeyword": "how to start japa meditation",
+    "pillar": "practical-practices",
+    "metaDescription": "Japa is the practice of sacred mantra repetition — one of the most accessible and powerful forms of meditation in Sanatan Dharma. Learn how to start, which mantra to choose, and how to build a daily practice."
+  },
+  {
+    "slug": "bhagavad-gita-chapter-1",
+    "route": "/bhagavad-gita-chapter-1",
+    "title": "Bhagavad Gita Chapter 1: Arjuna's Dilemma Explained",
+    "primaryKeyword": "bhagavad gita chapter 1 summary",
+    "pillar": "sacred-texts",
+    "metaDescription": "Chapter 1 of the Bhagavad Gita sets the scene: Arjuna, the great warrior, collapses in grief on the battlefield. A complete explanation of Arjuna Vishada Yoga and its timeless relevance."
+  },
+  {
+    "slug": "bhagavad-gita-chapter-2",
+    "route": "/bhagavad-gita-chapter-2",
+    "title": "Bhagavad Gita Chapter 2: Sankhya Yoga Explained",
+    "primaryKeyword": "bhagavad gita chapter 2 summary",
+    "pillar": "sacred-texts",
+    "metaDescription": "Bhagavad Gita Chapter 2 explains the immortal Self, Karma Yoga, and equanimity in action. Understand why this chapter is the philosophical core of the Gita."
+  },
+  {
+    "slug": "10-powerful-sanskrit-mantras",
+    "route": "/10-powerful-sanskrit-mantras",
+    "title": "10 Powerful Sanskrit Mantras: Meaning, Use, and Traditional Boundaries",
+    "primaryKeyword": "10 powerful sanskrit mantras",
+    "pillar": "sacred-texts",
+    "metaDescription": "A source-grounded guide to 10 powerful Sanskrit mantras, including Gayatri, Mahamrityunjaya, Om Namah Shivaya, Hanuman Chalisa, Mahavakyas, Devi mantras, and Narayana mantras, with context on adhikara, diksha, pronunciation, deity, and occasion."
+  },
+  {
+    "slug": "adi-shankaracharya-life-teachings",
+    "route": "/adi-shankaracharya-life-teachings",
+    "title": "Adi Shankaracharya: Life, Teachings, Debates, and Lasting Legacy",
+    "primaryKeyword": "adi shankaracharya life teachings",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Adi Shankaracharya's life and teachings explained through his short life, commentarial achievement, debate culture, confrontation with Mimamsa and Buddhism, four mathas, and enduring Advaita legacy."
+  },
+  {
+    "slug": "daily-spiritual-routine-beginners",
+    "route": "/daily-spiritual-routine-beginners",
+    "title": "Daily Spiritual Routine for Beginners: A Practical Guide",
+    "primaryKeyword": "daily spiritual routine for beginners",
+    "pillar": "practical-practices",
+    "metaDescription": "A daily spiritual routine for beginners grounded in brahma muhūrta, sandhyā, svādhyāya, japa, prāṇāyāma, and correct sequencing, with a realistic modern adaptation that preserves traditional structure."
+  },
+  {
+    "slug": "how-to-choose-a-mantra",
+    "route": "/how-to-choose-a-mantra",
+    "title": "How to Choose a Mantra: Categories, Initiation, and Beginner Mistakes",
+    "primaryKeyword": "how to choose a mantra",
+    "pillar": "practical-practices",
+    "metaDescription": "How to choose a mantra using the traditional distinctions that matter: bija, nama, vakya, diksha, suitability for beginners, self-initiation limits, and the red flags that signal the wrong mantra choice."
+  },
+  {
+    "slug": "inquiry-vs-devotion-path",
+    "route": "/inquiry-vs-devotion-path",
+    "title": "Inquiry vs Devotion Path: Jnana and Bhakti Without False Opposition",
+    "primaryKeyword": "inquiry vs devotion path",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "Inquiry vs devotion explained through the Gita, Chandogya Upanishad, Narada Bhakti Sutras, and Ramana Maharshi. Learn why jnana and bhakti are not opposites and how temperament should guide practice."
+  },
+  {
+    "slug": "which-meditation-for-me",
+    "route": "/which-meditation-for-me",
+    "title": "Which Meditation Is Right for Me: A Diagnostic Guide to Real Practice Types",
+    "primaryKeyword": "which meditation is right for me",
+    "pillar": "practical-practices",
+    "metaDescription": "Which meditation is right for me explained through dharana, dhyana, samadhi, self-inquiry, trataka, japa, and common beginner mistakes. Learn why meditation is a family of different operations, not one technique."
+  },
+  {
+    "slug": "non-duality-vs-dualism",
+    "route": "/non-duality-vs-dualism",
+    "title": "Non-Duality vs Dualism: Understanding the Philosophical Difference",
+    "primaryKeyword": "non dual vs dual philosophy",
+    "pillar": "ancient-wisdom",
+    "metaDescription": "Non-duality vs dualism explained through Advaita and Madhva's Dvaita, why Western monism language is insufficient, and what these views imply for devotion, liberation, and spiritual practice."
+  },
+  {
+    "slug": "shaivism-vs-vaishnavism",
+    "route": "/shaivism-vs-vaishnavism",
+    "title": "Shaivism vs Vaishnavism: The Two Great Paths of Hindu Devotion",
+    "primaryKeyword": "shaivism vs vaishnavism",
+    "pillar": "spiritual-traditions",
+    "metaDescription": "Shaivism (the path of Shiva) and Vaishnavism (the path of Vishnu) are the two largest devotional traditions in Sanatan Dharma. A complete guide to their philosophies, practices, and differences."
+  }
+]

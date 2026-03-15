@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleReadTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
+import { ArticleFeaturedImage } from "@/components/ArticleFeaturedImage";
 import { ArticleMeta } from "@/data/articles";
 import { buildArticleSchemas } from "@/lib/seo";
 
@@ -76,6 +77,15 @@ export function ArticleLayout({
                             {meta.metaDescription}
                         </p>
                     </header>
+
+                    {/* Featured image — between header and article body */}
+                    {meta.featuredImage && (
+                        <ArticleFeaturedImage
+                            image={meta.featuredImage}
+                            className="mb-10"
+                            priority={true}
+                        />
+                    )}
 
                     {/* Article Body */}
                     <LongformContent className="mb-16">

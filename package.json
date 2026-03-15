@@ -14,7 +14,14 @@
     "indexnow:submit:prod": "node scripts/submit-priority-indexnow.mjs",
     "test": "vitest",
     "backend": "cd backend && npm install && npm start",
-    "backend:dev": "cd backend && npm install && npm run dev"
+    "backend:dev": "cd backend && npm install && npm run dev",
+    "images:snapshot": "npx tsx scripts/export-articles-snapshot.ts",
+    "images:generate": "node scripts/generate-article-images.mjs",
+    "images:generate:pilot": "node scripts/generate-article-images.mjs --pilot",
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "images:wire": "node scripts/wire-article-images.mjs",
+    "images:wire:patch": "node scripts/wire-article-images.mjs --patch",
+    "images:run": "npm run images:generate && npm run images:optimize"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -78,14 +85,16 @@
     "@types/node": "^22.16.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react-swc": "^3.7.2",
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "^16.1.6",
     "jsdom": "^25.0.1",
+    "openai": "^6.29.0",
     "postcss": "^8.5.6",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
-    "@vitejs/plugin-react-swc": "^3.7.2",
     "vitest": "^2.1.5"
   }
 }

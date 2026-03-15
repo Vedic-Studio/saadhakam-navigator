@@ -275,11 +275,16 @@ import type { ArticleMeta } from "@/data/articles";
  * Build complete metadata for an article from ArticleMeta
  */
 export function buildArticleMetadata(article: ArticleMeta): Metadata {
+    const imageUrl = article.featuredImage
+        ? buildUrl(article.featuredImage.src)
+        : undefined;
+
     return buildPageMetadata({
         title: article.title,
         description: article.metaDescription,
         path: article.route,
         publishedTime: article.publishDate,
+        images: imageUrl ? [imageUrl] : undefined,
     });
 }
 

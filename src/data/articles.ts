@@ -9,6 +9,13 @@ export interface ArticleFaq {
     answer: string;
 }
 
+export interface ArticleImage {
+    src: string;   // e.g. "/assets/articles/what-is-vedanta/featured.webp"
+    alt: string;   // SEO-optimised alt text, max 125 chars
+    width: 1200;
+    height: 630;
+}
+
 export interface ArticleMeta {
     slug: string;
     route: string; // top-level URL path, e.g. "/what-is-vedanta"
@@ -27,6 +34,7 @@ export interface ArticleMeta {
     };
     relatedLinks: { text: string; href: string }[];
     faqs: ArticleFaq[];
+    featuredImage?: ArticleImage;
 }
 
 export const articles: ArticleMeta[] = [
@@ -83,6 +91,12 @@ export const articles: ArticleMeta[] = [
                     "No. The Bhagavad Gita integrates Karma Yoga, Jnana Yoga, Bhakti Yoga, and meditative discipline. Different commentators rank these differently, but the text itself repeatedly presents them as coordinated rather than mutually exclusive.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/bhagavad-gita-complete-guide/featured.webp",
+            alt: "bhagavad gita complete guide — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "spiritual-paths-explained",
@@ -137,6 +151,12 @@ export const articles: ArticleMeta[] = [
                     "No. Bhakti in texts such as the Bhagavata Purana and Narada Bhakti Sutras is disciplined devotion ordered toward total surrender, not emotional excess. Jnana in the Upanishads and Shankara is liberating knowledge grounded in sravana, manana, and nididhyasana, not mere intellectual display.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/spiritual-paths-explained/featured.webp",
+            alt: "spiritual paths explained — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
 
     // ─── Cluster 9: Western Philosophy Bridge ───────────────────────────────
@@ -180,6 +200,12 @@ export const articles: ArticleMeta[] = [
                     "Because Indian systems treat unresolved identity as the root of suffering. If you do not understand the knower, all knowledge remains partial. Vedanta therefore begins with the witness, not merely the world witnessed.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/western-philosophy-and-vedanta/featured.webp",
+            alt: "indian philosophy vs western philosophy — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "vedanta-vs-stoicism",
@@ -215,6 +241,12 @@ export const articles: ArticleMeta[] = [
                     "Yes. Stoic exercises such as voluntary discomfort, cognitive reframing, and reflection can stabilize mind and behavior, making one better prepared for deeper Vedantic inquiry and meditation.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/vedanta-vs-stoicism/featured.webp",
+            alt: "vedanta vs stoicism — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "platos-cave-and-maya",
@@ -264,6 +296,12 @@ export const articles: ArticleMeta[] = [
                     "Start with Republic Book VII for Plato's cave, then read Shankara's Adhyasa Bhashya and beginner guides to Maya and Advaita. That pairing keeps both the Greek and Vedantic sides textually grounded.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/platos-cave-and-maya/featured.webp",
+            alt: "platos cave and maya — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "nietzsche-and-vedanta",
@@ -313,6 +351,12 @@ export const articles: ArticleMeta[] = [
                     "Probably not. His critique would likely strike harder at world denying asceticism than at traditions such as Tantra or Kashmir Shaivism that affirm power, embodiment, and consciousness as intrinsically expressive.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/nietzsche-and-vedanta/featured.webp",
+            alt: "nietzsche and vedanta — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "existentialism-and-vedanta",
@@ -362,6 +406,12 @@ export const articles: ArticleMeta[] = [
                     "Sartre denies a fixed human essence prior to choice, while Vedanta says the true Self is not a social essence or personality type at all, but consciousness itself. Their disagreement is not small. It defines the whole inquiry.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/existentialism-and-vedanta/featured.webp",
+            alt: "existentialism and vedanta — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "carl-jung-and-vedanta",
@@ -411,6 +461,12 @@ export const articles: ArticleMeta[] = [
                     "Zimmer helped mediate Indian thought to Western depth psychology circles and influenced how Jungian readers approached Hindu symbolism. He is an important bridge figure, even when the bridge risks overstating equivalence.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/carl-jung-and-vedanta/featured.webp",
+            alt: "carl jung and vedanta — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "neuroscience-of-meditation-hinduism",
@@ -445,6 +501,12 @@ export const articles: ArticleMeta[] = [
                     "No. Focused attention, open monitoring, mantra repetition, and devotional absorption recruit overlapping but distinct cognitive-emotional networks.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/neuroscience-of-meditation-hinduism/featured.webp",
+            alt: "neuroscience of meditation hinduism — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "consciousness-hard-problem-vedanta",
@@ -494,6 +556,12 @@ export const articles: ArticleMeta[] = [
                     "David Chalmers clarifies the modern distinction between the easy problems of cognition and the hard problem of subjective experience. Even when Vedanta rejects his matter first assumptions, his formulation helps make the debate precise.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/consciousness-hard-problem-vedanta/featured.webp",
+            alt: "consciousness hard problem vedanta — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
 
     // ─── Cluster 11: Deity Bridge for Western Readers ───────────────────────
@@ -531,6 +599,12 @@ export const articles: ArticleMeta[] = [
                     "For some practitioners, goddess forms are sacred symbols of inner principles. For others, they are living divine presences approached through devotion and ritual. Both approaches are accepted.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/hindu-goddess-explained/featured.webp",
+            alt: "hindu goddess explained — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "ramayana-explained",
@@ -569,6 +643,12 @@ export const articles: ArticleMeta[] = [
                     "Hanuman embodies bhakti in action: courage, humility, and total service without egoic claim over outcomes.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/ramayana-explained/featured.webp",
+            alt: "ramayana explained — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
 
     // ─── Cluster 12: Sacred Texts (Western Reader Bridge) ───────────────────
@@ -608,6 +688,12 @@ export const articles: ArticleMeta[] = [
                     "Read slowly, note one core insight, and connect it to direct self-observation rather than treating it as abstract metaphysics alone.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/how-to-read-upanishads-western-beginner/featured.webp",
+            alt: "how to read upanishads for beginners — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "vedas-vs-upanishads-explained",
@@ -645,6 +731,12 @@ export const articles: ArticleMeta[] = [
                     "No. While early sections include ritual frameworks, the tradition also includes profound philosophical inquiry culminating in the Upanishads.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/vedas-vs-upanishads-explained/featured.webp",
+            alt: "vedas vs upanishads — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "bhagavad-gita-vs-bible",
@@ -682,6 +774,12 @@ export const articles: ArticleMeta[] = [
                     "A key difference is framing: the Gita emphasizes yoga paths and liberation through realization and disciplined action; Biblical traditions often emphasize covenantal relation, grace, and salvation history.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/bhagavad-gita-vs-bible/featured.webp",
+            alt: "bhagavad gita vs bible — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
 
     // ─── Cluster 13: Comparative Mysticism ───────────────────────────────────
@@ -732,6 +830,12 @@ export const articles: ArticleMeta[] = [
                     "Shankara regarded Buddhist positions as philosophically powerful but ultimately inadequate because they failed, in his reading, to secure the Upanishadic teaching of the Self. His Brahma Sutra Bhāṣya therefore devotes sustained attention to refuting Buddhist schools such as Vijnanavada and Madhyamaka.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/vedanta-vs-buddhism/featured.webp",
+            alt: "vedanta vs buddhism — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "christian-mysticism-and-vedanta",
@@ -781,6 +885,12 @@ export const articles: ArticleMeta[] = [
                     "Eckhart is often compared with Advaita because his sermons use strong language of detachment, ground, and negation. Even so, his theology remains Christian and cannot simply be translated into Nirguna Brahman without distortion.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/christian-mysticism-and-vedanta/featured.webp",
+            alt: "christian mysticism and vedanta — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "sufi-mysticism-and-vedanta",
@@ -830,6 +940,12 @@ export const articles: ArticleMeta[] = [
                     "Ibn Arabi is important because he gives one of the most sophisticated Sufi articulations of unity language. He is often invoked in comparisons with Advaita, but careful readers must still preserve his specifically Islamic theological frame.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/sufi-mysticism-and-vedanta/featured.webp",
+            alt: "sufi mysticism and vedanta — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
 
     // ─── Sprint 1: Cluster 1 — Indian Spirituality & Concepts ───────────────
@@ -855,6 +971,12 @@ export const articles: ArticleMeta[] = [
             { question: "Does Sanatan Dharma have a founder or central book?", answer: "No. It has no single founder, prophet, or canonical text. The Vedas, Upanishads, Bhagavad Gita, and Puranas are all authoritative, but no single text is 'the only book.'" },
             { question: "What are the core concepts of Sanatan Dharma?", answer: "The four foundational goals (Purusharthas) are: Dharma (right duty), Artha (legitimate prosperity), Kama (wholesome desire), and Moksha (liberation from the cycle of birth and death)." },
         ],
+        featuredImage: {
+            src: "/assets/articles/what-is-sanatan-dharma/featured.webp",
+            alt: "true meaning of sanatan dharma — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "how-karma-dharma-work",
@@ -878,6 +1000,12 @@ export const articles: ArticleMeta[] = [
             { question: "Can karma from a past life affect my current life?", answer: "In the Hindu framework, yes. Prarabdha karma refers to accumulated karma from past lives actively expressing in your current life. But Agami karma — new choices — can modify future circumstances." },
             { question: "What does 'nishkama karma' mean?", answer: "Nishkama Karma means 'desireless action' — acting without attachment to the result. The Bhagavad Gita (2.47) teaches you have a right to your actions but not to their fruits." },
         ],
+        featuredImage: {
+            src: "/assets/articles/how-karma-dharma-work/featured.webp",
+            alt: "how does karma actually work in Hinduism — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "vedas-upanishads-bhagavad-gita-guide",
@@ -901,6 +1029,12 @@ export const articles: ArticleMeta[] = [
             { question: "Are the Vedas and the Upanishads the same?", answer: "No. The Upanishads are the last and most philosophically important section of the Vedas. Each of the four Vedas contains its own Upanishads as its philosophical conclusion." },
             { question: "Do I need Sanskrit to benefit from these texts?", answer: "No. Excellent translations exist. For the Gita: Swami Gambhirananda (philosophical) or Barbara Stoler Miller (literary). For Upanishads: Patrick Olivelle's Oxford translation or Swami Nikhilananda's volumes." },
         ],
+        featuredImage: {
+            src: "/assets/articles/vedas-upanishads-bhagavad-gita-guide/featured.webp",
+            alt: "what are the vedas and upanishads — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "what-is-maya",
@@ -924,6 +1058,12 @@ export const articles: ArticleMeta[] = [
             { question: "Is maya the same as ignorance (avidya)?", answer: "Related but distinct. Avidya (ignorance) is the root cause — not knowing your true nature. Maya is the consequence — the cosmic power that projects multiplicity and separation onto what is one undivided reality." },
             { question: "What is moksha and how does seeing through maya lead to it?", answer: "Moksha is liberation from the cycle of birth and death. Samsara is sustained by maya — by identifying with the body and ego. When self-knowledge removes this identification, the seeker recognizes their true nature as Brahman. This recognition is Moksha." },
         ],
+        featuredImage: {
+            src: "/assets/articles/what-is-maya/featured.webp",
+            alt: "what is maya in indian philosophy — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     // ─── Sprint 1: Cluster 8 — Life Problems, Meaning, Midlife ─────────────
     {
@@ -948,6 +1088,12 @@ export const articles: ArticleMeta[] = [
             { question: "Is a midlife crisis the same as a spiritual awakening?", answer: "They overlap. Both involve identity structure collapsing. The difference is direction: materialistic response (sports car, affair) goes sideways. Honest inquiry — 'what actually matters?' — can become a genuine awakening." },
             { question: "How does Vedanta deal with the fear of aging?", answer: "Vedanta's core: you are not your body. The Atman — the witnessing consciousness — does not age or die. Aging is the loosening grip of the ego on its material identity, which is actually a spiritual gift." },
         ],
+        featuredImage: {
+            src: "/assets/articles/midlife-crisis-spiritual-meaning/featured.webp",
+            alt: "spiritual meaning of midlife crisis — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "fear-of-death-advaita-vedanta",
@@ -971,6 +1117,12 @@ export const articles: ArticleMeta[] = [
             { question: "How does Eastern philosophy deal with grief differently?", answer: "Eastern philosophy honors grief while offering a framework: the person you loved has returned to the infinite source from which all forms arise. The grief is valid; the 'permanent loss' is the additional suffering added by the illusion of complete separation." },
             { question: "Can philosophical understanding actually help with the fear of death?", answer: "Yes, but only as a living practice. Daily meditation — 'dying' to the ego-sense every day — makes the larger release (physical death) familiar rather than terrifying. Over time, the fear dissolves experientially." },
         ],
+        featuredImage: {
+            src: "/assets/articles/fear-of-death-advaita-vedanta/featured.webp",
+            alt: "overcoming fear of death eastern philosophy — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "dark-night-of-the-soul",
@@ -994,6 +1146,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is spiritual bypassing and how is it harmful?", answer: "Using spiritual ideas to avoid rather than work through psychological wounds. Examples: 'it's all an illusion' to avoid apologizing, 'I'm beyond ego' as a shield against criticism. The underlying wound festers behind a spiritual veneer, eventually producing more crisis." },
             { question: "How do I let go of regret and past mistakes spiritually?", answer: "Regret is useful for about 30 seconds — just long enough to extract the lesson. After that, it becomes identity. Acknowledge what was done, make amends where possible, learn the lesson, then genuinely release the identity-story that clings to the error." },
         ],
+        featuredImage: {
+            src: "/assets/articles/dark-night-of-the-soul/featured.webp",
+            alt: "how to navigate a dark night of the soul — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "spiritual-antidote-to-hustle-culture",
@@ -1017,6 +1175,12 @@ export const articles: ArticleMeta[] = [
             { question: "How do you detach from outcomes in practice?", answer: "Before any task, acknowledge the outcome is not in your control. Focus entirely on process. After completion, resist interpreting the result as a verdict on your worth. Results inform your next action — they don't define your being." },
             { question: "Can someone who has failed completely still have a meaningful life?", answer: "Absolutely. The Atman is unaffected by external success or failure. Failure is information about the gap between skills and situation — not a metaphysical verdict on your worth. From complete breakdown, right action and liberation remain possible." },
         ],
+        featuredImage: {
+            src: "/assets/articles/spiritual-antidote-to-hustle-culture/featured.webp",
+            alt: "how to find your life purpose spiritually — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     // ─── Sprint 2: Cluster 2 — Meditation & Practice ────────────────────────
     {
@@ -1041,6 +1205,12 @@ export const articles: ArticleMeta[] = [
             { question: "Is it okay to think during meditation?", answer: "Yes. Thoughts will arise — this is certain. The practice is not to stop thoughts but to notice when attention has been captured by a thought and gently return to the chosen anchor (breath, mantra, or external point). Each return is a repetition of the practice. The thought itself is not failure." },
             { question: "What is the difference between mindfulness meditation and Vedic meditation?", answer: "Mindfulness (derived largely from Theravada Buddhism) emphasizes nonjudgmental observation of present-moment experience. Vedic meditation typically involves an active anchor — a mantra, the breath, or a devotional focus — with the goal of moving through concentration into transcendence. Both are valid; the choice depends on your temperament and tradition." },
         ],
+        featuredImage: {
+            src: "/assets/articles/how-to-start-meditating-daily/featured.webp",
+            alt: "how to start meditating daily — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "meditation-for-anxiety-overthinking",
@@ -1064,6 +1234,12 @@ export const articles: ArticleMeta[] = [
             { question: "Is japa meditation good for anxiety?", answer: "Japa (mantra repetition) is particularly well-suited for anxious minds. The repetitive quality of mantra gives the monkey mind something to hold, preventing the thought-generation that feeds anxiety loops. It also produces rhythmic breathing patterns as a side effect." },
             { question: "Should I meditate during a panic attack?", answer: "Not during the acute phase — your nervous system is in emergency mode and cannot receive subtler instructions. First: 4-7-8 breathing to exit the fight-or-flight state. Then: grounding (5-4-3-2-1 technique). Then, once baseline calm is re-established (usually 10–15 minutes), gentle sitting practice." },
         ],
+        featuredImage: {
+            src: "/assets/articles/meditation-for-anxiety-overthinking/featured.webp",
+            alt: "meditation for severe anxiety and overthinking — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "meditation-for-burnout",
@@ -1087,6 +1263,12 @@ export const articles: ArticleMeta[] = [
             { question: "Can meditation fix burnout alone?", answer: "No. Meditation addresses the internal components: restoring nervous system regulation, clarifying values, building equanimity. But structural changes — workload, role alignment, boundaries — also need to be addressed. Meditation without external change is incomplete; external change without internal work is also incomplete." },
             { question: "What is svadharma in the context of work?", answer: "Svadharma means your own intrinsic nature and the duty arising from it. In a work context: the role that fits your actual temperament and capacities, done with full attention. Burnout often signals para-dharma — performing someone else's idea of success rather than your own genuine contribution." },
         ],
+        featuredImage: {
+            src: "/assets/articles/meditation-for-burnout/featured.webp",
+            alt: "meditation for corporate burnout spiritual approach — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "meditation-for-trauma-survivors",
@@ -1110,6 +1292,12 @@ export const articles: ArticleMeta[] = [
             { question: "What types of meditation are safest for PTSD?", answer: "Walking meditation, open-eyed Trataka (gazing at a candle), mantra-based Japa, and gentle body-scan practices that stay at the periphery rather than going into areas of stored tension. Yoga Nidra is generally therapeutic for PTSD when the guide builds in resourcing before moving inward." },
             { question: "Should trauma survivors see a therapist before meditating?", answer: "If you have significant unprocessed trauma — particularly if you experience flashbacks or severe dissociation when sitting quietly — consulting with a trauma-informed therapist before establishing a solo practice is strongly recommended." },
         ],
+        featuredImage: {
+            src: "/assets/articles/meditation-for-trauma-survivors/featured.webp",
+            alt: "is meditation safe for trauma survivors — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     // ─── Sprint 3: Cluster 3 — Yoga, Kriya, Kundalini, Tantra ───────────────
     {
@@ -1134,6 +1322,12 @@ export const articles: ArticleMeta[] = [
             { question: "How do I learn Kriya Yoga authentically?", answer: "The primary authentic lineage in the West is Self-Realization Fellowship (SRF), founded by Paramahansa Yogananda. SRF offers a structured home-study correspondence course that prepares students over 18+ months before initiating them into Kriya." },
             { question: "What does Kriya Yoga have to do with Patanjali's Yoga Sutras?", answer: "Patanjali mentions Kriya Yoga in Chapter 2, Verse 1: 'Tapas, Svadhyaya, and Ishvara Pranidhana — this is Kriya Yoga.' Yogananda's tradition interprets the broader Kriya techniques as the practical implementation of Patanjali's stages of Pratyahara, Dharana, and Dhyana." },
         ],
+        featuredImage: {
+            src: "/assets/articles/what-is-kriya-yoga/featured.webp",
+            alt: "what exactly is kriya yoga — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "kundalini-awakening",
@@ -1157,6 +1351,12 @@ export const articles: ArticleMeta[] = [
             { question: "Can you force a kundalini awakening?", answer: "You can force energy channels open before the system is ready — and this is precisely what creates kundalini syndrome. Intensive unguided breathwork, extreme fasting, or psychedelics can precipitate an awakening the practitioner has no framework for. The traditional recommendation: build the foundation first." },
             { question: "How long does a kundalini awakening last?", answer: "Initial intensity may last days to weeks. Full integration — stabilizing the expanded awareness and clearing surfaced samskaras — typically takes 1–7 years. Practitioners who try to 'fix' or 'complete' the process rapidly create more difficulty than those who simply support it." },
         ],
+        featuredImage: {
+            src: "/assets/articles/kundalini-awakening/featured.webp",
+            alt: "kundalini awakening symptoms physical — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "what-is-tantra",
@@ -1180,6 +1380,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is Neo-Tantra and how is it different?", answer: "Neo-Tantra is a largely Western invention that focuses almost exclusively on sexuality — a minor element of the classical system — while ignoring decades of ethical preparation, mantra practice, meditation, and guru-disciple training that traditional Tantra requires." },
             { question: "Can I practice Tantra without a guru?", answer: "For introductory practices — mantra, yantra meditation, devotional ritual — yes. For advanced practices involving energy work, Left Hand Path methods, or Kundalini activation, a qualified Tantric guru (Acharya) is necessary. The power of Tantric practice is precisely why guidance is not optional." },
         ],
+        featuredImage: {
+            src: "/assets/articles/what-is-tantra/featured.webp",
+            alt: "what is tantra really about — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "red-flags-yoga-studios",
@@ -1203,6 +1409,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is the difference between a yoga teacher and a spiritual guru?", answer: "A yoga teacher imparts physical technique and has professional liability. A spiritual guru operates in a different register — claiming to transmit transformative grace (Shaktipat). The problem is when fitness instructors occupy the guru role without genuine transmission, creating a power dynamic with no spiritual basis." },
             { question: "Is hot yoga safe?", answer: "For most healthy adults, properly conducted hot yoga is physically safe. Primary risks: dehydration, heat exhaustion, and overstretching of warmed ligaments. The deeper concern: heat-induced endorphins mask pain signals, encouraging practitioners to push beyond healthy limits. Not recommended for blood pressure issues or cardiac conditions." },
         ],
+        featuredImage: {
+            src: "/assets/articles/red-flags-yoga-studios/featured.webp",
+            alt: "red flags in yoga studios — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     // ─── Sprint 3: Cluster 4 — Gurus & Discernment ──────────────────────────
     {
@@ -1227,6 +1439,12 @@ export const articles: ArticleMeta[] = [
             { question: "Is it okay to study with a teacher who isn't fully enlightened?", answer: "Yes. The question is whether your teacher is honest about their level, not claiming more than realized, teaching from genuine practice, observing ethical boundaries, and growing themselves. A teacher 10 years ahead of you who is honest about their limitations is more valuable than someone claiming unearned realization." },
             { question: "Can I find a guru online?", answer: "Initial discovery can happen online. But the guru-disciple relationship traditionally requires proximity and direct energetic transmission that screens cannot fully deliver. A teacher who only meets students online and charges for 'online initiation' should be approached with significant caution." },
         ],
+        featuredImage: {
+            src: "/assets/articles/how-to-spot-fake-spiritual-guru/featured.webp",
+            alt: "how to spot a fake spiritual guru — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "do-you-need-a-guru",
@@ -1250,6 +1468,12 @@ export const articles: ArticleMeta[] = [
             { question: "Can books serve as a guru?", answer: "Yes — the tradition explicitly recognizes Grantha-guru (text as teacher). The Upanishads, Bhagavad Gita, and other primary texts carry genuine transformative power when read with sincere intent. Ramana Maharshi became self-realized through a sacred text. However, direct transmission between persons eventually becomes important for final stages." },
             { question: "How do I know when I've found my guru?", answer: "The tradition describes recognition — not romantic excitement, but profound relief. More practically: the teacher's presence reduces mental noise; time with them produces actual clarity, not dependency; their private life demonstrably matches their public teaching." },
         ],
+        featuredImage: {
+            src: "/assets/articles/do-you-need-a-guru/featured.webp",
+            alt: "do you need a guru for enlightenment — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "ramana-maharshi-who-am-i",
@@ -1273,6 +1497,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is the connection between Ramana Maharshi and Eckhart Tolle?", answer: "Tolle's 'The Power of Now' draws heavily from Advaita Vedanta in Ramana's lineage. Key concepts map directly: the 'witnessing presence' = Atman/Sakshi; 'thinking mind vs underlying awareness' = Manas vs Chit; 'pain body' = samskaras; 'resting in I Am' = tracing the I-thought to its source." },
             { question: "How long should I practice Atma Vichara each day?", answer: "Ramana's guidance: self-inquiry should ultimately become continuous — a background current of self-attention through all activities, not just formal meditation. For beginners, 20–30 minutes of dedicated practice daily is sufficient. Quality of attention matters more than duration." },
         ],
+        featuredImage: {
+            src: "/assets/articles/ramana-maharshi-who-am-i/featured.webp",
+            alt: "Ramana Maharshi who am I technique — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "isha-foundation-sadhguru",
@@ -1296,6 +1526,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is Shambhavi Mahamudra and is it effective?", answer: "Shambhavi Mahamudra is a 21-minute practice combining pranayama, bandhas, and meditation taught by Isha. Research reports improvements in stress, sleep, and emotional regulation in regular practitioners. Separating the practice from the teacher: practitioners from multiple traditions report genuine benefits from the breathwork pattern." },
             { question: "Does Sadhguru have a lineage?", answer: "He does not claim transmission from a living teacher. He describes his teachings as arising from direct experience and non-physical transmission from 'adi yogi' (Shiva). Traditional yoga lineages maintain Parampara as the authenticating mechanism — Sadhguru's self-authorized lineage is unusual and a legitimate point of scrutiny." },
         ],
+        featuredImage: {
+            src: "/assets/articles/isha-foundation-sadhguru/featured.webp",
+            alt: "is Isha Foundation a cult — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "paramahansa-yogananda-teachings",
@@ -1319,6 +1555,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is the difference between Yogananda's Kriya Yoga and Sudarshan Kriya?", answer: "Yogananda's Kriya Yoga: internal energy movement in the spinal channel, quiet, produces profound stillness, requires 18+ months preparation. Sudarshan Kriya: cyclical breathing rhythms producing cathartic emotional release, active, dynamic, accessible after a 2-day course. Different mechanisms, different practitioners, different depth trajectories." },
             { question: "How do I access Yogananda's teachings?", answer: "Through Self-Realization Fellowship (SRF) — the organization he founded. SRF offers a structured home-study Lessons program that introduces preparatory techniques and leads, after approximately 18 months, to initiation into Kriya Yoga. The Lessons are the only authentic source of the full Kriya initiation in Yogananda's lineage." },
         ],
+        featuredImage: {
+            src: "/assets/articles/paramahansa-yogananda-teachings/featured.webp",
+            alt: "Paramahansa Yogananda teachings summary — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     // ─── Sprint 4: Cluster 5 — Spiritual Tourism India ──────────────────────
     {
@@ -1342,6 +1584,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is the difference between an ashram and a yoga retreat?", answer: "An ashram is a residential spiritual community centered on disciplined practice, study, and a specific teacher-lineage. A yoga retreat is a commercial hospitality product. Ashrams ask you to adapt to their rhythm; retreats adapt to you." },
             { question: "Is it safe to travel to India alone for spiritual purposes?", answer: "Generally yes, including solo women, particularly in the spiritual circuits (Rishikesh, Dharamshala, Varanasi, Tiruvannamalai, Kerala). Dress modestly, stay in well-reviewed accommodation, and inform trusted contacts of your itinerary." },
         ],
+        featuredImage: {
+            src: "/assets/articles/spiritual-travel-india-guide/featured.webp",
+            alt: "how to choose an ashram in india — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "rishikesh-vs-dharamshala",
@@ -1364,6 +1612,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is the cost of a yoga retreat in Rishikesh?", answer: "Drop-in classes: 200–500 rupees (~$3–6). Comfortable ashram with meals: 800–2000 rupees/day. 200-hour YTT programs: $500–2000 USD. Mid-range 28-day YTT with accommodation and meals typically $800–1200 USD." },
             { question: "What is McLeod Ganj in Dharamshala?", answer: "McLeod Ganj is the upper district of Dharamshala, home to the Dalai Lama and Tibetan government-in-exile since 1960. Called 'Little Tibet' for its Tibetan Buddhist monasteries, prayer flags, and contemplative atmosphere. Primary destination for Vipassana and Vajrayana study." },
         ],
+        featuredImage: {
+            src: "/assets/articles/rishikesh-vs-dharamshala/featured.webp",
+            alt: "rishikesh vs dharamshala for spirituality — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "silent-meditation-retreats-india",
@@ -1386,6 +1640,12 @@ export const articles: ArticleMeta[] = [
             { question: "Where are the best Vipassana centers in India?", answer: "Dhamma Giri in Igatpuri (Maharashtra) is the world's largest Vipassana center. Dhamma Bodhi in Bodh Gaya (Bihar — where the Buddha attained enlightenment) is the most historically powerful. Register via dhamma.org; courses book months in advance." },
             { question: "Can I do a shorter silent retreat in India?", answer: "Yes. Many ashrams offer 3-to-5 day Mauna (silence) retreats. Ramana Maharshi Ashram in Tiruvannamalai maintains permanent silence — visitors can stay for days. Tushita in Dharamshala offers 10-day Introduction to Buddhism courses with significant silent practice." },
         ],
+        featuredImage: {
+            src: "/assets/articles/silent-meditation-retreats-india/featured.webp",
+            alt: "silent meditation retreats in india — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "indian-ashram-etiquette-packing",
@@ -1408,6 +1668,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is pranam and when should I do it?", answer: "Pranam is bowing in reverence to a teacher, deity, or elder. Students typically perform a respectful pranam to the teacher at the beginning and end of teachings. Full prostration (sashtanga pranam) is reserved for the most revered teachers." },
             { question: "What should I NOT bring to an Indian ashram?", answer: "Most ashrams prohibit: meat, fish, and eggs; alcohol and tobacco; revealing or tight clothing; loud music; strong perfumes. Smartphones are permitted in common areas but restricted in meditation halls, during teachings, and in sacred spaces." },
         ],
+        featuredImage: {
+            src: "/assets/articles/indian-ashram-etiquette-packing/featured.webp",
+            alt: "what to pack for an indian ashram — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "sacred-sites-india",
@@ -1430,6 +1696,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is Auroville and who is it for?", answer: "Auroville is an international township (3,000+ residents from 55 nations) near Pondicherry, founded in 1968 on Sri Aurobindo's integral yoga teachings. The Matrimandir — a golden meditation sphere — is the spiritual center. Volunteer programs available for 1–4 week stays." },
             { question: "What is Panchakarma and what should I expect?", answer: "Panchakarma ('five actions') is Ayurveda's classical purification program — a 7–28 day protocol of oil treatments, steam therapies, and dietary interventions. Kerala is the global center of authentic Panchakarma. Expect 14–28 days minimum; 3-day 'spa Panchakarma' is not genuine treatment." },
         ],
+        featuredImage: {
+            src: "/assets/articles/sacred-sites-india/featured.webp",
+            alt: "spiritual things to do in varanasi — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     // ─── Sprint 5: Cluster 6 — Kailasa Temple & Sacred Sites ─────────────────
     {
@@ -1453,6 +1725,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is the best time to visit Ellora Caves?", answer: "November through February, when Maharashtra's climate is cool and dry. Avoid April–June (temperatures regularly exceed 40°C). The caves are open all days except Tuesday. Hire an ASI-certified guide." },
             { question: "How is Cave 16 different from the other Ellora Caves?", answer: "Cave 16 (Kailasa) is not a cave at all — it is a freestanding temple complex with courtyard, elephant sculptures, and multi-story shrines, all excavated from the cliff. No other ancient structure was built using this complete top-down monolithic method at this scale." },
         ],
+        featuredImage: {
+            src: "/assets/articles/kailasa-temple-ellora/featured.webp",
+            alt: "how was kailasa temple built — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "kailasa-vs-ajanta-caves",
@@ -1473,6 +1751,12 @@ export const articles: ArticleMeta[] = [
             { question: "Which should I visit first — Ajanta or Ellora?", answer: "Visit Ellora first if you want the single most impressive individual structure (Kailasa Temple). Visit Ajanta first if paintings and Buddhist history are your priority. Both deserve at least 3–4 hours each." },
             { question: "How far are Ajanta and Ellora from each other?", answer: "Approximately 100 km apart, both accessible from Aurangabad. Ajanta is 100 km northeast; Ellora is 30 km northwest. Possible to visit both in two days from Aurangabad." },
         ],
+        featuredImage: {
+            src: "/assets/articles/kailasa-vs-ajanta-caves/featured.webp",
+            alt: "kailasa temple vs ajanta caves — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "south-india-temple-architecture",
@@ -1494,6 +1778,12 @@ export const articles: ArticleMeta[] = [
             { question: "How was the Brihadeeswarar Temple capstone placed without cranes?", answer: "Scholars believe the 80-ton granite capstone was raised using an earthen ramp — workers built a gradual ramp to the 216-foot Vimana top, dragged the capstone up using pulleys and manpower, then removed the ramp. The same ramp method is proposed for Egypt's pyramids." },
             { question: "What is special about the Meenakshi Temple in Madurai?", answer: "The Meenakshi Amman Temple has 14 Gopurams, the tallest at 52 meters, covered in approximately 33,000 painted sculptures. It operates as a functioning religious institution with daily rituals and has been continuously active for at least 2,000 years." },
         ],
+        featuredImage: {
+            src: "/assets/articles/south-india-temple-architecture/featured.webp",
+            alt: "brihadeeswarar temple mysteries — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "most-powerful-shiva-temples-india",
@@ -1515,6 +1805,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is the spiritual significance of Kedarnath?", answer: "Kedarnath (3,583 meters altitude) requires a 16-km mountain trek. The temple is open only May–November. Its significance lies in Shiva's ascetic aspect — the extreme pilgrimage itself is considered the purification." },
             { question: "What is Kashi Vishwanath temple?", answer: "Kashi Vishwanath in Varanasi is the most important Jyotirlinga for moksha. Hindu tradition holds that dying in Kashi grants liberation because Shiva whispers the Taraka mantra to the dying. The golden spire is gilded with approximately 800 kg of gold." },
         ],
+        featuredImage: {
+            src: "/assets/articles/most-powerful-shiva-temples-india/featured.webp",
+            alt: "most powerful shiva temples in india — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     // ─── Sprint 5: Cluster 7 — Courses & Structured Learning ─────────────────
     {
@@ -1538,6 +1834,12 @@ export const articles: ArticleMeta[] = [
             { question: "Do I need a guru to study Vedanta?", answer: "Traditional Advaita Vedanta holds that a qualified teacher is necessary for the highest inquiry. In practice, many begin with text study and find teachers later. Swami Sarvapriyananda's YouTube channel offers rigorous Vedanta study without physical proximity to a teacher." },
             { question: "How long does it take to understand Patanjali's Yoga Sutras?", answer: "The Yoga Sutras can be read in an afternoon. Understanding them takes years. A useful approach: one sutra per day, contemplate its application, return to the same sutra months later. Georg Feuerstein's commentary is the most comprehensive scholarly introduction." },
         ],
+        featuredImage: {
+            src: "/assets/articles/how-to-study-indian-philosophy-home/featured.webp",
+            alt: "how to study the bhagavad gita — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "online-yoga-teacher-training-worth-it",
@@ -1559,6 +1861,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is Yoga Alliance and does it matter?", answer: "Yoga Alliance is a US-based registry organization setting minimum standards for YTT programs. Most yoga studios require Yoga Alliance registration to hire teachers. Its RYT credential remains the de facto industry standard worldwide for studio employment." },
             { question: "What is the difference between a 200hr and 500hr YTT?", answer: "A 200hr YTT covers foundations: postures, anatomy, basic philosophy, and beginning sequencing. A 500hr YTT builds with advanced sequencing, therapeutic modifications, and specialized pranayama. The 500hr typically consists of a 200hr foundation plus 300 additional hours." },
         ],
+        featuredImage: {
+            src: "/assets/articles/online-yoga-teacher-training-worth-it/featured.webp",
+            alt: "is a yoga teacher training worth it — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "how-to-learn-sanskrit",
@@ -1579,6 +1887,12 @@ export const articles: ArticleMeta[] = [
             { question: "What is the best app for learning Sanskrit?", answer: "Language Curry is the best app for Devanagari script recognition and basic Sanskrit vocabulary. However, no app provides adequate grammar for reading sutras. For that, the American Sanskrit Institute's online courses or Sanskrit from Scratch (YouTube) are significantly more rigorous." },
             { question: "How long does it take to learn Sanskrit?", answer: "Learning Devanagari script takes 2–4 weeks of daily practice. Basic vocabulary in transliteration takes 1–2 months. Sutra pronunciation with accuracy takes 6–12 months of structured study. Reading classical Sanskrit texts independently takes years." },
         ],
+        featuredImage: {
+            src: "/assets/articles/how-to-learn-sanskrit/featured.webp",
+            alt: "sanskrit for yoga teachers online course — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "celebrity-spiritual-courses-review",
@@ -1600,6 +1914,12 @@ export const articles: ArticleMeta[] = [
             { question: "What should I look for in an online spiritual program?", answer: "Prioritize: (1) direct access to a qualified teacher who answers your specific questions; (2) lineage — a clear connection to an established tradition; (3) Sangha — other practitioners to practice with; (4) free sample content to assess fit before committing." },
             { question: "Are there free alternatives to celebrity spiritual courses?", answer: "Yes. Swami Sarvapriyananda offers complete Advaita Vedanta courses free on YouTube. Chinmaya Mission offers structured study groups at minimal cost worldwide. Insight Timer has thousands of guided meditations from legitimate teachers." },
         ],
+        featuredImage: {
+            src: "/assets/articles/celebrity-spiritual-courses-review/featured.webp",
+            alt: "deepak chopra meditation course review — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     // ─── Existing articles (from original file) ──────────────────────────────
     {
@@ -1649,6 +1969,12 @@ export const articles: ArticleMeta[] = [
                     "Avoid identity theatrics, vague “all religions are the same” claims, detached sloganizing like “everything is one,” and advanced metaphysical debate without practice. Vedanta becomes distorted when it is used to bypass ethics, responsibility, or the tradition's actual sources.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/can-i-practice-vedanta-without-converting/featured.webp",
+            alt: "can i practice vedanta without converting — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "can-i-chant-a-mantra-without-initiation",
@@ -1695,6 +2021,12 @@ export const articles: ArticleMeta[] = [
                     "Seek initiation when your practice has become stable, you feel drawn to a specific lineage or deity tradition, or the mantra you want to practice is traditionally not self-assigned. At that stage, a trustworthy teacher can offer transmission, correction, and context that books or internet lists cannot provide.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/can-i-chant-a-mantra-without-initiation/featured.webp",
+            alt: "can i chant a mantra without initiation — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "what-are-the-upanishads",
@@ -1743,6 +2075,12 @@ export const articles: ArticleMeta[] = [
                     "The Upanishads repeatedly investigate the relation between Atman and Brahman, the causes of bondage and suffering, and the knowledge that leads to liberation. Different schools interpret specific passages differently, but all treat the Upanishads as central to the highest inquiry into reality and the Self.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/what-are-the-upanishads/featured.webp",
+            alt: "what are the upanishads — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "best-bhagavad-gita-translation-for-beginners",
@@ -1785,6 +2123,12 @@ export const articles: ArticleMeta[] = [
                     "Read small daily sections, reflect on one practical takeaway, and connect it to your current life situation.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/best-bhagavad-gita-translation-for-beginners/featured.webp",
+            alt: "best bhagavad gita translation for beginners — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "what-is-vedanta",
@@ -1903,6 +2247,12 @@ export const articles: ArticleMeta[] = [
                     "One of the four Mahavakyas (great sayings) of the Upanishads: 'I am Brahman.' It is the direct declaration of Advaita's central insight — the individual awareness and the cosmic awareness are the same.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/advaita-vedanta-explained/featured.webp",
+            alt: "advaita vedanta explained — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "how-to-start-japa",
@@ -1962,6 +2312,12 @@ export const articles: ArticleMeta[] = [
                     "Noticeable effects — greater mental stillness, sense of inner peace — often appear within 40 days of consistent daily practice. The tradition prescribes a 40-day Sadhana as the minimum committed period for a new practice.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/how-to-start-japa/featured.webp",
+            alt: "how to start japa meditation — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "bhagavad-gita-chapter-1",
@@ -2021,6 +2377,12 @@ export const articles: ArticleMeta[] = [
                     "Every person faces a Kurukshetra moment — a point where duty and attachment conflict. Career vs family, truth vs social comfort, growth vs security. Chapter 1 is the universal human experience of paralysis before a necessary transformation.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/bhagavad-gita-chapter-1/featured.webp",
+            alt: "bhagavad gita chapter 1 summary — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "bhagavad-gita-chapter-2",
@@ -2060,6 +2422,12 @@ export const articles: ArticleMeta[] = [
                     "A Sthitaprajna is one whose wisdom is steady: not agitated by gain or loss, not driven by compulsive desire, and established in inner clarity.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/bhagavad-gita-chapter-2/featured.webp",
+            alt: "bhagavad gita chapter 2 summary — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "10-powerful-sanskrit-mantras",
@@ -2099,6 +2467,12 @@ export const articles: ArticleMeta[] = [
                     "Yes. Intention matters, but Sanskrit mantra traditions treat sound as intrinsic to the practice, not an optional wrapper around meaning. Sincere mispronunciation is still mispronunciation, which is why slow correction is part of proper practice.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/10-powerful-sanskrit-mantras/featured.webp",
+            alt: "10 powerful sanskrit mantras — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "adi-shankaracharya-life-teachings",
@@ -2139,6 +2513,12 @@ export const articles: ArticleMeta[] = [
                     "Advaita tradition associates him with four monastic centers at Sringeri, Puri, Dvaraka, and Jyotirmath. Historical details are debated, but these institutions became central to the later self-understanding and continuity of the Shankara lineage.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/adi-shankaracharya-life-teachings/featured.webp",
+            alt: "adi shankaracharya life teachings — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "daily-spiritual-routine-beginners",
@@ -2212,6 +2592,12 @@ export const articles: ArticleMeta[] = [
                     "Because an unsteady mind usually treats meditation as passive drifting or hidden rumination. Traditional systems therefore begin with supports such as posture, breath regulation, mantra, and study so that attention becomes serviceable before subtler meditation is attempted.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/daily-spiritual-routine-beginners/featured.webp",
+            alt: "daily spiritual routine for beginners — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "how-to-choose-a-mantra",
@@ -2251,6 +2637,12 @@ export const articles: ArticleMeta[] = [
                     "Stay with one suitable mantra long enough to establish rhythm, attention, and observable effect. Forty days is a useful minimum discipline, but the deeper rule is consistency rather than novelty.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/how-to-choose-a-mantra/featured.webp",
+            alt: "how to choose a mantra — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "inquiry-vs-devotion-path",
@@ -2290,6 +2682,12 @@ export const articles: ArticleMeta[] = [
                     "Yes. In bhakti it functions as loving remembrance of a deity. In jnana-oriented practice it can steady the mind and thin agitation so that subtle inquiry becomes possible.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/inquiry-vs-devotion-path/featured.webp",
+            alt: "inquiry vs devotion path — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "which-meditation-for-me",
@@ -2329,6 +2727,12 @@ export const articles: ArticleMeta[] = [
                     "Yes. In many Hindu traditions, japa is not merely preliminary. It is a full contemplative discipline that can gather attention, regulate emotion, and mature into deeper absorption when practiced correctly.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/which-meditation-for-me/featured.webp",
+            alt: "which meditation is right for me — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "non-duality-vs-dualism",
@@ -2387,6 +2791,12 @@ export const articles: ArticleMeta[] = [
                     "Because Indian debates are not only about the number of substances. They concern bondage, liberation, devotion, valid means of knowledge, and whether the self's final relation to the absolute is identity, dependence, or qualified unity. Western labels catch part of the issue and miss the soteriological core.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/non-duality-vs-dualism/featured.webp",
+            alt: "non dual vs dual philosophy — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
     {
         slug: "shaivism-vs-vaishnavism",
@@ -2446,6 +2856,12 @@ export const articles: ArticleMeta[] = [
                     "Consider: Do you feel more drawn to meditative silence, asceticism, and dissolution of the ego (Shaiva tendency)? Or do you feel drawn to loving relationship with a personal God, devotional singing, and service (Vaishnava tendency)? The Faith Finder can help you explore this.",
             },
         ],
+        featuredImage: {
+            src: "/assets/articles/shaivism-vs-vaishnavism/featured.webp",
+            alt: "shaivism vs vaishnavism — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
     },
 ];
 

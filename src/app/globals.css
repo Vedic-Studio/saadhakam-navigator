@@ -149,6 +149,19 @@
     .longform-prose blockquote cite {
         @apply mt-3 block not-italic text-sm text-muted-foreground;
     }
+
+    /* Inline article images and figures */
+    .longform-prose img {
+        @apply rounded-xl w-full h-auto my-8;
+    }
+
+    .longform-prose figure {
+        @apply my-8;
+    }
+
+    .longform-prose figure figcaption {
+        @apply text-sm text-muted-foreground text-center mt-3 italic;
+    }
 }
 
 @layer utilities {
