@@ -5,6 +5,7 @@ Allow: /
 # LLM routing file (AI sitemap): https://opensadhaka.com/llms.txt
 # Full content dump (for RAG/large-context): https://opensadhaka.com/llms-full.txt
 
+Sitemap: https://opensadhaka.com/sitemap.xml
 Sitemap: https://opensadhaka.com/sitemap/core.xml
 Sitemap: https://opensadhaka.com/sitemap/philosophies.xml
 Sitemap: https://opensadhaka.com/sitemap/traditions.xml
