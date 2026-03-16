@@ -177,10 +177,10 @@ export default function FaithFinderResultsPage() {
 
                                 <Card className="border-2">
                                     <CardHeader>
-                                        <CardTitle>Lineage Mirror — Radar View</CardTitle>
+                                        <CardTitle>Lineage Mirror</CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <div className="h-[360px]">
+                                        <div className="h-[320px] sm:h-[380px]">
                                             <ChartContainer
                                                 config={{
                                                     value: {
@@ -190,10 +190,10 @@ export default function FaithFinderResultsPage() {
                                                 }}
                                             >
                                                 <ResponsiveContainer>
-                                                    <RadarChart data={radarData}>
+                                                    <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="70%">
                                                         <ChartTooltip content={<ChartTooltipContent />} />
                                                         <PolarGrid />
-                                                        <PolarAngleAxis dataKey="axis" />
+                                                        <PolarAngleAxis dataKey="axis" tick={{ fontSize: 14 }} />
                                                         <Radar
                                                             dataKey="value"
                                                             stroke="var(--color-value)"
@@ -204,51 +204,55 @@ export default function FaithFinderResultsPage() {
                                                 </ResponsiveContainer>
                                             </ChartContainer>
                                         </div>
-
-                                        <div className="grid md:grid-cols-2 gap-6 mt-8">
-                                            <div>
-                                                <h2 className="font-semibold text-foreground mb-2">
-                                                    Your Dharmic Architecture
-                                                </h2>
-                                                <p className="text-sm text-muted-foreground leading-relaxed">
-                                                    {pathMetadata[result.primaryPath].longDescription}
-                                                </p>
-                                            </div>
-
-                                            <div>
-                                                <h2 className="font-semibold text-foreground mb-2">
-                                                    Recommendations
-                                                </h2>
-                                                <div className="space-y-3">
-                                                    <div>
-                                                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                                            Traditions
-                                                        </p>
-                                                        <p className="text-sm text-foreground">
-                                                            {result.recommendations.traditions.join(" · ")}
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                                            Practices
-                                                        </p>
-                                                        <p className="text-sm text-foreground">
-                                                            {result.recommendations.practices.join(" · ")}
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                                            Philosophies
-                                                        </p>
-                                                        <p className="text-sm text-foreground">
-                                                            {result.recommendations.philosophies.join(" · ")}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </CardContent>
                                 </Card>
+
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    <Card>
+                                        <CardHeader>
+                                            <CardTitle className="text-lg">Your Dharmic Architecture</CardTitle>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                {pathMetadata[result.primaryPath].longDescription}
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+
+                                    <Card>
+                                        <CardHeader>
+                                            <CardTitle className="text-lg">Recommendations</CardTitle>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                                        Traditions
+                                                    </p>
+                                                    <p className="text-sm text-foreground">
+                                                        {result.recommendations.traditions.join(" · ")}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                                        Practices
+                                                    </p>
+                                                    <p className="text-sm text-foreground">
+                                                        {result.recommendations.practices.join(" · ")}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                                        Philosophies
+                                                    </p>
+                                                    <p className="text-sm text-foreground">
+                                                        {result.recommendations.philosophies.join(" · ")}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </div>
                             </>
                         )}
                     </div>

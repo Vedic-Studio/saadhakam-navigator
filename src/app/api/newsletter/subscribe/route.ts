@@ -14,16 +14,16 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'A valid email is required' }, { status: 400 });
         }
 
-        if (resend) {
+        const audienceId = process.env.RESEND_AUDIENCE_ID;
+
+        if (resend && audienceId) {
             try {
                 await resend.contacts.create({
+                    audienceId,
                     email,
                     unsubscribed: false,
-                    // @ts-expect-error - Resend SDK types may not include all properties
-                    properties: {
-                        source: 'newsletter',
-                        subscribedAt: new Date().toISOString(),
-                    },
+                    firstName: '',
+                    lastName: '',
                 });
                 console.log(`[Newsletter] Subscriber added: ${email}`);
             } catch (contactErr) {
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
                 // Resend returns error for duplicates - still treat as success for UX
             }
         } else {
-            console.log(`[Newsletter] RESEND_API_KEY missing - logged subscription for ${email}`);
+            console.log(`[Newsletter] ${!resend ? 'RESEND_API_KEY' : 'RESEND_AUDIENCE_ID'} missing - logged subscription for ${email}`);
         }
 
         return NextResponse.json({ success: true });

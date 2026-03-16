@@ -18,63 +18,63 @@ export interface QuizOption {
 export const quizQuestions: QuizQuestion[] = [
   {
     id: 1,
-    question: "When you feel the weight of existence or uncertainty, where does your mind instinctively turn?",
+    question: "When life feels uncertain, where does your mind go first?",
     options: [
       {
         id: "1a",
-        text: "Toward analysis\u2014trying to strip away the confusion to find the logical truth.",
+        text: "To analysis. You want to reason your way to the truth.",
         weights: { inquiry: 4, devotion: 0, ritual: 0, discipline: 0 },
       },
       {
         id: "1b",
-        text: "Toward surrender\u2014looking for a presence or power to hold and guide you.",
+        text: "To prayer. You look for a higher presence to guide you.",
         weights: { inquiry: 0, devotion: 4, ritual: 0, discipline: 0 },
       },
       {
         id: "1c",
-        text: "Toward structure\u2014reclaiming peace through familiar, sacred rhythms and tradition.",
+        text: "To tradition. Familiar rituals and sacred rhythms ground you.",
         weights: { inquiry: 0, devotion: 0, ritual: 4, discipline: 0 },
       },
       {
         id: "1d",
-        text: "Toward silence\u2014turning inward to master the internal noise through direct practice.",
+        text: "To stillness. You turn inward and quiet the noise.",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 4 },
       },
     ],
   },
   {
     id: 2,
-    question: "When you imagine 'Self-Realization,' what does the experience look like to you?",
+    question: "What does spiritual awakening look like in your imagination?",
     options: [
       {
         id: "2a",
-        text: "A sudden, clear insight that dissolves all confusion and doubt.",
+        text: "A flash of clarity that burns away all confusion.",
         weights: { inquiry: 4, devotion: 0, ritual: 0, discipline: 0 },
       },
       {
         id: "2b",
-        text: "A total merging into a boundless ocean of love and grace.",
+        text: "Dissolving into an ocean of love and grace.",
         weights: { inquiry: 0, devotion: 4, ritual: 0, discipline: 0 },
       },
       {
         id: "2c",
-        text: "A state of perfect alignment with the cosmic laws and my sacred duty.",
+        text: "Perfect alignment with cosmic order and sacred duty.",
         weights: { inquiry: 0, devotion: 0, ritual: 4, discipline: 0 },
       },
       {
         id: "2d",
-        text: "A profound, unshakeable stillness of mind and absolute self-mastery.",
+        text: "Total stillness. Unshakeable calm. Complete self-mastery.",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 4 },
       },
     ],
   },
   {
     id: 3,
-    question: "When you face a difficult decision, how do you approach it?",
+    question: "You're facing a hard decision. What do you do?",
     options: [
       {
         id: "3a",
-        text: "Analyze all the information and think it through logically",
+        text: "Gather all the facts and think it through logically",
         weights: { inquiry: 3, devotion: 0, ritual: 0, discipline: 1 },
       },
       {
@@ -84,38 +84,38 @@ export const quizQuestions: QuizQuestion[] = [
       },
       {
         id: "3c",
-        text: "Consult tradition, scriptures, or elders",
+        text: "Consult tradition, scripture, or an elder",
         weights: { inquiry: 0, devotion: 0, ritual: 3, discipline: 0 },
       },
       {
         id: "3d",
-        text: "Meditate and listen to inner wisdom",
+        text: "Sit with it in meditation until clarity comes",
         weights: { inquiry: 1, devotion: 0, ritual: 0, discipline: 3 },
       },
     ],
   },
   {
     id: 4,
-    question: "Which of these concepts most excites your curiosity?",
+    question: "Which of these ideas grabs your attention most?",
     options: [
       {
         id: "4a",
-        text: "The bridge between modern physics and ancient non-duality.",
+        text: "Where modern physics meets ancient non-duality",
         weights: { inquiry: 4, devotion: 0, ritual: 0, discipline: 0 },
       },
       {
         id: "4b",
-        text: "The mystical relationship between the seeker and the Beloved.",
+        text: "The mystical bond between seeker and the Divine Beloved",
         weights: { inquiry: 0, devotion: 4, ritual: 0, discipline: 0 },
       },
       {
         id: "4c",
-        text: "The science of sacred geometry and the power of ritual space.",
+        text: "Sacred geometry and the hidden power of ritual space",
         weights: { inquiry: 0, devotion: 0, ritual: 4, discipline: 0 },
       },
       {
         id: "4d",
-        text: "The biology of awakening\u2014mastering prana and the nervous system.",
+        text: "Mastering prana and rewiring the nervous system",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 4 },
       },
     ],
@@ -148,7 +148,7 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 6,
-    question: "What spiritual practice would you be most excited to try?",
+    question: "Which practice would you try first?",
     options: [
       {
         id: "6a",
@@ -167,33 +167,33 @@ export const quizQuestions: QuizQuestion[] = [
       },
       {
         id: "6d",
-        text: "Starting a yoga or meditation practice",
+        text: "Starting a daily yoga or pranayama routine",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 3 },
       },
     ],
   },
   {
     id: 7,
-    question: "How do you handle difficult emotions?",
+    question: "A wave of difficult emotion hits you. What's your instinct?",
     options: [
       {
         id: "7a",
-        text: "Observe them with detachment and understanding",
+        text: "Step back and observe it with detachment",
         weights: { inquiry: 3, devotion: 0, ritual: 0, discipline: 1 },
       },
       {
         id: "7b",
-        text: "Surrender them to the Divine",
+        text: "Offer it up to God or the Divine",
         weights: { inquiry: 0, devotion: 3, ritual: 0, discipline: 0 },
       },
       {
         id: "7c",
-        text: "Use rituals or prayers for purification",
+        text: "Do a ritual or prayer to purify and reset",
         weights: { inquiry: 0, devotion: 0, ritual: 3, discipline: 0 },
       },
       {
         id: "7d",
-        text: "Practice meditation or breathing techniques",
+        text: "Breathe through it with a specific technique",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 3 },
       },
     ],
@@ -285,7 +285,7 @@ export const pathMetadata = {
     name: "The Way of Inquiry",
     archetype: "The Analyst of Reality",
     slogan: "Truth is found through the fire of discrimination.",
-    longDescription: "You are naturally drawn to the 'Jnana' path—the yoga of the intellect. You don't want to just believe; you want to know. Your mind is a sharp instrument designed to cut through the illusions (Maya) of life to find the unchanging Brahman beneath. For you, study and contemplation are not chores, but the highest form of worship.",
+    longDescription: "You are naturally drawn to the Jnana path, the yoga of the intellect. You don't want to just believe; you want to know. Your mind is a sharp instrument designed to cut through the illusions of Maya and find the unchanging Brahman beneath. For you, study and contemplation are not chores but the highest form of worship.",
     icon: "Brain",
     themeColor: "amber",
   },
@@ -293,7 +293,7 @@ export const pathMetadata = {
     name: "The Way of Devotion",
     archetype: "The Relational Seeker",
     slogan: "Love is the shortest path to the Divine.",
-    longDescription: "You resonate with 'Bhakti'—the path of the heart. For you, the Divine is not an abstract concept, but a living Presence to be loved, served, and surrendered to. Your emotions are your greatest spiritual asset. In your world, the sense of separation dissolves not through logic, but through the overwhelming sweetness of divine grace.",
+    longDescription: "You resonate with Bhakti, the path of the heart. For you, the Divine is not an abstract concept but a living Presence to be loved, served, and surrendered to. Your emotions are your greatest spiritual asset. The sense of separation dissolves not through logic but through the overwhelming sweetness of divine grace.",
     icon: "Heart",
     themeColor: "rose",
   },
@@ -301,7 +301,7 @@ export const pathMetadata = {
     name: "The Way of Action",
     archetype: "The Alchemist of Action",
     slogan: "Sacred order leads to internal sovereignty.",
-    longDescription: "You align with 'Karma' and 'Kriya'—the path of sacred action. You believe that how we move through the world and interact with tradition matters. You find stability in ritual, duty, and the preservation of sacred rhythms. For you, the mundane is the laboratory of the soul, and every action is an opportunity to align with 'Rita' (Cosmic Order).",
+    longDescription: "You align with Karma and Kriya, the path of sacred action. You believe that how we move through the world and interact with tradition matters. You find stability in ritual, duty, and the preservation of sacred rhythms. Every action is an opportunity to align with Rita, the Cosmic Order.",
     icon: "Sparkles",
     themeColor: "orange",
   },
@@ -309,7 +309,7 @@ export const pathMetadata = {
     name: "The Way of Practice",
     archetype: "The Architect of Mind",
     slogan: "Mastery of self is the only true freedom.",
-    longDescription: "You are a 'Raja Yogi'—one who seeks mastery over the inner architecture of mind and energy. You value systematic training, breath-work, and the direct, silent experience of consciousness. You don't seek meaning in stories; you seek it in the raw, vibrant stillness of your own being.",
+    longDescription: "You are a Raja Yogi, one who seeks mastery over the inner architecture of mind and energy. You value systematic training, breathwork, and the direct experience of consciousness. You don't seek meaning in stories; you seek it in the raw, vibrant stillness of your own being.",
     icon: "Zap",
     themeColor: "indigo",
   }

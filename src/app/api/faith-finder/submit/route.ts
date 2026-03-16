@@ -70,8 +70,12 @@ export async function POST(request: Request) {
                         sendOptions.scheduled_at = scheduledDate.toISOString();
                     }
 
-                    await resend.emails.send(sendOptions as Parameters<typeof resend.emails.send>[0]);
-                    console.log(`[Faith Finder] Email ${i} ${daysFromNow > 0 ? `scheduled for day ${daysFromNow}` : 'sent immediately'} to ${email}`);
+                    const sendResult = await resend.emails.send(sendOptions as Parameters<typeof resend.emails.send>[0]);
+                    if (sendResult.error) {
+                        console.error(`[Faith Finder] Email ${i} rejected by Resend:`, sendResult.error.message);
+                    } else {
+                        console.log(`[Faith Finder] Email ${i} ${daysFromNow > 0 ? `scheduled for day ${daysFromNow}` : 'sent immediately'} to ${email} (id: ${sendResult.data?.id})`);
+                    }
                 } catch (emailErr) {
                     console.error(`[Faith Finder] Email ${i} delivery/scheduling failed:`, emailErr);
                     // Continue sending remaining emails even if one fails
@@ -79,21 +83,23 @@ export async function POST(request: Request) {
             }
 
             // Add contact to Resend for newsletter pipeline
-            try {
-                await resend.contacts.create({
-                    email,
-                    unsubscribed: false,
-                    // @ts-expect-error - Resend SDK types may not include all properties
-                    properties: {
-                        source: 'faith-finder',
-                        primaryPath: result.primaryPath,
-                        submittedAt: createdAt,
-                    },
-                });
-                console.log(`[Faith Finder] Contact created in Resend: ${email}`);
-            } catch (contactErr) {
-                // Non-fatal: contact creation failure shouldn't block the flow
-                console.error('[Faith Finder] Contact creation failed:', contactErr);
+            const audienceId = process.env.RESEND_AUDIENCE_ID;
+            if (audienceId) {
+                try {
+                    await resend.contacts.create({
+                        audienceId,
+                        email,
+                        unsubscribed: false,
+                        firstName: '',
+                        lastName: '',
+                    });
+                    console.log(`[Faith Finder] Contact created in Resend: ${email}`);
+                } catch (contactErr) {
+                    // Non-fatal: contact creation failure shouldn't block the flow
+                    console.error('[Faith Finder] Contact creation failed:', contactErr);
+                }
+            } else {
+                console.log('[Faith Finder] RESEND_AUDIENCE_ID missing - skipping contact creation.');
             }
         } else {
             console.log('[Faith Finder] RESEND_API_KEY missing - skipping email delivery.');
