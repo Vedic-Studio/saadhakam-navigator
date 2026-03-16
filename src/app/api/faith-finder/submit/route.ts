@@ -1,11 +1,8 @@
 import { NextResponse } from 'next/server';
 import { createFaithFinderSubmission } from "@/lib/faithFinderStorage";
-import { Resend } from 'resend';
-import { pathMetadata } from '@/data/faithFinderQuiz';
 import { createStatelessFaithFinderResultId } from '@/lib/faithFinderResultToken';
-
-const resendApiKey = process.env.RESEND_API_KEY;
-const resend = resendApiKey ? new Resend(resendApiKey) : null;
+import { resend } from '@/lib/resend';
+import { buildEmail, getSubject, DRIP_SCHEDULE_DAYS } from '@/lib/email/faithFinderEmails';
 
 function isValidEmail(email: string) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -33,7 +30,6 @@ export async function POST(request: Request) {
             submissionId = submission.id;
             createdAt = submission.createdAt;
         } catch (storageErr) {
-            // Durable storage may fail on serverless FS. Keep user flow alive with a signed, stateless result id.
             console.error('[Faith Finder] Storage failed, using stateless result id fallback:', storageErr);
             submissionId = createStatelessFaithFinderResultId(result, createdAt);
         }
@@ -43,38 +39,65 @@ export async function POST(request: Request) {
         console.log(`[Faith Finder] Submission ID: ${submissionId}`);
 
         if (resend) {
+            const fromEmail = process.env.FAITH_FINDER_FROM_EMAIL || 'Faith Finder <guidance@opensadhaka.com>';
+
+            // Schedule all 6 drip emails
+            for (let i = 0; i < DRIP_SCHEDULE_DAYS.length; i++) {
+                try {
+                    const html = buildEmail(i, result);
+                    const subject = getSubject(i, result.primaryPath);
+                    if (!html) continue;
+
+                    const daysFromNow = DRIP_SCHEDULE_DAYS[i];
+                    const sendOptions: Record<string, unknown> = {
+                        from: fromEmail,
+                        to: email,
+                        subject,
+                        html,
+                        tags: [
+                            { name: 'source', value: 'faith-finder' },
+                            { name: 'sequence', value: `drip-${i}` },
+                            { name: 'path', value: result.primaryPath },
+                        ],
+                    };
+
+                    // Email 0 sends immediately; others are scheduled
+                    if (daysFromNow > 0) {
+                        const scheduledDate = new Date();
+                        scheduledDate.setDate(scheduledDate.getDate() + daysFromNow);
+                        // Set to 9am UTC for a reasonable delivery time
+                        scheduledDate.setUTCHours(9, 0, 0, 0);
+                        sendOptions.scheduled_at = scheduledDate.toISOString();
+                    }
+
+                    await resend.emails.send(sendOptions as Parameters<typeof resend.emails.send>[0]);
+                    console.log(`[Faith Finder] Email ${i} ${daysFromNow > 0 ? `scheduled for day ${daysFromNow}` : 'sent immediately'} to ${email}`);
+                } catch (emailErr) {
+                    console.error(`[Faith Finder] Email ${i} delivery/scheduling failed:`, emailErr);
+                    // Continue sending remaining emails even if one fails
+                }
+            }
+
+            // Add contact to Resend for newsletter pipeline
             try {
-                const metadata = pathMetadata[result.primaryPath as keyof typeof pathMetadata];
-
-                const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://opensadhaka.com';
-                const shareableUrl = `${baseUrl}/faith-finder/results/${submissionId}`;
-                const fromEmail = process.env.FAITH_FINDER_FROM_EMAIL || 'Faith Finder <guidance@opensadhaka.com>';
-
-                await resend.emails.send({
-                    from: fromEmail,
-                    to: email,
-                    subject: `Your Faith Finder Results: ${metadata.name}`,
-                    html: `
-                        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-                            <h2>Your Spiritual Path is: ${metadata.name}</h2>
-                            <p><strong>${metadata.archetype}</strong>: <em>"${metadata.slogan}"</em></p>
-                            <p>${metadata.longDescription}</p>
-                            <a href="${shareableUrl}" style="display: inline-block; padding: 12px 24px; background: #ea580c; color: #fff; text-decoration: none; border-radius: 6px; font-weight: bold;">View Your Full Results</a>
-                            <br/><br/>
-                            <p>Warmly,<br/>The Sadhaka Team</p>
-                        </div>
-                    `
+                await resend.contacts.create({
+                    email,
+                    unsubscribed: false,
+                    // @ts-expect-error - Resend SDK types may not include all properties
+                    properties: {
+                        source: 'faith-finder',
+                        primaryPath: result.primaryPath,
+                        submittedAt: createdAt,
+                    },
                 });
-                console.log(`[Faith Finder] Email sent successfully to ${email}`);
-            } catch (emailErr) {
-                console.error('[Faith Finder] Email delivery failed:', emailErr);
+                console.log(`[Faith Finder] Contact created in Resend: ${email}`);
+            } catch (contactErr) {
+                // Non-fatal: contact creation failure shouldn't block the flow
+                console.error('[Faith Finder] Contact creation failed:', contactErr);
             }
         } else {
             console.log('[Faith Finder] RESEND_API_KEY missing - skipping email delivery.');
         }
-
-        // Simulate a slight delay for realism
-        await new Promise(resolve => setTimeout(resolve, 400));
 
         return NextResponse.json({
             success: true,

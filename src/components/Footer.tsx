@@ -39,15 +39,31 @@ export function Footer() {
     if (!email) return;
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
 
-    toast({
-      title: "Subscribed!",
-      description: "You'll receive our newsletter with insights and guidance.",
-    });
+      if (!response.ok) {
+        throw new Error('Subscription failed');
+      }
 
-    setEmail("");
-    setIsSubmitting(false);
+      toast({
+        title: "Subscribed!",
+        description: "You'll receive our newsletter with insights and guidance.",
+      });
+      setEmail("");
+    } catch {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
