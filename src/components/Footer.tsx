@@ -11,15 +11,22 @@ const footerLinks = {
   explore: [
     { label: "Philosophies", href: "/philosophies" },
     { label: "Traditions", href: "/traditions" },
+    { label: "Deities", href: "/deities" },
     { label: "Greats", href: "/greats" },
-    { label: "Sacred Texts", href: "/texts" },
-    { label: "Compare", href: "/compare" },
     { label: "Brand Facts", href: "/brand-facts" },
   ],
-  start: [
-    { label: "Find Your Path", href: "/faith-finder" },
+  learn: [
+    { label: "Sacred Texts", href: "/texts" },
     { label: "Bhagavad Gita", href: "/texts/bhagavad-gita" },
     { label: "Sanskrit Lexicon", href: "/learn/sanskrit" },
+    { label: "Compare Paths", href: "/compare" },
+  ],
+  practice: [
+    { label: "Find Your Path", href: "/faith-finder" },
+    { label: "Mantras", href: "/mantras" },
+    { label: "Stotras", href: "/stotras/shiva-tandava-stotram" },
+    { label: "Jyotish", href: "/jyotish" },
+    { label: "Daily Guidance", href: "/jyotish/today" },
   ],
   articles: [
     { label: "What is Vedanta?", href: "/what-is-vedanta" },
@@ -69,7 +76,7 @@ export function Footer() {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container-padding mx-auto max-w-7xl py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
@@ -114,53 +121,25 @@ export function Footer() {
           </div>
 
           {/* Links columns */}
-          <div>
-            <h3 className="font-semibold mb-4">Explore</h3>
-            <ul className="space-y-3">
-              {footerLinks.explore.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">Start</h3>
-            <ul className="space-y-3">
-              {footerLinks.start.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">Articles</h3>
-            <ul className="space-y-3">
-              {footerLinks.articles.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {(Object.entries(footerLinks) as [string, { label: string; href: string }[]][]).map(
+            ([key, links]) => (
+              <div key={key}>
+                <h3 className="font-semibold mb-4 capitalize">{key}</h3>
+                <ul className="space-y-3">
+                  {links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          )}
 
         </div>
 

@@ -10,6 +10,7 @@ import { PhilosophyGrid } from "@/components/landing/PhilosophyGrid";
 import { SadhakaIntroduction } from "@/components/landing/SadhakaIntroduction";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { ConversionSection } from "@/components/landing/ConversionSection";
+import { DiscoverSection } from "@/components/landing/DiscoverSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 
 export const metadata: Metadata = {
@@ -55,6 +56,9 @@ export default function HomePage() {
 
         {/* Fold 8: CTA */}
         <ConversionSection />
+
+        {/* Fold 9: Discover — Category Navigation */}
+        <DiscoverSection />
 
         {/* Bonus: FAQ */}
         <FAQSection />

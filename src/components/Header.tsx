@@ -14,8 +14,19 @@ import {
 const navLinks = [
   { label: "Philosophies", href: "/ancient-wisdom-philosophies" },
   { label: "Texts", href: "/sacred-texts-teachings" },
+  { label: "Deities", href: "/deities" },
   { label: "Practices", href: "/practical-spiritual-practices" },
+  { label: "Jyotish", href: "/jyotish" },
   { label: "Traditions", href: "/spiritual-traditions-paths" },
+];
+
+const moreLinks = [
+  { label: "Mantras", href: "/mantras" },
+  { label: "Stotras", href: "/stotras/shiva-tandava-stotram" },
+  { label: "Sanskrit Dictionary", href: "/learn/sanskrit" },
+  { label: "Compare Paths", href: "/compare" },
+  { label: "Greats", href: "/greats" },
+  { label: "Daily Guidance", href: "/jyotish/today" },
 ];
 
 export function Header() {
@@ -96,6 +107,21 @@ export function Header() {
                     </Link>
                   ))}
                 </nav>
+                <div className="mt-6 pt-6 border-t border-border/50">
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">More</p>
+                  <nav className="flex flex-col gap-2">
+                    {moreLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1.5"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
                 <div className="mt-8">
                   <Link href="/faith-finder" onClick={() => setIsOpen(false)}>
                     <Button className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90">
