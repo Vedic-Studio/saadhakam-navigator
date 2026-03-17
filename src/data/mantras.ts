@@ -19,7 +19,9 @@ export interface Mantra {
     faq: { question: string; answer: string }[];
 }
 
-export const mantras: Mantra[] = [
+import { jyotishMantras } from "@/data/jyotishMantras";
+
+const coreMantras: Mantra[] = [
     {
         id: "mantra-om-namah-shivaya",
         slug: "om-namah-shivaya",
@@ -733,6 +735,8 @@ export const mantras: Mantra[] = [
         ],
     },
 ];
+
+export const mantras: Mantra[] = [...coreMantras, ...jyotishMantras];
 
 export function getMantraBySlug(slug: string): Mantra | undefined {
     return mantras.find((mantra) => mantra.slug === slug);

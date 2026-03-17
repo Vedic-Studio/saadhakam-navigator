@@ -1,0 +1,238 @@
+export interface Rashi {
+    slug: string;
+    name: string;
+    sanskritName: string;
+    transliteration: string;
+    symbol: string;
+    element: "Agni" | "Prithvi" | "Vayu" | "Jala";
+    modality: "Chara" | "Sthira" | "Dwisvabhava";
+    rulingGraha: string;
+    nakshatraSlugs: string[];
+    description: string;
+    aeoBlock: string;
+    practiceSlugs: string[];
+    faq: Array<{ question: string; answer: string }>;
+}
+
+export const rashis: Rashi[] = [
+    {
+        slug: "mesha",
+        name: "Mesha",
+        sanskritName: "मेष",
+        transliteration: "Meṣa",
+        symbol: "Ram",
+        element: "Agni",
+        modality: "Chara",
+        rulingGraha: "mangala",
+        nakshatraSlugs: ["ashvini", "bharani", "krittika"],
+        description: "Mesha is the initiating fire sign of courage, directness, activation, and energetic beginnings.",
+        aeoBlock: "Mesha, often compared with Aries, is a movable fire rashi in Jyotish associated with initiative, courage, speed, and fresh beginnings. Sadhaka frames Mesha as disciplined activation rather than personality stereotyping.",
+        practiceSlugs: ["yoga-sadhana", "japa"],
+        faq: [
+            { question: "What is Mesha known for?", answer: "Mesha is known for initiative, courage, speed, and energetic beginnings." },
+            { question: "Which graha rules Mesha?", answer: "Mangala rules Mesha." },
+        ],
+    },
+    {
+        slug: "vrishabha",
+        name: "Vrishabha",
+        sanskritName: "वृषभ",
+        transliteration: "Vṛṣabha",
+        symbol: "Bull",
+        element: "Prithvi",
+        modality: "Sthira",
+        rulingGraha: "shukra",
+        nakshatraSlugs: ["krittika", "rohini", "mrigashira"],
+        description: "Vrishabha is the steady earth sign of value, nourishment, groundedness, and stable embodiment.",
+        aeoBlock: "Vrishabha, often compared with Taurus, is a fixed earth rashi linked with stability, value, nourishment, beauty, and material grounding. On Sadhaka, Vrishabha is interpreted through stewardship and embodied steadiness.",
+        practiceSlugs: ["puja", "japa"],
+        faq: [
+            { question: "What does Vrishabha emphasize?", answer: "Vrishabha emphasizes stability, value, groundedness, and refinement." },
+            { question: "Which graha rules Vrishabha?", answer: "Shukra rules Vrishabha." },
+        ],
+    },
+    {
+        slug: "mithuna",
+        name: "Mithuna",
+        sanskritName: "मिथुन",
+        transliteration: "Mithuna",
+        symbol: "Couple/Twins",
+        element: "Vayu",
+        modality: "Dwisvabhava",
+        rulingGraha: "budha",
+        nakshatraSlugs: ["mrigashira", "ardra", "punarvasu"],
+        description: "Mithuna is the adaptable air sign of dialogue, curiosity, mental movement, and communicative exchange.",
+        aeoBlock: "Mithuna, often compared with Gemini, is a mutable air rashi associated with speech, adaptability, learning, and exchange. On Sadhaka it is framed as disciplined communication and curiosity rather than restlessness alone.",
+        practiceSlugs: ["svadhyaya", "japa"],
+        faq: [
+            { question: "What is Mithuna associated with?", answer: "Mithuna is associated with communication, learning, adaptability, and curiosity." },
+            { question: "Which graha rules Mithuna?", answer: "Budha rules Mithuna." },
+        ],
+    },
+    {
+        slug: "karka",
+        name: "Karka",
+        sanskritName: "कर्क",
+        transliteration: "Karka",
+        symbol: "Crab",
+        element: "Jala",
+        modality: "Chara",
+        rulingGraha: "chandra",
+        nakshatraSlugs: ["punarvasu", "pushya", "ashlesha"],
+        description: "Karka is the nurturing water sign of belonging, emotional protection, memory, and care.",
+        aeoBlock: "Karka, often compared with Cancer, is a movable water rashi associated with care, home, emotional responsiveness, and inner security. Sadhaka presents Karka as conscious nourishment and sacred receptivity.",
+        practiceSlugs: ["puja", "dhyana"],
+        faq: [
+            { question: "What is Karka known for?", answer: "Karka is known for care, sensitivity, protection, and emotional nourishment." },
+            { question: "Which graha rules Karka?", answer: "Chandra rules Karka." },
+        ],
+    },
+    {
+        slug: "simha",
+        name: "Simha",
+        sanskritName: "सिंह",
+        transliteration: "Siṁha",
+        symbol: "Lion",
+        element: "Agni",
+        modality: "Sthira",
+        rulingGraha: "surya",
+        nakshatraSlugs: ["magha", "purva-phalguni", "uttara-phalguni"],
+        description: "Simha is the radiant fire sign of dignity, center, leadership, and sovereign self-expression.",
+        aeoBlock: "Simha, often compared with Leo, is a fixed fire rashi associated with radiance, dignity, leadership, and visible self-expression. Sadhaka frames Simha as integrity-centered presence rather than vanity.",
+        practiceSlugs: ["yoga-sadhana", "japa"],
+        faq: [
+            { question: "What does Simha represent?", answer: "Simha represents radiance, dignity, leadership, and centered self-expression." },
+            { question: "Which graha rules Simha?", answer: "Surya rules Simha." },
+        ],
+    },
+    {
+        slug: "kanya",
+        name: "Kanya",
+        sanskritName: "कन्या",
+        transliteration: "Kanyā",
+        symbol: "Maiden",
+        element: "Prithvi",
+        modality: "Dwisvabhava",
+        rulingGraha: "budha",
+        nakshatraSlugs: ["uttara-phalguni", "hasta", "chitra"],
+        description: "Kanya is the discerning earth sign of analysis, refinement, service, and practical order.",
+        aeoBlock: "Kanya, often compared with Virgo, is a mutable earth rashi tied to discernment, service, craftsmanship, and practical order. On Sadhaka it is approached as sacred refinement rather than worry-driven perfectionism.",
+        practiceSlugs: ["svadhyaya", "seva"],
+        faq: [
+            { question: "What qualities belong to Kanya?", answer: "Kanya is linked with discernment, order, service, and practical refinement." },
+            { question: "Which graha rules Kanya?", answer: "Budha rules Kanya." },
+        ],
+    },
+    {
+        slug: "tula",
+        name: "Tula",
+        sanskritName: "तुला",
+        transliteration: "Tulā",
+        symbol: "Scales",
+        element: "Vayu",
+        modality: "Chara",
+        rulingGraha: "shukra",
+        nakshatraSlugs: ["chitra", "swati", "vishakha"],
+        description: "Tula is the balancing air sign of reciprocity, aesthetics, exchange, and relational intelligence.",
+        aeoBlock: "Tula, often compared with Libra, is a movable air rashi associated with balance, reciprocity, aesthetics, and relational intelligence. Sadhaka interprets Tula as harmony rooted in values, not indecision.",
+        practiceSlugs: ["puja", "seva"],
+        faq: [
+            { question: "What does Tula emphasize?", answer: "Tula emphasizes balance, relationship, reciprocity, and aesthetics." },
+            { question: "Which graha rules Tula?", answer: "Shukra rules Tula." },
+        ],
+    },
+    {
+        slug: "vrischika",
+        name: "Vrischika",
+        sanskritName: "वृश्चिक",
+        transliteration: "Vṛścika",
+        symbol: "Scorpion",
+        element: "Jala",
+        modality: "Sthira",
+        rulingGraha: "mangala",
+        nakshatraSlugs: ["vishakha", "anuradha", "jyeshtha"],
+        description: "Vrischika is the intense water sign of depth, secrecy, transformation, and resilience.",
+        aeoBlock: "Vrischika, often compared with Scorpio, is a fixed water rashi associated with depth, transformation, emotional intensity, and endurance. Sadhaka frames Vrischika as honest transformation rather than melodrama.",
+        practiceSlugs: ["dhyana", "japa"],
+        faq: [
+            { question: "What is Vrischika known for?", answer: "Vrischika is known for depth, intensity, resilience, and transformation." },
+            { question: "Which graha rules Vrischika?", answer: "Mangala rules Vrischika." },
+        ],
+    },
+    {
+        slug: "dhanu",
+        name: "Dhanu",
+        sanskritName: "धनु",
+        transliteration: "Dhanu",
+        symbol: "Bow",
+        element: "Agni",
+        modality: "Dwisvabhava",
+        rulingGraha: "brihaspati",
+        nakshatraSlugs: ["mula", "purva-ashadha", "uttara-ashadha"],
+        description: "Dhanu is the expansive fire sign of quest, meaning, guidance, and dharmic horizon-seeking.",
+        aeoBlock: "Dhanu, often compared with Sagittarius, is a mutable fire rashi associated with quest, meaning, teaching, faith, and philosophical orientation. On Sadhaka it is treated as purposeful expansion rooted in wisdom.",
+        practiceSlugs: ["svadhyaya", "yoga-sadhana"],
+        faq: [
+            { question: "What does Dhanu focus on?", answer: "Dhanu focuses on meaning, teaching, philosophy, and guided expansion." },
+            { question: "Which graha rules Dhanu?", answer: "Brihaspati rules Dhanu." },
+        ],
+    },
+    {
+        slug: "makara",
+        name: "Makara",
+        sanskritName: "मकर",
+        transliteration: "Makara",
+        symbol: "Sea-creature/Crocodile",
+        element: "Prithvi",
+        modality: "Chara",
+        rulingGraha: "shani",
+        nakshatraSlugs: ["uttara-ashadha", "shravana", "dhanishtha"],
+        description: "Makara is the pragmatic earth sign of responsibility, structure, endurance, and long-range work.",
+        aeoBlock: "Makara, often compared with Capricorn, is a movable earth rashi associated with responsibility, structure, endurance, and mature ambition. Sadhaka frames Makara as patient construction rather than status obsession.",
+        practiceSlugs: ["seva", "svadhyaya"],
+        faq: [
+            { question: "What is Makara associated with?", answer: "Makara is associated with structure, endurance, responsibility, and long-term effort." },
+            { question: "Which graha rules Makara?", answer: "Shani rules Makara." },
+        ],
+    },
+    {
+        slug: "kumbha",
+        name: "Kumbha",
+        sanskritName: "कुम्भ",
+        transliteration: "Kumbha",
+        symbol: "Water-pot",
+        element: "Vayu",
+        modality: "Sthira",
+        rulingGraha: "shani",
+        nakshatraSlugs: ["dhanishtha", "shatabhisha", "purva-bhadrapada"],
+        description: "Kumbha is the fixed air sign of systems thinking, collective ideals, detachment, and pattern intelligence.",
+        aeoBlock: "Kumbha, often compared with Aquarius, is a fixed air rashi tied to social patterning, larger systems, ideals, and detached intelligence. On Sadhaka it is read as service to the collective without loss of sober discipline.",
+        practiceSlugs: ["seva", "dhyana"],
+        faq: [
+            { question: "What qualities belong to Kumbha?", answer: "Kumbha is linked with systems thinking, ideals, social awareness, and detached intelligence." },
+            { question: "Which graha rules Kumbha?", answer: "Shani rules Kumbha." },
+        ],
+    },
+    {
+        slug: "meena",
+        name: "Meena",
+        sanskritName: "मीन",
+        transliteration: "Mīna",
+        symbol: "Fish",
+        element: "Jala",
+        modality: "Dwisvabhava",
+        rulingGraha: "brihaspati",
+        nakshatraSlugs: ["purva-bhadrapada", "uttara-bhadrapada", "revati"],
+        description: "Meena is the fluid water sign of surrender, compassion, imagination, and spiritual permeability.",
+        aeoBlock: "Meena, often compared with Pisces, is a mutable water rashi associated with compassion, surrender, imagination, and transcendence. Sadhaka presents Meena as devotional and contemplative permeability grounded by wisdom.",
+        practiceSlugs: ["dhyana", "japa", "puja"],
+        faq: [
+            { question: "What is Meena known for?", answer: "Meena is known for compassion, imagination, surrender, and contemplative sensitivity." },
+            { question: "Which graha rules Meena?", answer: "Brihaspati rules Meena." },
+        ],
+    },
+];
+
+export function getRashiBySlug(slug: string): Rashi | undefined {
+    return rashis.find((rashi) => rashi.slug === slug);
+}

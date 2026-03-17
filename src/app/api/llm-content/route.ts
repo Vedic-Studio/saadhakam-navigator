@@ -7,6 +7,10 @@ import { getPracticeBySlug } from "@/data/practices";
 import { getGreatBySlug } from "@/data/greats";
 import { getTopicBySlug } from "@/data/topics";
 import { getComparisonBySlug } from "@/data/comparisons";
+import { getGrahaBySlug } from "@/data/grahas";
+import { getRashiBySlug } from "@/data/rashis";
+import { getNakshatraBySlug } from "@/data/nakshatras";
+import { getTithiBySlug, getVaraBySlug } from "@/data/panchang";
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
@@ -178,6 +182,114 @@ ${t.content}
 
 ## Content
 ${c.content}
+`;
+                break;
+            }
+            case "grahas": {
+                const g = getGrahaBySlug(slug);
+                if (!g) break;
+                title = g.name;
+                content = `
+# ${g.name}
+**Summary:** ${g.description}
+
+## Practice framing
+${g.aeoBlock}
+
+## Core details
+- **Weekday:** ${g.weekday}
+- **Exaltation:** ${g.exaltation}
+- **Debilitation:** ${g.debilitation}
+- **Gemstone:** ${g.gemstone}
+- **Metal:** ${g.metal}
+
+## Significations
+${g.significations.map((item) => `- ${item}`).join("\n")}
+`;
+                break;
+            }
+            case "rashis": {
+                const r = getRashiBySlug(slug);
+                if (!r) break;
+                title = r.name;
+                content = `
+# ${r.name}
+**Summary:** ${r.description}
+
+## Practice framing
+${r.aeoBlock}
+
+## Core details
+- **Symbol:** ${r.symbol}
+- **Element:** ${r.element}
+- **Modality:** ${r.modality}
+- **Ruling graha:** ${r.rulingGraha}
+
+## Nakshatra coverage
+${r.nakshatraSlugs.map((item) => `- ${item}`).join("\n")}
+`;
+                break;
+            }
+            case "nakshatras": {
+                const n = getNakshatraBySlug(slug);
+                if (!n) break;
+                title = n.name;
+                content = `
+# ${n.name}
+**Summary:** ${n.description}
+
+## Practice framing
+${n.aeoBlock}
+
+## Core details
+- **Span:** ${n.span}
+- **Ruling graha:** ${n.rulingGraha}
+- **Deity:** ${n.deitySlug}
+- **Gana:** ${n.gana}
+- **Guna:** ${n.guna}
+- **Tattva:** ${n.tattva}
+
+## Qualities
+${n.qualities.map((item) => `- ${item}`).join("\n")}
+
+## Shadow qualities
+${n.shadowQualities.map((item) => `- ${item}`).join("\n")}
+`;
+                break;
+            }
+            case "panchang": {
+                const t = getTithiBySlug(slug);
+                if (t) {
+                    title = t.name;
+                    content = `
+# ${t.name}
+**Summary:** ${t.description}
+
+## Practice framing
+${t.aeoBlock}
+
+## Core details
+- **Paksha:** ${t.paksha}
+- **Number:** ${t.number}
+- **Deity:** ${t.deity}
+- **Meaning:** ${t.meaning}
+`;
+                    break;
+                }
+
+                const v = getVaraBySlug(slug);
+                if (!v) break;
+                title = v.name;
+                content = `
+# ${v.name}
+**Summary:** ${v.description}
+
+## Practice framing
+${v.aeoBlock}
+
+## Core details
+- **Weekday number:** ${v.weekdayNumber}
+- **Ruling graha:** ${v.rulingGraha}
 `;
                 break;
             }

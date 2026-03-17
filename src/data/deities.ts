@@ -25,7 +25,9 @@ export interface Deity {
     tags: string[];
 }
 
-export const deities: Deity[] = [
+import { jyotishDeities } from "@/data/jyotishDeities";
+
+const coreDeities: Deity[] = [
     {
         id: "deity-shiva",
         slug: "shiva",
@@ -755,6 +757,8 @@ export const deities: Deity[] = [
         tags: ["ardhanarishvara", "shiva-shakti", "integration", "non-duality", "symbolism"],
     },
 ];
+
+export const deities: Deity[] = [...coreDeities, ...jyotishDeities];
 
 export function getDeityBySlug(slug: string): Deity | undefined {
     return deities.find((deity) => deity.slug === slug);

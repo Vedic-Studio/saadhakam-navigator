@@ -1,0 +1,95 @@
+{
+    "id": "navagraha-stotram",
+    "title": "Navagraha Stotram",
+    "slug": "navagraha-stotram",
+    "type": "stotra",
+    "author": "Traditional",
+    "tradition": "Smarta",
+    "deity": "Navagraha",
+    "language": "Sanskrit",
+    "verseCount": 9,
+    "description": "A nine-verse hymn honoring the nine grahas as sacred archetypal forces of rhythm, karma, and contemplative alignment.",
+    "verses": [
+        {
+            "verse": 1,
+            "slug": "verse-1",
+            "sanskritDevanagari": "जपाकुसुमसङ्काशं काश्यपेयं महद्युतिम्।\nतमोऽरिं सर्वपापघ्नं प्रणतोऽस्मि दिवाकरम्॥",
+            "transliteration": "japākusuma saṅkāśaṁ kāśyapeyaṁ mahadyutim\ntamo'riṁ sarvapāpaghnaṁ praṇato'smi divākaram",
+            "wordMeanings": "japākusuma—hibiscus flower; saṅkāśam—radiant like; kāśyapeyam—descended from Kashyapa; mahā-dyutim—great splendor; tamo-ariṁ—enemy of darkness; sarva-pāpa-ghnam—destroyer of accumulated impurity; praṇataḥ asmi—I bow; divākaram—to the maker of the day.",
+            "translation": "I bow to the day-maker Surya, radiant like the hibiscus flower, born of Kashyapa, of great brilliance, enemy of darkness, and remover of accumulated impurity.",
+            "commentary": "The Surya verse frames the sun as illumination, rhythm, and moral clarity. On Sadhaka this is read not as fatalistic remedy language, but as a contemplative reminder to align with light, steadiness, and truthful action."
+        },
+        {
+            "verse": 2,
+            "slug": "verse-2",
+            "sanskritDevanagari": "दधिशङ्खतुषाराभं क्षीरोदार्णवसम्भवम्।\nनमामि शशिनं सोमं शम्भोर्मुकुटभूषणम्॥",
+            "transliteration": "dadhiśaṅkha tuṣārābhaṁ kṣīrodārṇava sambhavam\nnamāmi śaśinaṁ somaṁ śambhor mukuṭa bhūṣaṇam",
+            "wordMeanings": "dadhi—curd; śaṅkha—conch; tuṣāra—snow; ābham—shining like; kṣīroda-arṇava—ocean of milk; sambhavam—arisen from; namāmi—I bow; śaśinam—to the moon-marked one; somam—to Soma; śambhoḥ—of Shiva; mukuṭa-bhūṣaṇam—the ornament of the crown.",
+            "translation": "I bow to Soma, shining like curd, conch, and snow, arisen from the ocean of milk, and adorning Shiva's crown as the moon.",
+            "commentary": "Chandra is associated here with cooling, nourishment, and reflective mind. The image of the moon on Shiva's crown suggests emotion held within awareness rather than emotion ruling awareness."
+        },
+        {
+            "verse": 3,
+            "slug": "verse-3",
+            "sanskritDevanagari": "धरनीगर्भसम्भूतं विद्युत्कान्तिसमप्रभम्।\nकुमारं शक्तिहस्तं तं मङ्गलं प्रणमाम्यहम्॥",
+            "transliteration": "dharanīgarbha sambhūtaṁ vidyutkānti samaprabham\nkumāraṁ śaktihastaṁ taṁ maṅgalaṁ praṇamāmyaham",
+            "wordMeanings": "dharanī-garbha—from the womb of earth; sambhūtam—born; vidyut-kānti—lightning brilliance; sama-prabham—equally radiant; kumāram—youthful one; śakti-hastam—holding a spear; maṅgalam—to Mangala; praṇamāmi aham—I bow.",
+            "translation": "I bow to Mangala, born from the womb of earth, radiant like lightning, youthful, and holding the spear of directed force.",
+            "commentary": "Mangala is presented as disciplined force and active courage. Rather than treating Mars symbolism as a fate-marker, this verse can be used to cultivate steadier action, cleaner boundaries, and courageous service."
+        },
+        {
+            "verse": 4,
+            "slug": "verse-4",
+            "sanskritDevanagari": "प्रियङ्गुकलिकाश्यामं रूपेणाप्रतिमं बुधम्।\nसौम्यं सौम्यगुणोपेतं तं बुधं प्रणमाम्यहम्॥",
+            "transliteration": "priyaṅgu kalikā śyāmaṁ rūpeṇāpratimaṁ budham\nsaumyaṁ saumya guṇopetaṁ taṁ budhaṁ praṇamāmyaham",
+            "wordMeanings": "priyaṅgu-kalikā—like the bud of the priyaṅgu plant; śyāmam—dark-green hued; rūpeṇa—in form; apratimam—matchless; budham—to Budha; saumyam—gentle; guṇa-upetam—endowed with qualities; praṇamāmi aham—I bow.",
+            "translation": "I bow to Budha, dark-green like a fresh bud, incomparable in form, gentle, and endowed with refined qualities.",
+            "commentary": "Budha represents language, discernment, and adaptive intelligence. This verse can orient the mind toward careful speech, clear study, and ethical analysis instead of scattered mental speed."
+        },
+        {
+            "verse": 5,
+            "slug": "verse-5",
+            "sanskritDevanagari": "देवानां च ऋषीणां च गुरुं काञ्चनसन्निभम्।\nबुद्धिभूतं त्रिलोकेशं तं नमामि बृहस्पतिम्॥",
+            "transliteration": "devānāṁ ca ṛṣīṇāṁ ca guruṁ kāñcana sannibham\nbuddhibhūtaṁ trilokeśaṁ taṁ namāmi bṛhaspatim",
+            "wordMeanings": "devānām—of the devas; ṛṣīṇām—of the sages; gurum—the teacher; kāñcana-sannibham—golden in appearance; buddhi-bhūtam—embodiment of wisdom; triloka-īśam—lordly in the three worlds; namāmi—I bow; bṛhaspatim—to Brihaspati.",
+            "translation": "I bow to Brihaspati, teacher of gods and sages, golden in radiance, embodiment of wisdom, and revered guide across the three worlds.",
+            "commentary": "Brihaspati is the guru principle—guidance, ethics, blessings, and interpretive clarity. In practice this can mean honoring teachers, studying seriously, and choosing expansion through wisdom rather than appetite."
+        },
+        {
+            "verse": 6,
+            "slug": "verse-6",
+            "sanskritDevanagari": "हिमकुन्दमृणालाभं दैत्यानां परमं गुरुम्।\nसर्वशास्त्रप्रवक्तारं भार्गवं प्रणमाम्यहम्॥",
+            "transliteration": "himakunda mṛṇālābhaṁ daityānāṁ paramaṁ gurum\nsarvaśāstra pravaktāraṁ bhārgavaṁ praṇamāmyaham",
+            "wordMeanings": "hima—snow; kunda—jasmine; mṛṇāla—lotus fiber; ābham—shining like; daityānām—of the asuras; paramam—supreme; gurum—teacher; sarva-śāstra-pravaktāram—speaker of all teachings; bhārgavam—to Shukra; praṇamāmi aham—I bow.",
+            "translation": "I bow to Shukra, radiant like snow, jasmine, and lotus fiber, supreme teacher of the asuras, and eloquent knower of all teachings.",
+            "commentary": "Shukra here is refinement, value, beauty, and relational intelligence. Spiritually, the verse reminds practitioners to refine desire into appreciation, gratitude, and ethical participation in the world."
+        },
+        {
+            "verse": 7,
+            "slug": "verse-7",
+            "sanskritDevanagari": "नीलाञ्जनसमाभासं रविपुत्रं यमाग्रजम्।\nछायामार्तण्डसम्भूतं तं नमामि शनैश्चरम्॥",
+            "transliteration": "nīlāñjana samābhāsaṁ raviputraṁ yamāgrajam\nchāyāmārtaṇḍa sambhūtaṁ taṁ namāmi śanaiścaram",
+            "wordMeanings": "nīla-añjana—dark collyrium; sama-ābhāsam—shining like; ravi-putram—son of the sun; yama-agrajam—elder brother of Yama; chāyā-mārtaṇḍa-sambhūtam—born of Chhaya and Surya; namāmi—I bow; śanaiścaram—to Shani.",
+            "translation": "I bow to Shani, dark as sacred collyrium, son of Surya, elder brother of Yama, born of Chhaya and the solar lord.",
+            "commentary": "Shani is time, consequence, humility, and slow maturation. This verse is best used to cultivate patience, realism, service, and karmic honesty rather than fear-driven appeasement."
+        },
+        {
+            "verse": 8,
+            "slug": "verse-8",
+            "sanskritDevanagari": "अर्धकायं महावीर्यं चन्द्रादित्यविमर्दनम्।\nसिंहिकागर्भसम्भूतं तं राहुं प्रणमाम्यहम्॥",
+            "transliteration": "ardhakāyaṁ mahāvīryaṁ candrāditya vimardanam\nsiṁhikāgarbha sambhūtaṁ taṁ rāhuṁ praṇamāmyaham",
+            "wordMeanings": "ardha-kāyam—half-bodied; mahā-vīryam—of great force; candra-āditya-vimardanam—who disturbs sun and moon; siṁhikā-garbha-sambhūtam—born of Simhika; rāhum—to Rahu; praṇamāmi aham—I bow.",
+            "translation": "I bow to Rahu, half-bodied and immensely forceful, born of Simhika, whose eclipse power can obscure sun and moon.",
+            "commentary": "Rahu represents amplification, appetite, disruption, and shadow fascination. This verse can become a contemplative reminder to meet obsession with discernment and grounding."
+        },
+        {
+            "verse": 9,
+            "slug": "verse-9",
+            "sanskritDevanagari": "पलाशपुष्पसङ्काशं तारकाग्रहमस्तकम्।\nरौद्रं रौद्रात्मकं घोरं तं केतुं प्रणमाम्यहम्॥",
+            "transliteration": "palāśapuṣpa saṅkāśaṁ tārakāgraha mastakam\nraudraṁ raudrātmakaṁ ghoraṁ taṁ ketuṁ praṇamāmyaham",
+            "wordMeanings": "palāśa-puṣpa—palasha flower; saṅkāśam—shining like; tārakā-graha-mastakam—crowned among stars and grahas; raudram—fierce; raudrātmakam—of fierce nature; ghoram—intense; ketum—to Ketu; praṇamāmi aham—I bow.",
+            "translation": "I bow to Ketu, radiant like the palasha flower, intense and fierce in nature, subtle among the stellar and graha forces.",
+            "commentary": "Ketu symbolizes detachment, severance, inwardization, and moksha-oriented insight. In practice this verse supports simplification, introspection, and the willingness to release excess identity."
+        }
+    ]
+}

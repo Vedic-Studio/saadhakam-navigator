@@ -18,6 +18,7 @@ export default function robots(): MetadataRoute.Robots {
     "stotras",
     "deities",
     "mantras",
+    "jyotish",
   ];
   return {
     rules: [

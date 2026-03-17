@@ -16,6 +16,7 @@ const sitemapPaths = [
     "stotras",
     "deities",
     "mantras",
+    "jyotish",
 ];
 
 export async function GET() {

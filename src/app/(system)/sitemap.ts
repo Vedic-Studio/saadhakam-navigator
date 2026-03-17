@@ -14,6 +14,10 @@ import { listArticles } from "@/features/articles";
 import { deities } from "@/data/deities";
 import { mantras } from "@/data/mantras";
 import { loadSahasranama } from "@/lib/stotras";
+import { grahas } from "@/data/grahas";
+import { rashis } from "@/data/rashis";
+import { nakshatras } from "@/data/nakshatras";
+import { tithis, varas } from "@/data/panchang";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
 const articles = listArticles();
@@ -45,6 +49,7 @@ export async function generateSitemaps() {
     { id: "stotras" },
     { id: "deities" },
     { id: "mantras" },
+    { id: "jyotish" },
   ];
 }
 
@@ -483,6 +488,88 @@ export default async function sitemap({ id: idProp }: { id: string | Promise<str
           lastModified: now,
           changeFrequency: "monthly" as const,
           priority: 0.8,
+        })),
+      ];
+
+    case "jyotish":
+      return [
+        {
+          url: `${baseUrl}/jyotish`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.9,
+        },
+        {
+          url: `${baseUrl}/jyotish/today`,
+          lastModified: now,
+          changeFrequency: "daily",
+          priority: 0.85,
+        },
+        {
+          url: `${baseUrl}/jyotish/nakshatras`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.85,
+        },
+        ...nakshatras.map((item) => ({
+          url: `${baseUrl}/jyotish/nakshatras/${item.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.75,
+        })),
+        {
+          url: `${baseUrl}/jyotish/rashis`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.85,
+        },
+        ...rashis.map((item) => ({
+          url: `${baseUrl}/jyotish/rashis/${item.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.75,
+        })),
+        {
+          url: `${baseUrl}/jyotish/grahas`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.85,
+        },
+        ...grahas.map((item) => ({
+          url: `${baseUrl}/jyotish/grahas/${item.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.75,
+        })),
+        {
+          url: `${baseUrl}/jyotish/panchang`,
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority: 0.8,
+        },
+        ...varas.map((item) => ({
+          url: `${baseUrl}/jyotish/panchang/varas/${item.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.7,
+        })),
+        ...tithis.map((item) => ({
+          url: `${baseUrl}/jyotish/panchang/tithis/${item.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.7,
+        })),
+        {
+          url: `${baseUrl}/stotras/navagraha-stotram`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.75,
+        },
+        ...Array.from({ length: 9 }, (_, i) => ({
+          url: `${baseUrl}/stotras/navagraha-stotram/verse-${i + 1}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.65,
         })),
       ];
 
