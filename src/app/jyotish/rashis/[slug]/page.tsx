@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
+import { ZodiacWheel } from "@/components/jyotish/visuals/ZodiacWheel";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { getRashiBySlug, rashis } from "@/data/rashis";
 import { buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata, buildUrl, buildWebPageSchema } from "@/lib/seo";
 import { getRelatedGrahaForRashi, getRelatedNakshatrasForRashi } from "@/lib/jyotish";
@@ -56,12 +58,20 @@ export default async function RashiDetailPage({ params }: { params: Promise<{ sl
             <Header />
             <main className="flex-grow pt-24 pb-16">
                 <div className="container-padding max-w-5xl mx-auto">
-                    <p className="text-sm mb-4 text-orange-400 uppercase tracking-widest">Rashi Guide</p>
-                    <h1 className="font-display text-4xl md:text-6xl font-black mb-6">{rashi.name}</h1>
-                    <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed border-l-4 border-orange-500/30 pl-6">
-                        {rashi.aeoBlock}
-                    </p>
-                    <div className="mb-8"><JyotishDisclaimer compact /></div>
+                    <ScrollReveal>
+                        <p className="text-sm mb-4 text-orange-400 uppercase tracking-widest">Rashi Guide</p>
+                        <h1 className="font-display text-4xl md:text-6xl font-black mb-6">{rashi.name}</h1>
+                        <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed border-l-4 border-orange-500/30 pl-6">
+                            {rashi.aeoBlock}
+                        </p>
+                        <div className="mb-8"><JyotishDisclaimer compact /></div>
+                    </ScrollReveal>
+
+                    <ScrollReveal delay={0.15}>
+                        <div className="mb-12 flex justify-center">
+                            <ZodiacWheel activeSlug={rashi.slug} size={320} />
+                        </div>
+                    </ScrollReveal>
 
                     <section className="grid md:grid-cols-2 gap-6 mb-10">
                         <div className="rounded-2xl border border-border/50 bg-card p-6">

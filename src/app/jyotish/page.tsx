@@ -3,6 +3,9 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { DailyPracticeCard } from "@/components/jyotish/DailyPracticeCard";
 import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
+import { ZodiacWheel } from "@/components/jyotish/visuals/ZodiacWheel";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { StaggeredList } from "@/components/animations/StaggeredList";
 import { buildBreadcrumbSchema, buildCollectionSchema, buildPageMetadata, buildUrl } from "@/lib/seo";
 
 const sections = [
@@ -64,33 +67,43 @@ export default function JyotishHubPage() {
             <Header />
             <main className="flex-grow pt-24 pb-16">
                 <div className="container-padding max-w-6xl mx-auto">
-                    <header className="mb-12 mt-6">
-                        <p className="text-sm mb-4 text-orange-400 uppercase tracking-widest">Jyotish Hub</p>
-                        <h1 className="font-display text-4xl md:text-6xl font-black mb-6">Jyotish as reflection, rhythm, and practice</h1>
-                        <p className="text-xl text-muted-foreground max-w-4xl leading-relaxed mb-8">
-                            This section presents Jyotish as a contemplative language of timing, temperament, and spiritual orientation.
-                            It is intentionally non-predictive in framing: use these pages to deepen attention, ritual rhythm, self-observation,
-                            and practice integrity.
-                        </p>
-                        <JyotishDisclaimer />
-                    </header>
+                    <ScrollReveal>
+                        <header className="mb-12 mt-6">
+                            <p className="text-sm mb-4 text-orange-400 uppercase tracking-widest">Jyotish Hub</p>
+                            <h1 className="font-display text-4xl md:text-6xl font-black mb-6">Jyotish as reflection, rhythm, and practice</h1>
+                            <p className="text-xl text-muted-foreground max-w-4xl leading-relaxed mb-8">
+                                This section presents Jyotish as a contemplative language of timing, temperament, and spiritual orientation.
+                                It is intentionally non-predictive in framing: use these pages to deepen attention, ritual rhythm, self-observation,
+                                and practice integrity.
+                            </p>
+                            <JyotishDisclaimer />
+                        </header>
+                    </ScrollReveal>
 
-                    <div className="mb-12">
-                        <DailyPracticeCard />
-                    </div>
+                    <ScrollReveal delay={0.1}>
+                        <div className="mb-12">
+                            <DailyPracticeCard />
+                        </div>
+                    </ScrollReveal>
 
-                    <section className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <ScrollReveal delay={0.2}>
+                        <div className="mb-16 flex justify-center">
+                            <ZodiacWheel size={380} />
+                        </div>
+                    </ScrollReveal>
+
+                    <StaggeredList className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
                         {sections.map((section) => (
                             <Link
                                 key={section.href}
                                 href={section.href}
-                                className="block rounded-2xl border border-border/50 bg-card p-6 hover:border-orange-500/40 transition-colors"
+                                className="block rounded-2xl border border-border/50 bg-card p-6 hover:border-orange-500/40 hover:scale-[1.02] transition-all duration-300"
                             >
                                 <h2 className="text-2xl font-display font-bold mb-3">{section.name}</h2>
                                 <p className="text-muted-foreground leading-relaxed">{section.description}</p>
                             </Link>
                         ))}
-                    </section>
+                    </StaggeredList>
                 </div>
             </main>
             <Footer />

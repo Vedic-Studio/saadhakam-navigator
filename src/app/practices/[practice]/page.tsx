@@ -5,6 +5,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { ChakraSpinner } from "@/components/visuals/ChakraSpinner";
 import { getPracticeBySlug, practices } from "@/data/practices";
 import { practiceGoals } from "@/data/practiceGoals";
 import {
@@ -67,9 +69,10 @@ export default async function PracticeDetailPage({
             <Header />
             <main className="pt-24 pb-20">
                 <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-orange-500/5 to-transparent relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-24 opacity-5 pointer-events-none">
-                        <Sparkles className="w-96 h-96 text-orange-500" />
+                    <div className="absolute top-0 right-0 p-24 pointer-events-none">
+                        <ChakraSpinner size={384} petals={12} speed={30} />
                     </div>
+                    <ScrollReveal>
                     <div className="max-w-4xl mx-auto relative z-10 text-center">
                         <nav aria-label="Breadcrumb" className="mb-12 flex justify-center">
                             <Link
@@ -90,6 +93,7 @@ export default async function PracticeDetailPage({
                             {practice.summary}
                         </p>
                     </div>
+                    </ScrollReveal>
                 </section>
 
                 <section className="px-4 sm:px-6 lg:px-8">

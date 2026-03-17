@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Script from "next/script";
 import "./globals.css";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
+import { ReadProgress } from "@/components/animations/ReadProgress";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
 const gaMeasurementId = "G-S3DHYPPG9R";
@@ -257,6 +258,7 @@ export default function RootLayout({
           `,
           }}
         />
+        <ReadProgress />
         <Suspense fallback={null}>
           <AnalyticsTracker />
         </Suspense>

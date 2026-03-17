@@ -2,6 +2,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { DailyPracticeCard } from "@/components/jyotish/DailyPracticeCard";
 import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
+import { PanchangClock } from "@/components/jyotish/visuals/PanchangClock";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { buildBreadcrumbSchema, buildPageMetadata } from "@/lib/seo";
 import { getDailyJyotishGuidance } from "@/lib/jyotish-daily";
 
@@ -25,18 +27,32 @@ export default function JyotishTodayPage() {
             <Header />
             <main className="flex-grow pt-24 pb-16">
                 <div className="container-padding max-w-5xl mx-auto">
-                    <header className="mb-12 mt-6">
-                        <p className="text-sm mb-4 text-orange-400 uppercase tracking-widest">Daily Guidance</p>
-                        <h1 className="font-display text-4xl md:text-6xl font-black mb-6">Today in Jyotish</h1>
-                        <p className="text-xl text-muted-foreground max-w-4xl mb-8">
-                            Vara guidance is always available. Nakshatra and tithi are displayed when the date is covered by the local 2026 calendar dataset.
-                        </p>
-                        <JyotishDisclaimer compact />
-                    </header>
+                    <ScrollReveal>
+                        <header className="mb-12 mt-6">
+                            <p className="text-sm mb-4 text-orange-400 uppercase tracking-widest">Daily Guidance</p>
+                            <h1 className="font-display text-4xl md:text-6xl font-black mb-6">Today in Jyotish</h1>
+                            <p className="text-xl text-muted-foreground max-w-4xl mb-8">
+                                Vara guidance is always available. Nakshatra and tithi are displayed when the date is covered by the local 2026 calendar dataset.
+                            </p>
+                            <JyotishDisclaimer compact />
+                        </header>
+                    </ScrollReveal>
 
-                    <div className="mb-10">
-                        <DailyPracticeCard />
-                    </div>
+                    <ScrollReveal delay={0.1}>
+                        <div className="mb-12 flex justify-center">
+                            <PanchangClock
+                                size={320}
+                                nakshatra={guidance.nakshatra?.name}
+                                tithi={guidance.tithi?.name}
+                            />
+                        </div>
+                    </ScrollReveal>
+
+                    <ScrollReveal delay={0.15}>
+                        <div className="mb-10">
+                            <DailyPracticeCard />
+                        </div>
+                    </ScrollReveal>
 
                     {!guidance.hasCalendarData && (
                         <div className="rounded-2xl border border-border/50 bg-card p-6 text-muted-foreground">

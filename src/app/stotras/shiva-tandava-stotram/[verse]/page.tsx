@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { SanskritTypewriter } from "@/components/visuals/SanskritTypewriter";
 import { loadStotra, getStotraVerseBySlug, getAdjacentVerses } from "@/lib/stotras";
 
 export function generateStaticParams() {
@@ -46,35 +48,49 @@ export default async function ShivaTandavaVersePage({ params }: { params: Promis
             ]}
           />
 
-          <h1 className="font-display text-4xl md:text-6xl font-black mb-10 mt-8 tracking-tighter">
-            Shiva Tandava Stotram — Verse {verse.verse}
-          </h1>
+          <ScrollReveal>
+            <h1 className="font-display text-4xl md:text-6xl font-black mb-10 mt-8 tracking-tighter">
+              Shiva Tandava Stotram — Verse {verse.verse}
+            </h1>
+          </ScrollReveal>
 
           <section className="space-y-8">
-            <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
-              <h2 className="font-semibold mb-3">Sanskrit</h2>
-              <p className="whitespace-pre-wrap font-serif text-lg">{verse.sanskritDevanagari}</p>
-            </div>
+            <ScrollReveal>
+              <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
+                <h2 className="font-semibold mb-3">Sanskrit</h2>
+                <p className="whitespace-pre-wrap font-serif text-lg">
+                  <SanskritTypewriter text={verse.sanskritDevanagari} speed={40} />
+                </p>
+              </div>
+            </ScrollReveal>
 
-            <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
-              <h2 className="font-semibold mb-3">Transliteration</h2>
-              <p className="whitespace-pre-wrap italic">{verse.transliteration}</p>
-            </div>
+            <ScrollReveal delay={0.1}>
+              <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
+                <h2 className="font-semibold mb-3">Transliteration</h2>
+                <p className="whitespace-pre-wrap italic">{verse.transliteration}</p>
+              </div>
+            </ScrollReveal>
 
-            <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
-              <h2 className="font-semibold mb-3">Word Meanings</h2>
-              <p>{verse.wordMeanings}</p>
-            </div>
+            <ScrollReveal delay={0.15}>
+              <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
+                <h2 className="font-semibold mb-3">Word Meanings</h2>
+                <p>{verse.wordMeanings}</p>
+              </div>
+            </ScrollReveal>
 
-            <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
-              <h2 className="font-semibold mb-3">Translation</h2>
-              <p>{verse.translation}</p>
-            </div>
+            <ScrollReveal delay={0.2}>
+              <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
+                <h2 className="font-semibold mb-3">Translation</h2>
+                <p>{verse.translation}</p>
+              </div>
+            </ScrollReveal>
 
-            <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
-              <h2 className="font-semibold mb-3">Commentary</h2>
-              <p>{verse.commentary}</p>
-            </div>
+            <ScrollReveal delay={0.25}>
+              <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
+                <h2 className="font-semibold mb-3">Commentary</h2>
+                <p>{verse.commentary}</p>
+              </div>
+            </ScrollReveal>
           </section>
 
           <div className="mt-12 flex justify-between gap-4">
