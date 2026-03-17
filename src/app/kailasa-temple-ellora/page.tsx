@@ -9,13 +9,13 @@ export const metadata: Metadata = {
     description:
         "The Kailasa Temple at Ellora is the largest monolithic structure in the world — carved top-down from a single basalt cliff face. How ancient Indian engineers achieved this remains astonishing.",
     alternates: {
-        canonical: "https://opensadhaka.com/kailasa-temple-ellora",
+        canonical: "https://www.opensadhaka.com/kailasa-temple-ellora",
     },
     openGraph: {
         title: "Kailasa Temple Ellora: The Impossible Architecture",
         description:
             "400,000 tons of rock removed by hand. No scaffold, no ground-up construction. The Kailasa Temple defies explanation — and does not need aliens to do so.",
-        url: "https://opensadhaka.com/kailasa-temple-ellora",
+        url: "https://www.opensadhaka.com/kailasa-temple-ellora",
         type: "article",
     },
 };

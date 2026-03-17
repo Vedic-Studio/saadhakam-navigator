@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   description:
     "Explore 10,000 years of Vedic wisdom with Sadhaka AI. Learn Bhagavad Gita, Vedas, Upanishads, and authentic spiritual practices. Your guide to Sanatan Dharma.",
   alternates: {
-    canonical: "https://opensadhaka.com",
+    canonical: "https://www.opensadhaka.com",
   },
   openGraph: {
     title: "Sadhaka | AI-Powered Sanatan Dharma Spiritual Companion",
     description:
       "Explore Sanatan Dharma with AI-powered spiritual guidance. Learn Bhagavad Gita, Vedas, and Upanishads.",
-    url: "https://opensadhaka.com",
+    url: "https://www.opensadhaka.com",
   },
 };
 

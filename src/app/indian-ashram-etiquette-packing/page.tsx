@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Visiting an Indian ashram or Hindu temple requires knowing the unspoken rules: dress modestly, remove shoes, accept prasad with the right hand, observe silence. The complete practical guide.",
     alternates: {
-        canonical: "https://opensadhaka.com/indian-ashram-etiquette-packing",
+        canonical: "https://www.opensadhaka.com/indian-ashram-etiquette-packing",
     },
     openGraph: {
         title: "Indian Ashram Etiquette and Packing Guide",
         description:
             "Don't arrive unprepared. The dress code, temple etiquette, pranam protocol, and complete packing list for an Indian ashram stay.",
-        url: "https://opensadhaka.com/indian-ashram-etiquette-packing",
+        url: "https://www.opensadhaka.com/indian-ashram-etiquette-packing",
         type: "article",
     },
 };

@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://opensadhaka.com";
+  const baseUrl = "https://www.opensadhaka.com";
   const sitemapPaths = [
     "core",
     "philosophies",

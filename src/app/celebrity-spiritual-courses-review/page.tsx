@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Celebrity spiritual courses (Deepak Chopra, etc.) offer high production value and accessibility for beginners but are often overpriced relative to free alternatives. What to look for instead.",
     alternates: {
-        canonical: "https://opensadhaka.com/celebrity-spiritual-courses-review",
+        canonical: "https://www.opensadhaka.com/celebrity-spiritual-courses-review",
     },
     openGraph: {
         title: "Are Celebrity Spiritual Courses Worth It?",
         description:
             "Deepak Chopra's $300 mantra course vs. a free Vedanta lecture. The difference between wellness and liberation. What to actually look for in an online spiritual program.",
-        url: "https://opensadhaka.com/celebrity-spiritual-courses-review",
+        url: "https://www.opensadhaka.com/celebrity-spiritual-courses-review",
         type: "article",
     },
 };

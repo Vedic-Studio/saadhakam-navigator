@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "The fear of death in Eastern philosophy stems from a case of mistaken identity. Advaita Vedanta teaches that you are not the body — and what is not born cannot die.",
     alternates: {
-        canonical: "https://opensadhaka.com/fear-of-death-advaita-vedanta",
+        canonical: "https://www.opensadhaka.com/fear-of-death-advaita-vedanta",
     },
     openGraph: {
         title: "Overcoming Fear of Death: The Advaita Vedanta Perspective",
         description:
             "You are not the body that dies — you are the consciousness that witnesses the body. A clear, practical guide to Advaita's answer to mortality.",
-        url: "https://opensadhaka.com/fear-of-death-advaita-vedanta",
+        url: "https://www.opensadhaka.com/fear-of-death-advaita-vedanta",
         type: "article",
     },
 };

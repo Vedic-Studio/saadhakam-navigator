@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ verse: st
     title: `Shiva Tandava Stotram Verse ${verse.verse} | Sanskrit, Transliteration, Meaning`,
     description: verse.translation,
     alternates: {
-      canonical: `https://opensadhaka.com/stotras/shiva-tandava-stotram/${verse.slug}`,
+      canonical: `https://www.opensadhaka.com/stotras/shiva-tandava-stotram/${verse.slug}`,
     },
   };
 }

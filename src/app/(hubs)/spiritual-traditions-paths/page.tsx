@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     description:
         "Explore the major traditions (Sampradayas) of Sanatan Dharma including Shaivism, Vaishnavism, Shaktism, and Smartism.",
     alternates: {
-        canonical: "https://opensadhaka.com/spiritual-traditions-paths",
+        canonical: "https://www.opensadhaka.com/spiritual-traditions-paths",
     },
     openGraph: {
         title: "Spiritual Traditions & Paths | Sadhaka",
         description:
             "Learn the differences between Shaiva, Vaishnava, Shakta, and other spiritual paths within Sanatan Dharma.",
-        url: "https://opensadhaka.com/spiritual-traditions-paths",
+        url: "https://www.opensadhaka.com/spiritual-traditions-paths",
         type: "website",
     },
 };
@@ -147,12 +147,12 @@ export default function SpiritualTraditionsPage() {
         name: "Spiritual Traditions & Paths",
         description:
             "A pillar hub for Shaivism, Vaishnavism, Shaktism, Smartism, and the major path choices within Sanatan Dharma.",
-        url: "https://opensadhaka.com/spiritual-traditions-paths",
+        url: "https://www.opensadhaka.com/spiritual-traditions-paths",
         hasPart: featuredGuides.map((guide, index) => ({
             "@type": "Article",
             position: index + 1,
             name: guide.title,
-            url: `https://opensadhaka.com${guide.href}`,
+            url: `https://www.opensadhaka.com${guide.href}`,
         })),
     };
 

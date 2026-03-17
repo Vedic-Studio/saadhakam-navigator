@@ -36,7 +36,7 @@ export async function generateMetadata({
         title: `Bhagavad Gita Chapter ${chapter.chapterNumber}: ${chapter.nameEnglish} | Summary & Verses`,
         description: `Read the complete summary, key themes, and all ${chapter.totalVerses} verses of Bhagavad Gita Chapter ${chapter.chapterNumber} (${chapter.nameSanskrit}).`,
         alternates: {
-            canonical: `https://opensadhaka.com/texts/bhagavad-gita/chapter-${chapter.chapterNumber}`,
+            canonical: `https://www.opensadhaka.com/texts/bhagavad-gita/chapter-${chapter.chapterNumber}`,
         },
     };
 }
@@ -87,19 +87,19 @@ export default async function BgChapterPage({
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://opensadhaka.com/",
+                item: "https://www.opensadhaka.com/",
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: "Bhagavad Gita Guide",
-                item: "https://opensadhaka.com/texts/bhagavad-gita",
+                item: "https://www.opensadhaka.com/texts/bhagavad-gita",
             },
             {
                 "@type": "ListItem",
                 position: 3,
                 name: `Chapter ${chapter.chapterNumber}`,
-                item: `https://opensadhaka.com/texts/bhagavad-gita/chapter-${chapter.chapterNumber}`,
+                item: `https://www.opensadhaka.com/texts/bhagavad-gita/chapter-${chapter.chapterNumber}`,
             },
         ],
     };

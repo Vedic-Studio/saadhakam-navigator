@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Traditional Indian philosophy says a guru is ultimately necessary — like a mirror is necessary to see your face. But the guru doesn't have to be a living person. A clear, balanced guide.",
     alternates: {
-        canonical: "https://opensadhaka.com/do-you-need-a-guru",
+        canonical: "https://www.opensadhaka.com/do-you-need-a-guru",
     },
     openGraph: {
         title: "Do You Need a Guru for Enlightenment?",
         description:
             "The tradition says yes — but the guru doesn't have to be a living human. A balanced, honest look at the guru question for modern seekers.",
-        url: "https://opensadhaka.com/do-you-need-a-guru",
+        url: "https://www.opensadhaka.com/do-you-need-a-guru",
         type: "article",
     },
 };

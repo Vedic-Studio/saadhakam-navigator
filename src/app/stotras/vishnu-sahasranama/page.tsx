@@ -8,7 +8,7 @@ import { loadSahasranama } from "@/lib/stotras";
 export const metadata: Metadata = {
   title: "Vishnu Sahasranama — 1000 Names",
   description: "Read the 1000 names of Vishnu with transliteration.",
-  alternates: { canonical: "https://opensadhaka.com/stotras/vishnu-sahasranama" },
+  alternates: { canonical: "https://www.opensadhaka.com/stotras/vishnu-sahasranama" },
 };
 
 export default function VishnuSahasranamaPage() {

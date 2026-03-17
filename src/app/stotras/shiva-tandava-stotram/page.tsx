@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     description:
         "The Shiva Tandava Stotram composed by Ravana — all 16 verses in Sanskrit Devanagari with IAST transliteration, English translation, and commentary. The great hymn to Shiva's cosmic dance.",
     alternates: {
-        canonical: "https://opensadhaka.com/stotras/shiva-tandava-stotram",
+        canonical: "https://www.opensadhaka.com/stotras/shiva-tandava-stotram",
     },
     openGraph: {
         title: "Shiva Tandava Stotram: Complete Text with Meaning",
         description:
             "16 verses composed by Ravana in praise of Shiva's cosmic Tandava dance. Sanskrit, transliteration, translation, and commentary on every verse.",
-        url: "https://opensadhaka.com/stotras/shiva-tandava-stotram",
+        url: "https://www.opensadhaka.com/stotras/shiva-tandava-stotram",
         type: "article",
     },
 };

@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description:
         "Starting a daily meditation practice doesn't require clearing your mind. It requires 5 minutes, consistency, and the right technique for your personality. A practical beginner's guide.",
     alternates: {
-        canonical: "https://opensadhaka.com/how-to-start-meditating-daily",
+        canonical: "https://www.opensadhaka.com/how-to-start-meditating-daily",
     },
     openGraph: {
         title: "How to Start Meditating Daily (Even if You Can't Sit Still)",
         description:
             "The complete beginner's guide to building a real daily meditation practice — without the woo-woo, without the app subscriptions.",
-        url: "https://opensadhaka.com/how-to-start-meditating-daily",
+        url: "https://www.opensadhaka.com/how-to-start-meditating-daily",
         type: "article",
     },
 };

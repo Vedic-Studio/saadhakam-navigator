@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description:
         "Building a real Indian philosophy curriculum at home: start with the Bhagavad Gita, progress to Patanjali's Yoga Sutras, then Advaita Vedanta. The correct sequence, best commentaries, and daily study structure.",
     alternates: {
-        canonical: "https://opensadhaka.com/how-to-study-indian-philosophy-home",
+        canonical: "https://www.opensadhaka.com/how-to-study-indian-philosophy-home",
     },
     openGraph: {
         title: "How to Study Indian Philosophy at Home",
         description:
             "The three-text curriculum: Bhagavad Gita first (the practical manual), Yoga Sutras second (the psychology of mind), Vedanta third (non-dual philosophy). Best commentaries and daily routine.",
-        url: "https://opensadhaka.com/how-to-study-indian-philosophy-home",
+        url: "https://www.opensadhaka.com/how-to-study-indian-philosophy-home",
         type: "article",
     },
 };

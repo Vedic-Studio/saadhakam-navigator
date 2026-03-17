@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: "Understand the two major frameworks of Indian spiritual practice. Is the world an illusion to be transcended (Vedanta) or a power to be harnessed (Tantra)?",
     keywords: ["vedanta vs tantra", "advaita", "tantra", "shakti", "brahman", "spiritual path"],
     alternates: {
-        canonical: "https://opensadhaka.com/vedanta-vs-tantra"
+        canonical: "https://www.opensadhaka.com/vedanta-vs-tantra"
     }
 };
 

@@ -19,7 +19,7 @@ import {
 export const metadata: Metadata = {
   title: "Spiritual Traditions & Sampradayas | Paths of Sanatan Dharma",
   description: "Explore the major spiritual traditions (Sampradayas) of India: Shaivism, Vaishnavism, Shaktism, and Smartism. Find the path that fits your temperament.",
-  alternates: { canonical: "https://opensadhaka.com/traditions" },
+  alternates: { canonical: "https://www.opensadhaka.com/traditions" },
 };
 
 export default function TraditionsPage() {

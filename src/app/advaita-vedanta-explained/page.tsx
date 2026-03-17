@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     title: "Advaita Vedanta Explained | The Philosophy of Non-Duality",
     description: "A comprehensive guide to Advaita Vedanta, the non-dual school of Hindu philosophy. Explore the teachings of Adi Shankara, atman, brahman, and maya.",
     alternates: {
-        canonical: "https://opensadhaka.com/advaita-vedanta-explained",
+        canonical: "https://www.opensadhaka.com/advaita-vedanta-explained",
     },
     openGraph: {
         title: "Advaita Vedanta Explained: The Ultimate Guide to Non-Duality",
         description: "Discover the core principles of Advaita Vedanta, from the rope-snake analogy to the realization of the absolute Self.",
-        url: "https://opensadhaka.com/advaita-vedanta-explained",
+        url: "https://www.opensadhaka.com/advaita-vedanta-explained",
         type: "article",
     },
 };

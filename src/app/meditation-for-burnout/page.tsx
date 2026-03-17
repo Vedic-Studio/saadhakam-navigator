@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description:
         "Corporate burnout is a spiritual crisis caused by misaligned karma and dharma — not just overwork. Discover what meditation and Karma Yoga actually do for deep exhaustion.",
     alternates: {
-        canonical: "https://opensadhaka.com/meditation-for-burnout",
+        canonical: "https://www.opensadhaka.com/meditation-for-burnout",
     },
     openGraph: {
         title: "Meditation for Corporate Burnout: The Spiritual Approach to Exhaustion",
         description:
             "Burnout is a crisis of meaning, not just rest. The Bhagavad Gita diagnosed it 3000 years ago. Here's the spiritual approach that actually addresses the root.",
-        url: "https://opensadhaka.com/meditation-for-burnout",
+        url: "https://www.opensadhaka.com/meditation-for-burnout",
         type: "article",
     },
 };

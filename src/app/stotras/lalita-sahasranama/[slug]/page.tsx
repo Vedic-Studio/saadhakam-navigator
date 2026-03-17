@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `Lalita Sahasranama #${name.number} — ${name.transliteration}`,
     description: `Lalita Sahasranama name ${name.number}: ${name.name}.`,
-    alternates: { canonical: `https://opensadhaka.com/stotras/lalita-sahasranama/${name.slug}` },
+    alternates: { canonical: `https://www.opensadhaka.com/stotras/lalita-sahasranama/${name.slug}` },
   };
 }
 

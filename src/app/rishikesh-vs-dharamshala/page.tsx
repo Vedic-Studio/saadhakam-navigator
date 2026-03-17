@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Rishikesh is Hindu yoga on the Ganges. Dharamshala is Tibetan Buddhist in the Himalayas. Which is right for your practice? A practical comparison with ashrams, costs, safety, and vibe.",
     alternates: {
-        canonical: "https://opensadhaka.com/rishikesh-vs-dharamshala",
+        canonical: "https://www.opensadhaka.com/rishikesh-vs-dharamshala",
     },
     openGraph: {
         title: "Rishikesh vs Dharamshala: Which Spiritual Hub Fits You?",
         description:
             "Hindu yoga capital vs Little Tibet. A detailed comparison to help you choose your spiritual home in India.",
-        url: "https://opensadhaka.com/rishikesh-vs-dharamshala",
+        url: "https://www.opensadhaka.com/rishikesh-vs-dharamshala",
         type: "article",
     },
 };

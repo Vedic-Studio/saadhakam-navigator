@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "The Six Darshanas | Systems of Indian Philosophy",
   description: "Explore the six orthodox schools of Hindu philosophy (Darshanas): Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, and Vedanta. A guide to the vision of reality.",
   alternates: {
-    canonical: "https://opensadhaka.com/philosophies",
+    canonical: "https://www.opensadhaka.com/philosophies",
   },
 };
 

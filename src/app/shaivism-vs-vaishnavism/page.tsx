@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
     title: "Shaivism vs. Vaishnavism | The Two Great Paths Compared",
     description: "Comparing the two largest traditions of Sanatan Dharma: Shaivism (Shiva) and Vaishnavism (Vishnu). Explore their philosophies, practices, and goals.",
-    alternates: { canonical: "https://opensadhaka.com/shaivism-vs-vaishnavism" },
+    alternates: { canonical: "https://www.opensadhaka.com/shaivism-vs-vaishnavism" },
 };
 
 export default function ShaivismVsVaishnavismPage() {

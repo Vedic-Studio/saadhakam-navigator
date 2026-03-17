@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "The 12 Jyotirlingas are India's most sacred Shiva temples — sites where Shiva appeared as an infinite column of light. Kedarnath, Kashi Vishwanath, Somnath: what each site offers and why it matters.",
     alternates: {
-        canonical: "https://opensadhaka.com/most-powerful-shiva-temples-india",
+        canonical: "https://www.opensadhaka.com/most-powerful-shiva-temples-india",
     },
     openGraph: {
         title: "The Jyotirlingas: India's Most Powerful Shiva Temples",
         description:
             "12 shrines where Shiva appeared as an infinite pillar of light. The ascetic Himalayan trek to Kedarnath. Liberation at death in Kashi. The science of consecration explained.",
-        url: "https://opensadhaka.com/most-powerful-shiva-temples-india",
+        url: "https://www.opensadhaka.com/most-powerful-shiva-temples-india",
         type: "article",
     },
 };

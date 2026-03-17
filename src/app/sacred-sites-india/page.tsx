@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Beyond yoga capitals: Varanasi for confronting mortality, Tiruvannamalai for self-inquiry, Auroville for integral yoga, and Kerala for Ayurvedic Panchakarma. The advanced spiritual itinerary.",
     alternates: {
-        canonical: "https://opensadhaka.com/sacred-sites-india",
+        canonical: "https://www.opensadhaka.com/sacred-sites-india",
     },
     openGraph: {
         title: "India's Sacred Sites: The Advanced Itinerary",
         description:
             "Varanasi's cremation ghats, Ramana's Arunachala, Auroville's experimental community, and Kerala's Panchakarma. For practitioners ready to go deeper.",
-        url: "https://opensadhaka.com/sacred-sites-india",
+        url: "https://www.opensadhaka.com/sacred-sites-india",
         type: "article",
     },
 };

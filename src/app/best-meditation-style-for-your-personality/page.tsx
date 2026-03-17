@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Most meditation advice assumes there is only one type of mind. Compare Japa, breath-led meditation, silent Dhyana, and self-inquiry to find the best meditation style for your specific temperament and nervous system.",
     alternates: {
-        canonical: "https://opensadhaka.com/best-meditation-style-for-your-personality",
+        canonical: "https://www.opensadhaka.com/best-meditation-style-for-your-personality",
     },
     openGraph: {
         title: "Best Meditation Style for Your Personality",
         description:
             "Most meditation advice assumes there is only one type of mind. Compare Japa, breath-led meditation, silent Dhyana, and self-inquiry to find the best meditation style for your specific temperament and nervous system.",
-        url: "https://opensadhaka.com/best-meditation-style-for-your-personality",
+        url: "https://www.opensadhaka.com/best-meditation-style-for-your-personality",
         type: "article",
     },
 };
@@ -94,7 +94,7 @@ export default function BestMeditationStylePage() {
             position: index + 1,
             name: method.name,
             description: method.summary,
-            url: `https://opensadhaka.com${method.href}`,
+            url: `https://www.opensadhaka.com${method.href}`,
         })),
     };
 

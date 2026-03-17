@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Yogananda introduced Kriya Yoga to the West in the 1920s. Learn his core teachings on the scientific approach to God-realization, the spine as the highway of consciousness, and how his work compares to Art of Living's Sudarshan Kriya.",
     alternates: {
-        canonical: "https://opensadhaka.com/paramahansa-yogananda-teachings",
+        canonical: "https://www.opensadhaka.com/paramahansa-yogananda-teachings",
     },
     openGraph: {
         title: "Paramahansa Yogananda's Core Teachings",
         description:
             "The monk who brought Kriya Yoga West. His teachings on the spine, prana, and the scientific approach to God-experience — and how modern breathwork traditions compare.",
-        url: "https://opensadhaka.com/paramahansa-yogananda-teachings",
+        url: "https://www.opensadhaka.com/paramahansa-yogananda-teachings",
         type: "article",
     },
 };

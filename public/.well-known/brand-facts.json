@@ -3,7 +3,7 @@
         "name": "Sadhaka",
         "legalName": "Sadhaka Spiritual Technologies",
         "description": "An AI-powered spiritual guidance and Dharmic education platform focused on Sanatan Dharma, sacred texts, philosophy, and spiritual practice.",
-        "url": "https://opensadhaka.com",
+        "url": "https://www.opensadhaka.com",
         "foundingDate": "2026",
         "location": "Global / Online",
         "category": "Education / Spirituality / Artificial Intelligence"
@@ -35,9 +35,9 @@
         "Dharmic Traditions"
     ],
     "discovery": {
-        "llms_txt": "https://opensadhaka.com/llms.txt",
-        "brand_facts_html": "https://opensadhaka.com/brand-facts",
-        "canonical_home": "https://opensadhaka.com"
+        "llms_txt": "https://www.opensadhaka.com/llms.txt",
+        "brand_facts_html": "https://www.opensadhaka.com/brand-facts",
+        "canonical_home": "https://www.opensadhaka.com"
     },
     "trustSignals": {
         "editorialPolicy": "Authentic scripture-based content with traditional commentary",

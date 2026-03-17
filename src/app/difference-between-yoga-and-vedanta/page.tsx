@@ -9,12 +9,12 @@ export const metadata: Metadata = {
     title: "Yoga vs. Vedanta: What's the Real Difference?",
     description: "Explore the relationship between Yoga and Vedanta. Learn how Yoga provides the practice and Vedanta provides the vision for spiritual liberation.",
     alternates: {
-        canonical: "https://opensadhaka.com/difference-between-yoga-and-vedanta",
+        canonical: "https://www.opensadhaka.com/difference-between-yoga-and-vedanta",
     },
     openGraph: {
         title: "Yoga vs. Vedanta: Practice vs. Vision",
         description: "Understanding the 'Telescope and the Stars' analogy of Indian philosophy.",
-        url: "https://opensadhaka.com/difference-between-yoga-and-vedanta",
+        url: "https://www.opensadhaka.com/difference-between-yoga-and-vedanta",
         type: "article",
     },
 };

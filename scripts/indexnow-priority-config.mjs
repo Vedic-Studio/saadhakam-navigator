@@ -1,7 +1,7 @@
 export const MAX_URLS_PER_REQUEST = 50;
 
 export function getSiteOrigin() {
-    return process.env.NEXT_PUBLIC_SITE_URL || "https://opensadhaka.com";
+    return process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
 }
 
 export function getPriorityGroups() {

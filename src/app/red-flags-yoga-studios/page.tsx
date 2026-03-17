@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Not all yoga instruction is safe or authentic. Unguided pranayama, guru dynamics, and cult-like environments create real harm. Learn the red flags and which styles are genuinely therapeutic.",
     alternates: {
-        canonical: "https://opensadhaka.com/red-flags-yoga-studios",
+        canonical: "https://www.opensadhaka.com/red-flags-yoga-studios",
     },
     openGraph: {
         title: "Red Flags in Modern Yoga Studios",
         description:
             "As yoga globalizes, distinguishing safe, authentic instruction from harmful environments is vital. Here are the red flags — and the styles that actually help mental health.",
-        url: "https://opensadhaka.com/red-flags-yoga-studios",
+        url: "https://www.opensadhaka.com/red-flags-yoga-studios",
         type: "article",
     },
 };

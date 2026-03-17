@@ -25,12 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${comp.title} | Sadhaka Comparisons`,
     description: comp.metaDescription,
     alternates: {
-      canonical: `https://opensadhaka.com/compare/${comp.slug}`,
+      canonical: `https://www.opensadhaka.com/compare/${comp.slug}`,
     },
     openGraph: {
       title: `${comp.title} | Sadhaka Comparisons`,
       description: comp.metaDescription,
-      url: `https://opensadhaka.com/compare/${comp.slug}`,
+      url: `https://www.opensadhaka.com/compare/${comp.slug}`,
       type: "article",
     },
   };

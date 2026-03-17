@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description:
         "Explore core Sanskrit spiritual terms with etymology, pronunciation, scriptural usage, and practical context for modern seekers.",
     alternates: {
-        canonical: "https://opensadhaka.com/learn/sanskrit",
+        canonical: "https://www.opensadhaka.com/learn/sanskrit",
     },
     openGraph: {
         title: "Sanskrit Lexicon for Seekers | Sadhaka",
         description:
             "A growing lexicon of Sanskrit words with meaning, pronunciation, and scriptural context.",
-        url: "https://opensadhaka.com/learn/sanskrit",
+        url: "https://www.opensadhaka.com/learn/sanskrit",
     },
 };
 

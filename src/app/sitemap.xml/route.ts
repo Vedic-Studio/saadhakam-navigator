@@ -1,4 +1,4 @@
-const baseUrl = "https://opensadhaka.com";
+const baseUrl = "https://www.opensadhaka.com";
 
 const sitemapPaths = [
     "core",

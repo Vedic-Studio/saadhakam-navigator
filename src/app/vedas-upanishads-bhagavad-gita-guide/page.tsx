@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Understand the Vedas, Upanishads, and Bhagavad Gita — what they are, how they differ, and where to start. The complete beginner's guide to India's sacred scriptures.",
     alternates: {
-        canonical: "https://opensadhaka.com/vedas-upanishads-bhagavad-gita-guide",
+        canonical: "https://www.opensadhaka.com/vedas-upanishads-bhagavad-gita-guide",
     },
     openGraph: {
         title: "Vedas, Upanishads & Bhagavad Gita: The Complete Beginner's Guide",
         description:
             "What are the Vedas? How do they differ from the Upanishads? Where does the Bhagavad Gita fit in? A complete, accessible guide to India's sacred textual tradition.",
-        url: "https://opensadhaka.com/vedas-upanishads-bhagavad-gita-guide",
+        url: "https://www.opensadhaka.com/vedas-upanishads-bhagavad-gita-guide",
         type: "article",
     },
 };

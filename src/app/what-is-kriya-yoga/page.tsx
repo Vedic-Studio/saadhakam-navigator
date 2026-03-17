@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Kriya Yoga is not stretching — it's an ancient science of moving prana up the spine to accelerate spiritual evolution. Learn the real mechanics, the dangers of unguided practice, and how to learn authentically.",
     alternates: {
-        canonical: "https://opensadhaka.com/what-is-kriya-yoga",
+        canonical: "https://www.opensadhaka.com/what-is-kriya-yoga",
     },
     openGraph: {
         title: "What is Kriya Yoga? The Complete Guide",
         description:
             "Kriya Yoga accelerates spiritual growth by working directly with spinal energy. A clear, honest guide to the mechanics, risks, and authentic learning paths.",
-        url: "https://opensadhaka.com/what-is-kriya-yoga",
+        url: "https://www.opensadhaka.com/what-is-kriya-yoga",
         type: "article",
     },
 };

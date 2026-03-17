@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: "Explore the profound differences between Advaita (Non-Duality) and Dvaita (Dualism). Understand Shankaracharya vs Madhvacharya and which path fits your temperament.",
     keywords: ["advaita vs dvaita", "vedanta", "non-duality", "dualism", "shankaracharya", "madhvacharya"],
     alternates: {
-        canonical: "https://opensadhaka.com/advaita-vs-dvaita"
+        canonical: "https://www.opensadhaka.com/advaita-vs-dvaita"
     }
 };
 

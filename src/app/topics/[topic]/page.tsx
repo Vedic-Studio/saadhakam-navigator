@@ -28,7 +28,7 @@ export async function generateMetadata({
     title: `${topic.name} – Essential Practices, Philosophy & Traditions`,
     description: `Explore the profound topic of ${topic.name} in Sanatan Dharma. ${topic.summary}`,
     alternates: {
-      canonical: `https://opensadhaka.com/topics/${topic.slug}`,
+      canonical: `https://www.opensadhaka.com/topics/${topic.slug}`,
     },
   };
 }

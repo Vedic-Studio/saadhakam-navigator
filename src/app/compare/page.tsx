@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         "yoga vs gita",
     ],
     alternates: {
-        canonical: "https://opensadhaka.com/compare",
+        canonical: "https://www.opensadhaka.com/compare",
     },
 };
 
@@ -124,7 +124,7 @@ export default function CompareIndexPage() {
                             "itemListElement": comparisons.map((c, index) => ({
                                 "@type": "ListItem",
                                 "position": index + 1,
-                                "url": `https://opensadhaka.com/compare/${c.slug}`,
+                                "url": `https://www.opensadhaka.com/compare/${c.slug}`,
                                 "name": c.title
                             }))
                         })

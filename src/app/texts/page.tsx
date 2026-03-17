@@ -29,12 +29,12 @@ export const metadata: Metadata = {
     "agamas",
     "sanskrit texts",
   ],
-  alternates: { canonical: "https://opensadhaka.com/texts" },
+  alternates: { canonical: "https://www.opensadhaka.com/texts" },
   openGraph: {
     title: "Sacred Hindu Texts | Sadhaka",
     description:
       "Explore Vedas, Upanishads, Bhagavad Gita, and more sacred texts with translations.",
-    url: "https://opensadhaka.com/texts",
+    url: "https://www.opensadhaka.com/texts",
   },
 };
 

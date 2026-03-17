@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     description:
         "Learn the practical techniques of Sanatan Dharma including Meditation (Dhyana), Mantra Japa, Yoga Asanas, Puja, and Self-Inquiry.",
     alternates: {
-        canonical: "https://opensadhaka.com/practical-spiritual-practices",
+        canonical: "https://www.opensadhaka.com/practical-spiritual-practices",
     },
     openGraph: {
         title: "Practical Spiritual Practices | Sadhaka",
         description:
             "Learn Japa, meditation, daily Sadhana, mantra practice, and beginner-friendly spiritual routines rooted in Sanatan Dharma.",
-        url: "https://opensadhaka.com/practical-spiritual-practices",
+        url: "https://www.opensadhaka.com/practical-spiritual-practices",
         type: "website",
     },
 };
@@ -155,12 +155,12 @@ export default function SpiritualPracticesPage() {
         name: "Practical Spiritual Practices",
         description:
             "A pillar hub for Japa, meditation, daily Sadhana, mantra practice, and beginner-friendly spiritual routines.",
-        url: "https://opensadhaka.com/practical-spiritual-practices",
+        url: "https://www.opensadhaka.com/practical-spiritual-practices",
         hasPart: featuredGuides.map((guide, index) => ({
             "@type": "Article",
             position: index + 1,
             name: guide.title,
-            url: `https://opensadhaka.com${guide.href}`,
+            url: `https://www.opensadhaka.com${guide.href}`,
         })),
     };
 

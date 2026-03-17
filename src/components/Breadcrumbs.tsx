@@ -19,7 +19,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
             "@type": "ListItem",
             position: index + 1,
             name: item.label,
-            item: `https://opensadhaka.com${item.href}`,
+            item: `https://www.opensadhaka.com${item.href}`,
         })),
     };
 

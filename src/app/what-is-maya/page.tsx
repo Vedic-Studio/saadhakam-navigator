@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Maya doesn't mean the world is fake — it means the world is not what you think it is. A clear explanation of maya in Vedanta and how seeing through it leads to moksha.",
     alternates: {
-        canonical: "https://opensadhaka.com/what-is-maya",
+        canonical: "https://www.opensadhaka.com/what-is-maya",
     },
     openGraph: {
         title: "What is Maya? The Vedantic Concept of Illusion Explained",
         description:
             "Maya is not 'the world is fake.' It is the cosmic force that conceals the true nature of reality and projects a finite world from infinite consciousness.",
-        url: "https://opensadhaka.com/what-is-maya",
+        url: "https://www.opensadhaka.com/what-is-maya",
         type: "article",
     },
 };

@@ -56,7 +56,7 @@ export async function generateMetadata({
     title: `${practice.title} for ${goal.name} | Spiritual Practices by Sadhaka`,
     description: `Learn how the ancient Sanatan Dharma practice of ${practice.title} (${practice.sanskritName}) can be applied for ${goal.name.toLowerCase()}.`,
     alternates: {
-      canonical: `https://opensadhaka.com/practices/${practice.slug}/for/${goal.slug}`,
+      canonical: `https://www.opensadhaka.com/practices/${practice.slug}/for/${goal.slug}`,
     },
   };
 }

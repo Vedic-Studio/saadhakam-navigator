@@ -65,9 +65,9 @@ export default function StotraDetail() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://opensadhaka.com" },
-          { "@type": "ListItem", "position": 2, "name": "Stotras", "item": "https://opensadhaka.com/stotras" },
-          { "@type": "ListItem", "position": 3, "name": categoryData.deityEnglish, "item": `https://opensadhaka.com/stotras/${category}` },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.opensadhaka.com" },
+          { "@type": "ListItem", "position": 2, "name": "Stotras", "item": "https://www.opensadhaka.com/stotras" },
+          { "@type": "ListItem", "position": 3, "name": categoryData.deityEnglish, "item": `https://www.opensadhaka.com/stotras/${category}` },
           { "@type": "ListItem", "position": 4, "name": stotra.titleEnglish }
         ]
       },

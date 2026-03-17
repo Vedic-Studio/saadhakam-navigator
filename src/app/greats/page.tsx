@@ -22,12 +22,12 @@ export const metadata: Metadata = {
     "sanatan dharma",
     "ancient wisdom",
   ],
-  alternates: { canonical: "https://opensadhaka.com/greats" },
+  alternates: { canonical: "https://www.opensadhaka.com/greats" },
   openGraph: {
     title: "Spiritual Masters of Sanatan Dharma | Sadhaka",
     description:
       "Explore the greatest saints, philosophers, and gurus of Sanatan Dharma.",
-    url: "https://opensadhaka.com/greats",
+    url: "https://www.opensadhaka.com/greats",
   },
 };
 

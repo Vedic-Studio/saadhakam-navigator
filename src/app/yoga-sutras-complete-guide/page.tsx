@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   title: "The Yoga Sutras of Patanjali | The Complete Guide to the Mind",
   description: "A deep dive into Patanjali's Yoga Sutras. Explore the Eight Limbs of Yoga (Ashtanga), the nature of concentration, and the path to mental liberation.",
   alternates: {
-    canonical: "https://opensadhaka.com/yoga-sutras-complete-guide",
+    canonical: "https://www.opensadhaka.com/yoga-sutras-complete-guide",
   },
   openGraph: {
     title: "The Yoga Sutras of Patanjali: A Master Manual for the Mind",
     description: "Explore the 196 aphorisms that define the science of yoga and the systematic cessation of mental fluctuations.",
-    url: "https://opensadhaka.com/yoga-sutras-complete-guide",
+    url: "https://www.opensadhaka.com/yoga-sutras-complete-guide",
     type: "article",
   },
 };

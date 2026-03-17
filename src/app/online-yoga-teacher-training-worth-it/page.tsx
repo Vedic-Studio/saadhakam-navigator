@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Online YTT is worth it for deepening personal practice, learning yoga history, and anatomy study on a budget. Not ideal for studio teaching physical adjustments. Honest breakdown of 200hr vs 500hr YTT.",
     alternates: {
-        canonical: "https://opensadhaka.com/online-yoga-teacher-training-worth-it",
+        canonical: "https://www.opensadhaka.com/online-yoga-teacher-training-worth-it",
     },
     openGraph: {
         title: "Is Online Yoga Teacher Training Worth It?",
         description:
             "Personal practice vs teaching career: an honest breakdown. The 200hr vs 500hr difference. What makes a YTT legitimate. The oversaturated yoga teaching market explained.",
-        url: "https://opensadhaka.com/online-yoga-teacher-training-worth-it",
+        url: "https://www.opensadhaka.com/online-yoga-teacher-training-worth-it",
         type: "article",
     },
 };

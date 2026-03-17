@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "A structured chooser guide for Bhakti, Jnana, Karma, and Raja Yoga, comparing each path by temperament, practice style, strengths, and beginner fit.",
     alternates: {
-        canonical: "https://opensadhaka.com/choose-between-bhakti-jnana-karma-raja-yoga",
+        canonical: "https://www.opensadhaka.com/choose-between-bhakti-jnana-karma-raja-yoga",
     },
     openGraph: {
         title: "Choose Between Bhakti, Jnana, Karma, and Raja Yoga",
         description:
             "Compare the four major yogic paths using a structured chooser framework for temperament, practice, and daily-life fit.",
-        url: "https://opensadhaka.com/choose-between-bhakti-jnana-karma-raja-yoga",
+        url: "https://www.opensadhaka.com/choose-between-bhakti-jnana-karma-raja-yoga",
         type: "article",
     },
 };
@@ -102,7 +102,7 @@ export default function ChooseBetweenYogaPathsPage() {
             position: index + 1,
             name: option.name,
             description: option.chooser,
-            url: `https://opensadhaka.com${option.href}`,
+            url: `https://www.opensadhaka.com${option.href}`,
         })),
     };
 

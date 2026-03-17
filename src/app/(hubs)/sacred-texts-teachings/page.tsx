@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     description:
         "Discover the foundational scriptures of Hinduism: The Vedas, Upanishads, Bhagavad Gita, Puranas, and Itihasas (Ramayana & Mahabharata).",
     alternates: {
-        canonical: "https://opensadhaka.com/sacred-texts-teachings",
+        canonical: "https://www.opensadhaka.com/sacred-texts-teachings",
     },
     openGraph: {
         title: "Sacred Texts & Teachings of Sanatan Dharma | Sadhaka",
         description:
             "A beginner-friendly guide to the Bhagavad Gita, Upanishads, Vedas, epics, and Sanskrit wisdom traditions.",
-        url: "https://opensadhaka.com/sacred-texts-teachings",
+        url: "https://www.opensadhaka.com/sacred-texts-teachings",
         type: "website",
     },
 };
@@ -147,12 +147,12 @@ export default function SacredTextsPage() {
         name: "Sacred Texts & Teachings of Sanatan Dharma",
         description:
             "A pillar hub for the Bhagavad Gita, Upanishads, Vedas, Sanskrit mantras, and scriptural study guides.",
-        url: "https://opensadhaka.com/sacred-texts-teachings",
+        url: "https://www.opensadhaka.com/sacred-texts-teachings",
         hasPart: featuredGuides.map((guide, index) => ({
             "@type": "Article",
             position: index + 1,
             name: guide.title,
-            url: `https://opensadhaka.com${guide.href}`,
+            url: `https://www.opensadhaka.com${guide.href}`,
         })),
     };
 

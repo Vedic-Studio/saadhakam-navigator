@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     description:
         "Explore the six orthodox schools of Hindu philosophy (Darshanas), Vedanta, Advaita, and the timeless existential wisdom of Sanatan Dharma.",
     alternates: {
-        canonical: "https://opensadhaka.com/ancient-wisdom-philosophies",
+        canonical: "https://www.opensadhaka.com/ancient-wisdom-philosophies",
     },
     openGraph: {
         title: "Ancient Wisdom & Philosophies of Sanatan Dharma | Sadhaka",
         description:
             "Explore Vedanta, non-duality, classical Darshanas, and the philosophical foundations of Sanatan Dharma.",
-        url: "https://opensadhaka.com/ancient-wisdom-philosophies",
+        url: "https://www.opensadhaka.com/ancient-wisdom-philosophies",
         type: "website",
     },
 };
@@ -175,12 +175,12 @@ export default function AncientWisdomPage() {
         name: "Ancient Wisdom & Philosophies of Sanatan Dharma",
         description:
             "A pillar hub for Vedanta, non-duality, classical Darshanas, and beginner guides to Indian philosophy.",
-        url: "https://opensadhaka.com/ancient-wisdom-philosophies",
+        url: "https://www.opensadhaka.com/ancient-wisdom-philosophies",
         hasPart: featuredGuides.map((guide, index) => ({
             "@type": "Article",
             position: index + 1,
             name: guide.title,
-            url: `https://opensadhaka.com${guide.href}`,
+            url: `https://www.opensadhaka.com${guide.href}`,
         })),
     };
 

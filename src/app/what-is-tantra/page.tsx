@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Tantra is a vast science of ritual, mantra, and energy that sees the material world as divine. Learn the real philosophy, the difference between left and right hand paths, and what classical Tantra actually teaches.",
     alternates: {
-        canonical: "https://opensadhaka.com/what-is-tantra",
+        canonical: "https://www.opensadhaka.com/what-is-tantra",
     },
     openGraph: {
         title: "What is Tantra Really About?",
         description:
             "The West reduced Tantra to a bedroom manual. Classical Indian Tantra is a complete metaphysical system where Shiva and Shakti are one. A clear, honest guide.",
-        url: "https://opensadhaka.com/what-is-tantra",
+        url: "https://www.opensadhaka.com/what-is-tantra",
         type: "article",
     },
 };

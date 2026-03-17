@@ -38,12 +38,12 @@ export async function generateMetadata({
       "indian philosophy",
     ],
     alternates: {
-      canonical: `https://opensadhaka.com/greats/${slug}`,
+      canonical: `https://www.opensadhaka.com/greats/${slug}`,
     },
     openGraph: {
       title: `${great.name} | Sadhaka`,
       description: great.summary,
-      url: `https://opensadhaka.com/greats/${slug}`,
+      url: `https://www.opensadhaka.com/greats/${slug}`,
     },
   };
 }
@@ -65,19 +65,19 @@ export default async function GreatDetailPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://opensadhaka.com",
+        item: "https://www.opensadhaka.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Spiritual Masters",
-        item: "https://opensadhaka.com/greats",
+        item: "https://www.opensadhaka.com/greats",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: great.name,
-        item: `https://opensadhaka.com/greats/${slug}`,
+        item: `https://www.opensadhaka.com/greats/${slug}`,
       },
     ],
   };

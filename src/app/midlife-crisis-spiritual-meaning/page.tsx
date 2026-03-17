@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "A midlife crisis is not a psychological defect — it is a natural spiritual transition. The Vedic system's four life stages (Ashramas) map exactly why it happens and what to do instead.",
     alternates: {
-        canonical: "https://opensadhaka.com/midlife-crisis-spiritual-meaning",
+        canonical: "https://www.opensadhaka.com/midlife-crisis-spiritual-meaning",
     },
     openGraph: {
         title: "The Spiritual Meaning of a Midlife Crisis",
         description:
             "The Vedic Ashrama system understood midlife crisis 3000 years ago. Here's the map — and the way through.",
-        url: "https://opensadhaka.com/midlife-crisis-spiritual-meaning",
+        url: "https://www.opensadhaka.com/midlife-crisis-spiritual-meaning",
         type: "article",
     },
 };

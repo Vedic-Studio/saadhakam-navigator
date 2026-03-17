@@ -11,12 +11,12 @@ export const metadata: Metadata = {
     title: "What is Vedanta? | The Culmination of Vedic Wisdom",
     description: "Explore the core philosophy of Vedanta, from the three canonical texts (Prasthanatrayi) to the schools of Advaita, Vishishtadvaita, and Dvaita.",
     alternates: {
-        canonical: "https://opensadhaka.com/what-is-vedanta",
+        canonical: "https://www.opensadhaka.com/what-is-vedanta",
     },
     openGraph: {
         title: "What is Vedanta? The Ultimate Guide to the Veda's End",
         description: "A deep dive into the 'culmination of knowledge'—the system of thought that clarifies the nature of Self and Reality.",
-        url: "https://opensadhaka.com/what-is-vedanta",
+        url: "https://www.opensadhaka.com/what-is-vedanta",
         type: "article",
     },
 };

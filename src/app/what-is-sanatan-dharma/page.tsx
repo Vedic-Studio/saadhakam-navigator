@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Sanatan Dharma means 'the eternal order' — a universal philosophy of dharma, karma, and moksha predating the geographical label 'Hinduism.' Learn what it actually means and how to live it.",
     alternates: {
-        canonical: "https://opensadhaka.com/what-is-sanatan-dharma",
+        canonical: "https://www.opensadhaka.com/what-is-sanatan-dharma",
     },
     openGraph: {
         title: "The True Meaning of Sanatan Dharma: Why It Is Not Just 'Hinduism'",
         description:
             "Sanatan Dharma is not a religion with a single founder or book — it is the eternal cosmic order that sustains reality itself. A complete explainer.",
-        url: "https://opensadhaka.com/what-is-sanatan-dharma",
+        url: "https://www.opensadhaka.com/what-is-sanatan-dharma",
         type: "article",
     },
 };

@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
     async redirects() {
         const staticRedirects = [
             {
+                source: "/download",
+                destination: "/",
+                permanent: true,
+            },
+            {
                 source: "/philosophies/advaita-vedanta",
                 destination: "/philosophies/advaita",
                 permanent: true,

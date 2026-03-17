@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Is Isha Foundation a cult? A neutral, factual look at Sadhguru's background, the common criticisms of his organization, and whether the core practice — Shambhavi Mahamudra — actually works.",
     alternates: {
-        canonical: "https://opensadhaka.com/isha-foundation-sadhguru",
+        canonical: "https://www.opensadhaka.com/isha-foundation-sadhguru",
     },
     openGraph: {
         title: "Investigating Sadhguru and Isha Foundation",
         description:
             "Separating the practice from the personality. What does the evidence say about Sadhguru's teachings, his critics, and Shambhavi Mahamudra?",
-        url: "https://opensadhaka.com/isha-foundation-sadhguru",
+        url: "https://www.opensadhaka.com/isha-foundation-sadhguru",
         type: "article",
     },
 };

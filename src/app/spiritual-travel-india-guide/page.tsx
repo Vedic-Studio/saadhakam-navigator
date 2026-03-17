@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Plan a spiritual trip to India without getting scammed or burnt out. Best time to go, Ayush Visa vs tourist visa, how to choose an authentic ashram, and what to expect culturally.",
     alternates: {
-        canonical: "https://opensadhaka.com/spiritual-travel-india-guide",
+        canonical: "https://www.opensadhaka.com/spiritual-travel-india-guide",
     },
     openGraph: {
         title: "How to Plan a Spiritual Trip to India",
         description:
             "The complete practical guide: best season, visa types, how to choose an authentic ashram vs yoga resort, health prep, and managing expectations for India travel.",
-        url: "https://opensadhaka.com/spiritual-travel-india-guide",
+        url: "https://www.opensadhaka.com/spiritual-travel-india-guide",
         type: "article",
     },
 };

@@ -47,8 +47,8 @@ function wrap(headerTitle, headerSub, body, ctaUrl, ctaText) {
   <div class="hdr"><h1>${headerTitle}</h1><p>${headerSub}</p></div>
   <div class="body">${body}<div class="cta"><a href="${ctaUrl}" class="btn">${ctaText}</a></div></div>
   <div class="foot">
-    <p>You received this because you completed the Faith Finder on <a href="https://opensadhaka.com">opensadhaka.com</a>.</p>
-    <p><a href="https://opensadhaka.com/unsubscribe">Unsubscribe</a></p>
+    <p>You received this because you completed the Faith Finder on <a href="https://www.opensadhaka.com">opensadhaka.com</a>.</p>
+    <p><a href="https://www.opensadhaka.com/unsubscribe">Unsubscribe</a></p>
   </div>
 </div></div></body></html>`;
 }
@@ -65,7 +65,7 @@ const PATH_META = {
     firstPractice: 'Self-Inquiry (Atma Vichara)',
     firstText: 'Talks with Sri Ramana Maharshi',
     philosophy: 'Advaita Vedanta',
-    philosophyLink: 'https://opensadhaka.com/advaita-vedanta-explained',
+    philosophyLink: 'https://www.opensadhaka.com/advaita-vedanta-explained',
     philosophyArticle: 'Advaita Vedanta Explained',
     traditions: ['Advaita Vedanta', 'Zen Buddhism', 'Dzogchen'],
     practices: ['Self-Inquiry', 'Neti Neti meditation', 'Silent sitting', 'Study of Upanishads'],
@@ -79,7 +79,7 @@ const PATH_META = {
     firstPractice: 'Japa — repetition of a divine name',
     firstText: 'Narada Bhakti Sutras',
     philosophy: 'Bhakti Vedanta',
-    philosophyLink: 'https://opensadhaka.com/shaivism-vs-vaishnavism',
+    philosophyLink: 'https://www.opensadhaka.com/shaivism-vs-vaishnavism',
     philosophyArticle: 'Shaivism vs Vaishnavism',
     traditions: ['Vaishnavism', 'Sufism', 'Christian Mysticism'],
     practices: ['Japa / nama-sankirtana', 'Puja (devotional offering)', 'Kirtan (sacred chanting)', 'Reading devotional texts'],
@@ -93,7 +93,7 @@ const PATH_META = {
     firstPractice: 'Simple daily puja (ritual offering)',
     firstText: 'The Yoga of Action (Bhagavad Gita, Ch 3)',
     philosophy: 'Karma Yoga & Tantra',
-    philosophyLink: 'https://opensadhaka.com/adi-shankaracharya-life-teachings',
+    philosophyLink: 'https://www.opensadhaka.com/adi-shankaracharya-life-teachings',
     philosophyArticle: 'Adi Shankaracharya: Life & Teachings',
     traditions: ['Shaivism', 'Shakta Tantra', 'Vedic ritual'],
     practices: ['Morning puja', 'Mantra repetition', 'Ritual cleansing', 'Sacred calendar observance'],
@@ -107,7 +107,7 @@ const PATH_META = {
     firstPractice: 'Pranayama — conscious breath regulation',
     firstText: 'Yoga Sutras of Patanjali',
     philosophy: 'Samkhya-Yoga',
-    philosophyLink: 'https://opensadhaka.com/yoga-sutras-complete-guide',
+    philosophyLink: 'https://www.opensadhaka.com/yoga-sutras-complete-guide',
     philosophyArticle: 'Yoga Sutras: Complete Guide',
     traditions: ['Raja Yoga', 'Theravada Buddhism', 'Taoist inner alchemy'],
     practices: ['Pranayama (breath control)', 'Dhyana (formal meditation)', 'Pratyahara (sense withdrawal)', 'Yama & Niyama (ethical training)'],
@@ -168,7 +168,7 @@ function email0(result) {
     'Your Spiritual Path',
     `opensadhaka.com · Faith Finder`,
     body,
-    'https://opensadhaka.com/faith-finder',
+    'https://www.opensadhaka.com/faith-finder',
     'View Your Full Results →'
   );
 }
@@ -261,7 +261,7 @@ function email1(result) {
     'Day 1: Your First Practice',
     `${m.label} · ${m.firstPractice}`,
     body,
-    'https://opensadhaka.com/practical-spiritual-practices',
+    'https://www.opensadhaka.com/practical-spiritual-practices',
     'Explore More Practices →'
   );
 }
@@ -276,28 +276,28 @@ function email2(result) {
       intro: `The path of inquiry has a name: <strong>Jnana Yoga</strong>, and its philosophical home is <strong>Advaita Vedanta</strong> — the teaching of non-duality first systematized by Adi Shankaracharya in 8th century India.`,
       what: `Advaita means "not two." The teaching is radical: the individual self (atman) and ultimate reality (Brahman) are not separate. The sense of being a separate person is a superimposition — real like a dream, but not the deepest truth.`,
       where: `The Upanishads — especially the Mandukya, Brihadaranyaka, and Chandogya — are the scriptural foundation. Shankaracharya's commentaries make them navigable. Ramana Maharshi brought the practice into its simplest modern form.`,
-      link: 'https://opensadhaka.com/advaita-vedanta-explained',
+      link: 'https://www.opensadhaka.com/advaita-vedanta-explained',
       linkText: 'Read: Advaita Vedanta Explained',
     },
     devotion: {
       intro: `The path of devotion finds its fullest expression in <strong>Bhakti Yoga</strong> — the yoga of love. It runs through Vaishnavism, Shaivism, the Sufi tradition, and Christian mysticism, surfacing wherever the heart turns toward the sacred.`,
       what: `Bhakti is more than emotion. It is a disciplined cultivation of love — a turning of the entire being toward the Divine. The Narada Bhakti Sutras define it as "supreme love for God" — paramabhakti — that carries no other motive than love itself.`,
       where: `The Bhagavata Purana is the great ocean of bhakti literature. The 12th book especially reads like a manual for devotional practice. Mirabai's songs, the Alvars' Divya Prabandham, and Rumi's Masnavi all belong to this current.`,
-      link: 'https://opensadhaka.com/shaivism-vs-vaishnavism',
+      link: 'https://www.opensadhaka.com/shaivism-vs-vaishnavism',
       linkText: 'Read: Shaivism vs Vaishnavism',
     },
     ritual: {
       intro: `The path of ritual is ancient — arguably the oldest spiritual path in the world. In the Indian tradition it flows through <strong>Karma Kanda</strong> (the ritual portion of the Vedas), Agamic Shaivism, and Tantric practice.`,
       what: `Ritual is not mere ceremony. It is the art of consecrating action — of bringing the sacred into ordinary time and space. The principle is simple: when performed with awareness and intention, every act becomes an offering, and the ordinary world becomes a temple.`,
       where: `The Agamas contain the most systematic instructions for ritual practice. The Tantra Shastra explores how sacred geometry, mantra, and ritual gesture (mudra) work together. The Gita's chapter on yajna (sacred action) provides the philosophical backbone.`,
-      link: 'https://opensadhaka.com/adi-shankaracharya-life-teachings',
+      link: 'https://www.opensadhaka.com/adi-shankaracharya-life-teachings',
       linkText: 'Read: Adi Shankaracharya\'s Legacy',
     },
     discipline: {
       intro: `The path of discipline is codified most precisely in Patanjali's <strong>Yoga Sutras</strong> — a 2,000-year-old map of the human mind and the systematic methods for bringing it to stillness.`,
       what: `Raja Yoga is not about physical postures. It is the science of consciousness — of training the mind through ethical practice (yama/niyama), physical steadiness (asana), breath regulation (pranayama), and graduated stages of meditation leading to samadhi.`,
       where: `The Yoga Sutras contain 196 aphorisms in four chapters. The second chapter — Sadhana Pada — is the most practical, laying out the eight-limbed path (Ashtanga) in precise sequence. Swami Vivekananda's commentary remains one of the clearest modern introductions.`,
-      link: 'https://opensadhaka.com/yoga-sutras-complete-guide',
+      link: 'https://www.opensadhaka.com/yoga-sutras-complete-guide',
       linkText: 'Read: Yoga Sutras Complete Guide',
     },
   };
@@ -410,7 +410,7 @@ function email3(result) {
     'Day 7: One Week In',
     `Reflect, notice, and add a second practice`,
     body,
-    'https://opensadhaka.com/daily-spiritual-routine-beginners',
+    'https://www.opensadhaka.com/daily-spiritual-routine-beginners',
     'Build Your Routine →'
   );
 }
@@ -580,7 +580,7 @@ function email5(result) {
     'Day 30: Your Path Continues',
     `${m.label} — what comes next`,
     body,
-    'https://opensadhaka.com/app',
+    'https://www.opensadhaka.com/app',
     'Continue on opensadhaka.com →'
   );
 }

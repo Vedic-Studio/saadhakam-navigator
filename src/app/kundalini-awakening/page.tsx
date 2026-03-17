@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Kundalini awakening produces intense physical and emotional symptoms that can resemble psychosis. Learn the real difference, the risks of forced awakening, and the safe path forward.",
     alternates: {
-        canonical: "https://opensadhaka.com/kundalini-awakening",
+        canonical: "https://www.opensadhaka.com/kundalini-awakening",
     },
     openGraph: {
         title: "Kundalini Awakening: Evolutionary Leap or Medical Emergency?",
         description:
             "Heat, tremors, emotional floods, perceptual shifts — kundalini awakening is real, intense, and requires careful navigation. A grounded, non-woo guide.",
-        url: "https://opensadhaka.com/kundalini-awakening",
+        url: "https://www.opensadhaka.com/kundalini-awakening",
         type: "article",
     },
 };

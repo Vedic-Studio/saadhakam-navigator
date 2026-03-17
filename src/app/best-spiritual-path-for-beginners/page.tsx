@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Telling an emotional person to use pure logic creates dryness. Telling an active person to sit still creates frustration. Compare the four classical paths of Sanatan Dharma to find the one that matches your temperament.",
     alternates: {
-        canonical: "https://opensadhaka.com/best-spiritual-path-for-beginners",
+        canonical: "https://www.opensadhaka.com/best-spiritual-path-for-beginners",
     },
     openGraph: {
         title: "Best Spiritual Path for Beginners?",
         description:
             "Telling an emotional person to use pure logic creates dryness. Telling an active person to sit still creates frustration. Compare the four paths of Sanatan Dharma to find the one that matches your temperament.",
-        url: "https://opensadhaka.com/best-spiritual-path-for-beginners",
+        url: "https://www.opensadhaka.com/best-spiritual-path-for-beginners",
         type: "article",
     },
 };
@@ -94,7 +94,7 @@ export default function BestSpiritualPathForBeginnersPage() {
             position: index + 1,
             name: path.name,
             description: path.summary,
-            url: `https://opensadhaka.com${path.href}`,
+            url: `https://www.opensadhaka.com${path.href}`,
         })),
     };
 

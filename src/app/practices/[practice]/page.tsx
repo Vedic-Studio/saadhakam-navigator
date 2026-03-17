@@ -43,7 +43,7 @@ export async function generateMetadata({
             ...practice.tags,
         ],
         alternates: {
-            canonical: `https://opensadhaka.com/practices/${slug}`,
+            canonical: `https://www.opensadhaka.com/practices/${slug}`,
         },
     };
 }

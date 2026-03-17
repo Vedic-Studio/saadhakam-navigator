@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description:
         "A practical beginner guide to starting spiritual practice without overwhelm. Build a simple daily routine rooted in Sanatan Dharma principles.",
     alternates: {
-        canonical: "https://opensadhaka.com/starting-spiritual-practice",
+        canonical: "https://www.opensadhaka.com/starting-spiritual-practice",
     },
 };
 

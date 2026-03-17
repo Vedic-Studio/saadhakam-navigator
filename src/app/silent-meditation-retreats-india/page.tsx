@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "India offers the world's most rigorous silent retreats — 10-day Vipassana at Dhamma Giri, Bodh Gaya, and more. What to expect, how to survive Day 3, and where to go for your level.",
     alternates: {
-        canonical: "https://opensadhaka.com/silent-meditation-retreats-india",
+        canonical: "https://www.opensadhaka.com/silent-meditation-retreats-india",
     },
     openGraph: {
         title: "Silent Meditation Retreats in India",
         description:
             "10-day Vipassana retreats in India are free, rigorous, and transformative. Here's what actually happens — and how to choose the right retreat for your level.",
-        url: "https://opensadhaka.com/silent-meditation-retreats-india",
+        url: "https://www.opensadhaka.com/silent-meditation-retreats-india",
         type: "article",
     },
 };

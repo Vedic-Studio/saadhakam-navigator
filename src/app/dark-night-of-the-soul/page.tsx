@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "A dark night of the soul is ego dissolution — an invitation, not a breakdown. Spiritual bypassing is using spiritual concepts to avoid genuine suffering. Learn to tell them apart.",
     alternates: {
-        canonical: "https://opensadhaka.com/dark-night-of-the-soul",
+        canonical: "https://www.opensadhaka.com/dark-night-of-the-soul",
     },
     openGraph: {
         title: "Dark Night of the Soul vs Spiritual Bypassing",
         description:
             "The dark night is not depression. Spiritual bypassing is not enlightenment. A practical guide to the most disorienting stage of the spiritual path.",
-        url: "https://opensadhaka.com/dark-night-of-the-soul",
+        url: "https://www.opensadhaka.com/dark-night-of-the-soul",
         type: "article",
     },
 };

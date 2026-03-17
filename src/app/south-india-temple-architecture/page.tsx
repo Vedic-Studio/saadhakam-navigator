@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "South Indian Dravidian temples feature towering Gopurams, city-sized complexes, and engineering feats like the Brihadeeswarar's shadowless 80-ton capstone. A guide to Tamil Nadu's living temple architecture.",
     alternates: {
-        canonical: "https://opensadhaka.com/south-india-temple-architecture",
+        canonical: "https://www.opensadhaka.com/south-india-temple-architecture",
     },
     openGraph: {
         title: "South India Temple Architecture: The Dravidian Tradition",
         description:
             "Gopurams covered in thousands of deities. An 80-ton granite capstone raised 216 feet without cranes. The living goddess-city of Madurai. South India's temples are theology made stone.",
-        url: "https://opensadhaka.com/south-india-temple-architecture",
+        url: "https://www.opensadhaka.com/south-india-temple-architecture",
         type: "article",
     },
 };

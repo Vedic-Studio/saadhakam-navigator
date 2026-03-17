@@ -15,7 +15,7 @@ import { deities } from "@/data/deities";
 import { mantras } from "@/data/mantras";
 import { loadSahasranama } from "@/lib/stotras";
 
-const baseUrl = "https://opensadhaka.com";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
 const articles = listArticles();
 const vishnuSahasranama = loadSahasranama("vishnu-sahasranama");
 const lalitaSahasranama = loadSahasranama("lalita-sahasranama");

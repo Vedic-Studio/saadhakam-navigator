@@ -112,7 +112,7 @@ function validateSitemaps() {
 
 function validateDynamicRobots() {
     const robotsTs = read("src/app/(system)/robots.ts");
-    assert(hasLiteral(robotsTs, 'const baseUrl = "https://opensadhaka.com";'), "src/app/(system)/robots.ts baseUrl uses canonical host");
+    assert(hasLiteral(robotsTs, 'const baseUrl = "https://www.opensadhaka.com";'), "src/app/(system)/robots.ts baseUrl uses canonical host");
     assert(hasLiteral(robotsTs, '`${baseUrl}/sitemap.xml`'), "src/app/(system)/robots.ts includes root sitemap.xml");
     for (const id of REQUIRED_SITEMAP_IDS) {
         assert(hasLiteral(robotsTs, `"${id}"`), `src/app/(system)/robots.ts sitemapPaths includes '${id}'`);
@@ -122,12 +122,12 @@ function validateDynamicRobots() {
 function validateStaticRobots() {
     const robotsTxt = read("public/robots.txt");
     assert(!robotsTxt.includes("https://www.opensadhaka.com"), "public/robots.txt does not reference www host");
-    assert(robotsTxt.includes("Sitemap: https://opensadhaka.com/sitemap.xml"), "public/robots.txt includes root sitemap.xml");
-    assert(robotsTxt.includes("https://opensadhaka.com/llms.txt"), "public/robots.txt references canonical llms.txt URL");
-    assert(robotsTxt.includes("https://opensadhaka.com/llms-full.txt"), "public/robots.txt references canonical llms-full.txt URL");
+    assert(robotsTxt.includes("Sitemap: https://www.opensadhaka.com/sitemap.xml"), "public/robots.txt includes root sitemap.xml");
+    assert(robotsTxt.includes("https://www.opensadhaka.com/llms.txt"), "public/robots.txt references canonical llms.txt URL");
+    assert(robotsTxt.includes("https://www.opensadhaka.com/llms-full.txt"), "public/robots.txt references canonical llms-full.txt URL");
     for (const id of REQUIRED_SITEMAP_IDS) {
         assert(
-            robotsTxt.includes(`Sitemap: https://opensadhaka.com/sitemap/${id}.xml`),
+            robotsTxt.includes(`Sitemap: https://www.opensadhaka.com/sitemap/${id}.xml`),
             `public/robots.txt includes sitemap entry for '${id}'`
         );
     }

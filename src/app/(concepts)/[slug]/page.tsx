@@ -87,12 +87,12 @@ export async function generateMetadata({
     title,
     description,
     alternates: {
-      canonical: `https://opensadhaka.com/what-is-${concept.slug}`,
+      canonical: `https://www.opensadhaka.com/what-is-${concept.slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://opensadhaka.com/what-is-${concept.slug}`,
+      url: `https://www.opensadhaka.com/what-is-${concept.slug}`,
     },
   };
 }

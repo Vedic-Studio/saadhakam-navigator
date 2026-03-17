@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     description:
         "A neutral, machine-readable summary of Sadhaka: what it is, who it serves, what it offers, and the trust signals, discovery assets, and public references associated with the platform.",
     alternates: {
-        canonical: "https://opensadhaka.com/brand-facts",
+        canonical: "https://www.opensadhaka.com/brand-facts",
     },
     openGraph: {
         title: "Sadhaka Brand Facts",
         description:
             "Neutral facts about Sadhaka, including category, offerings, coverage, trust signals, and discovery assets.",
-        url: "https://opensadhaka.com/brand-facts",
+        url: "https://www.opensadhaka.com/brand-facts",
         type: "website",
     },
 };
@@ -108,7 +108,7 @@ export default function BrandFactsPage() {
         "@context": "https://schema.org",
         "@type": "Organization",
         name: "Sadhaka",
-        url: "https://opensadhaka.com",
+        url: "https://www.opensadhaka.com",
         description:
             "An AI-powered spiritual guidance and Dharmic education platform focused on Sanatan Dharma, sacred texts, philosophy, spiritual practices, and seeker-oriented learning pathways.",
         sameAs: socialProfiles,
@@ -119,13 +119,13 @@ export default function BrandFactsPage() {
         "@context": "https://schema.org",
         "@type": "AboutPage",
         name: "Sadhaka Brand Facts",
-        url: "https://opensadhaka.com/brand-facts",
+        url: "https://www.opensadhaka.com/brand-facts",
         description:
             "A neutral, structured reference page containing factual information about Sadhaka, its offerings, trust signals, and machine-readable discovery assets.",
         about: {
             "@type": "Organization",
             name: "Sadhaka",
-            url: "https://opensadhaka.com",
+            url: "https://www.opensadhaka.com",
         },
     };
 
@@ -194,7 +194,7 @@ export default function BrandFactsPage() {
                                 </div>
                                 <div>
                                     <dt className="text-muted-foreground mb-1">Website</dt>
-                                    <dd className="font-medium">https://opensadhaka.com</dd>
+                                    <dd className="font-medium">https://www.opensadhaka.com</dd>
                                 </div>
                                 <div>
                                     <dt className="text-muted-foreground mb-1">Primary category</dt>

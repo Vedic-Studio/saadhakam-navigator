@@ -43,7 +43,7 @@ export default function Stotras() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://opensadhaka.com" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.opensadhaka.com" },
           { "@type": "ListItem", "position": 2, "name": "Stotra Ratnavali" }
         ]
       },
@@ -56,7 +56,7 @@ export default function Stotras() {
           "@type": "ListItem",
           "position": i + 1,
           "name": `${cat.deityEnglish} Stotras`,
-          "url": `https://opensadhaka.com/stotras/${cat.slug}`
+          "url": `https://www.opensadhaka.com/stotras/${cat.slug}`
         }))
       }
     ]

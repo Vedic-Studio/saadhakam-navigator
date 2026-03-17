@@ -37,12 +37,12 @@ export async function generateMetadata({
     title: `${text.title} — ${text.sanskritTitle} | Sacred Text Guide`,
     description: text.summary,
     alternates: {
-      canonical: `https://opensadhaka.com/texts/${slug}`,
+      canonical: `https://www.opensadhaka.com/texts/${slug}`,
     },
     openGraph: {
       title: `${text.title} | Sadhaka`,
       description: text.summary,
-      url: `https://opensadhaka.com/texts/${slug}`,
+      url: `https://www.opensadhaka.com/texts/${slug}`,
     },
   };
 }

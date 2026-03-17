@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description:
         "Standard silence-based meditation can worsen anxiety loops. Learn which techniques actually calm the nervous system for overthinkers — and what the ancient tradition says about it.",
     alternates: {
-        canonical: "https://opensadhaka.com/meditation-for-anxiety-overthinking",
+        canonical: "https://www.opensadhaka.com/meditation-for-anxiety-overthinking",
     },
     openGraph: {
         title: "Meditation for Severe Anxiety: When Silence Makes It Worse",
         description:
             "For severe anxiety, emptying your mind is terrible advice. Here's what actually works — grounded in both neuroscience and Vedic practice.",
-        url: "https://opensadhaka.com/meditation-for-anxiety-overthinking",
+        url: "https://www.opensadhaka.com/meditation-for-anxiety-overthinking",
         type: "article",
     },
 };

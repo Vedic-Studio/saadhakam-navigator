@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Hustle culture promises meaning through achievement. The Bhagavad Gita disagrees. How to find your life purpose spiritually — without needing to achieve anything first.",
     alternates: {
-        canonical: "https://opensadhaka.com/spiritual-antidote-to-hustle-culture",
+        canonical: "https://www.opensadhaka.com/spiritual-antidote-to-hustle-culture",
     },
     openGraph: {
         title: "The Spiritual Antidote to Hustle Culture",
         description:
             "Your purpose isn't a glamorous career. Svadharma says it's the duty directly in front of you, done with full attention. The Gita's antidote to achievement anxiety.",
-        url: "https://opensadhaka.com/spiritual-antidote-to-hustle-culture",
+        url: "https://www.opensadhaka.com/spiritual-antidote-to-hustle-culture",
         type: "article",
     },
 };

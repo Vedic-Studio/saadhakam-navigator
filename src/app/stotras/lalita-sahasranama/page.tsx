@@ -8,7 +8,7 @@ import { loadSahasranama } from "@/lib/stotras";
 export const metadata: Metadata = {
   title: "Lalita Sahasranama — 1000 Names",
   description: "Read the 1000 names of Lalita with transliteration.",
-  alternates: { canonical: "https://opensadhaka.com/stotras/lalita-sahasranama" },
+  alternates: { canonical: "https://www.opensadhaka.com/stotras/lalita-sahasranama" },
 };
 
 export default function LalitaSahasranamaPage() {

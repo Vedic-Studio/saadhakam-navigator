@@ -30,11 +30,11 @@ export async function generateMetadata({
       "sanatan dharma",
       "spiritual tradition",
     ],
-    alternates: { canonical: `https://opensadhaka.com/traditions/${slug}` },
+    alternates: { canonical: `https://www.opensadhaka.com/traditions/${slug}` },
     openGraph: {
       title: `${tradition.title} | Sadhaka`,
       description: tradition.summary,
-      url: `https://opensadhaka.com/traditions/${slug}`,
+      url: `https://www.opensadhaka.com/traditions/${slug}`,
     },
   };
 }
@@ -56,19 +56,19 @@ export default async function TraditionDetailPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://opensadhaka.com",
+        item: "https://www.opensadhaka.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Traditions",
-        item: "https://opensadhaka.com/traditions",
+        item: "https://www.opensadhaka.com/traditions",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: tradition.title,
-        item: `https://opensadhaka.com/traditions/${slug}`,
+        item: `https://www.opensadhaka.com/traditions/${slug}`,
       },
     ],
   };

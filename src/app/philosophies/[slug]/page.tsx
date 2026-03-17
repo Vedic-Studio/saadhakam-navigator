@@ -39,12 +39,12 @@ export async function generateMetadata({
       "vedanta",
     ],
     alternates: {
-      canonical: `https://opensadhaka.com/philosophies/${slug}`,
+      canonical: `https://www.opensadhaka.com/philosophies/${slug}`,
     },
     openGraph: {
       title: `${philosophy.title} | Sadhaka`,
       description: philosophy.summary,
-      url: `https://opensadhaka.com/philosophies/${slug}`,
+      url: `https://www.opensadhaka.com/philosophies/${slug}`,
     },
   };
 }
@@ -66,19 +66,19 @@ export default async function PhilosophyDetailPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://opensadhaka.com",
+        item: "https://www.opensadhaka.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Philosophies",
-        item: "https://opensadhaka.com/philosophies",
+        item: "https://www.opensadhaka.com/philosophies",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: philosophy.title,
-        item: `https://opensadhaka.com/philosophies/${slug}`,
+        item: `https://www.opensadhaka.com/philosophies/${slug}`,
       },
     ],
   };

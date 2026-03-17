@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Ajanta has India's greatest ancient paintings. Ellora has the Kailasa Temple — the world's largest monolithic carving. Both are UNESCO sites near Aurangabad. Here is how to choose.",
     alternates: {
-        canonical: "https://opensadhaka.com/kailasa-vs-ajanta-caves",
+        canonical: "https://www.opensadhaka.com/kailasa-vs-ajanta-caves",
     },
     openGraph: {
         title: "Kailasa vs Ajanta: Painting vs Carving",
         description:
             "Ajanta's Buddhist frescoes vs Ellora's Hindu rock-cut temples. Both near Aurangabad. Both UNESCO heritage sites. Different in every other way.",
-        url: "https://opensadhaka.com/kailasa-vs-ajanta-caves",
+        url: "https://www.opensadhaka.com/kailasa-vs-ajanta-caves",
         type: "article",
     },
 };

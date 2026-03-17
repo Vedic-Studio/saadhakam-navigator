@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description:
         "Phase 1 workbench for topic-to-content generation and quality scoring.",
     alternates: {
-        canonical: "https://opensadhaka.com/content-agent",
+        canonical: "https://www.opensadhaka.com/content-agent",
     },
 };
 

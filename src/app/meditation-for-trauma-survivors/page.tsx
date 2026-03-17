@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Standard meditation isn't always safe for trauma survivors. Closed eyes and silence can trigger flashbacks. Learn trauma-sensitive modifications that build safety first.",
     alternates: {
-        canonical: "https://opensadhaka.com/meditation-for-trauma-survivors",
+        canonical: "https://www.opensadhaka.com/meditation-for-trauma-survivors",
     },
     openGraph: {
         title: "Meditation for Trauma Survivors: A Trauma-Sensitive Approach",
         description:
             "Meditation can be deeply healing for trauma — or retraumatizing, if done wrong. A compassionate, practical guide to trauma-sensitive practice.",
-        url: "https://opensadhaka.com/meditation-for-trauma-survivors",
+        url: "https://www.opensadhaka.com/meditation-for-trauma-survivors",
         type: "article",
     },
 };

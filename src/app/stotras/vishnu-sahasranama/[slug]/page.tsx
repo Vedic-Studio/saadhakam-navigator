@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `Vishnu Sahasranama #${name.number} — ${name.transliteration}`,
     description: `Vishnu Sahasranama name ${name.number}: ${name.name}.`,
-    alternates: { canonical: `https://opensadhaka.com/stotras/vishnu-sahasranama/${name.slug}` },
+    alternates: { canonical: `https://www.opensadhaka.com/stotras/vishnu-sahasranama/${name.slug}` },
   };
 }
 
@@ -61,19 +61,19 @@ export default async function VishnuSahasranamaNamePage({ params }: { params: Pr
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://opensadhaka.com/",
+        item: "https://www.opensadhaka.com/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Vishnu Sahasranama",
-        item: "https://opensadhaka.com/stotras/vishnu-sahasranama",
+        item: "https://www.opensadhaka.com/stotras/vishnu-sahasranama",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: `Name ${name.number}`,
-        item: `https://opensadhaka.com/stotras/vishnu-sahasranama/${name.slug}`,
+        item: `https://www.opensadhaka.com/stotras/vishnu-sahasranama/${name.slug}`,
       },
     ],
   };

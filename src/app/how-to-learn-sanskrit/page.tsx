@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Sanskrit for yoga teachers: start with Devanagari script recognition (Language Curry app), then structured pronunciation courses for sutra chanting. Why English cannot translate Dharma, Maya, or Prana.",
     alternates: {
-        canonical: "https://opensadhaka.com/how-to-learn-sanskrit",
+        canonical: "https://www.opensadhaka.com/how-to-learn-sanskrit",
     },
     openGraph: {
         title: "How to Learn Sanskrit for Yoga Teachers",
         description:
             "Why 'Dharma' cannot mean 'Duty'. The best apps for Devanagari script. Sanskrit courses specifically designed for yoga teachers vs. academic language programs.",
-        url: "https://opensadhaka.com/how-to-learn-sanskrit",
+        url: "https://www.opensadhaka.com/how-to-learn-sanskrit",
         type: "article",
     },
 };

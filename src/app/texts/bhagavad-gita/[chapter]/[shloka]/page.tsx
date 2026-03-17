@@ -52,7 +52,7 @@ export async function generateMetadata({
         title: `Bhagavad Gita Chapter ${shloka.chapter} Verse ${shloka.verse} | Meaning & Translation`,
         description: `Read the meaning and translation of Bhagavad Gita ${shlokaId}. ${shloka.translation}`,
         alternates: {
-            canonical: `https://opensadhaka.com/texts/bhagavad-gita/chapter-${shloka.chapter}/shloka-${shloka.verse}`,
+            canonical: `https://www.opensadhaka.com/texts/bhagavad-gita/chapter-${shloka.chapter}/shloka-${shloka.verse}`,
         },
     };
 }

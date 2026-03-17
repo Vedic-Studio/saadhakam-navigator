@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "Ramana Maharshi's Atma Vichara (Self-Inquiry) is the most direct path to recognizing the Atman. Learn the exact practice, common mistakes, and how Eckhart Tolle's 'Power of Now' maps to Advaita Vedanta.",
     alternates: {
-        canonical: "https://opensadhaka.com/ramana-maharshi-who-am-i",
+        canonical: "https://www.opensadhaka.com/ramana-maharshi-who-am-i",
     },
     openGraph: {
         title: "Ramana Maharshi's 'Who Am I?' Technique",
         description:
             "Not an intellectual question — a direction to look. Atma Vichara is the most direct path in the Advaita tradition. A step-by-step guide.",
-        url: "https://opensadhaka.com/ramana-maharshi-who-am-i",
+        url: "https://www.opensadhaka.com/ramana-maharshi-who-am-i",
         type: "article",
     },
 };

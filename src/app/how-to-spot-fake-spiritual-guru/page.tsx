@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     description:
         "A true guru removes ignorance. A fake guru collects followers. Learn the 6 red flags of false spiritual teachers, why scandals keep happening in yoga lineages, and how to find an authentic teacher.",
     alternates: {
-        canonical: "https://opensadhaka.com/how-to-spot-fake-spiritual-guru",
+        canonical: "https://www.opensadhaka.com/how-to-spot-fake-spiritual-guru",
     },
     openGraph: {
         title: "How to Spot a Fake Spiritual Guru",
         description:
             "Gu = darkness. Ru = remover. A genuine guru removes ignorance. Here are the 6 signs you're looking at its opposite.",
-        url: "https://opensadhaka.com/how-to-spot-fake-spiritual-guru",
+        url: "https://www.opensadhaka.com/how-to-spot-fake-spiritual-guru",
         type: "article",
     },
 };

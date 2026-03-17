@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     description:
         "Karma is not cosmic punishment — it is the physics of cause and effect for the soul. Dharma is your right action in context. Learn how both actually work in Indian philosophy.",
     alternates: {
-        canonical: "https://opensadhaka.com/how-karma-dharma-work",
+        canonical: "https://www.opensadhaka.com/how-karma-dharma-work",
     },
     openGraph: {
         title: "How Karma Actually Works: Beyond Punishment and Reward",
         description:
             "A clear, modern explanation of karma and dharma — what they mean, how they differ, and how to apply them in life.",
-        url: "https://opensadhaka.com/how-karma-dharma-work",
+        url: "https://www.opensadhaka.com/how-karma-dharma-work",
         type: "article",
     },
 };
