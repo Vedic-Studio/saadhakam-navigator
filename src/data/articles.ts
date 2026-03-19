@@ -2255,6 +2255,23 @@ export const articles: ArticleMeta[] = [
         },
     },
     {
+        slug: "advaita-vs-dvaita",
+        route: "/advaita-vs-dvaita",
+        title: "Advaita vs Dvaita Vedanta: The Core Debate of Non-Duality",
+        metaDescription:
+            "Explore the profound differences between Advaita (Non-Duality) and Dvaita (Dualism). Understand Shankaracharya vs Madhvacharya and which path fits your temperament.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-03-09",
+        readingTime: 12,
+        primaryKeyword: "advaita vs dvaita",
+        relatedLinks: [
+            { text: "Advaita Vedanta Explained Simply", href: "/advaita-vedanta-explained" },
+            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "What is Sanatan Dharma?", href: "/what-is-sanatan-dharma" },
+        ],
+        faqs: [],
+    },
+    {
         slug: "how-to-start-japa",
         route: "/how-to-start-japa",
         title: "How to Start Japa Meditation: A Complete Step-by-Step Guide",
