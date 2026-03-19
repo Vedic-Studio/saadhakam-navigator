@@ -142,6 +142,28 @@ export const practices: Practice[] = [
     icon: "BookOpen",
   },
   {
+    slug: "pranayama",
+    title: "Pranayama",
+    sanskritName: "प्राणायाम",
+    summary:
+      "Breath regulation techniques that harness vital life force (prana) for physical health, mental clarity, and spiritual awakening.",
+    whatItIs:
+      "Pranayama is the fourth limb of Patanjali's Ashtanga Yoga, meaning the extension and control of prana (life force) through the breath. Techniques range from simple breath awareness to advanced practices like Nadi Shodhana (alternate nostril breathing), Kapalabhati (skull-shining breath), and Bhastrika (bellows breath). Each technique has specific effects on the nervous system and subtle energy body.",
+    whoItSuits:
+      "All practitioners, from beginners to advanced. Especially beneficial for those dealing with stress, anxiety, or scattered attention. Those preparing for deeper meditation will find pranayama essential for stabilizing the mind.",
+    howToBegin:
+      "Start with simple breath awareness: observe your natural breath for 5 minutes. Then practice Nadi Shodhana (alternate nostril breathing) for 5-10 minutes. Always practice on an empty stomach, ideally in the morning. Learn from a qualified teacher before attempting advanced techniques.",
+    benefits: [
+      "Calms the nervous system and reduces stress",
+      "Increases mental clarity and focus",
+      "Balances the subtle energy channels (nadis)",
+      "Prepares the mind for meditation",
+    ],
+    timeCommitment: "10-30 minutes daily",
+    tags: ["yogic", "foundational", "meditative"],
+    icon: "Wind",
+  },
+  {
     slug: "yoga-sadhana",
     title: "Yoga as Sadhana",
     sanskritName: "योग साधना",

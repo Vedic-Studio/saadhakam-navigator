@@ -25,7 +25,7 @@ const PILLARS = [
         icon: Scroll,
         color: "bg-indigo-500/10 text-indigo-400",
         image: "/assets/generated/sanskrit_scroll_v2_1770394373001.png",
-        href: "/topics"
+        href: "/ancient-wisdom-philosophies"
     },
     {
         id: 3,
@@ -45,7 +45,7 @@ const PILLARS = [
         icon: Sparkles,
         color: "bg-rose-500/10 text-rose-500",
         image: "/assets/generated/meditating_sage_v2_1770394394352.png",
-        href: "/practices"
+        href: "/practical-spiritual-practices"
     }
 ];
 

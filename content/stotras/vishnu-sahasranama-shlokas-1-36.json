@@ -1,0 +1,212 @@
+[
+  {
+    "verse": 1,
+    "slug": "shloka-1",
+    "sanskritDevanagari": "विश्वं विष्णुर्वषट्कारो भूतभव्यभवत्प्रभुः ।\nभूतकृद्भूतभृद्भावो भूतात्मा भूतभावनः ॥ १॥",
+    "transliteration": "viśvaṃ viṣṇurvaṣaṭkāro bhūtabhavyabhavatprabhuḥ |\nbhūtakṛdbhūtabhṛdbhāvo bhūtātmā bhūtabhāvanaḥ || 1 ||",
+    "names": [
+      { "number": 1, "name": "विश्वम्", "transliteration": "viśvam", "meaning": "The entire universe; He who is the totality of all existence, being everything that is", "slug": "vishvam" },
+      { "number": 2, "name": "विष्णुः", "transliteration": "viṣṇuḥ", "meaning": "He who pervades everything; from the root 'viṣ' meaning to enter and permeate all of creation", "slug": "vishnuh" },
+      { "number": 3, "name": "वषट्कारः", "transliteration": "vaṣaṭkāraḥ", "meaning": "He for whose worship the sacrificial exclamation 'vaṣaṭ' is uttered during Vedic rituals", "slug": "vashatkarah" },
+      { "number": 4, "name": "भूतभव्यभवत्प्रभुः", "transliteration": "bhūtabhavyabhavatprabhuḥ", "meaning": "The Lord and master of past, future, and present; the sovereign ruler of all time", "slug": "bhutabhavyabhavatprabhuh" },
+      { "number": 5, "name": "भूतकृत्", "transliteration": "bhūtakṛt", "meaning": "The creator of all beings; He who brings all living entities into existence", "slug": "bhutakrit" },
+      { "number": 6, "name": "भूतभृत्", "transliteration": "bhūtabhṛt", "meaning": "The sustainer of all beings; He who nourishes and supports all that exists", "slug": "bhutabhrit" },
+      { "number": 7, "name": "भावः", "transliteration": "bhāvaḥ", "meaning": "Pure existence itself; He who is the essence of all that truly is", "slug": "bhavah" },
+      { "number": 8, "name": "भूतात्मा", "transliteration": "bhūtātmā", "meaning": "The inner Self of all beings; the indwelling spirit present in every creature", "slug": "bhutatma" },
+      { "number": 9, "name": "भूतभावनः", "transliteration": "bhūtabhāvanaḥ", "meaning": "He who causes all beings to manifest and flourish; the originator and nurturer of creation", "slug": "bhutabhavanah" }
+    ]
+  },
+  {
+    "verse": 2,
+    "slug": "shloka-2",
+    "sanskritDevanagari": "पूतात्मा परमात्मा च मुक्तानां परमा गतिः ।\nअव्ययः पुरुषः साक्षी क्षेत्रज्ञोऽक्षर एव च ॥ २॥",
+    "transliteration": "pūtātmā paramātmā ca muktānāṃ paramā gatiḥ |\navyayaḥ puruṣaḥ sākṣī kṣetrajño'kṣara eva ca || 2 ||",
+    "names": [
+      { "number": 10, "name": "पूतात्मा", "transliteration": "pūtātmā", "meaning": "He whose nature is supremely pure; the Self untouched by any impurity or blemish", "slug": "putatma" },
+      { "number": 11, "name": "परमात्मा", "transliteration": "paramātmā", "meaning": "The Supreme Self; the highest Atman who transcends all individual souls", "slug": "paramatma" },
+      { "number": 12, "name": "मुक्तानां परमा गतिः", "transliteration": "muktānāṃ paramā gatiḥ", "meaning": "The supreme goal of the liberated; the final destination attained by those who achieve moksha", "slug": "muktanam-parama-gatih" },
+      { "number": 13, "name": "अव्ययः", "transliteration": "avyayaḥ", "meaning": "The imperishable; He who is not subject to any change, decay, or diminution", "slug": "avyayah" },
+      { "number": 14, "name": "पुरुषः", "transliteration": "puruṣaḥ", "meaning": "The Supreme Person; He who dwells in the body-city or who existed before all creation", "slug": "purushah" },
+      { "number": 15, "name": "साक्षी", "transliteration": "sākṣī", "meaning": "The eternal witness; He who directly observes everything without being affected", "slug": "sakshi" },
+      { "number": 16, "name": "क्षेत्रज्ञः", "transliteration": "kṣetrajñaḥ", "meaning": "The knower of the field; He who knows all bodies and the experiences within them", "slug": "kshetrajnah" },
+      { "number": 17, "name": "अक्षरः", "transliteration": "akṣaraḥ", "meaning": "The indestructible; He who never perishes and from whom the imperishable syllable Om derives", "slug": "aksharah" }
+    ]
+  },
+  {
+    "verse": 3,
+    "slug": "shloka-3",
+    "sanskritDevanagari": "योगो योगविदां नेता प्रधानपुरुषेश्वरः ।\nनारसिंहवपुः श्रीमान्केशवः पुरुषोत्तमः ॥ ३॥",
+    "transliteration": "yogo yogavidāṃ netā pradhānapuruṣeśvaraḥ |\nnārasiṃhavapuḥ śrīmānkeśavaḥ puruṣottamaḥ || 3 ||",
+    "names": [
+      { "number": 18, "name": "योगः", "transliteration": "yogaḥ", "meaning": "He who is realized through yoga; the one attainable by the means of meditation and union", "slug": "yogah" },
+      { "number": 19, "name": "योगविदां नेता", "transliteration": "yogavidāṃ netā", "meaning": "The guide of those who know yoga; the supreme leader of all realized yogis", "slug": "yogavidam-neta" },
+      { "number": 20, "name": "प्रधानपुरुषेश्वरः", "transliteration": "pradhānapuruṣeśvaraḥ", "meaning": "The Lord of both pradhana (primordial matter) and purusha (the conscious self)", "slug": "pradhana-purusheshvarah" },
+      { "number": 21, "name": "नारसिंहवपुः", "transliteration": "nārasiṃhavapuḥ", "meaning": "He whose form is that of Narasimha, the divine man-lion incarnation", "slug": "narasimhavapuh" },
+      { "number": 22, "name": "श्रीमान्", "transliteration": "śrīmān", "meaning": "He who is always endowed with Shri (Lakshmi); the possessor of all divine splendor and wealth", "slug": "shriman" },
+      { "number": 23, "name": "केशवः", "transliteration": "keśavaḥ", "meaning": "He who has beautiful flowing hair; or He who is the combined form of Brahma (Ka), Shiva (Isha), and Vishnu", "slug": "keshavah" },
+      { "number": 24, "name": "पुरुषोत्तमः", "transliteration": "puruṣottamaḥ", "meaning": "The Supreme Person; the best among all beings, transcending both the perishable and imperishable", "slug": "purushottamah" }
+    ]
+  },
+  {
+    "verse": 4,
+    "slug": "shloka-4",
+    "sanskritDevanagari": "सर्वः शर्वः शिवः स्थाणुर्भूतादिर्निधिरव्ययः ।\nसम्भवो भावनो भर्ता प्रभवः प्रभुरीश्वरः ॥ ४॥",
+    "transliteration": "sarvaḥ śarvaḥ śivaḥ sthāṇurbhūtādirnidhiravyayaḥ |\nsambhavo bhāvano bhartā prabhavaḥ prabhurīśvaraḥ || 4 ||",
+    "names": [
+      { "number": 25, "name": "सर्वः", "transliteration": "sarvaḥ", "meaning": "He who is everything; the all-encompassing reality from whom nothing is separate", "slug": "sarvah" },
+      { "number": 26, "name": "शर्वः", "transliteration": "śarvaḥ", "meaning": "He who destroys all sins and afflictions; the remover of suffering", "slug": "sharvah" },
+      { "number": 27, "name": "शिवः", "transliteration": "śivaḥ", "meaning": "The auspicious one; He who is eternally pure and the bestower of supreme blessedness", "slug": "shivah" },
+      { "number": 28, "name": "स्थाणुः", "transliteration": "sthāṇuḥ", "meaning": "The immovable and firm; He who is eternally steady and unchanging like a pillar", "slug": "sthanuh" },
+      { "number": 29, "name": "भूतादिः", "transliteration": "bhūtādiḥ", "meaning": "The origin of all beings; the primordial cause from whom the five elements arise", "slug": "bhutadih" },
+      { "number": 30, "name": "निधिरव्ययः", "transliteration": "nidhiravyayaḥ", "meaning": "The imperishable treasure; the inexhaustible repository in whom all beings rest during dissolution", "slug": "nidhiravyayah" },
+      { "number": 31, "name": "सम्भवः", "transliteration": "sambhavaḥ", "meaning": "He who manifests at will for the protection of dharma; the source of all manifestation", "slug": "sambhavah" },
+      { "number": 32, "name": "भावनः", "transliteration": "bhāvanaḥ", "meaning": "He who generates and gives existence to all beings; the producer of everything", "slug": "bhavanah" },
+      { "number": 33, "name": "भर्ता", "transliteration": "bhartā", "meaning": "The supporter and sustainer; He who bears and maintains the entire creation", "slug": "bharta" },
+      { "number": 34, "name": "प्रभवः", "transliteration": "prabhavaḥ", "meaning": "The source of creation; He from whom all beings originate and emerge", "slug": "prabhavah" },
+      { "number": 35, "name": "प्रभुः", "transliteration": "prabhuḥ", "meaning": "The almighty Lord; He who possesses supreme power and sovereignty over all", "slug": "prabhuh" },
+      { "number": 36, "name": "ईश्वरः", "transliteration": "īśvaraḥ", "meaning": "The supreme ruler; He who has unlimited lordship and governs all existence", "slug": "ishvarah" }
+    ]
+  },
+  {
+    "verse": 5,
+    "slug": "shloka-5",
+    "sanskritDevanagari": "स्वयम्भूः शम्भुरादित्यः पुष्कराक्षो महास्वनः ।\nअनादिनिधनो धाता विधाता धातुरुत्तमः ॥ ५॥",
+    "transliteration": "svayambhūḥ śambhurādityaḥ puṣkarākṣo mahāsvanaḥ |\nanādinidhanō dhātā vidhātā dhāturuttamaḥ || 5 ||",
+    "names": [
+      { "number": 37, "name": "स्वयम्भूः", "transliteration": "svayambhūḥ", "meaning": "The self-existent; He who manifests by His own will without any external cause", "slug": "svayambhuh" },
+      { "number": 38, "name": "शम्भुः", "transliteration": "śambhuḥ", "meaning": "He who bestows happiness and auspiciousness; the source of divine bliss", "slug": "shambhuh" },
+      { "number": 39, "name": "आदित्यः", "transliteration": "ādityaḥ", "meaning": "The son of Aditi; He who shines like the golden sun and is the radiance within the solar orb", "slug": "adityah" },
+      { "number": 40, "name": "पुष्कराक्षः", "transliteration": "puṣkarākṣaḥ", "meaning": "He whose eyes are like the lotus; possessing beautiful, all-seeing lotus-petal eyes", "slug": "pushkarakshah" },
+      { "number": 41, "name": "महास्वनः", "transliteration": "mahāsvanaḥ", "meaning": "He of the great sound; He whose voice is the Vedas and whose call resonates through all creation", "slug": "mahasvanah" },
+      { "number": 42, "name": "अनादिनिधनः", "transliteration": "anādinidhanaḥ", "meaning": "He who has neither beginning nor end; the eternal reality beyond birth and death", "slug": "anadinidhanah" },
+      { "number": 43, "name": "धाता", "transliteration": "dhātā", "meaning": "The creator and sustainer; He who supports all beings and establishes the cosmos", "slug": "dhata" },
+      { "number": 44, "name": "विधाता", "transliteration": "vidhātā", "meaning": "The ordainer of destinies; He who dispenses the fruits of karma to all beings", "slug": "vidhata" },
+      { "number": 45, "name": "धातुरुत्तमः", "transliteration": "dhāturuttamaḥ", "meaning": "The most excellent foundation; the supreme substratum upon which all existence rests", "slug": "dhaturuttamah" }
+    ]
+  },
+  {
+    "verse": 6,
+    "slug": "shloka-6",
+    "sanskritDevanagari": "अप्रमेयो हृषीकेशः पद्मनाभोऽमरप्रभुः ।\nविश्वकर्मा मनुस्त्वष्टा स्थविष्ठः स्थविरो ध्रुवः ॥ ६॥",
+    "transliteration": "aprameyo hṛṣīkeśaḥ padmanābho'maraprabhuḥ |\nviśvakarmā manuṣṭvaṣṭā sthaviṣṭhaḥ sthaviro dhruvaḥ || 6 ||",
+    "names": [
+      { "number": 46, "name": "अप्रमेयः", "transliteration": "aprameyaḥ", "meaning": "He who cannot be measured or defined by any means of knowledge; beyond all proof and perception", "slug": "aprameyah" },
+      { "number": 47, "name": "हृषीकेशः", "transliteration": "hṛṣīkeśaḥ", "meaning": "The Lord of the senses; He who controls and directs all sense organs of every being", "slug": "hrishikeshah" },
+      { "number": 48, "name": "पद्मनाभः", "transliteration": "padmanābhaḥ", "meaning": "He from whose navel the cosmic lotus emerged, giving birth to Brahma and the universe", "slug": "padmanabhah" },
+      { "number": 49, "name": "अमरप्रभुः", "transliteration": "amaraprabhuḥ", "meaning": "The Lord of the immortal gods; the supreme master of all the devas", "slug": "amaraprabhuh" },
+      { "number": 50, "name": "विश्वकर्मा", "transliteration": "viśvakarmā", "meaning": "The architect of the universe; He whose creative power fashions the entire cosmos", "slug": "vishvakarma" },
+      { "number": 51, "name": "मनुः", "transliteration": "manuḥ", "meaning": "The great thinker; He who is the essence of sacred thought and the Vedic mantras", "slug": "manuh" },
+      { "number": 52, "name": "त्वष्टा", "transliteration": "tvaṣṭā", "meaning": "The shaper and fashioner; He who reduces all beings to their subtle state during dissolution", "slug": "tvashta" },
+      { "number": 53, "name": "स्थविष्ठः", "transliteration": "sthaviṣṭhaḥ", "meaning": "The supremely vast; He who is the most massive and colossal being in existence", "slug": "sthavishthah" },
+      { "number": 54, "name": "स्थविरः", "transliteration": "sthaviraḥ", "meaning": "The most ancient; the primeval one who has existed since before all creation", "slug": "sthavirah" },
+      { "number": 55, "name": "ध्रुवः", "transliteration": "dhruvaḥ", "meaning": "The fixed and immovable; He who remains eternally constant and unchangeable", "slug": "dhruvah" }
+    ]
+  },
+  {
+    "verse": 7,
+    "slug": "shloka-7",
+    "sanskritDevanagari": "अग्राह्यः शाश्वतः कृष्णो लोहिताक्षः प्रतर्दनः ।\nप्रभूतस्त्रिककुब्धाम पवित्रं मङ्गलं परम्॥ ७॥",
+    "transliteration": "agrāhyaḥ śāśvataḥ kṛṣṇo lohitākṣaḥ pratardanaḥ |\nprabhūtastrikakubdhāma pavitraṃ maṅgalaṃ param || 7 ||",
+    "names": [
+      { "number": 56, "name": "अग्राह्यः", "transliteration": "agrāhyaḥ", "meaning": "He who cannot be grasped by the senses or the mind; beyond the reach of ordinary perception", "slug": "agrahyah" },
+      { "number": 57, "name": "शाश्वतः", "transliteration": "śāśvataḥ", "meaning": "The eternal; He who exists permanently through all cycles of creation and dissolution", "slug": "shashvatah" },
+      { "number": 58, "name": "कृष्णः", "transliteration": "kṛṣṇaḥ", "meaning": "The dark-complexioned one; He whose existence is pure bliss, from 'kṛṣ' (existence) and 'ṇa' (bliss)", "slug": "krishnah" },
+      { "number": 59, "name": "लोहिताक्षः", "transliteration": "lohitākṣaḥ", "meaning": "The red-eyed one; He whose eyes are tinged with the beautiful red of a lotus petal", "slug": "lohitakshah" },
+      { "number": 60, "name": "प्रतर्दनः", "transliteration": "pratardanaḥ", "meaning": "The great destroyer; He who annihilates all beings at the time of cosmic dissolution", "slug": "pratardanah" },
+      { "number": 61, "name": "प्रभूतः", "transliteration": "prabhūtaḥ", "meaning": "The abundantly great; He who overflows with excellence and supreme qualities", "slug": "prabhutah" },
+      { "number": 62, "name": "त्रिककुब्धाम", "transliteration": "trikakubdhāma", "meaning": "He who is the abode and support of the three quarters of the universe (earth, heaven, space)", "slug": "trikakubdhama" },
+      { "number": 63, "name": "पवित्रम्", "transliteration": "pavitram", "meaning": "The supremely purifying; He by whose remembrance all sins and impurities are cleansed", "slug": "pavitram" },
+      { "number": 64, "name": "मङ्गलं परम्", "transliteration": "maṅgalaṃ param", "meaning": "The supreme auspiciousness itself; the highest source of all that is good and blessed", "slug": "mangalam-param" }
+    ]
+  },
+  {
+    "verse": 8,
+    "slug": "shloka-8",
+    "sanskritDevanagari": "ईशानः प्राणदः प्राणो ज्येष्ठः श्रेष्ठः प्रजापतिः ।\nहिरण्यगर्भो भूगर्भो माधवो मधुसूदनः ॥ ८॥",
+    "transliteration": "īśānaḥ prāṇadaḥ prāṇo jyeṣṭhaḥ śreṣṭhaḥ prajāpatiḥ |\nhiraṇyagarbho bhūgarbho mādhavo madhusūdanaḥ || 8 ||",
+    "names": [
+      { "number": 65, "name": "ईशानः", "transliteration": "īśānaḥ", "meaning": "The supreme controller; He who rules and governs all beings without any constraint", "slug": "ishanah" },
+      { "number": 66, "name": "प्राणदः", "transliteration": "prāṇadaḥ", "meaning": "The giver of life-breath; He who bestows prāṇa upon all living beings", "slug": "pranadah" },
+      { "number": 67, "name": "प्राणः", "transliteration": "prāṇaḥ", "meaning": "Life itself; the vital breath that animates and sustains all existence", "slug": "pranah" },
+      { "number": 68, "name": "ज्येष्ठः", "transliteration": "jyeṣṭhaḥ", "meaning": "The eldest and most ancient; the foremost being who existed before everything", "slug": "jyeshthah" },
+      { "number": 69, "name": "श्रेष्ठः", "transliteration": "śreṣṭhaḥ", "meaning": "The most praiseworthy; the supremely excellent one surpassing all others in glory", "slug": "shreshthah" },
+      { "number": 70, "name": "प्रजापतिः", "transliteration": "prajāpatiḥ", "meaning": "The Lord of all creatures; the progenitor and protector of all living beings", "slug": "prajapatih" },
+      { "number": 71, "name": "हिरण्यगर्भः", "transliteration": "hiraṇyagarbhaḥ", "meaning": "He who dwells in the golden cosmic egg; the golden-wombed source of the created universe", "slug": "hiranyagarbhah" },
+      { "number": 72, "name": "भूगर्भः", "transliteration": "bhūgarbhaḥ", "meaning": "He who holds the earth within Himself; the one in whose womb the world rests", "slug": "bhugarbhah" },
+      { "number": 73, "name": "माधवः", "transliteration": "mādhavaḥ", "meaning": "The consort of Ma (Lakshmi); or the descendant of the Madhu clan, the Lord of knowledge and silence", "slug": "madhavah" },
+      { "number": 74, "name": "मधुसूदनः", "transliteration": "madhusūdanaḥ", "meaning": "The slayer of the demon Madhu; He who destroys the intoxication of ignorance", "slug": "madhusudanah" }
+    ]
+  },
+  {
+    "verse": 9,
+    "slug": "shloka-9",
+    "sanskritDevanagari": "ईश्वरो विक्रमी धन्वी मेधावी विक्रमः क्रमः ।\nअनुत्तमो दुराधर्षः कृतज्ञः कृतिरात्मवान्॥ ९॥",
+    "transliteration": "īśvaro vikramī dhanvī medhāvī vikramaḥ kramaḥ |\nanuttamo durādharṣaḥ kṛtajñaḥ kṛtirātmavān || 9 ||",
+    "names": [
+      { "number": 75, "name": "ईश्वरः", "transliteration": "īśvaraḥ", "meaning": "The omnipotent Lord; He who possesses unlimited sovereign power over the cosmos", "slug": "ishvarah-2" },
+      { "number": 76, "name": "विक्रमी", "transliteration": "vikramī", "meaning": "He of mighty valor; the courageous one who measured the three worlds with His strides as Vamana", "slug": "vikrami" },
+      { "number": 77, "name": "धन्वी", "transliteration": "dhanvī", "meaning": "He who wields the great bow Sharnga; the divine archer of supreme skill", "slug": "dhanvi" },
+      { "number": 78, "name": "मेधावी", "transliteration": "medhāvī", "meaning": "He of supreme intelligence; possessing infinite wisdom that comprehends all things at once", "slug": "medhavi" },
+      { "number": 79, "name": "विक्रमः", "transliteration": "vikramaḥ", "meaning": "He who is the stride of power; whose three steps pervaded the entire universe as Trivikrama", "slug": "vikramah" },
+      { "number": 80, "name": "क्रमः", "transliteration": "kramaḥ", "meaning": "He who is the progression of all existence; the sequential order underlying the cosmos", "slug": "kramah" },
+      { "number": 81, "name": "अनुत्तमः", "transliteration": "anuttamaḥ", "meaning": "He than whom there is none greater; the unsurpassed and incomparable supreme being", "slug": "anuttamah" },
+      { "number": 82, "name": "दुराधर्षः", "transliteration": "durādharṣaḥ", "meaning": "He who cannot be assailed by anyone; the invincible one whom none can overpower", "slug": "duradharshah" },
+      { "number": 83, "name": "कृतज्ञः", "transliteration": "kṛtajñaḥ", "meaning": "He who knows all that has been done; the grateful one who remembers even the smallest good deed", "slug": "kritajnah" },
+      { "number": 84, "name": "कृतिः", "transliteration": "kṛtiḥ", "meaning": "He who is the action itself; the very essence and power behind all deeds in creation", "slug": "kritih" },
+      { "number": 85, "name": "आत्मवान्", "transliteration": "ātmavān", "meaning": "He who is established in His own greatness; the self-possessed one who depends on nothing else", "slug": "atmavan" }
+    ]
+  },
+  {
+    "verse": 10,
+    "slug": "shloka-10",
+    "sanskritDevanagari": "सुरेशः शरणं शर्म विश्वरेताः प्रजाभवः ।\nअहः संवत्सरो व्यालः प्रत्ययः सर्वदर्शनः ॥ १०॥",
+    "transliteration": "sureśaḥ śaraṇaṃ śarma viśvaretāḥ prajābhavaḥ |\nahaḥ saṃvatsaro vyālaḥ pratyayaḥ sarvadarśanaḥ || 10 ||",
+    "names": [
+      { "number": 86, "name": "सुरेशः", "transliteration": "sureśaḥ", "meaning": "The Lord of the gods; the supreme ruler whom all the devas worship and obey", "slug": "sureshah" },
+      { "number": 87, "name": "शरणम्", "transliteration": "śaraṇam", "meaning": "The ultimate refuge; He who is the shelter and sanctuary for all who seek liberation", "slug": "sharanam" },
+      { "number": 88, "name": "शर्म", "transliteration": "śarma", "meaning": "He who is supreme bliss; the embodiment of happiness and divine joy", "slug": "sharma" },
+      { "number": 89, "name": "विश्वरेताः", "transliteration": "viśvaretāḥ", "meaning": "The seed of the universe; He who is the primal cause from which the entire cosmos germinates", "slug": "vishvaretah" },
+      { "number": 90, "name": "प्रजाभवः", "transliteration": "prajābhavaḥ", "meaning": "He from whom all progeny and beings come into existence; the source of all birth", "slug": "prajabhavah" },
+      { "number": 91, "name": "अहः", "transliteration": "ahaḥ", "meaning": "He who is the luminous day; the embodiment of radiant light that dispels darkness", "slug": "ahah" },
+      { "number": 92, "name": "संवत्सरः", "transliteration": "saṃvatsaraḥ", "meaning": "He who is time itself; the year and all cyclical time in whom all beings dwell", "slug": "samvatsarah" },
+      { "number": 93, "name": "व्यालः", "transliteration": "vyālaḥ", "meaning": "He who is unapproachable like a great serpent; impossible to capture or restrain", "slug": "vyalah" },
+      { "number": 94, "name": "प्रत्ययः", "transliteration": "pratyayaḥ", "meaning": "He who is the basis of all cognition and faith; the ground of all conviction and trust", "slug": "pratyayah" },
+      { "number": 95, "name": "सर्वदर्शनः", "transliteration": "sarvadarśanaḥ", "meaning": "He who sees everything; the all-perceiving one from whom nothing is ever hidden", "slug": "sarvadarśanah" }
+    ]
+  },
+  {
+    "verse": 11,
+    "slug": "shloka-11",
+    "sanskritDevanagari": "अजः सर्वेश्वरः सिद्धः सिद्धिः सर्वादिरच्युतः ।\nवृषाकपिरमेयात्मा सर्वयोगविनिःसृतः ॥ ११॥",
+    "transliteration": "ajaḥ sarveśvaraḥ siddhaḥ siddhiḥ sarvādiracyutaḥ |\nvṛṣākapir ameyātmā sarvayogaviniḥsṛtaḥ || 11 ||",
+    "names": [
+      { "number": 96, "name": "अजः", "transliteration": "ajaḥ", "meaning": "The unborn; He who has no origin and was never brought into being by any cause", "slug": "ajah" },
+      { "number": 97, "name": "सर्वेश्वरः", "transliteration": "sarveśvaraḥ", "meaning": "The Lord of all; the supreme sovereign who rules over every being and every realm", "slug": "sarveshvarah" },
+      { "number": 98, "name": "सिद्धः", "transliteration": "siddhaḥ", "meaning": "The perfected one; He who is eternally accomplished and complete in all respects", "slug": "siddhah" },
+      { "number": 99, "name": "सिद्धिः", "transliteration": "siddhiḥ", "meaning": "The attainment itself; He who is the fruit of all spiritual practice and perfection", "slug": "siddhih" },
+      { "number": 100, "name": "सर्वादिः", "transliteration": "sarvādiḥ", "meaning": "The origin of all; the first cause and primordial source of everything that exists", "slug": "sarvadih" },
+      { "number": 101, "name": "अच्युतः", "transliteration": "acyutaḥ", "meaning": "He who never falls from His nature; the infallible one who never declines from His glory", "slug": "acyutah" },
+      { "number": 102, "name": "वृषाकपिः", "transliteration": "vṛṣākapiḥ", "meaning": "He who showers dharma (Vṛṣa) and is the great boar (Kapi); or He who fulfills righteous desires", "slug": "vrishakapih" },
+      { "number": 103, "name": "अमेयात्मा", "transliteration": "ameyātmā", "meaning": "He whose nature is immeasurable; the Self that cannot be comprehended by any finite mind", "slug": "ameyatma" },
+      { "number": 104, "name": "सर्वयोगविनिःसृतः", "transliteration": "sarvayogaviniḥsṛtaḥ", "meaning": "He who is entirely free from all bondage; liberated from every connection to the material world", "slug": "sarvayogavinihsritah" }
+    ]
+  },
+  {
+    "verse": 12,
+    "slug": "shloka-12",
+    "sanskritDevanagari": "वसुर्वसुमनाः सत्यः समात्माऽसम्मितः समः ।\nअमोघः पुण्डरीकाक्षो वृषकर्मा वृषाकृतिः ॥ १२॥",
+    "transliteration": "vasurvasumanāḥ satyaḥ samātmā'sammitaḥ samaḥ |\namoghaḥ puṇḍarīkākṣo vṛṣakarmā vṛṣākṛtiḥ || 12 ||",
+    "names": [
+      { "number": 105, "name": "वसुः", "transliteration": "vasuḥ", "meaning": "He who is the indwelling wealth of all; the divine treasure who resides in all beings as their essence", "slug": "vasuh" },
+      { "number": 106, "name": "वसुमनाः", "transliteration": "vasumanāḥ", "meaning": "He whose mind is pure like gold; or He who has a benevolent mind that wills good for all", "slug": "vasumanah" },
+      { "number": 107, "name": "सत्यः", "transliteration": "satyaḥ", "meaning": "He who is Truth itself; the absolute reality that alone truly exists", "slug": "satyah" },
+      { "number": 108, "name": "समात्मा", "transliteration": "samātmā", "meaning": "He who is equally present in all; the impartial Self identical in every being", "slug": "samatma" },
+      { "number": 109, "name": "असम्मितः", "transliteration": "asammitaḥ", "meaning": "He who is incomparable; the unequalled one whom nothing can match or measure", "slug": "asammitah" },
+      { "number": 110, "name": "समः", "transliteration": "samaḥ", "meaning": "The equanimous one; He who regards all beings with equal vision, without partiality", "slug": "samah" },
+      { "number": 111, "name": "अमोघः", "transliteration": "amoghaḥ", "meaning": "He whose acts are never futile; the infallible one whose every action bears fruit", "slug": "amoghah" },
+      { "number": 112, "name": "पुण्डरीकाक्षः", "transliteration": "puṇḍarīkākṣaḥ", "meaning": "He whose eyes are like white lotuses; the beautiful-eyed one who dwells in the heart-lotus", "slug": "pundarikakshah" },
+      { "number": 113, "name": "वृषकर्मा", "transliteration": "vṛṣakarmā", "meaning": "He whose every action is righteous; the one whose deeds are dharma itself", "slug": "vrishakarma" },
+      { "number": 114, "name": "वृषाकृतिः", "transliteration": "vṛṣākṛtiḥ", "meaning": "He whose form is dharma; the embodiment of righteousness in every aspect of His being", "slug": "vrishakritih" }
+    ]
+  }
+]

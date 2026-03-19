@@ -61,6 +61,21 @@ export interface StotraFile {
   verses: StotraVerse[];
 }
 
+export interface DhyanaShloka {
+  verse: number;
+  sanskritDevanagari: string;
+  transliteration: string;
+  translation: string;
+}
+
+export interface SahasranamaVerse {
+  verse: number;
+  slug: string;
+  sanskritDevanagari: string;
+  transliteration: string;
+  names: SahasranamaName[];
+}
+
 export interface SahasranamaFile {
   id: string;
   title: string;
@@ -71,8 +86,10 @@ export interface SahasranamaFile {
   deity: string;
   language: string;
   nameCount: number;
+  verseCount: number;
   description: string;
-  names: SahasranamaName[];
+  dhyanaShlokas?: DhyanaShloka[];
+  verses: SahasranamaVerse[];
 }
 
 export type AnyStortraFile = StotraFile | SahasranamaFile;
@@ -114,11 +131,44 @@ export function getAdjacentVerses(
   };
 }
 
-// ── Name helpers ─────────────────────────────────────────────────────────────
+// ── Sahasranama helpers ──────────────────────────────────────────────────────
+
+export function getSahasranamaVerseBySlug(
+  sahasranama: SahasranamaFile,
+  slug: string
+): SahasranamaVerse | undefined {
+  return sahasranama.verses.find((v) => v.slug === slug);
+}
+
+export function getAdjacentSahasranamaVerses(
+  sahasranama: SahasranamaFile,
+  verseNum: number
+): { prev: SahasranamaVerse | null; next: SahasranamaVerse | null } {
+  const idx = sahasranama.verses.findIndex((v) => v.verse === verseNum);
+  return {
+    prev: idx > 0 ? sahasranama.verses[idx - 1] : null,
+    next: idx < sahasranama.verses.length - 1 ? sahasranama.verses[idx + 1] : null,
+  };
+}
+
+export function getAllSahasranamaNames(
+  sahasranama: SahasranamaFile
+): SahasranamaName[] {
+  return sahasranama.verses.flatMap((v) => v.names);
+}
+
+export function findVerseByNameSlug(
+  sahasranama: SahasranamaFile,
+  nameSlug: string
+): SahasranamaVerse | undefined {
+  return sahasranama.verses.find((v) =>
+    v.names.some((n) => n.slug === nameSlug)
+  );
+}
 
 export function getSahasranamaNameBySlug(
   sahasranama: SahasranamaFile,
   slug: string
 ): SahasranamaName | undefined {
-  return sahasranama.names.find((n) => n.slug === slug);
+  return getAllSahasranamaNames(sahasranama).find((n) => n.slug === slug);
 }

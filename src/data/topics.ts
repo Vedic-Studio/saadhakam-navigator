@@ -39,6 +39,16 @@ export const topics: Topic[] = [
     recommendedTraditions: ["vedanta", "yoga"],
   },
   {
+    slug: "dharma",
+    name: "Dharma & Righteous Living",
+    summary:
+      "The cosmic law of order, duty, and moral principles that sustain the universe and guide individual conduct.",
+    content:
+      "Dharma is one of the most fundamental concepts in Sanatan philosophy. It encompasses cosmic order (Rita), moral law, social duty, and individual purpose. Unlike rigid commandments, Dharma is contextual and multi-layered: Sanatana Dharma (eternal universal principles), Varnashrama Dharma (duties based on one's stage and role in life), and Svadharma (one's personal calling). The Bhagavad Gita teaches that it is better to perform one's own dharma imperfectly than another's dharma perfectly.",
+    recommendedPractices: ["seva", "svadhyaya", "vrat"],
+    recommendedTraditions: ["vedanta", "yoga", "vaishnavism"],
+  },
+  {
     slug: "knowledge",
     name: "Wisdom & Jnana Yoga",
     summary:

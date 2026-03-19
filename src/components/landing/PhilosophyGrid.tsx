@@ -6,6 +6,7 @@ import { ArrowRight, Brain, Eye, Scale, Shuffle, Infinity, Sparkles } from "luci
 const DARSHANAS = [
   {
     sanskrit: "Nyaya",
+    slug: "nyaya-vaisheshika",
     english: "Logic & Epistemology",
     question: "How do we know what is true?",
     teaching: "Valid knowledge comes from perception, inference, comparison, and testimony.",
@@ -14,6 +15,7 @@ const DARSHANAS = [
   },
   {
     sanskrit: "Vaisheshika",
+    slug: "nyaya-vaisheshika",
     english: "Atomic Naturalism",
     question: "What is the universe made of?",
     teaching: "Reality is composed of atoms (anu) and distinct categories of existence.",
@@ -22,6 +24,7 @@ const DARSHANAS = [
   },
   {
     sanskrit: "Samkhya",
+    slug: "samkhya",
     english: "Dualist Realism",
     question: "What is the relationship between consciousness and matter?",
     teaching: "The universe evolves from the interaction of Purusha (Consciousness) and Prakriti (Nature).",
@@ -30,6 +33,7 @@ const DARSHANAS = [
   },
   {
     sanskrit: "Yoga",
+    slug: "yoga-darshana",
     english: "Practical Psychology",
     question: "How do I master my mind?",
     teaching: "Cessation of mental fluctuations (Chitta Vritti Nirodha) leads to liberation.",
@@ -38,6 +42,7 @@ const DARSHANAS = [
   },
   {
     sanskrit: "Mimamsa",
+    slug: "mimamsa",
     english: "Ritual & Hermeneutics",
     question: "What is my duty (Dharma)?",
     teaching: "Action (Karma) and ritual correctness uphold the cosmic order (Rta).",
@@ -46,6 +51,7 @@ const DARSHANAS = [
   },
   {
     sanskrit: "Vedanta",
+    slug: "vedanta",
     english: "End of Knowledge",
     question: "Who am I?",
     teaching: "Brahman (Ultimate Reality) is the only truth; the world is an appearance.",
@@ -71,7 +77,7 @@ export function PhilosophyGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {DARSHANAS.map((school, index) => (
             <Link
-              href={`/philosophies/${school.sanskrit.toLowerCase()}`}
+              href={`/philosophies/${school.slug}`}
               key={school.sanskrit}
               className="group relative bg-card/30 border border-white/10 rounded-2xl p-8 hover:bg-card/50 transition-colors duration-300 block"
             >
