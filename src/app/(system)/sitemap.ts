@@ -439,11 +439,11 @@ export default async function sitemap({ id: idProp }: { id: string | Promise<str
           changeFrequency: "weekly",
           priority: 0.8,
         },
-        ...vishnuSahasranama.names.map((n) => ({
-          url: `${baseUrl}/stotras/vishnu-sahasranama/${n.slug}`,
+        ...vishnuSahasranama.verses.map((v) => ({
+          url: `${baseUrl}/stotras/vishnu-sahasranama/${v.slug}`,
           lastModified: now,
           changeFrequency: "monthly" as const,
-          priority: 0.6,
+          priority: 0.7,
         })),
         {
           url: `${baseUrl}/stotras/lalita-sahasranama`,

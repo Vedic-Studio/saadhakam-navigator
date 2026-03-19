@@ -86,10 +86,13 @@ export interface SahasranamaFile {
   deity: string;
   language: string;
   nameCount: number;
-  verseCount: number;
+  verseCount?: number;
   description: string;
   dhyanaShlokas?: DhyanaShloka[];
-  verses: SahasranamaVerse[];
+  /** New verse-based structure (Vishnu Sahasranama uses this) */
+  verses?: SahasranamaVerse[];
+  /** Legacy flat name list (Lalita Sahasranama still uses this) */
+  names?: SahasranamaName[];
 }
 
 export type AnyStortraFile = StotraFile | SahasranamaFile;
@@ -137,13 +140,14 @@ export function getSahasranamaVerseBySlug(
   sahasranama: SahasranamaFile,
   slug: string
 ): SahasranamaVerse | undefined {
-  return sahasranama.verses.find((v) => v.slug === slug);
+  return sahasranama.verses?.find((v) => v.slug === slug);
 }
 
 export function getAdjacentSahasranamaVerses(
   sahasranama: SahasranamaFile,
   verseNum: number
 ): { prev: SahasranamaVerse | null; next: SahasranamaVerse | null } {
+  if (!sahasranama.verses) return { prev: null, next: null };
   const idx = sahasranama.verses.findIndex((v) => v.verse === verseNum);
   return {
     prev: idx > 0 ? sahasranama.verses[idx - 1] : null,
@@ -154,14 +158,18 @@ export function getAdjacentSahasranamaVerses(
 export function getAllSahasranamaNames(
   sahasranama: SahasranamaFile
 ): SahasranamaName[] {
-  return sahasranama.verses.flatMap((v) => v.names);
+  // Support both verse-based and legacy flat-names formats
+  if (sahasranama.verses) {
+    return sahasranama.verses.flatMap((v) => v.names);
+  }
+  return sahasranama.names ?? [];
 }
 
 export function findVerseByNameSlug(
   sahasranama: SahasranamaFile,
   nameSlug: string
 ): SahasranamaVerse | undefined {
-  return sahasranama.verses.find((v) =>
+  return sahasranama.verses?.find((v) =>
     v.names.some((n) => n.slug === nameSlug)
   );
 }
