@@ -1,9 +1,11 @@
 "use client";
 
 import { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Text } from "@react-three/drei";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { OrbitControls, Text, Billboard } from "@react-three/drei";
 import { motion } from "framer-motion";
+import { GRAHA_ICONS } from "@/components/jyotish/icons/grahas";
+import { TextureLoader } from "three";
 import type { Mesh } from "three";
 
 interface PlanetOrbitProps {
@@ -44,7 +46,26 @@ function ZodiacRing({ exaltation, debilitation }: { exaltation?: string; debilit
   );
 }
 
-function OrbitingPlanet({ color }: { color: string }) {
+function GrahaSprite({ slug, yOffset }: { slug: string; yOffset: number }) {
+  const iconPath = GRAHA_ICONS[slug];
+  if (!iconPath) return null;
+
+  try {
+    const texture = useLoader(TextureLoader, iconPath);
+    return (
+      <Billboard position={[0, yOffset, 0]}>
+        <mesh>
+          <planeGeometry args={[0.4, 0.4]} />
+          <meshBasicMaterial map={texture} transparent alphaTest={0.1} />
+        </mesh>
+      </Billboard>
+    );
+  } catch {
+    return null;
+  }
+}
+
+function OrbitingPlanet({ color, slug }: { color: string; slug: string }) {
   const meshRef = useRef<Mesh>(null);
 
   useFrame(({ clock }) => {
@@ -56,10 +77,15 @@ function OrbitingPlanet({ color }: { color: string }) {
   });
 
   return (
-    <mesh ref={meshRef}>
-      <sphereGeometry args={[0.25, 16, 16]} />
-      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.4} />
-    </mesh>
+    <group>
+      <mesh ref={meshRef}>
+        <sphereGeometry args={[0.25, 16, 16]} />
+        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.4} />
+        <Suspense fallback={null}>
+          <GrahaSprite slug={slug} yOffset={0.45} />
+        </Suspense>
+      </mesh>
+    </group>
   );
 }
 
@@ -72,8 +98,9 @@ function Sun() {
   );
 }
 
-function Scene({ color, exaltation, debilitation }: {
+function Scene({ color, slug, exaltation, debilitation }: {
   color: string;
+  slug: string;
   exaltation?: string;
   debilitation?: string;
 }) {
@@ -83,7 +110,7 @@ function Scene({ color, exaltation, debilitation }: {
       <pointLight position={[0, 3, 0]} intensity={1.5} color="#fbbf24" />
 
       <Sun />
-      <OrbitingPlanet color={color} />
+      <OrbitingPlanet color={color} slug={slug} />
       <ZodiacRing exaltation={exaltation} debilitation={debilitation} />
 
       {/* Orbit path */}
@@ -117,7 +144,8 @@ const GRAHA_COLORS: Record<string, string> = {
 };
 
 export function PlanetOrbit({ name, color, exaltation, debilitation }: PlanetOrbitProps) {
-  const grahaColor = color || GRAHA_COLORS[name.toLowerCase()] || "#f97316";
+  const slug = name.toLowerCase();
+  const grahaColor = color || GRAHA_COLORS[slug] || "#f97316";
 
   return (
     <motion.div
@@ -134,7 +162,7 @@ export function PlanetOrbit({ name, color, exaltation, debilitation }: PlanetOrb
         }
       >
         <Canvas camera={{ position: [0, 5, 5], fov: 50 }}>
-          <Scene color={grahaColor} exaltation={exaltation} debilitation={debilitation} />
+          <Scene color={grahaColor} slug={slug} exaltation={exaltation} debilitation={debilitation} />
         </Canvas>
       </Suspense>
       <p className="text-center text-xs text-muted-foreground pb-2">

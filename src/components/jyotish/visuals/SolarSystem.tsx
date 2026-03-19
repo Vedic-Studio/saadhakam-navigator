@@ -1,11 +1,12 @@
 "use client";
 
 import { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Text } from "@react-three/drei";
-import Link from "next/link";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { OrbitControls, Text, Billboard } from "@react-three/drei";
 import { motion } from "framer-motion";
 import { grahas } from "@/data/grahas";
+import { GRAHA_ICONS } from "@/components/jyotish/icons/grahas";
+import { TextureLoader } from "three";
 import type { Mesh, Group } from "three";
 
 const GRAHA_CONFIG: Record<string, { distance: number; speed: number; color: string; size: number }> = {
@@ -19,6 +20,25 @@ const GRAHA_CONFIG: Record<string, { distance: number; speed: number; color: str
   rahu: { distance: 3.8, speed: -0.1, color: "#475569", size: 0.12 },
   ketu: { distance: 3.8, speed: -0.1, color: "#94a3b8", size: 0.12 },
 };
+
+function GrahaIcon({ slug, yOffset }: { slug: string; yOffset: number }) {
+  const iconPath = GRAHA_ICONS[slug];
+  if (!iconPath) return null;
+
+  try {
+    const texture = useLoader(TextureLoader, iconPath);
+    return (
+      <Billboard position={[0, yOffset, 0]}>
+        <mesh>
+          <planeGeometry args={[0.35, 0.35]} />
+          <meshBasicMaterial map={texture} transparent alphaTest={0.1} />
+        </mesh>
+      </Billboard>
+    );
+  } catch {
+    return null;
+  }
+}
 
 function Planet({ slug, name, config, onClick }: {
   slug: string;
@@ -47,9 +67,12 @@ function Planet({ slug, name, config, onClick }: {
           emissiveIntensity={slug === "surya" ? 0.8 : 0.2}
         />
       </mesh>
+      <Suspense fallback={null}>
+        <GrahaIcon slug={slug} yOffset={config.size + 0.3} />
+      </Suspense>
       <Text
-        position={[0, config.size + 0.15, 0]}
-        fontSize={0.15}
+        position={[0, config.size + 0.6, 0]}
+        fontSize={0.12}
         color="#94a3b8"
         anchorX="center"
         anchorY="bottom"

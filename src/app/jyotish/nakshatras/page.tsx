@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
 import { nakshatras } from "@/data/nakshatras";
+import { NAKSHATRA_ICONS } from "@/components/jyotish/icons/nakshatras";
 import { buildBreadcrumbSchema, buildCollectionSchema, buildPageMetadata, buildUrl } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -48,8 +49,15 @@ export default function NakshatrasHubPage() {
                     <section className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
                         {nakshatras.map((nakshatra) => (
                             <Link key={nakshatra.slug} href={`/jyotish/nakshatras/${nakshatra.slug}`} className="block rounded-2xl border border-border/50 bg-card p-6 hover:border-orange-500/40 transition-colors">
-                                <p className="text-xs uppercase tracking-widest text-orange-400 font-semibold mb-2">{nakshatra.rulingGraha} • {nakshatra.span}</p>
-                                <h2 className="text-2xl font-display font-bold mb-3">{nakshatra.name}</h2>
+                                <div className="flex items-center gap-3 mb-3">
+                                    {NAKSHATRA_ICONS[nakshatra.slug] && (
+                                        <img src={NAKSHATRA_ICONS[nakshatra.slug]} alt={nakshatra.name} className="w-10 h-10 rounded-lg" />
+                                    )}
+                                    <div>
+                                        <p className="text-xs uppercase tracking-widest text-orange-400 font-semibold">{nakshatra.rulingGraha} • {nakshatra.span}</p>
+                                        <h2 className="text-2xl font-display font-bold">{nakshatra.name}</h2>
+                                    </div>
+                                </div>
                                 <p className="text-sm text-muted-foreground leading-relaxed">{nakshatra.description}</p>
                             </Link>
                         ))}

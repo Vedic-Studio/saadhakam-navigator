@@ -4,27 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { rashis } from "@/data/rashis";
+import { RASHI_ICONS } from "@/components/jyotish/icons/rashis";
 
 const RASHI_COLORS: Record<string, string> = {
   Agni: "#ef4444",
   Prithvi: "#84cc16",
   Vayu: "#38bdf8",
   Jala: "#6366f1",
-};
-
-const RASHI_SYMBOLS: Record<string, string> = {
-  mesha: "\u2648",
-  vrishabha: "\u2649",
-  mithuna: "\u264A",
-  karka: "\u264B",
-  simha: "\u264C",
-  kanya: "\u264D",
-  tula: "\u264E",
-  vrischika: "\u264F",
-  dhanu: "\u2650",
-  makara: "\u2651",
-  kumbha: "\u2652",
-  meena: "\u2653",
 };
 
 interface ZodiacWheelProps {
@@ -94,7 +80,8 @@ export function ZodiacWheel({ activeSlug, size = 400 }: ZodiacWheelProps) {
           const isHover = rashi.slug === hovered;
           const color = RASHI_COLORS[rashi.element] || "#666";
           const pos = labelPos(i);
-          const symbol = RASHI_SYMBOLS[rashi.slug] || "";
+          const iconSrc = RASHI_ICONS[rashi.slug];
+          const iconSize = size > 300 ? 22 : 16;
 
           return (
             <Link key={rashi.slug} href={`/jyotish/rashis/${rashi.slug}`}>
@@ -112,23 +99,22 @@ export function ZodiacWheel({ activeSlug, size = 400 }: ZodiacWheelProps) {
                   strokeOpacity={isActive || isHover ? 1 : 0.4}
                   style={{ transition: "all 0.3s ease" }}
                 />
+                {iconSrc && (
+                  <image
+                    href={iconSrc}
+                    x={pos.x - iconSize / 2}
+                    y={pos.y - iconSize / 2 - 4}
+                    width={iconSize}
+                    height={iconSize}
+                    style={{
+                      opacity: isActive || isHover ? 1 : 0.7,
+                      transition: "opacity 0.3s",
+                    }}
+                  />
+                )}
                 <text
                   x={pos.x}
-                  y={pos.y - 6}
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  className="fill-current text-foreground"
-                  fontSize={size > 300 ? 18 : 14}
-                  style={{
-                    opacity: isActive || isHover ? 1 : 0.7,
-                    transition: "opacity 0.3s",
-                  }}
-                >
-                  {symbol}
-                </text>
-                <text
-                  x={pos.x}
-                  y={pos.y + 12}
+                  y={pos.y + iconSize / 2 + 4}
                   textAnchor="middle"
                   dominantBaseline="central"
                   className="fill-current text-muted-foreground"

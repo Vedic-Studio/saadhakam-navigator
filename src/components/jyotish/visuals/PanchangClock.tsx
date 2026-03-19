@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { varas } from "@/data/panchang";
+import { GRAHA_ICONS } from "@/components/jyotish/icons/grahas";
 
 interface PanchangClockProps {
   size?: number;
@@ -99,12 +100,26 @@ export function PanchangClock({ size = 320, nakshatra, tithi }: PanchangClockPro
                   strokeOpacity={isActive ? 1 : 0.3}
                   style={{ transition: "all 0.4s ease" }}
                 />
+                {(() => {
+                  const iconSrc = GRAHA_ICONS[vara.rulingGraha];
+                  const iconSize = size > 280 ? 14 : 10;
+                  return iconSrc ? (
+                    <image
+                      href={iconSrc}
+                      x={pos.x - iconSize / 2}
+                      y={pos.y - iconSize / 2 - 6}
+                      width={iconSize}
+                      height={iconSize}
+                      style={{ opacity: isActive ? 1 : 0.4, transition: "opacity 0.4s ease" }}
+                    />
+                  ) : null;
+                })()}
                 <text
                   x={pos.x}
-                  y={pos.y}
+                  y={pos.y + 6}
                   textAnchor="middle"
                   dominantBaseline="central"
-                  fontSize={size > 280 ? 9 : 7}
+                  fontSize={size > 280 ? 8 : 6}
                   className="fill-current text-foreground"
                   style={{ opacity: isActive ? 1 : 0.5 }}
                 >

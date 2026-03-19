@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { nakshatras } from "@/data/nakshatras";
+import { NAKSHATRA_ICONS } from "@/components/jyotish/icons/nakshatras";
 
 interface NakshatraMapProps {
   activeSlug?: string;
@@ -132,15 +133,33 @@ export function NakshatraMap({ activeSlug, size = 440, compact = false }: Naksha
                     className="animate-pulse-slow"
                   />
                 )}
+                {(() => {
+                  const iconSrc = NAKSHATRA_ICONS[nak.slug];
+                  const iconSize = size > 380 ? 12 : 9;
+                  return iconSrc ? (
+                    <image
+                      href={iconSrc}
+                      x={pos.x - iconSize / 2}
+                      y={pos.y - iconSize / 2 - (compact ? 0 : 4)}
+                      width={iconSize}
+                      height={iconSize}
+                      transform={`rotate(${rotation}, ${pos.x}, ${pos.y})`}
+                      style={{
+                        opacity: isActive || isHover ? 0.9 : 0.4,
+                        transition: "opacity 0.3s",
+                      }}
+                    />
+                  ) : null;
+                })()}
                 {!compact && (
                   <text
                     x={pos.x}
-                    y={pos.y}
+                    y={pos.y + 6}
                     textAnchor="middle"
                     dominantBaseline="central"
                     transform={`rotate(${rotation}, ${pos.x}, ${pos.y})`}
                     className="fill-current text-foreground"
-                    fontSize={size > 380 ? 7 : 5.5}
+                    fontSize={size > 380 ? 6 : 5}
                     style={{
                       opacity: isActive || isHover ? 1 : 0.5,
                       transition: "opacity 0.3s",

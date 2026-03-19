@@ -6,6 +6,7 @@ import { LazySolarSystem } from "@/components/jyotish/visuals/LazySolarSystem";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggeredList } from "@/components/animations/StaggeredList";
 import { grahas } from "@/data/grahas";
+import { GRAHA_ICONS } from "@/components/jyotish/icons/grahas";
 import { buildBreadcrumbSchema, buildCollectionSchema, buildPageMetadata, buildUrl } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -64,8 +65,15 @@ export default function GrahasHubPage() {
                                 href={`/jyotish/grahas/${graha.slug}`}
                                 className="block rounded-2xl border border-border/50 bg-card p-6 hover:border-orange-500/40 hover:scale-[1.02] transition-all duration-300"
                             >
-                                <p className="text-xs uppercase tracking-widest text-orange-400 font-semibold mb-2">{graha.weekday}</p>
-                                <h2 className="text-2xl font-display font-bold mb-3">{graha.name}</h2>
+                                <div className="flex items-center gap-3 mb-3">
+                                    {GRAHA_ICONS[graha.slug] && (
+                                        <img src={GRAHA_ICONS[graha.slug]} alt={graha.name} className="w-10 h-10 rounded-lg" />
+                                    )}
+                                    <div>
+                                        <p className="text-xs uppercase tracking-widest text-orange-400 font-semibold">{graha.weekday}</p>
+                                        <h2 className="text-2xl font-display font-bold">{graha.name}</h2>
+                                    </div>
+                                </div>
                                 <p className="text-sm text-muted-foreground leading-relaxed">{graha.description}</p>
                             </Link>
                         ))}

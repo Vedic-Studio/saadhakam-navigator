@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
 import { rashis } from "@/data/rashis";
+import { RASHI_ICONS } from "@/components/jyotish/icons/rashis";
 import { buildBreadcrumbSchema, buildCollectionSchema, buildPageMetadata, buildUrl } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -48,8 +49,15 @@ export default function RashisHubPage() {
                     <section className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
                         {rashis.map((rashi) => (
                             <Link key={rashi.slug} href={`/jyotish/rashis/${rashi.slug}`} className="block rounded-2xl border border-border/50 bg-card p-6 hover:border-orange-500/40 transition-colors">
-                                <p className="text-xs uppercase tracking-widest text-orange-400 font-semibold mb-2">{rashi.element} • {rashi.modality}</p>
-                                <h2 className="text-2xl font-display font-bold mb-3">{rashi.name}</h2>
+                                <div className="flex items-center gap-3 mb-3">
+                                    {RASHI_ICONS[rashi.slug] && (
+                                        <img src={RASHI_ICONS[rashi.slug]} alt={rashi.name} className="w-10 h-10 rounded-lg" />
+                                    )}
+                                    <div>
+                                        <p className="text-xs uppercase tracking-widest text-orange-400 font-semibold">{rashi.element} • {rashi.modality}</p>
+                                        <h2 className="text-2xl font-display font-bold">{rashi.name}</h2>
+                                    </div>
+                                </div>
                                 <p className="text-sm text-muted-foreground leading-relaxed">{rashi.description}</p>
                             </Link>
                         ))}
