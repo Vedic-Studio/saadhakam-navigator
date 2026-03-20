@@ -87,6 +87,14 @@ Large tasks (article writing, sahasranama batches, multi-file edits) consume con
 3. **Read-then-discard**: When reading large files for reference (e.g., a 3000-line article template), extract only the patterns/structure you need into your working notes — do not keep the full file in context for the entire session.
 4. **Progress checkpoints**: For multi-step tasks (5+ steps), after completing each major step, summarize what was done and what remains rather than carrying forward all intermediate output.
 5. **Agent module loading**: Load only the relevant agent module (`docs/agents/0X-*.md`) — never load all modules at once. The CLAUDE.md index tells you which one to load.
+6. **100k token session cap**: Do not let a single session exceed ~100k tokens. When you estimate the conversation is approaching 80-90k tokens (based on message count, tool calls, and content volume), proactively stop work and generate a **Handover Note** with:
+   - **Completed**: What was done this session (files changed, commits made, key decisions)
+   - **In Progress**: Current task state, any partial work
+   - **Remaining**: What still needs to be done, in priority order
+   - **Context**: Key architectural decisions, patterns discovered, or gotchas the next session needs
+   - **Resume Command**: A ready-to-paste prompt the user can give the next session to continue
+
+   Save the handover note to `docs/handover/YYYY-MM-DD-<task-slug>.md`. The user pastes it into the next session.
 
 ---
 

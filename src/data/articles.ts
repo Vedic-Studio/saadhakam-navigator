@@ -39,6 +39,75 @@ export interface ArticleMeta {
 
 export const articles: ArticleMeta[] = [
     {
+        slug: "how-to-start-japa",
+        route: "/how-to-start-japa",
+        title: "How to Start Japa: The Complete Practice Guide (Mala, Mantra, Timing)",
+        metaDescription:
+            "Japa meditation gives the restless mind a specific job: 108 repetitions of a sacred sound. BG 10.25 calls it the highest sacrifice. Here is how to begin correctly.",
+        pillar: "practical-practices",
+        publishDate: "2026-03-20",
+        readingTime: 9,
+        primaryKeyword: "how to start japa",
+        aeoAnswer:
+            "Japa is the repetition of a sacred name or mantra — audibly, in a whisper, or mentally. It works because it assigns the restless mind a specific task: 108 repetitions of a single sound. The mind, occupied with that task, stops generating its usual associative noise. Krishna identifies japa as the highest of all sacrifices in Bhagavad Gita 10.25. Patanjali adds in Yoga Sutra 1.28 that the repetition must be paired with contemplation of the mantra's meaning.",
+        footerCta: {
+            title: "Build the full daily practice",
+            description:
+                "Japa fits inside a broader morning routine that includes pranayama, seated meditation, and study. The combination is more stable than any single practice alone.",
+            href: "/how-to-start-meditating-daily",
+            label: "How to Start Meditating Daily",
+        },
+        relatedLinks: [
+            { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
+            { text: "How to Choose a Mantra", href: "/how-to-choose-a-mantra" },
+            { text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
+            { text: "Meditation for Anxiety and Overthinking", href: "/meditation-for-anxiety-overthinking" },
+            { text: "Best Meditation Style for Your Personality", href: "/best-meditation-style-for-your-personality" },
+        ],
+        faqs: [
+            {
+                question: "What is Japa meditation?",
+                answer:
+                    "Japa is the repetition of a sacred name, syllable, or mantra — either audibly, in a whisper, or mentally. The Bhagavad Gita (10.25) declares Japa to be the highest of all sacrifices. The practice works because it gives the restless mind a single, specific task that interrupts its ordinary pattern of associative noise.",
+            },
+            {
+                question: "How many times should I repeat a mantra?",
+                answer:
+                    "The traditional count is 108 repetitions, which is why a Japa Mala (rosary) has 108 beads. One full round of the Mala equals one cycle of 108 repetitions. Beginners can start with one round per sitting and add rounds as the mind steadies.",
+            },
+            {
+                question: "What is the best mantra for beginners?",
+                answer:
+                    "Om Namah Shivaya, Om Namo Narayanaya, and So'ham (I am That) are widely recommended for beginners. The best mantra is one that resonates with your temperament. Bija mantras (Aim, Hrim, Klim) from the Shakta tradition require diksha (formal initiation) before use.",
+            },
+            {
+                question: "When is the best time to practice Japa?",
+                answer:
+                    "Brahma Muhurta — the 48-minute period approximately 90 minutes before sunrise — is considered the most potent time for Japa, per Ashtanga Hridayam (Sutrasthana 2.1). At minimum, a consistent time each day builds the practice's momentum through habit reinforcement.",
+            },
+            {
+                question: "What is the difference between Vaikhari, Upanshu, and Manasika Japa?",
+                answer:
+                    "Vaikhari is audible japa — sound fully voiced. Upamshu is whispered — lips move, breath carries the syllables just below audible speech. Manasika is entirely mental — no movement, no sound. Vivekananda in Raja Yoga classifies these in ascending order: the verbal is the lowest, the mental is the highest.",
+            },
+            {
+                question: "Can I do Japa without a teacher?",
+                answer:
+                    "Yes. Universal mantras such as Om and So'ham do not require initiation. Sivananda of the Divine Life Society recommended them openly for householders in Kaliyuga. Bija mantras specific to a deity's siddha lineage benefit from a qualified teacher's transmission.",
+            },
+            {
+                question: "What is a Japa Mala?",
+                answer:
+                    "A Japa Mala is a rosary of 108 beads plus one Meru (summit) bead. Hold it in the right hand, turning each bead with the thumb and middle finger. The index finger must not touch the string (Hari Bhakti Vilasa 17.114). At the Meru bead, reverse direction instead of crossing over it.",
+            },
+            {
+                question: "How long does it take to see results from Japa?",
+                answer:
+                    "Traditional texts use a 40-day consistent practice as a baseline threshold for noticeable shift in mental texture. The Purascharana formula in the Tantric tradition is more demanding: syllables multiplied by 100,000 repetitions for mantra siddhi. For practical modern use, Sivananda recommends 200 malas (21,600 repetitions) daily for serious sadhana.",
+            },
+        ],
+    },
+    {
         slug: "bhagavad-gita-complete-guide",
         route: "/bhagavad-gita-complete-guide",
         title: "Bhagavad Gita Complete Guide: Chapters, Teachings, and How to Read It",
@@ -2292,71 +2361,6 @@ export const articles: ArticleMeta[] = [
             { text: "What is Sanatan Dharma?", href: "/what-is-sanatan-dharma" },
         ],
         faqs: [],
-    },
-    {
-        slug: "how-to-start-japa",
-        route: "/how-to-start-japa",
-        title: "How to Start Japa Meditation: A Complete Step-by-Step Guide",
-        metaDescription:
-            "Japa is the practice of sacred mantra repetition — one of the most accessible and powerful forms of meditation in Sanatan Dharma. Learn how to start, which mantra to choose, and how to build a daily practice.",
-        pillar: "practical-practices",
-        publishDate: "2026-03-04",
-        readingTime: 8,
-        primaryKeyword: "how to start japa meditation",
-        relatedLinks: [
-            { text: "Japa vs Dhyana: Which is Right for You?", href: "/compare/japa-vs-dhyana" },
-            { text: "How to Choose a Mantra", href: "/how-to-choose-a-mantra" },
-            { text: "What is Dharana?", href: "/learn/sanskrit/dharana" },
-            { text: "Daily Spiritual Routine", href: "/daily-spiritual-routine-beginners" },
-        ],
-        faqs: [
-            {
-                question: "What is Japa meditation?",
-                answer:
-                    "Japa is the repetition of a sacred name, syllable, or mantra — either audibly, in a whisper, or mentally. The Bhagavad Gita (10.25) declares Japa to be the highest of all sacrifices.",
-            },
-            {
-                question: "How many times should I repeat a mantra?",
-                answer:
-                    "The traditional count is 108 repetitions, which is why a Japa Mala (rosary) has 108 beads. One full round of the Mala equals one cycle of 108 repetitions. Beginners can start with one round per sitting.",
-            },
-            {
-                question: "What is the best mantra for beginners?",
-                answer:
-                    "Om Namah Shivaya, Om Namo Narayanaya, and So'ham (I am That) are widely recommended for beginners. The best mantra is one that resonates with your temperament. Ideally, receive one from a qualified teacher.",
-            },
-            {
-                question: "When is the best time to practice Japa?",
-                answer:
-                    "Brahma Muhurta — the period 90 minutes before sunrise — is considered the most potent time for Japa. At minimum, a consistent time each day builds the practice's power through habit.",
-            },
-            {
-                question: "What is the difference between Vaikhari, Upanshu, and Manasika Japa?",
-                answer:
-                    "Vaikhari is audible chanting, Upanshu is whispered Japa (lips moving, barely audible), and Manasika is purely mental repetition. The tradition holds that mental Japa is the most powerful, but audible Japa is recommended for beginners to maintain focus.",
-            },
-            {
-                question: "Can I do Japa without a teacher?",
-                answer:
-                    "Yes, you can begin with a universal mantra like Om or So'ham without initiation. However, receiving a mantra from a qualified teacher (Diksha) is considered more potent in many traditions.",
-            },
-            {
-                question: "What is a Japa Mala?",
-                answer:
-                    "A Japa Mala is a string of 108 beads used to count mantra repetitions. It is held in the right hand, with the thumb moving the beads. When you reach the Meru bead (the central anchor bead), you reverse direction for the next round.",
-            },
-            {
-                question: "How long does it take to see results from Japa?",
-                answer:
-                    "Noticeable effects — greater mental stillness, sense of inner peace — often appear within 40 days of consistent daily practice. The tradition prescribes a 40-day Sadhana as the minimum committed period for a new practice.",
-            },
-        ],
-        featuredImage: {
-            src: "/assets/articles/how-to-start-japa/featured.webp",
-            alt: "how to start japa meditation — sacred geometry illustration in ochre and saffron tones",
-            width: 1200,
-            height: 630,
-        },
     },
     {
         slug: "bhagavad-gita-chapter-1",
