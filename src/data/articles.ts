@@ -9,12 +9,10 @@ export interface ArticleFaq {
     answer: string;
 }
 
-export interface ArticleImage {
-    src: string;   // e.g. "/assets/articles/what-is-vedanta/featured.webp"
-    alt: string;   // SEO-optimised alt text, max 125 chars
-    width: 1200;
-    height: 630;
-}
+import type { ContentImage } from "@/types/images";
+
+/** @deprecated Use ContentImage directly. Kept for backward compatibility. */
+export type ArticleImage = ContentImage;
 
 export interface ArticleMeta {
     slug: string;
@@ -41,9 +39,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "how-to-start-japa",
         route: "/how-to-start-japa",
-        title: "How to Start Japa: The Complete Practice Guide (Mala, Mantra, Timing)",
+        title: "How to Start Japa Meditation: Step-by-Step Guide [2026]",
         metaDescription:
-            "Japa meditation gives the restless mind a specific job: 108 repetitions of a sacred sound. BG 10.25 calls it the highest sacrifice. Here is how to begin correctly.",
+            "Krishna called japa the highest sacrifice (BG 10.25). This guide covers choosing a mantra, using a mala, the 3 levels of practice, and the one mistake most beginners make.",
         pillar: "practical-practices",
         publishDate: "2026-03-20",
         readingTime: 9,
@@ -61,8 +59,9 @@ export const articles: ArticleMeta[] = [
             { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
             { text: "How to Choose a Mantra", href: "/how-to-choose-a-mantra" },
             { text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
-            { text: "Meditation for Anxiety and Overthinking", href: "/meditation-for-anxiety-overthinking" },
-            { text: "Best Meditation Style for Your Personality", href: "/best-meditation-style-for-your-personality" },
+            { text: "10 Powerful Sanskrit Mantras", href: "/10-powerful-sanskrit-mantras" },
+            { text: "Japa vs Meditation: Key Differences", href: "/compare/japa-vs-meditation" },
+            { text: "Mantras Hub", href: "/mantras" },
         ],
         faqs: [
             {
@@ -166,6 +165,66 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+    },
+    {
+        slug: "spiritual-practice-sequence",
+        route: "/spiritual-practice-sequence",
+        title: "Spiritual Practice Sequence: The Graded Curriculum from the Gita, Yoga Sutras & Shankara",
+        metaDescription:
+            "Indian spiritual practice is a graded curriculum, not a buffet. The Gita, Yoga Sutras, and Shankara's sadhana chatushtaya prescribe practices in order of readiness. Learn the sequence.",
+        pillar: "practical-practices",
+        publishDate: "2026-03-21",
+        readingTime: 11,
+        primaryKeyword: "spiritual practice sequence",
+        aeoAnswer:
+            "Indian spiritual practice is a graded curriculum, not a menu of options. The Bhagavad Gita, Patanjali's Yoga Sutras, and Shankaracharya's Vivekachudamani each prescribe practices in a specific sequence tied to the practitioner's inner readiness — their guna constitution, stage of purification, and degree of dispassion. Karma Yoga purifies the mind; Bhakti Yoga steadies it; Jnana Yoga delivers liberating knowledge. Choosing by preference instead of readiness is the primary reason sincere seekers stall.",
+        footerCta: {
+            title: "Start With the Daily Routine",
+            description:
+                "The curriculum is clear. The question is where you enter it. Build the first stage correctly and the rest follows.",
+            href: "/daily-spiritual-routine-beginners",
+            label: "Daily Spiritual Routine for Beginners",
+        },
+        relatedLinks: [
+            { text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
+            { text: "How to Start Japa", href: "/how-to-start-japa" },
+            { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
+            { text: "Choose Between Bhakti, Jnana, Karma, Raja Yoga", href: "/choose-between-bhakti-jnana-karma-raja-yoga" },
+            { text: "What is Kriya Yoga", href: "/what-is-kriya-yoga" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+        ],
+        faqs: [
+            {
+                question: "What is sadhana chatushtaya?",
+                answer:
+                    "Sadhana chatushtaya is Shankaracharya's four-fold qualification for Vedanta study: viveka (discrimination between the eternal and the temporary), vairagya (dispassion toward sense objects), shamadi-shatka-sampatti (six inner disciplines), and mumukshutva (intense longing for liberation). Vivekachudamani verses 18-19 state these are necessary conditions, not optional preparations. Without them, the teaching does not produce the fruit.",
+            },
+            {
+                question: "Can I practice Karma Yoga and Jnana Yoga at the same time?",
+                answer:
+                    "Shankara's Bhashya on Bhagavad Gita 3.3 is explicit: 'From no point of view whatsoever can there be a combination of Knowledge and action.' The two paths address different stages of inner readiness. Karma Yoga purifies the mind so that Jnana Yoga becomes possible.",
+            },
+            {
+                question: "What are the eight limbs of yoga in order?",
+                answer:
+                    "Patanjali's Yoga Sutra 2.29 lists eight limbs in sequence: yama, niyama, asana, pranayama, pratyahara, dharana, dhyana, and samadhi. Yoga Sutra 2.28 specifies that the progressive practice of these limbs destroys impurity and leads to discriminative wisdom. The sequence is deliberate — outer disciplines precede inner ones.",
+            },
+            {
+                question: "What does adhikari-bheda mean?",
+                answer:
+                    "Adhikari-bheda is the classical doctrine that different teachings are appropriate for different levels of readiness. The Bhagavad Gita 17.2 states that a person's innate faith (shraddha) reflects their guna constitution — sattvic, rajasic, or tamasic — and that practices must align with that constitution.",
+            },
+            {
+                question: "Is Vivekananda's four-yoga framework traditional?",
+                answer:
+                    "No. Vivekananda's equal-footing synthesis of Karma, Bhakti, Raja, and Jnana Yoga as four parallel paths was formulated in the 1890s and published in Raja Yoga (1896). Classical texts assign the paths a sequential rather than parallel relationship. Madhusudana Sarasvati's division of the Gita presents them as stages.",
+            },
+            {
+                question: "How do I know which practice to start with?",
+                answer:
+                    "Chinmayananda's BMI chart offers one diagnostic: if your problem is mala (mental impurity), begin with Karma Yoga. If it is vikshepa (fickleness), begin with Bhakti Yoga. If it is avarana (the veil of ignorance despite mental steadiness), begin with Jnana Yoga.",
+            },
+        ],
     },
     {
         slug: "spiritual-paths-explained",
@@ -2475,9 +2534,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "10-powerful-sanskrit-mantras",
         route: "/10-powerful-sanskrit-mantras",
-        title: "10 Powerful Sanskrit Mantras: Meaning, Use, and Traditional Boundaries",
+        title: "10 Powerful Sanskrit Mantras: Meaning, Practice & When NOT to Chant",
         metaDescription:
-            "A source-grounded guide to 10 powerful Sanskrit mantras, including Gayatri, Mahamrityunjaya, Om Namah Shivaya, Hanuman Chalisa, Mahavakyas, Devi mantras, and Narayana mantras, with context on adhikara, diksha, pronunciation, deity, and occasion.",
+            "Not every mantra is for everyone. This guide covers 10 Sanskrit mantras with meaning, pronunciation, deity context, and which ones require initiation before chanting.",
         pillar: "sacred-texts",
         publishDate: "2026-03-15",
         readingTime: 16,
@@ -2486,7 +2545,9 @@ export const articles: ArticleMeta[] = [
             { text: "How to Start Japa", href: "/how-to-start-japa" },
             { text: "Mantra Hub", href: "/mantras" },
             { text: "How to Choose a Mantra", href: "/how-to-choose-a-mantra" },
-            { text: "Learn Sanskrit", href: "/learn/sanskrit" },
+            { text: "Mantra vs Affirmation", href: "/compare/mantra-vs-affirmation" },
+            { text: "Mantra vs Prayer", href: "/compare/mantra-vs-prayer" },
+            { text: "Daily Spiritual Routine", href: "/daily-spiritual-routine-beginners" },
         ],
         faqs: [
             {
@@ -2566,9 +2627,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "daily-spiritual-routine-beginners",
         route: "/daily-spiritual-routine-beginners",
-        title: "Daily Spiritual Routine for Beginners: The Traditional 5-Step Sequence",
+        title: "Daily Spiritual Routine for Beginners [5 Steps From Ancient Texts]",
         metaDescription:
-            "Rise at Brahma Muhurta, regulate breath, do japa, study scripture, then meditate. This 5-step sequence has a logic: each step prepares the mind for the next. Here is how it works.",
+            "Most morning routines skip the order. This 5-step sequence from Patanjali, Sivananda, and Chinmaya Mission puts each practice in the right position so the mind actually cooperates.",
         pillar: "practical-practices",
         publishDate: "2026-03-21",
         readingTime: 10,
@@ -2584,11 +2645,11 @@ export const articles: ArticleMeta[] = [
         },
         relatedLinks: [
             { text: "How to Start Japa Meditation", href: "/how-to-start-japa" },
-            { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
+            { text: "10 Powerful Sanskrit Mantras", href: "/10-powerful-sanskrit-mantras" },
+            { text: "Pranayama vs Breathwork", href: "/compare/pranayama-vs-breathwork" },
             { text: "Japa Practice", href: "/practices/japa" },
             { text: "Pranayama Practice", href: "/practices/pranayama" },
             { text: "Dhyana Practice", href: "/practices/dhyana" },
-            { text: "Vedas, Upanishads, Bhagavad Gita Guide", href: "/vedas-upanishads-bhagavad-gita-guide" },
         ],
         faqs: [
             {
@@ -2628,6 +2689,66 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+    },
+    {
+        slug: "practical-spiritual-practices",
+        route: "/practical-spiritual-practices",
+        title: "Practical Spiritual Practices: The Graded Curriculum from the Gita, Yoga Sutras & Shankara",
+        metaDescription:
+            "Indian spiritual practice is a graded curriculum. The Gita, Yoga Sutras, and Shankara's sadhana chatushtaya prescribe practices in order of readiness. Learn the sequence.",
+        pillar: "practical-practices",
+        publishDate: "2026-03-21",
+        readingTime: 11,
+        primaryKeyword: "practical spiritual practices",
+        aeoAnswer:
+            "Indian spiritual practice is a graded curriculum. The Bhagavad Gita, Patanjali's Yoga Sutras, and Shankaracharya's Vivekachudamani each prescribe practices in a specific sequence tied to the practitioner's inner readiness (guna constitution, stage of purification, degree of dispassion). The practice must match the practitioner's current capacity, not their preference. Three texts written centuries apart converge on this principle.",
+        footerCta: {
+            title: "Start With the Daily Routine",
+            description:
+                "The curriculum is clear. The question is where you enter it. Build the first stage correctly and the rest follows.",
+            href: "/daily-spiritual-routine-beginners",
+            label: "Daily Spiritual Routine for Beginners",
+        },
+        relatedLinks: [
+            { text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
+            { text: "How to Start Japa", href: "/how-to-start-japa" },
+            { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
+            { text: "What is Kriya Yoga", href: "/what-is-kriya-yoga" },
+            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+            { text: "Best Meditation Style for Your Personality", href: "/best-meditation-style-for-your-personality" },
+        ],
+        faqs: [
+            {
+                question: "What is sadhana chatushtaya?",
+                answer:
+                    "Sadhana chatushtaya is Shankaracharya's four-fold qualification for Vedanta study: viveka (discrimination between the eternal and the temporary), vairagya (dispassion toward sense objects), shamadi-shatka-sampatti (six inner disciplines), and mumukshutva (intense longing for liberation). Vivekachudamani verses 18-19 state these are necessary conditions, not optional preparations.",
+            },
+            {
+                question: "Can I practice Karma Yoga and Jnana Yoga at the same time?",
+                answer:
+                    "Shankara's Bhashya on Bhagavad Gita 3.3 is explicit: 'From no point of view whatsoever can there be a combination of Knowledge and action.' The two paths address different stages of inner readiness. Karma Yoga purifies the mind so that Jnana Yoga becomes possible.",
+            },
+            {
+                question: "What are the eight limbs of yoga in order?",
+                answer:
+                    "Patanjali's Yoga Sutra 2.29 lists eight limbs in sequence: yama, niyama, asana, pranayama, pratyahara, dharana, dhyana, and samadhi. Yoga Sutra 2.28 specifies that practicing these limbs progressively destroys impurity and leads to discriminative wisdom. The sequence is deliberate.",
+            },
+            {
+                question: "What does adhikari-bheda mean?",
+                answer:
+                    "Adhikari-bheda is the classical doctrine that different teachings are appropriate for different levels of readiness. The Bhagavad Gita encodes this in 17.2, where Krishna explains that a person's innate faith (shraddha) is shaped by their guna constitution.",
+            },
+            {
+                question: "Is Vivekananda's four-yoga framework traditional?",
+                answer:
+                    "Vivekananda's equal-footing synthesis of Karma, Bhakti, Raja, and Jnana Yoga as four parallel paths was formulated in the 1890s and published in Raja Yoga (1896). Classical texts assign the paths a sequential rather than parallel relationship.",
+            },
+            {
+                question: "How do I know which practice to start with?",
+                answer:
+                    "Chinmayananda's BMI chart offers one diagnostic: if your problem is mala (mental impurity), begin with Karma Yoga. If it is vikshepa (fickleness), begin with Bhakti Yoga. If it is avarana (the veil of ignorance despite mental steadiness), begin with Jnana Yoga.",
+            },
+        ],
     },
     {
         slug: "how-to-choose-a-mantra",
