@@ -208,6 +208,24 @@ NOT: Yoga Journal, Chopra Center, Sounds True, or any wellness publication regis
 
 ---
 
+### Quality Score (Publish Gate)
+
+Before marking any article as done, run the 5-dimension quality score from `~/.claude/skills/sadhaka-voice.md`. Report the breakdown:
+
+| Dimension | What it measures |
+|-----------|-----------------|
+| Directness (1-10) | No hedging, every sentence earns its place |
+| Rhythm (1-10) | Sentence length variation, deliberate pacing |
+| Trust (1-10) | Assumes intelligent reader, no hand-holding |
+| Authenticity (1-10) | Named texts, commentators, verse numbers throughout |
+| Density (1-10) | Zero filler, every sentence advances understanding |
+
+**Threshold: 35/50 minimum. Articles scoring below 35 must be revised before completion.**
+
+For detailed banned phrases, structures, and before/after examples, see `~/.claude/skills/stop-slop/references/`.
+
+---
+
 ## Sprint Backlog
 
 ### Sprint 1 (Highest Priority — SEO foundation)
@@ -262,6 +280,7 @@ NOT: Yoga Journal, Chopra Center, Sounds True, or any wellness publication regis
 ## Task Chunks for Agent Execution
 
 Each chunk is a single agent session. Load this file + the relevant article context only.
+**Context rule**: Complete the chunk, commit the result, then exit. Do not carry context from one chunk into the next — start a fresh session.
 
 **Chunk A**: Write Sprint 3 articles 1–3 (BG guide, Upanishads hub, Yoga Sutras hub) — three hubs, ~2500 words each
 **Chunk B**: Write Sprint 3 articles 4–7 (tradition spokes) — four spokes, ~1500 words each

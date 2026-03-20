@@ -51,7 +51,9 @@ content/stotras/
 
 ## Work Chunking Strategy
 
-The 1000 names of each sahasranama must be processed in chunks to stay within context limits. Recommended chunk sizes:
+The 1000 names of each sahasranama must be processed in chunks to stay within context limits. **Context rule**: Each chunk (e.g., VSN-A = names 1–100) is one agent session. Write the JSON, verify, commit, then exit. The next chunk starts with a fresh context — do not carry analysis from prior names forward.
+
+Recommended chunk sizes:
 
 ### Vishnu Sahasranama Chunks
 | Chunk | Names | Batch |

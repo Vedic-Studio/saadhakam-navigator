@@ -35,3 +35,7 @@ dist-ssr
 
 # Local backend secrets
 backend/.env
+
+# Backlink status reports (generated, ephemeral)
+scripts/backlinks/status-*.json
+scripts/backlinks/CHECKLIST.md

@@ -9,7 +9,7 @@ import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 export const metadata: Metadata = {
     title: "The Ultimate Guide to the Sacred Texts of India: Vedas, Upanishads & Bhagavad Gita",
     description:
-        "Understand the Vedas, Upanishads, and Bhagavad Gita — what they are, how they differ, and where to start. The complete beginner's guide to India's sacred scriptures.",
+        "Understand the Vedas, Upanishads, and Bhagavad Gita: what they are, how they differ, and where to start. The complete beginner's guide to India's sacred scriptures.",
     alternates: {
         canonical: "https://www.opensadhaka.com/vedas-upanishads-bhagavad-gita-guide",
     },
@@ -26,7 +26,7 @@ const faqs = [
     {
         question: "What is the difference between Shruti and Smriti?",
         answer:
-            "Shruti (श्रुति) means 'that which was heard' — texts regarded as directly revealed eternal knowledge, not authored by any human. The Vedas (including the Upanishads) are Shruti. Smriti (स्मृति) means 'that which was remembered' — texts composed by sages based on tradition, commentary, and experience. The Bhagavad Gita, Ramayana, Mahabharata, and Puranas are Smriti. Shruti is the highest authority; Smriti is authoritative to the extent it aligns with Shruti.",
+            "Shruti (श्रुति) means 'that which was heard,' referring to texts regarded as directly revealed eternal knowledge, not authored by any human. The Vedas (including the Upanishads) are Shruti. Smriti (स्मृति) means 'that which was remembered,' comprising texts composed by sages based on tradition, commentary, and experience. The Bhagavad Gita, Ramayana, Mahabharata, and Puranas are Smriti. Shruti is the highest authority; Smriti is authoritative to the extent it aligns with Shruti.",
     },
     {
         question: "What is the best sacred text to start with as a beginner?",
@@ -36,7 +36,7 @@ const faqs = [
     {
         question: "Are the Vedas and the Upanishads the same?",
         answer:
-            "No, but they are related. The Vedas are a vast corpus divided into four collections (Rigveda, Samaveda, Yajurveda, Atharvaveda). Each Veda has four sections: the Samhitas (hymns and rituals), Brahmanas (ritual instructions), Aranyakas (forest texts), and Upanishads (philosophical conclusions). The Upanishads are the last and most philosophically important section of the Vedas — which is why Vedanta ('the end of the Veda') is based on them.",
+            "No, but they are related. The Vedas are a vast corpus divided into four collections (Rigveda, Samaveda, Yajurveda, Atharvaveda). Each Veda has four sections: the Samhitas (hymns and rituals), Brahmanas (ritual instructions), Aranyakas (forest texts), and Upanishads (philosophical conclusions). The Upanishads are the last and most philosophically important section of the Vedas, which is why Vedanta ('the end of the Veda') is based on them.",
     },
     {
         question: "Do I need Sanskrit to benefit from these texts?",
@@ -48,7 +48,7 @@ const faqs = [
 const vedas = [
     {
         name: "Rigveda",
-        description: "The oldest, containing 1028 hymns to the Vedic deities. Primarily ritual and devotional — praises to Agni (fire), Indra (thunder), Varuna (cosmic order).",
+        description: "The oldest, containing 1028 hymns to the Vedic deities. Primarily ritual and devotional, with praises to Agni (fire), Indra (thunder), and Varuna (cosmic order). Its tenth mandala includes the Nasadiya Sukta (RV 10.129), one of the earliest recorded inquiries into cosmological origins.",
         focus: "Hymns & Devotion",
     },
     {
@@ -63,17 +63,17 @@ const vedas = [
     },
     {
         name: "Atharvaveda",
-        description: "Hymns dealing with everyday life — healing, prosperity, protection, and cosmological speculation. Closest to the folk tradition.",
+        description: "Hymns dealing with everyday life: healing, prosperity, protection, and cosmological speculation. Closest to the folk tradition.",
         focus: "Daily Life & Healing",
     },
 ];
 
 const upanishads = [
-    { name: "Brihadaranyaka", tradition: "Yajurveda", focus: "The nature of Brahman and Atman; dialogue between Yajnavalkya and Maitreyi — 'I am Brahman'" },
+    { name: "Brihadaranyaka", tradition: "Yajurveda", focus: "The nature of Brahman and Atman; dialogue between Yajnavalkya and Maitreyi on the teaching 'I am Brahman'" },
     { name: "Chandogya", tradition: "Samaveda", focus: "The great saying 'Tat Tvam Asi' (That Thou Art); the teaching of inner space" },
-    { name: "Mandukya", tradition: "Atharvaveda", focus: "The shortest and densest: the three states of consciousness and the 'Fourth' (Turiya)" },
-    { name: "Katha", tradition: "Yajurveda", focus: "Death (Yama) teaches Nachiketa the secret of immortality — the unchanging Self" },
-    { name: "Isha", tradition: "Yajurveda", focus: "How to see Brahman in all things and act in the world without attachment" },
+    { name: "Mandukya", tradition: "Atharvaveda", focus: "The shortest and densest: the three states of consciousness and the 'Fourth' (Turiya), defined in verse 7 as pure awareness beyond all states" },
+    { name: "Katha", tradition: "Yajurveda", focus: "Death (Yama) teaches Nachiketa the secret of immortality and the unchanging Self" },
+    { name: "Isha", tradition: "Yajurveda", focus: "How to see Brahman in all things and act in the world without attachment. Verse 1 states: 'All this, whatever moves in this moving world, is pervaded by the Lord'" },
     { name: "Mundaka", tradition: "Atharvaveda", focus: "The two kinds of knowledge: lower (worldly) and higher (knowledge of Brahman)" },
 ];
 
@@ -100,7 +100,7 @@ export default function VedasUpanishadsGuide() {
                             <strong>Direct answer:</strong> India's sacred texts are grouped as Shruti (revealed: Vedas and Upanishads) and Smriti (remembered: Gita, epics, Puranas). The Vedas establish ritual and cosmology, the Upanishads state metaphysics, and the Bhagavad Gita applies those teachings to action, duty, and liberation.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
-                            You don't need to read all of them. You need to understand what each one is for — and then pick the right starting point for where you actually are.
+                            Pick the right starting point for where you actually are. Each text serves a different purpose.
                         </p>
                     </header>
 
@@ -108,12 +108,12 @@ export default function VedasUpanishadsGuide() {
                         <h2 className="font-display text-3xl font-bold mb-6">The Map: Shruti vs Smriti</h2>
                         <div className="grid md:grid-cols-2 gap-6">
                             <div>
-                                <h3 className="font-bold text-orange-400 text-lg mb-3">Shruti — "That Which Was Heard"</h3>
-                                <p className="text-muted-foreground leading-relaxed mb-3">Eternal knowledge revealed to the ancient rishis in deep meditation — not composed, only perceived. The Vedas (including the Upanishads within them) are Shruti. They are the highest authority in the tradition.</p>
+                                <h3 className="font-bold text-orange-400 text-lg mb-3">Shruti: "That Which Was Heard"</h3>
+                                <p className="text-muted-foreground leading-relaxed mb-3">Eternal knowledge revealed to the ancient rishis in deep meditation, not composed but only perceived. The Vedas (including the Upanishads within them) are Shruti. They are the highest authority in the tradition.</p>
                                 <p className="text-sm text-muted-foreground italic">Includes: Rigveda, Samaveda, Yajurveda, Atharvaveda (and their Upanishads)</p>
                             </div>
                             <div>
-                                <h3 className="font-bold text-orange-400 text-lg mb-3">Smriti — "That Which Was Remembered"</h3>
+                                <h3 className="font-bold text-orange-400 text-lg mb-3">Smriti: "That Which Was Remembered"</h3>
                                 <p className="text-muted-foreground leading-relaxed mb-3">Texts authored by realized sages to transmit and apply the wisdom of Shruti for specific eras and contexts. Authoritative where they align with Shruti. Includes epics, Puranas, and the Gita.</p>
                                 <p className="text-sm text-muted-foreground italic">Includes: Bhagavad Gita, Ramayana, Mahabharata, Puranas, Dharmashastra</p>
                             </div>
@@ -127,7 +127,7 @@ export default function VedasUpanishadsGuide() {
                                 The Four Vedas
                             </h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                                The Vedas are the oldest layer of India's sacred literature, transmitted orally for centuries with strict recitation methods. Each Veda includes cosmology, ritual procedure, and early philosophical inquiry:
+                                The Vedas are the oldest layer of India's sacred literature, transmitted orally for centuries with strict recitation methods. Tradition attributes their organization into four collections to the sage Veda Vyasa (Krishna Dvaipayana), who compiled the oral corpus to preserve it for future generations. Each Veda includes cosmology, ritual procedure, and early philosophical inquiry:
                             </p>
                             <div className="grid sm:grid-cols-2 gap-6 mb-8">
                                 {vedas.map((v) => (
@@ -141,17 +141,17 @@ export default function VedasUpanishadsGuide() {
                                 ))}
                             </div>
                             <p className="text-xl text-muted-foreground leading-relaxed">
-                                Each Veda contains four sections: Samhitas (hymns), Brahmanas (ritual manuals), Aranyakas (forest treatises), and Upanishads (philosophical summaries). For most modern seekers, it is the Upanishads that are most directly relevant — the Samhitas and Brahmanas are highly specialized ritual texts requiring significant contextual knowledge.
+                                Each Veda contains four sections: Samhitas (hymns), Brahmanas (ritual manuals), Aranyakas (forest treatises), and Upanishads (philosophical summaries). For most modern seekers, the Upanishads are most directly relevant. The Samhitas and Brahmanas are highly specialized ritual texts requiring significant contextual knowledge.
                             </p>
                         </section>
 
                         <section className="bg-muted/30 rounded-3xl p-10 border border-border/50">
                             <h2 className="text-3xl font-display font-bold mb-8">The Upanishads: Where the Philosophy Lives</h2>
                             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                                There are over 200 Upanishads, but only 10–13 are considered "principal" (<em>Mukhya Upanishads</em>) — those commented on by Adi Shankaracharya. These are the philosophical crown of the Vedic tradition and the source of all Vedantic schools.
+                                There are over 200 Upanishads, but only 10–13 are considered "principal" (<em>Mukhya Upanishads</em>). These are the texts on which Adi Shankaracharya wrote his authoritative commentaries (bhashyas). They are the philosophical crown of the Vedic tradition and the source of all Vedantic schools. The grammarian and commentator Sayana, writing in the 14th century, produced influential bhashyas on the Vedic Samhitas that scholars still consult today.
                             </p>
                             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                                Their core insight appears in many forms across many texts, but reduces to a single claim: <strong className="text-foreground">the individual self (Atman) and the universal ground of being (Brahman) are identical.</strong> All suffering arises from forgetting this. All liberation arises from remembering it.
+                                Their core insight appears in many forms across many texts, but reduces to a single claim: <strong className="text-foreground">the individual self (Atman) and the universal ground of being (Brahman) are identical.</strong> All suffering arises from forgetting this. All liberation arises from remembering it. The Isha Upanishad opens with a direct statement of this vision: "All this, whatever moves in this moving world, is pervaded by the Lord" (Isha Up. 1).
                             </p>
                             <div className="overflow-x-auto rounded-2xl border border-border/30">
                                 <table className="w-full text-sm">
@@ -183,7 +183,7 @@ export default function VedasUpanishadsGuide() {
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">The Bhagavad Gita: Philosophy on the Battlefield</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                The Bhagavad Gita ("Song of God") occupies a unique position: it is technically Smriti — part of the epic Mahabharata — but is treated as Shruti in practice due to its extraordinary philosophical depth and the direct authorship of Krishna (regarded as Brahman incarnate). It is 700 verses across 18 chapters, occurring at the beginning of the Kurukshetra war.
+                                The Bhagavad Gita ("Song of God") occupies a unique position: it is technically Smriti, part of the epic Mahabharata, but is treated as Shruti in practice due to its extraordinary philosophical depth and the direct authorship of Krishna (regarded as Brahman incarnate). It is 700 verses across 18 chapters, occurring at the beginning of the Kurukshetra war.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                                 <strong className="text-foreground">The setup:</strong> The warrior Arjuna is about to fight a civil war against his own family and teachers. He collapses in grief and refuses to fight. Krishna, his charioteer, spends the entire Gita answering Arjuna's questions about duty, identity, suffering, action, and the nature of the self.
@@ -197,19 +197,19 @@ export default function VedasUpanishadsGuide() {
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h4 className="font-bold text-orange-400 mb-2">1. Karma Yoga: Action Without Attachment</h4>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        "You have a right to perform your prescribed duty, but you are not entitled to the fruits of action." (2.47) Act fully, with total commitment — but don't let your identity hinge on the result. This dissolves anxiety and creates the mental clarity for excellent action.
+                                        "You have a right to perform your prescribed duty, but you are not entitled to the fruits of action." (2.47) Act fully, with total commitment, without letting your identity hinge on the result. This dissolves anxiety and creates the mental clarity for excellent action. Shankaracharya's bhashya on 2.47 emphasizes that this verse establishes the Gita's central ethical principle: action performed as offering, not as investment.
                                     </p>
                                 </div>
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h4 className="font-bold text-orange-400 mb-2">2. The Eternal Self</h4>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        "The soul is never born and never dies. It is not slain when the body is slain." (2.20) Fear of death and attachment to the body arise from a case of mistaken identity. The real you — the witness behind all experience — is eternal and untouched by the changes of the body and mind.
+                                        "The soul is never born and never dies. It is not slain when the body is slain." (2.20) Fear of death and attachment to the body arise from a case of mistaken identity. The real you, the witness behind all experience, is eternal and untouched by the changes of the body and mind.
                                     </p>
                                 </div>
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h4 className="font-bold text-orange-400 mb-2">3. Surrender as Liberation</h4>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        "Abandon all varieties of dharmas and simply surrender unto Me. I shall deliver you from all sinful reactions; do not fear." (18.66) The ultimate teaching: not self-effort alone, but the complete offering of the self and its burdens to the divine source. For Vaishnavas, this is the culmination of the entire Gita.
+                                        "Abandon all varieties of dharmas and simply surrender unto Me. I shall deliver you from all sinful reactions; do not fear." (18.66) The ultimate teaching: not self-effort alone, but the complete offering of the self and its burdens to the divine source. Ramanujacharya, in his Vishishtadvaita reading of this verse, interprets it as the culmination of prapatti (surrender), the highest path for souls who recognize their dependence on Ishvara. For Vaishnavas broadly, this is the culmination of the entire Gita.
                                     </p>
                                 </div>
                             </div>
@@ -223,12 +223,12 @@ export default function VedasUpanishadsGuide() {
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">How to Apply These Texts in Daily Life</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                The danger with sacred texts is that they become intellectual decoration — something you cite at dinner parties but never actually use. The tradition is clear: the texts are not meant to fill your head with concepts but to change your actual behavior and perception.
+                                The danger with sacred texts is that they become intellectual decoration, something you cite at dinner parties but never actually use. The tradition is clear: the texts are meant to change your actual behavior and perception, not fill your head with concepts.
                             </p>
                             <div className="space-y-4">
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h3 className="font-bold text-orange-400 mb-2">From the Bhagavad Gita</h3>
-                                    <p className="text-muted-foreground">Each morning, ask: what is my duty today — not what will make me comfortable, but what the situation actually requires? Do that thing fully, without obsessing over the outcome. That's Karma Yoga in practice.</p>
+                                    <p className="text-muted-foreground">Each morning, ask: what is my duty today, not what will make me comfortable, but what the situation actually requires? Do that thing fully, without obsessing over the outcome. That's Karma Yoga in practice.</p>
                                 </div>
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h3 className="font-bold text-orange-400 mb-2">From the Upanishads</h3>
@@ -254,10 +254,38 @@ export default function VedasUpanishadsGuide() {
                         </section>
                     </div>
 
+                    <section className="mt-16 mb-12">
+                        <h2 className="text-3xl font-display font-bold mb-8">Related Reading</h2>
+                        <div className="flex flex-wrap gap-4">
+                            <Link href="/what-is-vedanta" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
+                                What is Vedanta? <ArrowRight size={16} />
+                            </Link>
+                            <Link href="/advaita-vedanta-explained" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
+                                Advaita Vedanta Explained <ArrowRight size={16} />
+                            </Link>
+                            <Link href="/what-is-sanatan-dharma" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
+                                What is Sanatan Dharma? <ArrowRight size={16} />
+                            </Link>
+                            <Link href="/how-karma-dharma-work" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
+                                How Karma and Dharma Work <ArrowRight size={16} />
+                            </Link>
+                        </div>
+                    </section>
+
+                    <section className="mb-20">
+                        <h2 className="text-2xl font-display font-bold mb-8 text-muted-foreground uppercase tracking-wide">Sources &amp; Commentaries</h2>
+                        <ul className="space-y-3 text-sm">
+                            <li><a href="https://www.britannica.com/topic/Vedas" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">The Vedas — Encyclopaedia Britannica</a></li>
+                            <li><a href="https://www.britannica.com/topic/Upanishad" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">The Upanishads — Encyclopaedia Britannica</a></li>
+                            <li><a href="https://www.britannica.com/topic/Bhagavadgita" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Bhagavad Gita — Encyclopaedia Britannica</a></li>
+                            <li><a href="https://iep.utm.edu/veda/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Vedas — Internet Encyclopedia of Philosophy</a></li>
+                        </ul>
+                    </section>
+
                     <div className="mt-20 bg-orange-600 rounded-3xl p-12 text-center text-white shadow-2xl">
                         <h2 className="text-4xl lg:text-5xl font-display font-black mb-6">Start With the Bhagavad Gita.</h2>
                         <p className="text-xl text-orange-50 max-w-2xl mx-auto mb-10 font-medium">
-                            Don't try to read everything. The Bhagavad Gita is the most complete and accessible entry point into India's sacred textual tradition.
+                            The Bhagavad Gita is the most complete and accessible entry point into India's sacred textual tradition.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <TrackedLink

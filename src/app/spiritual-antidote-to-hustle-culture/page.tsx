@@ -9,7 +9,7 @@ import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 export const metadata: Metadata = {
     title: "The Spiritual Antidote to Hustle Culture: Finding Purpose Without Achieving",
     description:
-        "Hustle culture promises meaning through achievement. The Bhagavad Gita disagrees. How to find your life purpose spiritually — without needing to achieve anything first.",
+        "Hustle culture promises meaning through achievement. The Bhagavad Gita disagrees. How to find your life purpose spiritually, without needing to achieve anything first.",
     alternates: {
         canonical: "https://www.opensadhaka.com/spiritual-antidote-to-hustle-culture",
     },
@@ -26,22 +26,22 @@ const faqs = [
     {
         question: "What does the Bhagavad Gita say about finding your purpose?",
         answer:
-            "The Gita does not promise a glamorous, externally validated 'life purpose.' It offers Svadharma — your own intrinsic nature and the duty that arises from it in your specific context. According to 3.35, it is better to perform one's own dharma imperfectly than another's dharma perfectly. Your purpose is not found by looking outward at inspiring careers — it is found by asking: what is my actual nature, and what does this specific situation require of me?",
+            "The Gita does not promise a glamorous, externally validated 'life purpose.' It offers Svadharma, your own intrinsic nature and the duty that arises from it in your specific context. According to 3.35, it is better to perform one's own dharma imperfectly than another's dharma perfectly. Your purpose is found by asking: what is my actual nature, and what does this specific situation require of me?",
     },
     {
         question: "What is Svadharma and how do I find mine?",
         answer:
-            "Svadharma (sva = own, dharma = duty) is the right path of action arising from your unique nature, capacities, and role. It is not a fixed destiny but a living responsiveness to who you are and what your circumstances actually require. To find it: subtract what you do purely for external approval. What remains — what you do because it feels genuinely aligned, regardless of reward — contains your svadharma. The Gita consistently points toward quality of attention over scale of achievement.",
-    },
+            "Svadharma (sva = own, dharma = duty) is the right path of action arising from your unique nature, capacities, and role. It is not a fixed destiny but a living responsiveness to who you are and what your circumstances actually require. To find it: subtract what you do purely for external approval. What remains, what you do because it feels genuinely aligned regardless of reward, contains your svadharma. The Gita consistently points toward quality of attention over scale of achievement.",
+        },
     {
         question: "How do you detach from outcomes in practice?",
         answer:
-            "Detachment from outcomes (Nishkama Karma) is not indifference to results. It means caring deeply about the quality of your action while being internally free from the result's effect on your identity. Practically: before starting any task, briefly acknowledge that the outcome is not in your control. Then focus entirely on the process. After completing it, resist interpreting the result as a verdict on your worth as a person. Results inform your next action — they don't define your being.",
+            "Detachment from outcomes (Nishkama Karma) means caring deeply about the quality of your action while being internally free from the result's effect on your identity. Practically: before starting any task, briefly acknowledge that the outcome is not in your control. Then focus entirely on the process. After completing it, resist interpreting the result as a verdict on your worth as a person. Results inform your next action. They don't define your being.",
     },
     {
         question: "Can someone who has failed completely still have a meaningful life according to Indian philosophy?",
         answer:
-            "Absolutely — and this is one of Vedanta's most radical claims. The Atman (true self) is unaffected by external success or failure. Failure, from the Gita's perspective, is simply information about the gap between your skills and the situation's demands — not a metaphysical verdict on your worth. Arjuna himself was on the verge of the greatest 'failure' imaginable (abandoning his duty). The entire Gita is Krishna's argument that even from complete breakdown, right action and liberation remain possible.",
+            "Absolutely, and this is one of Vedanta's most radical claims. The Atman (true self) is unaffected by external success or failure. Failure, from the Gita's perspective, is simply information about the gap between your skills and the situation's demands, not a metaphysical verdict on your worth. Arjuna himself was on the verge of the greatest 'failure' imaginable (abandoning his duty). The entire Gita is Krishna's argument that even from complete breakdown, right action and liberation remain possible.",
     },
 ];
 
@@ -81,19 +81,19 @@ export default function SpiritualAntidoteHustleCulturePage() {
                             <ul className="space-y-4 mb-8 text-xl text-muted-foreground">
                                 <li className="flex gap-4">
                                     <span className="text-orange-500 font-black leading-none mt-1">1.</span>
-                                    <span>It implies you don't have a purpose yet — creating a deficiency narrative that makes you feel permanently incomplete.</span>
+                                    <span>It implies you don't have a purpose yet, creating a deficiency narrative that makes you feel permanently incomplete.</span>
                                 </li>
                                 <li className="flex gap-4">
                                     <span className="text-orange-500 font-black leading-none mt-1">2.</span>
-                                    <span>It links purpose to achievement — so ordinary, necessary, unglamorous work seems meaningless by definition.</span>
+                                    <span>It links purpose to achievement, so ordinary, necessary, unglamorous work seems meaningless by definition.</span>
                                 </li>
                                 <li className="flex gap-4">
                                     <span className="text-orange-500 font-black leading-none mt-1">3.</span>
-                                    <span>It externalizes purpose — making it something you <em>find</em> in the future rather than something you <em>embody</em> right now.</span>
+                                    <span>It externalizes purpose, making it something you <em>find</em> in the future rather than something you <em>embody</em> right now.</span>
                                 </li>
                             </ul>
                             <p className="text-xl text-muted-foreground leading-relaxed">
-                                The Bhagavad Gita's framework is the precise inverse of this. Purpose is not something you find — it is something you are, in each moment, either aligned with or violating.
+                                The Bhagavad Gita's framework is the precise inverse of this. Purpose is something you are, in each moment, either aligned with or violating.
                             </p>
                         </section>
 
@@ -106,7 +106,7 @@ export default function SpiritualAntidoteHustleCulturePage() {
                                 <cite className="text-muted-foreground text-sm">— Bhagavad Gita 2.47</cite>
                             </blockquote>
                             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                                This verse contains a complete psychology of performance that is the opposite of hustle culture:
+                                This verse contains a complete psychology of performance that is the opposite of hustle culture. Shankaracharya's bhashya on this verse reads "ma phaleshu kadachana" as a categorical prohibition, not a suggestion.
                             </p>
                             <div className="grid sm:grid-cols-2 gap-6">
                                 <div className="bg-background/60 rounded-2xl p-6 border border-border/30">
@@ -135,36 +135,36 @@ export default function SpiritualAntidoteHustleCulturePage() {
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">What Svadharma Actually Means</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                Svadharma (सवधर्म) — "own duty" — is the right path of action arising from your unique combination of nature, capacity, and circumstance. It is not glamorous. It is not always obvious. And it emphatically does not require that you change your career, move across the world, or become spiritually impressive.
+                                Svadharma (सवधर्म), "own duty," is the right path of action arising from your unique combination of nature, capacity, and circumstance. It carries no requirement that you change your career, move across the world, or become spiritually impressive.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                The Gita's most radical teaching on this (3.35): "Better is one's own Dharma, though imperfectly performed, than the Dharma of another well performed. Even death in one's own Dharma is bliss; to follow another's Dharma is fear-inducing."
+                                The Gita's most radical teaching on this (3.35): "Better is one's own Dharma, though imperfectly performed, than the Dharma of another well performed. Even death in one's own Dharma is bliss; to follow another's Dharma is fear-inducing." Shankaracharya's commentary explains that another's dharma produces fear precisely because it lacks alignment with one's intrinsic nature.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                                 A parent raising a child with genuine attention and love is following their svadharma. A craftsperson producing excellent work with care and commitment is following their svadharma. A nurse attending to a patient with full presence is following their svadharma. None of these require scale, recognition, or disruption.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed">
-                                The measure of svadharma is not external visibility but internal alignment: does this action arise from your genuine nature, or from fear, approval-seeking, and comparison?
+                                The measure of svadharma is internal alignment: does this action arise from your genuine nature, or from fear, approval-seeking, and comparison?
                             </p>
                         </section>
 
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">Finding Meaning in Deep Suffering</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                Suffering has a particular role in Indian philosophy that runs counter to the modern impulse to optimize suffering away. The Gita says (4.38): "There is nothing in this world as purifying as knowledge." And the path to knowledge is rarely comfortable.
+                                Suffering has a particular role in Indian philosophy that runs counter to the modern impulse to optimize suffering away. The Gita says (4.38): "There is nothing in this world as purifying as knowledge." Krishna speaks this directly to Arjuna, a student paralyzed by grief and confusion, establishing that the teacher-student relationship itself is the vehicle through which wisdom travels. The path to knowledge is rarely comfortable.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                Profound suffering — the kind that cannot be fixed by productivity hacks, relationship changes, or geographic relocations — forces the ego to look inward when external victories have demonstrably failed to produce lasting peace. This is the function of suffering in the Indian framework: not punishment, but redirection.
+                                Profound suffering, the kind that cannot be fixed by productivity hacks, relationship changes, or geographic relocations, forces the ego to look inward when external victories have demonstrably failed to produce lasting peace. This is the function of suffering in the Indian framework: not punishment, but redirection.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed">
-                                The person who has tried everything external and found it insufficient is — paradoxically — in the ideal position to begin genuine spiritual inquiry. They are not distracted by the belief that the next achievement will finally solve the underlying hunger.
+                                The person who has tried everything external and found it insufficient is, paradoxically, in the ideal position to begin genuine spiritual inquiry. They are not distracted by the belief that the next achievement will finally solve the underlying hunger.
                             </p>
                         </section>
 
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">How to Actually Detach From Outcomes</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                Nishkama Karma (desireless action) is not achieved through willpower or affirmations. It is a practice, cultivated progressively:
+                                Nishkama Karma (desireless action) is cultivated progressively through practice, not achieved through willpower or affirmations. Shankaracharya's commentary on BG 2.47 grounds this in the discipline of the intellect: the practitioner learns to act fully while holding the result lightly, a capacity developed through sustained effort over time.
                             </p>
                             <div className="space-y-5 mb-8">
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
@@ -173,7 +173,7 @@ export default function SpiritualAntidoteHustleCulturePage() {
                                 </div>
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h3 className="font-bold text-orange-400 mb-2">Step 2: Consecrate the Action</h3>
-                                    <p className="text-muted-foreground leading-relaxed">Before beginning, briefly offer the action: "This work is for something beyond my ego's agenda." This is not magical thinking — it is a psychological reorientation that moves the center of the action from ego-gratification to contribution. Even a simple acknowledgment suffices.</p>
+                                    <p className="text-muted-foreground leading-relaxed">Before beginning, briefly offer the action: "This work is for something beyond my ego's agenda." This is a psychological reorientation that moves the center of the action from ego-gratification to contribution. Even a simple acknowledgment suffices.</p>
                                 </div>
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h3 className="font-bold text-orange-400 mb-2">Step 3: Separate Result from Worth</h3>
@@ -181,7 +181,10 @@ export default function SpiritualAntidoteHustleCulturePage() {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col sm:flex-row gap-4">
+                            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+                                <Link href="/midlife-crisis-spiritual-meaning" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
+                                    Spiritual Meaning of Midlife Crisis <ArrowRight size={16} />
+                                </Link>
                                 <Link href="/how-karma-dharma-work" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
                                     How Karma and Dharma Work <ArrowRight size={16} />
                                 </Link>
@@ -207,10 +210,19 @@ export default function SpiritualAntidoteHustleCulturePage() {
                         </section>
                     </div>
 
+                    <section className="mt-16 mb-20">
+                        <h2 className="text-2xl font-display font-bold mb-8 text-muted-foreground uppercase tracking-wide">Sources &amp; Commentaries</h2>
+                        <ul className="space-y-3 text-sm">
+                            <li><a href="https://www.britannica.com/topic/Bhagavadgita" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Bhagavad Gita — Encyclopaedia Britannica</a></li>
+                            <li><a href="https://plato.stanford.edu/entries/dharma/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Dharma — Stanford Encyclopedia of Philosophy</a></li>
+                            <li><a href="https://plato.stanford.edu/entries/karma/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Karma — Stanford Encyclopedia of Philosophy</a></li>
+                        </ul>
+                    </section>
+
                     <div className="mt-20 bg-orange-600 rounded-3xl p-12 text-center text-white shadow-2xl">
                         <h2 className="text-4xl lg:text-5xl font-display font-black mb-6">The Gita Is the Manual.</h2>
                         <p className="text-xl text-orange-50 max-w-2xl mx-auto mb-10 font-medium">
-                            The Bhagavad Gita was written for exactly this situation — a person of high ability, facing a difficult duty, paralyzed by anxiety about the outcome. It has not gone out of date.
+                            The Bhagavad Gita was written for exactly this situation: a person of high ability, facing a difficult duty, paralyzed by anxiety about the outcome. It has not gone out of date.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <TrackedLink

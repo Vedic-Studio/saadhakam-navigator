@@ -23,7 +23,10 @@
     "images:optimize": "node scripts/optimize-images.mjs",
     "images:wire": "node scripts/wire-article-images.mjs",
     "images:wire:patch": "node scripts/wire-article-images.mjs --patch",
-    "images:run": "npm run images:generate && npm run images:optimize"
+    "images:run": "npm run images:generate && npm run images:optimize",
+    "backlinks:checklist": "node scripts/backlinks/generate-checklist.mjs",
+    "backlinks:check": "node scripts/backlinks/check-status.mjs",
+    "backlinks:report": "node scripts/backlinks/report.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

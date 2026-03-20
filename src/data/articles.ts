@@ -1039,24 +1039,46 @@ export const articles: ArticleMeta[] = [
     {
         slug: "what-is-maya",
         route: "/what-is-maya",
-        title: "What is Maya in Indian Philosophy? | Illusion, Reality, and Moksha",
+        title: "What is Maya in Indian Philosophy? Illusion, Mithya, and Moksha",
         metaDescription:
-            "Maya doesn't mean the world is fake — it means the world is not what you think it is. A clear explanation of maya in Vedanta and how seeing through it leads to moksha.",
+            "Maya doesn't mean the world is fake. It means the world has conditional reality, not absolute reality. A precise guide to maya, mithya, and how moksha is achieved in Advaita Vedanta.",
         pillar: "ancient-wisdom",
-        publishDate: "2026-03-10",
-        readingTime: 8,
+        publishDate: "2026-03-19",
+        readingTime: 7,
         primaryKeyword: "what is maya in indian philosophy",
+        aeoAnswer:
+            "Maya is the power by which Brahman appears as a world of separate names and forms. It does not mean the world is a hallucination. The world has empirical reality (vyavaharika satta) — fire burns, karma operates, suffering is real. What the world lacks is absolute metaphysical reality (paramarthika satta). Moksha is the recognition of Brahman as the sole reality, achieved through self-knowledge that dissolves avidya, not through action or ritual.",
+        footerCta: {
+            title: "Explore Non-Duality",
+            description:
+                "Maya is the core problem Advaita Vedanta diagnoses. Start with Advaita Vedanta explained, or go deeper into how Shankara, Ramanuja, and Madhva split on the question.",
+            href: "/advaita-vedanta-explained",
+            label: "Advaita Vedanta Explained",
+        },
         relatedLinks: [
             { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
+            { text: "Advaita vs Dvaita", href: "/advaita-vs-dvaita" },
             { text: "What is Sanatan Dharma?", href: "/what-is-sanatan-dharma" },
             { text: "How Karma Works", href: "/how-karma-dharma-work" },
-            { text: "What is Vedanta?", href: "/what-is-vedanta" },
+            { text: "Fear of Death and Advaita", href: "/fear-of-death-advaita-vedanta" },
         ],
         faqs: [
-            { question: "Does maya mean the world doesn't exist?", answer: "No. Maya means the world as ordinarily experienced — as separate, permanent, and ultimately satisfying — is a superimposition over the true nature of reality (Brahman). The world is real at the practical level but not the ultimate level." },
-            { question: "What is the rope-and-snake analogy for maya?", answer: "You mistake a rope for a snake in dim light. Your fear is real but the snake never existed — it was superimposed. Maya works the same: we superimpose a separate 'me' onto what is actually pure, undivided consciousness. Self-knowledge removes the superimposition." },
-            { question: "Is maya the same as ignorance (avidya)?", answer: "Related but distinct. Avidya (ignorance) is the root cause — not knowing your true nature. Maya is the consequence — the cosmic power that projects multiplicity and separation onto what is one undivided reality." },
-            { question: "What is moksha and how does seeing through maya lead to it?", answer: "Moksha is liberation from the cycle of birth and death. Samsara is sustained by maya — by identifying with the body and ego. When self-knowledge removes this identification, the seeker recognizes their true nature as Brahman. This recognition is Moksha." },
+            {
+                question: "Does maya mean the world doesn't exist?",
+                answer: "No. Maya does not mean the world is non-existent or a hallucination. Shankara's Advaita uses the term mithya — neither fully real (sat) nor non-existent (asat). The world has empirical reality (vyavaharika satta) within transactional experience. It lacks absolute metaphysical reality (paramarthika satta) when compared to Brahman. Scholar Paul Hacker noted that maya carried 'hardly any terminological weight' in Shankara's own writings; the strong illusion framing came from later commentators, particularly the 13th-century Vivarana school.",
+            },
+            {
+                question: "What is the rope-snake analogy for maya?",
+                answer: "In dim light, you mistake a rope for a snake. Your fear is real — palms sweat, heart races. The snake never existed. The fear arose from superimposing 'snake' onto 'rope.' Gaudapada used this analogy in the Mandukya Karika; Shankara made it canonical. Maya works identically: we superimpose a separate, permanent 'I' onto what is Brahman. Jnana functions as the torch. When it arrives, the snake vanishes and the rope is seen to have been the only thing present.",
+            },
+            {
+                question: "What is the difference between maya and avidya?",
+                answer: "Maya operates at the cosmic level — it is the power of Ishvara, the lord. Avidya operates at the individual level — the specific ignorance of each jiva. As the Internet Encyclopedia of Philosophy states: 'The cosmic aspect belongs to one Ishvara, and the individual aspect, avidya, belongs to many jivas.' Both are dissolved by brahmavidya — knowledge of Brahman.",
+            },
+            {
+                question: "What is moksha and how is it achieved?",
+                answer: "Moksha is liberation from samsara — the cycle of birth and death sustained by karma and identification with the body-mind. In Advaita Vedanta, moksha is not a future state created by action but a present recognition of one's true nature as Brahman, uncovered by removing avidya. Bhagavad Gita 7.14 locates the means as surrender to Krishna. Vivekachudamani verse 110 states that maya is destroyed by the realization of pure Brahman — not by ritual, not by effort, but by knowledge.",
+            },
         ],
         featuredImage: {
             src: "/assets/articles/what-is-maya/featured.webp",

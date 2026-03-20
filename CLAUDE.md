@@ -48,6 +48,12 @@ npm run indexnow:submit:prod   # submit URLs to search engines after publishing
 - Types for stotra/sahasranama: `src/lib/stotras.ts`
 - SEO utilities: `src/lib/seo/index.ts`
 
+### Content Quality
+- **Voice skill**: `~/.claude/skills/sadhaka-voice.md` (v2.0) — THE authority for all prose. Overrides LLM defaults. Integrates stop-slop rules.
+- **Anti-slop references**: `~/.claude/skills/stop-slop/references/` — phrase, structure, and example catalogs
+- **Publish gate**: Score every article on 5 dimensions (Directness, Rhythm, Trust, Authenticity, Density). Minimum 35/50 to publish.
+- Always load the voice skill when writing or reviewing article content.
+
 ### gstack Workflow Tools
 - Use `/browse` for all web browsing — never use `mcp__claude-in-chrome__*` tools
 - Available skills:
@@ -59,6 +65,28 @@ npm run indexnow:submit:prod   # submit URLs to search engines after publishing
   - `/retro` — project retrospective & lessons learned
 
 **Team Setup**: Run `./scripts/setup-gstack.sh` to install gstack and all linked skills locally.
+
+### Folder-Structure Thinking (New Features)
+
+When building any new feature, content system, or architectural addition:
+
+1. **Domain map first** — Before writing code, output a hierarchical folder-structure map of the domain. Top-level = major pillars, sub-levels = strategies/components, leaves = atomic buildable units. Think exhaustively.
+2. **Map to architecture** — Convert the domain map into actual directories, modules, routes, services, or config files that fit the existing project structure.
+3. **Build leaf-first** — Implement from atomic units upward. Each leaf is self-contained and composable.
+4. **Explicit decisions** — Every folder/module in the map must have a reason. If something doesn't fit, question whether it belongs.
+5. **Living map** — If scope expands mid-build, update the domain map first, then code. Maintain the map in `PROJECT_MAP.md` at the project root when the feature is large enough to warrant it.
+
+This applies to features, content systems, APIs, agent workflows, and pSEO page categories.
+
+### Context Window Hygiene
+
+Large tasks (article writing, sahasranama batches, multi-file edits) consume context quickly. Follow these rules to keep the window lean for subsequent steps:
+
+1. **Sub-agent returns**: When spawning agents, instruct them to return only the actionable result (file paths changed, errors found, key decisions). Do not echo full file contents or tool output back into the main thread.
+2. **One chunk per session**: For batch content work (sahasranama names, BG shlokas, multi-article sprints), complete one chunk, commit, then start a new agent session for the next chunk. Do not stack multiple chunks in a single context.
+3. **Read-then-discard**: When reading large files for reference (e.g., a 3000-line article template), extract only the patterns/structure you need into your working notes — do not keep the full file in context for the entire session.
+4. **Progress checkpoints**: For multi-step tasks (5+ steps), after completing each major step, summarize what was done and what remains rather than carrying forward all intermediate output.
+5. **Agent module loading**: Load only the relevant agent module (`docs/agents/0X-*.md`) — never load all modules at once. The CLAUDE.md index tells you which one to load.
 
 ---
 

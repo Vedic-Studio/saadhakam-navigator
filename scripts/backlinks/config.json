@@ -1,0 +1,62 @@
+{
+  "sites": [
+    {
+      "id": "opensadhaka",
+      "name": "Sadhaka",
+      "url": "https://opensadhaka.com",
+      "tagline": "The encyclopaedia of Sanatan Dharma",
+      "description": "Authoritative English-language reference for Vedanta, Shaiva, Shakta, and Vaishnava philosophy, sacred texts, and spiritual practices. Features comprehensive encyclopaedia entries, verse-by-verse stotra analysis, Bhagavad Gita commentary, and interactive tools for spiritual seekers.",
+      "short_description": "Encyclopaedic reference for Hindu philosophy, sacred texts, and spiritual practices.",
+      "category": ["spirituality", "education", "philosophy", "hinduism", "sanskrit", "vedanta"],
+      "founder": {
+        "name": "Ankit Mishra",
+        "title": "Founder",
+        "email": "",
+        "personal_site": "https://ankitmishra.space"
+      },
+      "social_links": {
+        "twitter": "https://x.com/opensadhaka",
+        "instagram": "https://instagram.com/opensadhaka",
+        "youtube": "https://youtube.com/@opensadhaka",
+        "github": "https://github.com/opensadhaka",
+        "linkedin": "https://linkedin.com/company/opensadhaka",
+        "crunchbase": "https://crunchbase.com/organization/sadhaka"
+      },
+      "key_pages": {
+        "home": "https://opensadhaka.com",
+        "vedanta": "https://opensadhaka.com/what-is-vedanta",
+        "sanatan_dharma": "https://opensadhaka.com/what-is-sanatan-dharma",
+        "bhagavad_gita": "https://opensadhaka.com/vedas-upanishads-bhagavad-gita-guide",
+        "faith_finder": "https://opensadhaka.com/faith-finder",
+        "vishnu_sahasranama": "https://opensadhaka.com/stotras/vishnu-sahasranama",
+        "shiva_tandava": "https://opensadhaka.com/stotras/shiva-tandava-stotram",
+        "advaita_vedanta": "https://opensadhaka.com/advaita-vedanta-explained",
+        "karma_dharma": "https://opensadhaka.com/how-karma-dharma-work",
+        "what_is_maya": "https://opensadhaka.com/what-is-maya"
+      },
+      "unique_assets": [
+        "1000-name Vishnu Sahasranama with individual name analysis",
+        "1000-name Lalita Sahasranama with individual name analysis",
+        "Verse-by-verse Shiva Tandava Stotram with translation flow",
+        "2000+ Sanskrit vocabulary database",
+        "Bhagavad Gita verse library (700 shlokas)",
+        "Faith Finder interactive quiz",
+        "Jyotish (Vedic astrology) encyclopaedia"
+      ]
+    },
+    {
+      "id": "ankitmishra",
+      "name": "Ankit Mishra",
+      "url": "https://ankitmishra.space",
+      "tagline": "Builder, thinker, maker",
+      "description": "Personal site of Ankit Mishra — founder of Sadhaka, builder at the intersection of technology and Indian philosophical tradition.",
+      "short_description": "Ankit Mishra — founder of Sadhaka, technology and philosophy.",
+      "category": ["personal", "technology", "philosophy", "entrepreneurship"],
+      "social_links": {
+        "twitter": "https://x.com/opensadhaka",
+        "linkedin": "https://linkedin.com/company/opensadhaka",
+        "github": "https://github.com/opensadhaka"
+      }
+    }
+  ]
+}

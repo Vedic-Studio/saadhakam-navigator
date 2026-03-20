@@ -50,13 +50,19 @@ export default function AdvaitaVsDvaitaPage() {
                                 </p>
                             </div>
 
+                            <div className="bg-muted/20 p-6 rounded-2xl border border-border/30 mb-12">
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    Both schools plant their flag on the same opening line of the <em>Brahma Sutras</em> (1.1.1): <em>athato brahma jijnasa</em>, "now, therefore, the inquiry into Brahman." Shankaracharya reads this as an inquiry that dissolves the inquirer into pure awareness. Madhvacharya reads it as an inquiry that reveals the soul's eternal dependence on a personal God. The sutra is identical; the metaphysics could not be further apart. Between them, <strong>Ramanuja</strong> (11th century) proposed a third position, Vishishtadvaita (qualified non-duality), holding that souls and matter are real but exist as attributes of Brahman rather than being absolutely identical or absolutely separate.
+                                </p>
+                            </div>
+
                             <div className="grid md:grid-cols-2 gap-8 my-16">
                                 <div className="space-y-6">
                                     <div className="h-1 w-20 bg-primary"></div>
                                     <h2 className="text-3xl font-display font-bold">Advaita: Non-Duality</h2>
                                     <p className="text-muted-foreground">
                                         Systematized by <strong>Adi Shankaracharya</strong> (8th century). Advaita means "not-two."
-                                        It asserts that Brahman (Infinite Consciousness) is the only absolute reality.
+                                        It asserts that Brahman (Infinite Consciousness) is the only absolute reality. In his <em>Vivekachudamani</em> and his <em>Brahma Sutra Bhashya</em>, Shankaracharya argues that any apparent distinction between Atman and Brahman is the product of avidya (ignorance) superimposed on a reality that was never divided.
                                     </p>
                                     <blockquote className="border-l-4 border-primary/30 pl-6 italic">
                                         "Brahma satyam jagan mithya... Brahman is real, the world is an appearance."
@@ -67,7 +73,7 @@ export default function AdvaitaVsDvaitaPage() {
                                     <h2 className="text-3xl font-display font-bold">Dvaita: Dualism</h2>
                                     <p className="text-muted-foreground">
                                         Pioneered by <strong>Madhvacharya</strong> (13th century). Dvaita asserts that God,
-                                        souls, and matter are eternally distinct and real.
+                                        souls, and matter are eternally distinct and real. In his <em>Anuvyakhyana</em> and the broader framework of Tattvavada, Madhvacharya identifies five irreducible differences: between God and soul, God and matter, soul and matter, soul and soul, and one form of matter and another. None of these distinctions ever collapses.
                                     </p>
                                     <blockquote className="border-l-4 border-orange-500/30 pl-6 italic">
                                         "Two shall never become One. The soul is a servant; God is the Master."
@@ -134,11 +140,32 @@ export default function AdvaitaVsDvaitaPage() {
                                             Choose Dvaita if...
                                         </h3>
                                         <p className="text-sm leading-relaxed text-muted-foreground">
-                                            Your deepest longing is love — if you want to adore God, serve God, and be in God's presence
+                                            Your deepest longing is love: you want to adore God, serve God, and be in God's presence
                                             while remaining a distinct soul who can experience that love.
                                         </p>
                                     </Card>
                                 </div>
+                            </div>
+
+                            <div className="mt-20 mb-16">
+                                <h2 className="text-3xl font-display font-bold mb-8">Go Deeper</h2>
+                                <div className="flex flex-wrap gap-4">
+                                    <a href="/what-is-vedanta" className="text-orange-400 hover:text-orange-300 underline transition-colors">What is Vedanta?</a>
+                                    <a href="/advaita-vedanta-explained" className="text-orange-400 hover:text-orange-300 underline transition-colors">Advaita Vedanta Explained</a>
+                                    <a href="/what-is-sanatan-dharma" className="text-orange-400 hover:text-orange-300 underline transition-colors">What is Sanatan Dharma?</a>
+                                    <a href="/what-is-maya" className="text-orange-400 hover:text-orange-300 underline transition-colors">What is Maya?</a>
+                                    <a href="/shaivism-vs-vaishnavism" className="text-orange-400 hover:text-orange-300 underline transition-colors">Shaivism vs Vaishnavism</a>
+                                </div>
+                            </div>
+
+                            <div className="mb-16">
+                                <h2 className="text-2xl font-display font-bold mb-8 text-muted-foreground uppercase tracking-wide">Sources &amp; Commentaries</h2>
+                                <ul className="space-y-3 text-sm">
+                                    <li><a href="https://plato.stanford.edu/entries/shankara/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Adi Shankara — Stanford Encyclopedia of Philosophy</a></li>
+                                    <li><a href="https://iep.utm.edu/advaita-v/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Advaita Vedanta — Internet Encyclopedia of Philosophy</a></li>
+                                    <li><a href="https://iep.utm.edu/madhva/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Madhva (1238—1317) — Internet Encyclopedia of Philosophy</a></li>
+                                    <li><a href="https://www.britannica.com/topic/Vedanta" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Vedanta — Encyclopaedia Britannica</a></li>
+                                </ul>
                             </div>
 
                             <div className="mt-20 bg-muted/20 rounded-3xl p-12 text-center border border-white/5">

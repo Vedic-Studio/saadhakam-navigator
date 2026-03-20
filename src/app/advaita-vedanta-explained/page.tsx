@@ -76,11 +76,14 @@ export default function AdvaitaVedantaPage() {
                             <li><strong className="text-foreground">Where to start:</strong> learn core terms (Atman, Brahman, Maya), read an accessible Vedanta primer, then apply daily self-inquiry in real situations.</li>
                         </ul>
                         <div className="mt-8 flex flex-wrap gap-4 text-sm">
-                            <Link href="/western-philosophy-and-vedanta" className="text-orange-400 hover:text-orange-300 transition-colors">
-                                Indian vs Western Philosophy
+                            <Link href="/what-is-sanatan-dharma" className="text-orange-400 hover:text-orange-300 transition-colors">
+                                What is Sanatan Dharma?
                             </Link>
-                            <Link href="/vedanta-vs-stoicism" className="text-orange-400 hover:text-orange-300 transition-colors">
-                                Vedanta vs Stoicism
+                            <Link href="/what-is-maya" className="text-orange-400 hover:text-orange-300 transition-colors">
+                                What is Maya?
+                            </Link>
+                            <Link href="/advaita-vs-dvaita" className="text-orange-400 hover:text-orange-300 transition-colors">
+                                Advaita vs Dvaita
                             </Link>
                             <Link href="/deities/shiva" className="text-orange-400 hover:text-orange-300 transition-colors">
                                 Who is Shiva?
@@ -204,16 +207,15 @@ export default function AdvaitaVedantaPage() {
                         <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-10">
                             Modern analogies from quantum theory and neuroscience can be suggestive, but they are not pramana (valid means of scriptural knowledge) in Vedanta. Use them as heuristic parallels only. Advaita's claims stand on Upanishadic revelation, reasoning, and contemplative verification.
                         </p>
-                        <div className="flex flex-wrap justify-center gap-4">
+                        <ul className="space-y-3 text-sm max-w-3xl mx-auto text-left">
                             {references.map((ref) => (
-                                <div
-                                    key={ref.href}
-                                    className="px-6 py-3 rounded-full bg-background border border-border/60 text-sm font-medium text-muted-foreground"
-                                >
-                                    {ref.label}
-                                </div>
+                                <li key={ref.href}>
+                                    <a href={ref.href} target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">
+                                        {ref.label}
+                                    </a>
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </section>
 
                     <div className="rounded-3xl bg-orange-600 p-1 lg:p-12 relative overflow-hidden group shadow-2xl">

@@ -10,14 +10,14 @@ import { LongformContent } from "@/components/LongformContent";
 export const metadata: Metadata = {
     title: "How Karma and Dharma Actually Work | Beyond Punishment and Reward",
     description:
-        "Karma is not cosmic punishment — it is the physics of cause and effect for the soul. Dharma is your right action in context. Learn how both actually work in Indian philosophy.",
+        "Karma is not cosmic punishment. It is the physics of cause and effect for the soul. Dharma is your right action in context. Learn how both actually work in Indian philosophy.",
     alternates: {
         canonical: "https://www.opensadhaka.com/how-karma-dharma-work",
     },
     openGraph: {
         title: "How Karma Actually Works: Beyond Punishment and Reward",
         description:
-            "A clear, modern explanation of karma and dharma — what they mean, how they differ, and how to apply them in life.",
+            "A clear, modern explanation of karma and dharma: what they mean, how they differ, and how to apply them in life.",
         url: "https://www.opensadhaka.com/how-karma-dharma-work",
         type: "article",
     },
@@ -27,22 +27,22 @@ const faqs = [
     {
         question: "Is karma real, or is it just a metaphor?",
         answer:
-            "In Indian philosophy, karma is presented as an objective law — as real as gravity — not a metaphor or a moral fairy tale. Just as a physical action produces a physical reaction, every mental and physical action leaves an impression (Samskara) on the subtle body that shapes future experience. Whether you interpret this literally or psychologically, the practical insight is the same: your habitual actions shape your character, which shapes your life.",
+            "In Indian philosophy, karma is presented as an objective law, as real as gravity, not a metaphor or a moral fairy tale. Just as a physical action produces a physical reaction, every mental and physical action leaves an impression (Samskara) on the subtle body that shapes future experience. Whether you interpret this literally or psychologically, the practical insight is the same: your habitual actions shape your character, which shapes your life.",
     },
     {
         question: "What is the difference between dharma and karma?",
         answer:
-            "Dharma is the path — the action that is right for you in your specific context, given your nature and duties. Karma is the consequence — the seeds your actions plant that ripen into future circumstances. Following your Dharma produces clean, non-binding karma. Violating your Dharma — acting out of selfishness, fear, or greed — creates binding karma that you must eventually work out.",
+            "Dharma is the path: the action that is right for you in your specific context, given your nature and duties. Karma is the consequence: the seeds your actions plant that ripen into future circumstances. Following your Dharma produces clean, non-binding karma. Violating your Dharma, acting out of selfishness, fear, or greed, creates binding karma that you must eventually work out.",
     },
     {
         question: "Can karma from a past life affect my current life?",
         answer:
-            "In the Hindu framework, yes. Prarabdha karma refers to the portion of accumulated karma from past lives that is 'ripe' and actively expressing itself in your current life — your birth circumstances, body type, and life tendencies. However, Agami karma — new karma you generate through present choices — can modify future circumstances, and Kriya Yoga (action without attachment) gradually dissolves accumulated karma.",
+            "In the Hindu framework, yes. Prarabdha karma refers to the portion of accumulated karma from past lives that is 'ripe' and actively expressing itself in your current life. Your birth circumstances, body type, and life tendencies all reflect this. However, Agami karma, the new karma you generate through present choices, can modify future circumstances, and Kriya Yoga (action without attachment) gradually dissolves accumulated karma.",
     },
     {
         question: "What does 'nishkama karma' mean?",
         answer:
-            "Nishkama Karma means 'desireless action' or 'action without attachment to results.' The Bhagavad Gita (2.47) teaches that you have a right to your actions but not to their fruits. When you act without craving the result, the action produces no binding karma. This is the central practice of Karma Yoga — doing your duty with total excellence while being inwardly free of the outcome.",
+            "Nishkama Karma means 'desireless action' or 'action without attachment to results.' The Bhagavad Gita (2.47) teaches that you have a right to your actions but not to their fruits. When you act without craving the result, the action produces no binding karma. This is the central practice of Karma Yoga: doing your duty with total excellence while being inwardly free of the outcome.",
     },
 ];
 
@@ -51,13 +51,13 @@ const karmaTypes = [
         name: "Sanchita Karma",
         sanskrit: "सञ्चित",
         description:
-            "The entire accumulated store of all karmas from all past lives — the 'warehouse' of unresolved causes waiting to ripen. Most of this remains latent and unexperienced in any single lifetime.",
+            "The entire accumulated store of all karmas from all past lives: the 'warehouse' of unresolved causes waiting to ripen. Most of this remains latent and unexperienced in any single lifetime.",
     },
     {
         name: "Prarabdha Karma",
         sanskrit: "प्रारब्ध",
         description:
-            "The portion of Sanchita karma that has been 'released' to express itself in your current life. This determines your birth circumstances, body, family, and early life tendencies. It cannot be avoided — only lived through with wisdom.",
+            "The portion of Sanchita karma that has been 'released' to express itself in your current life. This determines your birth circumstances, body, family, and early life tendencies. It cannot be avoided. It can only be lived through with wisdom.",
     },
     {
         name: "Agami Karma",
@@ -90,7 +90,7 @@ export default function HowKarmaDharmaWorkPage() {
                             <strong>Direct answer:</strong> Karma is moral causation: actions and intentions produce consequences. Dharma is right action for your role, context, and stage of life. Karma describes what follows from action; dharma guides what action is appropriate now.
                         </p>
                         <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-3xl border-l-4 border-orange-500/30 pl-8 py-2">
-                            Karma is not cosmic punishment. It is physics for the soul — as objective and impersonal as gravity.
+                            Karma is not cosmic reward and punishment. It is physics for the soul, as objective and impersonal as gravity.
                         </p>
                     </header>
 
@@ -98,20 +98,20 @@ export default function HowKarmaDharmaWorkPage() {
                         <section>
                             <h2 className="text-3xl font-display font-bold mb-6">What Karma Is (And Isn't)</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                The Western pop-culture version of karma — "you were mean to me so bad things will happen to you" — is a vast oversimplification. In Sanskrit, <em>karma</em> simply means "action." The law of karma is a law of causality: every intentional action, whether physical, verbal, or mental, produces an effect. Some effects ripen quickly (within this lifetime), others slowly (across multiple lifetimes).
+                                The Western pop-culture version of karma, "you were mean to me so bad things will happen to you," is a vast oversimplification. In Sanskrit, <em>karma</em> derives from the root <em>kri</em> (to do), simply meaning "action." The law of karma is a law of causality: every intentional action, whether physical, verbal, or mental, produces an effect. Some effects ripen quickly (within this lifetime), others slowly (across multiple lifetimes).
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                                 Karma is <strong className="text-foreground">not judgment</strong>. There is no cosmic judge assigning rewards and punishments. The system is lawful, like any causal process: actions set conditions, and conditions generate outcomes. A person who acts selfishly does not get "cursed" by an outside authority; they reinforce habits and perceptions that generate suffering.
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed">
-                                The Bhagavad Gita introduces a liberating refinement: <strong className="text-foreground">it is not action but attachment to the result of action that binds.</strong> Act fully, act excellently — but let go of the fruits. This is Karma Yoga, and it is the central teaching of chapter 3 through 6 of the Gita.
+                                The Bhagavad Gita introduces a liberating refinement: <strong className="text-foreground">it is not action but attachment to the result of action that binds.</strong> Act fully and act excellently, but let go of the fruits. This is Karma Yoga, and it is the central teaching of chapter 3 through 6 of the Gita.
                             </p>
                         </section>
 
                         <section className="bg-muted/30 rounded-3xl p-10 border border-border/50">
                             <h2 className="text-3xl font-display font-bold mb-8">The Three Types of Karma</h2>
                             <p className="text-lg text-muted-foreground mb-8">
-                                Classical Indian philosophy distinguishes three categories of karma, which together explain why some tendencies feel deeply ingrained while others feel freshly chosen:
+                                Classical Indian philosophy distinguishes three categories of karma, a framework codified by Shankaracharya in the Vivekachudamani. Together they explain why some tendencies feel deeply ingrained while others feel freshly chosen:
                             </p>
                             <div className="space-y-6">
                                 {karmaTypes.map((k) => (
@@ -125,7 +125,7 @@ export default function HowKarmaDharmaWorkPage() {
                                 ))}
                             </div>
                             <p className="text-base text-muted-foreground mt-8 leading-relaxed italic border-l-4 border-orange-500/30 pl-6">
-                                Spiritual practice (meditation, selfless action, ethical living) works primarily on Agami karma — stopping the creation of new binding karma — while gradually burning through Sanchita karma over time.
+                                Spiritual practice (meditation, selfless action, ethical living) works primarily on Agami karma, stopping the creation of new binding karma, while gradually burning through Sanchita karma over time.
                             </p>
                         </section>
 
@@ -151,10 +151,10 @@ export default function HowKarmaDharmaWorkPage() {
                                 </li>
                             </ul>
                             <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                The Bhagavad Gita contains one of the most radical statements about svadharma: <em>"Better is one's own Dharma, though imperfectly performed, than the Dharma of another well performed. Even death in one's own Dharma is bliss; to follow another's Dharma is fear-inducing."</em> (3.35)
+                                The Bhagavad Gita contains one of the most radical statements about svadharma: <em>"Better is one's own Dharma, though imperfectly performed, than the Dharma of another well performed. Even death in one's own Dharma is bliss; to follow another's Dharma is fear-inducing."</em> (3.35) Shankaracharya's bhashya on this verse explains that another's dharma produces fear precisely because it conflicts with one's own inherent nature (svabhava).
                             </p>
                             <p className="text-xl text-muted-foreground leading-relaxed">
-                                This verse is not tribal — it is psychological. When you abandon your authentic path to imitate someone else's greatness, you generate the particular suffering of inauthenticity: performing well at something that is not truly you. Your own imperfect path, lived authentically, is more liberating than someone else's perfection.
+                                This verse is psychological in its insight. When you abandon your authentic path to imitate someone else's greatness, you generate the particular suffering of inauthenticity: performing well at something that is not truly you. Your own imperfect path, lived authentically, is more liberating than someone else's perfection.
                             </p>
                         </section>
 
@@ -189,19 +189,19 @@ export default function HowKarmaDharmaWorkPage() {
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h3 className="font-bold text-lg mb-3 text-orange-400">At Work: Karma Yoga in Practice</h3>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        When you work only for outcome, anxiety rises each time the outcome is uncertain. When you work for execution quality, performance and steadiness both improve. Bhagavad Gita 2.47 gives the principle: commit to action, do not anchor identity in result.
+                                        When you work only for outcome, anxiety rises each time the outcome is uncertain. When you work for execution quality, performance and steadiness both improve. Bhagavad Gita 2.47 gives the principle, interpreted consistently by both Shankaracharya and Ramanujacharya: commit to action, do not anchor identity in result.
                                     </p>
                                 </div>
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h3 className="font-bold text-lg mb-3 text-orange-400">In Relationships: Dharma as Role Clarity</h3>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        Most relational suffering comes from role confusion — expecting others to fulfill needs that aren't theirs to fulfill, or failing to meet the actual needs of your role. Dharmic thinking asks: given who I am in this relationship and what this person actually needs from me right now, what is the right action? Not the most comfortable, or the most emotionally gratifying — the right one.
+                                        Most relational suffering comes from role confusion: expecting others to fulfill needs that aren't theirs to fulfill, or failing to meet the actual needs of your role. Dharmic thinking asks: given who I am in this relationship and what this person actually needs from me right now, what is the right action? Not the most comfortable, or the most emotionally gratifying. The right one.
                                     </p>
                                 </div>
                                 <div className="rounded-2xl border border-border/40 bg-card/30 p-6">
                                     <h3 className="font-bold text-lg mb-3 text-orange-400">In Ethical Dilemmas: Universal vs Personal Dharma</h3>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        When your svadharma (personal duty) seems to conflict with sadharana dharma (universal ethics), the framework suggests: universal ethics take priority, but context matters enormously. Arjuna's dilemma in the Gita is exactly this — his personal reluctance vs his warrior duty vs the larger dharmic order of upholding righteousness. There are no easy algorithms. Wisdom is needed.
+                                        When your svadharma (personal duty) seems to conflict with sadharana dharma (universal ethics), the framework suggests: universal ethics take priority, but context matters enormously. Arjuna's dilemma in the Gita is exactly this. His personal reluctance, his warrior duty, and the larger dharmic order of upholding righteousness all pulled against each other. There are no easy algorithms. Wisdom is needed.
                                     </p>
                                 </div>
                             </div>
@@ -233,10 +233,20 @@ export default function HowKarmaDharmaWorkPage() {
                         </div>
                     </section>
 
+                    <section className="mt-16 mb-20">
+                        <h2 className="text-2xl font-display font-bold mb-8 text-muted-foreground uppercase tracking-wide">Sources &amp; Commentaries</h2>
+                        <ul className="space-y-3 text-sm">
+                            <li><a href="https://www.britannica.com/topic/karma" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Karma — Encyclopaedia Britannica</a></li>
+                            <li><a href="https://plato.stanford.edu/entries/karma/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Karma — Stanford Encyclopedia of Philosophy</a></li>
+                            <li><a href="https://plato.stanford.edu/entries/dharma/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Dharma — Stanford Encyclopedia of Philosophy</a></li>
+                            <li><a href="https://www.britannica.com/topic/Bhagavadgita" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 underline transition-colors">Bhagavad Gita — Encyclopaedia Britannica</a></li>
+                        </ul>
+                    </section>
+
                     <div className="mt-20 bg-orange-600 rounded-3xl p-12 text-center text-white shadow-2xl">
                         <h2 className="text-4xl lg:text-5xl font-display font-black mb-6">Apply It Starting Today.</h2>
                         <p className="text-xl text-orange-50 max-w-2xl mx-auto mb-10 font-medium">
-                            Understanding karma and dharma is one thing. Practicing Karma Yoga — acting without attachment — is another. The Bhagavad Gita is the manual.
+                            Understanding karma and dharma is one thing. Practicing Karma Yoga, acting without attachment, is another. The Bhagavad Gita is the manual.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <TrackedLink
