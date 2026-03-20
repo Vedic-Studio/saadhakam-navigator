@@ -27,6 +27,16 @@ const nextConfig: NextConfig = {
                 permanent: true,
             },
             {
+                source: "/philosophies/nyaya",
+                destination: "/philosophies/nyaya-vaisheshika",
+                permanent: true,
+            },
+            {
+                source: "/philosophies/vaisheshika",
+                destination: "/philosophies/nyaya-vaisheshika",
+                permanent: true,
+            },
+            {
                 source: "/compare/advaita-vs-dvaita",
                 destination: "/advaita-vs-dvaita",
                 permanent: true,

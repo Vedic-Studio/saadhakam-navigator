@@ -158,7 +158,7 @@ export default function BhagavadGitaGuidePage() {
       <div className="rounded-2xl border border-border/50 bg-card/40 p-6">
         <h3 className="mb-3 text-lg font-semibold">A workable beginner sequence</h3>
         <ul className="list-disc space-y-2 pl-6 text-muted-foreground">
-          <li>Read Chapter 1 fully to grasp the crisis.</li>
+          <li>Read <ArticleLink href="/bhagavad-gita-chapter-1" eventLabel="gita:body:ch1">Chapter 1</ArticleLink> fully to grasp the crisis.</li>
           <li>Study Chapters 2 and 3 slowly for Self and action.</li>
           <li>Read Chapters 10 to 12 for Krishna's divine status and Bhakti.</li>
           <li>Return to Chapter 18 only after the earlier doctrine is stable.</li>
@@ -184,7 +184,7 @@ export default function BhagavadGitaGuidePage() {
         The Gita remains alive because it does not promise a life without conflict. It begins from conflict, grief, divided duty, and uncertainty. Its authority does not come from easy consolation. It comes from refusing to reduce human action to sentiment, law, or self-interest alone.
       </p>
       <p>
-        It also matters because it resists modern fragmentation. Ethics, metaphysics, contemplative practice, and devotion are not separated into different departments. The Gita insists that the way one acts depends on what one thinks the self is, what one takes the world to be, and whether one stands in relation to the Divine.
+        It also matters because it resists modern fragmentation. Ethics, metaphysics, contemplative practice, and devotion are not separated into different departments. The Gita insists that the way one acts depends on what one thinks the self is, what one takes the world to be, and whether one stands in relation to the Divine. Readers approaching from a Western scriptural background may find the structural comparison in <ArticleLink href="/bhagavad-gita-vs-bible" eventLabel="gita:body:vs-bible">Bhagavad Gita vs Bible</ArticleLink> clarifying.
       </p>
       <p>
         That is why the text became scripture for householders, renunciants, philosophers, and devotees alike. It does not say all paths are identical. It does show how disciplined action, knowledge, devotion, and meditation can be ordered toward liberation without denying the complexity of embodied life.

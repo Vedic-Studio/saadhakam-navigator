@@ -112,8 +112,6 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: [
       `${baseUrl}/sitemap.xml`,
       ...sitemapPaths.map((path) => `${baseUrl}/sitemap/${path}.xml`),
-      `${baseUrl}/llms.txt`,
-      `${baseUrl}/llms-full.txt`,
     ],
   };
 }

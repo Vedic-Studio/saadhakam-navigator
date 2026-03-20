@@ -66,7 +66,7 @@ export default function VedantaVsStoicismPage() {
 
             <p>
                 For complete orientation, continue with the cluster hub at <Link href="/western-philosophy-and-vedanta">Indian
-                    Philosophy vs Western Philosophy</Link> and then revisit this comparison with your own daily practice data.
+                    Philosophy vs Western Philosophy</Link> and then revisit this comparison with your own daily practice data. For a parallel Western bridge, see how <Link href="/carl-jung-and-vedanta">Carl Jung engaged Vedantic ideas</Link> through the lens of depth psychology.
             </p>
         </ArticleLayout>
     );
