@@ -9,7 +9,8 @@ import type { Metadata } from "next";
 // Constants
 // ============================================================================
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
+// Hardcoded to www — env var inconsistency caused Google canonical confusion
+export const SITE_URL = "https://www.opensadhaka.com";
 export const SITE_NAME = "Sadhaka";
 export const SITE_TWITTER = "@opensadhaka";
 export const DEFAULT_LOCALE = "en_US";
@@ -137,6 +138,7 @@ export interface ArticleSchemaMeta {
     keywords?: string[];
     author?: string;
     authorType?: "Person" | "Organization";
+    image?: string;
 }
 
 /**
@@ -164,6 +166,7 @@ export function buildArticleSchema(meta: ArticleSchemaMeta) {
             name: SITE_NAME,
             url: SITE_URL,
         },
+        ...(meta.image ? { image: meta.image } : {}),
     };
 }
 
@@ -172,6 +175,7 @@ export interface WebPageSchemaMeta {
     description: string;
     url: string;
     breadcrumbItems?: BreadcrumbItem[];
+    image?: string;
 }
 
 /**
@@ -194,6 +198,10 @@ export function buildWebPageSchema(meta: WebPageSchemaMeta) {
 
     if (meta.breadcrumbItems && meta.breadcrumbItems.length > 0) {
         schema.breadcrumb = buildBreadcrumbSchema(meta.breadcrumbItems);
+    }
+
+    if (meta.image) {
+        schema.image = meta.image;
     }
 
     return schema;
@@ -294,6 +302,8 @@ export function buildArticleMetadata(article: ArticleMeta): Metadata {
 export function buildArticleSchemas(article: ArticleMeta, pillarLabel: string, pillarHref: string) {
     const pageUrl = buildUrl(article.route);
 
+    const imageUrl = article.featuredImage ? buildUrl(article.featuredImage.src) : undefined;
+
     return {
         article: buildArticleSchema({
             headline: article.title,
@@ -302,6 +312,7 @@ export function buildArticleSchemas(article: ArticleMeta, pillarLabel: string, p
             datePublished: article.publishDate,
             section: pillarLabel,
             keywords: [article.primaryKeyword],
+            image: imageUrl,
         }),
         faq: buildFaqSchema(article.faqs),
         breadcrumb: buildBreadcrumbSchema([

@@ -19,7 +19,8 @@ import { rashis } from "@/data/rashis";
 import { nakshatras } from "@/data/nakshatras";
 import { tithis, varas } from "@/data/panchang";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
+// Hardcoded to www — env var inconsistency caused Google canonical confusion
+const baseUrl = "https://www.opensadhaka.com";
 
 // Article routes already listed in the "core" sitemap — exclude from "articles" sitemap to avoid duplicates
 const coreArticleRoutes = new Set([
@@ -198,7 +199,9 @@ function getEntries(id: string): SitemapEntry[] {
           priority: 0.8,
         });
       }
-      for (const sh of bgShlokas) {
+      // Only include Chapter 1 shlokas (fully seeded with translations + commentaries).
+      // Chapters 2-18 stubs are too thin — exclude until content is populated.
+      for (const sh of bgShlokas.filter((s) => s.chapter === 1)) {
         entries.push({
           url: `${baseUrl}/texts/bhagavad-gita/chapter-${sh.chapter}/shloka-${sh.verse}`,
           lastModified: contentDate,
@@ -246,13 +249,9 @@ function getEntries(id: string): SitemapEntry[] {
           changeFrequency: "monthly",
           priority: 0.7,
         })),
+        // Lalita Sahasranama: only index page — individual name pages are too thin for Google
+        // (name + transliteration + one-line meaning). Pages remain crawlable via internal links.
         { url: `${baseUrl}/stotras/lalita-sahasranama`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.8 },
-        ...loadSahasranama("lalita-sahasranama").names.map((n) => ({
-          url: `${baseUrl}/stotras/lalita-sahasranama/${n.slug}`,
-          lastModified: contentDate,
-          changeFrequency: "monthly",
-          priority: 0.6,
-        })),
       ];
 
     case "deities":

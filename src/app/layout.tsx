@@ -5,7 +5,8 @@ import "./globals.css";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 import { ReadProgress } from "@/components/animations/ReadProgress";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.opensadhaka.com";
+// Always use www — env var may lack it, causing canonical confusion with Google
+const siteUrl = "https://www.opensadhaka.com";
 const gaMeasurementId = "G-S3DHYPPG9R";
 const gscVerificationCode =
   process.env.GSC_VERIFICATION?.trim() ||
