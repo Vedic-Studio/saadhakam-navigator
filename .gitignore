@@ -29,12 +29,33 @@ dist-ssr
 # Next.js build output (never commit)
 .next/
 
+# Build artifacts
+temp_cache/
+*.tsbuildinfo
+__pycache__/
+*.pyc
+
 # Local Claude worktree metadata (must never be committed)
 .claude/worktrees/
 .vercel
 
-# Local backend secrets
-backend/.env
+# Legacy / dead directories (kept locally, not in repo)
+.agent/
+.agents/
+.claire/
+.roo/
+workspace/
+backend/
+frontend/
+content-pipeline/
+skills/
+seo/
+plans/
+venv/
+.venv/
+
+# Package manager lockfiles (project uses npm)
+bun.lockb
 
 # Backlink status reports (generated, ephemeral)
 scripts/backlinks/status-*.json
