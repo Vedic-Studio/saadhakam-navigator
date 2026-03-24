@@ -39,9 +39,20 @@ npm run indexnow:submit:prod   # submit URLs to search engines after publishing
 - Concepts/Traditions/Texts/Greats/Practices: `src/data/*.ts` individual files
 
 ### Git / Commits
-- Never commit `temp_cache/`, `.next/`, `node_modules/`, `dist/`, `tsconfig.tsbuildinfo`
+- Never commit `temp_cache/`, `.next/`, `node_modules/`, `dist/`, `tsconfig.tsbuildinfo`, `__pycache__/`, `.DS_Store`
 - These are in `.gitignore` — if they appear in `git status`, something is wrong
 - Always run `npm run build` before committing — TypeScript errors (`ignoreBuildErrors: true`) won't block build but lint will catch issues
+- Pre-commit hooks (husky + lint-staged) auto-run lint + related tests on staged files
+- Global pre-commit hook blocks common junk file patterns
+
+### Testing
+- **TDD is mandatory** — every new module gets a test file (`<name>.test.ts` or `<name>.test.tsx`)
+- Run `npm run test:run` before committing
+- Tests must verify actual behavior: input/output contracts, edge cases, error handling
+- Data files (`src/data/*.ts`): test schema shape, required fields, no duplicates
+- Utility functions (`src/lib/*.ts`): test all input/output combinations
+- API routes (`src/app/api/**`): test request/response contracts
+- No placeholder tests (`expect(true).toBe(true)`) — if a test doesn't fail when the code breaks, it's not a test
 
 ### TypeScript
 - `typescript.ignoreBuildErrors: true` in `next.config.ts` — build succeeds with TS errors, but keep errors clean

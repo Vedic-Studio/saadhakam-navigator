@@ -51,7 +51,7 @@ export const conceptsBatch1: Concept[] = [
         ],
         roleInPhilosophy: "Central to Tantrik and Kundalini mapping. The Chakras provide a precise geography of human psychology, allowing the yogi to diagnose exactly where they are stuck and apply specific interventions (mantra, asana, breath) to that exact location.",
         practicalApplication: "If you feel chronic fear or instability, the work is not in analyzing the fear conceptually, but in grounding the lowest energy center (Muladhara). Conversely, if you lack empathy, the heart center needs attention. You treat psychological issues as energetic traffic jams.",
-        relatedConcepts: ["kundalini", "nadi", "prana", "meditation"],
+        relatedConcepts: ["kundalini", "nadi", "prana", "dhyana"],
         sourceTexts: ["Sat-Cakra-Nirupana", "Tantric Agamas"],
         tags: ["energy", "tantra", "anatomy", "psychology"]
     },
@@ -159,7 +159,7 @@ export const conceptsBatch1: Concept[] = [
         ],
         roleInPhilosophy: "In Tantra and Hatha Yoga, Mudras graduate the practitioner from mere physical movement (Asana) to internal energy management. They bridge the gap between gross physical exertion and deep meditative stillness.",
         practicalApplication: "The next time your mind is severely scattered during meditation, focus your attention entirely on your hands. Form Gyan Mudra (index tip to thumb tip). Allow the physical sensation of the touch to become the anchor. The closed loop in the hand stabilizes the loop in the mind.",
-        relatedConcepts: ["prana", "bandha", "asana", "meditation"],
+        relatedConcepts: ["prana", "bandha", "asana", "dhyana"],
         sourceTexts: ["Hatha Yoga Pradipika", "Gheranda Samhita", "Tantric texts"],
         tags: ["practice", "yoga", "energy", "body"]
     },
