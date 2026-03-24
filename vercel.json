@@ -10,7 +10,7 @@
                 }
             ],
             "destination": "https://www.opensadhaka.com/:path",
-            "permanent": true
+            "statusCode": 301
         }
     ]
 }

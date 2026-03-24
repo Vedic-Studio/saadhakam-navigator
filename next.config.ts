@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
                 permanent: true,
             },
             {
+                source: "/downloads",
+                destination: "/",
+                permanent: true,
+            },
+            {
                 source: "/philosophies/advaita-vedanta",
                 destination: "/philosophies/advaita",
                 permanent: true,
