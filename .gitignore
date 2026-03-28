@@ -49,7 +49,7 @@ backend/
 frontend/
 content-pipeline/
 skills/
-seo/
+
 plans/
 venv/
 .venv/
