@@ -16,6 +16,7 @@ const navLinks = [
   { label: "Texts", href: "/sacred-texts-teachings" },
   { label: "Deities", href: "/deities" },
   { label: "Practices", href: "/practical-spiritual-practices" },
+  { label: "History", href: "/sanatan-history" },
   { label: "Jyotish", href: "/jyotish" },
   { label: "Traditions", href: "/spiritual-traditions-paths" },
 ];

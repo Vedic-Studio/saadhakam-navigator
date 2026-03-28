@@ -13,6 +13,7 @@ const footerLinks = {
     { label: "Traditions", href: "/traditions" },
     { label: "Deities", href: "/deities" },
     { label: "Greats", href: "/greats" },
+    { label: "Sanatan History", href: "/sanatan-history" },
     { label: "Brand Facts", href: "/brand-facts" },
   ],
   learn: [

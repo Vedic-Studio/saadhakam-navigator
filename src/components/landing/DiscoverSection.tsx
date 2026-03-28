@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame } from "lucide-react";
+import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame, Clock } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggeredList } from "@/components/animations/StaggeredList";
 
@@ -45,6 +45,13 @@ const categories = [
     href: "/greats",
     icon: Users,
     color: "text-rose-400",
+  },
+  {
+    title: "Sanatan History",
+    description: "Evidence-based timeline from 22,000+ BCE to Maurya Empire",
+    href: "/sanatan-history",
+    icon: Clock,
+    color: "text-violet-400",
   },
 ];
 

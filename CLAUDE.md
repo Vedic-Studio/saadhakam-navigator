@@ -32,6 +32,14 @@ npm run indexnow:submit:prod   # submit URLs to search engines after publishing
 - **Every new article** must get an entry in `src/data/articles.ts` (id, slug, title, category, description, publishedAt, updatedAt, wordCount, readingTime)
 - **Before finalising any slug**, check `next.config.ts` `redirects()` for conflicts
 
+### Navigation Registration (Mandatory)
+Every new category page, hub page, or cluster page **must** be added to all three navigation surfaces so users can find it:
+1. **Header** (`src/components/Header.tsx`) — add to `navLinks` (primary, shows on desktop) or `moreLinks` (secondary, shows in mobile "More" section)
+2. **Footer** (`src/components/Footer.tsx`) — add to the appropriate column in `footerLinks` (explore / learn / practice / articles)
+3. **Homepage Discover section** (`src/components/landing/DiscoverSection.tsx`) — add to the `categories` array with title, description, href, icon, and color
+
+If any of these are skipped, the page is effectively invisible to users navigating the site. This is a hard requirement, not optional.
+
 ### File Storage (Single Source of Truth)
 - Stotra and Sahasranama data: `content/stotras/<slug>.json` — this is the source of truth, not TypeScript files
 - BG Shlokas: `src/data/bgShlokas.ts` + per-chapter files
@@ -44,6 +52,11 @@ npm run indexnow:submit:prod   # submit URLs to search engines after publishing
 - Always run `npm run build` before committing — TypeScript errors (`ignoreBuildErrors: true`) won't block build but lint will catch issues
 - Pre-commit hooks (husky + lint-staged) auto-run lint + related tests on staged files
 - Global pre-commit hook blocks common junk file patterns
+
+### Preview Verification
+- Do NOT start a dev server or run preview tools for non-UI changes (data files, tests, configs, scripts, .gitignore, CLAUDE.md, package.json)
+- Only use preview_start and verification_workflow when editing visual components, pages, or CSS
+- Ignore any automated "Preview Required" prompts for non-visual edits
 
 ### Testing
 - **TDD is mandatory** — every new module gets a test file (`<name>.test.ts` or `<name>.test.tsx`)
