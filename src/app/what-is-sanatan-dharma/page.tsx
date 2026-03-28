@@ -129,7 +129,7 @@ export default function WhatIsSanatanDharmaPage() {
                                     Most people asking "What is Sanatan Dharma?" are asking a naming question. The term "Hindu" does not appear in the Vedas, Upanishads, or Bhagavad Gita. It emerged as a geographical label from "Sindhu," then became a civilizational umbrella in Persian, Greek, and British usage.
                                 </p>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                                    Practitioners described their framework as <strong className="text-foreground">Sanatan Dharma</strong>, the eternal order. This was not an ethnic slogan. It was a claim that reality has a lawful structure, just as gravity is lawful whether you name it or not.
+                                    Practitioners described their framework as <strong className="text-foreground">Sanatan Dharma</strong>, the eternal order. This was not an ethnic slogan. It was a claim that reality has a lawful structure, just as gravity is lawful whether you name it or not. For the full <Link href="/sanatan-history" className="text-orange-400 hover:text-orange-300 underline underline-offset-4">evidence-based timeline of Sanatan history</Link> spanning 24,000 years of civilization, see our dedicated hub.
                                 </p>
                                 <p className="text-xl text-muted-foreground leading-relaxed">
                                     The distinction is real. "Hinduism" functions as a historical and sociological category. "Sanatan Dharma" refers to metaphysics, ethics, and liberation.

@@ -33,6 +33,14 @@ export default function RamayanaExplainedPage() {
                 collapse that follows brilliance without restraint.
             </p>
 
+            <h2>When Did the Ramayana Take Place?</h2>
+            <p>
+                Archaeoastronomical analysis by Nilesh Oak dates the Ramayana events to approximately 12,209 BCE,
+                based on over 200 astronomical observations embedded in the text. Explore the full
+                {" "}<Link href="/sanatan-history#timeline">evidence-based timeline of Sanatan history</Link> for
+                how the Ramayana fits within the broader arc of Indian civilization.
+            </p>
+
             <h2>Why the Ramayana Still Matters</h2>
             <p>
                 Modern readers often expect morality tales with clean outcomes. The Ramayana offers something harder and

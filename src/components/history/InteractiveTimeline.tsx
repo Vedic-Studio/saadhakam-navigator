@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   BookOpen,
   Sun,
@@ -147,44 +147,43 @@ function EventCard({
           </motion.div>
         </div>
 
-        <AnimatePresence>
-          {expanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="overflow-hidden"
-            >
-              <div className="grid md:grid-cols-3 gap-4 mt-4 pt-4 border-t border-white/5">
-                <div>
-                  <h5 className="text-xs font-semibold uppercase tracking-wider text-orange-400/70 mb-1.5">
-                    Indian Event (Oak/Bhaty)
-                  </h5>
-                  <p className="text-sm text-muted-foreground">
-                    {event.indianEvent}
-                  </p>
-                </div>
-                <div>
-                  <h5 className="text-xs font-semibold uppercase tracking-wider text-sky-400/70 mb-1.5">
-                    Conventional Record
-                  </h5>
-                  <p className="text-sm text-muted-foreground">
-                    {event.conventionalRecord}
-                  </p>
-                </div>
-                <div>
-                  <h5 className="text-xs font-semibold uppercase tracking-wider text-violet-400/70 mb-1.5">
-                    Global Context
-                  </h5>
-                  <p className="text-sm text-muted-foreground">
-                    {event.globalContext}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <motion.div
+          animate={{
+            height: expanded ? "auto" : 0,
+            opacity: expanded ? 1 : 0,
+          }}
+          initial={false}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          className="overflow-hidden"
+          aria-hidden={!expanded}
+        >
+          <div className="grid md:grid-cols-3 gap-4 mt-4 pt-4 border-t border-white/5">
+            <div>
+              <h5 className="text-xs font-semibold uppercase tracking-wider text-orange-400/70 mb-1.5">
+                Indian Event (Oak/Bhaty)
+              </h5>
+              <p className="text-sm text-muted-foreground">
+                {event.indianEvent}
+              </p>
+            </div>
+            <div>
+              <h5 className="text-xs font-semibold uppercase tracking-wider text-sky-400/70 mb-1.5">
+                Conventional Record
+              </h5>
+              <p className="text-sm text-muted-foreground">
+                {event.conventionalRecord}
+              </p>
+            </div>
+            <div>
+              <h5 className="text-xs font-semibold uppercase tracking-wider text-violet-400/70 mb-1.5">
+                Global Context
+              </h5>
+              <p className="text-sm text-muted-foreground">
+                {event.globalContext}
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </button>
     </div>
   );

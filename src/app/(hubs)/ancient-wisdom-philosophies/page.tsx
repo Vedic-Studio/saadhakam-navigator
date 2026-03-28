@@ -207,7 +207,7 @@ export default function AncientWisdomPage() {
                         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                             For over 5,000 years, the sages of the Indian subcontinent have rigorously
                             investigated the nature of reality, consciousness, and the self. Explore the
-                            profound philosophical frameworks of Sanatan Dharma.
+                            profound philosophical frameworks of Sanatan Dharma, rooted in a <Link href="/sanatan-history" className="text-orange-400 hover:text-orange-300">civilization spanning 24,000 years</Link>.
                         </p>
                     </header>
 

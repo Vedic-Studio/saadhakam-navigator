@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import type { DynastyNode } from "@/data/history";
 
@@ -113,32 +113,33 @@ function TreeNode({
       </button>
 
       {/* Children */}
-      <AnimatePresence>
-        {expanded && hasChildren && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-          >
-            <div className={`ml-4 md:ml-6 mt-2 pl-4 border-l-2 ${colors.line} space-y-2`}>
-              {node.children.map((childId) => {
-                const child = nodeMap.get(childId);
-                if (!child) return null;
-                return (
-                  <TreeNode
-                    key={child.id}
-                    node={child}
-                    nodeMap={nodeMap}
-                    depth={depth + 1}
-                  />
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {hasChildren && (
+        <motion.div
+          animate={{
+            height: expanded ? "auto" : 0,
+            opacity: expanded ? 1 : 0,
+          }}
+          initial={false}
+          transition={{ duration: 0.2 }}
+          className="overflow-hidden"
+          aria-hidden={!expanded}
+        >
+          <div className={`ml-4 md:ml-6 mt-2 pl-4 border-l-2 ${colors.line} space-y-2`}>
+            {node.children.map((childId) => {
+              const child = nodeMap.get(childId);
+              if (!child) return null;
+              return (
+                <TreeNode
+                  key={child.id}
+                  node={child}
+                  nodeMap={nodeMap}
+                  depth={depth + 1}
+                />
+              );
+            })}
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

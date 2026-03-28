@@ -55,7 +55,7 @@ export function buildPageMetadata(meta: BasePageMeta): Metadata {
     const ogImages = meta.images?.map((img) => ({ url: img }));
 
     return {
-        title: `${meta.title} | ${SITE_NAME}`,
+        title: meta.title,
         description: meta.description,
         alternates: {
             canonical: canonicalUrl,
@@ -388,6 +388,66 @@ export function buildToolMetadata(tool: ToolMeta): Metadata {
         description: tool.description,
         path: tool.path,
     });
+}
+
+// ============================================================================
+// Person & Place Schema Builders
+// ============================================================================
+
+export interface PersonSchemaMeta {
+    name: string;
+    jobTitle?: string;
+    affiliation?: string;
+    url?: string;
+}
+
+/**
+ * Build Person JSON-LD schema
+ */
+export function buildPersonSchema(meta: PersonSchemaMeta) {
+    const schema: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: meta.name,
+    };
+
+    if (meta.jobTitle) schema.jobTitle = meta.jobTitle;
+    if (meta.affiliation) {
+        schema.affiliation = {
+            "@type": "Organization",
+            name: meta.affiliation,
+        };
+    }
+    if (meta.url) schema.url = meta.url;
+
+    return schema;
+}
+
+export interface PlaceSchemaMeta {
+    name: string;
+    description?: string;
+    latitude: number;
+    longitude: number;
+}
+
+/**
+ * Build Place JSON-LD schema with GeoCoordinates
+ */
+export function buildPlaceSchema(meta: PlaceSchemaMeta) {
+    const schema: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "Place",
+        name: meta.name,
+        geo: {
+            "@type": "GeoCoordinates",
+            latitude: meta.latitude,
+            longitude: meta.longitude,
+        },
+    };
+
+    if (meta.description) schema.description = meta.description;
+
+    return schema;
 }
 
 /**

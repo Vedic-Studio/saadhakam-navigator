@@ -193,7 +193,9 @@ export default function SacredTextsPage() {
                         <p>
                             The Vedas stand as the ultimate authority, but practically, works like the
                             <em>Bhagavad Gita</em> and the <em>Ramayana</em> serve as the living heartbeat of
-                            the tradition for billions of people today.
+                            the tradition for billions of people today. Archaeoastronomical analysis dates the Rigvedic hymns
+                            to 22,000+ BCE and the Mahabharata war to 5,561 BCE — see our <Link href="/sanatan-history" className="text-orange-400 hover:text-orange-300">evidence-based
+                            timeline</Link> for the full picture.
                         </p>
                         <p>
                             If you are unsure where to begin, start with the <Link href="/bhagavad-gita-complete-guide">Bhagavad

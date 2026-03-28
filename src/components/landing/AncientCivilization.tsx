@@ -33,12 +33,20 @@ export function AncientCivilization() {
                         We bring this history to life — from the science of Sanskrit to the advanced governance of Ram Rajya.
                     </p>
 
-                    <Link href="/traditions">
-                        <Button className="bg-white text-black hover:bg-white/90 h-16 px-10 rounded-full text-lg font-medium shadow-2xl shadow-amber-900/40 transition-transform hover:scale-105">
-                            Explore Our Heritage
-                            <ArrowRight className="ml-2 w-5 h-5" />
-                        </Button>
-                    </Link>
+                    <div className="flex flex-wrap gap-4 justify-center">
+                        <Link href="/traditions">
+                            <Button className="bg-white text-black hover:bg-white/90 h-16 px-10 rounded-full text-lg font-medium shadow-2xl shadow-amber-900/40 transition-transform hover:scale-105">
+                                Explore Our Heritage
+                                <ArrowRight className="ml-2 w-5 h-5" />
+                            </Button>
+                        </Link>
+                        <Link href="/sanatan-history">
+                            <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-16 px-10 rounded-full text-lg font-medium backdrop-blur-md transition-transform hover:scale-105">
+                                Explore the Timeline
+                                <ArrowRight className="ml-2 w-5 h-5" />
+                            </Button>
+                        </Link>
+                    </div>
                 </div>
 
                 {/* Stats Bar */}

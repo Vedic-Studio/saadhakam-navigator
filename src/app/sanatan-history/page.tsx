@@ -30,6 +30,10 @@ import {
   buildPageMetadata,
   buildFaqSchema,
   buildBreadcrumbSchema,
+  buildCollectionSchema,
+  buildPersonSchema,
+  buildPlaceSchema,
+  buildUrl,
 } from "@/lib/seo/index";
 import Link from "next/link";
 
@@ -40,7 +44,7 @@ import Link from "next/link";
 const pageMeta = {
   title: "Sanatan History: Evidence-Based Timeline of Ancient India",
   description:
-    "Explore the evidence-based timeline of Sanatan civilization from 22,000+ BCE to the Maurya Empire. Archaeoastronomy, archaeological sites, dynasty lineages, and genetic evidence mapped across 24,000 years.",
+    "Evidence-based timeline of Sanatan civilization from 22,000+ BCE to the Maurya Empire. Archaeoastronomy, archaeology, dynasty lineages, and genetics.",
   path: "/sanatan-history",
 };
 
@@ -64,12 +68,52 @@ export default function SanatanHistoryPage() {
     { label: "Sanatan History", href: "/sanatan-history" },
   ]);
 
-  const collectionSchema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
+  const collectionSchema = buildCollectionSchema({
     name: pageMeta.title,
     description: pageMeta.description,
-    url: "https://www.opensadhaka.com/sanatan-history",
+    url: buildUrl("/sanatan-history"),
+    items: [
+      { name: "The Oak-Bhaty Timeline", url: buildUrl("/sanatan-history#timeline"), description: "Archaeoastronomical dating of Sanatan civilization across seven eras" },
+      { name: "Archaeological Sites", url: buildUrl("/sanatan-history#sites"), description: "Ten key sites from Bhimbetka to underwater Dwarka" },
+      { name: "The Vansha Map", url: buildUrl("/sanatan-history#dynasties"), description: "Solar and Lunar dynasty lineages from Brahma to the Maurya Empire" },
+      { name: "Evidence Assessment", url: buildUrl("/sanatan-history#evidence"), description: "Claims categorized by evidence strength: confirmed, strong, and open" },
+      { name: "Key Researchers", url: buildUrl("/sanatan-history#researchers"), description: "Scholars behind the evidence-based reconstruction of Sanatan history" },
+      { name: "FAQ", url: buildUrl("/sanatan-history#faq"), description: "Common questions about evidence-based dating of Sanatan civilization" },
+    ],
+  });
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: pageMeta.title,
+    url: buildUrl("/sanatan-history"),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["#aeo-block"],
+    },
+  };
+
+  const structuredDataGraph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      ...researchers.map((r) =>
+        buildPersonSchema({
+          name: r.name,
+          jobTitle: r.title,
+          affiliation: r.affiliation,
+        })
+      ),
+      ...archaeologicalSites
+        .filter((s) => s.coordinates)
+        .map((s) =>
+          buildPlaceSchema({
+            name: s.name,
+            description: s.significance,
+            latitude: s.coordinates!.lat,
+            longitude: s.coordinates!.lng,
+          })
+        ),
+    ].map(({ "@context": _ctx, ...rest }) => rest),
   };
 
   const confirmedEvidence = getEvidenceByStatus("confirmed");
@@ -95,6 +139,18 @@ export default function SanatanHistoryPage() {
           __html: JSON.stringify(collectionSchema),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(webPageSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredDataGraph),
+        }}
+      />
       <Header />
 
       <main className="flex-grow pt-32 pb-16">
@@ -118,7 +174,7 @@ export default function SanatanHistoryPage() {
 
             {/* AEO direct-answer block */}
             <ScrollReveal delay={0.1}>
-              <div className="max-w-3xl mx-auto bg-orange-950/20 border border-orange-900/30 rounded-2xl p-6 text-left">
+              <div id="aeo-block" className="max-w-3xl mx-auto bg-orange-950/20 border border-orange-900/30 rounded-2xl p-6 text-left">
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {aeoBlock}
                 </p>
