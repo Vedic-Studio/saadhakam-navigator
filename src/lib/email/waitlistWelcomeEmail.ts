@@ -10,14 +10,14 @@ export function buildWaitlistWelcomeEmail(name: string): string {
 
   const body = [
     p(greeting),
-    p("You're in. We're building an AI tutor trained on primary Sanskrit texts, commentaries, and living philosophical traditions. Not summaries. Not Wikipedia. The actual source material, made navigable."),
+    p("We're building an AI tutor trained on primary Sanskrit texts, commentaries, and living philosophical traditions. Not summaries. Not Wikipedia. The actual source material, made navigable."),
 
     card(
-      'What you get right now',
-      'The knowledge library is already live. 73 in-depth articles, 60 philosophical comparisons, and 1,000+ verse-by-verse analyses from the Bhagavad Gita, Vishnu Sahasranama, and more.'
+      'The knowledge library is live',
+      '73 in-depth articles, 60 philosophical comparisons, and 1,000+ verse-by-verse analyses from the Bhagavad Gita, Vishnu Sahasranama, and more. Start reading today.'
     ),
 
-    p("When the AI tutor launches, you'll be first in. Early members shape what gets built next."),
+    p("The AI tutor is in development. We'll write when it's ready."),
 
     divider(),
 
@@ -34,4 +34,4 @@ export function buildWaitlistWelcomeEmail(name: string): string {
   });
 }
 
-export const WAITLIST_WELCOME_SUBJECT = 'You\'re on the list — Sadhaka';
+export const WAITLIST_WELCOME_SUBJECT = 'Welcome to Sadhaka';

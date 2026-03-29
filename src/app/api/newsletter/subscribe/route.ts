@@ -56,6 +56,7 @@ export async function POST(request: Request) {
                 const sendResult = await resend.emails.send({
                     from: fromEmail,
                     to: email,
+                    replyTo: 'hello@opensadhaka.com',
                     subject: WAITLIST_WELCOME_SUBJECT,
                     html: buildWaitlistWelcomeEmail(firstName || 'there'),
                     tags: [{ name: 'source', value: 'waitlist' }],
