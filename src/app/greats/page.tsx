@@ -10,23 +10,25 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Legacy of Light: The Great Masters of Sanatan Dharma | Sadhaka",
+  title: "The Acharyas and Sages of Sanatan Dharma | Sadhaka",
   description:
-    "Meet the sages, philosophers, and saints who preserved the flame of Dharma through the ages. From Adi Shankaracharya to Swami Vivekananda.",
+    "The philosophers and commentators who built the major systems of Hindu thought. Shankaracharya, Abhinavagupta, Vivekananda, Aurobindo, and Kalidasa.",
   keywords: [
-    "spiritual masters",
-    "gurus",
-    "saints",
+    "acharyas",
     "shankaracharya",
+    "abhinavagupta",
     "vivekananda",
+    "aurobindo",
+    "kalidasa",
     "sanatan dharma",
-    "ancient wisdom",
+    "vedanta",
+    "bhashya",
   ],
   alternates: { canonical: "https://www.opensadhaka.com/greats" },
   openGraph: {
-    title: "Spiritual Masters of Sanatan Dharma | Sadhaka",
+    title: "The Acharyas and Sages of Sanatan Dharma | Sadhaka",
     description:
-      "Explore the greatest saints, philosophers, and gurus of Sanatan Dharma.",
+      "The philosophers and commentators who built the major systems of Hindu thought. Shankaracharya, Abhinavagupta, Vivekananda, Aurobindo, and Kalidasa.",
     url: "https://www.opensadhaka.com/greats",
   },
 };
@@ -39,17 +41,43 @@ export default function GreatsPage() {
       <main className="pt-20">
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 px-4">
+            <div className="text-center mb-12 px-4">
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                The Heritage of Wisdom
+                Acharyas & Sages
               </div>
               <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-8 tracking-tight">
-                Legacy of <span className="text-primary italic">Light</span>
+                The Acharyas and Sages
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
-                Meet the sages, philosophers, and saints who preserved the flame of Dharma
-                through the ages. Ancient wisdom, transmitted through a living lineage
-                of realized masters.
+                The philosophers who built the major darshanas, the commentators
+                who defined how the Upanishads and Brahma Sutras are read, and the
+                poets who gave Sanskrit literature its highest expressions.
+              </p>
+            </div>
+
+            <div className="max-w-3xl mx-auto mb-16 space-y-4 text-muted-foreground leading-relaxed px-4">
+              <p>
+                In the Vedantic tradition, a school of thought is defined by its
+                Acharya&apos;s commentary on the Prasthanatrayi &mdash; the Brahma
+                Sutras, the principal Upanishads, and the Bhagavad Gita. Shankara
+                wrote the Advaita Bhashya. Ramanuja wrote the Vishishtadvaita
+                Bhashya. Madhva wrote the Dvaita Bhashya. Each commentary
+                established not just an interpretation but a complete philosophical
+                system with its own epistemology, ontology, and soteriology.
+              </p>
+              <p>
+                The figures on this page are not presented as objects of devotion
+                but as thinkers whose arguments can be studied, tested, and debated.
+                Shankaracharya argued for non-dual Brahman. Abhinavagupta synthesized
+                the Pratyabhijna school of Kashmir Shaivism. Vivekananda reframed
+                Vedanta for a global audience. Aurobindo integrated evolution into
+                Vedantic metaphysics. Kalidasa demonstrated that philosophical depth
+                and literary craft are not separate disciplines.
+              </p>
+              <p className="text-sm italic text-muted-foreground/70">
+                This is not an exhaustive list. Ramanuja, Madhva, Vallabha, Patanjali,
+                and many others are not yet covered. The selection reflects current
+                coverage, not a ranking.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
