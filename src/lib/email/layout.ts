@@ -10,10 +10,10 @@
 // ─── Design Tokens ───────────────────────────────────────────────────────────
 
 export const TOKEN = {
-  // Brand gradient
-  gradientStart: '#78350f',
-  gradientEnd: '#d97706',
-  gradient: 'linear-gradient(135deg, #78350f 0%, #d97706 100%)',
+  // Brand gradient — warm amber to gold, no muddy browns
+  gradientStart: '#b45309',
+  gradientEnd: '#f59e0b',
+  gradient: 'linear-gradient(135deg, #b45309 0%, #d97706 50%, #f59e0b 100%)',
 
   // Backgrounds
   pageBg: '#f7f4ef',
@@ -27,14 +27,14 @@ export const TOKEN = {
   footerBorder: '#e5d6c8',
   subtleBorder: '#f0e6d6',
 
-  // Text
-  headingColor: '#1a202c',
-  bodyColor: '#2d3748',
-  mutedColor: '#4a5568',
+  // Text — high contrast, optimized for email readability
+  headingColor: '#111827',
+  bodyColor: '#1f2937',
+  mutedColor: '#374151',
   accentText: '#92400e',
-  dimColor: '#6b7280',
-  footerColor: '#9ca3af',
-  cardBodyColor: '#6b4226',
+  dimColor: '#4b5563',
+  footerColor: '#6b7280',
+  cardBodyColor: '#5c3a1e',
 
   // Typography
   fontFamily: 'Georgia, "Times New Roman", serif',
@@ -55,14 +55,8 @@ const PROGRESSIVE_CSS = `
     .email-body-cell { padding: 24px 20px !important; }
     .email-header-cell { padding: 28px 20px 20px !important; }
     .email-footer-cell { padding: 16px 20px !important; }
-    .email-header-title { font-size: 20px !important; }
+    .email-header-title { font-size: 24px !important; }
     .email-card-table { width: 100% !important; }
-  }
-  @media (prefers-color-scheme: dark) {
-    .email-page-bg { background-color: #1a1a1a !important; }
-    .email-card-bg { background-color: #2d2d2d !important; }
-    .email-body-cell { color: #e0ddd8 !important; }
-    .email-footer-bg { background-color: #262626 !important; }
   }
 `;
 
@@ -103,7 +97,7 @@ export function wrapEmail(opts: EmailLayoutOptions): string {
     : '';
 
   const subtitleHtml = headerSubtitle
-    ? `<p style="margin:0;opacity:.88;font-size:13px;font-family:${TOKEN.uiFont};">${headerSubtitle}</p>`
+    ? `<p style="margin:0;opacity:.9;font-size:14px;font-weight:400;font-family:${TOKEN.uiFont};">${headerSubtitle}</p>`
     : '';
 
   const ctaHtml = cta
@@ -135,14 +129,14 @@ export function wrapEmail(opts: EmailLayoutOptions): string {
         <!-- HEADER -->
         <tr><td class="email-header-cell" align="center" style="padding:${TOKEN.headerPadding};background:${TOKEN.gradient};color:#ffffff;text-align:center;">
           <!--[if gte mso 9]><v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:${TOKEN.maxWidth}px;"><v:fill type="gradient" color="${TOKEN.gradientEnd}" color2="${TOKEN.gradientStart}" angle="135"/><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><center><![endif]-->
-          <h1 class="email-header-title" style="margin:0 0 6px;font-size:23px;font-weight:normal;letter-spacing:.4px;color:#ffffff;font-family:${TOKEN.fontFamily};">${headerTitle}</h1>
+          <h1 class="email-header-title" style="margin:0 0 8px;font-size:28px;font-weight:700;letter-spacing:.3px;color:#ffffff;font-family:${TOKEN.fontFamily};">${headerTitle}</h1>
           ${subtitleHtml}
           <!--[if gte mso 9]></center></v:textbox></v:rect><![endif]-->
         </td></tr>
 
         <!-- BODY -->
-        <tr><td class="email-body-cell" style="padding:${TOKEN.bodyPadding};font-family:${TOKEN.fontFamily};font-size:15px;line-height:${lineHeight};color:${TOKEN.bodyColor};">
-          <div style="font-size:15px;line-height:${lineHeight};color:${TOKEN.bodyColor};margin-bottom:${pSpacing};">
+        <tr><td class="email-body-cell" style="padding:${TOKEN.bodyPadding};font-family:${TOKEN.fontFamily};font-size:16px;line-height:${lineHeight};color:${TOKEN.bodyColor};">
+          <div style="font-size:16px;line-height:${lineHeight};color:${TOKEN.bodyColor};margin-bottom:${pSpacing};">
             ${body}
           </div>
           ${ctaHtml}
@@ -168,8 +162,8 @@ export function card(title: string, content: string): string {
   return `<table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation" style="margin:22px 0;">
     <tr>
       <td style="border-left:4px solid ${TOKEN.accentBorder};background:${TOKEN.accentBg};padding:18px 22px;border-radius:0 8px 8px 0;">
-        <p style="margin:0 0 7px;font-size:15px;color:${TOKEN.accentText};font-weight:700;font-family:${TOKEN.fontFamily};">${title}</p>
-        <p style="margin:0;font-size:14px;color:${TOKEN.cardBodyColor};line-height:1.6;font-family:${TOKEN.fontFamily};">${content}</p>
+        <p style="margin:0 0 7px;font-size:16px;color:${TOKEN.accentText};font-weight:700;font-family:${TOKEN.fontFamily};">${title}</p>
+        <p style="margin:0;font-size:15px;color:${TOKEN.cardBodyColor};line-height:1.65;font-family:${TOKEN.fontFamily};">${content}</p>
       </td>
     </tr>
   </table>`;
@@ -180,7 +174,7 @@ export function quote(text: string, attribution: string): string {
   return `<table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation" style="margin:22px 0;">
     <tr>
       <td style="background:${TOKEN.quoteBg};border-radius:8px;padding:18px 22px;">
-        <p style="margin:0;font-style:italic;color:${TOKEN.cardBodyColor};font-size:15px;line-height:1.65;font-family:${TOKEN.fontFamily};">&ldquo;${text}&rdquo;</p>
+        <p style="margin:0;font-style:italic;color:${TOKEN.cardBodyColor};font-size:16px;line-height:1.65;font-family:${TOKEN.fontFamily};">&ldquo;${text}&rdquo;</p>
         <p style="margin:7px 0 0;font-style:normal;font-size:12px;font-weight:700;color:${TOKEN.accentText};font-family:${TOKEN.fontFamily};">&mdash; ${attribution}</p>
       </td>
     </tr>
@@ -195,7 +189,7 @@ export function numberedSteps(steps: string[]): string {
       <td valign="top" style="padding:0 12px 12px 0;width:30px;">
         <div style="background:${TOKEN.accentBorder};color:#fff;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-size:12px;font-weight:700;font-family:${TOKEN.uiFont};">${i + 1}</div>
       </td>
-      <td valign="top" style="padding:0 0 12px;font-size:14px;color:${TOKEN.mutedColor};line-height:1.6;font-family:${TOKEN.fontFamily};">${step}</td>
+      <td valign="top" style="padding:0 0 12px;font-size:15px;color:${TOKEN.bodyColor};line-height:1.65;font-family:${TOKEN.fontFamily};">${step}</td>
     </tr>`
     )
     .join('');
@@ -209,7 +203,7 @@ export function arrowList(items: string[]): string {
     .map(
       (item) => `<tr>
       <td valign="top" style="padding:0 10px 10px 0;width:20px;font-size:14px;color:${TOKEN.accentBorder};font-family:${TOKEN.uiFont};">&rarr;</td>
-      <td valign="top" style="padding:0 0 10px;font-size:14px;color:${TOKEN.mutedColor};line-height:1.6;font-family:${TOKEN.fontFamily};">${item}</td>
+      <td valign="top" style="padding:0 0 10px;font-size:15px;color:${TOKEN.bodyColor};line-height:1.65;font-family:${TOKEN.fontFamily};">${item}</td>
     </tr>`
     )
     .join('');
@@ -236,7 +230,7 @@ export function divider(): string {
 
 /** Section heading (h2 level). */
 export function heading(text: string): string {
-  return `<h2 style="font-size:21px;color:${TOKEN.headingColor};margin:0 0 14px;font-weight:normal;font-family:${TOKEN.fontFamily};">${text}</h2>`;
+  return `<h2 style="font-size:22px;color:${TOKEN.headingColor};margin:0 0 14px;font-weight:600;font-family:${TOKEN.fontFamily};">${text}</h2>`;
 }
 
 /** Subheading (h3 level). */
@@ -246,9 +240,9 @@ export function subheading(text: string): string {
 
 /** Paragraph with standard email styling. */
 export function p(text: string, opts?: { dim?: boolean; small?: boolean }): string {
-  const color = opts?.dim ? TOKEN.dimColor : TOKEN.mutedColor;
-  const size = opts?.small ? '14px' : '15px';
-  return `<p style="font-size:${size};color:${color};margin:0 0 15px;line-height:1.75;font-family:${TOKEN.fontFamily};">${text}</p>`;
+  const color = opts?.dim ? TOKEN.dimColor : TOKEN.bodyColor;
+  const size = opts?.small ? '14px' : '16px';
+  return `<p style="font-size:${size};color:${color};margin:0 0 16px;line-height:1.75;font-family:${TOKEN.fontFamily};">${text}</p>`;
 }
 
 /** Score table for faith finder path scores. */
@@ -288,7 +282,7 @@ export function byline(author: string, date: string, readTime: string): string {
 
 /** Section header for newsletter essay breaks. */
 export function essaySectionHeader(text: string): string {
-  return `<h2 style="font-size:19px;color:${TOKEN.headingColor};margin:32px 0 14px;font-weight:normal;font-family:${TOKEN.fontFamily};border-bottom:1px solid ${TOKEN.subtleBorder};padding-bottom:8px;">${text}</h2>`;
+  return `<h2 style="font-size:20px;color:${TOKEN.headingColor};margin:32px 0 14px;font-weight:600;font-family:${TOKEN.fontFamily};border-bottom:1px solid ${TOKEN.subtleBorder};padding-bottom:8px;">${text}</h2>`;
 }
 
 /** Superscript footnote reference number. */
