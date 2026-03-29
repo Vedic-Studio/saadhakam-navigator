@@ -44,11 +44,11 @@ export function HeroSection() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Link href="#waitlist">
+            <a href="#waitlist">
               <Button variant="outline" size="lg" className="h-14 px-8 rounded-full text-lg border-white/10 hover:bg-white/5 text-foreground hover:text-white backdrop-blur-sm">
                 Join the Waitlist
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Trust Indicators */}
