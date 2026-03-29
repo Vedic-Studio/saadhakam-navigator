@@ -65,8 +65,16 @@ const GRAHA_CONFIG: Record<
     size: 0.16,
     trailOpacity: 0.2,
   },
+  prithvi: {
+    distance: 3.0,
+    speed: 0.4,
+    color: "#3b82f6",
+    emissiveColor: "#2563eb",
+    size: 0.18,
+    trailOpacity: 0.15,
+  },
   brihaspati: {
-    distance: 4.4,
+    distance: 4.2,
     speed: 0.25,
     color: "#eab308",
     emissiveColor: "#ca8a04",
@@ -75,7 +83,7 @@ const GRAHA_CONFIG: Record<
     trailOpacity: 0.15,
   },
   shani: {
-    distance: 5.4,
+    distance: 5.0,
     speed: 0.12,
     color: "#818cf8",
     emissiveColor: "#6366f1",
@@ -84,7 +92,7 @@ const GRAHA_CONFIG: Record<
     trailOpacity: 0.12,
   },
   rahu: {
-    distance: 4.0,
+    distance: 3.8,
     speed: -0.08,
     color: "#475569",
     emissiveColor: "#334155",
@@ -92,7 +100,7 @@ const GRAHA_CONFIG: Record<
     trailOpacity: 0.06,
   },
   ketu: {
-    distance: 4.0,
+    distance: 3.8,
     speed: -0.08,
     color: "#94a3b8",
     emissiveColor: "#64748b",
@@ -103,7 +111,7 @@ const GRAHA_CONFIG: Record<
 
 /* ───────────────────────── Star Field ───────────────────────── */
 
-function StarField({ count = 2000 }: { count?: number }) {
+function StarField({ count = 1500 }: { count?: number }) {
   const points = useMemo(() => {
     const positions = new Float32Array(count * 3);
     const sizes = new Float32Array(count);
@@ -179,7 +187,7 @@ function StarField({ count = 2000 }: { count?: number }) {
 
 /* ───────────────────── Twinkling Stars (closer, brighter) ───────────────────── */
 
-function TwinklingStars({ count = 200 }: { count?: number }) {
+function TwinklingStars({ count = 150 }: { count?: number }) {
   const ref = useRef<THREE.Points>(null);
 
   const data = useMemo(() => {
@@ -228,7 +236,7 @@ function TwinklingStars({ count = 200 }: { count?: number }) {
 function OrbitRing({ radius, color, opacity = 0.12 }: { radius: number; color: string; opacity?: number }) {
   const geometry = useMemo(() => {
     const points: THREE.Vector3[] = [];
-    const segments = 128;
+    const segments = 64;
     for (let i = 0; i <= segments; i++) {
       const angle = (i / segments) * Math.PI * 2;
       points.push(new THREE.Vector3(Math.cos(angle) * radius, 0, Math.sin(angle) * radius));
@@ -257,7 +265,7 @@ function OrbitalTrail({
   opacity: number;
 }) {
   const ref = useRef<THREE.Line>(null);
-  const trailLength = 40;
+  const trailLength = 25;
 
   const geometry = useMemo(() => {
     const positions = new Float32Array(trailLength * 3);
@@ -318,7 +326,7 @@ function Sun() {
     <group>
       {/* Core sun sphere */}
       <mesh ref={meshRef}>
-        <sphereGeometry args={[0.55, 64, 64]} />
+        <sphereGeometry args={[0.55, 32, 32]} />
         <meshStandardMaterial
           color="#fbbf24"
           emissive="#ff8c00"
@@ -411,7 +419,7 @@ function Planet({
         onPointerOut={() => onHover(null)}
         scale={hoverScale}
       >
-        <sphereGeometry args={[config.size, 32, 32]} />
+        <sphereGeometry args={[config.size, 24, 24]} />
         <meshStandardMaterial
           color={config.color}
           emissive={config.emissiveColor}
@@ -423,7 +431,7 @@ function Planet({
 
       {/* Atmospheric glow shell */}
       <mesh ref={glowRef}>
-        <sphereGeometry args={[config.size * 1.8, 16, 16]} />
+        <sphereGeometry args={[config.size * 1.8, 12, 12]} />
         <meshBasicMaterial
           color={config.color}
           transparent
@@ -475,7 +483,7 @@ function Planet({
 
 function DustRing() {
   const ref = useRef<THREE.Points>(null);
-  const count = 500;
+  const count = 300;
 
   const data = useMemo(() => {
     const positions = new Float32Array(count * 3);
@@ -525,8 +533,8 @@ function Scene({ onPlanetClick }: { onPlanetClick: (slug: string) => void }) {
       <directionalLight position={[10, 10, 5]} intensity={0.15} color="#e2e8f0" />
 
       {/* Star backgrounds */}
-      <StarField count={2500} />
-      <TwinklingStars count={300} />
+      <StarField count={1500} />
+      <TwinklingStars count={150} />
 
       {/* Dust particles in the orbital plane */}
       <DustRing />
@@ -572,13 +580,22 @@ function Scene({ onPlanetClick }: { onPlanetClick: (slug: string) => void }) {
         );
       })}
 
+      {/* Earth (Prithvi) — visual only, not a Jyotish graha */}
+      <Planet
+        slug="prithvi"
+        name="Prithvi"
+        config={GRAHA_CONFIG.prithvi}
+        isHovered={hovered === "prithvi"}
+        onHover={setHovered}
+        onClick={() => {}}
+      />
+
       {/* Post-processing */}
       <EffectComposer>
         <Bloom
-          intensity={1.2}
+          intensity={0.8}
           luminanceThreshold={0.2}
           luminanceSmoothing={0.9}
-          mipmapBlur
         />
         <Vignette eskil={false} offset={0.1} darkness={0.8} />
       </EffectComposer>
@@ -609,7 +626,7 @@ export function SolarSystem() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="w-full aspect-square max-w-[700px] mx-auto rounded-2xl overflow-hidden bg-black relative"
+      className="w-full aspect-video max-w-[900px] mx-auto rounded-2xl overflow-hidden bg-black relative"
     >
       <Suspense
         fallback={
@@ -622,9 +639,9 @@ export function SolarSystem() {
         }
       >
         <Canvas
-          camera={{ position: [0, 5, 9], fov: 50 }}
+          camera={{ position: [0, 6, 11], fov: 50 }}
           gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
-          dpr={[1, 2]}
+          dpr={[1, 1.5]}
         >
           <color attach="background" args={["#020617"]} />
           <fog attach="fog" args={["#020617", 25, 55]} />

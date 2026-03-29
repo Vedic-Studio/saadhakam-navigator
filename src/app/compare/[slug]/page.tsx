@@ -1,13 +1,16 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { comparisons } from "@/data/comparisons";
+import { getAllConcepts } from "@/data/concepts";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
+import { buildBreadcrumbSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
+import { FeaturedImage } from "@/components/FeaturedImage";
 
 interface Props {
   params: { slug: string };
@@ -21,6 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Not Found" };
   }
 
+  const ogImage = comp.featuredImage
+    ? `https://www.opensadhaka.com${comp.featuredImage.src}`
+    : undefined;
+
   return {
     title: `${comp.title} | Sadhaka Comparisons`,
     description: comp.metaDescription,
@@ -32,6 +39,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: comp.metaDescription,
       url: `https://www.opensadhaka.com/compare/${comp.slug}`,
       type: "article",
+      images: ogImage ? [{ url: ogImage }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${comp.title} | Sadhaka Comparisons`,
+      description: comp.metaDescription,
+      images: ogImage ? [ogImage] : undefined,
     },
   };
 }
@@ -50,6 +64,30 @@ export default async function ComparisonPage({ params }: Props) {
     notFound();
   }
 
+  // Find concept pages matching the compared entities
+  const allConcepts = getAllConcepts();
+  const conceptSlugs = new Set(allConcepts.map((c) => c.slug));
+  const slugParts = comp.slug.split("-vs-");
+  const matchedConcepts = slugParts
+    .filter((part) => conceptSlugs.has(part))
+    .map((part) => allConcepts.find((c) => c.slug === part)!)
+    .filter(Boolean);
+
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Compare", href: "/compare" },
+    { label: comp.title, href: `/compare/${comp.slug}` },
+  ];
+
+  const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
+
+  const webPageSchema = buildWebPageSchema({
+    name: `${comp.title} | Sadhaka Comparisons`,
+    description: comp.metaDescription,
+    url: `https://www.opensadhaka.com/compare/${comp.slug}`,
+    breadcrumbItems,
+  });
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -64,10 +102,10 @@ export default async function ComparisonPage({ params }: Props) {
       },
       {
         "@type": "Question",
-        name: `Which is better: ${comp.entityA} or ${comp.entityB}?`,
+        name: `What are the key differences between ${comp.entityA} and ${comp.entityB}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Neither is objectively "better." Both ${comp.entityA} and ${comp.entityB} offer valid, time-tested paths. The right choice depends entirely on your personal psychological temperament, current life stage, and spiritual goals.`,
+          text: `${comp.entityA} and ${comp.entityB} differ in their foundational assumptions, methods, and goals. This comparison maps the structural differences so readers can understand each on its own terms rather than ranking one above the other.`,
         },
       },
       {
@@ -87,6 +125,14 @@ export default async function ComparisonPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
       <Header />
 
@@ -121,6 +167,10 @@ export default async function ComparisonPage({ params }: Props) {
                 </p>
               </div>
             )}
+
+            {comp.featuredImage && (
+              <FeaturedImage image={comp.featuredImage} className="mb-10" priority />
+            )}
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
@@ -146,7 +196,7 @@ export default async function ComparisonPage({ params }: Props) {
             dangerouslySetInnerHTML={{
               __html:
                 comp.content ||
-                "<p>We are currently gathering detailed insights for this comparison. Please check back later, or start your journey to explore more.</p>",
+                "<p>Detailed analysis for this comparison is in progress. Check back soon.</p>",
             }}
           />
 
@@ -191,6 +241,33 @@ export default async function ComparisonPage({ params }: Props) {
             </div>
           </div>
 
+          {matchedConcepts.length > 0 && (
+            <div className="mb-16">
+              <h2 className="flex items-center gap-3 font-display text-2xl md:text-3xl font-bold mb-8">
+                <BookOpen className="w-6 h-6 text-primary" />
+                Dive Deeper
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {matchedConcepts.map((concept) => (
+                  <TrackedLink
+                    key={concept.slug}
+                    href={`/what-is-${concept.slug}`}
+                    eventLabel={`comparison_concept:${comp.slug}:${concept.slug}`}
+                    trackPathName={concept.slug}
+                    className="group h-full"
+                  >
+                    <div className="p-6 rounded-2xl border border-border/50 bg-card hover:border-primary/20 transition-all h-full shadow-sm hover:shadow-primary/5">
+                      <h3 className="font-display font-bold text-lg mb-2 group-hover:text-primary transition-colors">
+                        What is {concept.slug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")}?
+                      </h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2">{concept.shortDefinition}</p>
+                    </div>
+                  </TrackedLink>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="bg-gradient-to-br from-indigo-950/40 to-background rounded-3xl border border-white/10 p-10 text-center relative overflow-hidden">
 
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
@@ -211,7 +288,7 @@ export default async function ComparisonPage({ params }: Props) {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 rounded-full text-lg shadow-lg shadow-orange-900/20 transition-transform hover:scale-105"
               >
-                Start Your Journey
+                Take the Quiz
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </TrackedLink>

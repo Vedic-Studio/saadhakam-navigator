@@ -1,10 +1,12 @@
 /**
- * Optimize raw DALL-E 3 PNGs → WebP <100KB at 1200x630.
+ * Optimize raw PNGs → WebP <100KB at 1200x630.
+ * Supports all page types via v2 manifest.
  *
  * Usage:
- *   node scripts/optimize-images.mjs
- *   node scripts/optimize-images.mjs --slug what-is-vedanta
- *   node scripts/optimize-images.mjs --force      # re-optimize already-done entries
+ *   node scripts/optimize-images.mjs                          # all generated
+ *   node scripts/optimize-images.mjs --type deity             # deities only
+ *   node scripts/optimize-images.mjs --type deity --slug shiva
+ *   node scripts/optimize-images.mjs --force                  # re-optimize
  */
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
@@ -23,21 +25,27 @@ const MAX_BYTES = 100_000;
 // ── CLI flags ──────────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
 const FORCE = args.includes("--force");
+const TYPE = (() => {
+    const i = args.indexOf("--type");
+    return i !== -1 ? args[i + 1] : null;
+})();
 const SLUG = (() => {
     const i = args.indexOf("--slug");
     return i !== -1 ? args[i + 1] : null;
 })();
 
-async function optimizeOne(slug, entry) {
+async function optimizeOne(key, entry) {
     const rawPngPath = entry.rawPngPath;
 
     if (!existsSync(rawPngPath)) {
-        console.error(`  [skip] ${slug}: raw PNG not found at ${rawPngPath}`);
+        console.error(`  [skip] ${key}: raw PNG not found at ${rawPngPath}`);
         return null;
     }
 
-    const outputDir = path.join(PUBLIC_DIR, "assets", "articles", slug);
-    const outputPath = path.join(outputDir, "featured.webp");
+    // Route to correct public/assets/<type>/<slug>/ directory
+    const publicPath = entry.publicPath; // e.g. /assets/deities/shiva/featured.webp
+    const outputPath = path.join(PUBLIC_DIR, publicPath);
+    const outputDir = path.dirname(outputPath);
 
     await mkdir(outputDir, { recursive: true });
 
@@ -60,7 +68,6 @@ async function optimizeOne(slug, entry) {
     }
 
     if (!finalBuffer) {
-        // Last resort: quality 45
         finalBuffer = await sharp(inputBuffer)
             .resize(1200, 630, { fit: "cover", position: "centre" })
             .webp({ quality: 45, effort: 6 })
@@ -83,14 +90,15 @@ async function main() {
     const manifest = JSON.parse(await readFile(MANIFEST_PATH, "utf8"));
     const entries = Object.entries(manifest.entries);
 
-    let targets = entries.filter(([slug, entry]) => {
-        if (SLUG && slug !== SLUG) return false;
-        if (FORCE) return entry.status === "generated" || entry.status === "optimized" || entry.status === "error";
-        return entry.status === "generated";
+    let targets = entries.filter(([key, entry]) => {
+        if (TYPE && entry.pageType !== TYPE) return false;
+        if (SLUG && entry.slug !== SLUG) return false;
+        if (FORCE) return ["generated", "reviewed", "optimized"].includes(entry.status);
+        return entry.status === "generated" || entry.status === "reviewed";
     });
 
     if (targets.length === 0) {
-        console.log("No articles to optimize. (All may already be optimized — use --force to redo.)");
+        console.log("No images to optimize. (Use --force to redo, or run generate-images.mjs first.)");
         return;
     }
 
@@ -99,11 +107,11 @@ async function main() {
     let done = 0;
     let errors = 0;
 
-    for (const [slug, entry] of targets) {
-        process.stdout.write(`  [${done + errors + 1}/${targets.length}] ${slug} ... `);
+    for (const [key, entry] of targets) {
+        process.stdout.write(`  [${done + errors + 1}/${targets.length}] ${key} ... `);
 
         try {
-            const result = await optimizeOne(slug, entry);
+            const result = await optimizeOne(key, entry);
 
             if (!result) {
                 errors++;
@@ -114,7 +122,7 @@ async function main() {
             const sizeMsg = finalSizeKb > 100 ? ` ⚠ ${finalSizeKb}KB (over limit)` : ` ${finalSizeKb}KB`;
             console.log(`✓ q=${qualityUsed},${sizeMsg}`);
 
-            manifest.entries[slug] = {
+            manifest.entries[key] = {
                 ...entry,
                 status: "optimized",
                 optimizedAt: new Date().toISOString(),
@@ -133,7 +141,7 @@ async function main() {
     }
 
     console.log(`\nDone. Optimized: ${done}, Errors: ${errors}`);
-    console.log(`\nNext step: node scripts/wire-article-images.mjs`);
+    console.log(`\nNext: node scripts/review-images.mjs or node scripts/wire-images.mjs`);
 }
 
 main().catch((err) => {

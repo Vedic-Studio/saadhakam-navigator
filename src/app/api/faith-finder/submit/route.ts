@@ -38,8 +38,11 @@ export async function POST(request: Request) {
         console.log(`[Faith Finder] Result: ${result.primaryPath}`);
         console.log(`[Faith Finder] Submission ID: ${submissionId}`);
 
+        let emailsSent = 0;
+        let emailsFailed = 0;
+
         if (resend) {
-            const fromEmail = process.env.FAITH_FINDER_FROM_EMAIL || 'Faith Finder <guidance@opensadhaka.com>';
+            const fromEmail = process.env.FAITH_FINDER_FROM_EMAIL || 'Faith Finder <guidance@register.opensadhaka.com>';
 
             // Schedule all 6 drip emails
             for (let i = 0; i < DRIP_SCHEDULE_DAYS.length; i++) {
@@ -72,11 +75,14 @@ export async function POST(request: Request) {
 
                     const sendResult = await resend.emails.send(sendOptions as Parameters<typeof resend.emails.send>[0]);
                     if (sendResult.error) {
+                        emailsFailed++;
                         console.error(`[Faith Finder] Email ${i} rejected by Resend:`, sendResult.error.message);
                     } else {
+                        emailsSent++;
                         console.log(`[Faith Finder] Email ${i} ${daysFromNow > 0 ? `scheduled for day ${daysFromNow}` : 'sent immediately'} to ${email} (id: ${sendResult.data?.id})`);
                     }
                 } catch (emailErr) {
+                    emailsFailed++;
                     console.error(`[Faith Finder] Email ${i} delivery/scheduling failed:`, emailErr);
                     // Continue sending remaining emails even if one fails
                 }
@@ -108,6 +114,8 @@ export async function POST(request: Request) {
         return NextResponse.json({
             success: true,
             id: submissionId,
+            emailsSent,
+            emailsFailed,
             message: 'Email submitted successfully. Your full results are ready.'
         });
     } catch (error) {

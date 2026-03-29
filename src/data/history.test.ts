@@ -252,8 +252,8 @@ describe("history data integrity", () => {
   // Evidence Items
   // -------------------------------------------------------------------------
   describe("evidenceItems", () => {
-    it("has at least 10 items", () => {
-      expect(evidenceItems.length).toBeGreaterThanOrEqual(10);
+    it("has at least 29 items", () => {
+      expect(evidenceItems.length).toBeGreaterThanOrEqual(29);
     });
 
     it("every item has required fields", () => {
@@ -263,6 +263,7 @@ describe("history data integrity", () => {
         "status",
         "evidence",
         "notes",
+        "category",
       ];
       for (const item of evidenceItems) {
         for (const field of required) {
@@ -279,10 +280,27 @@ describe("history data integrity", () => {
       expect(ids.length).toBe(new Set(ids).size);
     });
 
-    it("has items in all three categories", () => {
+    it("has items in all three status tiers", () => {
       expect(getEvidenceByStatus("confirmed").length).toBeGreaterThan(0);
       expect(getEvidenceByStatus("strong").length).toBeGreaterThan(0);
       expect(getEvidenceByStatus("open").length).toBeGreaterThan(0);
+    });
+
+    it("every item has a valid category", () => {
+      const validCategories = [
+        "astronomical",
+        "geological",
+        "genetic",
+        "archaeological",
+        "cross-cultural",
+        "historiographical",
+      ];
+      for (const item of evidenceItems) {
+        expect(
+          validCategories,
+          `Evidence "${item.id}" has invalid category "${item.category}"`
+        ).toContain(item.category);
+      }
     });
   });
 
@@ -290,8 +308,8 @@ describe("history data integrity", () => {
   // FAQs
   // -------------------------------------------------------------------------
   describe("historyFaqs", () => {
-    it("has at least 3 FAQs", () => {
-      expect(historyFaqs.length).toBeGreaterThanOrEqual(3);
+    it("has at least 10 FAQs", () => {
+      expect(historyFaqs.length).toBeGreaterThanOrEqual(10);
     });
 
     it("every FAQ has question and answer", () => {

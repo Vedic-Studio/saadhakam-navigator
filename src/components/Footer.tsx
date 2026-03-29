@@ -28,8 +28,10 @@ const footerLinks = {
     { label: "Stotras", href: "/stotras/shiva-tandava-stotram" },
     { label: "Jyotish", href: "/jyotish" },
     { label: "Daily Guidance", href: "/jyotish/today" },
+    { label: "AI Tutor", href: "/app" },
   ],
   articles: [
+    { label: "All Articles", href: "/articles" },
     { label: "What is Vedanta?", href: "/what-is-vedanta" },
     { label: "How to Start Japa", href: "/how-to-start-japa" },
     { label: "10 Sanskrit Mantras", href: "/10-powerful-sanskrit-mantras" },

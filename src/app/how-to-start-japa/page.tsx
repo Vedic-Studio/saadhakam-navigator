@@ -7,14 +7,14 @@ import { ArrowRight, Circle, Volume2, Wind } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "How to Start Japa: The Complete Practice Guide (Mala, Mantra, Timing)",
+    title: "How to Start Japa Meditation: Step-by-Step Guide [2026]",
     description:
-        "Japa meditation gives the restless mind a specific job: 108 repetitions of a sacred sound. BG 10.25 calls it the highest sacrifice. Here is how to begin correctly.",
+        "Krishna called japa the highest sacrifice (BG 10.25). This guide covers choosing a mantra, using a mala, the 3 levels of practice, and the one mistake most beginners make.",
     alternates: {
         canonical: "https://www.opensadhaka.com/how-to-start-japa",
     },
     openGraph: {
-        title: "How to Start Japa: Mala, Mantra, Timing, and the Three Levels of Practice",
+        title: "How to Start Japa: Mala, Mantra, and the 3 Levels of Practice",
         description:
             "Krishna calls japa the highest of all sacrifices (BG 10.25). Patanjali's Yoga Sutra 1.28 adds: repeat it and contemplate its meaning. Here is the full practice guide.",
         url: "https://www.opensadhaka.com/how-to-start-japa",

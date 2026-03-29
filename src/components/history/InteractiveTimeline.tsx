@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-import { motion } from "framer-motion";
 import {
   BookOpen,
   Sun,
@@ -99,7 +95,7 @@ const eraColors: Record<
 const fallbackColor = eraColors.amber;
 
 // ---------------------------------------------------------------------------
-// Expandable Event Card
+// Expandable Event Card — uses <details>/<summary> for crawlability
 // ---------------------------------------------------------------------------
 function EventCard({
   event,
@@ -108,7 +104,6 @@ function EventCard({
   event: TimelineEvent;
   color: (typeof eraColors)[string];
 }) {
-  const [expanded, setExpanded] = useState(false);
   const Icon = iconMap[event.icon] ?? BookOpen;
 
   return (
@@ -121,12 +116,8 @@ function EventCard({
       </div>
 
       {/* Card */}
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full text-left glass-card rounded-xl border border-white/5 hover:border-white/10 transition-all duration-200 p-4 md:p-5 group cursor-pointer"
-        aria-expanded={expanded}
-      >
-        <div className="flex items-start justify-between gap-3">
+      <details className="group glass-card rounded-xl border border-white/5 hover:border-white/10 transition-all duration-200">
+        <summary className="flex items-start justify-between gap-3 p-4 md:p-5 cursor-pointer select-none">
           <div className="flex-1 min-w-0">
             <span className={`text-xs font-mono font-semibold ${color.text}`}>
               {event.dateLabel}
@@ -138,53 +129,36 @@ function EventCard({
               {event.description}
             </p>
           </div>
-          <motion.div
-            animate={{ rotate: expanded ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-            className="shrink-0 mt-1"
-          >
-            <ChevronDown className="w-4 h-4 text-muted-foreground" />
-          </motion.div>
-        </div>
+          <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0 mt-1 transition-transform duration-200 group-open:rotate-180" />
+        </summary>
 
-        <motion.div
-          animate={{
-            height: expanded ? "auto" : 0,
-            opacity: expanded ? 1 : 0,
-          }}
-          initial={false}
-          transition={{ duration: 0.25, ease: "easeInOut" }}
-          className="overflow-hidden"
-          aria-hidden={!expanded}
-        >
-          <div className="grid md:grid-cols-3 gap-4 mt-4 pt-4 border-t border-white/5">
-            <div>
-              <h5 className="text-xs font-semibold uppercase tracking-wider text-orange-400/70 mb-1.5">
-                Indian Event (Oak/Bhaty)
-              </h5>
-              <p className="text-sm text-muted-foreground">
-                {event.indianEvent}
-              </p>
-            </div>
-            <div>
-              <h5 className="text-xs font-semibold uppercase tracking-wider text-sky-400/70 mb-1.5">
-                Conventional Record
-              </h5>
-              <p className="text-sm text-muted-foreground">
-                {event.conventionalRecord}
-              </p>
-            </div>
-            <div>
-              <h5 className="text-xs font-semibold uppercase tracking-wider text-violet-400/70 mb-1.5">
-                Global Context
-              </h5>
-              <p className="text-sm text-muted-foreground">
-                {event.globalContext}
-              </p>
-            </div>
+        <div className="grid md:grid-cols-3 gap-4 px-4 md:px-5 pb-4 md:pb-5 pt-4 border-t border-white/5">
+          <div>
+            <h5 className="text-xs font-semibold uppercase tracking-wider text-orange-400/70 mb-1.5">
+              Indian Event (Oak/Bhaty)
+            </h5>
+            <p className="text-sm text-muted-foreground">
+              {event.indianEvent}
+            </p>
           </div>
-        </motion.div>
-      </button>
+          <div>
+            <h5 className="text-xs font-semibold uppercase tracking-wider text-sky-400/70 mb-1.5">
+              Conventional Record
+            </h5>
+            <p className="text-sm text-muted-foreground">
+              {event.conventionalRecord}
+            </p>
+          </div>
+          <div>
+            <h5 className="text-xs font-semibold uppercase tracking-wider text-violet-400/70 mb-1.5">
+              Global Context
+            </h5>
+            <p className="text-sm text-muted-foreground">
+              {event.globalContext}
+            </p>
+          </div>
+        </div>
+      </details>
     </div>
   );
 }

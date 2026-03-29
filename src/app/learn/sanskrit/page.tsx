@@ -48,10 +48,16 @@ export default function SanskritIndexPage() {
                         <h1 className="font-display text-5xl md:text-7xl font-black tracking-tight leading-[0.9] mb-6">
                             Sanskrit Lexicon
                         </h1>
-                        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
+                        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed mb-4">
                             Build conceptual clarity with precise Sanskrit terms from Vedanta, Yoga,
                             Tantra, and Bhakti traditions. Start with the words that shape your daily
                             study and practice.
+                        </p>
+                        <p className="text-base text-muted-foreground max-w-3xl leading-relaxed">
+                            Sanskrit is not merely a language but a system of philosophical analysis.
+                            Its grammar, systematized in Panini&apos;s Ashtadhyayi (c. 4th century BCE),
+                            encodes distinctions that map directly to metaphysical categories. Each
+                            term below carries that precision into an accessible definition.
                         </p>
                     </header>
 

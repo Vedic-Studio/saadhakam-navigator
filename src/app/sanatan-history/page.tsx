@@ -7,6 +7,7 @@ import {
   GitBranch,
   ShieldCheck,
   Users,
+  Globe,
   HelpCircle,
   ArrowRight,
 } from "lucide-react";
@@ -25,7 +26,11 @@ import {
   evidenceItems,
   historyFaqs,
   getEvidenceByStatus,
+  getEvidenceByStatusGroupedByCategory,
+  categoryLabels,
+  type EvidenceCategory,
 } from "@/data/history";
+import { civilizationComparisons } from "@/data/civilizations";
 import {
   buildPageMetadata,
   buildFaqSchema,
@@ -73,12 +78,9 @@ export default function SanatanHistoryPage() {
     description: pageMeta.description,
     url: buildUrl("/sanatan-history"),
     items: [
-      { name: "The Oak-Bhaty Timeline", url: buildUrl("/sanatan-history#timeline"), description: "Archaeoastronomical dating of Sanatan civilization across seven eras" },
-      { name: "Archaeological Sites", url: buildUrl("/sanatan-history#sites"), description: "Ten key sites from Bhimbetka to underwater Dwarka" },
-      { name: "The Vansha Map", url: buildUrl("/sanatan-history#dynasties"), description: "Solar and Lunar dynasty lineages from Brahma to the Maurya Empire" },
-      { name: "Evidence Assessment", url: buildUrl("/sanatan-history#evidence"), description: "Claims categorized by evidence strength: confirmed, strong, and open" },
-      { name: "Key Researchers", url: buildUrl("/sanatan-history#researchers"), description: "Scholars behind the evidence-based reconstruction of Sanatan history" },
-      { name: "FAQ", url: buildUrl("/sanatan-history#faq"), description: "Common questions about evidence-based dating of Sanatan civilization" },
+      ...archaeologicalSites.map((s) => ({ name: s.name, url: buildUrl(`/sanatan-history/sites/${s.id}`), description: s.significance })),
+      ...researchers.map((r) => ({ name: r.name, url: buildUrl(`/sanatan-history/researchers/${r.id}`), description: r.title })),
+      ...evidenceItems.map((e) => ({ name: e.claim, url: buildUrl(`/sanatan-history/evidence/${e.id}`), description: e.notes })),
     ],
   });
 
@@ -119,6 +121,10 @@ export default function SanatanHistoryPage() {
   const confirmedEvidence = getEvidenceByStatus("confirmed");
   const strongEvidence = getEvidenceByStatus("strong");
   const openEvidence = getEvidenceByStatus("open");
+
+  const confirmedByCategory = getEvidenceByStatusGroupedByCategory("confirmed");
+  const strongByCategory = getEvidenceByStatusGroupedByCategory("strong");
+  const openByCategory = getEvidenceByStatusGroupedByCategory("open");
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
@@ -191,6 +197,7 @@ export default function SanatanHistoryPage() {
                 { label: "Dynasties", href: "#dynasties", icon: GitBranch },
                 { label: "Evidence", href: "#evidence", icon: ShieldCheck },
                 { label: "Researchers", href: "#researchers", icon: Users },
+                { label: "Civilizations", href: "#civilizations", icon: Globe },
                 { label: "FAQ", href: "#faq", icon: HelpCircle },
               ].map((item) => (
                 <a
@@ -245,9 +252,16 @@ export default function SanatanHistoryPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {archaeologicalSites.map((site, i) => (
                 <ScrollReveal key={site.id} delay={i * 0.05}>
-                  <SiteCard site={site} />
+                  <Link href={`/sanatan-history/sites/${site.id}`} className="block h-full">
+                    <SiteCard site={site} />
+                  </Link>
                 </ScrollReveal>
               ))}
+            </div>
+            <div className="mt-6 text-center">
+              <Link href="/sanatan-history#sites" className="text-sm text-orange-400 hover:text-orange-300 transition-colors">
+                View all {archaeologicalSites.length} sites →
+              </Link>
             </div>
           </section>
 
@@ -297,39 +311,71 @@ export default function SanatanHistoryPage() {
               <h3 className="text-xl font-display font-bold mb-4 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
                 Independently Verifiable
+                <span className="text-sm font-normal text-muted-foreground">({confirmedEvidence.length})</span>
               </h3>
-              <div className="grid md:grid-cols-2 gap-4 mb-10">
-                {confirmedEvidence.map((item) => (
-                  <EvidenceCard key={item.id} item={item} />
-                ))}
-              </div>
             </ScrollReveal>
+            {Array.from(confirmedByCategory.entries()).map(([category, items]) => (
+              <ScrollReveal key={`confirmed-${category}`}>
+                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3 mt-6">
+                  {categoryLabels[category]} ({items.length})
+                </h4>
+                <div className="grid md:grid-cols-2 gap-4 mb-4">
+                  {items.map((item) => (
+                    <Link key={item.id} href={`/sanatan-history/evidence/${item.id}`} className="block">
+                      <EvidenceCard item={item} />
+                    </Link>
+                  ))}
+                </div>
+              </ScrollReveal>
+            ))}
+            <div className="mb-10" />
 
             {/* Strong */}
             <ScrollReveal>
               <h3 className="text-xl font-display font-bold mb-4 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                 Strong Evidence (Oak/Bhaty Framework)
+                <span className="text-sm font-normal text-muted-foreground">({strongEvidence.length})</span>
               </h3>
-              <div className="grid md:grid-cols-2 gap-4 mb-10">
-                {strongEvidence.map((item) => (
-                  <EvidenceCard key={item.id} item={item} />
-                ))}
-              </div>
             </ScrollReveal>
+            {Array.from(strongByCategory.entries()).map(([category, items]) => (
+              <ScrollReveal key={`strong-${category}`}>
+                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3 mt-6">
+                  {categoryLabels[category]} ({items.length})
+                </h4>
+                <div className="grid md:grid-cols-2 gap-4 mb-4">
+                  {items.map((item) => (
+                    <Link key={item.id} href={`/sanatan-history/evidence/${item.id}`} className="block">
+                      <EvidenceCard item={item} />
+                    </Link>
+                  ))}
+                </div>
+              </ScrollReveal>
+            ))}
+            <div className="mb-10" />
 
             {/* Open */}
             <ScrollReveal>
               <h3 className="text-xl font-display font-bold mb-4 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-sky-500" />
                 Open Research Questions
+                <span className="text-sm font-normal text-muted-foreground">({openEvidence.length})</span>
               </h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {openEvidence.map((item) => (
-                  <EvidenceCard key={item.id} item={item} />
-                ))}
-              </div>
             </ScrollReveal>
+            {Array.from(openByCategory.entries()).map(([category, items]) => (
+              <ScrollReveal key={`open-${category}`}>
+                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3 mt-6">
+                  {categoryLabels[category]} ({items.length})
+                </h4>
+                <div className="grid md:grid-cols-2 gap-4 mb-4">
+                  {items.map((item) => (
+                    <Link key={item.id} href={`/sanatan-history/evidence/${item.id}`} className="block">
+                      <EvidenceCard item={item} />
+                    </Link>
+                  ))}
+                </div>
+              </ScrollReveal>
+            ))}
           </section>
 
           {/* =============================================================== */}
@@ -351,7 +397,58 @@ export default function SanatanHistoryPage() {
             <div className="grid md:grid-cols-2 gap-6">
               {researchers.map((researcher, i) => (
                 <ScrollReveal key={researcher.id} delay={i * 0.05}>
-                  <ResearcherCard researcher={researcher} />
+                  <Link href={`/sanatan-history/researchers/${researcher.id}`} className="block h-full">
+                    <ResearcherCard researcher={researcher} />
+                  </Link>
+                </ScrollReveal>
+              ))}
+            </div>
+          </section>
+
+          {/* =============================================================== */}
+          {/* Civilization Comparisons */}
+          {/* =============================================================== */}
+          <section id="civilizations" className="mb-24 scroll-mt-24">
+            <ScrollReveal>
+              <div className="flex items-center gap-3 mb-3">
+                <Globe className="w-6 h-6 text-orange-500" />
+                <h2 className="font-display text-3xl md:text-4xl font-bold">
+                  Global Comparisons
+                </h2>
+              </div>
+              <p className="text-lg text-muted-foreground max-w-3xl mb-10">
+                How does Sanatan civilization compare to its contemporaries?
+                Side-by-side timelines against other ancient civilizations.
+              </p>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-2 gap-6">
+              {civilizationComparisons.map((civ, i) => (
+                <ScrollReveal key={civ.id} delay={i * 0.05}>
+                  <Link
+                    href={`/sanatan-history/civilizations/${civ.id}`}
+                    className="block h-full"
+                  >
+                    <div className="glass-card rounded-2xl border border-white/5 p-6 h-full hover:border-orange-500/30 transition-all duration-200">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+                        <span className="text-orange-400 font-semibold">
+                          {civ.entityA}
+                        </span>
+                        <span className="text-muted-foreground/50">vs</span>
+                        <span className="text-sky-400 font-semibold">
+                          {civ.entityB}
+                        </span>
+                      </div>
+                      <h3 className="font-display text-lg font-semibold mb-2">
+                        {civ.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground line-clamp-3">
+                        {civ.metaDescription}
+                      </p>
+                      <div className="flex items-center gap-1 text-orange-400 text-sm mt-4">
+                        Compare <ArrowRight className="w-3.5 h-3.5" />
+                      </div>
+                    </div>
+                  </Link>
                 </ScrollReveal>
               ))}
             </div>

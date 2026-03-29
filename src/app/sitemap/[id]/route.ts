@@ -18,6 +18,12 @@ import { grahas } from "@/data/grahas";
 import { rashis } from "@/data/rashis";
 import { nakshatras } from "@/data/nakshatras";
 import { tithis, varas } from "@/data/panchang";
+import { dynasties } from "@/data/dynasties";
+import { eras } from "@/data/eras";
+import { sites } from "@/data/sites";
+import { researchers } from "@/data/researchers";
+import { evidenceItems } from "@/data/evidence";
+import { civilizationComparisons } from "@/data/civilizations";
 
 // Hardcoded to www — env var inconsistency caused Google canonical confusion
 const baseUrl = "https://www.opensadhaka.com";
@@ -323,6 +329,49 @@ function getEntries(id: string): SitemapEntry[] {
         })),
       ];
 
+    case "history": {
+      const historyDate = new Date("2026-03-28");
+      return [
+        { url: `${baseUrl}/sanatan-history`, lastModified: historyDate, changeFrequency: "weekly", priority: 0.9 },
+        ...dynasties.map((d) => ({
+          url: `${baseUrl}/sanatan-history/dynasties/${d.id}`,
+          lastModified: historyDate,
+          changeFrequency: "monthly",
+          priority: 0.75,
+        })),
+        ...eras.map((e) => ({
+          url: `${baseUrl}/sanatan-history/eras/${e.id}`,
+          lastModified: historyDate,
+          changeFrequency: "monthly",
+          priority: 0.75,
+        })),
+        ...sites.map((s) => ({
+          url: `${baseUrl}/sanatan-history/sites/${s.id}`,
+          lastModified: historyDate,
+          changeFrequency: "monthly",
+          priority: 0.75,
+        })),
+        ...researchers.map((r) => ({
+          url: `${baseUrl}/sanatan-history/researchers/${r.id}`,
+          lastModified: historyDate,
+          changeFrequency: "monthly",
+          priority: 0.75,
+        })),
+        ...evidenceItems.map((e) => ({
+          url: `${baseUrl}/sanatan-history/evidence/${e.id}`,
+          lastModified: historyDate,
+          changeFrequency: "monthly",
+          priority: 0.7,
+        })),
+        ...civilizationComparisons.map((c) => ({
+          url: `${baseUrl}/sanatan-history/civilizations/${c.id}`,
+          lastModified: historyDate,
+          changeFrequency: "monthly",
+          priority: 0.75,
+        })),
+      ];
+    }
+
     default:
       return [];
   }
@@ -341,7 +390,7 @@ function toXml(entries: SitemapEntry[]): string {
 const validIds = new Set([
   "core", "philosophies", "traditions", "texts", "greats", "concepts",
   "comparisons", "topics", "practices", "shlokas", "sanskrit", "articles",
-  "stotras", "deities", "mantras", "jyotish",
+  "stotras", "deities", "mantras", "jyotish", "history",
 ]);
 
 export async function GET(

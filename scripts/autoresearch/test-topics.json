@@ -1,0 +1,32 @@
+[
+  {
+    "id": "hub-vedanta",
+    "type": "hub",
+    "topic": "Write a 400-word article section about the relationship between Atman and Brahman according to Shankara's Advaita Vedanta, citing specific verses from the Mandukya Upanishad and Vivekachudamani.",
+    "expectedWordCount": 400
+  },
+  {
+    "id": "spoke-japa",
+    "type": "spoke",
+    "topic": "Write a 400-word article section explaining how to begin a daily japa meditation practice using a mala, with specific instructions from the Japa Yoga tradition as described by Swami Sivananda.",
+    "expectedWordCount": 400
+  },
+  {
+    "id": "spoke-comparison",
+    "type": "spoke",
+    "topic": "Write a 400-word article section comparing how Shankara and Ramanuja interpret Bhagavad Gita 2.12 differently, and what this reveals about the Advaita vs Vishishtadvaita divide.",
+    "expectedWordCount": 400
+  },
+  {
+    "id": "hub-crisis",
+    "type": "hub",
+    "topic": "Write a 400-word article section about the midlife crisis from a Vedantic perspective, specifically how Shankaracharya's concept of vairagya (dispassion) reframes the Western psychological model of midlife transition.",
+    "expectedWordCount": 400
+  },
+  {
+    "id": "spoke-maya",
+    "type": "spoke",
+    "topic": "Write a 400-word article section explaining what maya means in Advaita Vedanta according to Shankara's commentary on Brahma Sutra 2.1.14, and why the common translation 'illusion' is misleading.",
+    "expectedWordCount": 400
+  }
+]

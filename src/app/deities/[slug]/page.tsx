@@ -13,6 +13,7 @@ import {
     buildFaqSchema,
     buildUrl,
 } from "@/lib/seo";
+import { FeaturedImage } from "@/components/FeaturedImage";
 
 export async function generateStaticParams() {
     return deities.map((deity) => ({ slug: deity.slug }));
@@ -27,10 +28,13 @@ export async function generateMetadata({
     const deity = getDeityBySlug(slug);
     if (!deity) return {};
 
+    const imageUrl = deity.featuredImage ? buildUrl(deity.featuredImage.src) : undefined;
+
     return buildPageMetadata({
         title: `${deity.name} — Sadhaka`,
         description: deity.description,
         path: `/deities/${deity.slug}`,
+        images: imageUrl ? [imageUrl] : undefined,
     });
 }
 
@@ -64,7 +68,7 @@ export default async function DeityDetailPage({
         ],
     });
 
-    const faqSchema = buildFaqSchema([
+    const faqItems = deity.faq ?? [
         {
             question: `Who is ${deity.name}?`,
             answer: deity.aeoBlock,
@@ -77,7 +81,8 @@ export default async function DeityDetailPage({
             question: `Which texts and practices are associated with ${deity.name}?`,
             answer: `${deity.name} is associated with ${deity.associatedTexts.join(", ")} and practices such as ${deity.mantras.join(", ")}.`,
         },
-    ]);
+    ];
+    const faqSchema = buildFaqSchema(faqItems);
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -106,6 +111,10 @@ export default async function DeityDetailPage({
                             </p>
                         </ScrollReveal>
                     </DeityAuraGlow>
+
+                    {deity.featuredImage && (
+                        <FeaturedImage image={deity.featuredImage} className="mb-10" priority />
+                    )}
 
                     <ScrollReveal delay={0.1}>
                         <section className="mb-10">
@@ -143,9 +152,9 @@ export default async function DeityDetailPage({
                             <h2 className="text-2xl font-display font-bold mb-4">Practice Links</h2>
                             <div className="flex flex-wrap gap-3 mb-4">
                                 {deity.mantras.map((mantra) => (
-                                    <span key={mantra} className="px-3 py-1 rounded-full bg-muted text-sm hover:bg-orange-500/10 transition-colors">
+                                    <Link key={mantra} href={`/mantras/${mantra}`} className="px-3 py-1 rounded-full bg-muted text-sm hover:bg-orange-500/10 transition-colors">
                                         {mantra}
-                                    </span>
+                                    </Link>
                                 ))}
                             </div>
                             <div className="space-y-2">
@@ -163,8 +172,24 @@ export default async function DeityDetailPage({
                         </section>
                     </ScrollReveal>
 
-                    {related.length > 0 && (
+                    {faqItems.length > 0 && (
                         <ScrollReveal delay={0.3}>
+                            <section className="mb-10">
+                                <h2 className="text-2xl font-display font-bold mb-6">Frequently Asked Questions</h2>
+                                <div className="space-y-4">
+                                    {faqItems.map((item) => (
+                                        <div key={item.question} className="border-l-2 border-orange-500/20 pl-5 py-2">
+                                            <h3 className="font-semibold text-lg mb-2">{item.question}</h3>
+                                            <p className="text-muted-foreground leading-relaxed">{item.answer}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        </ScrollReveal>
+                    )}
+
+                    {related.length > 0 && (
+                        <ScrollReveal delay={0.35}>
                             <section>
                                 <h2 className="text-2xl font-display font-bold mb-4">Related Deities</h2>
                                 <div className="flex flex-wrap gap-3">

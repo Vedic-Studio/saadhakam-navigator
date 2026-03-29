@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { loadStotra } from "@/lib/stotras";
+import { buildBreadcrumbSchema, buildCollectionSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
     title: "Shiva Tandava Stotram: All 16 Verses with Sanskrit, Transliteration & Meaning",
@@ -23,8 +24,28 @@ export const metadata: Metadata = {
 
 export default function ShivaTandavaStotramPage() {
     const stotra = loadStotra("shiva-tandava-stotram");
+
+    const breadcrumbSchema = buildBreadcrumbSchema([
+        { label: "Home", href: "/" },
+        { label: "Stotras", href: "/stotras" },
+        { label: "Shiva Tandava Stotram", href: "/stotras/shiva-tandava-stotram" },
+    ]);
+
+    const collectionSchema = buildCollectionSchema({
+        name: "Shiva Tandava Stotram — 16 Verses by Ravana",
+        description: "The Shiva Tandava Stotram composed by Ravana — all 16 verses in Sanskrit with transliteration, translation, and commentary.",
+        url: "https://www.opensadhaka.com/stotras/shiva-tandava-stotram",
+        items: stotra.verses.map((verse) => ({
+            name: `Verse ${verse.verse}`,
+            url: `https://www.opensadhaka.com/stotras/shiva-tandava-stotram/${verse.slug}`,
+            description: verse.translation || `Verse ${verse.verse} of the Shiva Tandava Stotram`,
+        })),
+    });
+
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
             <Header />
             <main className="flex-grow pt-24 pb-16">
                 <div className="container-padding max-w-4xl mx-auto">
@@ -81,7 +102,7 @@ export default function ShivaTandavaStotramPage() {
                             Ravana composed this stotram after he tried to uproot Mount Kailash — Shiva&apos;s abode — to carry it to Lanka. When Shiva pressed the mountain down with his toe, trapping Ravana beneath it, Ravana composed this hymn with his ten heads and twenty arms as an act of surrender. Pleased by the composition, Shiva released him and granted him great boons.
                         </p>
                         <p className="text-muted-foreground leading-relaxed">
-                            The meter is Jagatī (12 syllables per quarter), one of the most demanding Sanskrit meters. Ravana&apos;s command of this meter while under a mountain demonstrates both his extraordinary learning and the power of genuine bhakti. The stotram is traditionally recited during Pradosha time and on Shivaratri.
+                            The meter is Jagatī (12 syllables per quarter), classified in Pingala&apos;s Chandas-shastra, the foundational treatise on Sanskrit prosody. Ravana&apos;s command of this demanding meter while pinned under a mountain demonstrates both his extraordinary learning and the power of genuine bhakti. The stotram is traditionally recited during Pradosha time and on Shivaratri. The Shiva Purana (Vidyeshvara Samhita) prescribes Pradosha as an auspicious window for Shiva worship, and Shivaratri as the night Shiva performed the cosmic Tandava.
                         </p>
                         <div className="mt-6 flex flex-wrap gap-4 text-sm">
                             <Link href="/deities/shiva" className="text-orange-400 hover:text-orange-300 transition-colors">

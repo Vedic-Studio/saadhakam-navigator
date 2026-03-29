@@ -52,10 +52,29 @@ export default function DeitiesHubPage() {
                         <h1 className="font-display text-4xl md:text-6xl font-black leading-tight mb-6">
                             Hindu Gods Explained
                         </h1>
-                        <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
-                            These deity pages are designed as bridge content for modern global audiences: start with familiar questions
-                            like “Who is Shiva?” and move into symbolism, source texts, and philosophical depth.
+                        <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed border-l-4 border-orange-500/30 pl-6 mb-6">
+                            In Sanatan Dharma, deities are not arbitrary figures of worship but precise maps of consciousness.
+                            Each form encodes a philosophical principle, a psychological state, and a path of practice.
                         </p>
+                        <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
+                            <p>
+                                The tradition of devata-upasana (deity meditation) operates on a foundational insight:
+                                the formless absolute (nirguna Brahman) becomes accessible through form (saguna Brahman).
+                                Shiva as the ascetic yogi, Vishnu as the sustaining intelligence, Devi as creative power,
+                                Ganesha as threshold guardian. These are not competing gods but complementary lenses
+                                through which a single reality is approached from different angles of human need.
+                            </p>
+                            <p>
+                                The concept of ishta-devata (chosen deity) reflects this. A practitioner selects the form
+                                that most naturally draws their mind inward. The Bhagavad Gita states that whatever
+                                form a devotee worships with faith, that faith is made steady by the divine itself (7.21).
+                                The form is a starting point, not a ceiling.
+                            </p>
+                            <p>
+                                Each deity page below covers iconography, mythology, philosophical meaning, associated
+                                mantras and texts, and common questions. Start wherever your curiosity leads.
+                            </p>
+                        </div>
                     </header>
 
                     <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

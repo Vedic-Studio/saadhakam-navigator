@@ -1,0 +1,357 @@
+{
+  "version": 2,
+  "brand": {
+    "style": "Flat digital illustration, sacred geometry underpinnings, Pahari miniature painting simplified to flat vector shapes",
+    "palette": {
+      "ochre": "#C87941",
+      "saffron": "#E07B39",
+      "burgundy": "#8B1A2D",
+      "parchment": "#F5E6C8",
+      "gold": "#D4A843",
+      "wash": "muted terracotta"
+    },
+    "constraints": [
+      "absolutely no text, numbers, words, Sanskrit or Latin letters anywhere in the image",
+      "flat fills with subtle tonal gradation only, no photorealistic lighting",
+      "geometric borders in thin gold lines",
+      "no faces shown directly — use silhouettes, profiles, or symbolic representations"
+    ],
+    "composition": "centered, generous negative space",
+    "format": {
+      "generateWidth": 1792,
+      "generateHeight": 1024,
+      "outputWidth": 1200,
+      "outputHeight": 630
+    }
+  },
+
+  "pageTypes": {
+    "article": {
+      "moodMap": {
+        "ancient-wisdom": "reverential, timeless",
+        "practical-practices": "serene, grounded",
+        "sacred-texts": "scholarly, luminous",
+        "spiritual-traditions": "devotional, warm"
+      },
+      "compositionOverride": null,
+      "focalStrategy": "Extract core visual metaphor from article title and primaryKeyword. Avoid generic pillar symbols — each article should feel distinct.",
+      "altTextTemplate": "{primaryKeyword} — {visualDescription}"
+    },
+    "deity": {
+      "defaultMood": "devotional, majestic, transcendent",
+      "compositionOverride": "central figure silhouette, symmetrical framing, aura of radiant light behind figure, geometric mandala backdrop",
+      "focalStrategy": "Map iconographic attributes directly: weapons, vehicle, posture, symbols. Use silhouette with key distinguishing features visible in profile.",
+      "altTextTemplate": "{name} — {keyAttributes} in sacred geometry style",
+      "paletteExtension": "Allow deity-specific accent colors from iconography data"
+    },
+    "concept": {
+      "defaultMood": "contemplative, philosophical, infinite",
+      "compositionOverride": null,
+      "focalStrategy": "Use curated visual metaphor from conceptVisualMetaphors lookup. Every concept gets a deliberate, hand-crafted visual mapping.",
+      "altTextTemplate": "{englishTranslation} ({sanskritWord}) — {visualDescription}"
+    },
+    "comparison": {
+      "defaultMood": "balanced, contemplative, dialogical",
+      "compositionOverride": "split composition — two symbolic elements facing each other across a central axis, connected by a geometric bridge or threshold element",
+      "focalStrategy": "Two contrasting but harmonious visual symbols, one per entity, mirrored across center. Shared geometric frame unifying both.",
+      "altTextTemplate": "{entityA} and {entityB} — contrasting philosophies in sacred geometry"
+    },
+    "stotra": {
+      "defaultMood": "devotional, transcendent, luminous",
+      "compositionOverride": "sacred flame or offering motif, deity silhouette receiving devotion, flowing geometric patterns suggesting chant rhythm",
+      "focalStrategy": "Deity iconography in devotional context — figure receiving offering, cosmic dance, or meditative pose. Suggest the act of praise.",
+      "altTextTemplate": "{stotraName} — devotional illustration for {deity}"
+    },
+    "practice": {
+      "defaultMood": "serene, disciplined, embodied",
+      "compositionOverride": "human figure in practice pose, surrounded by subtle energy patterns or concentric sacred geometry circles",
+      "focalStrategy": "Activity-based: figure performing the practice. Japa shows mala beads, dhyana shows seated meditation, pranayama shows breath flows.",
+      "altTextTemplate": "{title} — {sanskritName} practice illustration"
+    },
+    "tradition": {
+      "moodMap": {
+        "devotional": "devotional, warm, bhakti",
+        "contemplative": "contemplative, cool, jnana",
+        "ritualistic": "ritualistic, structured, ceremonial",
+        "yogic": "disciplined, serene, balanced",
+        "mystical": "mystical, otherworldly, tantric"
+      },
+      "compositionOverride": null,
+      "focalStrategy": "Tone-driven atmosphere reflecting the tradition's core orientation. Devotional traditions show offering/flame; contemplative show stillness/space; yogic show practice/discipline.",
+      "altTextTemplate": "{title} — {coreOrientation} tradition illustration"
+    }
+  },
+
+  "conceptVisualMetaphors": {
+    "karma": {
+      "focalElement": "interconnected golden scales suspended in space, with ripples emanating outward from each weight, cause flowing into effect",
+      "mood": "inevitable, balanced, cosmic"
+    },
+    "dharma": {
+      "focalElement": "a great cosmic wheel with eight spokes radiating from a stable center, each spoke a different sacred geometry pattern",
+      "mood": "ordered, righteous, foundational"
+    },
+    "moksha": {
+      "focalElement": "a luminous figure dissolving upward into infinite concentric circles of light, chains falling away below",
+      "mood": "liberating, radiant, ultimate"
+    },
+    "samsara": {
+      "focalElement": "an endless wheel of six segments turning in space, tiny figures cycling through each segment, the wheel floating in a vast void",
+      "mood": "cyclical, relentless, vast"
+    },
+    "maya": {
+      "focalElement": "layered translucent veils dissolving one behind another, each veil a different geometric pattern, a faint light source behind the last veil",
+      "mood": "illusory, layered, haunting"
+    },
+    "atman": {
+      "focalElement": "a single unwavering flame burning inside a lotus, surrounded by concentric protective shells, each shell more transparent than the last",
+      "mood": "eternal, still, innermost"
+    },
+    "brahman": {
+      "focalElement": "an infinite field of radiant golden light with no center and no edge, subtle geometric patterns emerging and dissolving within it",
+      "mood": "boundless, absolute, luminous"
+    },
+    "yoga": {
+      "focalElement": "two streams — one ascending, one descending — merging at a central point within a seated silhouette, forming a unified geometric pattern",
+      "mood": "unifying, disciplined, transformative"
+    },
+    "ahimsa": {
+      "focalElement": "an open palm radiating concentric circles of soft light, a lotus blooming in the palm center, all sharp edges dissolving into curves",
+      "mood": "gentle, protective, absolute"
+    },
+    "guru": {
+      "focalElement": "a seated figure on a raised platform, single lamp burning before them, light rays forming a geometric pattern connecting teacher to the space below",
+      "mood": "reverential, illuminating, lineage"
+    },
+    "bhakti": {
+      "focalElement": "a heart-shaped sacred flame rising toward a stylised deity silhouette above, garlands of geometric flowers connecting devotee and divine",
+      "mood": "surrendered, ecstatic, loving"
+    },
+    "jnana": {
+      "focalElement": "an eye opening within a geometric mandala, layers of illusion peeling away concentrically around the eye, revealing clear space at center",
+      "mood": "penetrating, still, discriminating"
+    },
+    "viveka": {
+      "focalElement": "a sharp geometric blade of light dividing a field into two halves — one clear and luminous, one shadowed and complex",
+      "mood": "discerning, precise, clarifying"
+    },
+    "vairagya": {
+      "focalElement": "a figure walking away from an ornate palace toward open sky, each step lighter, geometric attachments dissolving behind them",
+      "mood": "detached, free, serene"
+    },
+    "samadhi": {
+      "focalElement": "a seated figure merged into a vast geometric mandala, boundaries between figure and pattern completely dissolved, radiating stillness",
+      "mood": "absorbed, infinite, still"
+    },
+    "seva": {
+      "focalElement": "many hands in geometric arrangement all supporting a central flame together, each hand distinct but all oriented toward service",
+      "mood": "selfless, communal, humble"
+    },
+    "avidya": {
+      "focalElement": "a figure looking through a cracked and distorted geometric lens, the world behind the lens clear but unseen, fog surrounding the figure",
+      "mood": "obscured, fundamental, binding"
+    },
+    "ishvara": {
+      "focalElement": "a vast cosmic form suggested by geometric shapes — a universal silhouette containing stars, worlds, and sacred patterns within its outline",
+      "mood": "sovereign, cosmic, personal-infinite"
+    },
+    "jiva": {
+      "focalElement": "a small luminous spark inside a layered geometric shell, the spark identical in quality to a vast light above but enclosed",
+      "mood": "individual, seeking, embodied"
+    },
+    "karma-yoga": {
+      "focalElement": "hands working at a potter's wheel, the clay forming sacred geometry, the figure's posture perfectly still despite the activity",
+      "mood": "engaged, selfless, dynamic-stillness"
+    },
+    "raja-yoga": {
+      "focalElement": "an ascending staircase of eight geometric platforms, a figure seated at the summit in perfect stillness, each platform glowing with a different quality",
+      "mood": "systematic, royal, ascending"
+    },
+    "purushartha": {
+      "focalElement": "four concentric geometric arches — outermost ornate (artha), then pleasurable curves (kama), then orderly lines (dharma), innermost pure light (moksha)",
+      "mood": "purposeful, structured, aspirational"
+    },
+    "advaita": {
+      "focalElement": "two apparently separate geometric forms revealed to be one continuous shape when seen from above — the boundary between them dissolving",
+      "mood": "non-dual, revelatory, ultimate"
+    },
+    "ahamkara": {
+      "focalElement": "a small figure casting an enormous shadow-silhouette, the shadow ornate and decorated while the figure is simple and luminous",
+      "mood": "inflated, constructed, dissolvable"
+    },
+    "niskama-karma": {
+      "focalElement": "a tree bearing fruit with geometric precision, the fruit falling freely to the ground, no hands reaching to collect — pure giving",
+      "mood": "selfless, natural, graceful"
+    },
+    "pranayama": {
+      "focalElement": "geometric breath flows — two spiraling streams entering and exiting a silhouetted figure, meeting at the heart center in a radiant point",
+      "mood": "rhythmic, vital, controlled"
+    },
+    "rta": {
+      "focalElement": "a vast cosmic clockwork of interlocking geometric gears, each turning in perfect harmony, stars and seasons embedded in the mechanism",
+      "mood": "cosmic, orderly, primordial"
+    },
+    "mantra": {
+      "focalElement": "concentric sound waves radiating from a single point, each wave a different geometric pattern, the waves transforming space as they expand",
+      "mood": "vibrational, sacred, transformative"
+    },
+    "japa": {
+      "focalElement": "a circle of 108 beads, each bead a tiny geometric mandala, a hand moving from bead to bead, the circle radiating quiet power",
+      "mood": "repetitive, devotional, meditative"
+    },
+    "dhyana": {
+      "focalElement": "a perfectly still figure in lotus pose, the mind represented as a lake surface — utterly calm, reflecting geometric sky patterns",
+      "mood": "still, absorbed, mirror-like"
+    },
+    "sadhana": {
+      "focalElement": "a path winding upward through geometric landscape, a figure walking steadily, each step leaving a small flame behind",
+      "mood": "disciplined, daily, ascending"
+    },
+    "om": {
+      "focalElement": "concentric vibrations emanating from a central point, the vibrations forming the structure of space itself, all geometry arising from one source",
+      "mood": "primordial, all-encompassing, generative"
+    },
+    "guna": {
+      "focalElement": "three intertwined strands — one luminous white (sattva), one dynamic red (rajas), one heavy dark (tamas) — braided into a cosmic rope",
+      "mood": "triadic, fundamental, binding"
+    },
+    "avatara": {
+      "focalElement": "a divine figure descending from geometric heavens on a ray of light, the world below in disorder, the figure bringing geometric order",
+      "mood": "descending, purposeful, restoring"
+    },
+    "tapas": {
+      "focalElement": "a figure seated in intense stillness, surrounded by geometric flames that do not consume but purify, the figure glowing from within",
+      "mood": "fierce, purifying, transformative"
+    },
+    "dharana": {
+      "focalElement": "a single geometric point of absolute focus, all surrounding patterns converging toward it, a beam of attention holding it steady",
+      "mood": "concentrated, unwavering, preparatory"
+    },
+    "lila": {
+      "focalElement": "playful geometric forms dancing and transforming — cubes becoming spheres becoming stars — a cosmic play of creation and dissolution",
+      "mood": "playful, cosmic, joyful"
+    },
+    "satya": {
+      "focalElement": "a single straight geometric line cutting through a field of curves and distortions, the line radiating clarity in all directions",
+      "mood": "truthful, uncompromising, luminous"
+    },
+    "prana": {
+      "focalElement": "flowing streams of geometric energy coursing through a translucent figure, five major streams meeting at vital centers",
+      "mood": "vital, flowing, life-giving"
+    },
+    "chakra": {
+      "focalElement": "seven geometric wheels stacked vertically within a translucent figure, each wheel a different color and pattern, energy ascending through them",
+      "mood": "ascending, energetic, structured"
+    },
+    "prajna": {
+      "focalElement": "a vast eye made of geometric patterns seeing through layers of illusion to a simple truth at center — transcendent wisdom as sight",
+      "mood": "penetrating, transcendent, liberating"
+    },
+    "shanti": {
+      "focalElement": "a perfectly symmetrical geometric garden at twilight, every element in balance, a single lamp at center casting even light in all directions",
+      "mood": "peaceful, complete, undisturbed"
+    },
+    "kundalini": {
+      "focalElement": "a coiled serpent of geometric light at the base of a figure, beginning to rise through a central channel, each level it reaches igniting",
+      "mood": "dormant-awakening, powerful, ascending"
+    },
+    "nadi": {
+      "focalElement": "72,000 geometric channels forming a luminous network within a translucent figure, three main channels prominent — left, right, and center",
+      "mood": "flowing, intricate, vital"
+    },
+    "kosha": {
+      "focalElement": "five concentric translucent shells around a luminous core, each shell a different texture — outermost dense, innermost pure light",
+      "mood": "layered, revealing, protective"
+    },
+    "mudra": {
+      "focalElement": "geometric hands in precise sacred gestures, energy patterns flowing between fingertips, each gesture creating a different geometric field",
+      "mood": "precise, sealed, channeling"
+    },
+    "bandha": {
+      "focalElement": "three geometric locks within a figure — throat, diaphragm, root — each lock a glowing seal holding energy in place",
+      "mood": "locked, containing, powerful"
+    },
+    "asana": {
+      "focalElement": "a figure in a geometric yoga pose, the body forming clean angular lines, stability and ease visible in the geometry of the posture",
+      "mood": "stable, embodied, geometric"
+    },
+    "purusha": {
+      "focalElement": "a vast still witness — a geometric eye or form observing all activity without participating, unchanging while everything around it moves",
+      "mood": "witnessing, unchanging, transcendent"
+    },
+    "prakriti": {
+      "focalElement": "an endlessly creative geometric field — forms emerging, transforming, dissolving — dynamic nature in constant motion around a still center",
+      "mood": "creative, dynamic, manifesting"
+    },
+    "buddhi": {
+      "focalElement": "a perfectly clear geometric lens through which chaotic patterns resolve into order — discriminating intelligence as optical clarity",
+      "mood": "clear, discriminating, resolving"
+    },
+    "manas": {
+      "focalElement": "a geometric switchboard receiving inputs from five directions (senses), processing and routing them, busy but organized",
+      "mood": "processing, reactive, intermediary"
+    },
+    "chitta": {
+      "focalElement": "a vast geometric lake — sometimes rippled, sometimes still — containing reflections of all experiences, memories as submerged patterns",
+      "mood": "deep, containing, reflective"
+    },
+    "vritti": {
+      "focalElement": "waves and ripples on a geometric surface, each ripple a thought-form, some large and turbulent, some subtle, the surface seeking stillness",
+      "mood": "fluctuating, mental, ceasable"
+    },
+    "klesha": {
+      "focalElement": "five geometric thorns embedded in a luminous field — each thorn casting a distinct shadow, the field trying to heal around them",
+      "mood": "afflicting, rooted, removable"
+    },
+    "samskara": {
+      "focalElement": "deep geometric grooves etched into a surface, like channels worn by repeated water flow, new grooves being formed alongside ancient ones",
+      "mood": "patterned, deep, habitual"
+    },
+    "puja": {
+      "focalElement": "an offering arrangement — flowers, flame, incense, water — in geometric precision before a sacred form, devotion made visible as order",
+      "mood": "devotional, ceremonial, beautiful"
+    },
+    "yajna": {
+      "focalElement": "a geometric fire altar with sacred flames rising, offerings entering the fire, smoke ascending in geometric spirals connecting earth to sky",
+      "mood": "sacrificial, transformative, cosmic"
+    },
+    "kirtan": {
+      "focalElement": "concentric waves of geometric sound emanating from a group of silhouetted figures, the waves merging into one unified pattern",
+      "mood": "communal, ecstatic, devotional"
+    },
+    "yantra": {
+      "focalElement": "a precise geometric diagram — interlocking triangles, circles, and lotus petals — radiating power from center, a meditation device as architecture",
+      "mood": "precise, powerful, meditative"
+    },
+    "sankalpa": {
+      "focalElement": "a single geometric seed of intention planted in earth, roots extending downward, a straight beam of light extending upward from it",
+      "mood": "intentional, rooted, directed"
+    },
+    "darshan": {
+      "focalElement": "a mutual gaze — geometric eyes meeting between a devotee figure and a sacred form, the space between them filled with connecting light patterns",
+      "mood": "beholding, grace-filled, reciprocal"
+    },
+    "prasad": {
+      "focalElement": "a geometric offering bowl being returned — what was given transformed, now glowing with sacred energy, hands receiving with reverence",
+      "mood": "gracious, blessed, returned"
+    },
+    "arati": {
+      "focalElement": "a geometric flame being waved in circles before a sacred form, light patterns tracing the circular motion, darkness receding",
+      "mood": "devotional, luminous, ceremonial"
+    },
+    "ojas": {
+      "focalElement": "a golden geometric glow emanating from within a figure — vitality made visible as radiating geometric warmth and strength",
+      "mood": "vital, radiant, nourishing"
+    },
+    "tejas": {
+      "focalElement": "sharp geometric light radiating from a figure — brilliance, charisma, and transformative fire as visible geometric rays",
+      "mood": "brilliant, fiery, commanding"
+    },
+    "bindu": {
+      "focalElement": "a single geometric point from which all patterns emerge — the primordial dot, infinitely small yet containing all potential",
+      "mood": "concentrated, primordial, generative"
+    }
+  },
+
+  "refinedPatterns": {}
+}

@@ -470,3 +470,153 @@ export function buildToolSchemas(tool: ToolMeta) {
         }),
     };
 }
+
+// ============================================================================
+// History Page Schema Builders
+// ============================================================================
+
+export const SPEAKABLE_SPEC = {
+    speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["[data-speakable]"],
+    },
+};
+
+export interface HistoricalPeriodSchemaMeta {
+    name: string;
+    description: string;
+    url: string;
+    startYear: number; // negative = BCE
+    endYear: number;
+}
+
+export function buildHistoricalPeriodSchema(meta: HistoricalPeriodSchemaMeta) {
+    const formatYear = (y: number) => y < 0 ? `${Math.abs(y)} BCE` : `${y} CE`;
+    return {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: meta.name,
+        description: meta.description,
+        url: meta.url,
+        temporalCoverage: `${formatYear(meta.startYear)}/${formatYear(meta.endYear)}`,
+        isPartOf: {
+            "@type": "WebSite",
+            name: SITE_NAME,
+            url: SITE_URL,
+        },
+        inLanguage: "en",
+        ...SPEAKABLE_SPEC,
+    };
+}
+
+export interface ScholarlyArticleSchemaMeta {
+    headline: string;
+    description: string;
+    url: string;
+    about: string;
+    methodology?: string;
+    citations?: string[];
+}
+
+export function buildScholarlyArticleSchema(meta: ScholarlyArticleSchemaMeta) {
+    const schema: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        headline: meta.headline,
+        description: meta.description,
+        url: meta.url,
+        mainEntityOfPage: meta.url,
+        about: meta.about,
+        inLanguage: "en",
+        publisher: {
+            "@type": "Organization",
+            name: SITE_NAME,
+            url: SITE_URL,
+        },
+        ...SPEAKABLE_SPEC,
+    };
+
+    if (meta.citations && meta.citations.length > 0) {
+        schema.citation = meta.citations;
+    }
+
+    return schema;
+}
+
+export interface ProfilePageSchemaMeta {
+    name: string;
+    jobTitle?: string;
+    affiliation?: string;
+    url: string;
+    description: string;
+}
+
+export function buildProfilePageSchema(meta: ProfilePageSchemaMeta) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        name: `${meta.name} — Researcher Profile`,
+        description: meta.description,
+        url: meta.url,
+        mainEntity: buildPersonSchema({
+            name: meta.name,
+            jobTitle: meta.jobTitle,
+            affiliation: meta.affiliation,
+            url: meta.url,
+        }),
+        ...SPEAKABLE_SPEC,
+    };
+}
+
+export interface ArchaeologicalSiteSchemaMeta {
+    name: string;
+    description: string;
+    url: string;
+    latitude: number;
+    longitude: number;
+    dateRange: string;
+    keyFindings?: string[];
+}
+
+export function buildArchaeologicalSiteSchema(meta: ArchaeologicalSiteSchemaMeta) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "Place",
+        additionalType: "https://schema.org/ArchaeologicalSite",
+        name: meta.name,
+        description: meta.description,
+        url: meta.url,
+        geo: {
+            "@type": "GeoCoordinates",
+            latitude: meta.latitude,
+            longitude: meta.longitude,
+        },
+        temporalCoverage: meta.dateRange,
+        ...(meta.keyFindings && meta.keyFindings.length > 0
+            ? { keywords: meta.keyFindings }
+            : {}),
+        ...SPEAKABLE_SPEC,
+    };
+}
+
+export interface ItemListSchemaMeta {
+    items: Array<{
+        name: string;
+        url?: string;
+        description?: string;
+    }>;
+}
+
+export function buildItemListSchema(meta: ItemListSchemaMeta) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: meta.items.map((item, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: item.name,
+            ...(item.url ? { url: item.url } : {}),
+            ...(item.description ? { description: item.description } : {}),
+        })),
+    };
+}
