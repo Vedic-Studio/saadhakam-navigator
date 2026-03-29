@@ -38,13 +38,20 @@ export default function FaithFinderPage() {
                 Faith Finder Quiz
               </div>
               <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/60">
-                Stop Guessing.<br />Start Practicing.
+                Which of the<br />Four Yogas Fits You?
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-                Discover your Dharmic Archetype and the specific 5,000-year-old lineage that matches your modern temperament.
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-4 leading-relaxed">
+                The Bhagavad Gita describes four fundamental approaches to
+                spiritual practice &mdash; Jnana (inquiry), Bhakti (devotion),
+                Karma (action), and Raja (discipline).
+              </p>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+                This quiz asks seven questions about how you respond to
+                uncertainty, emotion, and meaning, then maps your answers to the
+                path that fits your temperament.
               </p>
               <Button onClick={handleStartQuiz} size="lg" className="h-14 px-10 rounded-full text-lg bg-orange-600 hover:bg-orange-700 shadow-xl shadow-orange-900/20 gap-2 transition-all hover:scale-105">
-                Begin Your Discovery
+                Start the Quiz
                 <ArrowRight className="w-5 h-5" />
               </Button>
 
@@ -67,7 +74,8 @@ export default function FaithFinderPage() {
               </div>
 
               <p className="text-xs text-muted-foreground/60 mt-4">
-                Taken by thousands of seekers
+                Based on the guna-temperament framework from Gita 17.2 and the
+                classical path division in chapters 3&ndash;4 and 12.
               </p>
             </div>
           </div>
