@@ -65,12 +65,21 @@ export interface Researcher {
   icon: string;
 }
 
+export type EvidenceCategory =
+  | "astronomical"
+  | "geological"
+  | "genetic"
+  | "archaeological"
+  | "cross-cultural"
+  | "historiographical";
+
 export interface EvidenceItem {
   id: string;
   claim: string;
   status: "confirmed" | "strong" | "open";
   evidence: string;
   notes: string;
+  category: EvidenceCategory;
 }
 
 export interface HistoryFaq {
@@ -473,7 +482,7 @@ export const archaeologicalSites: ArchaeologicalSite[] = [
     evidenceType: "confirmed",
   },
   {
-    id: "sinauli-site",
+    id: "sinauli",
     name: "Sinauli",
     location: "Uttar Pradesh",
     coordinates: { lat: 29.2242, lng: 77.3756 },
@@ -831,9 +840,12 @@ export const researchers: Researcher[] = [
 // -----------------------------------------------------------------------------
 
 export const evidenceItems: EvidenceItem[] = [
-  // Confirmed
+  // ===========================================================================
+  // CONFIRMED
+  // ===========================================================================
   {
     id: "av-observation",
+    category: "astronomical",
     claim:
       "Arundhati-Vasishtha observation window: 11,091 \u2014 4,508 BCE",
     status: "confirmed",
@@ -844,6 +856,7 @@ export const evidenceItems: EvidenceItem[] = [
   },
   {
     id: "bhimbetka-evidence",
+    category: "archaeological",
     claim: "Bhimbetka: 100,000+ years continuous occupation",
     status: "confirmed",
     evidence:
@@ -852,6 +865,7 @@ export const evidenceItems: EvidenceItem[] = [
   },
   {
     id: "mehrgarh-evidence",
+    category: "archaeological",
     claim: "Mehrgarh: independent farming origin (~7,000 BCE)",
     status: "confirmed",
     evidence:
@@ -861,6 +875,7 @@ export const evidenceItems: EvidenceItem[] = [
   },
   {
     id: "rakhigarhi-dna",
+    category: "genetic",
     claim: "Rakhigarhi: no Steppe DNA at 2,500 BCE",
     status: "confirmed",
     evidence:
@@ -870,6 +885,7 @@ export const evidenceItems: EvidenceItem[] = [
   },
   {
     id: "saraswati-paleo",
+    category: "geological",
     claim: "Saraswati/Ghaggar-Hakra paleochannel exists",
     status: "confirmed",
     evidence:
@@ -878,6 +894,7 @@ export const evidenceItems: EvidenceItem[] = [
   },
   {
     id: "sea-level",
+    category: "geological",
     claim: "Post-Ice Age sea level rise: 120 meters",
     status: "confirmed",
     evidence:
@@ -885,9 +902,84 @@ export const evidenceItems: EvidenceItem[] = [
     notes:
       "Drowned coastal sites worldwide. Explains submersion of ancient coastal settlements.",
   },
-  // Strong
+  // -- Synced from evidence.ts (confirmed) --
+  {
+    id: "sinauli-chariots",
+    category: "archaeological",
+    claim: "Sinauli: elite warrior burials with copper-covered vehicles (1,865\u20131,507 BCE)",
+    status: "confirmed",
+    evidence:
+      "3 wooden vehicles with solid disc wheels, copper helmets, antenna swords. C14 dated. OCP/Copper Hoard culture.",
+    notes:
+      "Debate: solid wheels suggest carts not spoked chariots. No horse remains. Witzel: evidence of extra-Harappan organized society.",
+  },
+  {
+    id: "saraswati-drying-timeline",
+    category: "geological",
+    claim: "Saraswati river drying timeline: 10,000\u20131,900 BCE",
+    status: "confirmed",
+    evidence:
+      "OSL dating, isotopic analysis, tectonic studies. Sutlej abandoned paleochannel ~10,000\u20138,000 BCE. Yamuna shifted east ~5,000\u20133,000 BCE. Final drying ~2,200\u20131,900 BCE during 4.2 kiloyear drought.",
+    notes:
+      "French SPOT satellite showed large paleochannel was pre-Harappan. River still perennial during Early/Mature Harappan (5.9\u20134.3 ka).",
+  },
+  {
+    id: "lothal-maritime-trade",
+    category: "archaeological",
+    claim: "Lothal: world\u2019s earliest known dock (~2,200 BCE)",
+    status: "confirmed",
+    evidence:
+      "Trapezoidal dock structure with inlet/outlet channels. Bead factory, rice husk evidence, Persian Gulf trade goods.",
+    notes:
+      "120+ stone anchor types at Dwarka suggest sophisticated IVC-era seafaring network.",
+  },
+  {
+    id: "hastinapura-flood-layer",
+    category: "archaeological",
+    claim: "Hastinapura: PGW flood layer matches Puranic account",
+    status: "confirmed",
+    evidence:
+      "B.B. Lal\u2019s 1950\u201352 excavation found Painted Grey Ware + flood deposit matching Puranic account of Hastinapura\u2019s flooding.",
+    notes:
+      "PGW period (~1,200\u2013600 BCE). Connects material culture to textual tradition.",
+  },
+  {
+    id: "rakhigarhi-largest-site",
+    category: "archaeological",
+    claim: "Rakhigarhi: largest IVC site (350 hectares)",
+    status: "confirmed",
+    evidence:
+      "Larger than Mohenjo-daro (250 ha). Seven mounds with craft specialization, planned streets, drainage. 2014\u20132016 excavations by Shinde et al.",
+    notes:
+      "Haryana location puts it squarely on the Saraswati paleochannel, not the Indus.",
+  },
+  {
+    id: "genetic-steppe-timeline",
+    category: "genetic",
+    claim: "Steppe ancestry spread into South Asia 2,300\u20131,500 BCE",
+    status: "confirmed",
+    evidence:
+      "Narasimhan et al. (2019, Science). 523-individual ancient DNA study. Steppe ancestry contributes up to 30% of modern South Asian genome.",
+    notes:
+      "After IVC decline (~1,900 BCE): IVC + Steppe = ANI (Ancestral North Indians). IVC + peninsular = ASI (Ancestral South Indians).",
+  },
+  // -- New confirmed items --
+  {
+    id: "narasimhan-523-study",
+    category: "genetic",
+    claim: "523-individual ancient DNA study maps South Asian population formation",
+    status: "confirmed",
+    evidence:
+      "Narasimhan et al. 2019 in Science. Largest ancient DNA study of South/Central Asia. Maps formation of ANI and ASI populations. Agriculture in India developed independently.",
+    notes:
+      "Checkmate for the Anatolian hypothesis (Reich). Steppe profile matches Bronze Age Eastern Europe.",
+  },
+  // ===========================================================================
+  // STRONG
+  // ===========================================================================
   {
     id: "mb-5561",
+    category: "astronomical",
     claim: "Mahabharata war: 5,561 BCE",
     status: "strong",
     evidence:
@@ -897,6 +989,7 @@ export const evidenceItems: EvidenceItem[] = [
   },
   {
     id: "ramayana-12209",
+    category: "astronomical",
     claim: "Ramayana war: 12,209 BCE",
     status: "strong",
     evidence:
@@ -906,6 +999,7 @@ export const evidenceItems: EvidenceItem[] = [
   },
   {
     id: "ivc-vedic-continuity",
+    category: "archaeological",
     claim: "IVC-Vedic cultural continuity",
     status: "strong",
     evidence:
@@ -913,9 +1007,43 @@ export const evidenceItems: EvidenceItem[] = [
     notes:
       "Steppe ancestry arrived 2,300\u20131,500 BCE. Whether this brought languages or just genes is debated.",
   },
-  // Open
+  // -- New strong items --
+  {
+    id: "competing-timelines",
+    category: "historiographical",
+    claim: "AV observation eliminates all post-4,508 BCE Mahabharata dates",
+    status: "strong",
+    evidence:
+      "Achar (3,067 BCE), Kali Yuga tradition (3,102 BCE), Aihole Inscription (~3,137 BCE), Iyengar (1,493\u20131,443 BCE), mainstream (~1,200\u2013800 BCE) all fall outside the AV window. Only Oak (5,561 BCE) and Vartak (5,561 BCE) satisfy the constraint.",
+    notes:
+      "The AV observation is independently verifiable. Each competing date can be tested against it. This is not a matter of interpretation but of stellar mechanics.",
+  },
+  {
+    id: "younger-dryas-correlation",
+    category: "geological",
+    claim: "Younger Dryas cooling correlates with Ramayana-era civilizational disruption",
+    status: "strong",
+    evidence:
+      "Younger Dryas (12,800\u201311,500 BP) is a confirmed global climate catastrophe. Oak\u2019s Ramayana date (12,209 BCE) falls at its onset. The 6,600-year gap between Ramayana and Mahabharata aligns with YD-induced disruption.",
+    notes:
+      "Climate descriptions in the Valmiki Ramayana match Pleistocene conditions: snow at Nashik, long winters, short hot summers.",
+  },
+  {
+    id: "flood-myths-cross-cultural",
+    category: "cross-cultural",
+    claim: "Flood narratives across 6+ ancient traditions correlate with post-Ice Age sea level events",
+    status: "strong",
+    evidence:
+      "Sumerian (Utnapishtim), Hebrew (Noah), Hindu (Manu-Matsya), Greek (Deucalion), Chinese (Gun-Yu), Aztec (Tata and Nena). Post-Ice Age sea rose 120m. Bruce Masse: 175 flood myths converge on ~2,807 BCE.",
+    notes:
+      "Hindu tradition: Matsya avatar warns Manu. Earliest version in Rigveda, expanded in Satapatha Brahmana. Causation debated but the pattern is striking.",
+  },
+  // ===========================================================================
+  // OPEN
+  // ===========================================================================
   {
     id: "arch-gap-12000",
+    category: "archaeological",
     claim: "Archaeological gap at 12,000 BCE",
     status: "open",
     evidence:
@@ -925,6 +1053,7 @@ export const evidenceItems: EvidenceItem[] = [
   },
   {
     id: "arch-gap-5561",
+    category: "archaeological",
     claim: "Archaeological gap at 5,561 BCE",
     status: "open",
     evidence:
@@ -934,13 +1063,85 @@ export const evidenceItems: EvidenceItem[] = [
   },
   {
     id: "steppe-language",
-    claim:
-      "Did Steppe ancestry bring Indo-Aryan languages or just genes?",
+    category: "genetic",
+    claim: "Did Steppe ancestry bring Indo-Aryan languages or just genes?",
     status: "open",
     evidence:
       "Genetic mixing confirmed 2,300\u20131,500 BCE. Linguistic spread correlates but causation is debated.",
     notes:
       "PIE wheel vocabulary constrains the language family to ~6,000 years. Sanskrit-IVC script proposals (Bhaty 2025) challenge this.",
+  },
+  // -- Synced from evidence.ts (open) --
+  {
+    id: "younger-dryas-gap-evidence",
+    category: "geological",
+    claim: "6,600-year gap between Ramayana and Mahabharata explained by Younger Dryas",
+    status: "open",
+    evidence:
+      "Oak treats absence of datable events between 12,209 and 5,561 BCE as anupalabdhi (non-evidence as evidence). Younger Dryas destroyed or disrupted civilization, explaining the literary silence.",
+    notes:
+      "Geologically confirmed catastrophe. Whether it explains the textual gap requires the assumption that civilization existed to be disrupted.",
+  },
+  // -- New open items --
+  {
+    id: "ivc-script-undeciphered",
+    category: "historiographical",
+    claim: "Five competing approaches to IVC script decipherment remain unresolved",
+    status: "open",
+    evidence:
+      "~5,000 inscriptions found, avg 4\u20135 symbols. Mahadevan: Proto-Dravidian. Parpola: Proto-Dravidian (astronomical). S.R. Rao: Sanskritic. Wells: Dravidian statistical. Bhaty (2025): Sanskrit trade-partner place names.",
+    notes:
+      "No bilingual text exists. Farmer/Sproat/Witzel (2004) challenged whether it encodes language at all. Tamil Nadu announced $1M prize (2025).",
+  },
+  {
+    id: "kumari-kandam-meltwater",
+    category: "geological",
+    claim: "Meltwater pulses align with Tamil Sangam tradition of three submersion events",
+    status: "open",
+    evidence:
+      "MWP-1A (~14,600 BP) and MWP-1B (~11,500 BP) are confirmed rapid sea level events. Tamil tradition describes three learning centers destroyed at ~11,600, ~7,200, and ~3,500 years ago.",
+    notes:
+      "Submerged landmass south of Kanyakumari is geologically real. Civilization aspect is tradition-based, not archaeologically confirmed.",
+  },
+  {
+    id: "genetics-synthesis",
+    category: "genetic",
+    claim: "What ancient DNA does and does not prove about the Aryan question",
+    status: "open",
+    evidence:
+      "Confirmed: IVC people had no Steppe ancestry. Confirmed: Steppe-related ancestry arrived after IVC decline. Confirmed: agriculture developed independently. Open: whether genetic mixing necessarily means language replacement.",
+    notes:
+      "DNA proves population mixture timing but cannot determine what language the migrants spoke or whether language shift preceded, accompanied, or followed genetic mixing.",
+  },
+  {
+    id: "precessional-numbers",
+    category: "cross-cultural",
+    claim: "Precessional numbers (72, 432,000) appear across unconnected ancient traditions",
+    status: "open",
+    evidence:
+      "72 years per degree of precession. Hindu: Kali Yuga = 432,000 years. Egyptian: 72 conspirators against Osiris. Norse: 432,000 warriors in Valhalla. Mesopotamian King List: 432,000 years before the flood.",
+    notes:
+      "Source: Hamlet\u2019s Mill (Santillana & von Dechend, 1969). Whether these encode genuine ancient astronomical knowledge or are numerical coincidence remains debated.",
+  },
+  {
+    id: "lost-civilization-india",
+    category: "cross-cultural",
+    claim: "India-specific evidence in the lost civilization debate: Dwarka, Kumari Kandam, Gobekli Tepe parallels",
+    status: "open",
+    evidence:
+      "S.R. Rao\u2019s underwater Dwarka: submerged structures, 120+ stone anchors, TL-dated fort walls. Gulf of Cambay: C14-dated wood 7,500\u20139,000 BP. Gobekli Tepe: Pillar 43 vulture/sun resembles Garuda.",
+    notes:
+      "Hancock and Oak converge on deep antiquity but differ on method: Hancock uses archaeological anomalies (low falsifiability); Oak uses precession-based dating (higher falsifiability).",
+  },
+  {
+    id: "oak-framework-criticisms",
+    category: "historiographical",
+    claim: "Major criticisms of Oak\u2019s archaeoastronomical framework and his responses",
+    status: "open",
+    evidence:
+      "Raja Ram Mohan Roy: periodicity of planetary positions. Jayasree Saranathan: Right Ascension is a Western coordinate. Nityananda Misra: seasonal descriptions don\u2019t match proposed dates.",
+    notes:
+      "Oak responds: critics cherry-pick 3\u20134 references while ignoring the remaining 200+ that must be satisfied simultaneously.",
   },
 ];
 
@@ -973,6 +1174,42 @@ export const historyFaqs: HistoryFaq[] = [
     answer:
       "In the Oak-Bhaty framework, the Rigveda predates all known civilizations (22,000+ BCE), and the Ramayana (12,209 BCE) is contemporaneous with the end of the Ice Age. Even by conservative dating, the Indus-Saraswati Civilization (2,600\u20131,900 BCE) was one of four great Bronze Age civilizations alongside Egypt, Mesopotamia, and China, with the world\u2019s earliest known dock (Lothal), ploughed field (Kalibangan), and signboard (Dholavira).",
   },
+  {
+    question:
+      "Why hasn\u2019t the Indus Valley script been deciphered?",
+    answer:
+      "Five major approaches exist \u2014 Mahadevan and Parpola read it as Proto-Dravidian, S.R. Rao as Sanskritic, Wells uses statistical methods, and Bhaty (2025) proposes it encodes Sanskrit trade-partner place names. The core challenges: no bilingual text (no Rosetta Stone), inscriptions average only 4\u20135 symbols, and scholars disagree on whether the underlying language is Dravidian, Sanskrit, or something else entirely. Farmer, Sproat, and Witzel (2004) even challenged whether it encodes language at all. Tamil Nadu announced a $1 million prize for decipherment in 2025.",
+  },
+  {
+    question:
+      "How does Oak\u2019s timeline compare to other proposed Mahabharata dates?",
+    answer:
+      "Multiple dates have been proposed: Achar (3,067 BCE), the Kali Yuga tradition (3,102 BCE), Iyengar (1,493\u20131,443 BCE), and mainstream archaeology (~1,200\u2013800 BCE). Oak\u2019s key differentiator is the Arundhati-Vasishtha observation: the star Alcor walked ahead of Mizar only between 11,091 and 4,508 BCE. Every date after 4,508 BCE is eliminated by this single, independently verifiable astronomical constraint. Oak also tests all 215+ observations simultaneously rather than cherry-picking a convenient subset.",
+  },
+  {
+    question:
+      "What do flood myths across cultures tell us about ancient history?",
+    answer:
+      "At least six ancient traditions \u2014 Sumerian, Hebrew, Hindu, Greek, Chinese, and Aztec \u2014 describe catastrophic floods. The Hindu version (Matsya avatar warning Manu) appears as early as the Rigveda. These narratives correlate with the confirmed 120-meter post-Ice Age sea level rise (18,000\u20137,000 BP), which drowned coastal zones worldwide. Bruce Masse analyzed 175 flood myths and found convergence on approximately 2,807 BCE. Whether these reflect a single event, regional flooding, or shared mythological structures remains debated.",
+  },
+  {
+    question:
+      "Is there a connection between Indian traditions and global lost civilization theories?",
+    answer:
+      "There are points of convergence. S.R. Rao\u2019s documented underwater findings at Dwarka, the Tamil Kumari Kandam tradition aligning with known meltwater pulses, and Gobekli Tepe\u2019s motifs (vulture/sun resembling Garuda, snake iconography) all overlap with deep-antiquity arguments. However, the methods differ sharply: Oak uses precession-based dating of specific Sanskrit textual references (higher falsifiability), while Hancock\u2019s framework relies on archaeological anomalies and myth analysis (lower falsifiability). Oak\u2019s model assumes cultural continuity; Hancock\u2019s assumes civilizational rupture.",
+  },
+  {
+    question:
+      "What are the main criticisms of Oak\u2019s archaeoastronomical dating?",
+    answer:
+      "Three main criticisms: Raja Ram Mohan Roy argues that planetary periodicity means multiple dates could satisfy the same observations. Jayasree Saranathan objects that Right Ascension is a Western coordinate system inappropriate for ancient Indian astronomy. Nityananda Misra argues that seasonal descriptions in the texts don\u2019t match the proposed dates. Oak responds that critics typically examine 3\u20134 references in isolation while his method requires all 215+ observations to be satisfied simultaneously \u2014 a constraint that eliminates every other proposed date.",
+  },
+  {
+    question:
+      "What does geological evidence tell us about the Saraswati River?",
+    answer:
+      "Multiple lines of geological evidence trace the Saraswati\u2019s history: the Sutlej abandoned its paleochannel ~10,000\u20138,000 BCE (OSL dating), the Yamuna shifted eastward ~5,000\u20133,000 BCE (tectonic studies), and final drying occurred ~2,200\u20131,900 BCE during the 4.2 kiloyear drought. ISRO satellite data and a 2025 multi-sensor SAR study trace paleochannels from the Shivalik foothills to the Rann of Kachchh, with over 1,500 Harappan sites along the course \u2014 more than along the Indus itself.",
+  },
 ];
 
 // -----------------------------------------------------------------------------
@@ -1000,6 +1237,28 @@ export function getEvidenceByStatus(
 ): EvidenceItem[] {
   return evidenceItems.filter((e) => e.status === status);
 }
+
+export function getEvidenceByStatusGroupedByCategory(
+  status: EvidenceItem["status"],
+): Map<EvidenceCategory, EvidenceItem[]> {
+  const items = getEvidenceByStatus(status);
+  const grouped = new Map<EvidenceCategory, EvidenceItem[]>();
+  for (const item of items) {
+    const existing = grouped.get(item.category) ?? [];
+    existing.push(item);
+    grouped.set(item.category, existing);
+  }
+  return grouped;
+}
+
+export const categoryLabels: Record<EvidenceCategory, string> = {
+  astronomical: "Astronomical",
+  geological: "Geological & River",
+  genetic: "Genetic",
+  archaeological: "Archaeological",
+  "cross-cultural": "Cross-Cultural",
+  historiographical: "Historiographical",
+};
 
 export function getDynastyNodeById(
   id: string,

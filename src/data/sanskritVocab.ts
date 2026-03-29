@@ -2950,6 +2950,318 @@ export const sanskritVocab: SanskritWord[] = [
     summary:
       "Arati is the devotional ceremony in which light is offered to a deity to dispel ignorance and invoke grace.",
   },
+  {
+    slug: "nirvana",
+    wordEnglish: "Nirvana",
+    wordDevanagari: "निर्वाण",
+    transliteration: "nirvāṇa",
+    pronunciation: "nir-vah-nah",
+    etymology: {
+      root: "nir (निर्) + vā (वा)",
+      rootMeaning: "out/away + to blow",
+      formationExplanation:
+        'Literally means "blowing out" or "extinguishing," as one blows out a lamp flame. In philosophical usage, it refers to the extinguishing of the fires of desire, aversion, and ignorance that fuel the cycle of rebirth.',
+    },
+    primaryMeanings: [
+      "Extinction of suffering and worldly desire",
+      "Liberation from the cycle of birth and death",
+      "The ultimate state of peace and freedom",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Bhagavad Gita / Vedanta",
+        meaning:
+          "Krishna uses the term 'Brahma-nirvana' to describe the state of absorption into Brahman—the bliss of the liberated soul who has transcended ego and desire. This predates and is distinct from the Buddhist usage.",
+      },
+      {
+        tradition: "Buddhism",
+        meaning:
+          "The cessation of Dukkha (suffering) and escape from Samsara, achieved by extinguishing craving (Tanha), aversion, and delusion. In Theravada, Parinirvana is the final nirvana after death of an enlightened being.",
+      },
+      {
+        tradition: "Shaivism",
+        meaning:
+          "Used in the Shaiva Agamas to describe the dissolution of individual identity into Shiva-consciousness, particularly in the Pashupata and Kapalika traditions.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Bhagavad Gita 2.72",
+        quoteSanskrit:
+          "एषा ब्राह्मी स्थितिः पार्थ नैनां प्राप्य विमुह्यति । स्थित्वास्यामन्तकालेऽपि ब्रह्मनिर्वाणमृच्छति ॥",
+        quoteTranslation:
+          "This is the state of Brahman, O Partha. Having attained this, one is never deluded. Being established in this even at the hour of death, one attains Brahma-nirvana (liberation in Brahman).",
+        explanation:
+          "Krishna describes Brahma-nirvana as the culmination of Sthitaprajna (steady wisdom), establishing the Hindu Vedantic usage of nirvana as union with the Absolute, not mere cessation.",
+      },
+      {
+        textContext: "Bhagavad Gita 5.24-26",
+        quoteSanskrit: "लभन्ते ब्रह्मनिर्वाणमृषयः क्षीणकल्मषाः",
+        quoteTranslation:
+          "The sages whose sins are destroyed, whose doubts are removed, who are self-controlled and engaged in the welfare of all beings, attain Brahma-nirvana.",
+        explanation:
+          "Here the Gita specifies that Brahma-nirvana is not passive withdrawal but is available to those actively engaged in selfless action—integrating Karma Yoga with liberation.",
+      },
+      {
+        textContext: "Mokshadharma Parva (Mahabharata 12.290)",
+        quoteSanskrit: "निर्वाणं परमं सुखम्",
+        quoteTranslation: "Nirvana is the supreme bliss.",
+        explanation:
+          "This passage from the Shanti Parva of the Mahabharata affirms nirvana as the highest state of happiness in the pre-Buddhist Hindu philosophical tradition.",
+      },
+    ],
+    relatedWords: ["moksha", "brahman", "samsara"],
+    faqs: [
+      {
+        question: "Is nirvana a Hindu or Buddhist concept?",
+        answer:
+          "Both. The term appears in Hindu texts like the Bhagavad Gita (as 'Brahma-nirvana') and the Mahabharata, predating its prominent Buddhist usage. In Hinduism it denotes union with Brahman; in Buddhism, the cessation of suffering. The word and concept existed in the Indian philosophical landscape before the Buddha adopted and reframed it.",
+      },
+      {
+        question: "What is the difference between Nirvana and Moksha?",
+        answer:
+          "In Hindu usage, they overlap significantly. Moksha emphasizes liberation of the Atman from Samsara, while Brahma-nirvana emphasizes the bliss of merging into Brahman. In Buddhism, nirvana does not presuppose an Atman and focuses on the extinguishing of craving and suffering.",
+      },
+      {
+        question: "Does nirvana mean total annihilation?",
+        answer:
+          "No. In Hindu Vedanta, Brahma-nirvana is described as the supreme bliss (parama sukham)—it is the extinguishing of ignorance and desire, not of existence itself. What is 'blown out' is suffering, not being.",
+      },
+    ],
+    summary:
+      "Nirvana in the Hindu tradition refers to Brahma-nirvana—the supreme bliss of liberation in which the fires of desire, ignorance, and ego are extinguished and the soul rests in union with Brahman.",
+  },
+  {
+    slug: "tantra",
+    wordEnglish: "Tantra",
+    wordDevanagari: "तन्त्र",
+    transliteration: "tantra",
+    pronunciation: "tun-truh",
+    etymology: {
+      root: "tan (तन्)",
+      rootMeaning: "to stretch, expand, or weave",
+      suffix: "-tra (instrumental suffix)",
+      formationExplanation:
+        'Literally "loom" or "warp of a fabric." Philosophically, it denotes a system or framework that weaves together practices, doctrines, and rituals into a coherent spiritual technology. The -tra suffix indicates an instrument or means—so tantra is "that by which knowledge is expanded."',
+    },
+    primaryMeanings: [
+      "Loom or warp of a fabric",
+      "A systematic spiritual doctrine or technique",
+      "A class of scriptures (Tantras/Agamas)",
+      "A framework that integrates ritual, mantra, and meditation",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Kashmir Shaivism",
+        meaning:
+          "The Tantras are the primary scriptural authority. Reality is non-dual Shiva-Shakti consciousness, and tantric practice aims to recognize this unity through direct experience rather than renunciation. Key texts include the Vijnanabhairava Tantra and the Shiva Sutras.",
+      },
+      {
+        tradition: "Shakta Tradition",
+        meaning:
+          "Tantra centers on the worship of Shakti (the Divine Feminine) as the supreme creative power. The Devi Mahatmya and the Tantras of the Shri Vidya lineage prescribe elaborate ritual, yantra, and mantra practices to realize the Goddess as identical with Brahman.",
+      },
+      {
+        tradition: "Vajrayana Buddhism",
+        meaning:
+          "Buddhist Tantra (Vajrayana) adapts many structural elements—mandala, mantra, guru-disciple initiation—into a Buddhist soteriological framework aimed at rapid Buddhahood. It shares ritual technology with Hindu Tantra but operates within a distinctly Buddhist philosophical view.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Kularnava Tantra 2.23",
+        quoteSanskrit: "तन्यते विस्तार्यते ज्ञानमनेन इति तन्त्रम्",
+        quoteTranslation:
+          "That by which knowledge is expanded is called Tantra.",
+        explanation:
+          "The Kularnava Tantra itself provides this etymological definition, framing Tantra not as occultism but as a systematic means for expanding spiritual knowledge and direct realization.",
+      },
+      {
+        textContext: "Vijnanabhairava Tantra, Verse 1",
+        quoteSanskrit: "श्रुतं देव मया सर्वं रुद्रयामलसम्भवम्",
+        quoteTranslation:
+          "O Deva, I have heard all that has emerged from the Rudra-Yamala Tantra.",
+        explanation:
+          "The Vijnanabhairava opens as a dialogue between Shiva and Shakti, establishing the tantric format of revealed wisdom transmitted through divine conversation. It then presents 112 meditation techniques (dharanas) for direct realization.",
+      },
+    ],
+    relatedWords: ["mantra", "yoga", "kundalini"],
+    faqs: [
+      {
+        question: "Is Tantra just about sex?",
+        answer:
+          "No. The sexual dimension occupies a small fraction of the vast tantric literature. The overwhelming majority of tantric texts deal with mantra science, meditation techniques, temple ritual, cosmology, philosophy, and yogic physiology. The sexual practices that do exist are symbolic enactments of the union of Shiva and Shakti, restricted to advanced initiates under strict guru guidance.",
+      },
+      {
+        question: "What is the difference between Tantra and Veda?",
+        answer:
+          "The Vedas are Shruti (revealed scripture) that emphasize sacrifice, knowledge, and renunciation. The Tantras (also called Agamas) are a parallel scriptural tradition that emphasizes embodied practice, mantra, ritual worship, and the sanctification of worldly life. Tantra accepts the Vedic framework but adds that liberation can be achieved through engagement with the world, not only through withdrawal from it.",
+      },
+      {
+        question: "What is 'Left Hand' vs 'Right Hand' Tantra?",
+        answer:
+          "Dakshina-marga (Right Hand) uses symbolic and internalized forms of worship, while Vama-marga (Left Hand) may employ transgressive external rituals involving the 'five Ms' (Pancha-makara). Both aim at the same goal: realization of non-dual consciousness. The Right Hand path is more widely practiced and socially accepted.",
+      },
+    ],
+    summary:
+      "Tantra is a vast tradition of systematic spiritual practice—encompassing mantra, meditation, ritual, and yogic physiology—that weaves together doctrine and technique as a means for expanding consciousness and realizing the non-dual nature of reality.",
+  },
+  {
+    slug: "sutra",
+    wordEnglish: "Sutra",
+    wordDevanagari: "सूत्र",
+    transliteration: "sūtra",
+    pronunciation: "soo-truh",
+    etymology: {
+      root: "sīv (सीव्)",
+      rootMeaning: "to sew or stitch",
+      formationExplanation:
+        'Literally means "thread." Just as a thread holds beads together in a necklace, a sutra holds together vast philosophical meaning in a minimal number of words. The sutra form arose because teachings were transmitted orally and needed to be maximally compressed for memorization.',
+    },
+    primaryMeanings: [
+      "Thread or string",
+      "A concise, aphoristic rule or formula",
+      "A text composed of such condensed aphorisms",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Yoga (Patanjali)",
+        meaning:
+          "The Yoga Sutras of Patanjali contain 196 sutras that systematize the entire science of yoga into four chapters. Each sutra is deliberately terse, requiring a commentary (bhashya) to unpack. For example, 'yogash chitta vritti nirodhah' condenses the entire purpose of yoga into four words.",
+      },
+      {
+        tradition: "Vedanta (Badarayana)",
+        meaning:
+          "The Brahma Sutras (also called Vedanta Sutras) are 555 aphorisms that systematize the teachings of the Upanishads. They form one of the three pillars (Prasthana-traya) of Vedanta alongside the Upanishads and the Bhagavad Gita.",
+      },
+      {
+        tradition: "Sanskrit Grammar & Logic",
+        meaning:
+          "Panini's Ashtadhyayi consists of approximately 4,000 sutras codifying the entire grammar of Sanskrit. The sutra format was also used in Nyaya (logic), Vaisheshika (atomism), and Mimamsa (ritual exegesis), making it the standard format for systematic Indian philosophy.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Yoga Sutras 1.2",
+        quoteSanskrit: "योगश्चित्तवृत्तिनिरोधः",
+        quoteTranslation:
+          "Yoga is the cessation of the fluctuations of the mind.",
+        explanation:
+          "Perhaps the most famous sutra in Indian philosophy—in just four words, Patanjali defines the entire aim and method of yoga. The extreme compression is characteristic of the sutra form, packing a lifetime of practice into a single sentence.",
+      },
+      {
+        textContext: "Brahma Sutras 1.1.1",
+        quoteSanskrit: "अथातो ब्रह्मजिज्ञासा",
+        quoteTranslation:
+          "Now, therefore, the inquiry into Brahman.",
+        explanation:
+          "The opening sutra of the Brahma Sutras. In just four words, Badarayana establishes the prerequisites (atha = now, implying prior qualifications), the reason (atah = therefore), and the subject (Brahma-jijnasa = the desire to know Brahman).",
+      },
+      {
+        textContext: "Vaiyakarana-bhushanasara (Commentary tradition)",
+        quoteSanskrit: "अल्पाक्षरमसन्दिग्धं सारवद्विश्वतोमुखम् । अस्तोभमनवद्यं च सूत्रं सूत्रविदो विदुः ॥",
+        quoteTranslation:
+          "Minimal in syllables, free from ambiguity, full of essence, universal in scope, without unnecessary words, and faultless—thus do the knowers of sutra define a sutra.",
+        explanation:
+          "This verse from the commentary tradition defines the six qualities of an ideal sutra, explaining why the form was prized as the highest achievement of philosophical compression in classical India.",
+      },
+    ],
+    relatedWords: ["yoga", "jnana", "dharma"],
+    faqs: [
+      {
+        question: "Why are sutras so difficult to understand on their own?",
+        answer:
+          "Sutras were composed as memory aids for oral transmission, not as standalone texts. Each sutra presupposes a teacher (Guru) who expands the condensed formula through oral explanation. This is why every major sutra text has generated extensive commentarial traditions—Shankaracharya on the Brahma Sutras, Vyasa on the Yoga Sutras, and so on.",
+      },
+      {
+        question: "What is the difference between a Sutra and a Shloka?",
+        answer:
+          "A sutra is a terse prose aphorism designed for maximum compression. A shloka is a metrical verse (typically in Anushtubh meter, 32 syllables) that is more flowing and often narrative. The Bhagavad Gita is composed in shlokas; the Yoga Sutras and Brahma Sutras are composed in sutra form.",
+      },
+      {
+        question: "Are Buddhist Sutras the same as Hindu Sutras?",
+        answer:
+          "The word is the same, but the format differs. Hindu sutras are extremely compressed aphorisms requiring commentary. Buddhist sutras (Pali: suttas) are typically longer discourses attributed to the Buddha, structured as dialogues or sermons. The Buddhist usage is closer to 'discourse' than 'aphorism.'",
+      },
+    ],
+    summary:
+      "A sutra is a condensed aphoristic thread of wisdom—the classical Indian format for encoding vast philosophical systems in minimal words, designed to be unpacked through teacher-student transmission and commentarial traditions.",
+  },
+  {
+    slug: "ashram",
+    wordEnglish: "Ashram",
+    wordDevanagari: "आश्रम",
+    transliteration: "āśrama",
+    pronunciation: "ahsh-ruhm",
+    etymology: {
+      root: "śram (श्रम्)",
+      rootMeaning: "to exert effort, to toil, to perform austerity",
+      suffix: "ā- (prefix indicating direction/toward)",
+      formationExplanation:
+        'Literally "a place of effort" or "a place where spiritual exertion is performed." The prefix ā- combined with śram denotes a dedicated space where one strives toward spiritual realization through disciplined practice.',
+    },
+    primaryMeanings: [
+      "Hermitage or spiritual retreat",
+      "A place of disciplined spiritual practice",
+      "One of the four stages of life (Ashrama-dharma)",
+    ],
+    philosophicalContexts: [
+      {
+        tradition: "Dharmashastra (Ashrama System)",
+        meaning:
+          "The Ashrama system divides human life into four stages: Brahmacharya (studentship), Grihastha (householder), Vanaprastha (forest-dweller/retirement), and Sannyasa (renunciation). Each stage carries specific duties (dharma) and forms the backbone of the Vedic social order.",
+      },
+      {
+        tradition: "Vedic / Upanishadic",
+        meaning:
+          "The forest ashrams of the Upanishadic period were where Rishis lived, taught, and transmitted the highest spiritual knowledge. The Taittiriya Upanishad, Chandogya Upanishad, and Brihadaranyaka Upanishad all depict ashram settings as the crucible for philosophical inquiry.",
+      },
+      {
+        tradition: "Modern Hindu Practice",
+        meaning:
+          "An ashram today refers to a spiritual community centered around a Guru or teaching tradition—such as Rishikesh ashrams, Ramana Maharshi's Ramanashramam, or the Sivananda Ashrams—where seekers engage in sadhana, seva, and study.",
+      },
+    ],
+    usageExamples: [
+      {
+        textContext: "Manusmriti 6.1-2",
+        quoteSanskrit: "वनप्रस्थं तु निर्वर्त्य तृतीयं भागमायुषः",
+        quoteTranslation:
+          "Having passed through the third part of his life in the forest hermitage (Vanaprastha ashram)...",
+        explanation:
+          "Manu describes the transition from householder to the Vanaprastha ashram—the third stage of life where one gradually withdraws from worldly duties and deepens spiritual practice in a forest setting.",
+      },
+      {
+        textContext: "Taittiriya Upanishad 1.11.1",
+        quoteSanskrit: "वेदमनूच्याचार्योऽन्तेवासिनमनुशास्ति",
+        quoteTranslation:
+          "Having taught the Veda, the teacher instructs the departing student...",
+        explanation:
+          "This famous convocation address is delivered in the ashram setting as the student completes Brahmacharya. The Guru's final instructions—'speak truth, follow dharma, do not neglect self-study'—encapsulate the ashram's role as the formative ground of character and wisdom.",
+      },
+    ],
+    relatedWords: ["guru", "sadhana", "dharma"],
+    faqs: [
+      {
+        question: "What are the four Ashramas of life?",
+        answer:
+          "Brahmacharya (student life, ~0-25 years, devoted to learning and celibacy), Grihastha (householder, ~25-50, family and societal duties), Vanaprastha (forest-dweller, ~50-75, gradual withdrawal and spiritual deepening), and Sannyasa (renunciation, total dedication to liberation). These stages structure the ideal Vedic life as a progressive journey toward Moksha.",
+      },
+      {
+        question: "Can anyone visit an ashram?",
+        answer:
+          "Most modern ashrams welcome sincere seekers regardless of background. Visitors are typically expected to follow the ashram's daily schedule (which includes meditation, study, and seva), observe certain disciplines, and respect the community's rules and spiritual atmosphere.",
+      },
+      {
+        question:
+          "What is the difference between an ashram and a monastery?",
+        answer:
+          "Both are communities dedicated to spiritual practice, but a Hindu ashram is typically organized around a living Guru or a Guru lineage and is open to householders and renunciants alike. A monastery (in the Christian sense) is usually restricted to ordained monks or nuns under monastic vows. The Hindu equivalent of a monastery is a Matha, such as those established by Shankaracharya.",
+      },
+    ],
+    summary:
+      "An ashram is a place of disciplined spiritual effort—both the physical hermitage where seekers practice under a Guru and the Vedic framework of four life-stages through which a person progressively moves toward liberation.",
+  },
   ...newSanskritVocab,
 ];
 

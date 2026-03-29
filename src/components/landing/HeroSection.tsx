@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, MessageSquare } from "lucide-react";
 
@@ -21,30 +22,31 @@ export function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md animate-fade-in">
             <Sparkles className="w-4 h-4 text-amber-400" />
-            <span className="text-xs font-medium text-amber-200 uppercase tracking-widest">Sanatan Dharma • The Eternal Truth</span>
+            <span className="text-xs font-medium text-amber-200 uppercase tracking-widest">AI Spiritual Tutor • Coming Soon</span>
           </div>
 
           {/* Main Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] tracking-tight animate-fade-up">
-            The Only Standing Dharma After <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-400 to-amber-200">10,000 Years</span>
+            Six philosophical schools. Eighteen chapters of the Gita.{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-400 to-amber-200">One AI tutor trained on all of it.</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            Invasions came. Empires fell. Libraries burned. Yet this wisdom survived — because it was never just written. It was lived. Practiced. Transmitted from Guru to Shishya.
+            The encyclopedic reference for Sanatan Dharma. Word-by-word Sanskrit analysis, 60 philosophical comparisons, and an AI tutor that distinguishes between schools instead of conflating them.
           </p>
 
           {/* Call to Action */}
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4 animate-fade-up" style={{ animationDelay: "0.4s" }}>
-            <Link href="/faith-finder">
+            <Link href="/philosophies">
               <Button size="lg" className="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white border-0 h-14 px-8 rounded-full text-lg font-medium shadow-lg shadow-orange-900/20 transition-all hover:scale-105">
-                Begin Your Path
+                Explore the Knowledge
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Link href="/texts">
+            <Link href="#waitlist">
               <Button variant="outline" size="lg" className="h-14 px-8 rounded-full text-lg border-white/10 hover:bg-white/5 text-foreground hover:text-white backdrop-blur-sm">
-                Explore Wisdom
+                Join the Waitlist
               </Button>
             </Link>
           </div>
@@ -53,17 +55,17 @@ export function HeroSection() {
           <div className="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 opacity-60 animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <div className="flex items-center gap-2">
               <span className="text-xl">🕉️</span>
-              <span className="text-sm font-medium uppercase tracking-wider">One Dharma</span>
+              <span className="text-sm font-medium uppercase tracking-wider">6 Darshanas</span>
             </div>
             <div className="w-px h-6 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
               <span className="text-xl">📜</span>
-              <span className="text-sm font-medium uppercase tracking-wider">5000+ Years</span>
+              <span className="text-sm font-medium uppercase tracking-wider">18 Gita Chapters</span>
             </div>
             <div className="w-px h-6 bg-white/10 hidden sm:block" />
             <div className="flex items-center gap-2">
               <span className="text-xl">🔥</span>
-              <span className="text-sm font-medium uppercase tracking-wider">50+ Lineages</span>
+              <span className="text-sm font-medium uppercase tracking-wider">60 Comparisons</span>
             </div>
           </div>
         </div>
@@ -72,10 +74,12 @@ export function HeroSection() {
         <div className="relative hidden lg:block animate-fade-up" style={{ animationDelay: "0.3s" }}>
           {/* Background Heritage Image */}
           <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl border border-white/10">
-            <img
+            <Image
               src="/assets/generated/ancient_civilization_abundance.png"
               alt="Ancient Vedic Civilization"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
@@ -91,9 +95,8 @@ export function HeroSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-white text-sm">Sadhaka AI</h3>
-                  <p className="text-xs text-green-400 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                    Online • Your Dharma Guide
+                  <p className="text-xs text-indigo-400 uppercase tracking-wider">
+                    Preview
                   </p>
                 </div>
               </div>

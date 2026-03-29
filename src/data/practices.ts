@@ -1,3 +1,5 @@
+import type { ContentImage } from "@/types/images";
+
 export interface Practice {
   slug: string;
   title: string;
@@ -10,6 +12,7 @@ export interface Practice {
   timeCommitment: string;
   tags: string[];
   icon: string;
+  featuredImage?: ContentImage;
 }
 
 export const practices: Practice[] = [

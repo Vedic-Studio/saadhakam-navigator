@@ -27,7 +27,9 @@ const moreLinks = [
   { label: "Sanskrit Dictionary", href: "/learn/sanskrit" },
   { label: "Compare Paths", href: "/compare" },
   { label: "Greats", href: "/greats" },
+  { label: "Articles", href: "/articles" },
   { label: "Daily Guidance", href: "/jyotish/today" },
+  { label: "AI Tutor", href: "/app" },
 ];
 
 export function Header() {

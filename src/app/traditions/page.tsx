@@ -17,9 +17,14 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "Spiritual Traditions & Sampradayas | Paths of Sanatan Dharma",
-  description: "Explore the major spiritual traditions (Sampradayas) of India: Shaivism, Vaishnavism, Shaktism, and Smartism. Find the path that fits your temperament.",
+  title: "Sampradayas: The Transmission Lineages of Sanatan Dharma",
+  description: "The major sampradayas (transmission lineages) of Sanatan Dharma: Shaivism, Vaishnavism, Shaktism, and Smartism. Each preserves a distinct philosophical reading of the Vedantic canon through unbroken guru-shishya parampara.",
   alternates: { canonical: "https://www.opensadhaka.com/traditions" },
+  openGraph: {
+    title: "Sampradayas: The Transmission Lineages of Sanatan Dharma",
+    description: "Shaivism, Vaishnavism, Shaktism, and Smartism: the major lineages that transmit Dharmic philosophy from teacher to student.",
+    url: "https://www.opensadhaka.com/traditions",
+  },
 };
 
 export default function TraditionsPage() {
@@ -39,16 +44,16 @@ export default function TraditionsPage() {
 
           <header className="mb-16 mt-8 max-w-4xl">
             <h1 className="font-display text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
-              The Rivers <span className="text-secondary italic">to the</span> Ocean.
+              Sampra<span className="text-secondary italic">dayas</span>
             </h1>
             <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight border-l-4 border-secondary/30 pl-8 py-2">
-              A <strong>Sampradaya</strong> is a living ecosystem—a lineage that turns abstract philosophy into a walkable, breathing path.
+              A <strong>Sampradaya</strong> is a transmission lineage. Philosophical insight passes from teacher (Guru) to student (Shishya) through direct instruction, not just textual study. Each lineage preserves a distinct reading of the Vedantic canon.
             </p>
           </header>
 
           <section className="mb-20">
             <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mb-12">
-              While Western religions often split over theology, Sanatan Dharma expanded to contain it. Whether you are drawn to the meditative silence of <strong>Shaivism</strong>, the devotional ecstasy of <strong>Vaishnavism</strong>, or the fierce power of <strong>Shaktism</strong>, every tradition is a valid river flowing to the same ultimate ocean.
+              Within Sanatan Dharma, multiple theological schools coexist as valid interpretations of the same scriptural canon. <strong>Shaivism</strong> identifies consciousness (Chit) as ultimate reality, as stated in Shiva Sutras 1.1: <em>Chaitanyam Atma</em>. <strong>Vaishnavism</strong> centers on devotion (Bhakti) to the personal absolute, following Ramanuja&apos;s reading of Brahma Sutra 1.1.1. <strong>Shaktism</strong> holds that dynamic creative power (Shakti) is inseparable from consciousness itself. <strong>Smartism</strong>, formalized by Adi Shankaracharya, synthesizes all deity forms as expressions of one non-dual Brahman.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -85,8 +90,8 @@ export default function TraditionsPage() {
                 New: Devotional Stotra & Sahasranama Study
               </h2>
               <p className="text-muted-foreground mb-6 max-w-3xl">
-                Explore living devotional streams across sampradayas with structured stotra hubs,
-                searchable name pages, and verse-by-verse study resources.
+                Stotra and Sahasranama texts from each sampradaya, with structured verse-by-verse study,
+                searchable name pages, and transliteration for recitation practice.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <TrackedLink href="/stotras/shiva-tandava-stotram" eventLabel="traditions:stotra:shiva-tandava" trackPathName="stotras">
@@ -150,8 +155,8 @@ export default function TraditionsPage() {
                   a: "Yes. In Sanatan Dharma, it is common to have a 'primary' tradition (Nishta) while respecting and occasionally practicing the rituals of others. The Smarta tradition explicitly synthesizes multiple paths."
                 },
                 {
-                  q: "How do I choose a path?",
-                  a: "Traditional guidance suggests checking your 'Varna' (temperament) and 'Ishta Devata' (the form of the Divine that naturally attracts you). The Faith Finder assessment can help identify these natural leanings."
+                  q: "How do I choose a tradition?",
+                  a: "Traditional frameworks consider your innate disposition (svabhava, described in Bhagavad Gita 18.41-44) and your natural devotional attraction to a particular form of the Divine (Ishta Devata). A qualified teacher (Guru) in any tradition can help assess readiness and temperament. Many practitioners begin with the tradition of their family or region and deepen from there."
                 }
               ].map((faq, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="border-border/40 px-4">

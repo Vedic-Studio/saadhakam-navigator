@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { loadSahasranama } from "@/lib/stotras";
+import { buildBreadcrumbSchema, buildCollectionSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Vishnu Sahasranama Stotram: Complete 1000 Names in 107 Shlokas | Opensadhaka",
@@ -21,8 +22,30 @@ export const metadata: Metadata = {
 
 export default function VishnuSahasranamaPage() {
   const sahasranama = loadSahasranama("vishnu-sahasranama");
+
+  const allNames = (sahasranama.verses ?? []).flatMap((v) => v.names ?? []);
+
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { label: "Home", href: "/" },
+    { label: "Stotras", href: "/stotras" },
+    { label: "Vishnu Sahasranama", href: "/stotras/vishnu-sahasranama" },
+  ]);
+
+  const collectionSchema = buildCollectionSchema({
+    name: "Vishnu Sahasranama — 1000 Names of Lord Vishnu",
+    description: "The complete Vishnu Sahasranama from the Mahabharata's Anushasana Parva. All 107 shlokas with 1000 names of Lord Vishnu.",
+    url: "https://www.opensadhaka.com/stotras/vishnu-sahasranama",
+    items: allNames.slice(0, 50).map((name) => ({
+      name: `${name.transliteration} — ${name.meaning}`,
+      url: `https://www.opensadhaka.com/stotras/vishnu-sahasranama/${name.slug}`,
+      description: name.meaning,
+    })),
+  });
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <Header />
       <main className="flex-grow pt-24 pb-16">
         <div className="container-padding max-w-4xl mx-auto">
@@ -119,7 +142,7 @@ export default function VishnuSahasranamaPage() {
               The Vishnu Sahasranama is the most widely recited sahasranama in the Hindu tradition. It appears in the Mahabharata when Yudhishthira asks Bhishma: &ldquo;What is the one supreme Deity? What is the highest goal? By praising whom, by worshipping whom, does a person attain good?&rdquo; Bhishma responds with these 1000 names, declaring that reciting them with devotion leads to liberation from all sorrow.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              The stotram has been commented upon by Adi Shankaracharya (Advaita), Parashara Bhattar (Vishishtadvaita), and other acharyas. The rishi is Vyasa, the meter is Anushtup, and the deity is Sri Maha Vishnu. It is traditionally recited on Ekadashi, Saturdays, and as part of daily prayer.
+              Two major commentaries remain widely studied: Shankaracharya&apos;s Bhashya (Advaita reading) and Parashara Bhattar&apos;s Bhagavad Guna Darpanam (Vishishtadvaita reading). The rishi is Vyasa, the meter is Anushtup, and the deity is Sri Maha Vishnu. It is traditionally recited on Ekadashi, Saturdays, and as part of daily prayer. The Padma Purana commends Ekadashi recitation as especially meritorious for Vishnu devotion.
             </p>
             <div className="mt-6 flex flex-wrap gap-4 text-sm">
               <Link href="/deities/krishna" className="text-blue-400 hover:text-blue-300 transition-colors">

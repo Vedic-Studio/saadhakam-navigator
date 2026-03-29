@@ -48,12 +48,12 @@ export default function CompareIndexPage() {
                 <section className="py-16 px-4 sm:px-6 lg:px-8">
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-16">
-                            <Badge variant="outline" className="mb-4 border-primary/30 text-primary">pSEO Analysis</Badge>
+                            <Badge variant="outline" className="mb-4 border-primary/30 text-primary">Structural Comparisons</Badge>
                             <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
-                                Comparative Wisdom
+                                Comparative Analysis
                             </h1>
                             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                                Truth is one, but the paths are many. Explore our deep-dive comparisons to find the perspective that resonates with your current stage of the journey.
+                                &ldquo;Ekam sat vipra bahudha vadanti&rdquo; &mdash; &ldquo;Truth is one; the wise call it by many names&rdquo; (Rigveda 1.164.46). These comparisons map the structural differences between schools, teachers, and texts so you can see where they agree, where they diverge, and why.
                             </p>
                         </div>
 

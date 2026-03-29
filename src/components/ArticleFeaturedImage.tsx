@@ -1,5 +1,5 @@
-import Image from "next/image";
 import type { ArticleImage } from "@/features/articles";
+import { FeaturedImage } from "./FeaturedImage";
 
 interface ArticleFeaturedImageProps {
     image: ArticleImage;
@@ -8,21 +8,7 @@ interface ArticleFeaturedImageProps {
     priority?: boolean;
 }
 
-export function ArticleFeaturedImage({
-    image,
-    className = "",
-    priority = false,
-}: ArticleFeaturedImageProps) {
-    return (
-        <figure className={`rounded-2xl overflow-hidden ${className}`}>
-            <Image
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-                priority={priority}
-                className="w-full h-auto object-cover"
-            />
-        </figure>
-    );
+/** @deprecated Use FeaturedImage directly. Kept for backward compatibility. */
+export function ArticleFeaturedImage(props: ArticleFeaturedImageProps) {
+    return <FeaturedImage {...props} />;
 }

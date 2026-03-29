@@ -85,6 +85,21 @@
 
 @layer components {
 
+    /* Crawlable <details>/<summary> — replaces framer-motion expand/collapse */
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] > :not(summary) {
+        animation: details-show 0.2s ease-in-out;
+    }
+    /* Chevron rotation for nested details (avoids ancestor group-open leaking) */
+    details[open] > summary .details-chevron {
+        transform: rotate(90deg);
+    }
+    @keyframes details-show {
+        from { opacity: 0; transform: translateY(-4px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
     /* Glassmorphism - Premium Dark */
     .glass-card {
         @apply bg-card/40 backdrop-blur-xl border border-white/5 shadow-2xl;

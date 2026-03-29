@@ -10,10 +10,9 @@
     },
     {
       "name": "remotion",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 3001,
-      "cwd": "/Users/ankitmishra/Downloads/claude-content"
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd /Users/ankitmishra/Developer/claude-content && npm run dev"],
+      "port": 3001
     }
   ]
 }

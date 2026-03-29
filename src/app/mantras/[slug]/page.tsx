@@ -72,7 +72,24 @@ export default async function MantraDetailPage({ params }: { params: Promise<{ s
                         </p>
                     </ScrollReveal>
 
-                    <ScrollReveal delay={0.1}>
+                    {mantra.etymology && (
+                        <ScrollReveal delay={0.1}>
+                            <section className="mb-10">
+                                <h2 className="text-2xl font-display font-bold mb-4">Word-by-Word Meaning</h2>
+                                <div className="space-y-2 mb-4">
+                                    {mantra.etymology.wordByWord.map((entry) => (
+                                        <div key={entry.word} className="flex gap-3 items-baseline border-l-2 border-orange-500/20 pl-4 py-1">
+                                            <span className="font-semibold text-foreground min-w-[80px]">{entry.word}</span>
+                                            <span className="text-muted-foreground">{entry.meaning}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <p className="text-muted-foreground italic">{mantra.etymology.overallMeaning}</p>
+                            </section>
+                        </ScrollReveal>
+                    )}
+
+                    <ScrollReveal delay={0.12}>
                         <section className="mb-10 flex flex-col items-center">
                             <h2 className="text-2xl font-display font-bold mb-6 self-start">Japa Counter</h2>
                             <MantraCounter mantraName={mantra.name} />
@@ -100,7 +117,32 @@ export default async function MantraDetailPage({ params }: { params: Promise<{ s
                         </section>
                     </ScrollReveal>
 
-                    <ScrollReveal delay={0.25}>
+                    {mantra.shastraContext && (
+                        <ScrollReveal delay={0.22}>
+                            <section className="mb-10">
+                                <h2 className="text-2xl font-display font-bold mb-4">Sound and Philosophy</h2>
+                                <p className="text-muted-foreground leading-relaxed">{mantra.shastraContext}</p>
+                            </section>
+                        </ScrollReveal>
+                    )}
+
+                    {mantra.faq.length > 0 && (
+                        <ScrollReveal delay={0.25}>
+                            <section className="mb-10">
+                                <h2 className="text-2xl font-display font-bold mb-6">Frequently Asked Questions</h2>
+                                <div className="space-y-4">
+                                    {mantra.faq.map((item) => (
+                                        <div key={item.question} className="border-l-2 border-orange-500/20 pl-5 py-2">
+                                            <h3 className="font-semibold text-lg mb-2">{item.question}</h3>
+                                            <p className="text-muted-foreground leading-relaxed">{item.answer}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        </ScrollReveal>
+                    )}
+
+                    <ScrollReveal delay={0.28}>
                         <section className="mb-10">
                             <h2 className="text-2xl font-display font-bold mb-4">Related Links</h2>
                             <div className="space-y-2">

@@ -8,9 +8,9 @@ import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { buildArticleSchema, buildBreadcrumbSchema, buildCanonicalUrl, buildFaqSchema } from "@/lib/seo";
 
 const pagePath = "/10-powerful-sanskrit-mantras";
-const title = "10 Powerful Sanskrit Mantras: Meaning, Use, and Traditional Boundaries";
+const title = "10 Powerful Sanskrit Mantras: Meaning, Practice & When NOT to Chant";
 const description =
-    "A source-grounded guide to 10 powerful Sanskrit mantras, including Gayatri, Mahamrityunjaya, Om Namah Shivaya, Hanuman Chalisa, Mahavakyas, Devi mantras, and Narayana mantras, with context on adhikara, diksha, pronunciation, deity, and occasion.";
+    "Not every mantra is for everyone. This guide covers 10 Sanskrit mantras with meaning, pronunciation, deity context, and which ones require initiation before chanting.";
 
 export const metadata: Metadata = {
     title,

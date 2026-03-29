@@ -9,29 +9,25 @@ import {
 
 const faqs = [
   {
-    question: "Is Sadhaka a religious conversion tool?",
-    answer: "No. Sadhaka is an educational platform for exploration, not conversion. We help you understand the depth and breadth of Sanatan Dharma so you can make informed choices about your spiritual practice. Many users come from other traditions or no tradition at all—we welcome honest seekers without any expectation of 'converting' anyone."
+    question: "Who writes this content?",
+    answer: "Content is sourced from primary texts (Vedas, Upanishads, Bhagavad Gita, Yoga Sutras) and traditional commentaries by Shankara, Ramanuja, Madhva, and other established acharyas. We distinguish between schools of thought rather than presenting a homogenized version. External sources link to academic references from Stanford Encyclopedia of Philosophy, Britannica, and university press publications."
   },
   {
-    question: "Is it okay if I'm completely new to Sanskrit and Indian philosophy?",
-    answer: "Absolutely. Sadhaka is designed for Western seekers who may have little or no background in these traditions. We explain terms clearly, provide translations, and build understanding progressively. Everyone starts somewhere—curiosity and sincerity are the only prerequisites."
+    question: "How deep does the analysis go?",
+    answer: "Every Bhagavad Gita verse has word-by-word Sanskrit analysis. Philosophical comparisons (like Advaita vs Dvaita) cover six dimensions with named commentators. The Vishnu Sahasranama and Lalita Sahasranama cover 1,000 names each with etymology and philosophical context. This is reference-grade material, not surface summaries."
   },
   {
-    question: "How do you avoid misrepresenting these traditions?",
-    answer: "We're deeply committed to accuracy and respect. Our content is sourced from traditional texts and lineages, not New Age interpretations. We consult with scholars and practitioners, link to primary sources, and acknowledge the living, diverse nature of these traditions. We also clearly distinguish between different schools of thought rather than presenting a homogenized version."
+    question: "What will the AI tutor do that ChatGPT can't?",
+    answer: "ChatGPT draws from the general internet. The Sadhaka tutor is trained on curated primary texts and traditional commentaries. It distinguishes between Advaita, Dvaita, and Vishishtadvaita positions rather than conflating them. It cites specific verses with chapter and verse numbers. It adapts recommendations to your chosen philosophical school and practice level."
   },
   {
-    question: "Do I need a guru to follow these paths?",
-    answer: "It depends on the path and your depth of practice. Many practices—study, basic meditation, devotional singing, ethical living—can be begun without a formal guru relationship. For advanced practices, especially tantric or initiatory traditions, a qualified teacher is traditionally considered essential. We help you understand when and why a teacher might be important for your chosen path."
+    question: "Can I explore this alongside my existing tradition?",
+    answer: "Yes. The content covers multiple philosophical frameworks (six darshanas, four yogic paths, seven major traditions) without requiring commitment to any single one. Many users come from Buddhist, Stoic, Christian contemplative, or secular philosophical backgrounds and find the comparative analyses particularly useful."
   },
   {
-    question: "What if I'm already Christian, Buddhist, Jewish, or follow another tradition?",
-    answer: "You're welcome here. Many seekers find that exploring Sanatan Dharma enriches their understanding without requiring them to abandon their existing faith. Some aspects—meditation techniques, philosophical frameworks, ethical principles—can complement other traditions. We encourage honest engagement without syncretism or superficiality. Take what genuinely helps; leave what doesn't serve your path."
+    question: "When does the AI tutor launch?",
+    answer: "The tutor is in development. Join the waitlist above to get early access when it launches. The full knowledge library (73 articles, 60 comparisons, 42 deities, 18 Gita chapters) is live and browsable right now."
   },
-  {
-    question: "How is this different from what I'd find on Wikipedia or random websites?",
-    answer: "While there's good information scattered across the internet, Sadhaka offers something different: a structured, practice-oriented approach that helps you find your path. We're not just providing information—we're providing a framework for self-understanding and practical guidance for beginning and sustaining a practice that fits your nature and life situation."
-  }
 ];
 
 export function FAQSection() {
@@ -47,7 +43,7 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="text-muted-foreground">
-            Honest answers for thoughtful seekers.
+            About the platform and what powers it.
           </p>
         </div>
 

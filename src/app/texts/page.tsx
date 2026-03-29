@@ -17,9 +17,9 @@ import { comparisons } from "@/data/comparisons";
 
 export const metadata: Metadata = {
   title:
-    "Sacred Hindu Texts | Vedas, Upanishads, Bhagavad Gita | Complete Guide",
+    "Sacred Texts of Sanatan Dharma | Vedas, Upanishads, Bhagavad Gita",
   description:
-    "Explore Vedas, Upanishads, Bhagavad Gita, Puranas, and Agamas. Complete Sanskrit texts with translations, commentaries, and word-by-word breakdown.",
+    "The textual architecture of Sanatan Dharma: Shruti (Vedas, Upanishads) and Smriti (Bhagavad Gita, Puranas, Agamas). Sanskrit texts with translations and commentaries.",
   keywords: [
     "vedas",
     "upanishads",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://www.opensadhaka.com/texts" },
   openGraph: {
-    title: "Sacred Hindu Texts | Sadhaka",
+    title: "Sacred Texts of Sanatan Dharma | Sadhaka",
     description:
-      "Explore Vedas, Upanishads, Bhagavad Gita, and more sacred texts with translations.",
+      "The textual architecture of Sanatan Dharma: Shruti and Smriti traditions with translations and commentaries.",
     url: "https://www.opensadhaka.com/texts",
   },
 };
@@ -42,11 +42,11 @@ export default function TextsPage() {
   const faqs = [
     {
       question: "What is the difference between Shruti and Smriti texts?",
-      answer: "Shruti means 'that which is heard.' It refers to the Vedas and Upanishads, which are considered eternal truths directly revealed to ancient seers (Rishis). Smriti means 'that which is remembered.' It includes texts like the Bhagavad Gita, the Epics (Ramayana and Mahabharata), and the Puranas, which are of human authorship and designed to explain Shruti concepts to the masses."
+      answer: "Shruti means 'that which is heard.' It refers to the Vedas and Upanishads, which are considered eternal truths directly revealed to ancient seers (Rishis). Smriti means 'that which is remembered.' It includes texts like the Bhagavad Gita, the Epics (Ramayana and Mahabharata), and the Puranas, which are of human authorship and designed to explain Shruti concepts in accessible form. This Shruti-Smriti distinction is foundational in Mimamsa epistemology and standard Dharmashastra classification."
     },
     {
       question: "Which Hindu text should a beginner read first?",
-      answer: "The Bhagavad Gita is universally recommended as the starting point. It synthesizes the profound philosophy of the Upanishads into a practical, 700-verse dialogue about duty, action, and devotion, making it highly accessible for modern readers."
+      answer: "The Bhagavad Gita is the most common starting point. It condenses the Upanishadic teaching on Brahman, Atman, and Moksha into a 700-verse dialogue between Krishna and Arjuna covering karma (action), bhakti (devotion), and jnana (knowledge). Its practical framing makes it accessible without prior study of the Vedas."
     },
     {
       question: "Are the Upanishads part of the Vedas?",
@@ -54,7 +54,7 @@ export default function TextsPage() {
     },
     {
       question: "How many Puranas are there?",
-      answer: "There are 18 Maha Puranas (Major Puranas) and 18 Upa Puranas (Minor Puranas). They are vast encylopedic texts containing mythology, cosmology, genealogies of gods and kings, and detailed geographical info, with the Srimad Bhagavatam being the most famous."
+      answer: "There are 18 Maha Puranas (Major Puranas) and 18 Upa Puranas (Minor Puranas). They are vast encyclopedic texts containing mythology, cosmology, genealogies of gods and kings, and detailed geographical info, with the Srimad Bhagavatam being the most famous."
     }
   ];
 
@@ -84,13 +84,13 @@ export default function TextsPage() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Navigate the Ocean of Wisdom — Sacred Texts
+                Sacred Texts of Sanatan Dharma
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-                The library of Sanatan Dharma is vast, categorized fundamentally into two branches: <strong>Shruti</strong> (revelation) and <strong>Smriti</strong> (tradition). Unlike Western religions centered around a single historical book, the Dharmic tradition relies on an interconnected ecosystem of texts mapping out philosophy, ritual, psychology, and devotion.
+                The Dharmic textual tradition divides into two categories: <strong>Shruti</strong> (that which is heard, i.e., the Vedas and Upanishads, regarded as eternal truths revealed to the Rishis) and <strong>Smriti</strong> (that which is remembered, i.e., the Bhagavad Gita, Epics, Puranas, and Agamas, composed by human authors to make Shruti accessible). Together, the <strong>Prasthanatrayi</strong> (Upanishads, Brahma Sutras, and Bhagavad Gita) form the core philosophical canon that every major commentator from Shankara to Ramanuja to Madhva interpreted.
               </p>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
-                From the rigorous metaphysical inquiry of the <strong>Upanishads</strong> to the battlefield pragmatism of the <strong>Bhagavad Gita</strong>, each text serves a different spiritual temperament. Explore the foundational scriptures below to find the entry point that resonates with your path.
+                Start with the <strong>Bhagavad Gita</strong> for a philosophical overview of karma, bhakti, and jnana. Move to the <strong>Upanishads</strong> for direct metaphysical inquiry into the nature of Brahman and Atman. Read the <strong>Puranas</strong> for narrative cosmology, genealogy of deities, and devotional context.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

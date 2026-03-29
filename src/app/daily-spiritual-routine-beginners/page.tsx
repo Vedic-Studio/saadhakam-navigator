@@ -7,16 +7,16 @@ import { ArrowRight, Sun, Wind, Circle, BookOpen, Brain } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "Daily Spiritual Routine for Beginners: The Traditional 5-Step Sequence",
+    title: "Daily Spiritual Routine for Beginners [5 Steps From Ancient Texts]",
     description:
-        "Rise at Brahma Muhurta, regulate breath, do japa, study scripture, then meditate. Each step prepares the mind for the next. Sourced from Patanjali, Sivananda, and Chinmaya Mission.",
+        "Most morning routines skip the order. This 5-step sequence from Patanjali, Sivananda, and Chinmaya Mission puts each practice in the right position so the mind actually cooperates.",
     alternates: {
         canonical: "https://www.opensadhaka.com/daily-spiritual-routine-beginners",
     },
     openGraph: {
-        title: "Daily Spiritual Routine for Beginners: The Traditional 5-Step Sequence",
+        title: "Daily Spiritual Routine: The 5-Step Sequence Beginners Get Wrong",
         description:
-            "A traditional daily routine has architecture: pranayama before japa, japa before study, study before meditation. Here is the canonical order and why it works.",
+            "Pranayama before japa, japa before study, study before meditation. Each step prepares the next. Here is the canonical order and why it works.",
         url: "https://www.opensadhaka.com/daily-spiritual-routine-beginners",
         type: "article",
     },

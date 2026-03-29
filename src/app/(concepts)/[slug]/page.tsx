@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getConceptBySlug, getAllConcepts } from "@/data/concepts";
 import { getSanskritWordBySlug } from "@/data/sanskritVocab";
+import { listArticles } from "@/features/articles";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
@@ -21,6 +22,7 @@ import {
   Telescope,
   Compass,
 } from "lucide-react";
+import { FeaturedImage } from "@/components/FeaturedImage";
 
 function resolveConceptRoute(slug: string) {
   if (slug.startsWith("what-is-")) {
@@ -83,6 +85,10 @@ export async function generateMetadata({
   const title = `What is ${conceptName}? Meaning & Vedic Context | Sadhaka`;
   const description = concept.shortDefinition;
 
+  const ogImage = concept.featuredImage
+    ? `https://www.opensadhaka.com${concept.featuredImage.src}`
+    : undefined;
+
   return {
     title,
     description,
@@ -93,6 +99,13 @@ export async function generateMetadata({
       title,
       description,
       url: `https://www.opensadhaka.com/what-is-${concept.slug}`,
+      images: ogImage ? [{ url: ogImage }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ogImage ? [ogImage] : undefined,
     },
   };
 }
@@ -120,6 +133,13 @@ export default async function PseoConceptPage({
   const relatedConceptEntries = concept.relatedConcepts
     .map((relatedSlug) => getConceptBySlug(relatedSlug))
     .filter(Boolean) as NonNullable<ReturnType<typeof getConceptBySlug>>[];
+
+  const relatedArticles = listArticles()
+    .filter((a) =>
+      a.relatedLinks.some((l) => l.href.includes(concept.slug)) ||
+      a.primaryKeyword.toLowerCase().includes(concept.slug)
+    )
+    .slice(0, 3);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -175,6 +195,10 @@ export default async function PseoConceptPage({
               {concept.shortDefinition}
             </div>
           </header>
+
+          {concept.featuredImage && (
+            <FeaturedImage image={concept.featuredImage} className="mb-12" priority />
+          )}
 
           <section className="mb-20">
             <div className="bg-muted/30 border border-border/40 rounded-3xl p-10 md:p-16">
@@ -242,6 +266,25 @@ export default async function PseoConceptPage({
             </div>
           </section>
 
+          {relatedArticles.length > 0 && (
+            <section className="mb-20 pt-20 border-t border-border/40">
+              <h2 className="flex items-center gap-4 text-3xl font-display font-bold mb-10">
+                <BookMarked className="text-primary w-8 h-8" />
+                Related Articles
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedArticles.map((article) => (
+                  <TrackedLink key={article.slug} href={article.route} eventLabel={`concept_article:${concept.slug}`} trackPathName={article.slug}>
+                    <div className="p-6 rounded-2xl border border-border/40 bg-card hover:border-primary/40 transition-all flex items-center justify-between group h-full">
+                      <span className="font-bold text-foreground group-hover:text-primary transition-colors">{article.title}</span>
+                      <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors flex-shrink-0 ml-3" />
+                    </div>
+                  </TrackedLink>
+                ))}
+              </div>
+            </section>
+          )}
+
           {sanskritEntry && (
             <div className="rounded-3xl bg-neutral-900 p-10 md:p-16 text-white shadow-2xl relative overflow-hidden group mb-20">
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
@@ -265,12 +308,12 @@ export default async function PseoConceptPage({
             <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
               <Compass size={400} className="rotate-12 -translate-x-32" />
             </div>
-            <h2 className="text-4xl md:text-6xl font-display font-black mb-6 relative z-10 italic">Your Path Awaits.</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-black mb-6 relative z-10 italic">Which Yoga Fits You?</h2>
             <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 relative z-10 font-medium">
-              Take our 2-minute assessment to find which philosophies and practices align with your temperament.
+              A 2-minute quiz mapping your temperament to one of the four classical yogic paths &mdash; Jnana, Bhakti, Karma, or Raja.
             </p>
             <TrackedLink href="/faith-finder" eventLabel="concept_footer:cta" trackPathName="faith-finder" className="relative z-10 inline-block px-12 py-6 bg-white text-primary font-black rounded-2xl shadow-xl hover:scale-105 transition-transform active:scale-95">
-              Find My Path <ArrowRight className="inline-block ml-2 w-5 h-5" />
+              Take the Quiz <ArrowRight className="inline-block ml-2 w-5 h-5" />
             </TrackedLink>
           </div>
         </div>

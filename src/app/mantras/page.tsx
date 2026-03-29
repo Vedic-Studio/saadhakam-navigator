@@ -36,10 +36,32 @@ export default function MantrasHubPage() {
                 <div className="container-padding max-w-6xl mx-auto">
                     <header className="mb-12 mt-6">
                         <h1 className="font-display text-4xl md:text-6xl font-black mb-5">Mantras Explained</h1>
-                        <p className="text-xl text-muted-foreground max-w-3xl">
-                            Start with high-signal foundational mantras used across traditions. Each page includes meaning, context,
-                            usage guidance, and related paths.
+                        <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed border-l-4 border-orange-500/30 pl-6 mb-6">
+                            A mantra is not a magic word. It is a structured sound that aligns attention, stabilizes
+                            the mind, and opens a channel between the practitioner and the principle the sound encodes.
                         </p>
+                        <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed">
+                            <p>
+                                The Sanskrit tradition treats sound (shabda) as a fundamental layer of reality, not
+                                merely a medium of communication. The Mimamsa school argued that the relationship between
+                                a word and its meaning is eternal and intrinsic, not arbitrary convention. Mantra shastra
+                                extends this principle: certain sound patterns, when repeated with concentration and
+                                correct intention, produce reliable effects on consciousness.
+                            </p>
+                            <p>
+                                Vedic mantras like the Gayatri operate through precise phonetic structure tied to
+                                sandhyavandana (daily worship). Tantric mantras employ bija (seed) syllables that
+                                compress entire metaphysical principles into single sounds. Bhakti mantras like Om
+                                Namah Shivaya or Hare Krishna carry devotional charge through repetition (japa) and
+                                communal chanting (kirtan). The mechanism differs, but the aim converges: turning
+                                scattered attention into focused awareness.
+                            </p>
+                            <p>
+                                Each mantra page below covers meaning, word-by-word etymology, practice guidance,
+                                philosophical context, and common questions. An interactive japa counter is included
+                                for practice sessions.
+                            </p>
+                        </div>
                     </header>
 
                     <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

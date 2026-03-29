@@ -1,6 +1,7 @@
 import { conceptsBatch1 } from "./conceptsBatch1";
 import { conceptsBatch2 } from "./conceptsBatch2";
 import { conceptsBatch3 } from "./conceptsBatch3";
+import type { ContentImage } from "@/types/images";
 
 export interface Concept {
   slug: string;
@@ -14,6 +15,7 @@ export interface Concept {
   relatedConcepts: string[]; // slugs
   sourceTexts: string[];
   tags: string[];
+  featuredImage?: ContentImage;
 }
 
 export const concepts: Concept[] = [

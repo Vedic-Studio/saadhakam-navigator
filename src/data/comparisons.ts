@@ -1,5 +1,6 @@
 import { newComparisons } from "./comparisons_new1";
 import { newComparisons2 } from "./comparisons_new2";
+import type { ContentImage } from "@/types/images";
 
 export type ComparisonCategory =
   | "Philosophy vs Philosophy"
@@ -20,6 +21,7 @@ export interface Comparison {
   metaDescription: string;
   tldr?: string;
   content?: string; // Markdown or detailed HTML content
+  featuredImage?: ContentImage;
 }
 
 export const comparisons: Comparison[] = [
@@ -1792,6 +1794,206 @@ export const comparisons: Comparison[] = [
 <h2>Which Text For You?</h2>
 <p>Study <strong>Narada</strong> if you find that "concentration" feels like a struggle, but you naturally feel moved by music, prayer, or the beauty of a spiritual presence. He will show you how to take your "natural" emotions and turn them into a high-speed elevator to the Divine.</p>
 <p>Study <strong>Patanjali</strong> if you find that your emotions are unreliable and you seek a path based on logic, anatomy, and replicable sensory control. He will give you the "ground" that allows your love to be more than just a passing feeling.</p>
+    `,
+  },
+  // Practice vs Practice — Mantra, Japa, Prayer, Pranayama, Meditation
+  {
+    slug: "mantra-vs-affirmation",
+    title: "Mantra vs Affirmation: Sacred Sound vs Positive Self-Talk",
+    category: "Practice vs Practice",
+    entityA: "Mantra",
+    entityB: "Affirmation",
+    metaDescription:
+      "Mantra vs affirmation: one is a sacred sound-form with deity, tradition, and rules. The other is a self-directed statement. Here is what separates them.",
+    tldr: "A mantra is a sacred sound-form tied to a deity, tradition, and specific practice rules. An affirmation is a self-directed positive statement. They share repetition as a method but differ in origin, authority, and the theory of how they work.",
+    content: `
+<h2>Both Use Repetition. That Is Where the Similarity Ends.</h2>
+<p>Self-help culture often treats mantras and affirmations as interchangeable — "just repeat a positive phrase." This conflation strips the mantra of everything that makes it a mantra. Understanding the difference matters, because confusing the two leads to practicing neither correctly.</p>
+
+<h2>Mantra: The Sacred Sound-Form</h2>
+<p>A mantra is not something you invent. It is received — from a guru, a lineage, or a scripture. The Sanskrit root <em>man</em> (mind) + <em>tra</em> (instrument/protector) tells you its function: the mantra is a tool that protects and transforms the mind. Each mantra is tied to a specific deity (<em>devata</em>), a meter (<em>chhanda</em>), and a seer (<em>rishi</em>) who first perceived it. There are rules: how many repetitions, what time of day, what seat, what intention.</p>
+<p>The theory of operation is vibratory. The sounds themselves — not their meaning — reshape consciousness. "Om Namah Shivaya" works not because you understand each word, but because the syllabic pattern resonates at a frequency that stills the mind and invokes Shiva's presence. This is why correct pronunciation matters in mantra practice.</p>
+
+<h2>Affirmation: The Self-Directed Statement</h2>
+<p>An affirmation is a sentence you compose in your own language to reprogram your self-talk. "I am worthy." "I attract abundance." The theory of operation is psychological: repetition overwrites negative cognitive patterns with positive ones. There is no deity, no lineage, no pronunciation requirement. The content — the meaning of the words — is everything.</p>
+<p>Affirmations emerged from New Thought (19th century), passed through Norman Vincent Peale, and landed in modern psychology via cognitive-behavioral therapy. They work on the level of belief and self-concept.</p>
+
+<h2>Key Differences</h2>
+<table>
+<thead><tr><th></th><th>Mantra</th><th>Affirmation</th></tr></thead>
+<tbody>
+<tr><td><strong>Origin</strong></td><td>Revealed by rishis / transmitted by guru</td><td>Self-composed or borrowed from books</td></tr>
+<tr><td><strong>Language</strong></td><td>Sanskrit (or other sacred language)</td><td>Any language — your native tongue</td></tr>
+<tr><td><strong>How It Works</strong></td><td>Vibratory / sonic resonance</td><td>Cognitive reprogramming of beliefs</td></tr>
+<tr><td><strong>Authority</strong></td><td>Tradition, lineage, scripture</td><td>Personal intention</td></tr>
+<tr><td><strong>Goal</strong></td><td>Spiritual transformation / deity invocation</td><td>Improved self-image / emotional state</td></tr>
+<tr><td><strong>Rules</strong></td><td>Specific count, time, posture, initiation</td><td>No formal rules — repeat as desired</td></tr>
+</tbody>
+</table>
+
+<h2>Can You Use Both?</h2>
+<p>Yes. Many practitioners use affirmations for psychological health and mantras for spiritual practice. The mistake is treating one as the other — chanting "I am enough" as if it were a mantra, or treating "Om Namah Shivaya" as if it were just a confidence booster. Respect the category each belongs to, and both serve you well.</p>
+    `,
+  },
+  {
+    slug: "japa-vs-meditation",
+    title: "Japa vs Meditation: Mantra Repetition vs Broader Dhyana",
+    category: "Practice vs Practice",
+    entityA: "Japa",
+    entityB: "Meditation",
+    metaDescription:
+      "Japa vs meditation: japa is mantra repetition, a technique within meditation. Dhyana is what happens when the mind stays on one point. They are not synonyms.",
+    tldr: "Japa is the repetition of a mantra — it is a specific technique within meditation. Meditation (dhyana) is the broader practice of sustained one-pointed attention. Japa gives the mind an object; dhyana is what happens when the mind stays on that object.",
+    content: `
+<h2>The Part and the Whole</h2>
+<p>People often ask: "Should I do japa or meditation?" The question reveals a misunderstanding. Japa <em>is</em> a form of meditation — one of the most ancient and widely practiced forms. Asking "japa or meditation" is like asking "should I run or exercise?" Running is exercise. Japa is meditation. But meditation is larger than japa alone.</p>
+
+<h2>Japa: The Anchor of Repetition</h2>
+<p>Japa means repeating a mantra — aloud (vachika), in a whisper (upamshu), or silently in the mind (manasika). The practitioner typically uses a mala (108 beads) to count repetitions. The mantra gives the restless mind something concrete to hold. Every time attention wanders, you notice because you lose the mantra, and you return.</p>
+<p>Japa is structured. You know when you have done one round (108 repetitions). You can track progress. The practice builds a groove in consciousness — a samskara of attention — that deepens over weeks and months.</p>
+
+<h2>Meditation (Dhyana): The Unbroken Stream</h2>
+<p>Dhyana, as Patanjali defines it in the Yoga Sutras (III.2), is an unbroken flow of awareness toward a single object. The object could be a mantra (in which case dhyana arises from japa), or it could be the breath, a visual image, a concept, a chakra, or formless awareness itself.</p>
+<p>Dhyana is not a technique — it is a state. You cannot "do" dhyana the way you "do" japa. You set up the conditions through technique (including japa), and dhyana either arises or it does not. When it does, the sense of effort dissolves. The meditator, the act of meditating, and the object merge.</p>
+
+<h2>How They Relate</h2>
+<table>
+<thead><tr><th></th><th>Japa</th><th>Meditation (Dhyana)</th></tr></thead>
+<tbody>
+<tr><td><strong>Definition</strong></td><td>Repetition of a mantra</td><td>Sustained one-pointed attention</td></tr>
+<tr><td><strong>Type</strong></td><td>Technique / method</td><td>State of consciousness</td></tr>
+<tr><td><strong>Object</strong></td><td>Always a mantra</td><td>Mantra, breath, image, formless awareness, etc.</td></tr>
+<tr><td><strong>Effort</strong></td><td>Active — you repeat deliberately</td><td>Effort dissolves as dhyana deepens</td></tr>
+<tr><td><strong>Trackable</strong></td><td>Yes — count rounds on a mala</td><td>Not easily — depth is subjective</td></tr>
+<tr><td><strong>Relationship</strong></td><td>A vehicle that can lead to dhyana</td><td>The destination that japa (and other methods) point toward</td></tr>
+</tbody>
+</table>
+
+<h2>Which Should You Practice?</h2>
+<p>If your mind is restless and undisciplined, start with japa. The mantra gives you a handle. As japa deepens, the repetition becomes automatic and the gaps between repetitions widen — that widening gap <em>is</em> dhyana beginning to arise. You do not need to choose between them. Japa is the ladder; dhyana is the roof.</p>
+    `,
+  },
+  {
+    slug: "mantra-vs-prayer",
+    title: "Mantra vs Prayer: Invocation vs Petition",
+    category: "Practice vs Practice",
+    entityA: "Mantra",
+    entityB: "Prayer",
+    metaDescription:
+      "Mantra vs prayer: prayer is petition to the divine. Mantra is invocation through sacred sound. They overlap in devotion but differ in mechanism.",
+    tldr: "Prayer is petition — the devotee asks the divine for something. Mantra is invocation — the practitioner becomes the sound. Prayer works through personal relationship; mantra works through vibratory precision and repetition.",
+    content: `
+<h2>Two Ways of Reaching the Divine</h2>
+<p>Both mantra and prayer are addressed to something beyond the ordinary self. Both can be deeply devotional. But they operate by different principles, and confusing them leads to practicing neither with full understanding.</p>
+
+<h2>Prayer: The Devotee Speaks to God</h2>
+<p>Prayer is relational. The devotee stands before the divine and speaks — asking, thanking, confessing, or praising. The content matters: "Lord, grant me strength" is a different prayer from "Lord, I surrender all." Prayer assumes a relationship between two beings: the one who prays and the one who hears. In Bhakti traditions, this relationship is the entire point. The devotee wants to remain a devotee — to love, not to merge.</p>
+<p>Prayer is flexible. You can pray in any language, in any posture, at any time. There is no required formula. The sincerity of the heart matters more than the precision of the words.</p>
+
+<h2>Mantra: The Practitioner Becomes the Sound</h2>
+<p>Mantra is not a conversation. It is a technology. The practitioner does not compose the mantra or vary its words — the mantra is fixed, received from tradition, and repeated exactly. The Sanskrit syllables are not chosen for their meaning (though meaning exists) but for their vibratory effect on consciousness.</p>
+<p>Where prayer is flexible, mantra is precise. Correct pronunciation, correct count, correct time of day — these matter in traditional practice. The goal is not to "talk to" the deity but to invoke the deity's presence through sound. In advanced practice, the distinction between the chanter and the mantra dissolves: you do not chant the mantra; the mantra chants itself through you.</p>
+
+<h2>Key Differences</h2>
+<table>
+<thead><tr><th></th><th>Mantra</th><th>Prayer</th></tr></thead>
+<tbody>
+<tr><td><strong>Mode</strong></td><td>Invocation — becoming the sound</td><td>Petition — speaking to the divine</td></tr>
+<tr><td><strong>Content</strong></td><td>Fixed sacred syllables</td><td>Free-form — whatever the heart wants to say</td></tr>
+<tr><td><strong>Language</strong></td><td>Sanskrit (traditionally)</td><td>Any language</td></tr>
+<tr><td><strong>Mechanism</strong></td><td>Vibratory resonance / repetition</td><td>Personal relationship / sincerity</td></tr>
+<tr><td><strong>Precision</strong></td><td>Pronunciation and count matter</td><td>Heart matters more than words</td></tr>
+<tr><td><strong>Goal</strong></td><td>Transformation of consciousness</td><td>Communication with the divine</td></tr>
+</tbody>
+</table>
+
+<h2>They Often Overlap</h2>
+<p>In practice, the boundary blurs. A devotee chanting the Hare Krishna Mahamantra may experience it as prayer — a cry of the heart to Radha and Krishna. A Christian repeating the Jesus Prayer ("Lord Jesus Christ, Son of God, have mercy on me") is doing something structurally identical to japa. The categories are useful for understanding, not for building walls.</p>
+    `,
+  },
+  {
+    slug: "pranayama-vs-breathwork",
+    title: "Pranayama vs Breathwork: Vedic Prana Control vs Modern Techniques",
+    category: "Practice vs Practice",
+    entityA: "Pranayama",
+    entityB: "Breathwork",
+    metaDescription:
+      "Pranayama vs breathwork: one is a Vedic practice controlling prana for meditation. The other is modern, secular, and physiology-focused. Key differences explained.",
+    tldr: "Pranayama is a Vedic practice aimed at controlling prana (vital energy) as preparation for meditation. Modern breathwork (Wim Hof, holotropic, etc.) focuses on physiological and emotional effects. Pranayama is embedded in a spiritual framework; breathwork is typically secular.",
+    content: `
+<h2>Same Breath, Different Universes</h2>
+<p>Both pranayama and modern breathwork manipulate the breath. Both produce measurable physiological changes. But they come from different worlds, aim at different goals, and understand the breath itself differently. Treating them as the same thing sells both short.</p>
+
+<h2>Pranayama: Breath as Gateway to Prana</h2>
+<p>Pranayama is the fourth limb of Patanjali's Ashtanga Yoga — it comes after ethical discipline (yama, niyama) and physical posture (asana), and before the internal practices of sense withdrawal (pratyahara), concentration (dharana), and meditation (dhyana). Its position tells you its purpose: pranayama is not an end in itself. It is preparation for meditation.</p>
+<p>The word itself is <em>prana</em> (vital energy) + <em>ayama</em> (extension/control). Pranayama does not merely control the breath — it controls the subtle energy that the breath carries. The Hatha Yoga Pradipika states: "When the breath wanders, the mind wanders. When the breath is steady, the mind is steady." The techniques — Nadi Shodhana (alternate nostril), Kapalabhati (skull-shining breath), Bhastrika (bellows breath) — are calibrated to purify the nadis (energy channels) and balance the flow of prana.</p>
+<p>Traditional pranayama comes with prerequisites: a sattvic diet, a qualified teacher, ethical grounding. It is not a casual practice.</p>
+
+<h2>Modern Breathwork: Breath as Physiological Tool</h2>
+<p>Modern breathwork — Wim Hof Method, holotropic breathwork, box breathing, coherent breathing — focuses on measurable outcomes: reduced cortisol, increased cold tolerance, emotional release, vagal tone, or altered states of consciousness. The framework is scientific, not spiritual. The breath is air entering lungs, triggering neurochemical cascades.</p>
+<p>These methods are accessible. No guru required. No dietary prerequisites. You can learn box breathing from a YouTube video and practice it in a corporate boardroom. This accessibility is both the strength and the limitation — it lowers the barrier to entry but strips away the larger context that pranayama operates within.</p>
+
+<h2>Key Differences</h2>
+<table>
+<thead><tr><th></th><th>Pranayama</th><th>Modern Breathwork</th></tr></thead>
+<tbody>
+<tr><td><strong>Origin</strong></td><td>Vedic / Yogic tradition (2000+ years)</td><td>20th–21st century (Grof, Hof, etc.)</td></tr>
+<tr><td><strong>Framework</strong></td><td>Spiritual — prana, nadis, chakras</td><td>Scientific — nervous system, hormones</td></tr>
+<tr><td><strong>Goal</strong></td><td>Prepare mind for meditation / control prana</td><td>Stress relief, performance, emotional release</td></tr>
+<tr><td><strong>Prerequisites</strong></td><td>Teacher, ethical grounding, sattvic diet</td><td>Minimal — often self-taught</td></tr>
+<tr><td><strong>Context</strong></td><td>Part of an 8-limbed system (Ashtanga Yoga)</td><td>Standalone technique</td></tr>
+<tr><td><strong>Understanding of Breath</strong></td><td>Vehicle of subtle energy (prana)</td><td>Gas exchange triggering neurochemistry</td></tr>
+</tbody>
+</table>
+
+<h2>Can You Practice Both?</h2>
+<p>Absolutely. Many practitioners use box breathing for workplace stress and Nadi Shodhana as part of their evening sadhana. The key is not to flatten one into the other. When you practice pranayama, honor the full system it belongs to. When you do Wim Hof breathing, appreciate it for what it is — a powerful physiological tool — without projecting spiritual claims onto it that it does not make for itself.</p>
+    `,
+  },
+  {
+    slug: "meditation-vs-dhyana",
+    title: "Meditation vs Dhyana: The Western Umbrella vs Patanjali's 7th Limb",
+    category: "Practice vs Practice",
+    entityA: "Meditation",
+    entityB: "Dhyana",
+    metaDescription:
+      "Meditation vs dhyana: the Western umbrella term vs Patanjali's 7th limb. Dhyana is an unbroken flow of attention. Here is how they differ.",
+    tldr: "In the West, 'meditation' covers everything from mindfulness apps to Zen sitting. Dhyana, in Patanjali's Yoga Sutras (7th limb), means an unbroken flow of attention toward a single object. Dhyana is narrower and more precise than what most Westerners call meditation.",
+    content: `
+<h2>The Word That Lost Its Precision</h2>
+<p>When English-speakers say "meditation," they might mean guided visualization, body scanning, mindfulness of breath, loving-kindness practice, mantra repetition, or simply sitting quietly with eyes closed. The word has become a container for dozens of unrelated practices. Dhyana is one specific thing — and understanding what it is sharpens your practice considerably.</p>
+
+<h2>"Meditation" in the Modern West</h2>
+<p>The modern meditation landscape includes:</p>
+<ul>
+<li><strong>Mindfulness (Vipassana-derived)</strong> — observing sensations, thoughts, and emotions without judgment</li>
+<li><strong>Guided meditation</strong> — following a narrator through imagery or relaxation</li>
+<li><strong>Transcendental Meditation</strong> — silent mantra repetition (derived from Vedic tradition)</li>
+<li><strong>Zen (Zazen)</strong> — sitting with attention on breath or a koan</li>
+<li><strong>Body scan</strong> — progressive attention through body regions</li>
+<li><strong>Loving-kindness (Metta)</strong> — generating compassion toward self and others</li>
+</ul>
+<p>These practices differ in object, method, tradition, and goal. The only thing they share is that you sit relatively still and do something with your attention. The word "meditation" has become so broad that it communicates almost nothing specific.</p>
+
+<h2>Dhyana: Patanjali's Precise Definition</h2>
+<p>In the Yoga Sutras, dhyana is the seventh of eight limbs — it comes after dharana (concentration) and before samadhi (absorption). Patanjali defines it in one sutra (III.2): <em>"Tatra pratyaya-ekatanata dhyanam"</em> — "An unbroken flow of awareness toward that object is dhyana."</p>
+<p>Note what this is not. It is not a technique. It is not something you "do" for twenty minutes each morning. It is a <em>state</em> — one that arises when concentration (dharana) becomes sustained and effortless. In dharana, you repeatedly bring attention back to the object. In dhyana, attention stays on the object without interruption. The shift from dharana to dhyana is like the shift from pouring water drop by drop to pouring a continuous stream.</p>
+
+<h2>Key Differences</h2>
+<table>
+<thead><tr><th></th><th>"Meditation" (Western usage)</th><th>Dhyana (Patanjali)</th></tr></thead>
+<tbody>
+<tr><td><strong>Scope</strong></td><td>Umbrella term — dozens of practices</td><td>One specific state of consciousness</td></tr>
+<tr><td><strong>Definition</strong></td><td>Varies by tradition and teacher</td><td>Unbroken flow of attention toward one object (YS III.2)</td></tr>
+<tr><td><strong>Type</strong></td><td>Usually a technique or activity</td><td>A state that arises from sustained dharana</td></tr>
+<tr><td><strong>Effort</strong></td><td>Often effortful — "sit and focus"</td><td>Effortless — effort belongs to dharana, not dhyana</td></tr>
+<tr><td><strong>Position in System</strong></td><td>Standalone practice</td><td>7th of 8 limbs — preceded by 6 preparatory stages</td></tr>
+<tr><td><strong>What Follows</strong></td><td>Feeling calm (typically)</td><td>Samadhi — complete absorption</td></tr>
+</tbody>
+</table>
+
+<h2>Why This Distinction Matters</h2>
+<p>If you think "meditation" and "dhyana" are the same, you may sit down expecting dhyana and feel frustrated when your mind wanders. That wandering is normal — it means you are in dharana, the stage <em>before</em> dhyana. Knowing this removes false expectations. You are not failing at meditation. You are doing exactly what the sixth limb requires: repeatedly returning attention to the object. When that process becomes effortless and continuous, dhyana has arrived. You will know it not because you decided it, but because the effort disappeared.</p>
     `,
   },
   ...newComparisons,

@@ -17,8 +17,8 @@ import { philosophies } from "@/data/philosophies";
 import { comparisons } from "@/data/comparisons";
 
 export const metadata: Metadata = {
-  title: "The Six Darshanas | Systems of Indian Philosophy",
-  description: "Explore the six orthodox schools of Hindu philosophy (Darshanas): Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, and Vedanta. A guide to the vision of reality.",
+  title: "The Six Darshanas: Systems of Indian Philosophy | Sadhaka",
+  description: "The six orthodox schools of Hindu philosophy — Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, and Vedanta — with their foundational sutras, paired relationships, and paths to liberation.",
   alternates: {
     canonical: "https://www.opensadhaka.com/philosophies",
   },
@@ -45,17 +45,42 @@ export default function PhilosophiesPage() {
 
           <header className="mb-16 mt-8 max-w-4xl">
             <h1 className="font-display text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
-              The Vision <span className="text-primary italic">of</span> Reality.
+              The Six <span className="text-primary italic">Darshanas</span>
             </h1>
             <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight border-l-4 border-primary/30 pl-8 py-2">
-              In Sanskrit, philosophy is called <strong className="text-foreground italic">Darshana</strong>—not just a love of wisdom, but a direct "vision" of the Truth.
+              The word <strong className="text-foreground italic">darshana</strong> (from the root <em>drsh</em>, &ldquo;to see&rdquo;) means a system of seeing reality. These are not armchair speculations &mdash; each school offers a complete epistemology, ontology, and path to liberation.
             </p>
           </header>
 
           <section className="mb-20">
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mb-12">
-              The Six Orthodox Schools (Shad Darshanas) form the intellectual bedrock of Sanatan Dharma. While they range from strict logic to absolute non-dualism, all six are <strong>soteriological</strong>: they exist for the sole purpose of ending human suffering and achieving Moksha.
-            </p>
+            <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed mb-12">
+              <p>
+                The six orthodox schools (Shad Darshanas) accept Vedic authority
+                and form paired complements: Nyaya&ndash;Vaisheshika (logic and
+                atomism), Samkhya&ndash;Yoga (enumeration and practice),
+                Mimamsa&ndash;Vedanta (ritual exegesis and metaphysical inquiry).
+                Each pair shares foundational assumptions but diverges in method
+                and emphasis.
+              </p>
+              <p>
+                Each school is anchored by a foundational sutra: the Nyaya Sutra
+                of Gautama (1.1.1: &ldquo;pramana-prameya-samsaya&hellip;&rdquo;),
+                the Vaisheshika Sutra of Kanada (1.1.1&ndash;2), the Samkhya
+                Karika of Ishvarakrishna, the Yoga Sutra of Patanjali
+                (1.1&ndash;2: &ldquo;atha yoganushasanam / yogas chitta vrtti
+                nirodhah&rdquo;), the Mimamsa Sutra of Jaimini (1.1.1:
+                &ldquo;athato dharma jijnasa&rdquo;), and the Brahma Sutra of
+                Badarayana (1.1.1: &ldquo;athato brahma jijnasa&rdquo;). Reading
+                any school starts with its sutra text and the major commentaries
+                (bhashyas) written on it.
+              </p>
+              <p className="text-sm italic text-muted-foreground/70">
+                <strong>How to navigate:</strong> Each card below links to a
+                dedicated page for that school. Start with whichever question
+                interests you most &mdash; the schools are independent entry
+                points, not a sequence.
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {philosophies.map((philosophy) => {
@@ -158,8 +183,8 @@ export default function PhilosophiesPage() {
                   a: "The six orthodox schools (Astika) are Nyaya (logic), Vaisheshika (atomism), Samkhya (dualism), Yoga (practice), Mimamsa (ritual), and Vedanta (inquiry). They differ in method but all accept Vedic authority."
                 },
                 {
-                  q: "What is the goal of Indian philosophy?",
-                  a: "Unlike Western philosophy, which is often purely academic, Indian philosophy is soteriological. Its goal is Moksha—liberation from the cycle of rebirth and the ending of human suffering."
+                  q: "What is the goal of the Darshanas?",
+                  a: "All six schools are soteriological — they exist to diagnose the cause of suffering (duhkha) and prescribe a path to liberation (moksha). This practical orientation distinguishes them from purely theoretical inquiry: understanding reality is the means, not the end."
                 },
                 {
                   q: "What is the difference between Samkhya and Vedanta?",

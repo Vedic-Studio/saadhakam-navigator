@@ -39,9 +39,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "how-to-start-japa",
         route: "/how-to-start-japa",
-        title: "How to Start Japa Meditation: Step-by-Step Guide [2026]",
+        title: "How to Start Japa: Mantra, Mala, Method (Beginner Guide)",
         metaDescription:
-            "Krishna called japa the highest sacrifice (BG 10.25). This guide covers choosing a mantra, using a mala, the 3 levels of practice, and the one mistake most beginners make.",
+            "Krishna called japa the highest sacrifice (BG 10.25). Choose a mantra, learn the 3 levels of practice (vaikhari, upamshu, manasika), use a mala correctly, and avoid the one mistake most beginners make.",
         pillar: "practical-practices",
         publishDate: "2026-03-20",
         readingTime: 9,
@@ -2627,9 +2627,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "daily-spiritual-routine-beginners",
         route: "/daily-spiritual-routine-beginners",
-        title: "Daily Spiritual Routine for Beginners [5 Steps From Ancient Texts]",
+        title: "Daily Spiritual Routine for Beginners: 5 Steps in the Right Order",
         metaDescription:
-            "Most morning routines skip the order. This 5-step sequence from Patanjali, Sivananda, and Chinmaya Mission puts each practice in the right position so the mind actually cooperates.",
+            "The order matters more than the practice. This 5-step sequence from Patanjali, Sivananda, and Chinmaya Mission puts pranayama, japa, study, and meditation in the position where each one actually works.",
         pillar: "practical-practices",
         publishDate: "2026-03-21",
         readingTime: 10,

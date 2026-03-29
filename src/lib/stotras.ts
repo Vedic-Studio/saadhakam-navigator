@@ -59,6 +59,7 @@ export interface StotraFile {
   verseCount: number;
   description: string;
   verses: StotraVerse[];
+  featuredImage?: { src: string; alt: string; width: 1200; height: 630 };
 }
 
 export interface DhyanaShloka {

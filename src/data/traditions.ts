@@ -1,3 +1,5 @@
+import type { ContentImage } from "@/types/images";
+
 export interface Tradition {
   slug: string;
   title: string;
@@ -11,6 +13,7 @@ export interface Tradition {
   howToStart: string;
   tags: string[];
   icon: string;
+  featuredImage?: ContentImage;
 }
 
 export const traditions: Tradition[] = [
