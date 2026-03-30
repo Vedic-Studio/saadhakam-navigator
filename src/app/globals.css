@@ -52,6 +52,37 @@
 
         --radius: 1rem;
     }
+
+    /* Light theme — Living Manuscript editorial palette */
+    .light {
+        --background: 36 33% 97%;        /* #F9F8F6 warm parchment */
+        --foreground: 20 4% 16%;         /* #2C2A29 warm charcoal */
+
+        --card: 36 20% 94%;
+        --card-foreground: 20 4% 16%;
+
+        --popover: 36 33% 97%;
+        --popover-foreground: 20 4% 16%;
+
+        --primary: 14 55% 50%;           /* #C15C3D terracotta */
+        --primary-foreground: 36 33% 97%;
+
+        --secondary: 36 15% 85%;
+        --secondary-foreground: 20 4% 25%;
+
+        --muted: 36 15% 90%;
+        --muted-foreground: 20 4% 45%;
+
+        --accent: 14 55% 50%;
+        --accent-foreground: 36 33% 97%;
+
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 36 33% 97%;
+
+        --border: 36 15% 85%;
+        --input: 36 15% 85%;
+        --ring: 14 55% 50%;
+    }
 }
 
 @layer base {
@@ -131,6 +162,25 @@
         @apply prose-a:text-orange-400 prose-a:no-underline hover:prose-a:text-orange-300;
         @apply prose-blockquote:border-l-2 prose-blockquote:border-orange-400/40 prose-blockquote:pl-6 prose-blockquote:text-foreground/90 prose-blockquote:italic;
         @apply prose-hr:border-border/60;
+    }
+
+    /* Living Manuscript editorial prose — light-first, 65ch max */
+    .editorial-prose {
+        @apply prose max-w-[65ch];
+        @apply prose-headings:font-display prose-headings:font-bold prose-headings:text-foreground;
+        @apply prose-h2:text-3xl prose-h2:mt-14 prose-h2:mb-5;
+        @apply prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-4;
+        @apply prose-p:text-lg prose-p:leading-[1.8] prose-p:text-foreground/85;
+        @apply prose-li:text-lg prose-li:leading-relaxed prose-li:text-foreground/85;
+        @apply prose-strong:text-foreground prose-strong:font-semibold;
+        @apply prose-em:text-foreground/90;
+        @apply prose-a:text-[#C15C3D] prose-a:underline prose-a:decoration-[#C15C3D]/30 prose-a:underline-offset-2 hover:prose-a:decoration-[#C15C3D];
+        @apply prose-blockquote:border-l-2 prose-blockquote:border-[#C15C3D]/30 prose-blockquote:pl-6 prose-blockquote:text-foreground/85 prose-blockquote:italic;
+        @apply prose-hr:border-border/40;
+    }
+
+    .dark .editorial-prose {
+        @apply prose-invert;
     }
 
     .longform-prose .article-lead {
