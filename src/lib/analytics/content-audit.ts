@@ -343,7 +343,7 @@ function aggregatePageEvents(rows: Ga4ApiResponse["rows"]): Map<string, ContentA
     return new Map([...grouped.entries()].map(([page, pageRows]) => [page, toCounts(pageRows)]));
 }
 
-function decideBucket(row: ContentPerformanceRow): ContentAuditBucket {
+export function decideBucket(row: ContentPerformanceRow): ContentAuditBucket {
     const qualified = row.ga4.events.quizComplete + row.ga4.events.emailCapture;
     const strongTraffic = row.gsc.clicks >= 20 || row.ga4.sessions >= 20;
     const highImpressions = row.gsc.impressions >= 100;
@@ -377,7 +377,7 @@ function scorecardFromRows(rows: ContentPerformanceRow[], selectLabel: (row: Con
         .sort((a, b) => b.averageIcpScore - a.averageIcpScore);
 }
 
-function queueOwnerForBucket(bucket: ContentAuditBucket): EditorialQueueOwner {
+export function queueOwnerForBucket(bucket: ContentAuditBucket): EditorialQueueOwner {
     switch (bucket) {
         case "double-down":
         case "expand-cluster":
@@ -394,7 +394,7 @@ function queueOwnerForBucket(bucket: ContentAuditBucket): EditorialQueueOwner {
     }
 }
 
-function queuePriorityForRow(row: ContentPerformanceRow): EditorialQueuePriority {
+export function queuePriorityForRow(row: ContentPerformanceRow): EditorialQueuePriority {
     const qualified = row.ga4.events.quizComplete + row.ga4.events.emailCapture;
 
     if (row.decisionBucket === "deprioritize-or-contain") return "hold";
@@ -415,7 +415,7 @@ function queuePriorityForRow(row: ContentPerformanceRow): EditorialQueuePriority
     return "p3";
 }
 
-function queueTargetWindowForPriority(priority: EditorialQueuePriority): EditorialQueueItem["targetWindow"] {
+export function queueTargetWindowForPriority(priority: EditorialQueuePriority): EditorialQueueItem["targetWindow"] {
     switch (priority) {
         case "p1":
             return "this-week";
@@ -428,7 +428,7 @@ function queueTargetWindowForPriority(priority: EditorialQueuePriority): Editori
     }
 }
 
-function proposedFixForRow(row: ContentPerformanceRow) {
+export function proposedFixForRow(row: ContentPerformanceRow) {
     switch (row.decisionBucket) {
         case "double-down":
             return "Refresh and expand the page, then amplify internal links from relevant supporting articles.";
@@ -447,7 +447,7 @@ function proposedFixForRow(row: ContentPerformanceRow) {
     }
 }
 
-function buildEditorialQueueItem(row: ContentPerformanceRow): EditorialQueueItem {
+export function buildEditorialQueueItem(row: ContentPerformanceRow): EditorialQueueItem {
     const priority = queuePriorityForRow(row);
     const quizComplete = row.ga4.events.quizComplete;
     const emailCapture = row.ga4.events.emailCapture;

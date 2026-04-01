@@ -903,6 +903,16 @@ export default function AnalyticsDashboard({ gscData, ga4Data, contentAuditData,
                                             description="Next-sprint opportunities with strong upside once P1 work is moving."
                                             rows={contentAuditData.editorialQueues.p2}
                                         />
+                                        <EditorialQueueTable
+                                            title="P3 later"
+                                            description="Backlog candidates worth browsing once higher-priority lanes are covered."
+                                            rows={contentAuditData.editorialQueues.p3}
+                                        />
+                                        <EditorialQueueTable
+                                            title="Hold"
+                                            description="Contained or low-investment pages kept visible for occasional review."
+                                            rows={contentAuditData.editorialQueues.hold}
+                                        />
                                     </div>
                                 </CardContent>
                             </Card>
