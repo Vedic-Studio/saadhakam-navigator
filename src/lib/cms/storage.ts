@@ -636,43 +636,51 @@ export async function setCmsPublished(slug: string, published: boolean): Promise
 }
 
 export async function getPublishedCmsContent(slug: string): Promise<string | null> {
-    await ensureCmsBootstrap();
+    try {
+        await ensureCmsBootstrap();
 
-    if (HAS_POSTGRES) {
-        const result = await sql<{ content: string }>`
-            SELECT v.content
-            FROM cms_articles a
-            JOIN cms_versions v ON v.slug = a.slug AND v.version = a.published_version
-            WHERE a.slug = ${slug} AND a.published = true AND a.published_version IS NOT NULL
+        if (HAS_POSTGRES) {
+            const result = await sql<{ content: string }>`
+                SELECT v.content
+                FROM cms_articles a
+                JOIN cms_versions v ON v.slug = a.slug AND v.version = a.published_version
+                WHERE a.slug = ${slug} AND a.published = true AND a.published_version IS NOT NULL
+                LIMIT 1;
+            `;
+            return result.rows[0]?.content || null;
+        }
+
+        const row = selectSql<{ published: number; published_version: number | null }>(`
+            SELECT published, published_version
+            FROM cms_articles
+            WHERE slug = ${sqlString(slug)};
+        `)[0];
+
+        if (!row?.published || !row.published_version) {
+            return null;
+        }
+
+        const contentRow = selectSql<{ content: string | null }>(`
+            SELECT content
+            FROM cms_versions
+            WHERE slug = ${sqlString(slug)} AND version = ${sqlString(row.published_version)}
             LIMIT 1;
-        `;
-        return result.rows[0]?.content || null;
-    }
+        `)[0];
+        if (contentRow?.content) {
+            return contentRow.content;
+        }
 
-    const row = selectSql<{ published: number; published_version: number | null }>(`
-        SELECT published, published_version
-        FROM cms_articles
-        WHERE slug = ${sqlString(slug)};
-    `)[0];
+        const path = getVersionMarkdownPath(slug, row.published_version);
+        if (!existsSync(path)) {
+            return null;
+        }
 
-    if (!row?.published || !row.published_version) {
+        return readFile(path, "utf8");
+    } catch (error) {
+        console.error(
+            `[cms] Failed to load published CMS content for slug '${slug}', falling back to bundled article content.`,
+            error,
+        );
         return null;
     }
-
-    const contentRow = selectSql<{ content: string | null }>(`
-        SELECT content
-        FROM cms_versions
-        WHERE slug = ${sqlString(slug)} AND version = ${sqlString(row.published_version)}
-        LIMIT 1;
-    `)[0];
-    if (contentRow?.content) {
-        return contentRow.content;
-    }
-
-    const path = getVersionMarkdownPath(slug, row.published_version);
-    if (!existsSync(path)) {
-        return null;
-    }
-
-    return readFile(path, "utf8");
 }
