@@ -41,6 +41,48 @@ class ContentRulesKnowledge(BaseModel):
     citation_rules: List[CitationRule] = Field(default_factory=list)
 
 
+class ArticleTypeSpec(BaseModel):
+    name: str
+    min_word_count: int
+    faq_minimum: int
+    requires_aeo_block: bool = True
+    required_internal_links: int = 0
+
+
+class ArticleAgentSpec(BaseModel):
+    source: SourceMeta
+    reference_template_path: Optional[str] = None
+    hub: ArticleTypeSpec
+    spoke: ArticleTypeSpec
+    aeo_word_range: Optional[List[int]] = None
+    sources_section_required: bool = True
+    references_array_required: bool = True
+    paragraph_sentence_limit: Optional[int] = None
+    forbidden_phrases: List[str] = Field(default_factory=list)
+    required_source_signals: List[str] = Field(default_factory=list)
+
+
+class GenericDocSpec(BaseModel):
+    source: SourceMeta
+    scope: str = ""
+    key_requirements: List[str] = Field(default_factory=list)
+
+
+class ContextPackKnowledge(BaseModel):
+    module: str
+    label: str
+    page_types: List[str] = Field(default_factory=list)
+    doc_paths: List[str] = Field(default_factory=list)
+    summary: str = ""
+
+
+class AgentKnowledge(BaseModel):
+    article: Optional[ArticleAgentSpec] = None
+    stotra: Optional[GenericDocSpec] = None
+    pseo: Optional[GenericDocSpec] = None
+    context_packs: List[ContextPackKnowledge] = Field(default_factory=list)
+
+
 class ExclusionCategory(BaseModel):
     name: str
     disallowed: List[str] = Field(default_factory=list)
@@ -98,3 +140,4 @@ class KnowledgeBundle(BaseModel):
     exclusions: ExclusionsKnowledge
     strategy: SeoStrategyKnowledge
     competitor: CompetitorKnowledge
+    agent_knowledge: AgentKnowledge

@@ -7,7 +7,15 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Dict, List
 
-from .models import CompetitorKnowledge, ContentRulesKnowledge, KnowledgeBundle, PageTypeRule
+from .models import (
+    ArticleAgentSpec,
+    CompetitorKnowledge,
+    ContentRulesKnowledge,
+    ContextPackKnowledge,
+    GenericDocSpec,
+    KnowledgeBundle,
+    PageTypeRule,
+)
 from .parser import PARSED_OUTPUT_DIR, build_and_persist_knowledge
 
 
@@ -58,6 +66,30 @@ class KnowledgeStore:
     def get_competitor_patterns(self) -> CompetitorKnowledge:
         return self.bundle.competitor
 
+    def get_article_spec(self) -> ArticleAgentSpec | None:
+        return self.bundle.agent_knowledge.article
+
+    def get_stotra_spec(self) -> GenericDocSpec | None:
+        return self.bundle.agent_knowledge.stotra
+
+    def get_pseo_spec(self) -> GenericDocSpec | None:
+        return self.bundle.agent_knowledge.pseo
+
+    def get_context_pack(self, module: str) -> ContextPackKnowledge | None:
+        return next(
+            (pack for pack in self.bundle.agent_knowledge.context_packs if pack.module == module),
+            None,
+        )
+
+    def get_context_pack_for_page_type(self, page_type_slug: str) -> ContextPackKnowledge | None:
+        return next(
+            (pack for pack in self.bundle.agent_knowledge.context_packs if page_type_slug in pack.page_types),
+            None,
+        )
+
+    def get_context_packs(self) -> List[ContextPackKnowledge]:
+        return self.bundle.agent_knowledge.context_packs
+
     def get_techniques(self) -> List[Dict[str, str]]:
         techniques: List[Dict[str, str]] = []
         for competitor in self.bundle.competitor.competitors:
@@ -88,7 +120,10 @@ class KnowledgeStore:
             return build_and_persist_knowledge(output_dir=self.parsed_dir)
 
         data = json.loads(bundle_path.read_text(encoding="utf-8"))
-        return KnowledgeBundle.model_validate(data)
+        try:
+            return KnowledgeBundle.model_validate(data)
+        except Exception:
+            return build_and_persist_knowledge(output_dir=self.parsed_dir)
 
 
 @lru_cache(maxsize=1)

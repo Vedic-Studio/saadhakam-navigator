@@ -8,6 +8,7 @@ from typing import List, Optional
 from sqlalchemy.orm import Session
 
 from app.agents.base import BaseAgent
+from app.knowledge.store import KnowledgeStore, get_knowledge_store
 from app.models.pipeline import ContentPipeline
 
 
@@ -17,10 +18,10 @@ from app.models.pipeline import ContentPipeline
 
 CONTEXT_MODULE_MAP = {
     "topic_hub": "long_form",
-    "combinatorial": "long_form",
-    "sacred_text_chapter": "long_form",
-    "sacred_text_shloka": "long_form",
-    "sanskrit_lexicon": "long_form",
+    "combinatorial": "pseo",
+    "sacred_text_chapter": "sacred_text",
+    "sacred_text_shloka": "sacred_text",
+    "sanskrit_lexicon": "pseo",
     # Future: "tweet" → "social", "linkedin_post" → "social", etc.
 }
 
@@ -78,8 +79,9 @@ class OrchestratorAgent(BaseAgent):
     3. Returns (pipeline, config) for the PipelineService to execute
     """
 
-    def __init__(self):
+    def __init__(self, knowledge_store: KnowledgeStore | None = None):
         super().__init__("orchestrator")
+        self.knowledge_store = knowledge_store or get_knowledge_store()
 
     def configure(
         self,
@@ -91,7 +93,7 @@ class OrchestratorAgent(BaseAgent):
         revision_limit: Optional[int] = None,
     ) -> PipelineConfig:
         """Map request fields to a PipelineConfig."""
-        context_module = CONTEXT_MODULE_MAP.get(page_type, "long_form")
+        context_module = self._resolve_context_module(page_type)
         word_count_target = PAGE_WORD_TARGETS.get(page_type, 900)
         threshold = quality_threshold if quality_threshold is not None else PAGE_THRESHOLDS.get(page_type, 7.0)
         limit = revision_limit if revision_limit is not None else 3
@@ -102,6 +104,12 @@ class OrchestratorAgent(BaseAgent):
             quality_threshold=threshold,
             revision_limit=limit,
         )
+
+    def _resolve_context_module(self, page_type: str) -> str:
+        context_pack = self.knowledge_store.get_context_pack_for_page_type(page_type)
+        if context_pack:
+            return context_pack.module
+        return CONTEXT_MODULE_MAP.get(page_type, "long_form")
 
     def create_pipeline(
         self,

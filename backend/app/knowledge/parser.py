@@ -8,13 +8,18 @@ from pathlib import Path
 from typing import Dict, List
 
 from .models import (
+    AgentKnowledge,
+    ArticleAgentSpec,
+    ArticleTypeSpec,
     CitationRule,
     CompetitorKnowledge,
     CompetitorPattern,
     ContentRulesKnowledge,
+    ContextPackKnowledge,
     ExclusionCategory,
     ExclusionImplementationRule,
     ExclusionsKnowledge,
+    GenericDocSpec,
     KeywordTopic,
     KnowledgeBundle,
     PageTypeRule,
@@ -30,6 +35,9 @@ CONTENT_RULES_PATH = PROJECT_ROOT / "seo" / "content-rules.md"
 EXCLUSIONS_PATH = PROJECT_ROOT / "seo" / "exclusions.md"
 STRATEGY_PATH = PROJECT_ROOT / "plans" / "seo-content-strategy-sadhaka.md"
 COMPETITOR_PATH = PROJECT_ROOT / "docs" / "Competitor-research-seo"
+ARTICLE_AGENT_PATH = PROJECT_ROOT / "docs" / "agents" / "02-article-content.md"
+STOTRA_AGENT_PATH = PROJECT_ROOT / "docs" / "agents" / "01-stotra-content.md"
+PSEO_AGENT_PATH = PROJECT_ROOT / "docs" / "agents" / "06-pseo-pages.md"
 
 PARSED_OUTPUT_DIR = Path(__file__).resolve().parent / "parsed"
 
@@ -50,6 +58,7 @@ class KnowledgeParser:
             exclusions=exclusions,
             strategy=strategy,
             competitor=competitor,
+            agent_knowledge=self.parse_agent_knowledge(),
         )
 
         self.write_bundle(bundle)
@@ -430,11 +439,116 @@ class KnowledgeParser:
             page_templates=page_templates,
         )
 
+    def parse_agent_knowledge(self) -> AgentKnowledge:
+        return AgentKnowledge(
+            article=self.parse_article_agent_spec(ARTICLE_AGENT_PATH),
+            stotra=self.parse_generic_doc_spec(
+                STOTRA_AGENT_PATH,
+                title="Agent: Stotra Content",
+                requirement_headings=[
+                    "## JSON Schema — Stotra (type: \"stotra\")",
+                    "## How to Add a New Stotra",
+                    "## Quality Check Before Committing",
+                ],
+            ),
+            pseo=self.parse_generic_doc_spec(
+                PSEO_AGENT_PATH,
+                title="Agent: Programmatic SEO Pages",
+                requirement_headings=[
+                    "## How to Add a New pSEO Category",
+                    "## Page Component Standards",
+                    "## LLM / AI Engine Integration",
+                ],
+            ),
+            context_packs=self.build_context_packs(),
+        )
+
+    def parse_article_agent_spec(self, file_path: Path) -> ArticleAgentSpec:
+        text = file_path.read_text(encoding="utf-8")
+        forbidden_block = self._extract_fenced_block_after_heading(text, "### Forbidden Phrases (hardban list)")
+        forbidden_phrases = [line.strip() for line in forbidden_block.splitlines() if line.strip()]
+
+        return ArticleAgentSpec(
+            source=SourceMeta(path=str(file_path), title="Agent: Article Content"),
+            reference_template_path=self._extract_inline_code_after_prefix(text, "**Reference implementation**"),
+            hub=ArticleTypeSpec(
+                name="hub",
+                min_word_count=2500,
+                faq_minimum=4,
+                requires_aeo_block=True,
+                required_internal_links=4,
+            ),
+            spoke=ArticleTypeSpec(
+                name="spoke",
+                min_word_count=1500,
+                faq_minimum=3,
+                requires_aeo_block=True,
+                required_internal_links=3,
+            ),
+            aeo_word_range=[60, 100],
+            sources_section_required="Sources & Commentaries" in text,
+            references_array_required="references array" in text.lower(),
+            paragraph_sentence_limit=3,
+            forbidden_phrases=forbidden_phrases,
+            required_source_signals=[
+                "specific Upanishad / Gita / Purana / Sutra citation",
+                "named commentator or school position",
+                "distinguish source text vs commentary vs editorial implication",
+                "Sources & Commentaries section with authoritative external links",
+            ],
+        )
+
+    def parse_generic_doc_spec(
+        self,
+        file_path: Path,
+        *,
+        title: str,
+        requirement_headings: List[str],
+    ) -> GenericDocSpec:
+        text = file_path.read_text(encoding="utf-8")
+        requirements: List[str] = []
+        for heading in requirement_headings:
+            requirements.extend(self._extract_bullet_items(text, heading))
+            requirements.extend(self._extract_ordered_list_items(text, heading))
+
+        scope_match = re.search(r"\*\*Scope\*\*: (.+)", text)
+        return GenericDocSpec(
+            source=SourceMeta(path=str(file_path), title=title),
+            scope=scope_match.group(1).strip() if scope_match else "",
+            key_requirements=requirements,
+        )
+
+    def build_context_packs(self) -> List[ContextPackKnowledge]:
+        return [
+            ContextPackKnowledge(
+                module="long_form",
+                label="Long-form articles",
+                page_types=["topic_hub"],
+                doc_paths=[str(ARTICLE_AGENT_PATH), str(EXCLUSIONS_PATH), str(CONTENT_RULES_PATH)],
+                summary="Long-form editorial article generation with AEO block, source fidelity, and article-quality requirements.",
+            ),
+            ContextPackKnowledge(
+                module="pseo",
+                label="Programmatic SEO pages",
+                page_types=["combinatorial", "sanskrit_lexicon"],
+                doc_paths=[str(PSEO_AGENT_PATH), str(EXCLUSIONS_PATH), str(CONTENT_RULES_PATH), str(STRATEGY_PATH)],
+                summary="Programmatic page generation with uniqueness constraints, pSEO structure, and long-tail strategy alignment.",
+            ),
+            ContextPackKnowledge(
+                module="sacred_text",
+                label="Sacred text commentary",
+                page_types=["sacred_text_chapter", "sacred_text_shloka"],
+                doc_paths=[str(ARTICLE_AGENT_PATH), str(CONTENT_RULES_PATH), str(EXCLUSIONS_PATH)],
+                summary="Text-rooted commentary pages requiring Sanskrit fidelity, commentary synthesis, and strong citation discipline.",
+            ),
+        ]
+
     def write_bundle(self, bundle: KnowledgeBundle) -> None:
         self._write_json("content_rules.json", bundle.content_rules.model_dump())
         self._write_json("exclusions.json", bundle.exclusions.model_dump())
         self._write_json("keyword_clusters.json", bundle.strategy.model_dump())
         self._write_json("competitor_patterns.json", bundle.competitor.model_dump())
+        self._write_json("agent_knowledge.json", bundle.agent_knowledge.model_dump())
         self._write_json("knowledge_bundle.json", bundle.model_dump())
 
     def _write_json(self, file_name: str, payload: Dict | List) -> None:
@@ -474,21 +588,41 @@ class KnowledgeParser:
     @staticmethod
     def _extract_quick_win_topics(text: str, heading: str) -> List[KeywordTopic]:
         section = KnowledgeParser._extract_section(text, heading)
-        rows = re.findall(r"\|\s*(.*?)\s*\|\s*\"(.*?)\"\s*\|\s*(.*?)\s*\|\s*(.*?)\s*\|", section)
         topics: List[KeywordTopic] = []
-        for row in rows:
-            topic, keyword, buyer_stage, content_type = row
-            if topic.lower().startswith("topic"):
+        for line in section.splitlines():
+            stripped = line.strip()
+            if not stripped.startswith("|"):
+                continue
+            cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+            if len(cells) < 4:
+                continue
+            topic, keyword, buyer_stage, content_type = cells[:4]
+            if not topic or topic.lower() == "topic" or set(topic) == {"-"}:
                 continue
             topics.append(
                 KeywordTopic(
-                    topic=topic,
-                    target_keyword=keyword,
+                    topic=topic.replace('"', "").strip(),
+                    target_keyword=keyword.strip().strip('"'),
                     buyer_stage=buyer_stage,
                     content_type=content_type,
                 )
             )
         return topics
+
+    @staticmethod
+    def _extract_fenced_block_after_heading(text: str, heading: str) -> str:
+        section = KnowledgeParser._extract_section(text, heading)
+        match = re.search(r"```(?:\w+)?\n(.*?)```", section, flags=re.DOTALL)
+        return match.group(1).strip() if match else ""
+
+    @staticmethod
+    def _extract_inline_code_after_prefix(text: str, prefix: str) -> str | None:
+        for line in text.splitlines():
+            if prefix in line:
+                match = re.search(r"`([^`]+)`", line)
+                if match:
+                    return match.group(1)
+        return None
 
     @staticmethod
     def _extract_code_terms_from_line(text: str, line_prefix: str) -> List[str]:

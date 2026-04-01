@@ -55,7 +55,12 @@ class EditorAgent(BaseAgent):
         super().__init__("editor")
         self.knowledge_store = knowledge_store or get_knowledge_store()
 
-    def score(self, content: str, request: GenerateRequest) -> QualityScorecard:
+    def score(
+        self,
+        content: str,
+        request: GenerateRequest,
+        threshold: float | None = None,
+    ) -> QualityScorecard:
         violations: List[str] = []
 
         depth_score, depth_notes = self._score_content_depth(content, request)
@@ -130,7 +135,8 @@ class EditorAgent(BaseAgent):
         }
 
         total = sum(item.score * item.weight for item in dimensions.values())
-        passed = total >= 8.0 and exclusion_result.passed
+        effective_threshold = threshold if threshold is not None else 8.0
+        passed = total >= effective_threshold and exclusion_result.passed
 
         return QualityScorecard(
             total_score=round(total, 2),
@@ -184,7 +190,7 @@ class EditorAgent(BaseAgent):
         threshold: float | None = None,
     ) -> tuple["QualityScorecard", str]:
         """Convenience: score content AND generate revision notes in one call."""
-        scorecard = self.score(content, request)
+        scorecard = self.score(content, request, threshold=threshold)
         effective_threshold = threshold if threshold is not None else 7.0
         notes = self.generate_revision_notes(scorecard, threshold=effective_threshold)
         return scorecard, notes
@@ -223,6 +229,13 @@ class EditorAgent(BaseAgent):
             r"\btransformative\b",
             r"\bcutting-edge\b",
         ]
+        article_spec = self.knowledge_store.get_article_spec()
+        if article_spec:
+            banned.extend(
+                rf"\b{re.escape(phrase)}\b"
+                for phrase in article_spec.forbidden_phrases
+                if phrase and phrase.isascii() and any(ch.isalpha() for ch in phrase)
+            )
         hits = sum(1 for p in banned if re.search(p, content, flags=re.IGNORECASE))
         score = max(0.0, 10.0 - hits * 2.0)
         return score, f"Banned voice markers found: {hits}"

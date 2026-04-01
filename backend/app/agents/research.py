@@ -46,6 +46,11 @@ class ResearchBrief:
 
     # Competitor patterns to be aware of / avoid / improve upon
     competitor_insights: List[str] = field(default_factory=list)     # up to 4
+    context_pack_label: Optional[str] = None
+    context_pack_summary: Optional[str] = None
+    context_doc_paths: List[str] = field(default_factory=list)
+    article_requirements: List[str] = field(default_factory=list)
+    forbidden_phrases: List[str] = field(default_factory=list)
 
     def to_text(self) -> str:
         """Format the brief as a compact markdown block for the Writer system prompt."""
@@ -77,6 +82,29 @@ class ResearchBrief:
             lines += [
                 "## Competitor Pattern Gaps to Exploit",
                 *[f"- {insight}" for insight in self.competitor_insights],
+                "",
+            ]
+
+        if self.context_pack_label or self.context_pack_summary:
+            lines += [
+                "## Context Pack",
+                *( [f"- Label: {self.context_pack_label}"] if self.context_pack_label else []),
+                *( [f"- Summary: {self.context_pack_summary}"] if self.context_pack_summary else []),
+                *[f"- Doc: {path}" for path in self.context_doc_paths],
+                "",
+            ]
+
+        if self.article_requirements:
+            lines += [
+                "## Sadhaka Article Requirements",
+                *[f"- {item}" for item in self.article_requirements],
+                "",
+            ]
+
+        if self.forbidden_phrases:
+            lines += [
+                "## Hard-ban Phrases",
+                *[f"- {item}" for item in self.forbidden_phrases],
                 "",
             ]
 
@@ -135,6 +163,24 @@ class ResearchAgent(BaseAgent):
             for rec in comp.recommendations[:2]:
                 competitor_insights.append(rec)
         competitor_insights = competitor_insights[:4]
+        context_pack = self.knowledge_store.get_context_pack(config.context_module)
+        article_spec = self.knowledge_store.get_article_spec()
+
+        article_requirements: List[str] = []
+        forbidden_phrases: List[str] = []
+
+        if article_spec and config.context_module in {"long_form", "sacred_text"}:
+            article_type = article_spec.hub if page_type == "topic_hub" else article_spec.spoke
+            article_requirements = [
+                f"Minimum word count: {article_type.min_word_count}",
+                f"Minimum FAQ items: {article_type.faq_minimum}",
+                f"Minimum internal links: {article_type.required_internal_links}",
+                f"AEO block required: {'yes' if article_type.requires_aeo_block else 'no'}",
+                *( [f"AEO word range: {article_spec.aeo_word_range[0]}-{article_spec.aeo_word_range[1]}"] if article_spec.aeo_word_range else []),
+                *( [f"Reference template: {article_spec.reference_template_path}"] if article_spec.reference_template_path else []),
+                *(article_spec.required_source_signals or []),
+            ]
+            forbidden_phrases = article_spec.forbidden_phrases
 
         brief = ResearchBrief(
             topic=topic,
@@ -149,6 +195,11 @@ class ResearchAgent(BaseAgent):
             sensitive_goals=self.knowledge_store.get_sensitive_goals(),
             disclaimer_text=self.knowledge_store.get_disclaimer_text(),
             competitor_insights=competitor_insights,
+            context_pack_label=context_pack.label if context_pack else None,
+            context_pack_summary=context_pack.summary if context_pack else None,
+            context_doc_paths=context_pack.doc_paths if context_pack else [],
+            article_requirements=article_requirements,
+            forbidden_phrases=forbidden_phrases,
         )
 
         return brief
