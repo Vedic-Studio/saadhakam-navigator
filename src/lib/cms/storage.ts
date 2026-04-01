@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { execFileSync } from "node:child_process";
-import { sql } from "@vercel/postgres";
+import postgres, { type Sql } from "postgres";
 import { articles, getArticleBySlug, type ArticleMeta } from "@/data/articles";
 import { buildPilotCmsMarkdown } from "./markdown";
 import type {
@@ -17,7 +17,19 @@ import type {
 
 const CMS_ROOT = join(process.cwd(), "src", "content", "cms", "articles");
 const DB_PATH = join(process.cwd(), ".data", "cms.sqlite");
-const HAS_POSTGRES = Boolean(process.env.POSTGRES_URL);
+const POSTGRES_URL = process.env.POSTGRES_URL;
+const HAS_POSTGRES = Boolean(POSTGRES_URL);
+
+const postgresSql: Sql | null = POSTGRES_URL
+    ? postgres(POSTGRES_URL, {
+        ssl: "require",
+        prepare: false,
+        max: 1,
+    })
+    : null;
+
+let cmsBootstrapPromise: Promise<void> | null = null;
+let publishedCmsContentMapPromise: Promise<Map<string, string>> | null = null;
 
 type SqlScalar = string | number | null | undefined;
 
@@ -50,6 +62,14 @@ type CmsReviewRow = {
     version: number;
     created_at: string;
 };
+
+function getPostgresSql(): Sql {
+    if (!postgresSql) {
+        throw new Error("POSTGRES_URL is not configured");
+    }
+
+    return postgresSql;
+}
 
 function sqlString(value: SqlScalar): string {
     if (value === null || value === undefined) {
@@ -222,6 +242,8 @@ async function ensureLocalCmsBootstrap(): Promise<void> {
 }
 
 async function ensurePostgresCmsBootstrap(): Promise<void> {
+    const sql = getPostgresSql();
+
     await sql`
         CREATE TABLE IF NOT EXISTS cms_articles (
             slug TEXT PRIMARY KEY,
@@ -288,10 +310,10 @@ async function ensurePostgresCmsBootstrap(): Promise<void> {
         const pilotMarkdown = buildPilotCmsMarkdown(meta);
         if (!pilotMarkdown) continue;
 
-        const existing = await sql<{ count: string }>`
+        const existing = await sql<{ count: string }[]>`
             SELECT COUNT(*)::text as count FROM cms_versions WHERE slug = ${meta.slug};
         `;
-        const existingCount = Number(existing.rows[0]?.count || 0);
+        const existingCount = Number(existing[0]?.count || 0);
         if (existingCount > 0) continue;
 
         await sql`
@@ -319,11 +341,42 @@ async function ensurePostgresCmsBootstrap(): Promise<void> {
 }
 
 export async function ensureCmsBootstrap(): Promise<void> {
-    if (HAS_POSTGRES) {
-        await ensurePostgresCmsBootstrap();
-        return;
+    if (!cmsBootstrapPromise) {
+        cmsBootstrapPromise = HAS_POSTGRES ? ensurePostgresCmsBootstrap() : ensureLocalCmsBootstrap();
     }
-    await ensureLocalCmsBootstrap();
+
+    await cmsBootstrapPromise;
+}
+
+async function getPublishedCmsContentMap(): Promise<Map<string, string>> {
+    await ensureCmsBootstrap();
+
+    if (!publishedCmsContentMapPromise) {
+        publishedCmsContentMapPromise = (async () => {
+            if (HAS_POSTGRES) {
+                const sql = getPostgresSql();
+                const rows = await sql<{ slug: string; content: string }[]>`
+                    SELECT a.slug, v.content
+                    FROM cms_articles a
+                    JOIN cms_versions v ON v.slug = a.slug AND v.version = a.published_version
+                    WHERE a.published = true AND a.published_version IS NOT NULL;
+                `;
+
+                return new Map(rows.map((row) => [row.slug, row.content]));
+            }
+
+            const rows = selectSql<{ slug: string; content: string | null }>(`
+                SELECT a.slug, v.content
+                FROM cms_articles a
+                JOIN cms_versions v ON v.slug = a.slug AND v.version = a.published_version
+                WHERE a.published = 1 AND a.published_version IS NOT NULL;
+            `);
+
+            return new Map(rows.filter((row) => Boolean(row.content)).map((row) => [row.slug, row.content || ""]));
+        })();
+    }
+
+    return publishedCmsContentMapPromise;
 }
 
 async function getLocalVersions(slug: string): Promise<CmsVersion[]> {
@@ -353,14 +406,15 @@ async function getLocalVersions(slug: string): Promise<CmsVersion[]> {
 }
 
 async function getPostgresVersions(slug: string): Promise<CmsVersion[]> {
-    const result = await sql<CmsVersionRow>`
+    const sql = getPostgresSql();
+    const result = await sql<CmsVersionRow[]>`
         SELECT version, content, note, created_at
         FROM cms_versions
         WHERE slug = ${slug}
         ORDER BY version ASC;
     `;
 
-    return result.rows.map((versionRow) => ({
+    return result.map((versionRow) => ({
         version: versionRow.version,
         filename: `v${String(versionRow.version).padStart(3, "0")}.md`,
         content: versionRow.content || "",
@@ -373,7 +427,8 @@ export async function getCmsQueue(): Promise<CmsQueueArticle[]> {
     await ensureCmsBootstrap();
 
     if (HAS_POSTGRES) {
-        const result = await sql<CmsArticleRow>`
+        const sql = getPostgresSql();
+        const result = await sql<CmsArticleRow[]>`
             SELECT a.*, COUNT(v.id)::int as version_count
             FROM cms_articles a
             LEFT JOIN cms_versions v ON v.slug = a.slug
@@ -381,7 +436,7 @@ export async function getCmsQueue(): Promise<CmsQueueArticle[]> {
             ORDER BY a.updated_at DESC, a.slug ASC;
         `;
 
-        return result.rows
+        return result
             .map((row) => {
                 const meta = getArticleBySlug(String(row.slug));
                 return meta ? createQueueArticle(meta, row) : null;
@@ -413,16 +468,17 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
     }
 
     if (HAS_POSTGRES) {
-        const articleResult = await sql<CmsArticleRow>`
+        const sql = getPostgresSql();
+        const articleResult = await sql<CmsArticleRow[]>`
             SELECT a.*, COUNT(v.id)::int as version_count
             FROM cms_articles a
             LEFT JOIN cms_versions v ON v.slug = a.slug
             WHERE a.slug = ${slug}
             GROUP BY a.slug;
         `;
-        const articleRow = articleResult.rows[0];
+        const articleRow = articleResult[0];
         const versions = await getPostgresVersions(slug);
-        const reviewsResult = await sql<CmsReviewRow>`
+        const reviewsResult = await sql<CmsReviewRow[]>`
             SELECT action, comment, version, created_at
             FROM cms_reviews
             WHERE slug = ${slug}
@@ -435,7 +491,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
             meta,
             content: latestVersion?.content || "",
             versions,
-            reviews: reviewsResult.rows.map((review) => ({
+            reviews: reviewsResult.map((review) => ({
                 action: review.action,
                 comment: review.comment,
                 version: review.version,
@@ -484,12 +540,13 @@ export async function saveCmsContent(slug: string, content: string, note?: strin
     const wordCount = content.split(/\s+/).filter(Boolean).length;
 
     if (HAS_POSTGRES) {
-        const nextResult = await sql<{ next_version: number }>`
+        const sql = getPostgresSql();
+        const nextResult = await sql<{ next_version: number }[]>`
             SELECT COALESCE(MAX(version), 0) + 1 as next_version
             FROM cms_versions
             WHERE slug = ${slug};
         `;
-        const nextVersion = Number(nextResult.rows[0]?.next_version || 1);
+        const nextVersion = Number(nextResult[0]?.next_version || 1);
 
         await sql`
             INSERT INTO cms_versions (slug, version, content, note, created_at)
@@ -545,12 +602,13 @@ export async function submitCmsReview(slug: string, action: CmsReviewAction, com
     const createdAt = new Date().toISOString();
 
     if (HAS_POSTGRES) {
-        const currentResult = await sql<{ current_version: number }>`
+        const sql = getPostgresSql();
+        const currentResult = await sql<{ current_version: number }[]>`
             SELECT COALESCE(MAX(version), 0) as current_version
             FROM cms_versions
             WHERE slug = ${slug};
         `;
-        const currentVersion = Number(currentResult.rows[0]?.current_version || 0);
+        const currentVersion = Number(currentResult[0]?.current_version || 0);
 
         await sql`
             INSERT INTO cms_reviews (slug, action, comment, version, created_at)
@@ -601,12 +659,13 @@ export async function setCmsPublished(slug: string, published: boolean): Promise
     const updatedAt = new Date().toISOString();
 
     if (HAS_POSTGRES) {
-        const currentResult = await sql<{ current_version: number }>`
+        const sql = getPostgresSql();
+        const currentResult = await sql<{ current_version: number }[]>`
             SELECT COALESCE(MAX(version), 0) as current_version
             FROM cms_versions
             WHERE slug = ${slug};
         `;
-        const currentVersion = Number(currentResult.rows[0]?.current_version || 0);
+        const currentVersion = Number(currentResult[0]?.current_version || 0);
 
         await sql`
             UPDATE cms_articles
@@ -637,17 +696,13 @@ export async function setCmsPublished(slug: string, published: boolean): Promise
 
 export async function getPublishedCmsContent(slug: string): Promise<string | null> {
     try {
-        await ensureCmsBootstrap();
+        const publishedContentMap = await getPublishedCmsContentMap();
+        if (publishedContentMap.has(slug)) {
+            return publishedContentMap.get(slug) || null;
+        }
 
         if (HAS_POSTGRES) {
-            const result = await sql<{ content: string }>`
-                SELECT v.content
-                FROM cms_articles a
-                JOIN cms_versions v ON v.slug = a.slug AND v.version = a.published_version
-                WHERE a.slug = ${slug} AND a.published = true AND a.published_version IS NOT NULL
-                LIMIT 1;
-            `;
-            return result.rows[0]?.content || null;
+            return null;
         }
 
         const row = selectSql<{ published: number; published_version: number | null }>(`

@@ -11,8 +11,13 @@ function normalizeCredential(value?: string): string | undefined {
 
     const wrappedInDoubleQuotes = trimmed.startsWith('"') && trimmed.endsWith('"');
     const wrappedInSingleQuotes = trimmed.startsWith("'") && trimmed.endsWith("'");
+    const wrappedInAngleBrackets = trimmed.startsWith("<") && trimmed.endsWith(">") && trimmed.length > 2;
 
     if (wrappedInDoubleQuotes || wrappedInSingleQuotes) {
+        return trimmed.slice(1, -1).trim();
+    }
+
+    if (wrappedInAngleBrackets) {
         return trimmed.slice(1, -1).trim();
     }
 
