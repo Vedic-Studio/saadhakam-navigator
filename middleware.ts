@@ -21,8 +21,8 @@ export function middleware(request: NextRequest) {
         return NextResponse.next();
     }
 
-    const username = process.env.CMS_BASIC_AUTH_USER;
-    const password = process.env.CMS_BASIC_AUTH_PASSWORD;
+    const username = process.env.CMS_BASIC_AUTH_USER?.trim();
+    const password = process.env.CMS_BASIC_AUTH_PASSWORD?.trim();
 
     if (!username || !password) {
         return NextResponse.next();
@@ -34,9 +34,24 @@ export function middleware(request: NextRequest) {
     }
 
     const encoded = authorization.slice(6).trim();
-    const expected = btoa(`${username}:${password}`);
 
-    if (encoded !== expected) {
+    let providedUsername = "";
+    let providedPassword = "";
+
+    try {
+        const decoded = atob(encoded);
+        const separatorIndex = decoded.indexOf(":");
+        if (separatorIndex === -1) {
+            return unauthorized();
+        }
+
+        providedUsername = decoded.slice(0, separatorIndex).trim();
+        providedPassword = decoded.slice(separatorIndex + 1).trim();
+    } catch {
+        return unauthorized();
+    }
+
+    if (providedUsername !== username || providedPassword !== password) {
         return unauthorized();
     }
 
