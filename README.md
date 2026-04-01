@@ -67,3 +67,35 @@ The backend no longer assumes startup-time schema creation or knowledge reloads 
 - `SADHAKA_KNOWLEDGE_REFRESH_ON_STARTUP`
 
 This keeps local/test startup lighter and makes schema management more explicit.
+
+## CMS deployment notes
+
+The editorial CMS is available at:
+
+- `/content-agent/editor-desk`
+
+For local development, the CMS can still use the existing local SQLite/filesystem storage.
+
+For deployed environments, the CMS now supports hosted persistence via Postgres when:
+
+- `POSTGRES_URL` is set
+
+Recommended production setup on Vercel:
+
+1. Connect the GitHub repo to Vercel
+2. Provision a hosted Postgres database for the project
+3. Add the database connection env vars in Vercel
+4. Add CMS protection env vars:
+   - `CMS_BASIC_AUTH_USER`
+   - `CMS_BASIC_AUTH_PASSWORD`
+5. Push to `main` to trigger production deployment
+
+Behavior:
+
+- Push to `main` → site auto-deploys on Vercel
+- CMS “Publish” action → marks the current CMS version as the live article version
+
+If `CMS_BASIC_AUTH_USER` and `CMS_BASIC_AUTH_PASSWORD` are set, the following paths are protected with Basic Auth:
+
+- `/content-agent/**`
+- `/api/cms/**`

@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}", "./content/**/*.mdx"],
   prefix: "",
   theme: {
     container: {
@@ -69,6 +69,14 @@ export default {
         gold: "hsl(var(--gold))",
         ivory: "hsl(var(--ivory))",
         parchment: "hsl(var(--parchment))",
+        // Living Manuscript editorial palette
+        editorial: {
+          bg: "#F9F8F6",
+          text: "#2C2A29",
+          accent: "#C15C3D",
+          "accent-light": "#D4836A",
+          rule: "#C15C3D",
+        },
       },
       fontFamily: {
         display: ["Playfair Display", "Georgia", "serif"],

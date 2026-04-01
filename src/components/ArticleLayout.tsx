@@ -5,7 +5,9 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleReadTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
 import { ArticleFeaturedImage } from "@/components/ArticleFeaturedImage";
+import { CmsMarkdownContent } from "@/components/cms/CmsMarkdownContent";
 import { type ArticleMeta, getPillarConfig } from "@/features/articles";
+import { getPublishedCmsContent } from "@/lib/cms/storage";
 import { buildArticleSchemas } from "@/lib/seo";
 
 interface ArticleLayoutProps {
@@ -15,7 +17,7 @@ interface ArticleLayoutProps {
     children: React.ReactNode; // long-form article body
 }
 
-export function ArticleLayout({
+export async function ArticleLayout({
     meta,
     pillarLabel,
     pillarHref,
@@ -25,6 +27,7 @@ export function ArticleLayout({
     const resolvedPillarLabel = pillarLabel ?? pillar.label;
     const resolvedPillarHref = pillarHref ?? pillar.href;
     const schemas = buildArticleSchemas(meta, resolvedPillarLabel, resolvedPillarHref);
+    const publishedCmsContent = await getPublishedCmsContent(meta.slug);
 
     return (
         <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
@@ -92,7 +95,7 @@ export function ArticleLayout({
 
                     {/* Article Body */}
                     <LongformContent className="mb-16">
-                        {children}
+                        {publishedCmsContent ? <CmsMarkdownContent markdown={publishedCmsContent} /> : children}
                     </LongformContent>
 
                     {/* Related Links */}

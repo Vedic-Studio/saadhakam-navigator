@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { GenerateWorkbench } from "@/components/content-agent/GenerateWorkbench";
 
@@ -19,6 +20,14 @@ export default function ContentAgentPage() {
                 <p className="mt-2 text-sm text-muted-foreground">
                     Phase 1 core loop: Topic → Content → Score
                 </p>
+                <div className="mt-4">
+                    <Link
+                        href="/content-agent/editor-desk"
+                        className="inline-flex items-center rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2 text-sm font-medium text-orange-300 hover:bg-orange-500/15"
+                    >
+                        Open Editorial CMS
+                    </Link>
+                </div>
                 <div className="mt-8">
                     <GenerateWorkbench />
                 </div>
