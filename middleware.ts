@@ -1,0 +1,48 @@
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+
+const CMS_PROTECTED_PATHS = ["/content-agent", "/api/cms"];
+
+function isProtectedPath(pathname: string): boolean {
+    return CMS_PROTECTED_PATHS.some((path) => pathname === path || pathname.startsWith(`${path}/`));
+}
+
+function unauthorized(): NextResponse {
+    return new NextResponse("Authentication required", {
+        status: 401,
+        headers: {
+            "WWW-Authenticate": 'Basic realm="Sadhaka CMS"',
+        },
+    });
+}
+
+export function middleware(request: NextRequest) {
+    if (!isProtectedPath(request.nextUrl.pathname)) {
+        return NextResponse.next();
+    }
+
+    const username = process.env.CMS_BASIC_AUTH_USER;
+    const password = process.env.CMS_BASIC_AUTH_PASSWORD;
+
+    if (!username || !password) {
+        return NextResponse.next();
+    }
+
+    const authorization = request.headers.get("authorization");
+    if (!authorization?.startsWith("Basic ")) {
+        return unauthorized();
+    }
+
+    const encoded = authorization.slice(6).trim();
+    const expected = btoa(`${username}:${password}`);
+
+    if (encoded !== expected) {
+        return unauthorized();
+    }
+
+    return NextResponse.next();
+}
+
+export const config = {
+    matcher: ["/content-agent/:path*", "/api/cms/:path*"],
+};
