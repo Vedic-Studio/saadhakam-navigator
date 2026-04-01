@@ -4,6 +4,13 @@ export type CmsStage = "draft" | "edit" | "review" | "published" | "rejected" | 
 export type CmsSourceKind = "pilot-import" | "legacy-page" | "cms-native";
 export type CmsReviewAction = "approve" | "revise" | "reject";
 
+export interface CmsArticleIntake {
+    topic?: string;
+    goal?: string;
+    audience?: string;
+    pageType?: string;
+}
+
 export interface CmsQueueArticle {
     slug: string;
     headline: string;
@@ -16,6 +23,8 @@ export interface CmsQueueArticle {
     published: boolean;
     sourceKind: CmsSourceKind;
     hasCmsContent: boolean;
+    canPublish: boolean;
+    intake?: CmsArticleIntake;
 }
 
 export interface CmsVersion {
@@ -51,7 +60,7 @@ export interface CmsArticleDetail {
     versions: CmsVersion[];
     reviews: CmsReview[];
     score: CmsScore | null;
-    migrationState: "cms" | "legacy-fallback";
+    migrationState: "cms" | "legacy-fallback" | "cms-native";
 }
 
 export interface ParsedCmsMarkdown {

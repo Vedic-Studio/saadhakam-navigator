@@ -6,6 +6,7 @@ import postgres, { type Sql } from "postgres";
 import { articles, getArticleBySlug, type ArticleMeta } from "@/data/articles";
 import { buildPilotCmsMarkdown } from "./markdown";
 import type {
+    CmsArticleIntake,
     CmsArticleDetail,
     CmsQueueArticle,
     CmsReview,
@@ -38,6 +39,7 @@ type CmsArticleRow = {
     headline: string;
     stage: CmsStage;
     format: string;
+    batch_label?: string | null;
     word_count: number;
     created_at: string;
     updated_at: string;
@@ -45,6 +47,10 @@ type CmsArticleRow = {
     published_version: number | null;
     source_kind: CmsSourceKind;
     legacy_route: string | null;
+    topic?: string | null;
+    goal?: string | null;
+    audience?: string | null;
+    page_type?: string | null;
     version_count?: number;
 };
 
@@ -105,16 +111,33 @@ function getVersionMarkdownPath(slug: string, version: number): string {
     return join(getArticleDir(slug), "versions", `v${String(version).padStart(3, "0")}.md`);
 }
 
-function createQueueArticle(meta: ArticleMeta, row?: Partial<CmsArticleRow> & Record<string, unknown>): CmsQueueArticle {
+function toArticleIntake(row?: Partial<CmsArticleRow> & Record<string, unknown>): CmsArticleIntake | undefined {
+    const topic = typeof row?.topic === "string" ? row.topic : undefined;
+    const goal = typeof row?.goal === "string" ? row.goal : undefined;
+    const audience = typeof row?.audience === "string" ? row.audience : undefined;
+    const pageType = typeof row?.page_type === "string" ? row.page_type : undefined;
+
+    if (!topic && !goal && !audience && !pageType) {
+        return undefined;
+    }
+
+    return { topic, goal, audience, pageType };
+}
+
+function createQueueArticle(
+    meta: Pick<ArticleMeta, "slug" | "title" | "pillar" | "publishDate">,
+    row?: Partial<CmsArticleRow> & Record<string, unknown>,
+): CmsQueueArticle {
     const hasCmsContent = Boolean(row?.version_count && Number(row.version_count) > 0);
     const sourceKind = (row?.source_kind as CmsSourceKind | undefined) || (hasCmsContent ? "cms-native" : "legacy-page");
     const stage = (row?.stage as CmsStage | undefined) || (hasCmsContent ? "published" : "legacy");
+    const isKnownRoute = Boolean(getArticleBySlug(meta.slug));
 
     return {
         slug: meta.slug,
         headline: meta.title,
-        batch: meta.pillar,
-        format: "long-form article",
+        batch: typeof row?.batch_label === "string" && row.batch_label ? row.batch_label : meta.pillar,
+        format: typeof row?.format === "string" && row.format ? row.format : "long-form article",
         stage,
         wordCount: Math.max(0, Math.round(Number(row?.word_count || 0))),
         createdAt: (row?.created_at as string | undefined) || meta.publishDate,
@@ -122,7 +145,179 @@ function createQueueArticle(meta: ArticleMeta, row?: Partial<CmsArticleRow> & Re
         published: Boolean(row?.published),
         sourceKind,
         hasCmsContent,
+        canPublish: isKnownRoute,
+        intake: toArticleIntake(row),
     };
+}
+
+function createFallbackMeta(slug: string, row?: Partial<CmsArticleRow> & Record<string, unknown>): Pick<ArticleMeta, "slug" | "title" | "pillar" | "publishDate"> {
+    const createdAt = (row?.created_at as string | undefined) || new Date().toISOString();
+
+    return {
+        slug,
+        title: (typeof row?.headline === "string" && row.headline) || (typeof row?.topic === "string" && row.topic) || slug,
+        pillar: "practical-practices",
+        publishDate: createdAt,
+    };
+}
+
+function resolveArticleMeta(slug: string, row?: Partial<CmsArticleRow> & Record<string, unknown>) {
+    return getArticleBySlug(slug) ?? createFallbackMeta(slug, row);
+}
+
+function deriveMigrationState(slug: string, versions: CmsVersion[]) {
+    if (versions.length === 0) {
+        return "legacy-fallback" as const;
+    }
+
+    return getArticleBySlug(slug) ? ("cms" as const) : ("cms-native" as const);
+}
+
+function slugifyTopic(input: string): string {
+    return input
+        .toLowerCase()
+        .normalize("NFKD")
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/[-\s]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 80);
+}
+
+async function slugExists(slug: string): Promise<boolean> {
+    if (getArticleBySlug(slug)) {
+        return true;
+    }
+
+    await ensureCmsBootstrap();
+
+    if (HAS_POSTGRES) {
+        const sql = getPostgresSql();
+        const rows = await sql<{ slug: string }[]>`
+            SELECT slug FROM cms_articles WHERE slug = ${slug} LIMIT 1;
+        `;
+        return rows.length > 0;
+    }
+
+    const rows = selectSql<{ slug: string }>(`
+        SELECT slug FROM cms_articles WHERE slug = ${sqlString(slug)} LIMIT 1;
+    `);
+    return rows.length > 0;
+}
+
+export async function generateUniqueCmsSlug(topic: string): Promise<string> {
+    const baseSlug = slugifyTopic(topic) || `draft-${Date.now()}`;
+    let candidate = baseSlug;
+    let counter = 2;
+
+    while (await slugExists(candidate)) {
+        candidate = `${baseSlug}-${counter}`;
+        counter += 1;
+    }
+
+    return candidate;
+}
+
+export async function upsertCmsArticleDraft(params: {
+    slug: string;
+    headline: string;
+    content: string;
+    format?: string;
+    batch?: string;
+    topic?: string;
+    goal?: string;
+    audience?: string;
+    pageType?: string;
+    note?: string;
+}): Promise<{ slug: string; version: CmsVersion }> {
+    await ensureCmsBootstrap();
+
+    const now = new Date().toISOString();
+    const wordCount = params.content.split(/\s+/).filter(Boolean).length;
+    const format = params.format || "generated draft";
+    const batch = params.batch || "cms-generated";
+
+    if (HAS_POSTGRES) {
+        const sql = getPostgresSql();
+        await sql`
+            INSERT INTO cms_articles (
+                slug, headline, stage, format, batch_label, word_count, created_at, updated_at, published, published_version, source_kind, legacy_route, topic, goal, audience, page_type
+            ) VALUES (
+                ${params.slug},
+                ${params.headline},
+                ${"draft"},
+                ${format},
+                ${batch},
+                ${wordCount},
+                ${now},
+                ${now},
+                ${false},
+                ${null},
+                ${"cms-native"},
+                ${null},
+                ${params.topic || null},
+                ${params.goal || null},
+                ${params.audience || null},
+                ${params.pageType || null}
+            )
+            ON CONFLICT (slug) DO UPDATE SET
+                headline = EXCLUDED.headline,
+                stage = EXCLUDED.stage,
+                format = EXCLUDED.format,
+                batch_label = EXCLUDED.batch_label,
+                word_count = EXCLUDED.word_count,
+                updated_at = EXCLUDED.updated_at,
+                source_kind = EXCLUDED.source_kind,
+                topic = EXCLUDED.topic,
+                goal = EXCLUDED.goal,
+                audience = EXCLUDED.audience,
+                page_type = EXCLUDED.page_type,
+                published = FALSE,
+                published_version = NULL,
+                legacy_route = NULL;
+        `;
+    } else {
+        runSql(`
+            INSERT INTO cms_articles (
+                slug, headline, stage, format, batch_label, word_count, created_at, updated_at, published, published_version, source_kind, legacy_route, topic, goal, audience, page_type
+            ) VALUES (
+                ${sqlString(params.slug)},
+                ${sqlString(params.headline)},
+                'draft',
+                ${sqlString(format)},
+                ${sqlString(batch)},
+                ${sqlString(wordCount)},
+                ${sqlString(now)},
+                ${sqlString(now)},
+                0,
+                NULL,
+                'cms-native',
+                NULL,
+                ${sqlString(params.topic || null)},
+                ${sqlString(params.goal || null)},
+                ${sqlString(params.audience || null)},
+                ${sqlString(params.pageType || null)}
+            )
+            ON CONFLICT(slug) DO UPDATE SET
+                headline = excluded.headline,
+                stage = excluded.stage,
+                format = excluded.format,
+                batch_label = excluded.batch_label,
+                word_count = excluded.word_count,
+                updated_at = excluded.updated_at,
+                source_kind = excluded.source_kind,
+                topic = excluded.topic,
+                goal = excluded.goal,
+                audience = excluded.audience,
+                page_type = excluded.page_type,
+                published = 0,
+                published_version = NULL,
+                legacy_route = NULL;
+        `);
+    }
+
+    const version = await saveCmsContent(params.slug, params.content, params.note || "Initial generated draft");
+    return { slug: params.slug, version };
 }
 
 function estimateWordCount(meta: ArticleMeta): number {
@@ -159,13 +354,18 @@ async function ensureLocalCmsBootstrap(): Promise<void> {
             headline TEXT NOT NULL,
             stage TEXT NOT NULL,
             format TEXT NOT NULL,
+            batch_label TEXT,
             word_count INTEGER NOT NULL DEFAULT 0,
             created_at TEXT NOT NULL,
             updated_at TEXT NOT NULL,
             published INTEGER NOT NULL DEFAULT 0,
             published_version INTEGER,
             source_kind TEXT NOT NULL,
-            legacy_route TEXT
+            legacy_route TEXT,
+            topic TEXT,
+            goal TEXT,
+            audience TEXT,
+            page_type TEXT
         );
 
         CREATE TABLE IF NOT EXISTS cms_versions (
@@ -193,6 +393,21 @@ async function ensureLocalCmsBootstrap(): Promise<void> {
     const hasContentColumn = versionColumns.some((column) => column.name === "content");
     if (!hasContentColumn) {
         runSql(`ALTER TABLE cms_versions ADD COLUMN content TEXT;`);
+    }
+
+    const articleColumns = selectSql<{ name: string }>(`PRAGMA table_info(cms_articles);`);
+    const requiredArticleColumns = [
+        { name: "batch_label", sql: "ALTER TABLE cms_articles ADD COLUMN batch_label TEXT;" },
+        { name: "topic", sql: "ALTER TABLE cms_articles ADD COLUMN topic TEXT;" },
+        { name: "goal", sql: "ALTER TABLE cms_articles ADD COLUMN goal TEXT;" },
+        { name: "audience", sql: "ALTER TABLE cms_articles ADD COLUMN audience TEXT;" },
+        { name: "page_type", sql: "ALTER TABLE cms_articles ADD COLUMN page_type TEXT;" },
+    ];
+
+    for (const column of requiredArticleColumns) {
+        if (!articleColumns.some((existing) => existing.name === column.name)) {
+            runSql(column.sql);
+        }
     }
 
     for (const meta of articles) {
@@ -250,13 +465,18 @@ async function ensurePostgresCmsBootstrap(): Promise<void> {
             headline TEXT NOT NULL,
             stage TEXT NOT NULL,
             format TEXT NOT NULL,
+            batch_label TEXT,
             word_count INTEGER NOT NULL DEFAULT 0,
             created_at TEXT NOT NULL,
             updated_at TEXT NOT NULL,
             published BOOLEAN NOT NULL DEFAULT FALSE,
             published_version INTEGER,
             source_kind TEXT NOT NULL,
-            legacy_route TEXT
+            legacy_route TEXT,
+            topic TEXT,
+            goal TEXT,
+            audience TEXT,
+            page_type TEXT
         );
     `;
 
@@ -438,8 +658,8 @@ export async function getCmsQueue(): Promise<CmsQueueArticle[]> {
 
         return result
             .map((row) => {
-                const meta = getArticleBySlug(String(row.slug));
-                return meta ? createQueueArticle(meta, row) : null;
+                const meta = resolveArticleMeta(String(row.slug), row);
+                return createQueueArticle(meta, row);
             })
             .filter((value): value is CmsQueueArticle => Boolean(value));
     }
@@ -454,18 +674,14 @@ export async function getCmsQueue(): Promise<CmsQueueArticle[]> {
 
     return rows
         .map((row) => {
-            const meta = getArticleBySlug(String(row.slug));
-            return meta ? createQueueArticle(meta, row) : null;
+            const meta = resolveArticleMeta(String(row.slug), row);
+            return createQueueArticle(meta, row);
         })
         .filter((value): value is CmsQueueArticle => Boolean(value));
 }
 
 export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetail | null> {
     await ensureCmsBootstrap();
-    const meta = getArticleBySlug(slug);
-    if (!meta) {
-        return null;
-    }
 
     if (HAS_POSTGRES) {
         const sql = getPostgresSql();
@@ -477,6 +693,10 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
             GROUP BY a.slug;
         `;
         const articleRow = articleResult[0];
+        if (!articleRow) {
+            return null;
+        }
+        const meta = resolveArticleMeta(slug, articleRow);
         const versions = await getPostgresVersions(slug);
         const reviewsResult = await sql<CmsReviewRow[]>`
             SELECT action, comment, version, created_at
@@ -488,7 +708,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
 
         return {
             article: createQueueArticle(meta, articleRow),
-            meta,
+            meta: getArticleBySlug(slug),
             content: latestVersion?.content || "",
             versions,
             reviews: reviewsResult.map((review) => ({
@@ -498,7 +718,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
                 createdAt: review.created_at,
             })),
             score: null,
-            migrationState: versions.length > 0 ? "cms" : "legacy-fallback",
+            migrationState: deriveMigrationState(slug, versions),
         };
     }
 
@@ -509,6 +729,10 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
         WHERE a.slug = ${sqlString(slug)}
         GROUP BY a.slug;
     `)[0];
+    if (!articleRow) {
+        return null;
+    }
+    const meta = resolveArticleMeta(slug, articleRow);
     const versions = await getLocalVersions(slug);
     const reviews = selectSql<CmsReviewRow>(`
         SELECT action, comment, version, created_at
@@ -520,7 +744,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
 
     return {
         article: createQueueArticle(meta, articleRow),
-        meta,
+        meta: getArticleBySlug(slug),
         content: latestVersion?.content || "",
         versions,
         reviews: reviews.map((review): CmsReview => ({
@@ -530,7 +754,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
             createdAt: review.created_at,
         })),
         score: null,
-        migrationState: versions.length > 0 ? "cms" : "legacy-fallback",
+        migrationState: deriveMigrationState(slug, versions),
     };
 }
 
@@ -657,6 +881,11 @@ export async function submitCmsReview(slug: string, action: CmsReviewAction, com
 export async function setCmsPublished(slug: string, published: boolean): Promise<void> {
     await ensureCmsBootstrap();
     const updatedAt = new Date().toISOString();
+    const existingMeta = getArticleBySlug(slug);
+
+    if (!existingMeta && published) {
+        throw new Error("Publishing is disabled for CMS-native drafts until public route support is added");
+    }
 
     if (HAS_POSTGRES) {
         const sql = getPostgresSql();

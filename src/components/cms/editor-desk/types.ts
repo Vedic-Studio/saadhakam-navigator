@@ -10,6 +10,13 @@ export type CmsArticle = {
     published: boolean;
     sourceKind: "pilot-import" | "legacy-page" | "cms-native";
     hasCmsContent: boolean;
+    canPublish: boolean;
+    intake?: {
+        topic?: string;
+        goal?: string;
+        audience?: string;
+        pageType?: string;
+    };
 };
 
 export type CmsVersion = {
@@ -40,9 +47,14 @@ export type CmsScore = {
 
 export type CmsArticleDetail = {
     article: CmsArticle;
+    meta?: {
+        slug: string;
+        route: string;
+        title: string;
+    };
     content: string;
     versions: CmsVersion[];
     reviews: CmsReview[];
     score: CmsScore | null;
-    migrationState: "cms" | "legacy-fallback";
+    migrationState: "cms" | "legacy-fallback" | "cms-native";
 };

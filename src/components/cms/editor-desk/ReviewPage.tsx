@@ -80,8 +80,8 @@ export function ReviewPage({ slug }: { slug: string }) {
                                         key={tab}
                                         onClick={() => setActiveTab(tab)}
                                         className={`border-b-2 px-4 py-2 text-sm font-medium transition-colors ${activeTab === tab
-                                                ? "border-white text-white"
-                                                : "border-transparent text-white/50 hover:text-white"
+                                            ? "border-white text-white"
+                                            : "border-transparent text-white/50 hover:text-white"
                                             }`}
                                     >
                                         {tab === "read" ? "Read" : "Edit"}
@@ -127,6 +127,7 @@ export function ReviewPage({ slug }: { slug: string }) {
                         <ReviewActions
                             reviews={detail.reviews}
                             published={detail.article.published}
+                            canPublish={detail.article.canPublish}
                             onSubmit={async (action, comment) => {
                                 await submitReview(slug, action, comment);
                                 await load();

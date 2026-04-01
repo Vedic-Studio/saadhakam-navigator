@@ -8,11 +8,12 @@ import { timeAgo } from "./utils";
 interface ReviewActionsProps {
     reviews: CmsReview[];
     published: boolean;
+    canPublish: boolean;
     onSubmit: (action: CmsReview["action"], comment: string) => Promise<void>;
     onTogglePublished: (published: boolean) => Promise<void>;
 }
 
-export function ReviewActions({ reviews, published, onSubmit, onTogglePublished }: ReviewActionsProps) {
+export function ReviewActions({ reviews, published, canPublish, onSubmit, onTogglePublished }: ReviewActionsProps) {
     const [comment, setComment] = useState("");
     const [busy, setBusy] = useState(false);
 
@@ -31,12 +32,19 @@ export function ReviewActions({ reviews, published, onSubmit, onTogglePublished 
             <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-white">Review</span>
                 <button
+                    disabled={!canPublish}
                     onClick={() => onTogglePublished(!published)}
-                    className="rounded border border-white/10 px-2.5 py-1 text-xs text-white/70 hover:text-white"
+                    className="rounded border border-white/10 px-2.5 py-1 text-xs text-white/70 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     {published ? "Unpublish" : "Publish"}
                 </button>
             </div>
+
+            {!canPublish ? (
+                <p className="text-xs text-amber-300/90">
+                    Publish is disabled for CMS-native drafts until public route support is added.
+                </p>
+            ) : null}
 
             <textarea
                 value={comment}

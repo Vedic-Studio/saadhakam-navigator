@@ -1,5 +1,12 @@
 import type { CmsArticleDetail, CmsReview, CmsVersion } from "./types";
 
+export type CmsGenerateDraftInput = {
+    topic: string;
+    pageType: string;
+    goal?: string;
+    audience?: string;
+};
+
 async function parseResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
         const error = await response.json().catch(() => ({ error: "Unknown error" }));
@@ -43,4 +50,13 @@ export async function setPublished(slug: string, published: boolean) {
         body: JSON.stringify({ published }),
     });
     return parseResponse<{ ok: true }>(response);
+}
+
+export async function generateDraft(input: CmsGenerateDraftInput) {
+    const response = await fetch("/api/cms/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input),
+    });
+    return parseResponse<{ slug: string }>(response);
 }
