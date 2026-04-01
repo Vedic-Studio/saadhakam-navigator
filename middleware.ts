@@ -3,6 +3,22 @@ import { NextResponse } from "next/server";
 
 const CMS_PROTECTED_PATHS = ["/content-agent", "/api/cms"];
 
+function normalizeCredential(value?: string): string | undefined {
+    const trimmed = value?.trim();
+    if (!trimmed) {
+        return undefined;
+    }
+
+    const wrappedInDoubleQuotes = trimmed.startsWith('"') && trimmed.endsWith('"');
+    const wrappedInSingleQuotes = trimmed.startsWith("'") && trimmed.endsWith("'");
+
+    if (wrappedInDoubleQuotes || wrappedInSingleQuotes) {
+        return trimmed.slice(1, -1).trim();
+    }
+
+    return trimmed;
+}
+
 function isProtectedPath(pathname: string): boolean {
     return CMS_PROTECTED_PATHS.some((path) => pathname === path || pathname.startsWith(`${path}/`));
 }
@@ -21,8 +37,8 @@ export function middleware(request: NextRequest) {
         return NextResponse.next();
     }
 
-    const username = process.env.CMS_BASIC_AUTH_USER?.trim();
-    const password = process.env.CMS_BASIC_AUTH_PASSWORD?.trim();
+    const username = normalizeCredential(process.env.CMS_BASIC_AUTH_USER);
+    const password = normalizeCredential(process.env.CMS_BASIC_AUTH_PASSWORD);
 
     if (!username || !password) {
         return NextResponse.next();
