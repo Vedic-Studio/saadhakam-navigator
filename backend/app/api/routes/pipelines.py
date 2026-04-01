@@ -125,15 +125,17 @@ def approve_pipeline(
     body: ApproveRequest,
     db: Session = Depends(get_db),
 ):
-    """Human gate: approve the pipeline (status → approved → complete)."""
+    """Human gate: approve the pipeline (status → approved)."""
     pipeline = _get_pipeline_or_404(db, pipeline_id)
-    if pipeline.status not in ("needs_review", "editing"):
+    if pipeline.status != "needs_review":
         raise HTTPException(
             status_code=422,
             detail=f"Cannot approve pipeline in status '{pipeline.status}'",
         )
+    if pipeline.error_message:
+        raise HTTPException(status_code=422, detail="Cannot approve a failed pipeline")
 
-    pipeline.status = "complete"
+    pipeline.status = "approved"
     _store_feedback(db, pipeline_id, stage="final", action="approve", notes=body.notes)
     db.commit()
     db.refresh(pipeline)
@@ -148,7 +150,7 @@ def reject_pipeline(
 ):
     """Human gate: reject the pipeline (status → rejected)."""
     pipeline = _get_pipeline_or_404(db, pipeline_id)
-    if pipeline.status not in ("needs_review", "editing"):
+    if pipeline.status != "needs_review":
         raise HTTPException(
             status_code=422,
             detail=f"Cannot reject pipeline in status '{pipeline.status}'",

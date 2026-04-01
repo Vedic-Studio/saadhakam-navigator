@@ -1,11 +1,14 @@
 import type { CmsArticleDetail, CmsReview, CmsVersion } from "./types";
-
-export type CmsGenerateDraftInput = {
-    topic: string;
-    pageType: string;
-    goal?: string;
-    audience?: string;
-};
+import {
+    addPipelineFeedback,
+    approvePipeline,
+    createPipeline,
+    getPipelineDetail,
+    listPipelines,
+    materializePipeline,
+    rejectPipeline,
+} from "@/lib/pipelines/api";
+import type { PipelineCreateInput, PipelineDetail, PipelineFeedbackInput, PipelineListItem } from "@/lib/pipelines/types";
 
 async function parseResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
@@ -52,11 +55,30 @@ export async function setPublished(slug: string, published: boolean) {
     return parseResponse<{ ok: true }>(response);
 }
 
-export async function generateDraft(input: CmsGenerateDraftInput) {
-    const response = await fetch("/api/cms/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input),
-    });
-    return parseResponse<{ slug: string }>(response);
+export async function getPipelineQueue(status?: string) {
+    return listPipelines(status) as Promise<PipelineListItem[]>;
+}
+
+export async function createEditorialPipeline(input: PipelineCreateInput) {
+    return createPipeline(input);
+}
+
+export async function getPipelineReviewDetail(id: string) {
+    return getPipelineDetail(id) as Promise<PipelineDetail>;
+}
+
+export async function approvePipelineReview(id: string, notes?: string) {
+    return approvePipeline(id, { notes });
+}
+
+export async function rejectPipelineReview(id: string, notes: string) {
+    return rejectPipeline(id, { notes });
+}
+
+export async function submitPipelineFeedback(id: string, input: PipelineFeedbackInput) {
+    return addPipelineFeedback(id, input);
+}
+
+export async function materializePipelineDraft(id: string) {
+    return materializePipeline(id);
 }

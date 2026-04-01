@@ -42,7 +42,7 @@ export function ReviewActions({ reviews, published, canPublish, onSubmit, onTogg
 
             {!canPublish ? (
                 <p className="text-xs text-amber-300/90">
-                    Publish is disabled for CMS-native drafts until public route support is added.
+                    Publish is only available for approved articles on known public routes.
                 </p>
             ) : null}
 
@@ -60,7 +60,7 @@ export function ReviewActions({ reviews, published, canPublish, onSubmit, onTogg
                     onClick={() => handleSubmit("approve")}
                     className="flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-green-600 py-2 text-xs font-medium text-white hover:bg-green-700 disabled:opacity-60"
                 >
-                    <Check size={14} /> Approve
+                    <Check size={14} /> Approve draft
                 </button>
                 <button
                     disabled={busy}

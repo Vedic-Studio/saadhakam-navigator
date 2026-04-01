@@ -1,7 +1,7 @@
 import type { ArticleMeta } from "@/data/articles";
 
-export type CmsStage = "draft" | "edit" | "review" | "published" | "rejected" | "legacy";
-export type CmsSourceKind = "pilot-import" | "legacy-page" | "cms-native";
+export type CmsStage = "draft" | "edit" | "review" | "approved" | "published" | "rejected" | "legacy";
+export type CmsSourceKind = "pilot-import" | "legacy-page" | "cms-native" | "api-pipeline";
 export type CmsReviewAction = "approve" | "revise" | "reject";
 
 export interface CmsArticleIntake {
@@ -9,6 +9,10 @@ export interface CmsArticleIntake {
     goal?: string;
     audience?: string;
     pageType?: string;
+    pipelineId?: string;
+    contextModule?: string;
+    qualityThreshold?: number;
+    finalScore?: number;
 }
 
 export interface CmsQueueArticle {

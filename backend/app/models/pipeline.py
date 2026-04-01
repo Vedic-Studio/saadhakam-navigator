@@ -35,7 +35,7 @@ class ContentPipeline(Base):
         String(30),
         nullable=False,
         default="queued",
-        # queued | researching | writing | editing | needs_review | approved | rejected | complete
+        # queued | researching | writing | editing | needs_review | approved | rejected | failed
     )
     revision_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     quality_threshold: Mapped[float] = mapped_column(Float, nullable=False, default=7.0)

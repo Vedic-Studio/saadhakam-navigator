@@ -23,7 +23,7 @@ class PipelineService:
     Runs the Orchestrator → Research → Write → Edit → (Revision loop) pipeline.
 
     Status flow:
-        queued → researching → writing → editing → [needs_review | approved | rejected | complete]
+        queued → researching → writing → editing → needs_review → [approved | rejected | failed]
     """
 
     def __init__(self):
@@ -43,7 +43,7 @@ class PipelineService:
             return result
         except Exception as exc:
             logger.exception("Pipeline %s failed: %s", pipeline_id, exc)
-            pipeline.status = "complete"  # end state for errored pipeline
+            pipeline.status = "failed"
             pipeline.error_message = str(exc)
             db.commit()
             raise

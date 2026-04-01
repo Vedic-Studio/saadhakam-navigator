@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const CMS_PROTECTED_PATHS = ["/content-agent", "/api/cms"];
+const CMS_PROTECTED_PATHS = ["/content-agent", "/api/cms", "/api/pipelines"];
 
 function normalizeCredential(value?: string): string | undefined {
     const trimmed = value?.trim();
@@ -80,5 +80,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/content-agent/:path*", "/api/cms/:path*"],
+    matcher: ["/content-agent/:path*", "/api/cms/:path*", "/api/pipelines/:path*"],
 };

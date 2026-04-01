@@ -51,6 +51,10 @@ type CmsArticleRow = {
     goal?: string | null;
     audience?: string | null;
     page_type?: string | null;
+    pipeline_id?: string | null;
+    context_module?: string | null;
+    quality_threshold?: number | null;
+    final_score?: number | null;
     version_count?: number;
 };
 
@@ -68,6 +72,30 @@ type CmsReviewRow = {
     version: number;
     created_at: string;
 };
+
+function getStageForReviewAction(action: CmsReviewAction): CmsStage {
+    if (action === "approve") {
+        return "approved";
+    }
+    if (action === "reject") {
+        return "rejected";
+    }
+    return "edit";
+}
+
+function getStageForUnpublishedArticle(currentStage?: CmsStage | null): CmsStage {
+    if (currentStage === "approved") {
+        return "approved";
+    }
+    if (currentStage === "rejected") {
+        return "rejected";
+    }
+    return "edit";
+}
+
+function canPublishArticle(stage?: CmsStage | null, hasKnownRoute?: boolean): boolean {
+    return stage === "approved" && Boolean(hasKnownRoute);
+}
 
 function getPostgresSql(): Sql {
     if (!postgresSql) {
@@ -116,12 +144,16 @@ function toArticleIntake(row?: Partial<CmsArticleRow> & Record<string, unknown>)
     const goal = typeof row?.goal === "string" ? row.goal : undefined;
     const audience = typeof row?.audience === "string" ? row.audience : undefined;
     const pageType = typeof row?.page_type === "string" ? row.page_type : undefined;
+    const pipelineId = typeof row?.pipeline_id === "string" ? row.pipeline_id : undefined;
+    const contextModule = typeof row?.context_module === "string" ? row.context_module : undefined;
+    const qualityThreshold = typeof row?.quality_threshold === "number" ? row.quality_threshold : undefined;
+    const finalScore = typeof row?.final_score === "number" ? row.final_score : undefined;
 
-    if (!topic && !goal && !audience && !pageType) {
+    if (!topic && !goal && !audience && !pageType && !pipelineId && !contextModule && !qualityThreshold && !finalScore) {
         return undefined;
     }
 
-    return { topic, goal, audience, pageType };
+    return { topic, goal, audience, pageType, pipelineId, contextModule, qualityThreshold, finalScore };
 }
 
 function createQueueArticle(
@@ -145,7 +177,7 @@ function createQueueArticle(
         published: Boolean(row?.published),
         sourceKind,
         hasCmsContent,
-        canPublish: isKnownRoute,
+        canPublish: canPublishArticle(stage, isKnownRoute),
         intake: toArticleIntake(row),
     };
 }
@@ -218,6 +250,32 @@ export async function generateUniqueCmsSlug(topic: string): Promise<string> {
     return candidate;
 }
 
+export async function findCmsArticleSlugByPipelineId(pipelineId: string): Promise<string | null> {
+    await ensureCmsBootstrap();
+
+    if (HAS_POSTGRES) {
+        const sql = getPostgresSql();
+        const rows = await sql<{ slug: string }[]>`
+            SELECT slug
+            FROM cms_articles
+            WHERE pipeline_id = ${pipelineId}
+            ORDER BY updated_at DESC
+            LIMIT 1;
+        `;
+        return rows[0]?.slug || null;
+    }
+
+    const rows = selectSql<{ slug: string }>(`
+        SELECT slug
+        FROM cms_articles
+        WHERE pipeline_id = ${sqlString(pipelineId)}
+        ORDER BY datetime(updated_at) DESC
+        LIMIT 1;
+    `);
+
+    return rows[0]?.slug || null;
+}
+
 export async function upsertCmsArticleDraft(params: {
     slug: string;
     headline: string;
@@ -229,6 +287,11 @@ export async function upsertCmsArticleDraft(params: {
     audience?: string;
     pageType?: string;
     note?: string;
+    pipelineId?: string;
+    contextModule?: string;
+    qualityThreshold?: number;
+    finalScore?: number;
+    sourceKind?: CmsSourceKind;
 }): Promise<{ slug: string; version: CmsVersion }> {
     await ensureCmsBootstrap();
 
@@ -236,12 +299,14 @@ export async function upsertCmsArticleDraft(params: {
     const wordCount = params.content.split(/\s+/).filter(Boolean).length;
     const format = params.format || "generated draft";
     const batch = params.batch || "cms-generated";
+    const sourceKind = params.sourceKind || "cms-native";
 
     if (HAS_POSTGRES) {
         const sql = getPostgresSql();
         await sql`
             INSERT INTO cms_articles (
                 slug, headline, stage, format, batch_label, word_count, created_at, updated_at, published, published_version, source_kind, legacy_route, topic, goal, audience, page_type
+                , pipeline_id, context_module, quality_threshold, final_score
             ) VALUES (
                 ${params.slug},
                 ${params.headline},
@@ -253,12 +318,16 @@ export async function upsertCmsArticleDraft(params: {
                 ${now},
                 ${false},
                 ${null},
-                ${"cms-native"},
+                ${sourceKind},
                 ${null},
                 ${params.topic || null},
                 ${params.goal || null},
                 ${params.audience || null},
-                ${params.pageType || null}
+                ${params.pageType || null},
+                ${params.pipelineId || null},
+                ${params.contextModule || null},
+                ${params.qualityThreshold ?? null},
+                ${params.finalScore ?? null}
             )
             ON CONFLICT (slug) DO UPDATE SET
                 headline = EXCLUDED.headline,
@@ -272,6 +341,10 @@ export async function upsertCmsArticleDraft(params: {
                 goal = EXCLUDED.goal,
                 audience = EXCLUDED.audience,
                 page_type = EXCLUDED.page_type,
+                pipeline_id = EXCLUDED.pipeline_id,
+                context_module = EXCLUDED.context_module,
+                quality_threshold = EXCLUDED.quality_threshold,
+                final_score = EXCLUDED.final_score,
                 published = FALSE,
                 published_version = NULL,
                 legacy_route = NULL;
@@ -280,6 +353,7 @@ export async function upsertCmsArticleDraft(params: {
         runSql(`
             INSERT INTO cms_articles (
                 slug, headline, stage, format, batch_label, word_count, created_at, updated_at, published, published_version, source_kind, legacy_route, topic, goal, audience, page_type
+                , pipeline_id, context_module, quality_threshold, final_score
             ) VALUES (
                 ${sqlString(params.slug)},
                 ${sqlString(params.headline)},
@@ -291,12 +365,16 @@ export async function upsertCmsArticleDraft(params: {
                 ${sqlString(now)},
                 0,
                 NULL,
-                'cms-native',
+                ${sqlString(sourceKind)},
                 NULL,
                 ${sqlString(params.topic || null)},
                 ${sqlString(params.goal || null)},
                 ${sqlString(params.audience || null)},
-                ${sqlString(params.pageType || null)}
+                ${sqlString(params.pageType || null)},
+                ${sqlString(params.pipelineId || null)},
+                ${sqlString(params.contextModule || null)},
+                ${sqlString(params.qualityThreshold ?? null)},
+                ${sqlString(params.finalScore ?? null)}
             )
             ON CONFLICT(slug) DO UPDATE SET
                 headline = excluded.headline,
@@ -310,6 +388,10 @@ export async function upsertCmsArticleDraft(params: {
                 goal = excluded.goal,
                 audience = excluded.audience,
                 page_type = excluded.page_type,
+                pipeline_id = excluded.pipeline_id,
+                context_module = excluded.context_module,
+                quality_threshold = excluded.quality_threshold,
+                final_score = excluded.final_score,
                 published = 0,
                 published_version = NULL,
                 legacy_route = NULL;
@@ -366,6 +448,10 @@ async function ensureLocalCmsBootstrap(): Promise<void> {
             goal TEXT,
             audience TEXT,
             page_type TEXT
+            , pipeline_id TEXT
+            , context_module TEXT
+            , quality_threshold REAL
+            , final_score REAL
         );
 
         CREATE TABLE IF NOT EXISTS cms_versions (
@@ -402,6 +488,10 @@ async function ensureLocalCmsBootstrap(): Promise<void> {
         { name: "goal", sql: "ALTER TABLE cms_articles ADD COLUMN goal TEXT;" },
         { name: "audience", sql: "ALTER TABLE cms_articles ADD COLUMN audience TEXT;" },
         { name: "page_type", sql: "ALTER TABLE cms_articles ADD COLUMN page_type TEXT;" },
+        { name: "pipeline_id", sql: "ALTER TABLE cms_articles ADD COLUMN pipeline_id TEXT;" },
+        { name: "context_module", sql: "ALTER TABLE cms_articles ADD COLUMN context_module TEXT;" },
+        { name: "quality_threshold", sql: "ALTER TABLE cms_articles ADD COLUMN quality_threshold REAL;" },
+        { name: "final_score", sql: "ALTER TABLE cms_articles ADD COLUMN final_score REAL;" },
     ];
 
     for (const column of requiredArticleColumns) {
@@ -477,6 +567,10 @@ async function ensurePostgresCmsBootstrap(): Promise<void> {
             goal TEXT,
             audience TEXT,
             page_type TEXT
+            , pipeline_id TEXT
+            , context_module TEXT
+            , quality_threshold REAL
+            , final_score REAL
         );
     `;
 
@@ -824,6 +918,7 @@ export async function saveCmsContent(slug: string, content: string, note?: strin
 export async function submitCmsReview(slug: string, action: CmsReviewAction, comment: string): Promise<CmsReview> {
     await ensureCmsBootstrap();
     const createdAt = new Date().toISOString();
+    const nextStage = getStageForReviewAction(action);
 
     if (HAS_POSTGRES) {
         const sql = getPostgresSql();
@@ -839,7 +934,6 @@ export async function submitCmsReview(slug: string, action: CmsReviewAction, com
             VALUES (${slug}, ${action}, ${comment}, ${currentVersion}, ${createdAt});
         `;
 
-        const nextStage = action === "approve" ? "published" : action === "reject" ? "rejected" : "edit";
         await sql`
             UPDATE cms_articles
             SET stage = ${nextStage},
@@ -867,7 +961,6 @@ export async function submitCmsReview(slug: string, action: CmsReviewAction, com
         );
     `);
 
-    const nextStage = action === "approve" ? "published" : action === "reject" ? "rejected" : "edit";
     runSql(`
         UPDATE cms_articles
         SET stage = ${sqlString(nextStage)},
@@ -895,12 +988,23 @@ export async function setCmsPublished(slug: string, published: boolean): Promise
             WHERE slug = ${slug};
         `;
         const currentVersion = Number(currentResult[0]?.current_version || 0);
+        const stageResult = await sql<{ stage: CmsStage | null }[]>`
+            SELECT stage
+            FROM cms_articles
+            WHERE slug = ${slug}
+            LIMIT 1;
+        `;
+        const currentStage = stageResult[0]?.stage;
+
+        if (published && !canPublishArticle(currentStage, Boolean(existingMeta))) {
+            throw new Error("Only approved articles on known public routes can be published");
+        }
 
         await sql`
             UPDATE cms_articles
             SET published = ${published},
                 published_version = ${published && currentVersion > 0 ? currentVersion : null},
-                stage = ${published ? "published" : "edit"},
+                stage = ${published ? "published" : getStageForUnpublishedArticle(currentStage)},
                 updated_at = ${updatedAt}
             WHERE slug = ${slug};
         `;
@@ -912,12 +1016,22 @@ export async function setCmsPublished(slug: string, published: boolean): Promise
         FROM cms_versions
         WHERE slug = ${sqlString(slug)};
     `);
+    const [{ stage: currentStage }] = selectSql<{ stage: CmsStage | null }>(`
+        SELECT stage
+        FROM cms_articles
+        WHERE slug = ${sqlString(slug)}
+        LIMIT 1;
+    `);
+
+    if (published && !canPublishArticle(currentStage, Boolean(existingMeta))) {
+        throw new Error("Only approved articles on known public routes can be published");
+    }
 
     runSql(`
         UPDATE cms_articles
         SET published = ${published ? 1 : 0},
             published_version = ${published && currentVersion > 0 ? currentVersion : "NULL"},
-            stage = ${sqlString(published ? "published" : "edit")},
+            stage = ${sqlString(published ? "published" : getStageForUnpublishedArticle(currentStage))},
             updated_at = ${sqlString(updatedAt)}
         WHERE slug = ${sqlString(slug)};
     `);

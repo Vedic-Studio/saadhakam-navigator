@@ -67,7 +67,14 @@ PipelineStatusLiteral = Literal[
     "needs_review",
     "approved",
     "rejected",
-    "complete",
+    "failed",
+]
+
+PipelineFeedbackStageLiteral = Literal[
+    "research_brief",
+    "writer_draft",
+    "editor_score",
+    "final",
 ]
 
 
@@ -158,7 +165,7 @@ class RejectRequest(BaseModel):
 
 
 class FeedbackRequest(BaseModel):
-    stage: str
+    stage: PipelineFeedbackStageLiteral
     action: Literal["approve", "reject", "edit"]
     diff: Optional[str] = None
     notes: Optional[str] = None
