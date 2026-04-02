@@ -45,7 +45,6 @@ __pycache__/
 .claire/
 .roo/
 workspace/
-backend/
 frontend/
 content-pipeline/
 skills/
