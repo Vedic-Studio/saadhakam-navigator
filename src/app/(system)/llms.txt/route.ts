@@ -42,7 +42,7 @@ export async function GET() {
         `## Programmatic Entity Pages`,
         `Machine-readable Markdown for any entity:`,
         `GET ${BASE_URL}/api/llm-content?type={type}&slug={slug}`,
-        `Supported types: philosophies | traditions | texts | concepts | practices | greats | topics | comparisons`,
+        `Supported types: philosophies | traditions | texts | concepts | practices | greats | topics | comparisons | articles`,
         ``,
         `- Philosophies: ${BASE_URL}/philosophies/{slug}`,
         `- Traditions: ${BASE_URL}/traditions/{slug}`,

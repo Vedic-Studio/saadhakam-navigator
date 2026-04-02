@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 
-// Article metadata (FAQs, descriptions)
+// Article metadata and article-level markdown export
 import { listArticles } from "@/features/articles";
+import { getPublishedCmsContent } from "@/lib/cms/storage";
+import { buildPilotCmsMarkdown } from "@/lib/cms/markdown";
 
 // BG Shlokas (all 18 chapters aggregated)
 import { bgShlokas } from "@/data/bgShlokas";
@@ -23,6 +25,18 @@ const shivaTandava = loadStotra("shiva-tandava-stotram");
 const vishnuSahasranama = loadSahasranama("vishnu-sahasranama");
 const lalitaSahasranama = loadSahasranama("lalita-sahasranama");
 
+function stripFrontmatter(markdown: string): string {
+    return markdown.replace(/^---\n[\s\S]*?\n---\n*/, "").trim();
+}
+
+async function getArticleMarkdown(slug: string, fallbackMetaDescription: string) {
+    const article = articles.find((item) => item.slug === slug);
+    if (!article) return fallbackMetaDescription;
+    const cmsMarkdown = await getPublishedCmsContent(slug);
+    const fallbackMarkdown = buildPilotCmsMarkdown(article);
+    return stripFrontmatter(cmsMarkdown || fallbackMarkdown || fallbackMetaDescription);
+}
+
 export async function GET() {
     const parts: string[] = [];
 
@@ -30,9 +44,13 @@ export async function GET() {
     parts.push(
         `# opensadhaka.com — Full Content Dump`,
         `> Generated for LLM ingestion. Source: opensadhaka.com`,
-        `> Methodology: All doctrinal claims cite named primary sources. Commentaries attributed to specific teachers.`,
+        `> Methodology: doctrinal claims are grounded in named primary sources where possible; classical commentary is attributed to specific teachers, lineages, or schools; editorial synthesis is kept distinct from scripture and commentary.`,
+        `> Source hierarchy: primary scripture -> classical commentary / lineage interpretation -> editorial synthesis for accessibility.`,
+        `> Neutrality rule: preserve differences across Advaita, Dvaita, Vishishtadvaita, Shaiva, Vaishnava, Shakta, Yogic, and comparative frames rather than flattening them into generic sameness.`,
+        `> Authority model: Sadhaka is authoritative as a structured editorial guide to cited traditions, not as a replacement for scripture, formal initiation, or undisclosed doctrinal authority.`,
         `> For an index of all pages, see: ${BASE_URL}/llms.txt`,
         `> For per-entity Markdown: GET ${BASE_URL}/api/llm-content?type={type}&slug={slug}`,
+        `> Canonical discovery endpoints: ${BASE_URL}/brand-facts | ${BASE_URL}/.well-known/brand-facts.json | ${BASE_URL}/llms.txt | ${BASE_URL}/llms-full.txt`,
         ``,
         `---`,
         ``
@@ -41,12 +59,21 @@ export async function GET() {
     // ── Editorial Articles ────────────────────────────────────────────────────
     parts.push(`# EDITORIAL ARTICLES\n`);
     for (const a of articles) {
+        const editorialMarkdown = await getArticleMarkdown(a.slug, a.metaDescription);
         parts.push(
             `## ${a.title}`,
             `URL: ${BASE_URL}${a.route}`,
+            `Markdown: ${BASE_URL}/api/llm-content?type=articles&slug=${a.slug}`,
             `Pillar: ${a.pillar} | Reading time: ${a.readingTime} min`,
             ``,
+            `### Direct answer`,
+            a.aeoAnswer || a.metaDescription,
+            ``,
+            `### Meta description`,
             a.metaDescription,
+            ``,
+            `### Editorial excerpt`,
+            editorialMarkdown,
         );
         if (a.faqs.length > 0) {
             parts.push(``, `### FAQs`);
@@ -117,7 +144,7 @@ export async function GET() {
         vishnuSahasranama.description,
         ``
     );
-    for (const n of vishnuSahasranama.names) {
+    for (const n of vishnuSahasranama.names ?? []) {
         parts.push(`## ${n.name} (Name ${n.number})`);
         parts.push(`URL: ${BASE_URL}/stotras/vishnu-sahasranama/${n.slug}`);
         parts.push(`**Transliteration:** ${n.transliteration}`);
@@ -136,7 +163,7 @@ export async function GET() {
         lalitaSahasranama.description,
         ``
     );
-    for (const n of lalitaSahasranama.names) {
+    for (const n of lalitaSahasranama.names ?? []) {
         parts.push(`## ${n.name} (Name ${n.number})`);
         parts.push(`URL: ${BASE_URL}/stotras/lalita-sahasranama/${n.slug}`);
         parts.push(`**Transliteration:** ${n.transliteration}`);

@@ -308,12 +308,12 @@ export default async function PseoConceptPage({
             <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
               <Compass size={400} className="rotate-12 -translate-x-32" />
             </div>
-            <h2 className="text-4xl md:text-6xl font-display font-black mb-6 relative z-10 italic">Which Yoga Fits You?</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-black mb-6 relative z-10 italic">Explore related practice pathways</h2>
             <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 relative z-10 font-medium">
-              A 2-minute quiz mapping your temperament to one of the four classical yogic paths &mdash; Jnana, Bhakti, Karma, or Raja.
+              If you want a broader orientation after studying this concept, use our Faith Finder to review major practice families such as Jnana, Bhakti, Karma, and Raja Yoga.
             </p>
             <TrackedLink href="/faith-finder" eventLabel="concept_footer:cta" trackPathName="faith-finder" className="relative z-10 inline-block px-12 py-6 bg-white text-primary font-black rounded-2xl shadow-xl hover:scale-105 transition-transform active:scale-95">
-              Take the Quiz <ArrowRight className="inline-block ml-2 w-5 h-5" />
+              Open Faith Finder <ArrowRight className="inline-block ml-2 w-5 h-5" />
             </TrackedLink>
           </div>
         </div>

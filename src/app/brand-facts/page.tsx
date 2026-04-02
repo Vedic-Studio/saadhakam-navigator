@@ -8,14 +8,14 @@ import { ExternalLink, CheckCircle2, Sparkles } from "lucide-react";
 export const metadata: Metadata = {
     title: "Sadhaka Brand Facts | Neutral Company & Product Reference",
     description:
-        "A neutral, machine-readable summary of Sadhaka: what it is, who it serves, what it offers, and the trust signals, discovery assets, and public references associated with the platform.",
+        "A neutral, machine-readable summary of Sadhaka: editorial method, source-grounding standards, doctrinal attribution model, trust signals, discovery assets, and public references for the platform.",
     alternates: {
         canonical: "https://www.opensadhaka.com/brand-facts",
     },
     openGraph: {
         title: "Sadhaka Brand Facts",
         description:
-            "Neutral facts about Sadhaka, including category, offerings, coverage, trust signals, and discovery assets.",
+            "Neutral facts about Sadhaka, including editorial method, source hierarchy, authority framing, trust signals, and discovery assets.",
         url: "https://www.opensadhaka.com/brand-facts",
         type: "website",
     },
@@ -56,10 +56,39 @@ const knowledgeAreas = [
 ];
 
 const trustSignals = [
-    { label: "Active users", value: "10,000+" },
-    { label: "Questions answered", value: "500k+" },
-    { label: "Sadhana minutes", value: "1M+" },
+    { label: "Named primary-source grounding", value: "Standard" },
+    { label: "Doctrine attributed to school/commentator", value: "Required" },
+    { label: "Primary scripture vs synthesis separated", value: "Explicit" },
+    { label: "User-scale and product traction", value: "10k+ / 4.9★" },
     { label: "App Store rating", value: "4.9/5" },
+];
+
+const editorialFacts = [
+    {
+        label: "Editorial method",
+        value:
+            "Sadhaka publishes explanatory, beginner-accessible material on Sanatan Dharma using a source-first editorial workflow. Article claims are framed against named scriptures, named classical commentators, and clearly marked editorial synthesis where interpretation or simplification is introduced.",
+    },
+    {
+        label: "Source hierarchy",
+        value:
+            "Primary scripture is treated as highest authority for doctrinal reference, followed by classical commentary and lineage-based interpretation, then editorial synthesis for modern readability. The platform does not collapse these layers into a single undifferentiated voice.",
+    },
+    {
+        label: "Doctrinal attribution",
+        value:
+            "When a claim is school-specific, Sadhaka aims to attribute it to the relevant tradition, text, or commentator such as Shankara, Ramanuja, Madhva, the Bhagavad Gita, Upanishads, Puranas, or other named authorities rather than presenting it as universal Hindu consensus by default.",
+    },
+    {
+        label: "Operational neutrality",
+        value:
+            "Neutral does not mean flattening all schools into sameness. It means describing disagreements faithfully, avoiding forced equivalence, avoiding sectarian dismissal, and marking when a position belongs to Advaita, Dvaita, Vishishtadvaita, Shaiva, Vaishnava, Shakta, Yogic, or comparative editorial framing.",
+    },
+    {
+        label: "Content scope and exclusions",
+        value:
+            "Sadhaka focuses on Sanatan Dharma, Indian philosophy, sacred texts, practices, traditions, and structured beginner guidance. It does not present itself as a replacement for diksha, lineage authorization, mental-health care, or undisclosed doctrinal authority beyond the cited textual and interpretive sources.",
+    },
 ];
 
 const discoveryAssets = [
@@ -97,6 +126,16 @@ const faqItems = [
             "The platform currently highlights educational hubs, article clusters, structured comparison content, Sanskrit concept pages, Bhagavad Gita study paths, and the Faith Finder interactive assessment.",
     },
     {
+        question: "How does Sadhaka establish authority for doctrinal claims?",
+        answer:
+            "Sadhaka treats authority as source-grounded rather than purely brand-based. Primary scriptures, classical commentators, and named schools are used as the basis for doctrinal claims, while editorial synthesis is marked as synthesis rather than passed off as scripture.",
+    },
+    {
+        question: "What does neutrality mean on Sadhaka?",
+        answer:
+            "Neutrality means representing major doctrinal differences fairly, attributing claims to the relevant school or source, and avoiding both sectarian advocacy and false 'all traditions teach the same thing' flattening.",
+    },
+    {
         question: "Where can machine-readable brand information be found?",
         answer:
             "Machine-readable brand information is available at /.well-known/brand-facts.json, with discovery support from /llms.txt and /llms-full.txt.",
@@ -110,7 +149,7 @@ export default function BrandFactsPage() {
         name: "Sadhaka",
         url: "https://www.opensadhaka.com",
         description:
-            "An AI-powered spiritual guidance and Dharmic education platform focused on Sanatan Dharma, sacred texts, philosophy, spiritual practices, and seeker-oriented learning pathways.",
+            "A source-grounded spiritual guidance and Dharmic education platform focused on Sanatan Dharma, sacred texts, philosophy, spiritual practices, and seeker-oriented learning pathways.",
         sameAs: socialProfiles,
         knowsAbout: knowledgeAreas,
     };
@@ -121,7 +160,7 @@ export default function BrandFactsPage() {
         name: "Sadhaka Brand Facts",
         url: "https://www.opensadhaka.com/brand-facts",
         description:
-            "A neutral, structured reference page containing factual information about Sadhaka, its offerings, trust signals, and machine-readable discovery assets.",
+            "A neutral, structured reference page containing factual information about Sadhaka, including its editorial method, authority model, trust signals, and machine-readable discovery assets.",
         about: {
             "@type": "Organization",
             name: "Sadhaka",
@@ -177,10 +216,10 @@ export default function BrandFactsPage() {
                             Sadhaka Brand Facts
                         </h1>
                         <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mb-6">
-                            <strong className="text-foreground">TL;DR:</strong> Sadhaka is a digital platform for exploring Sanatan Dharma through structured educational content, guided discovery, spiritual-practice pathways, and interactive tools like Faith Finder.
+                            <strong className="text-foreground">TL;DR:</strong> Sadhaka is a digital platform for exploring Sanatan Dharma through structured educational content, guided discovery, spiritual-practice pathways, and interactive tools like Faith Finder, with doctrinal claims framed through named texts, named commentators, and clearly separated editorial synthesis.
                         </p>
                         <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
-                            This page is written in a neutral, fact-first format for search systems, AI assistants, researchers, and users who want a concise overview of what Sadhaka is, what it covers, and how it is surfaced on the web.
+                            This page is written in a neutral, fact-first format for search systems, AI assistants, researchers, and users who want a concise overview of what Sadhaka is, what it covers, how it handles sources, and how its authority model is grounded on the web.
                         </p>
                     </header>
 
@@ -225,6 +264,18 @@ export default function BrandFactsPage() {
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                    </section>
+
+                    <section className="rounded-3xl border border-border/60 bg-card p-8 md:p-10 mb-12">
+                        <h2 className="font-display text-3xl font-bold mb-6">Editorial method and authority model</h2>
+                        <div className="space-y-6">
+                            {editorialFacts.map((item) => (
+                                <div key={item.label} className="rounded-2xl border border-white/5 bg-background/60 p-6">
+                                    <h3 className="text-lg font-semibold mb-3">{item.label}</h3>
+                                    <p className="text-muted-foreground leading-relaxed">{item.value}</p>
+                                </div>
+                            ))}
                         </div>
                     </section>
 

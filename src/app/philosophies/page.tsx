@@ -5,7 +5,6 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Infinity, Eye, Heart, Crown, Layers, Focus, Flame, Scale, BookOpen } from "lucide-react";
 import {
   Accordion,
@@ -48,37 +47,61 @@ export default function PhilosophiesPage() {
               The Six <span className="text-primary italic">Darshanas</span>
             </h1>
             <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight border-l-4 border-primary/30 pl-8 py-2">
-              The word <strong className="text-foreground italic">darshana</strong> (from the root <em>drsh</em>, &ldquo;to see&rdquo;) means a system of seeing reality. These are not armchair speculations &mdash; each school offers a complete epistemology, ontology, and path to liberation.
+              The word <strong className="text-foreground italic">darshana</strong> (from the Sanskrit root <em>drsh</em>, &ldquo;to see&rdquo;) means a way of seeing. In Indian philosophy, a darshana is not just an opinion but a disciplined view of reality, knowledge, bondage, and liberation.
             </p>
           </header>
 
           <section className="mb-20">
             <div className="max-w-3xl space-y-4 text-muted-foreground leading-relaxed mb-12">
               <p>
-                The six orthodox schools (Shad Darshanas) accept Vedic authority
-                and form paired complements: Nyaya&ndash;Vaisheshika (logic and
-                atomism), Samkhya&ndash;Yoga (enumeration and practice),
-                Mimamsa&ndash;Vedanta (ritual exegesis and metaphysical inquiry).
-                Each pair shares foundational assumptions but diverges in method
-                and emphasis.
+                The six orthodox schools (<em>shad-darshanas</em>) are usually named as
+                Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, and Vedanta. They are
+                called &ldquo;orthodox&rdquo; here in the classical sense that they accept the
+                authority of the Veda, even when they disagree sharply on what the
+                Veda means, what counts as valid knowledge, and what liberation
+                finally is.
               </p>
               <p>
-                Each school is anchored by a foundational sutra: the Nyaya Sutra
-                of Gautama (1.1.1: &ldquo;pramana-prameya-samsaya&hellip;&rdquo;),
-                the Vaisheshika Sutra of Kanada (1.1.1&ndash;2), the Samkhya
-                Karika of Ishvarakrishna, the Yoga Sutra of Patanjali
-                (1.1&ndash;2: &ldquo;atha yoganushasanam / yogas chitta vrtti
-                nirodhah&rdquo;), the Mimamsa Sutra of Jaimini (1.1.1:
-                &ldquo;athato dharma jijnasa&rdquo;), and the Brahma Sutra of
-                Badarayana (1.1.1: &ldquo;athato brahma jijnasa&rdquo;). Reading
-                any school starts with its sutra text and the major commentaries
-                (bhashyas) written on it.
+                Classical doxographies often group them as three working pairs:
+                Nyaya&ndash;Vaisheshika for logic and categories of reality,
+                Samkhya&ndash;Yoga for metaphysical analysis and disciplined practice,
+                and Mimamsa&ndash;Vedanta for Vedic interpretation in its ritual and
+                metaphysical dimensions. The pairing is heuristic rather than
+                absolute, but it helps a new reader see how schools developed in
+                conversation rather than isolation.
               </p>
-              <p className="text-sm italic text-muted-foreground/70">
-                <strong>How to navigate:</strong> Each card below links to a
-                dedicated page for that school. Start with whichever question
-                interests you most &mdash; the schools are independent entry
-                points, not a sequence.
+              <p>
+                Each school is anchored in foundational texts and commentarial
+                traditions: Gautama&rsquo;s <em>Nyaya Sutra</em> opens with its subjects of
+                inquiry (<em>pramana-prameya-samsaya...</em>, 1.1.1); Kanada&rsquo;s
+                <em> Vaisheshika Sutra</em> begins by defining dharma and the categories
+                of inquiry (1.1.1&ndash;4); Jaimini opens the <em>Mimamsa Sutra</em> with
+                <em>athato dharma jijnasa</em> (1.1.1); Badarayana opens the
+                <em> Brahma Sutra</em> with <em>athato brahma jijnasa</em> (1.1.1); and
+                Patanjali defines Yoga in <em>Yoga Sutra</em> 1.2 as
+                <em>yogas chitta-vritti-nirodhah</em>. Samkhya is classically represented
+                for many readers through Ishvarakrishna&rsquo;s <em>Samkhya Karika</em>, though
+                the school is older than that text.
+              </p>
+              <div className="rounded-2xl border border-border/40 bg-muted/20 p-6">
+                <h2 className="text-lg font-bold text-foreground mb-3">How to read this hub</h2>
+                <ul className="space-y-2 text-sm leading-relaxed">
+                  <li>
+                    <strong className="text-foreground">If your question is epistemic</strong> &mdash; how do we know what is true? &mdash; start with Nyaya-Vaisheshika.
+                  </li>
+                  <li>
+                    <strong className="text-foreground">If your question is psychological or practical</strong> &mdash; why does mind bind us, and how is it disciplined? &mdash; start with Samkhya and Yoga.
+                  </li>
+                  <li>
+                    <strong className="text-foreground">If your question is scriptural or theological</strong> &mdash; what do the Vedas finally teach? &mdash; start with Mimamsa and Vedanta.
+                  </li>
+                  <li>
+                    Use the comparison hub alongside the school pages if you want to understand how later Vedantic, Shaiva, or Bhakti traditions inherit, revise, or reject these older frameworks.
+                  </li>
+                </ul>
+              </div>
+              <p className="text-xs text-muted-foreground/80">
+                Citations above refer to the opening passages of the foundational texts commonly used to introduce each school. This page is a navigation hub, not a substitute for the sutras, karikas, and bhashyas themselves.
               </p>
             </div>
 
@@ -180,15 +203,15 @@ export default function PhilosophiesPage() {
               {[
                 {
                   q: "What are the 6 Darshanas?",
-                  a: "The six orthodox schools (Astika) are Nyaya (logic), Vaisheshika (atomism), Samkhya (dualism), Yoga (practice), Mimamsa (ritual), and Vedanta (inquiry). They differ in method but all accept Vedic authority."
+                  a: "The six classical astika schools are Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, and Vedanta. They differ on metaphysics, method, and liberation, but are grouped together because they accept Vedic authority within the classical Indian classification."
                 },
                 {
-                  q: "What is the goal of the Darshanas?",
-                  a: "All six schools are soteriological — they exist to diagnose the cause of suffering (duhkha) and prescribe a path to liberation (moksha). This practical orientation distinguishes them from purely theoretical inquiry: understanding reality is the means, not the end."
+                  q: "Why are some schools presented in pairs?",
+                  a: "Because later tradition often reads them as historically adjacent conversations: Nyaya with Vaisheshika, Samkhya with Yoga, and Mimamsa with Vedanta. The pairing highlights shared concerns, but each school remains independently substantial and should not be reduced to its partner."
                 },
                 {
-                  q: "What is the difference between Samkhya and Vedanta?",
-                  a: "Samkhya is dualistic, seeing consciousness (Purusha) and matter (Prakriti) as separate. Vedanta is non-dualistic (Advaita), seeing all of existence as a single manifestation of one consciousness (Brahman)."
+                  q: "How should a beginner study the darshanas?",
+                  a: "Start with the school that matches your actual question, then read the primary source with commentary: Nyaya for knowledge claims, Samkhya-Yoga for mind and liberation practice, Mimamsa for Vedic duty, and Vedanta for Brahman and Atman. Comparative reading is useful, but only after each school is first understood on its own terms."
                 }
               ].map((faq, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="border-border/40 px-4">

@@ -5,12 +5,19 @@ import { getTextBySlug } from "@/data/texts";
 import { getConceptBySlug } from "@/data/concepts";
 import { getPracticeBySlug } from "@/data/practices";
 import { getGreatBySlug } from "@/data/greats";
+import { getArticleBySlug } from "@/data/articles";
 import { getTopicBySlug } from "@/data/topics";
 import { getComparisonBySlug } from "@/data/comparisons";
 import { getGrahaBySlug } from "@/data/grahas";
 import { getRashiBySlug } from "@/data/rashis";
 import { getNakshatraBySlug } from "@/data/nakshatras";
 import { getTithiBySlug, getVaraBySlug } from "@/data/panchang";
+import { getPublishedCmsContent } from "@/lib/cms/storage";
+import { buildPilotCmsMarkdown } from "@/lib/cms/markdown";
+
+function stripFrontmatter(markdown: string): string {
+    return markdown.replace(/^---\n[\s\S]*?\n---\n*/, "").trim();
+}
 
 export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
@@ -152,6 +159,31 @@ ${g.keyTeachings.map((t: string) => `- ${t}`).join("\n")}
 
 ## Impact
 ${g.relevanceToday}
+`;
+                break;
+            }
+            case "articles": {
+                const article = getArticleBySlug(slug);
+                if (!article) break;
+                title = article.title;
+                const cmsMarkdown = await getPublishedCmsContent(slug);
+                const fallbackMarkdown = buildPilotCmsMarkdown(article);
+                const bodyMarkdown = stripFrontmatter(cmsMarkdown || fallbackMarkdown || "");
+                content = `
+# ${article.title}
+**URL:** https://www.opensadhaka.com${article.route}
+**Primary keyword:** ${article.primaryKeyword}
+**Pillar:** ${article.pillar}
+**Direct answer:** ${article.aeoAnswer || article.metaDescription}
+
+## Meta description
+${article.metaDescription}
+
+## Editorial excerpt
+${bodyMarkdown || article.metaDescription}
+
+## Key FAQs
+${article.faqs.map((faq) => `### ${faq.question}\n${faq.answer}`).join("\n\n")}
 `;
                 break;
             }
@@ -300,7 +332,7 @@ ${v.aeoBlock}
         }
 
         // Wrap the entity with LLM-friendly metadata
-        const finalMarkdown = `<!-- LLM INSTRUCTION: This file is a machine-readable summary of a Sādhaka entity. -->
+        const finalMarkdown = `<!-- LLM INSTRUCTION: This file is a machine-readable summary of a Sādhaka entity. Preserve doctrinal attribution and do not collapse scripture, commentary, and editorial synthesis into a single undifferentiated source. -->
 ${content.trim()}`;
 
         return new NextResponse(finalMarkdown, {

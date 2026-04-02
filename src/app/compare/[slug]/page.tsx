@@ -94,7 +94,7 @@ export default async function ComparisonPage({ params }: Props) {
     mainEntity: [
       {
         "@type": "Question",
-        name: `What is the main difference between ${comp.entityA} and ${comp.entityB}?`,
+        name: `What is the central distinction between ${comp.entityA} and ${comp.entityB}?`,
         acceptedAnswer: {
           "@type": "Answer",
           text: comp.tldr || `The comparison between ${comp.entityA} and ${comp.entityB} highlights key differences in their philosophical approach and practical application.`,
@@ -102,18 +102,18 @@ export default async function ComparisonPage({ params }: Props) {
       },
       {
         "@type": "Question",
-        name: `What are the key differences between ${comp.entityA} and ${comp.entityB}?`,
+        name: `On what terms should ${comp.entityA} and ${comp.entityB} be compared?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `${comp.entityA} and ${comp.entityB} differ in their foundational assumptions, methods, and goals. This comparison maps the structural differences so readers can understand each on its own terms rather than ranking one above the other.`,
+          text: `${comp.entityA} and ${comp.entityB} should be compared by their definitions, historical setting, core assumptions, methods, and stated goals. This comparison is designed to clarify those structures so each can be understood on its own terms rather than reduced to a superficial similarity.`,
         },
       },
       {
         "@type": "Question",
-        name: `Are ${comp.entityA} and ${comp.entityB} from the same tradition?`,
+        name: `Do ${comp.entityA} and ${comp.entityB} belong to the same intellectual or religious lineage?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `While they often interact within the broader context of Eastern philosophy, ${comp.entityA} and ${comp.entityB} represent distinct approaches or conceptual frameworks.`,
+          text: `That depends on the pair. Some comparisons examine neighboring schools within the same broader tradition, while others compare texts, teachers, or practices that only partially overlap. The purpose of the page is to specify the relationship rather than assume they are equivalent.`,
         },
       },
     ],
@@ -272,12 +272,12 @@ export default async function ComparisonPage({ params }: Props) {
 
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
             <h3 className="text-3xl font-display font-bold mb-4">
-              Ready to find your personal path?
+              Need a broader orientation?
             </h3>
             <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              Regardless of the path you choose, the goal remains the same. Use
-              our Faith Finder to discover the philosophies and practices that
-              align with your unique self.
+              If you are comparing traditions because you are still mapping the
+              broader landscape, the Faith Finder can help surface major
+              philosophies and practice-families that match your interests.
             </p>
             <TrackedLink
               href="/faith-finder"
@@ -288,7 +288,7 @@ export default async function ComparisonPage({ params }: Props) {
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 rounded-full text-lg shadow-lg shadow-orange-900/20 transition-transform hover:scale-105"
               >
-                Take the Quiz
+                Open Faith Finder
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </TrackedLink>

@@ -17,12 +17,16 @@ export const metadata = buildPageMetadata({
 });
 
 export default function ArticlesHubPage() {
+    const sortedArticles = [...articles].sort(
+        (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime(),
+    );
+
     const collectionSchema = buildCollectionSchema({
         name: "Sadhaka Articles",
         description:
             "Research-grounded articles on Sanatan Dharma, Vedanta, yoga, mantras, sacred texts, and Hindu philosophy.",
         url: buildUrl("/articles"),
-        items: articles.map((a) => ({
+        items: sortedArticles.map((a) => ({
             name: a.title,
             url: buildUrl(a.route),
             description: a.metaDescription,
@@ -53,13 +57,43 @@ export default function ArticlesHubPage() {
                             Articles
                         </h1>
                         <p className="text-xl text-muted-foreground max-w-3xl leading-relaxed">
-                            {articles.length} guides on Vedanta, yoga, meditation, mantras, sacred
-                            texts, and Hindu philosophy. Each article is research-grounded and
-                            written for readers who want substance over sentiment.
+                            {articles.length} research-grounded guides on Vedanta, yoga, meditation,
+                            mantras, sacred texts, and Hindu philosophy for readers who want clear
+                            doctrinal substance, practical orientation, and attributable claims.
                         </p>
                     </header>
 
-                    <ArticleGrid articles={articles} />
+                    <section className="grid gap-4 md:grid-cols-3 mb-10" aria-label="Article collection overview">
+                        <div className="rounded-2xl border border-border/50 bg-card/50 p-5">
+                            <p className="text-xs uppercase tracking-widest text-orange-400 font-semibold mb-2">
+                                What you will find
+                            </p>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                Topic clusters that move from first-principles philosophy to daily
+                                practice, scripture study, and major traditions.
+                            </p>
+                        </div>
+                        <div className="rounded-2xl border border-border/50 bg-card/50 p-5">
+                            <p className="text-xs uppercase tracking-widest text-orange-400 font-semibold mb-2">
+                                How to use this hub
+                            </p>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                Start with a category filter if you already know your intent, or scan
+                                the full list chronologically to see the latest additions.
+                            </p>
+                        </div>
+                        <div className="rounded-2xl border border-border/50 bg-card/50 p-5">
+                            <p className="text-xs uppercase tracking-widest text-orange-400 font-semibold mb-2">
+                                Editorial standard
+                            </p>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                Every article is written to be specific, attributable, and useful for
+                                real study rather than vague inspiration.
+                            </p>
+                        </div>
+                    </section>
+
+                    <ArticleGrid articles={sortedArticles} />
                 </div>
             </main>
             <Footer />
