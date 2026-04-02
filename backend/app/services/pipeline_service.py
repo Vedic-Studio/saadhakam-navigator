@@ -76,6 +76,9 @@ class PipelineService:
             page_type=pipeline.page_type,
             config=config,
         )
+        initial_writer_handoff = brief.to_writer_handoff(goal=request.goal)
+        editor_structural_handoff = brief.to_editor_structural_handoff(goal=request.goal)
+        retry_writer_handoff = brief.to_retry_handoff(goal=request.goal)
 
         version = 1
         _save_output(
@@ -84,11 +87,21 @@ class PipelineService:
             version=version,
             stage="research_brief",
             agent="research",
-            content=brief.to_writer_handoff(goal=request.goal),
+            content=initial_writer_handoff,
             research_brief_json=brief.to_json(),
         )
 
-        revision_notes: Optional[str] = None
+        version += 1
+        _save_output(
+            db,
+            pipeline_id=pipeline.id,
+            version=version,
+            stage="editor_structural_handoff",
+            agent="research",
+            content=editor_structural_handoff,
+            research_brief_json=brief.to_json(),
+        )
+
         revision_packet: Optional[str] = None
 
         # --- Steps 2-N: Write → Edit → (revision loop) ---
@@ -101,13 +114,8 @@ class PipelineService:
 
             writer_result = await self.writer.generate(
                 request,
-                knowledge_handoff=(
-                    brief.to_writer_handoff(goal=request.goal)
-                    if attempt == 1
-                    else brief.to_retry_handoff(goal=request.goal)
-                ),
+                knowledge_handoff=(initial_writer_handoff if attempt == 1 else retry_writer_handoff),
                 revision_packet=revision_packet,
-                revision_notes=revision_notes,
             )
             draft = writer_result.content
 
@@ -126,7 +134,10 @@ class PipelineService:
             db.commit()
 
             scorecard, notes = self.editor.score_with_notes(
-                draft, request, threshold=config.quality_threshold
+                draft,
+                request,
+                threshold=config.quality_threshold,
+                structural_handoff=editor_structural_handoff,
             )
             scorecard_json = _scorecard_to_json(scorecard)
 
@@ -162,8 +173,12 @@ class PipelineService:
                 break
 
             # Below threshold + budget remains → send revision notes back to writer
-            revision_notes = notes
-            revision_packet = brief.build_revision_packet(draft, notes)
+            revision_packet = brief.build_retry_packet(
+                draft=draft,
+                revision_notes=notes,
+                goal=request.goal,
+                retry_handoff=retry_writer_handoff,
+            )
             pipeline.revision_count = attempt
             db.commit()
 

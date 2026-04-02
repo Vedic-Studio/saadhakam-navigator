@@ -53,6 +53,48 @@ class ResearchBrief:
     article_requirements: List[str] = field(default_factory=list)
     forbidden_phrases: List[str] = field(default_factory=list)
 
+    def to_editor_structural_handoff(self, goal: Optional[str] = None) -> str:
+        """Compact structural contract for the editor to validate before full scoring."""
+        faq_minimum = self._extract_numeric_requirement("Minimum FAQ items")
+        internal_links = self._extract_numeric_requirement("Minimum internal links")
+        aeo_required = self._extract_boolean_requirement("AEO block required")
+        aeo_word_range = self._extract_range_requirement("AEO word range")
+        reference_template = self._extract_text_requirement("Reference template")
+
+        lines = [
+            f"# Editor Structural Handoff: {self.topic}",
+            f"- Page type: {self.page_type}",
+            f"- Context module: {self.context_module}",
+            f"- Minimum word count: {self.min_word_count}",
+            *( [f"- Goal: {goal}"] if goal else []),
+            "",
+            "## Required Structure",
+            "- Exactly one H1",
+            *[f"- Required section: {section}" for section in self.required_sections],
+            *( [f"- Minimum FAQ items: {faq_minimum}"] if faq_minimum is not None else []),
+            *( [f"- Minimum internal links: {internal_links}"] if internal_links is not None else []),
+            *( [f"- AEO block required: {'yes' if aeo_required else 'no'}"] if aeo_required is not None else []),
+            *(
+                [f"- AEO word range: {aeo_word_range[0]}-{aeo_word_range[1]}"]
+                if aeo_word_range is not None else []
+            ),
+            *( [f"- Reference template: {reference_template}"] if reference_template else []),
+            "",
+            "## Required Signals",
+            *[f"- Source signal: {signal}" for signal in self._source_signals()],
+            *( ["- Sources & Commentaries section required"] if self._sources_section_required() else []),
+            "",
+            "## Guardrails",
+            *[f"- Avoid phrase: {item}" for item in self.forbidden_phrases[:10]],
+            *[f"- Avoid voice anti-pattern: {item}" for item in self.anti_patterns[:8]],
+        ]
+
+        disclaimer = self.disclaimer_requirement(goal)
+        if disclaimer:
+            lines += ["", "## Disclaimer Requirement", f"- {disclaimer}"]
+
+        return "\n".join(lines).strip()
+
     def to_writer_handoff(self, goal: Optional[str] = None) -> str:
         """Compact first-pass handoff for the writer prompt."""
         lines = [
@@ -124,12 +166,27 @@ class ResearchBrief:
 
     def build_revision_packet(self, draft: str, revision_notes: str) -> str:
         """Targeted retry packet: preserve structure, then fix only failed areas."""
+        return self.build_retry_packet(draft=draft, revision_notes=revision_notes)
+
+    def build_retry_packet(
+        self,
+        *,
+        draft: str,
+        revision_notes: str,
+        goal: Optional[str] = None,
+        retry_handoff: Optional[str] = None,
+    ) -> str:
+        """Normalized rewrite packet with immutable constraints + targeted fixes."""
         headings = self._extract_headings(draft)
         preserved_sections = headings[:8]
         internal_links = len(re.findall(r"\]\(/[^)]+\)", draft))
+        immutable_constraints = retry_handoff or self.to_retry_handoff(goal=goal)
 
         lines = [
-            f"# Revision Packet: {self.topic}",
+            f"# Retry Packet: {self.topic}",
+            "## Immutable Constraints",
+            immutable_constraints,
+            "",
             "## Preserve Where Possible",
             *([f"- Keep heading: {heading}" for heading in preserved_sections] or ["- Preserve any accurate structure already present"]),
             f"- Preserve or improve internal links count (currently {internal_links})",
@@ -153,6 +210,52 @@ class ResearchBrief:
             for line in content.splitlines()
             if line.strip().startswith(("# ", "## ", "### "))
         ]
+
+    def _extract_numeric_requirement(self, prefix: str) -> Optional[int]:
+        for item in self.article_requirements:
+            if item.startswith(f"{prefix}:"):
+                match = re.search(r"(\d+)", item)
+                if match:
+                    return int(match.group(1))
+        return None
+
+    def _extract_boolean_requirement(self, prefix: str) -> Optional[bool]:
+        for item in self.article_requirements:
+            if item.startswith(f"{prefix}:"):
+                value = item.split(":", 1)[1].strip().lower()
+                if value in {"yes", "true"}:
+                    return True
+                if value in {"no", "false"}:
+                    return False
+        return None
+
+    def _extract_range_requirement(self, prefix: str) -> Optional[tuple[int, int]]:
+        for item in self.article_requirements:
+            if item.startswith(f"{prefix}:"):
+                match = re.search(r"(\d+)\s*-\s*(\d+)", item)
+                if match:
+                    return int(match.group(1)), int(match.group(2))
+        return None
+
+    def _extract_text_requirement(self, prefix: str) -> Optional[str]:
+        for item in self.article_requirements:
+            if item.startswith(f"{prefix}:"):
+                return item.split(":", 1)[1].strip() or None
+        return None
+
+    def _source_signals(self) -> List[str]:
+        structural_signals = []
+        for item in self.article_requirements:
+            normalized = item.strip().lower()
+            if ":" not in item and "sources & commentaries section" not in normalized:
+                structural_signals.append(item)
+        return structural_signals
+
+    def _sources_section_required(self) -> bool:
+        return any(
+            requirement.strip().lower() == "sources & commentaries section"
+            for requirement in self.article_requirements
+        )
 
     def to_text(self) -> str:
         """Format the brief as a compact markdown block for the Writer system prompt."""

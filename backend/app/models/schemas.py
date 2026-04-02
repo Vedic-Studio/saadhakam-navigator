@@ -72,6 +72,7 @@ PipelineStatusLiteral = Literal[
 
 PipelineFeedbackStageLiteral = Literal[
     "research_brief",
+    "editor_structural_handoff",
     "writer_draft",
     "editor_score",
     "final",

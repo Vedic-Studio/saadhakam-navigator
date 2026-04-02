@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Dict, List, Tuple
 
 from app.knowledge.store import KnowledgeStore, get_knowledge_store
@@ -56,6 +56,19 @@ class DeterministicScanResult:
     violations: List[str]
 
 
+@dataclass
+class EditorStructuralRequirements:
+    min_word_count: int | None = None
+    required_sections: List[str] = field(default_factory=list)
+    faq_minimum: int | None = None
+    internal_links_minimum: int | None = None
+    requires_aeo_block: bool | None = None
+    aeo_word_range: tuple[int, int] | None = None
+    source_signals: List[str] = field(default_factory=list)
+    sources_section_required: bool = False
+    disclaimer: str | None = None
+
+
 class EditorAgent(BaseAgent):
     def __init__(self, knowledge_store: KnowledgeStore | None = None):
         super().__init__("editor")
@@ -66,8 +79,15 @@ class EditorAgent(BaseAgent):
         content: str,
         request: GenerateRequest,
         threshold: float | None = None,
+        structural_handoff: str | None = None,
     ) -> QualityScorecard:
         violations: List[str] = []
+        structural = self._parse_structural_handoff(structural_handoff)
+
+        structural_result = self._validate_structural_handoff(content, structural)
+        if not structural_result.passed:
+            violations.extend(structural_result.violations)
+        structural_safe = structural_result.passed
 
         deterministic_result = self._run_deterministic_scan(content)
         if not deterministic_result.passed:
@@ -76,11 +96,11 @@ class EditorAgent(BaseAgent):
         depth_score, depth_notes = self._score_content_depth(content, request)
         factual_score, factual_notes = self._score_factual_accuracy(content)
         voice_score, voice_notes = self._score_voice_consistency(content)
-        seo_score, seo_notes = self._score_seo_structure(content)
-        aead_score, aead_notes = self._score_aead_compliance(content)
+        seo_score, seo_notes = self._score_seo_structure(content, structural)
+        aead_score, aead_notes = self._score_aead_compliance(content, structural)
 
-        exclusion_result = self._run_exclusion_checks(content, request)
-        exclusion_safe = exclusion_result.passed and deterministic_result.passed
+        exclusion_result = self._run_exclusion_checks(content, request, structural)
+        exclusion_safe = exclusion_result.passed and deterministic_result.passed and structural_safe
         exclusion_score = 10.0 if exclusion_safe else 0.0
         exclusion_notes = "No exclusion policy violations detected"
         if not exclusion_safe:
@@ -90,7 +110,7 @@ class EditorAgent(BaseAgent):
         ai_score, ai_notes = self._score_ai_detection_risk(content)
         uniq_score, uniq_notes = self._score_uniqueness(content)
         readability_score, readability_notes = self._score_readability(content)
-        eeat_score, eeat_notes = self._score_eeat(content)
+        eeat_score, eeat_notes = self._score_eeat(content, structural)
 
         dimensions = {
             "content_depth": QualityDimensionScore(
@@ -199,9 +219,10 @@ class EditorAgent(BaseAgent):
         content: str,
         request: "GenerateRequest",
         threshold: float | None = None,
+        structural_handoff: str | None = None,
     ) -> tuple["QualityScorecard", str]:
         """Convenience: score content AND generate revision notes in one call."""
-        scorecard = self.score(content, request, threshold=threshold)
+        scorecard = self.score(content, request, threshold=threshold, structural_handoff=structural_handoff)
         effective_threshold = threshold if threshold is not None else 7.0
         notes = self.generate_revision_notes(scorecard, threshold=effective_threshold)
         return scorecard, notes
@@ -251,29 +272,41 @@ class EditorAgent(BaseAgent):
         score = max(0.0, 10.0 - hits * 2.0)
         return score, f"Banned voice markers found: {hits}"
 
-    def _score_seo_structure(self, content: str) -> Tuple[float, str]:
+    def _score_seo_structure(self, content: str, structural: EditorStructuralRequirements | None = None) -> Tuple[float, str]:
         h1_count = len(re.findall(r"^#\s+", content, flags=re.MULTILINE))
         h2_count = len(re.findall(r"^##\s+", content, flags=re.MULTILINE))
         h3_count = len(re.findall(r"^###\s+", content, flags=re.MULTILINE))
         internal_links = len(re.findall(r"\]\(/[^)]+\)", content))
 
+        internal_links_target = structural.internal_links_minimum if structural and structural.internal_links_minimum is not None else 3
+
         score = 0.0
         score += 3.0 if h1_count == 1 else 0.0
         score += 2.5 if h2_count >= 3 else 1.0 if h2_count >= 1 else 0.0
         score += 1.5 if h3_count >= 2 else 0.5 if h3_count >= 1 else 0.0
-        score += 3.0 if internal_links >= 3 else min(3.0, internal_links)
-        notes = f"H1={h1_count}, H2={h2_count}, H3={h3_count}, internal_links={internal_links}"
+        score += 3.0 if internal_links >= internal_links_target else min(3.0, internal_links)
+        notes = (
+            f"H1={h1_count}, H2={h2_count}, H3={h3_count}, "
+            f"internal_links={internal_links} (target {internal_links_target})"
+        )
         return min(score, 10.0), notes
 
-    def _score_aead_compliance(self, content: str) -> Tuple[float, str]:
+    def _score_aead_compliance(self, content: str, structural: EditorStructuralRequirements | None = None) -> Tuple[float, str]:
         has_definition = bool(re.search(r"\b(is|refers to|means)\b", content, flags=re.IGNORECASE))
         has_steps = bool(re.search(r"\bstep-by-step|steps|how to\b", content, flags=re.IGNORECASE))
         faq_count = len(re.findall(r"^###\s+.*\?$", content, flags=re.MULTILINE))
+        faq_target = structural.faq_minimum if structural and structural.faq_minimum is not None else 5
+        aeo_heading = bool(re.search(r"^##\s+.*(?:AEO|Answer Engine|AI Overview)" , content, flags=re.MULTILINE | re.IGNORECASE))
 
         score = 3.0 if has_definition else 1.0
         score += 3.0 if has_steps else 1.0
-        score += 4.0 if faq_count >= 5 else min(4.0, faq_count * 0.8)
-        notes = f"definition={has_definition}, steps={has_steps}, faq_questions={faq_count}"
+        score += 4.0 if faq_count >= faq_target else min(4.0, faq_count * 0.8)
+        if structural and structural.requires_aeo_block:
+            score = max(0.0, score - (0.0 if aeo_heading else 1.0))
+        notes = (
+            f"definition={has_definition}, steps={has_steps}, faq_questions={faq_count} "
+            f"(target {faq_target}), aeo_block={aeo_heading}"
+        )
         return min(score, 10.0), notes
 
     def _score_ai_detection_risk(self, content: str) -> Tuple[float, str]:
@@ -319,17 +352,32 @@ class EditorAgent(BaseAgent):
 
         return score, f"Average sentence length={avg_sentence_length:.1f} words"
 
-    def _score_eeat(self, content: str) -> Tuple[float, str]:
+    def _score_eeat(self, content: str, structural: EditorStructuralRequirements | None = None) -> Tuple[float, str]:
         cues = [
             r"source|citation|attributed",
             r"tradition|lineage|commentary",
             r"bhagavad\s+gita|upanishad|sutra",
         ]
         hits = sum(1 for cue in cues if re.search(cue, content, flags=re.IGNORECASE))
+        required_hits = 0
+        matched_required = 0
+        if structural and structural.source_signals:
+            required_hits = len(structural.source_signals)
+            lowered = content.lower()
+            for signal in structural.source_signals:
+                if any(token in lowered for token in self._signal_tokens(signal)):
+                    matched_required += 1
         score = min(10.0, 4.0 + hits * 2.0)
-        return score, f"E-E-A-T cue hits={hits}"
+        if required_hits:
+            score = min(10.0, score + min(2.0, matched_required * 0.75))
+        return score, f"E-E-A-T cue hits={hits}, required_signal_matches={matched_required}/{required_hits}"
 
-    def _run_exclusion_checks(self, content: str, request: GenerateRequest) -> ExclusionCheckResult:
+    def _run_exclusion_checks(
+        self,
+        content: str,
+        request: GenerateRequest,
+        structural: EditorStructuralRequirements | None = None,
+    ) -> ExclusionCheckResult:
         violations: List[str] = []
         lowered = content.lower()
 
@@ -349,7 +397,8 @@ class EditorAgent(BaseAgent):
 
         sensitive_goals = {goal.lower() for goal in self.knowledge_store.get_sensitive_goals()}
         if request.goal and request.goal.lower() in sensitive_goals:
-            disclaimer = (self.knowledge_store.get_disclaimer_text() or "").lower()
+            disclaimer_source = structural.disclaimer if structural and structural.disclaimer else self.knowledge_store.get_disclaimer_text()
+            disclaimer = (disclaimer_source or "").lower()
             if disclaimer and disclaimer not in lowered:
                 violations.append(
                     "Sensitive goal detected but required educational medical disclaimer is missing"
@@ -392,3 +441,115 @@ class EditorAgent(BaseAgent):
                     )
 
         return DeterministicScanResult(passed=len(violations) == 0, violations=violations)
+
+    def _parse_structural_handoff(self, structural_handoff: str | None) -> EditorStructuralRequirements | None:
+        if not structural_handoff:
+            return None
+
+        requirements = EditorStructuralRequirements()
+        for raw_line in structural_handoff.splitlines():
+            line = raw_line.strip()
+            if not line.startswith("- "):
+                continue
+            item = line[2:].strip()
+            if item.startswith("Minimum word count:"):
+                requirements.min_word_count = self._extract_first_int(item)
+            elif item.startswith("Required section:"):
+                requirements.required_sections.append(item.split(":", 1)[1].strip())
+            elif item.startswith("Minimum FAQ items:"):
+                requirements.faq_minimum = self._extract_first_int(item)
+            elif item.startswith("Minimum internal links:"):
+                requirements.internal_links_minimum = self._extract_first_int(item)
+            elif item.startswith("AEO block required:"):
+                value = item.split(":", 1)[1].strip().lower()
+                requirements.requires_aeo_block = value in {"yes", "true"}
+            elif item.startswith("AEO word range:"):
+                match = re.search(r"(\d+)\s*-\s*(\d+)", item)
+                if match:
+                    requirements.aeo_word_range = (int(match.group(1)), int(match.group(2)))
+            elif item.startswith("Source signal:"):
+                requirements.source_signals.append(item.split(":", 1)[1].strip())
+            elif item == "Sources & Commentaries section required":
+                requirements.sources_section_required = True
+            elif item.startswith("Required disclaimer:") or item.startswith("Include educational"):
+                requirements.disclaimer = item.split(":", 1)[1].strip() if ":" in item else item
+        return requirements
+
+    def _validate_structural_handoff(
+        self,
+        content: str,
+        structural: EditorStructuralRequirements | None,
+    ) -> DeterministicScanResult:
+        if structural is None:
+            return DeterministicScanResult(passed=True, violations=[])
+
+        violations: List[str] = []
+        headings = [line.strip().lstrip("#").strip().lower() for line in content.splitlines() if line.strip().startswith(("#", "##", "###"))]
+        lowered = content.lower()
+
+        if structural.min_word_count is not None:
+            actual_words = len(content.split())
+            if actual_words < structural.min_word_count:
+                violations.append(
+                    f"Structural handoff WORD_COUNT: expected at least {structural.min_word_count}, found {actual_words}"
+                )
+
+        for section in structural.required_sections:
+            section_key = section.strip().lower()
+            if not any(section_key in heading for heading in headings):
+                violations.append(f"Structural handoff REQUIRED_SECTION missing: {section}")
+
+        if structural.faq_minimum is not None:
+            faq_count = len(re.findall(r"^###\s+.*\?$", content, flags=re.MULTILINE))
+            if faq_count < structural.faq_minimum:
+                violations.append(
+                    f"Structural handoff FAQ_COUNT: expected at least {structural.faq_minimum}, found {faq_count}"
+                )
+
+        if structural.internal_links_minimum is not None:
+            internal_links = len(re.findall(r"\]\(/[^)]+\)", content))
+            if internal_links < structural.internal_links_minimum:
+                violations.append(
+                    f"Structural handoff INTERNAL_LINKS: expected at least {structural.internal_links_minimum}, found {internal_links}"
+                )
+
+        if structural.requires_aeo_block:
+            if not re.search(r"^##\s+.*(?:AEO|Answer Engine|AI Overview)", content, flags=re.MULTILINE | re.IGNORECASE):
+                violations.append("Structural handoff AEO_BLOCK missing required AEO section")
+
+        if structural.sources_section_required and "sources & commentaries" not in lowered:
+            violations.append("Structural handoff SOURCES_SECTION missing: Sources & Commentaries")
+
+        for signal in structural.source_signals:
+            if not any(token in lowered for token in self._signal_tokens(signal)):
+                violations.append(f"Structural handoff SOURCE_SIGNAL missing: {signal}")
+
+        return DeterministicScanResult(passed=len(violations) == 0, violations=violations)
+
+    @staticmethod
+    def _extract_first_int(text: str) -> int | None:
+        match = re.search(r"(\d+)", text)
+        return int(match.group(1)) if match else None
+
+    @staticmethod
+    def _signal_tokens(signal: str) -> List[str]:
+        lowered = signal.lower()
+        token_groups = {
+            "upanishad": ["upanishad", "upanishads"],
+            "gita": ["gita", "bhagavad gita"],
+            "purana": ["purana", "puranas"],
+            "sutra": ["sutra", "sutras", "brahma sutra", "yoga sutra"],
+            "citation": ["1.1", "2.47", "3.14", "citation", "verse"],
+            "commentator": ["shankaracharya", "ramanuja", "madhva", "commentary", "commentator"],
+            "school position": ["advaita", "dvaita", "vishishtadvaita", "school", "sampradaya"],
+            "source text": ["source text", "scripture", "shruti"],
+            "commentary vs editorial implication": ["commentary", "editorial implication", "commentary layer"],
+            "distinguish": ["distinguish", "separation", "clarify"],
+        }
+        tokens: List[str] = []
+        for key, values in token_groups.items():
+            if key in lowered:
+                tokens.extend(values)
+        if not tokens:
+            tokens.append(lowered)
+        return tokens

@@ -132,11 +132,58 @@ def test_research_brief_builds_compact_retry_packet(knowledge_store: KnowledgeSt
         "### What is Vedanta?\nAnswer\n\n"
         "[Vedanta](/what-is-vedanta)"
     )
-    packet = brief.build_revision_packet(draft, "Add more source signals.")
+    packet = brief.build_retry_packet(draft=draft, revision_notes="Add more source signals.")
 
-    assert "Revision Packet" in packet
+    assert "Retry Packet" in packet
+    assert "Immutable Constraints" in packet
+    assert "Retry Constraints" in packet
     assert "Keep heading: # What is Vedanta" in packet
     assert "Add more source signals." in packet
+
+
+def test_research_brief_builds_editor_structural_handoff(knowledge_store: KnowledgeStore):
+    researcher = ResearchAgent(knowledge_store=knowledge_store)
+    config = OrchestratorAgent(knowledge_store=knowledge_store).configure(
+        topic="What is Vedanta",
+        page_type="topic_hub",
+    )
+    brief = researcher.build_brief("What is Vedanta", "topic_hub", config)
+
+    handoff = brief.to_editor_structural_handoff()
+
+    assert "Editor Structural Handoff" in handoff
+    assert any(
+        marker in handoff
+        for marker in [
+            "Required section: Topic overview (clear, encyclopedic definition + cultural context)",
+            "Required section: Recommended practices (with internal links)",
+            "Required section: Recommended traditions/lineages",
+        ]
+    )
+    assert "Minimum FAQ items:" in handoff
+    assert "Minimum internal links:" in handoff
+    assert "Source signal:" in handoff
+
+
+def test_base_agent_caches_static_prompt_layers(monkeypatch: pytest.MonkeyPatch):
+    from app.agents import base as base_module
+
+    base_module.BaseAgent._load_agent_file.cache_clear()
+    reads: list[str] = []
+
+    def fake_safe_read(path: Path) -> str:
+        reads.append(path.name)
+        return f"content:{path.name}"
+
+    monkeypatch.setattr(base_module, "_safe_read", fake_safe_read)
+
+    agent = WriterAgent()
+
+    assert agent.load_soul() == "content:SOUL.md"
+    assert agent.load_soul() == "content:SOUL.md"
+    assert agent.load_memory() == "content:MEMORY.md"
+    assert agent.load_memory() == "content:MEMORY.md"
+    assert reads == ["SOUL.md", "MEMORY.md"]
 
 
 def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: Session, knowledge_store: KnowledgeStore):
@@ -170,16 +217,23 @@ def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: S
             )
             return type("WriterResult", (), {"content": (
                 "# What is Vedanta\n\n"
-                "Vedanta is a darshana grounded in the Upanishads and Bhagavad Gita 2.47.\n\n"
-                "## What the term means\nVedanta refers to the culmination of Vedic inquiry.\n\n"
-                "## How the tradition reads it\nAdi Shankaracharya comments on the Upanishads and Brahma Sutra.\n\n"
-                "## Why it matters in practice\nPractice begins with sravana, manana, and nididhyasana.\n\n"
+                "Vedanta is a darshana grounded in the Upanishads and Bhagavad Gita 2.47. It studies the nature of the self, Brahman, bondage, liberation, and disciplined inquiry through scripture, commentary, and lived practice. For many seekers it offers both a philosophical map and a practical method of reflection.\n\n"
+                "## Topic overview (clear, encyclopedic definition + cultural context)\nVedanta refers to the culmination of Vedic inquiry within Hindu philosophical traditions. In common usage it names both the Upanishadic source-text stream and the schools that interpret it. The topic matters culturally because Vedanta shapes how many readers approach dharma, moksha, meditation, renunciation, devotion, and the relation between knowledge and action. A reliable overview should explain the historical role of shruti, the importance of teacher-student transmission, and the place of interpretation across different sampradayas. It should also note that modern summaries often flatten important distinctions, so readers need patient definitions and grounded examples before jumping into abstraction.\n\n"
+                "## Recommended practices (with internal links)\nPractice begins with sravana, manana, and nididhyasana, supported by [Japa](/how-to-start-japa) and [Paths](/topics/spiritual-paths). A beginner can first read a short primary passage, then listen to a traditional explanation, then reflect in writing on what the teaching denies and affirms. Repetition matters: a short daily discipline of reading, contemplation, and ethical alignment gives the doctrine practical force. Many students also benefit from chanting, memorization, and question-based study because these slow down the tendency to treat Vedanta as a purely intellectual hobby. When confusion arises, practice should return to definitions, examples, and a modest routine rather than speculation.\n\n"
+                "## Recommended traditions/lineages\nAdi Shankaracharya comments on the Upanishads and Brahma Sutra from the Advaita Vedanta lineage. Ramanuja and Madhva offer other school positions that clarify how major lineages interpret the relation between the individual self and ultimate reality. Naming these traditions matters because Vedanta is not one undifferentiated claim-system. A responsible guide should show how schools agree on scriptural importance while differing on interpretation, method, and emphasis. Readers who see these distinctions early are less likely to confuse a later popular summary with the actual shape of the tradition.\n\n"
+                "## Curated reading/guides list\nStart with the Upanishads, Bhagavad Gita, and a beginner guide to Vedanta study. A sensible sequence is an overview text, selected verses with commentary, and then a more detailed study of one lineage. Readers can pair a survey with slow reading of a short Upanishadic dialogue, then move to a commentary that explains vocabulary and reasoning in context. It is also useful to keep a glossary of recurring terms such as atman, Brahman, avidya, viveka, and moksha, because conceptual precision reduces confusion later. A curated list should privilege clarity, fidelity, and a sequence that matches the reader's maturity rather than novelty.\n\n"
+                "## Call-to-action (Faith Finder or related pathway)\nUse the Faith Finder to identify the most relevant starting path for practice. A clear call-to-action should not promise instant certainty; it should help the reader choose between study, devotion, meditation, and introductory guidance based on temperament and readiness. The purpose is orientation, not pressure. After reading the page, the seeker should know the next sensible step, the next text to study, and the next practice to stabilize attention. That makes the page useful rather than merely impressive.\n\n"
+                "## AEO Summary\nVedanta is a Hindu philosophical tradition rooted in the Upanishads that guides seekers through disciplined inquiry, study, and contemplative practice. It asks what the self is, what ultimate reality is, why suffering persists, and how liberation is understood in different lineages. A good beginner approach combines source study, commentary, reflection, and practical discipline rather than abstraction alone.\n\n"
                 "### What is Vedanta?\nIt is a school of inquiry.\n\n"
                 "### How do beginners start?\nThey start with foundational texts.\n\n"
                 "### Which sources matter most?\nThe Upanishads and Gita matter most.\n\n"
                 "### Is it practical?\nYes, when tied to disciplined study.\n\n"
                 "### Does it reject devotion?\nNo, different sampradayas integrate devotion differently.\n\n"
-                "[Vedanta](/what-is-vedanta) [Japa](/how-to-start-japa) [Paths](/topics/spiritual-paths)"
+                "## Sources & Commentaries\nBhagavad Gita 2.47, Brihadaranyaka Upanishad 1.4.10, and Shankaracharya's commentary clarify the source text, commentary layer, and editorial implication. This section explicitly distinguishes source text vs commentary vs editorial implication so the reader can tell what comes from scripture, what comes from a named commentator, and what comes from the page's simplifying explanation. That separation protects accuracy while still making the material accessible to a new reader.\n\n"
+                "## Why this framing helps beginners\nA beginner often encounters Vedanta through short quotes, motivational summaries, or flattened comparisons with modern psychology. That entry point may spark interest, but it can also produce confusion about what belongs to scripture, what belongs to later commentary, and what belongs to modern interpretation. A careful frame slows the reader down. It explains the basic vocabulary again in plain language, shows how teachers use examples to unfold meaning, and reminds the reader that philosophical clarity grows through repeated listening and reflection. This matters because the tradition often asks the student to examine assumptions about identity, suffering, action, and fulfillment with unusual patience. Without that framing, the page may sound impressive while leaving the reader unable to practice or study responsibly.\n\n"
+                "## Common beginner mistakes\nOne common mistake is treating Vedanta as a set of slogans rather than a disciplined method of inquiry. Another is assuming that a single translation or a single viral quote can substitute for patient study with context. Some readers collapse all Hindu schools into one view, while others assume devotion and inquiry are opposites when many lineages integrate them. Beginners may also become overly abstract and neglect ethical preparation, steadiness of attention, and humility before the text. A strong introduction warns against these habits directly. It tells the reader to compare claims carefully, return to the source, and use commentary to understand why a verse is being interpreted in a particular way. Such reminders make the material safer, clearer, and more useful over time.\n\n"
+                "## How to continue study responsibly\nTo continue responsibly, the reader can pick one short passage, one trustworthy commentary, and one recurring daily practice for a few weeks. The point is not speed but assimilation. Reading aloud, noting unfamiliar terms, summarizing a teaching in one's own words, and checking that summary against commentary are all practical moves. It also helps to discuss one question at a time: what is being defined, what confusion is being removed, and what change in understanding is being invited? Over time, that rhythm develops both respect for the tradition and independence of thought. It trains the reader to distinguish inspiration from understanding, and understanding from realization. In that sense, disciplined continuation is itself part of the teaching, not merely preparation for it.\n\n"
+                "[Vedanta](/what-is-vedanta) [Japa](/how-to-start-japa) [Paths](/topics/spiritual-paths) [Advaita](/advaita-vedanta-explained)"
             )})()
 
     service.writer = StubWriter()
@@ -193,10 +247,41 @@ def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: S
     assert updated.final_score is not None
     assert scorecard["passed"] is True
     assert any(output.stage == "research_brief" for output in outputs)
+    assert any(output.stage == "editor_structural_handoff" for output in outputs)
     assert any(output.stage == "writer_draft" for output in outputs)
     assert any(output.stage == "editor_score" for output in outputs)
     assert service.writer.calls[0]["knowledge_handoff"] is not None
     assert "Writer Handoff" in service.writer.calls[0]["knowledge_handoff"]
+
+
+def test_editor_structural_handoff_fail_closes_missing_required_structure(knowledge_store: KnowledgeStore):
+    researcher = ResearchAgent(knowledge_store=knowledge_store)
+    editor = EditorAgent(knowledge_store=knowledge_store)
+    config = OrchestratorAgent(knowledge_store=knowledge_store).configure(
+        topic="What is Vedanta",
+        page_type="topic_hub",
+    )
+    brief = researcher.build_brief("What is Vedanta", "topic_hub", config)
+    request = GenerateRequest(topic="What is Vedanta", page_type="topic_hub", audience="seekers")
+
+    content = (
+        "# What is Vedanta\n\n"
+        "Vedanta is a tradition.\n\n"
+        "## Overview\nShort text.\n\n"
+        "## Practice Guidance\nShort text.\n\n"
+        "[One](/a)"
+    )
+
+    scorecard = editor.score(
+        content,
+        request,
+        threshold=1.0,
+        structural_handoff=brief.to_editor_structural_handoff(),
+    )
+
+    assert scorecard.passed is False
+    assert any("Structural handoff" in violation for violation in scorecard.violations)
+    assert any("FAQ_COUNT" in violation or "REQUIRED_SECTION" in violation for violation in scorecard.violations)
 
 
 def test_pipeline_service_uses_retry_handoff_on_redraft(db_session: Session, knowledge_store: KnowledgeStore):
@@ -247,4 +332,79 @@ def test_pipeline_service_uses_retry_handoff_on_redraft(db_session: Session, kno
     assert "Writer Handoff" in service.writer.calls[0]["knowledge_handoff"]
     assert "Retry Constraints" in service.writer.calls[1]["knowledge_handoff"]
     assert service.writer.calls[1]["revision_packet"] is not None
-    assert "Revision Packet" in service.writer.calls[1]["revision_packet"]
+    assert "Retry Packet" in service.writer.calls[1]["revision_packet"]
+    assert "Immutable Constraints" in service.writer.calls[1]["revision_packet"]
+    assert service.writer.calls[1]["revision_notes"] is None
+
+
+def test_pipeline_service_materializes_handoffs_once(db_session: Session, knowledge_store: KnowledgeStore, monkeypatch: pytest.MonkeyPatch):
+    pipeline = ContentPipeline(
+        topic="What is Vedanta",
+        page_type="topic_hub",
+        audience="spiritual seekers",
+        context_module="long_form",
+        status="queued",
+        quality_threshold=9.5,
+        revision_limit=1,
+    )
+    db_session.add(pipeline)
+    db_session.commit()
+    db_session.refresh(pipeline)
+
+    service = PipelineService()
+    service.orchestrator = OrchestratorAgent(knowledge_store=knowledge_store)
+    service.researcher = ResearchAgent(knowledge_store=knowledge_store)
+
+    original_build_brief = service.researcher.build_brief
+    call_counts = {"writer": 0, "retry": 0, "editor": 0}
+
+    def instrumented_build_brief(*args, **kwargs):
+        brief = original_build_brief(*args, **kwargs)
+        original_writer_handoff = brief.to_writer_handoff
+        original_retry_handoff = brief.to_retry_handoff
+        original_editor_handoff = brief.to_editor_structural_handoff
+
+        def counted_writer_handoff(goal=None):
+            call_counts["writer"] += 1
+            return original_writer_handoff(goal=goal)
+
+        def counted_retry_handoff(goal=None):
+            call_counts["retry"] += 1
+            return original_retry_handoff(goal=goal)
+
+        def counted_editor_handoff(goal=None):
+            call_counts["editor"] += 1
+            return original_editor_handoff(goal=goal)
+
+        monkeypatch.setattr(brief, "to_writer_handoff", counted_writer_handoff)
+        monkeypatch.setattr(brief, "to_retry_handoff", counted_retry_handoff)
+        monkeypatch.setattr(brief, "to_editor_structural_handoff", counted_editor_handoff)
+        return brief
+
+    service.researcher.build_brief = instrumented_build_brief
+
+    class StubWriter:
+        def __init__(self):
+            self.calls = []
+
+        async def generate(self, request, research_brief=None, knowledge_handoff=None, revision_packet=None, revision_notes=None):
+            self.calls.append({
+                "knowledge_handoff": knowledge_handoff,
+                "revision_packet": revision_packet,
+                "revision_notes": revision_notes,
+            })
+            return type("WriterResult", (), {"content": (
+                "# What is Vedanta\n\n"
+                "Vedanta is a tradition.\n\n"
+                "## Overview\nShort text.\n\n"
+                "## Practice Guidance\nShort text.\n\n"
+                "## Frequently Asked Questions\nShort text.\n\n"
+                "[One](/a) [Two](/b) [Three](/c)"
+            )})()
+
+    service.writer = StubWriter()
+
+    updated = asyncio.run(service.run(db_session, pipeline.id))
+
+    assert updated.status == "needs_review"
+    assert call_counts == {"writer": 1, "retry": 1, "editor": 1}
