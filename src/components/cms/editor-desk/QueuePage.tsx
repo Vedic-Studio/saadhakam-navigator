@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FileText, RefreshCw } from "lucide-react";
+import { BackendUnavailableError } from "@/lib/pipelines/api";
 import { createEditorialPipeline, getPipelineQueue, getQueue } from "./api";
 import { ArticleCard } from "./ArticleCard";
 import type { CmsArticle } from "./types";
@@ -22,6 +23,7 @@ export function QueuePage() {
     const [articles, setArticles] = useState<CmsArticle[]>([]);
     const [pipelines, setPipelines] = useState<PipelineListItem[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [pipelineError, setPipelineError] = useState<string | null>(null);
     const [topic, setTopic] = useState("What is Vedanta");
     const [pageType, setPageType] = useState<(typeof PAGE_TYPES)[number]["value"]>("topic_hub");
     const [goal, setGoal] = useState("");
@@ -30,13 +32,27 @@ export function QueuePage() {
     const [isRefreshing, setIsRefreshing] = useState(false);
 
     async function loadQueue() {
-        try {
-            const [cmsArticles, pipelineRuns] = await Promise.all([getQueue(), getPipelineQueue()]);
-            setArticles(cmsArticles);
-            setPipelines(pipelineRuns);
+        const [cmsResult, pipelineResult] = await Promise.allSettled([getQueue(), getPipelineQueue()]);
+
+        if (cmsResult.status === "fulfilled") {
+            setArticles(cmsResult.value);
             setError(null);
-        } catch (err) {
-            setError(err instanceof Error ? err.message : "Failed to load editorial queue");
+        } else {
+            setError(cmsResult.reason instanceof Error ? cmsResult.reason.message : "Failed to load editorial queue");
+        }
+
+        if (pipelineResult.status === "fulfilled") {
+            setPipelines(pipelineResult.value);
+            setPipelineError(null);
+        } else {
+            setPipelines([]);
+            setPipelineError(
+                pipelineResult.reason instanceof BackendUnavailableError
+                    ? pipelineResult.reason.message
+                    : pipelineResult.reason instanceof Error
+                        ? pipelineResult.reason.message
+                        : "Pipeline queue unavailable",
+            );
         }
     }
 
@@ -167,7 +183,18 @@ export function QueuePage() {
                     </button>
                 </div>
 
-                {pipelines.length === 0 ? (
+                {pipelineError ? (
+                    <div className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
+                        <p className="font-medium text-amber-200">Pipeline unavailable</p>
+                        <p className="mt-1 text-amber-100/90">{pipelineError}</p>
+                    </div>
+                ) : null}
+
+                {pipelineError ? (
+                    <div className="rounded-lg border border-dashed border-amber-500/30 bg-amber-500/5 p-6 text-sm text-amber-100/90">
+                        Pipeline runs cannot be loaded right now. CMS articles remain available below.
+                    </div>
+                ) : pipelines.length === 0 ? (
                     <div className="rounded-lg border border-dashed border-white/10 p-6 text-sm text-white/60">
                         No pipeline runs available.
                     </div>

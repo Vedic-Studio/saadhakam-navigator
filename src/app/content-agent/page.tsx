@@ -7,8 +7,9 @@ export const metadata: Metadata = {
     title: "Content Agent Workbench",
     description:
         "Pipeline-native workbench for async research, writing, editing, and review.",
-    alternates: {
-        canonical: "https://www.opensadhaka.com/content-agent",
+    robots: {
+        index: false,
+        follow: false,
     },
 };
 

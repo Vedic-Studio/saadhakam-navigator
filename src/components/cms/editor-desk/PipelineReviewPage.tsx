@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { getContextPackDocs } from "@/lib/content-agent/doc-registry";
+import { BackendUnavailableError } from "@/lib/pipelines/api";
 import {
     canApprovePipeline,
     canMaterializePipeline,
@@ -27,23 +28,30 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
     const router = useRouter();
     const [detail, setDetail] = useState<PipelineDetail | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [backendUnavailableMessage, setBackendUnavailableMessage] = useState<string | null>(null);
     const [notes, setNotes] = useState("");
     const [busy, setBusy] = useState<"approve" | "reject" | "feedback" | "materialize" | null>(null);
     const [materializedSlug, setMaterializedSlug] = useState<string | null>(null);
 
-    const load = async () => {
+    const load = useCallback(async () => {
         try {
             const nextDetail = await getPipelineReviewDetail(pipelineId);
             setDetail(nextDetail);
             setError(null);
+            setBackendUnavailableMessage(null);
         } catch (err) {
-            setError(err instanceof Error ? err.message : "Failed to load pipeline detail");
+            if (err instanceof BackendUnavailableError) {
+                setBackendUnavailableMessage(err.message);
+                setError(null);
+            } else {
+                setError(err instanceof Error ? err.message : "Failed to load pipeline detail");
+            }
         }
-    };
+    }, [pipelineId]);
 
     useEffect(() => {
-        load();
-    }, [pipelineId]);
+        void load();
+    }, [load]);
 
     const stageView = useMemo(() => (detail ? getPipelineStageView(detail) : null), [detail]);
     const editorScore = useMemo(() => parseEditorScore(stageView?.latestEditorScore), [stageView]);
@@ -55,13 +63,18 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
 
     async function handleApprove() {
         setError(null);
+        setBackendUnavailableMessage(null);
         setBusy("approve");
         try {
             await approvePipelineReview(pipelineId, notes || undefined);
             setNotes("");
             await load();
         } catch (err) {
-            setError(err instanceof Error ? err.message : "Pipeline approval failed");
+            if (err instanceof BackendUnavailableError) {
+                setBackendUnavailableMessage(err.message);
+            } else {
+                setError(err instanceof Error ? err.message : "Pipeline approval failed");
+            }
         } finally {
             setBusy(null);
         }
@@ -73,13 +86,18 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
             return;
         }
         setError(null);
+        setBackendUnavailableMessage(null);
         setBusy("reject");
         try {
             await rejectPipelineReview(pipelineId, notes.trim());
             setNotes("");
             await load();
         } catch (err) {
-            setError(err instanceof Error ? err.message : "Pipeline rejection failed");
+            if (err instanceof BackendUnavailableError) {
+                setBackendUnavailableMessage(err.message);
+            } else {
+                setError(err instanceof Error ? err.message : "Pipeline rejection failed");
+            }
         } finally {
             setBusy(null);
         }
@@ -87,6 +105,7 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
 
     async function handleFeedback() {
         setError(null);
+        setBackendUnavailableMessage(null);
         setBusy("feedback");
         try {
             await submitPipelineFeedback(pipelineId, {
@@ -97,7 +116,11 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
             setNotes("");
             await load();
         } catch (err) {
-            setError(err instanceof Error ? err.message : "Failed to add editorial feedback");
+            if (err instanceof BackendUnavailableError) {
+                setBackendUnavailableMessage(err.message);
+            } else {
+                setError(err instanceof Error ? err.message : "Failed to add editorial feedback");
+            }
         } finally {
             setBusy(null);
         }
@@ -105,16 +128,39 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
 
     async function handleMaterialize() {
         setError(null);
+        setBackendUnavailableMessage(null);
         setBusy("materialize");
         try {
             const result = await materializePipelineDraft(pipelineId);
             setMaterializedSlug(result.slug);
             await load();
         } catch (err) {
-            setError(err instanceof Error ? err.message : "Failed to materialize pipeline draft");
+            if (err instanceof BackendUnavailableError) {
+                setBackendUnavailableMessage(err.message);
+            } else {
+                setError(err instanceof Error ? err.message : "Failed to materialize pipeline draft");
+            }
         } finally {
             setBusy(null);
         }
+    }
+
+    if (backendUnavailableMessage && !detail) {
+        return (
+            <div className="mx-auto max-w-3xl rounded-lg border border-amber-500/30 bg-amber-500/10 p-5 text-sm text-amber-100">
+                <div className="mb-3 flex items-center gap-3">
+                    <Link
+                        href="/content-agent/editor-desk"
+                        className="inline-flex items-center gap-2 text-amber-200 transition-colors hover:text-amber-100"
+                    >
+                        <ArrowLeft size={16} />
+                        Back to editor desk
+                    </Link>
+                </div>
+                <p className="font-medium text-amber-200">Pipeline backend unavailable</p>
+                <p className="mt-2">{backendUnavailableMessage}</p>
+            </div>
+        );
     }
 
     if (error && !detail) {
@@ -142,6 +188,13 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
                     </div>
                 </div>
             </div>
+
+            {backendUnavailableMessage ? (
+                <div className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
+                    <p className="font-medium text-amber-200">Pipeline backend unavailable</p>
+                    <p className="mt-1 text-amber-100/90">{backendUnavailableMessage}</p>
+                </div>
+            ) : null}
 
             {error ? <div className="mb-4 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-200">{error}</div> : null}
 

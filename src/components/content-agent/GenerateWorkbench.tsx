@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { getContextPackDocs } from "@/lib/content-agent/doc-registry";
-import { createPipeline, getPipelineDetail, getTechniques } from "@/lib/pipelines/api";
+import { BackendUnavailableError, createPipeline, getPipelineDetail, getTechniques } from "@/lib/pipelines/api";
 import {
     getPipelineStageView,
     isPipelineTerminal,
@@ -29,6 +29,7 @@ export function GenerateWorkbench() {
 
     const [isGenerating, setIsGenerating] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [backendUnavailableMessage, setBackendUnavailableMessage] = useState<string | null>(null);
     const [result, setResult] = useState<PipelineDetail | null>(null);
     const [activePipelineId, setActivePipelineId] = useState<string | null>(null);
 
@@ -44,10 +45,17 @@ export function GenerateWorkbench() {
                 const data = await getTechniques();
                 if (!cancelled) {
                     setTechniques(data ?? []);
+                    setBackendUnavailableMessage(null);
                 }
             } catch (err) {
                 if (!cancelled) {
-                    setTechniquesError(err instanceof Error ? err.message : "Unable to load techniques");
+                    if (err instanceof BackendUnavailableError) {
+                        setBackendUnavailableMessage(err.message);
+                        setTechniques([]);
+                        setTechniquesError(null);
+                    } else {
+                        setTechniquesError(err instanceof Error ? err.message : "Unable to load techniques");
+                    }
                 }
             }
         }
@@ -71,6 +79,7 @@ export function GenerateWorkbench() {
                 const detail = await getPipelineDetail(activePipelineId);
                 if (cancelled) return;
                 setResult(detail);
+                setBackendUnavailableMessage(null);
                 if (!isPipelineTerminal(detail.status) && detail.status !== "needs_review") {
                     timeoutId = setTimeout(poll, 2000);
                 } else {
@@ -78,7 +87,12 @@ export function GenerateWorkbench() {
                 }
             } catch (err) {
                 if (!cancelled) {
-                    setError(err instanceof Error ? err.message : "Failed to load pipeline progress");
+                    if (err instanceof BackendUnavailableError) {
+                        setBackendUnavailableMessage(err.message);
+                        setError(null);
+                    } else {
+                        setError(err instanceof Error ? err.message : "Failed to load pipeline progress");
+                    }
                     setIsGenerating(false);
                 }
             }
@@ -103,6 +117,7 @@ export function GenerateWorkbench() {
     async function handleGenerate(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         setError(null);
+        setBackendUnavailableMessage(null);
         setResult(null);
         setIsGenerating(true);
 
@@ -116,7 +131,12 @@ export function GenerateWorkbench() {
             setResult(detail);
             setActivePipelineId(detail.id);
         } catch (err) {
-            setError(err instanceof Error ? err.message : "Failed to generate content");
+            if (err instanceof BackendUnavailableError) {
+                setBackendUnavailableMessage(err.message);
+                setError(null);
+            } else {
+                setError(err instanceof Error ? err.message : "Failed to generate content");
+            }
             setIsGenerating(false);
         }
     }
@@ -126,6 +146,13 @@ export function GenerateWorkbench() {
             <section className="rounded-xl border border-border bg-card p-5 shadow-sm">
                 <h2 className="text-lg font-medium">Generate</h2>
                 <form className="mt-4 space-y-4" onSubmit={handleGenerate}>
+                    {backendUnavailableMessage ? (
+                        <div className="rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-700 dark:text-amber-200">
+                            <p className="font-medium">Pipeline backend unavailable</p>
+                            <p className="mt-1 opacity-90">{backendUnavailableMessage}</p>
+                        </div>
+                    ) : null}
+
                     <div className="space-y-1.5">
                         <label className="text-sm font-medium">Topic</label>
                         <input
@@ -176,7 +203,7 @@ export function GenerateWorkbench() {
                     <button
                         type="submit"
                         className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-                        disabled={isGenerating}
+                        disabled={isGenerating || Boolean(backendUnavailableMessage)}
                     >
                         {isGenerating ? "Running pipeline..." : "Create Pipeline Run"}
                     </button>
@@ -184,25 +211,27 @@ export function GenerateWorkbench() {
                     {error ? <p className="text-sm text-red-500">{error}</p> : null}
                 </form>
 
-                <div className="mt-8">
-                    <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                        Knowledge Techniques
-                    </h3>
-                    {techniquesError ? (
-                        <p className="mt-2 text-sm text-red-500">{techniquesError}</p>
-                    ) : (
-                        <ul className="mt-2 max-h-64 space-y-2 overflow-auto pr-1 text-sm">
-                            {techniques.slice(0, 14).map((item, index) => (
-                                <li key={`${item.source}-${index}`} className="rounded-md border border-border p-2">
-                                    <p className="font-medium">
-                                        {item.source} <span className="text-muted-foreground">({item.type})</span>
-                                    </p>
-                                    <p className="mt-1 text-muted-foreground">{item.text}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
+                {!backendUnavailableMessage ? (
+                    <div className="mt-8">
+                        <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                            Knowledge Techniques
+                        </h3>
+                        {techniquesError ? (
+                            <p className="mt-2 text-sm text-red-500">{techniquesError}</p>
+                        ) : (
+                            <ul className="mt-2 max-h-64 space-y-2 overflow-auto pr-1 text-sm">
+                                {techniques.slice(0, 14).map((item, index) => (
+                                    <li key={`${item.source}-${index}`} className="rounded-md border border-border p-2">
+                                        <p className="font-medium">
+                                            {item.source} <span className="text-muted-foreground">({item.type})</span>
+                                        </p>
+                                        <p className="mt-1 text-muted-foreground">{item.text}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                ) : null}
 
                 {result ? (
                     <div className="mt-8 rounded-lg border border-border bg-muted/30 p-4">

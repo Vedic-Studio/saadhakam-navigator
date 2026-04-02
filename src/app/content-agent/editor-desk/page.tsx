@@ -4,8 +4,9 @@ import { QueuePage } from "@/components/cms/editor-desk/QueuePage";
 export const metadata: Metadata = {
     title: "Editorial Desk",
     description: "Unified pipeline queue and CMS workspace for Sadhaka editorial operations.",
-    alternates: {
-        canonical: "https://www.opensadhaka.com/content-agent/editor-desk",
+    robots: {
+        index: false,
+        follow: false,
     },
 };
 

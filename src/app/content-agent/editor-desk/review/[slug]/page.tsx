@@ -4,6 +4,10 @@ import { ReviewPage } from "@/components/cms/editor-desk/ReviewPage";
 export const metadata: Metadata = {
     title: "Editorial Review Workspace",
     description: "Review, edit, version, and publish CMS-managed Sadhaka articles.",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 export default async function EditorDeskReviewPage({ params }: { params: Promise<{ slug: string }> }) {

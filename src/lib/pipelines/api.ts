@@ -9,9 +9,23 @@ import type {
     TechniqueItem,
 } from "./types";
 
+export class BackendUnavailableError extends Error {
+    code = "BACKEND_UNAVAILABLE" as const;
+
+    constructor(message = "Content agent is unavailable") {
+        super(message);
+        this.name = "BackendUnavailableError";
+    }
+}
+
 async function parseResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
         const error = await response.json().catch(() => ({ error: "Unknown error" }));
+
+        if (response.status === 503 && error?.code === "BACKEND_UNAVAILABLE") {
+            throw new BackendUnavailableError(error.detail || error.error || "Content agent is unavailable");
+        }
+
         throw new Error(error.error || error.detail || "Request failed");
     }
 

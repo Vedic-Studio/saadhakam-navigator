@@ -4,6 +4,10 @@ import { PipelineReviewPage } from "@/components/cms/editor-desk/PipelineReviewP
 export const metadata: Metadata = {
     title: "Pipeline Review Workspace",
     description: "Review async content pipeline runs before materializing them into the CMS.",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 export default async function EditorDeskPipelineReviewPage({ params }: { params: Promise<{ id: string }> }) {
