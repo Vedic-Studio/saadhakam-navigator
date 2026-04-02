@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { scanContent } from "@/lib/cms/exclusion-scan";
 import { saveCmsContent } from "@/lib/cms/storage";
 
 export async function POST(request: Request, context: { params: Promise<{ slug: string }> }) {
@@ -9,7 +10,8 @@ export async function POST(request: Request, context: { params: Promise<{ slug: 
             return NextResponse.json({ error: "content is required" }, { status: 400 });
         }
         const version = await saveCmsContent(slug, content, note);
-        return NextResponse.json({ version });
+        const advisoryScan = scanContent(content);
+        return NextResponse.json({ version, advisoryScan });
     } catch (error) {
         return NextResponse.json(
             { error: error instanceof Error ? error.message : "Failed to save CMS content" },

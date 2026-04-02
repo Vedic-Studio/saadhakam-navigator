@@ -28,7 +28,7 @@ export const QuizContainer = ({ onComplete }: QuizContainerProps) => {
         if (typeof window !== "undefined" && typeof window.sadhaka?.quizStart === "function") {
             window.sadhaka.quizStart();
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+         
     }, []);
 
     const handleAnswer = (optionId: string) => {
@@ -76,10 +76,10 @@ export const QuizContainer = ({ onComplete }: QuizContainerProps) => {
                             <Loader2 className="w-8 h-8 text-orange-600 animate-spin" />
                         </div>
                         <h2 className="text-2xl font-display font-bold text-foreground mb-3">
-                            Mapping your frequency against the Paramparas...
+                            Interpreting your responses
                         </h2>
                         <p className="text-muted-foreground">
-                            Interpreting your answers and identifying your dominant and secondary path.
+                            Calculating your relative score across the four yoga-based categories.
                         </p>
                     </CardContent>
                 </Card>

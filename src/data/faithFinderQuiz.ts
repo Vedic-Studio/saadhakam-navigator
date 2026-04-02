@@ -53,7 +53,7 @@ export const quizQuestions: QuizQuestion[] = [
       },
       {
         id: "2b",
-        text: "Dissolving into an ocean of love and grace.",
+        text: "A life shaped by devotion, surrender, and trust in the Divine.",
         weights: { inquiry: 0, devotion: 4, ritual: 0, discipline: 0 },
       },
       {
@@ -100,22 +100,22 @@ export const quizQuestions: QuizQuestion[] = [
     options: [
       {
         id: "4a",
-        text: "Where modern physics meets ancient non-duality",
+        text: "The relation between consciousness, selfhood, and non-duality",
         weights: { inquiry: 4, devotion: 0, ritual: 0, discipline: 0 },
       },
       {
         id: "4b",
-        text: "The mystical bond between seeker and the Divine Beloved",
+        text: "The devotee's relationship to a personal form of the Divine",
         weights: { inquiry: 0, devotion: 4, ritual: 0, discipline: 0 },
       },
       {
         id: "4c",
-        text: "Sacred geometry and the hidden power of ritual space",
+        text: "How ritual structure, symbol, and sacred space shape practice",
         weights: { inquiry: 0, devotion: 0, ritual: 4, discipline: 0 },
       },
       {
         id: "4d",
-        text: "Mastering prana and rewiring the nervous system",
+        text: "Breath, posture, and disciplined methods for stabilizing attention",
         weights: { inquiry: 0, devotion: 0, ritual: 0, discipline: 4 },
       },
     ],
@@ -283,33 +283,33 @@ export const determineResult = (scores: QuizScore): QuizResult => {
 export const pathMetadata = {
   inquiry: {
     name: "The Way of Inquiry",
-    archetype: "The Analyst of Reality",
+    archetype: "Inquiry-led orientation",
     slogan: "Truth is found through the fire of discrimination.",
-    longDescription: "You are naturally drawn to the Jnana path, the yoga of the intellect. You don't want to just believe; you want to know. Your mind is a sharp instrument designed to cut through the illusions of Maya and find the unchanging Brahman beneath. For you, study and contemplation are not chores but the highest form of worship.",
+    longDescription: "Your answers lean toward Jnana Yoga, the path of inquiry and discernment. You are more likely to begin with questions, arguments, and study than with ritual or emotional expression. In practical terms, that usually means sustained interest in texts, commentary, philosophical distinctions, and contemplative self-inquiry.",
     icon: "Brain",
     themeColor: "amber",
   },
   devotion: {
     name: "The Way of Devotion",
-    archetype: "The Relational Seeker",
+    archetype: "Devotion-led orientation",
     slogan: "Love is the shortest path to the Divine.",
-    longDescription: "You resonate with Bhakti, the path of the heart. For you, the Divine is not an abstract concept but a living Presence to be loved, served, and surrendered to. Your emotions are your greatest spiritual asset. The sense of separation dissolves not through logic but through the overwhelming sweetness of divine grace.",
+    longDescription: "Your answers lean toward Bhakti Yoga, the path of devotion. You are more likely to sustain practice through relationship, reverence, prayer, chanting, and offering than through abstract analysis alone. In practical terms, this points toward traditions and practices where devotion is treated as a disciplined means of transformation.",
     icon: "Heart",
     themeColor: "rose",
   },
   ritual: {
     name: "The Way of Action",
-    archetype: "The Alchemist of Action",
+    archetype: "Action-led orientation",
     slogan: "Sacred order leads to internal sovereignty.",
-    longDescription: "You align with Karma and Kriya, the path of sacred action. You believe that how we move through the world and interact with tradition matters. You find stability in ritual, duty, and the preservation of sacred rhythms. Every action is an opportunity to align with Rita, the Cosmic Order.",
+    longDescription: "Your answers lean toward Karma-oriented and ritual-centered practice. You are more likely to trust disciplined action, responsibility, inherited forms, and repeated observance than purely interior methods. In practical terms, this can mean affinity for puja, seva, duty, and traditions where practice is structured through action and obligation.",
     icon: "Sparkles",
     themeColor: "orange",
   },
   discipline: {
     name: "The Way of Practice",
-    archetype: "The Architect of Mind",
+    archetype: "Discipline-led orientation",
     slogan: "Mastery of self is the only true freedom.",
-    longDescription: "You are a Raja Yogi, one who seeks mastery over the inner architecture of mind and energy. You value systematic training, breathwork, and the direct experience of consciousness. You don't seek meaning in stories; you seek it in the raw, vibrant stillness of your own being.",
+    longDescription: "Your answers lean toward Raja Yoga and disciplined inward practice. You are more likely to trust methods that train attention directly through meditation, breath regulation, posture, and repeated inner discipline. In practical terms, this points toward practice systems that emphasize steadiness, technique, and the cultivation of concentration.",
     icon: "Zap",
     themeColor: "indigo",
   }

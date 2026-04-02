@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -97,9 +98,9 @@ export default function FaithFinderResultsPage() {
 
     const handleShare = async () => {
         const url = window.location.href;
-        const title = "My Faith Finder Results";
+        const title = "Faith Finder Result";
         const text = result
-            ? `I discovered my spiritual path is ${pathMetadata[result.primaryPath].name}. Take the quiz:`
+            ? `My Faith Finder result points toward ${pathMetadata[result.primaryPath].name}. Review the quiz here:`
             : "Take the Faith Finder quiz:";
 
         if (
@@ -129,10 +130,10 @@ export default function FaithFinderResultsPage() {
                     <div className="max-w-5xl mx-auto space-y-8">
                         <div className="flex items-center justify-between gap-4">
                             <Button asChild variant="ghost" className="gap-2">
-                                <a href="/faith-finder">
+                                <Link href="/faith-finder">
                                     <ArrowLeft className="w-4 h-4" />
                                     Back
-                                </a>
+                                </Link>
                             </Button>
                             <Button variant="outline" className="gap-2" onClick={handleShare}>
                                 <Share2 className="w-4 h-4" />
@@ -171,13 +172,13 @@ export default function FaithFinderResultsPage() {
                                         {pathMetadata[result.primaryPath].name}
                                     </h1>
                                     <p className="text-muted-foreground max-w-2xl mx-auto">
-                                        {pathMetadata[result.primaryPath].archetype}
+                                        A present-tense orientation based on your answers, not a fixed identity.
                                     </p>
                                 </div>
 
                                 <Card className="border-2">
                                     <CardHeader>
-                                        <CardTitle>Lineage Mirror</CardTitle>
+                                        <CardTitle>Score Breakdown</CardTitle>
                                     </CardHeader>
                                     <CardContent>
                                         <div className="h-[320px] sm:h-[380px]">
@@ -210,11 +211,14 @@ export default function FaithFinderResultsPage() {
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <Card>
                                         <CardHeader>
-                                            <CardTitle className="text-lg">Your Dharmic Architecture</CardTitle>
+                                            <CardTitle className="text-lg">Your Path Profile</CardTitle>
                                         </CardHeader>
                                         <CardContent>
                                             <p className="text-sm text-muted-foreground leading-relaxed">
                                                 {pathMetadata[result.primaryPath].longDescription}
+                                            </p>
+                                            <p className="text-sm text-muted-foreground leading-relaxed mt-4">
+                                                The chart reflects relative weighting inside this quiz only. It does not measure attainment, commitment, or formal lineage affiliation.
                                             </p>
                                         </CardContent>
                                     </Card>

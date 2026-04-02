@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 import { proxyContentAgentJson } from "@/lib/content-agent/backend";
-import { PipelineDetailSchema } from "@/lib/pipelines/schemas";
+import { formatSchemaValidationError, validatePipelineDetail } from "@/lib/pipelines/schemas";
 
 export async function GET(_: Request, context: { params: Promise<{ id: string }> }) {
     try {
@@ -12,13 +13,13 @@ export async function GET(_: Request, context: { params: Promise<{ id: string }>
             return NextResponse.json(rawPayload, { status: response.status });
         }
 
-        // Validate backend response schema — log warning on mismatch but don't block
-        const parseResult = PipelineDetailSchema.safeParse(rawPayload);
-        if (!parseResult.success) {
-            console.warn(`[pipelines/${id}] Backend response failed schema validation:`, parseResult.error.issues);
+        try {
+            const payload = validatePipelineDetail(rawPayload);
+            return NextResponse.json(payload, { status: response.status, headers: { "Cache-Control": "no-store, max-age=0" } });
+        } catch (error) {
+            const message = error instanceof ZodError ? formatSchemaValidationError(error) : "unknown";
+            return NextResponse.json({ error: `Pipeline backend response failed schema validation: ${message}` }, { status: 502 });
         }
-
-        return NextResponse.json(rawPayload, { status: response.status, headers: { "Cache-Control": "no-store, max-age=0" } });
     } catch (error) {
         return NextResponse.json(
             { error: error instanceof Error ? error.message : "Pipeline detail unavailable" },

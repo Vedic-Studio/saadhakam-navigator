@@ -13,11 +13,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
             if (pm) {
                 return {
-                    title: `My Spiritual Path: ${pm.name} | Sadhaka Faith Finder`,
-                    description: `I discovered I am "${pm.archetype}". Take the Faith Finder Quiz to uncover your path.`,
+                    title: `Faith Finder Result: ${pm.name} | Sadhaka`,
+                    description: `A Faith Finder result page showing ${pm.name} as the strongest current orientation, with score breakdown and suggested next steps.`,
                     openGraph: {
-                        title: `My Spiritual Path: ${pm.name}`,
-                        description: `I discovered I am "${pm.archetype}". Take the Faith Finder Quiz to uncover your path.`,
+                        title: `Faith Finder Result: ${pm.name}`,
+                        description: `A Faith Finder result page showing ${pm.name} as the strongest current orientation, with score breakdown and suggested next steps.`,
                         type: 'website',
                     }
                 };
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
     return {
         title: 'Faith Finder Results | Sadhaka',
-        description: 'Discover your Dharmic Archetype and specific path.'
+        description: 'Review your strongest yoga orientation, score breakdown, and suggested next steps.'
     };
 }
 

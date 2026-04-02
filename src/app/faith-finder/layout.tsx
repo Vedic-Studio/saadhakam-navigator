@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Yogic Path Finder: Which of the Four Yogas Fits Your Temperament? | Sadhaka",
+  title: "Faith Finder: A Four-Yoga Orientation Quiz | Sadhaka",
   description:
-    "A seven-question quiz mapping your temperament to one of the four classical yogic paths — Jnana (inquiry), Bhakti (devotion), Karma (action), and Raja (discipline) — based on the guna framework from Bhagavad Gita 17.2.",
+    "A seven-question interpretive quiz that maps temperament and practice preference to four classical yogic emphases: Jnana, Bhakti, Karma, and Raja. Grounded in the Gita's discussion of shraddha and temperament in 17.2.",
   alternates: { canonical: "https://www.opensadhaka.com/faith-finder" },
   openGraph: {
-    title: "Yogic Path Finder | Sadhaka",
+    title: "Faith Finder: A Four-Yoga Orientation Quiz | Sadhaka",
     description:
-      "Which of the four yogas fits your temperament? A short quiz based on the classical path framework from the Bhagavad Gita.",
+      "A short, grounded orientation quiz based on the four yogas and the Gita's discussion of temperament.",
     url: "https://www.opensadhaka.com/faith-finder",
   },
 };

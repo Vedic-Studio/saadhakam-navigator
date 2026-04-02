@@ -33,28 +33,28 @@ const pathIconColors = {
 
 const pathSpecificTeasers: Record<string, string[]> = {
     inquiry: [
-        "Why your mind seeks proof over faith",
-        "The Advaita lineage aligned to your temperament",
-        "A self-inquiry practice sequence for your first 30 days",
-        "Texts and teachers curated for the analytical seeker",
+        "Why inquiry and study may be your strongest entry point",
+        "Texts and traditions often associated with inquiry-led practice",
+        "A simple self-inquiry sequence to test in the first 30 days",
+        "Reading directions for a study-centered beginner",
     ],
     devotion: [
-        "Why your heart is your strongest spiritual instrument",
-        "The Bhakti lineage that matches your devotional style",
-        "A japa and kirtan practice plan for your first 30 days",
-        "Saints and songs curated for the relational seeker",
+        "Why devotion may be your strongest entry point",
+        "Traditions often associated with bhakti-centered practice",
+        "A simple japa and chanting sequence to test in the first 30 days",
+        "Reading and listening suggestions for devotion-led practice",
     ],
     ritual: [
-        "Why sacred structure grounds your spiritual life",
-        "The Karma Yoga lineage aligned to your temperament",
-        "A daily puja and ritual plan for your first 30 days",
-        "Ceremonies and traditions curated for the alchemist of action",
+        "Why structured action and observance may fit you well",
+        "Traditions often associated with ritual and duty-centered practice",
+        "A simple daily puja or observance sequence to test in the first 30 days",
+        "Reading directions for practice through action and form",
     ],
     discipline: [
-        "Why systematic practice is your natural entry point",
-        "The Raja Yoga lineage aligned to your temperament",
-        "A pranayama and meditation plan for your first 30 days",
-        "Methods and masters curated for the architect of mind",
+        "Why disciplined inward practice may be your strongest entry point",
+        "Traditions often associated with meditation and Raja Yoga",
+        "A simple pranayama and meditation sequence to test in the first 30 days",
+        "Reading directions for technique-centered practice",
     ],
 };
 
@@ -71,16 +71,17 @@ export const ResultsPreview = ({ result, onContinue }: ResultsPreviewProps) => {
                     <div className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl ${pathIconColors[result.primaryPath]} border-2 mb-6 shadow-xl`}>
                         <IconComponent className="w-12 h-12" />
                     </div>
-                    <p className="text-sm font-semibold tracking-widest uppercase text-muted-foreground mb-2">Your Archetype</p>
+
+                    <p className="text-sm font-semibold tracking-widest uppercase text-muted-foreground mb-2">Current Leading Orientation</p>
                     <h2 className="text-4xl font-bold text-foreground mb-2">
                         {metadata.name}
                     </h2>
                     <Badge variant="outline" className="text-md py-1 px-4 rounded-full border-current/30">
-                        {metadata.archetype}
+                        Current orientation
                     </Badge>
                     {secondaryMeta && (
                         <p className="text-sm text-muted-foreground mt-3">
-                            With strong echoes of <span className="font-medium text-foreground">{secondaryMeta.name}</span>
+                            With a secondary emphasis on <span className="font-medium text-foreground">{secondaryMeta.name}</span>
                         </p>
                     )}
                 </div>
@@ -99,7 +100,7 @@ export const ResultsPreview = ({ result, onContinue }: ResultsPreviewProps) => {
 
                 <div className="text-center bg-secondary/5 p-8 rounded-3xl border border-secondary/20">
                     <p className="text-lg font-semibold text-foreground mb-4">
-                        Your Dharmic Architecture Report is Ready
+                        Your full result summary is ready
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left text-sm text-muted-foreground mb-8">
                         {teasers.map((teaser) => (
@@ -110,7 +111,7 @@ export const ResultsPreview = ({ result, onContinue }: ResultsPreviewProps) => {
                         ))}
                     </div>
                     <Button onClick={onContinue} size="lg" className="w-full h-14 rounded-full text-lg bg-foreground text-background hover:bg-foreground/90 gap-2">
-                        Claim My Full Results
+                        Continue to full result
                         <ArrowRight className="w-5 h-5" />
                     </Button>
                 </div>
