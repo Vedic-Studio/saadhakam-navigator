@@ -114,7 +114,7 @@ export default async function GreatDetailPage({
                 className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors bg-background/50 backdrop-blur-sm px-4 py-2 rounded-full border border-border/50"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Back to Legacy of Light
+                Back to the Acharyas and Sages
               </Link>
             </nav>
             <div className="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-widest border border-primary/20">

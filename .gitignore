@@ -53,6 +53,9 @@ plans/
 venv/
 .venv/
 
+# Local backend secrets
+backend/.env
+
 # Package manager lockfiles (project uses npm)
 bun.lockb
 

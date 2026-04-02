@@ -4,6 +4,25 @@ export type CmsStage = "draft" | "edit" | "review" | "approved" | "published" | 
 export type CmsSourceKind = "pilot-import" | "legacy-page" | "cms-native" | "api-pipeline";
 export type CmsReviewAction = "approve" | "revise" | "reject";
 
+export interface CmsScoreViolation {
+    type: string;
+    line: number;
+    matched: string;
+    context: string;
+    fix: string;
+}
+
+export interface CmsConsistencyIssue {
+    slug: string;
+    kind: "missing-current-file" | "missing-version-file" | "missing-version-content" | "missing-article-row";
+    detail: string;
+}
+
+export interface CmsConsistencyReport {
+    ok: boolean;
+    issues: CmsConsistencyIssue[];
+}
+
 export interface CmsArticleIntake {
     topic?: string;
     goal?: string;
@@ -55,6 +74,7 @@ export interface CmsScore {
     focus: number;
     total: number;
     verdict: "PASS" | "REVISE" | "REJECT";
+    violations: CmsScoreViolation[];
 }
 
 export interface CmsArticleDetail {

@@ -86,7 +86,7 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
     const radarData = useMemo(() => toRadarData(result.scores), [result.scores]);
 
     const handleShare = async () => {
-        const shareText = `I discovered my spiritual path is ${metadata.name}! Take the Faith Finder Quiz to discover yours.`;
+        const shareText = `My Faith Finder result points toward ${metadata.name}. Review the quiz and score breakdown here.`;
         const shareUrl = window.location.href;
 
         if (typeof window !== "undefined" && typeof window.sadhaka?.shareResult === "function") {
@@ -96,7 +96,7 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
         if (navigator.share) {
             try {
                 await navigator.share({
-                    title: 'My Spiritual Path',
+                    title: 'Faith Finder Result',
                     text: shareText,
                     url: shareUrl,
                 });
@@ -127,10 +127,10 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
                             </div>
                         </div>
                         <DialogTitle className="text-center text-2xl">
-                            Your path: {metadata.name}
+                            Your result: {metadata.name}
                         </DialogTitle>
                         <DialogDescription className="text-center">
-                            Enter your email to unlock your full Dharmic Architecture report, personalized practice plan, and a 6-part guidance series.
+                            Enter your email to receive a saved copy of your result, a practical reading list, and a short follow-up sequence based on this quiz outcome.
                         </DialogDescription>
                     </DialogHeader>
                     <div className="mt-4">
@@ -162,11 +162,11 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
                         </h1>
                         <div className="flex flex-wrap items-center justify-center gap-3">
                             <Badge className={`text-lg py-1 px-5 rounded-full bg-gradient-to-r ${colors.gradient} text-white border-0`}>
-                                {metadata.archetype}
+                                Current orientation
                             </Badge>
                             {result.secondaryPath && (
                                 <Badge variant="outline" className="text-lg py-1 px-5 rounded-full">
-                                    Sub-path: {pathMetadata[result.secondaryPath].name}
+                                    Secondary emphasis: {pathMetadata[result.secondaryPath].name}
                                 </Badge>
                             )}
                         </div>
@@ -176,7 +176,7 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
                 {/* Radar Chart */}
                 <Card className="border-2">
                     <CardHeader>
-                        <CardTitle>Lineage Mirror</CardTitle>
+                        <CardTitle>Score Breakdown</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="h-[320px] sm:h-[380px]">
@@ -212,14 +212,17 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
                     <CardContent className="p-10">
                         <div className="grid lg:grid-cols-[1fr,300px] gap-12">
                             <div>
-                                <h3 className="text-2xl font-bold text-foreground mb-6">Your Dharmic Architecture</h3>
+                                <h3 className="text-2xl font-bold text-foreground mb-6">Your Path Profile</h3>
                                 <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                                     {metadata.longDescription}
+                                </p>
+                                <p className="text-sm text-muted-foreground leading-relaxed mb-8">
+                                    This result is a directional reading of your answers. It suggests which mode of practice currently appears most natural, not which lineage you formally belong to or which path is universally best.
                                 </p>
 
                                 <Separator className="my-8" />
 
-                                <h3 className="text-xl font-bold text-foreground mb-6">Lineage Affinity Breakdown</h3>
+                                <h3 className="text-xl font-bold text-foreground mb-6">Relative Score Breakdown</h3>
                                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                                     {Object.entries(result.scores).map(([path, score]) => {
                                         const PathIcon = pathIcons[path as keyof typeof pathIcons];
@@ -246,13 +249,16 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
                             <div className="space-y-6">
                                 <Card className="bg-secondary/5 border-secondary/20 h-full">
                                     <CardContent className="p-6">
-                                        <h4 className="font-bold text-foreground mb-4">Dominant Trait</h4>
+                                        <h4 className="font-bold text-foreground mb-4">How to read this result</h4>
                                         <div className="space-y-4">
                                             <div className="p-4 rounded-xl bg-background border border-border">
                                                 <p className="text-sm italic">&ldquo;{metadata.slogan}&rdquo;</p>
                                             </div>
                                             <p className="text-sm text-muted-foreground leading-relaxed">
-                                                Your high score in {metadata.name} suggests a deep-seated need for {result.primaryPath === 'inquiry' ? 'rational proof' : result.primaryPath === 'devotion' ? 'emotional connection' : result.primaryPath === 'ritual' ? 'structured order' : 'direct experience'}.
+                                                A high score in {metadata.name} suggests that this style of approach currently fits your habits of attention and practice. It is a cue for where to begin reading and experimentation.
+                                            </p>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                The quiz uses broad categories that loosely correspond to Jnana, Bhakti, Karma, and Raja emphases. Most practitioners develop through more than one mode over time.
                                             </p>
                                         </div>
                                     </CardContent>
@@ -325,10 +331,10 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
                                 </div>
                                 <div className="flex-1 text-center md:text-left">
                                     <h3 className="text-xl font-semibold text-foreground mb-2">
-                                        Get Your Complete Report
+                                        Get This Result by Email
                                     </h3>
                                     <p className="text-muted-foreground">
-                                        Receive your personalized guidance, recommended resources, and a 6-part spiritual journey series.
+                                        Receive a saved copy of this result, recommended resources, and a short follow-up email sequence.
                                     </p>
                                 </div>
                                 <EmailCaptureForm
@@ -352,7 +358,7 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
                         ) : (
                             <>
                                 <Share2 className="w-4 h-4" />
-                                Share Results
+                                Share Result
                             </>
                         )}
                     </Button>

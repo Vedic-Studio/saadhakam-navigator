@@ -1,0 +1,146 @@
+{
+  "article": {
+    "source": {
+      "path": "/Users/ankitmishra/Developer/Sadhaka/docs/agents/02-article-content.md",
+      "title": "Agent: Article Content"
+    },
+    "reference_template_path": "src/app/what-is-vedanta/page.tsx",
+    "hub": {
+      "name": "hub",
+      "min_word_count": 2500,
+      "faq_minimum": 4,
+      "requires_aeo_block": true,
+      "required_internal_links": 4
+    },
+    "spoke": {
+      "name": "spoke",
+      "min_word_count": 1500,
+      "faq_minimum": 3,
+      "requires_aeo_block": true,
+      "required_internal_links": 3
+    },
+    "aeo_word_range": [
+      60,
+      100
+    ],
+    "sources_section_required": true,
+    "references_array_required": false,
+    "paragraph_sentence_limit": 3,
+    "forbidden_phrases": [
+      "— used as dramatic flourish mid-sentence (\"this teaching — like all great teachings —\")",
+      "ultimately  (except in direct quotes from primary sources)",
+      "journey  (as spiritual metaphor: \"your spiritual journey\", \"this journey\", \"one's journey\")",
+      "navigate  (as metaphor: \"navigate life\", \"navigate the darkness\", \"navigate complexity\")",
+      "tapestry  (\"rich tapestry of\", \"tapestry of traditions\")",
+      "landscape  (\"spiritual landscape\", \"philosophical landscape\", \"vast landscape\")",
+      "holistic",
+      "testament to",
+      "at its core",
+      "in essence",
+      "it is worth noting",
+      "it is important to note",
+      "delve into",
+      "moreover / furthermore  (as paragraph openers)",
+      "arguably  (as a hedge)",
+      "notably  (as a hedge: \"notably different\", \"notably via\")"
+    ],
+    "required_source_signals": [
+      "specific Upanishad / Gita / Purana / Sutra citation",
+      "named commentator or school position",
+      "distinguish source text vs commentary vs editorial implication",
+      "Sources & Commentaries section with authoritative external links"
+    ]
+  },
+  "stotra": {
+    "source": {
+      "path": "/Users/ankitmishra/Developer/Sadhaka/docs/agents/01-stotra-content.md",
+      "title": "Agent: Stotra Content"
+    },
+    "scope": "Creating and populating stotra JSON files. Does not touch page components (see `07-data-schema.md` for type changes, see page files directly for component work).",
+    "key_requirements": [
+      "**Create** `content/stotras/<slug>.json` following the schema above",
+      "**Verify** the loader works: `src/lib/stotras.ts` `loadStotra(\"<slug>\")` requires the file at that exact path",
+      "**Update** `src/app/sitemap.ts` — add the stotra slug to the stotras list",
+      "**Verify** route exists: `src/app/stotras/<slug>/page.tsx` (index) and `src/app/stotras/<slug>/[verse]/page.tsx` (verse detail)",
+      "After merging to main: run `npm run indexnow:submit:prod`",
+      "[ ] Every verse has all 7 fields: `verse`, `slug`, `sanskritDevanagari`, `transliteration`, `wordMeanings`, `translation`, `translationFlow`",
+      "[ ] Every verse has `analysis` with all 3 sub-fields: `literary`, `mythological`, `philosophical`",
+      "[ ] `verseCount` in metadata matches actual verse array length",
+      "[ ] JSON is valid (run `node -e \"require('./content/stotras/<slug>.json')\"` to check)",
+      "[ ] No verse has empty string `\"\"` for any field — use placeholder text if content is pending"
+    ]
+  },
+  "pseo": {
+    "source": {
+      "path": "/Users/ankitmishra/Developer/Sadhaka/docs/agents/06-pseo-pages.md",
+      "title": "Agent: Programmatic SEO Pages"
+    },
+    "scope": "Creating and maintaining pSEO (programmatic SEO) page routes. Each pSEO category has a data file + a shared dynamic `[param]/page.tsx` component.",
+    "key_requirements": [
+      "Export an array of typed objects",
+      "Each item must have a `slug` field (kebab-case, unique)",
+      "See `src/data/concepts.ts` as the canonical example",
+      "**Create the data file**: `src/data/<category>.ts`",
+      "**Create the route directory**: `src/app/<category>/[slug]/`",
+      "**Create `generateStaticParams()`** in the `[slug]/page.tsx`:",
+      "**Create the index page**: `src/app/<category>/page.tsx` — listing of all items",
+      "**Check for redirect conflicts**: the `concepts.ts` data drives auto-redirects in `next.config.ts` — a new category's slugs should not clash with `/<concept>-meaning` patterns",
+      "**Update sitemap**: add the new category's URLs to `src/app/sitemap.ts`",
+      "`export const metadata` or `export async function generateMetadata()` for dynamic metadata",
+      "`generateStaticParams()` for SSG",
+      "AEO block (see `docs/agents/04-seo-indexing.md`)",
+      "Correct canonical URL using `buildCanonicalUrl()`",
+      "Breadcrumb JSON-LD: `Home > Category > Item`",
+      "Internal links to related items in the same category and across categories",
+      "Add a case to `src/app/api/llm-content/route.ts` so individual entities are accessible via the endpoint",
+      "Add an import + summary section to `src/app/llms-full.txt/route.ts` so the category appears in the bulk dump",
+      "Both files follow the same pattern as existing categories — copy the nearest similar case",
+      "**Per-entity Markdown**: `GET /api/llm-content?type={category}&slug={slug}` — returns structured Markdown for any entity. Supported types: `philosophies`, `traditions`, `texts`, `concepts`, `practices`, `greats`, `topics`, `comparisons`.",
+      "**Bulk ingestion** (`/llms-full.txt`): entity summaries for all supported categories are included automatically from the data files."
+    ]
+  },
+  "context_packs": [
+    {
+      "module": "long_form",
+      "label": "Long-form articles",
+      "page_types": [
+        "topic_hub"
+      ],
+      "doc_paths": [
+        "/Users/ankitmishra/Developer/Sadhaka/docs/agents/02-article-content.md",
+        "/Users/ankitmishra/Developer/Sadhaka/seo/exclusions.md",
+        "/Users/ankitmishra/Developer/Sadhaka/seo/content-rules.md"
+      ],
+      "summary": "Long-form editorial article generation with AEO block, source fidelity, and article-quality requirements."
+    },
+    {
+      "module": "pseo",
+      "label": "Programmatic SEO pages",
+      "page_types": [
+        "combinatorial",
+        "sanskrit_lexicon"
+      ],
+      "doc_paths": [
+        "/Users/ankitmishra/Developer/Sadhaka/docs/agents/06-pseo-pages.md",
+        "/Users/ankitmishra/Developer/Sadhaka/seo/exclusions.md",
+        "/Users/ankitmishra/Developer/Sadhaka/seo/content-rules.md",
+        "/Users/ankitmishra/Developer/Sadhaka/plans/seo-content-strategy-sadhaka.md"
+      ],
+      "summary": "Programmatic page generation with uniqueness constraints, pSEO structure, and long-tail strategy alignment."
+    },
+    {
+      "module": "sacred_text",
+      "label": "Sacred text commentary",
+      "page_types": [
+        "sacred_text_chapter",
+        "sacred_text_shloka"
+      ],
+      "doc_paths": [
+        "/Users/ankitmishra/Developer/Sadhaka/docs/agents/02-article-content.md",
+        "/Users/ankitmishra/Developer/Sadhaka/seo/content-rules.md",
+        "/Users/ankitmishra/Developer/Sadhaka/seo/exclusions.md"
+      ],
+      "summary": "Text-rooted commentary pages requiring Sanskrit fidelity, commentary synthesis, and strong citation discipline."
+    }
+  ]
+}

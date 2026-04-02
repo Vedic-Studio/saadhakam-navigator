@@ -4,9 +4,12 @@ import { dirname, join } from "node:path";
 import { execFileSync } from "node:child_process";
 import postgres, { type Sql } from "postgres";
 import { articles, getArticleBySlug, type ArticleMeta } from "@/data/articles";
+import { authenticityDeduction, scanContent } from "./exclusion-scan";
 import { buildPilotCmsMarkdown } from "./markdown";
 import type {
     CmsArticleIntake,
+    CmsConsistencyIssue,
+    CmsConsistencyReport,
     CmsArticleDetail,
     CmsQueueArticle,
     CmsReview,
@@ -95,6 +98,34 @@ function getStageForUnpublishedArticle(currentStage?: CmsStage | null): CmsStage
 
 function canPublishArticle(stage?: CmsStage | null, hasKnownRoute?: boolean): boolean {
     return stage === "approved" && Boolean(hasKnownRoute);
+}
+
+function clampScore(value: number): number {
+    return Math.max(0, Math.min(10, Number(value.toFixed(1))));
+}
+
+export function buildCmsScore(content: string) {
+    const scan = scanContent(content);
+    const authenticity = clampScore(10 - authenticityDeduction(scan));
+    const directness = clampScore(9 - scan.violations.filter((item) => item.type === "THROAT_CLEARING" || item.type === "CONCESSION").length * 0.8);
+    const rhythm = clampScore(9 - scan.violations.filter((item) => item.type === "TRICOLON" || item.type === "DRAMATIC_FRAGMENTATION").length * 0.7);
+    const trust = clampScore(9 - scan.violations.filter((item) => item.type === "FALSE_AGENCY" || item.type === "MIC_DROP").length * 0.8);
+    const density = clampScore(9 - scan.violations.filter((item) => item.type === "FILLER_ADVERB" || item.type === "NEGATIVE_LISTING").length * 0.7);
+    const focus = clampScore(9 - scan.violations.filter((item) => item.type === "BINARY_CONTRAST" || item.type === "EM_DASH").length * 0.7);
+    const total = Number((directness + rhythm + trust + authenticity + density + focus).toFixed(1));
+    const verdict = scan.violations.length === 0 ? "PASS" : scan.violations.length >= 5 ? "REJECT" : "REVISE";
+
+    return {
+        directness,
+        rhythm,
+        trust,
+        authenticity,
+        density,
+        focus,
+        total,
+        verdict,
+        violations: scan.violations,
+    } as const;
 }
 
 function getPostgresSql(): Sql {
@@ -829,7 +860,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
                 version: review.version,
                 createdAt: review.created_at,
             })),
-            score: null,
+            score: latestVersion?.content ? buildCmsScore(latestVersion.content) : null,
             migrationState: deriveMigrationState(slug, versions),
         };
     }
@@ -865,7 +896,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
             version: review.version,
             createdAt: review.created_at,
         })),
-        score: null,
+        score: latestVersion?.content ? buildCmsScore(latestVersion.content) : null,
         migrationState: deriveMigrationState(slug, versions),
     };
 }
@@ -878,39 +909,44 @@ export async function saveCmsContent(slug: string, content: string, note?: strin
     if (HAS_POSTGRES) {
         const sql = getPostgresSql();
 
-        // Atomic: SELECT + INSERT in a single statement to prevent race conditions
-        const insertResult = await sql<{ version: number }[]>`
-            INSERT INTO cms_versions (slug, version, content, note, created_at)
-            VALUES (
-                ${slug},
-                (SELECT COALESCE(MAX(version), 0) + 1 FROM cms_versions WHERE slug = ${slug}),
-                ${content},
-                ${note || ""},
-                ${createdAt}
-            )
-            RETURNING version;
-        `;
-        const nextVersion = insertResult[0]?.version;
-        if (!nextVersion) {
-            throw new Error(`[cms/postgres] Failed to insert version for slug '${slug}' — no version returned`);
-        }
+        return sql.begin(async (tx) => {
+            const insertResult = await tx<{ version: number }[]>`
+                INSERT INTO cms_versions (slug, version, content, note, created_at)
+                VALUES (
+                    ${slug},
+                    (SELECT COALESCE(MAX(version), 0) + 1 FROM cms_versions WHERE slug = ${slug}),
+                    ${content},
+                    ${note || ""},
+                    ${createdAt}
+                )
+                RETURNING version;
+            `;
+            const nextVersion = insertResult[0]?.version;
+            if (!nextVersion) {
+                throw new Error(`[cms/postgres] Failed to insert version for slug '${slug}' — no version returned`);
+            }
 
-        await sql`
-            UPDATE cms_articles
-            SET stage = ${"review"},
-                word_count = ${wordCount},
-                updated_at = ${createdAt},
-                source_kind = CASE WHEN source_kind = 'legacy-page' THEN 'cms-native' ELSE source_kind END
-            WHERE slug = ${slug};
-        `;
+            const updateResult = await tx`
+                UPDATE cms_articles
+                SET stage = ${"review"},
+                    word_count = ${wordCount},
+                    updated_at = ${createdAt},
+                    source_kind = CASE WHEN source_kind = 'legacy-page' THEN 'cms-native' ELSE source_kind END
+                WHERE slug = ${slug};
+            `;
 
-        return {
-            version: nextVersion,
-            filename: `v${String(nextVersion).padStart(3, "0")}.md`,
-            content,
-            createdAt,
-            note,
-        };
+            if (updateResult.count === 0) {
+                throw new Error(`[cms/postgres] Failed to update cms_articles for slug '${slug}' after version insert`);
+            }
+
+            return {
+                version: nextVersion,
+                filename: `v${String(nextVersion).padStart(3, "0")}.md`,
+                content,
+                createdAt,
+                note,
+            };
+        });
     }
 
     // SQLite: atomic version assignment via subquery in INSERT
@@ -960,6 +996,64 @@ export async function saveCmsContent(slug: string, content: string, note?: strin
         createdAt,
         note,
     };
+}
+
+export async function checkCmsConsistency(): Promise<CmsConsistencyReport> {
+    await ensureCmsBootstrap();
+
+    if (HAS_POSTGRES) {
+        const sql = getPostgresSql();
+        const articleRows = await sql<{ slug: string }[]>`SELECT slug FROM cms_articles;`;
+        const versionRows = await sql<{ slug: string; version: number; content: string | null }[]>`
+            SELECT slug, version, content FROM cms_versions ORDER BY slug ASC, version ASC;
+        `;
+
+        const articleSet = new Set(articleRows.map((row) => row.slug));
+        const issues: CmsConsistencyIssue[] = [];
+
+        for (const row of versionRows) {
+            if (!articleSet.has(row.slug)) {
+                issues.push({ slug: row.slug, kind: "missing-article-row", detail: `cms_versions has ${row.slug} v${row.version} without cms_articles row` });
+            }
+            if (!row.content) {
+                issues.push({ slug: row.slug, kind: "missing-version-content", detail: `cms_versions has empty content for ${row.slug} v${row.version}` });
+            }
+        }
+
+        return { ok: issues.length === 0, issues };
+    }
+
+    const articleRows = selectSql<{ slug: string }>(`SELECT slug FROM cms_articles;`);
+    const versionRows = selectSql<{ slug: string; version: number; file_path?: string | null; content?: string | null }>(`
+        SELECT slug, version, file_path, content FROM cms_versions ORDER BY slug ASC, version ASC;
+    `);
+
+    const articleSet = new Set(articleRows.map((row) => row.slug));
+    const issues: CmsConsistencyIssue[] = [];
+
+    for (const row of versionRows) {
+        if (!articleSet.has(row.slug)) {
+            issues.push({ slug: row.slug, kind: "missing-article-row", detail: `cms_versions has ${row.slug} v${row.version} without cms_articles row` });
+        }
+        if (!row.content) {
+            issues.push({ slug: row.slug, kind: "missing-version-content", detail: `cms_versions has empty content for ${row.slug} v${row.version}` });
+        }
+
+        const expectedVersionPath = row.file_path || getVersionMarkdownPath(row.slug, row.version);
+        if (!existsSync(expectedVersionPath)) {
+            issues.push({ slug: row.slug, kind: "missing-version-file", detail: `Missing version file for ${row.slug} v${row.version}: ${expectedVersionPath}` });
+        }
+    }
+
+    for (const row of articleRows) {
+        const currentPath = getCurrentMarkdownPath(row.slug);
+        const hasAnyVersion = versionRows.some((version) => version.slug === row.slug);
+        if (hasAnyVersion && !existsSync(currentPath)) {
+            issues.push({ slug: row.slug, kind: "missing-current-file", detail: `Missing current.md for ${row.slug}: ${currentPath}` });
+        }
+    }
+
+    return { ok: issues.length === 0, issues };
 }
 
 export async function submitCmsReview(slug: string, action: CmsReviewAction, comment: string): Promise<CmsReview> {

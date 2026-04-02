@@ -47,11 +47,39 @@ export default function FaithFinderPage() {
               </p>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
                 This quiz asks seven questions about how you respond to
-                uncertainty, emotion, and meaning, then maps your answers to the
-                path that fits your temperament.
+                uncertainty, emotion, study, practice, and structure. It then
+                maps your answers to one of four broad practice emphases.
+                It is an interpretive tool, not a traditional initiation, not a
+                diagnostic instrument, and not a substitute for study with a
+                teacher.
               </p>
+              <div className="max-w-2xl mx-auto mb-8 rounded-2xl border border-border/60 bg-card/40 p-5 text-left">
+                <h2 className="text-lg font-semibold text-foreground mb-3">
+                  How this quiz works
+                </h2>
+                <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                  <p>
+                    The four output categories are practical shorthand for the
+                    major yogic emphases described across the Gita: Jnana for
+                    inquiry and discernment, Bhakti for devotion, Karma for
+                    action and duty, and Raja for disciplined inward practice.
+                  </p>
+                  <p>
+                    The temperament framing is deliberately limited. Bhagavad
+                    Gita 17.2 states that a person&apos;s shraddha follows their
+                    svabhava. This quiz uses that idea carefully by asking what
+                    kind of discipline, relationship, or method you are most
+                    likely to sustain, rather than claiming to reveal your essence.
+                  </p>
+                  <p>
+                    Results are best read as a starting orientation. They suggest
+                    which mode of practice may feel most natural at present and
+                    which traditions or texts may be worth exploring next.
+                  </p>
+                </div>
+              </div>
               <Button onClick={handleStartQuiz} size="lg" className="h-14 px-10 rounded-full text-lg bg-orange-600 hover:bg-orange-700 shadow-xl shadow-orange-900/20 gap-2 transition-all hover:scale-105">
-                Start the Quiz
+                Start the 7-Question Quiz
                 <ArrowRight className="w-5 h-5" />
               </Button>
 
@@ -75,7 +103,7 @@ export default function FaithFinderPage() {
 
               <p className="text-xs text-muted-foreground/60 mt-4">
                 Based on the guna-temperament framework from Gita 17.2 and the
-                classical path division in chapters 3&ndash;4 and 12.
+                classical discussions of action, knowledge, devotion, and discipline in the Gita.
               </p>
             </div>
           </div>

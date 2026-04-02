@@ -50,6 +50,12 @@ class ExclusionCheckResult:
     violations: List[str]
 
 
+@dataclass
+class DeterministicScanResult:
+    passed: bool
+    violations: List[str]
+
+
 class EditorAgent(BaseAgent):
     def __init__(self, knowledge_store: KnowledgeStore | None = None):
         super().__init__("editor")
@@ -63,6 +69,10 @@ class EditorAgent(BaseAgent):
     ) -> QualityScorecard:
         violations: List[str] = []
 
+        deterministic_result = self._run_deterministic_scan(content)
+        if not deterministic_result.passed:
+            violations.extend(deterministic_result.violations)
+
         depth_score, depth_notes = self._score_content_depth(content, request)
         factual_score, factual_notes = self._score_factual_accuracy(content)
         voice_score, voice_notes = self._score_voice_consistency(content)
@@ -70,9 +80,10 @@ class EditorAgent(BaseAgent):
         aead_score, aead_notes = self._score_aead_compliance(content)
 
         exclusion_result = self._run_exclusion_checks(content, request)
-        exclusion_score = 10.0 if exclusion_result.passed else 0.0
+        exclusion_safe = exclusion_result.passed and deterministic_result.passed
+        exclusion_score = 10.0 if exclusion_safe else 0.0
         exclusion_notes = "No exclusion policy violations detected"
-        if not exclusion_result.passed:
+        if not exclusion_safe:
             exclusion_notes = "Exclusion violations found; automatic fail"
             violations.extend(exclusion_result.violations)
 
@@ -136,7 +147,7 @@ class EditorAgent(BaseAgent):
 
         total = sum(item.score * item.weight for item in dimensions.values())
         effective_threshold = threshold if threshold is not None else 8.0
-        passed = total >= effective_threshold and exclusion_result.passed
+        passed = total >= effective_threshold and exclusion_safe
 
         return QualityScorecard(
             total_score=round(total, 2),
@@ -345,3 +356,39 @@ class EditorAgent(BaseAgent):
                 )
 
         return ExclusionCheckResult(passed=len(violations) == 0, violations=violations)
+
+    def _run_deterministic_scan(self, content: str) -> DeterministicScanResult:
+        violations: List[str] = []
+        lines = content.splitlines()
+
+        patterns = {
+            "CONCESSION": re.compile(r"\b(nobody disputes|make no mistake|to be fair|credit where (?:it's|it is) due|say what you will)\b", re.IGNORECASE),
+            "EM_DASH": re.compile(r"\u2014|(?<= )--(?= )"),
+            "BINARY_CONTRAST": re.compile(r"\b(?:it(?:'s| is) not .{3,40},\s*it(?:'s| is) |less about .{3,30},?\s*more about)\b", re.IGNORECASE),
+            "THROAT_CLEARING": re.compile(r"^(?:here(?:'s| is) (?:the thing|what|why|how)|the (?:reality|truth|fact) (?:is|remains)|it(?:'s| is) worth noting|let(?:'s| us) be (?:honest|clear|real)|the bottom line is)", re.IGNORECASE),
+            "FILLER_ADVERB": re.compile(r"\b(essentially|incredibly|absolutely|fundamentally|arguably|undeniably|literally|ultimately|certainly|undoubtedly|unquestionably|genuinely|simply put|quite simply|in essence)\b", re.IGNORECASE),
+        }
+
+        inanimate_subjects = re.compile(r"\b(?:the )?(?:price|reputation|narrative|numbers?|stats?|record|tournament|pressure|data|tradition|history|legacy|scripture|text|verse|teaching|philosophy|doctrine|concept)\b", re.IGNORECASE)
+        human_verbs = re.compile(r"\b(?:demands?|insists?|refuses?|believes?|argues?|tells?|speaks?|screams?|outpaces?|betrays?|forgives?|punishes?|whispers?|beckons?|calls upon|invites?)\b", re.IGNORECASE)
+
+        for index, raw_line in enumerate(lines, start=1):
+            line = raw_line.strip()
+            if not line or line.startswith("#"):
+                continue
+
+            for violation_type, pattern in patterns.items():
+                match = pattern.search(line)
+                if match:
+                    violations.append(f"Deterministic scan {violation_type} at line {index}: {match.group(0)}")
+
+            subject_match = inanimate_subjects.search(line)
+            if subject_match:
+                tail = line[subject_match.end(): subject_match.end() + 40]
+                verb_match = human_verbs.search(tail)
+                if verb_match:
+                    violations.append(
+                        f"Deterministic scan FALSE_AGENCY at line {index}: {subject_match.group(0)} ... {verb_match.group(0)}"
+                    )
+
+        return DeterministicScanResult(passed=len(violations) == 0, violations=violations)

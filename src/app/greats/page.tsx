@@ -12,7 +12,7 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "The Acharyas and Sages of Sanatan Dharma | Sadhaka",
   description:
-    "The philosophers and commentators who built the major systems of Hindu thought. Shankaracharya, Abhinavagupta, Vivekananda, Aurobindo, and Kalidasa.",
+    "An orientation to major acharyas, commentators, and literary figures in Sanatan Dharma, with emphasis on lineage, commentary tradition, and philosophical contribution.",
   keywords: [
     "acharyas",
     "shankaracharya",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Acharyas and Sages of Sanatan Dharma | Sadhaka",
     description:
-      "The philosophers and commentators who built the major systems of Hindu thought. Shankaracharya, Abhinavagupta, Vivekananda, Aurobindo, and Kalidasa.",
+      "An orientation to major acharyas, commentators, and literary figures in Sanatan Dharma, with emphasis on lineage, commentary tradition, and philosophical contribution.",
     url: "https://www.opensadhaka.com/greats",
   },
 };
@@ -49,30 +49,40 @@ export default function GreatsPage() {
                 The Acharyas and Sages
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
-                The philosophers who built the major darshanas, the commentators
-                who defined how the Upanishads and Brahma Sutras are read, and the
-                poets who gave Sanskrit literature its highest expressions.
+                The teachers, commentators, and literary figures who shaped how
+                major schools of Sanatan Dharma are studied, interpreted, and
+                transmitted.
               </p>
             </div>
 
             <div className="max-w-3xl mx-auto mb-16 space-y-4 text-muted-foreground leading-relaxed px-4">
               <p>
-                In the Vedantic tradition, a school of thought is defined by its
-                Acharya&apos;s commentary on the Prasthanatrayi &mdash; the Brahma
-                Sutras, the principal Upanishads, and the Bhagavad Gita. Shankara
-                wrote the Advaita Bhashya. Ramanuja wrote the Vishishtadvaita
-                Bhashya. Madhva wrote the Dvaita Bhashya. Each commentary
-                established not just an interpretation but a complete philosophical
-                system with its own epistemology, ontology, and soteriology.
+                In many Sanskrit traditions, authority is not carried by slogans
+                but by commentary, debate, and transmission. The Vedantic schools
+                are a clear example. Shankara, Ramanuja, and Madhva each wrote
+                major bhashyas on the Brahma Sutras and related scriptural corpus,
+                and those commentaries became the basis for distinct metaphysical
+                and soteriological systems. To study an acharya is therefore to
+                study how a lineage reads scripture, defines valid knowledge, and
+                argues for liberation.
               </p>
               <p>
-                The figures on this page are not presented as objects of devotion
-                but as thinkers whose arguments can be studied, tested, and debated.
-                Shankaracharya argued for non-dual Brahman. Abhinavagupta synthesized
-                the Pratyabhijna school of Kashmir Shaivism. Vivekananda reframed
-                Vedanta for a global audience. Aurobindo integrated evolution into
-                Vedantic metaphysics. Kalidasa demonstrated that philosophical depth
-                and literary craft are not separate disciplines.
+                This page is an orientation, not a hall of fame. It highlights
+                figures whose work changed the vocabulary of Indian philosophy,
+                theology, poetics, or practice. Some are system builders.
+                Some are exegetes. Some translate inherited doctrine into a new
+                historical setting. What matters here is contribution: what they
+                wrote, what they clarified, what lineage they influenced, and why
+                later readers still return to them.
+              </p>
+              <p>
+                The figures listed below should be read in context. Shankaracharya
+                is central for Advaita Vedanta and the commentary tradition around
+                the Prasthanatrayi. Abhinavagupta is indispensable for Kashmir
+                Shaiva philosophy and aesthetics. Vivekananda and Aurobindo matter
+                for modern reinterpretations of Vedanta and yoga. Kalidasa belongs
+                here because Sanskrit literary culture and philosophical culture are
+                historically intertwined, not separate worlds.
               </p>
               <p className="text-sm italic text-muted-foreground/70">
                 This is not an exhaustive list. Ramanuja, Madhva, Vallabha, Patanjali,
@@ -155,7 +165,7 @@ export default function GreatsPage() {
                     Compare the Masters
                   </h2>
                   <p className="text-muted-foreground">
-                    Deep dives into the unique styles and teachings of history's greatest gurus.
+                    Comparative pages on differences in doctrine, method, and emphasis.
                   </p>
                 </div>
                 <TrackedLink

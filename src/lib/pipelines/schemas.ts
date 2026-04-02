@@ -109,6 +109,10 @@ export type ValidatedPipelineDetail = z.infer<typeof PipelineDetailSchema>;
 export type ValidatedPipelineListResponse = z.infer<typeof PipelineListResponseSchema>;
 export type ValidatedMaterializationContract = z.infer<typeof MaterializationContractSchema>;
 
+export function formatSchemaValidationError(error: z.ZodError): string {
+    return error.issues.map((issue) => `${issue.path.join(".") || "root"}: ${issue.message}`).join("; ");
+}
+
 // --- Validation helpers ---
 
 /**
@@ -124,6 +128,10 @@ export function validatePipelineDetail(data: unknown): ValidatedPipelineDetail {
  */
 export function validatePipelineListResponse(data: unknown): ValidatedPipelineListResponse {
     return PipelineListResponseSchema.parse(data);
+}
+
+export function validateMaterializationContract(data: unknown): ValidatedMaterializationContract {
+    return MaterializationContractSchema.parse(data);
 }
 
 /**
