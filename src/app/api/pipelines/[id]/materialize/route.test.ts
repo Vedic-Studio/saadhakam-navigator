@@ -80,7 +80,19 @@ describe("POST /api/pipelines/[id]/materialize", () => {
     it("returns an existing linked slug without rematerializing", async () => {
         proxyContentAgentJson.mockResolvedValue({
             ok: true,
-            json: async () => ({ id: "pipeline-1", status: "approved", outputs: [{ id: "out-1", version: 1, stage: "writer_draft", agent: "writer", content: "draft", created_at: new Date().toISOString() }] }),
+            json: async () => ({
+                id: "pipeline-1",
+                topic: "What is Vedanta",
+                page_type: "topic_hub",
+                status: "approved",
+                revision_count: 1,
+                quality_threshold: 7,
+                revision_limit: 2,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString(),
+                outputs: [{ id: "out-1", version: 1, stage: "writer_draft", agent: "writer", content: "draft", created_at: new Date().toISOString() }],
+                feedback: [],
+            }),
         });
         findCmsArticleSlugByPipelineId.mockResolvedValue("what-is-vedanta");
         getCmsArticleDetail.mockResolvedValue({ versions: [{ version: 4 }] });
