@@ -1,18 +1,34 @@
 import { NextResponse } from "next/server";
+import { ZodError } from "zod";
 import { findCmsArticleSlugByPipelineId, generateUniqueCmsSlug, getCmsArticleDetail, upsertCmsArticleDraft } from "@/lib/cms/storage";
 import { proxyContentAgentJson } from "@/lib/content-agent/backend";
-import { canMaterializePipeline, getApprovedPipelineArtifact, type PipelineDetail } from "@/lib/pipelines/types";
+import { validatePipelineDetail } from "@/lib/pipelines/schemas";
+import { canMaterializePipeline, getApprovedPipelineArtifact } from "@/lib/pipelines/types";
 
 export async function POST(_: Request, context: { params: Promise<{ id: string }> }) {
     try {
         const { id } = await context.params;
         const response = await proxyContentAgentJson(`/pipelines/${id}`);
-        const pipeline = (await response.json()) as PipelineDetail;
+        const rawData: unknown = await response.json();
 
         if (!response.ok) {
+            const errorPayload = rawData as { detail?: string };
             return NextResponse.json(
-                { error: (pipeline as { detail?: string }).detail || "Failed to load pipeline detail" },
+                { error: errorPayload.detail || "Failed to load pipeline detail" },
                 { status: response.status },
+            );
+        }
+
+        // Validate backend response against Zod schema — catch contract drift early
+        let pipeline;
+        try {
+            pipeline = validatePipelineDetail(rawData);
+        } catch (validationError) {
+            const zodError = validationError instanceof ZodError ? validationError : null;
+            const fieldErrors = zodError?.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ") || "unknown";
+            return NextResponse.json(
+                { error: `Pipeline backend response failed schema validation: ${fieldErrors}` },
+                { status: 502 },
             );
         }
 

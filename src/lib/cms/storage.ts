@@ -116,11 +116,22 @@ function sqlString(value: SqlScalar): string {
 }
 
 function runSql(sqlText: string): void {
-    execFileSync("sqlite3", [DB_PATH, sqlText], { stdio: "ignore" });
+    try {
+        execFileSync("sqlite3", [DB_PATH, sqlText], { stdio: ["ignore", "ignore", "pipe"] });
+    } catch (error) {
+        const stderr = error instanceof Error && "stderr" in error ? String((error as { stderr: unknown }).stderr) : "";
+        throw new Error(`[cms/sqlite] runSql failed: ${stderr || (error instanceof Error ? error.message : "unknown error")}`);
+    }
 }
 
 function selectSql<T>(sqlText: string): T[] {
-    const raw = execFileSync("sqlite3", ["-json", DB_PATH, sqlText], { encoding: "utf8" }).trim();
+    let raw: string;
+    try {
+        raw = execFileSync("sqlite3", ["-json", DB_PATH, sqlText], { encoding: "utf8" }).trim();
+    } catch (error) {
+        const stderr = error instanceof Error && "stderr" in error ? String((error as { stderr: unknown }).stderr) : "";
+        throw new Error(`[cms/sqlite] selectSql failed: ${stderr || (error instanceof Error ? error.message : "unknown error")}`);
+    }
     if (!raw) {
         return [];
     }
@@ -409,10 +420,8 @@ function estimateWordCount(meta: ArticleMeta): number {
 async function persistLocalVersion(slug: string, version: number, content: string, note?: string): Promise<void> {
     const versionPath = getVersionMarkdownPath(slug, version);
     const currentPath = getCurrentMarkdownPath(slug);
-    await mkdir(dirname(versionPath), { recursive: true });
-    await writeFile(versionPath, content, "utf8");
-    await writeFile(currentPath, content, "utf8");
 
+    // DB first — if this fails, we throw and no orphan files are created
     runSql(`
         INSERT OR REPLACE INTO cms_versions (slug, version, file_path, content, note, created_at)
         VALUES (
@@ -424,6 +433,15 @@ async function persistLocalVersion(slug: string, version: number, content: strin
             ${sqlString(new Date().toISOString())}
         );
     `);
+
+    // Filesystem second — non-critical, DB is source of truth
+    try {
+        await mkdir(dirname(versionPath), { recursive: true });
+        await writeFile(versionPath, content, "utf8");
+        await writeFile(currentPath, content, "utf8");
+    } catch (fsError) {
+        console.warn(`[cms] Filesystem write failed for ${slug} v${version}, DB record is intact:`, fsError);
+    }
 }
 
 async function ensureLocalCmsBootstrap(): Promise<void> {
@@ -859,17 +877,23 @@ export async function saveCmsContent(slug: string, content: string, note?: strin
 
     if (HAS_POSTGRES) {
         const sql = getPostgresSql();
-        const nextResult = await sql<{ next_version: number }[]>`
-            SELECT COALESCE(MAX(version), 0) + 1 as next_version
-            FROM cms_versions
-            WHERE slug = ${slug};
-        `;
-        const nextVersion = Number(nextResult[0]?.next_version || 1);
 
-        await sql`
+        // Atomic: SELECT + INSERT in a single statement to prevent race conditions
+        const insertResult = await sql<{ version: number }[]>`
             INSERT INTO cms_versions (slug, version, content, note, created_at)
-            VALUES (${slug}, ${nextVersion}, ${content}, ${note || ""}, ${createdAt});
+            VALUES (
+                ${slug},
+                (SELECT COALESCE(MAX(version), 0) + 1 FROM cms_versions WHERE slug = ${slug}),
+                ${content},
+                ${note || ""},
+                ${createdAt}
+            )
+            RETURNING version;
         `;
+        const nextVersion = insertResult[0]?.version;
+        if (!nextVersion) {
+            throw new Error(`[cms/postgres] Failed to insert version for slug '${slug}' — no version returned`);
+        }
 
         await sql`
             UPDATE cms_articles
@@ -889,13 +913,36 @@ export async function saveCmsContent(slug: string, content: string, note?: strin
         };
     }
 
-    const [{ next_version: nextVersion }] = selectSql<{ next_version: number }>(`
-        SELECT COALESCE(MAX(version), 0) + 1 as next_version
+    // SQLite: atomic version assignment via subquery in INSERT
+    // This prevents race conditions where two concurrent saves compute the same version number
+    runSql(`
+        INSERT INTO cms_versions (slug, version, content, note, created_at)
+        VALUES (
+            ${sqlString(slug)},
+            (SELECT COALESCE(MAX(version), 0) + 1 FROM cms_versions WHERE slug = ${sqlString(slug)}),
+            ${sqlString(content)},
+            ${sqlString(note || "")},
+            ${sqlString(createdAt)}
+        );
+    `);
+
+    // Read back the version we just inserted
+    const [{ latest_version: nextVersion }] = selectSql<{ latest_version: number }>(`
+        SELECT MAX(version) as latest_version
         FROM cms_versions
         WHERE slug = ${sqlString(slug)};
     `);
 
-    await persistLocalVersion(slug, nextVersion, content, note);
+    // Persist filesystem copies (non-critical — DB is now the source of truth)
+    try {
+        const versionPath = getVersionMarkdownPath(slug, nextVersion);
+        const currentPath = getCurrentMarkdownPath(slug);
+        await mkdir(dirname(versionPath), { recursive: true });
+        await writeFile(versionPath, content, "utf8");
+        await writeFile(currentPath, content, "utf8");
+    } catch (fsError) {
+        console.warn(`[cms] Filesystem persist failed for ${slug} v${nextVersion}, DB record is intact:`, fsError);
+    }
 
     runSql(`
         UPDATE cms_articles
