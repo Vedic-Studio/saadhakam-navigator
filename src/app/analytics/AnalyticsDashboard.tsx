@@ -110,6 +110,17 @@ function formatPriorityLabel(priority: EditorialQueuePriority) {
     }
 }
 
+function formatConfidenceLabel(tier: "high" | "medium" | "low") {
+    switch (tier) {
+        case "high":
+            return "High confidence";
+        case "medium":
+            return "Medium confidence";
+        case "low":
+            return "Low confidence";
+    }
+}
+
 function priorityTone(priority: EditorialQueuePriority) {
     switch (priority) {
         case "p1":
@@ -278,6 +289,7 @@ function StrategicTable({
                             <TableHead className="text-right">Clicks</TableHead>
                             <TableHead className="text-right">Sessions</TableHead>
                             <TableHead className="text-right">Qualified</TableHead>
+                            <TableHead>Confidence</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -297,12 +309,15 @@ function StrategicTable({
                                         <TableCell className="text-right">{formatNumber(row.gsc.clicks)}</TableCell>
                                         <TableCell className="text-right">{formatNumber(row.ga4.sessions)}</TableCell>
                                         <TableCell className="text-right">{formatNumber(qualified)}</TableCell>
+                                        <TableCell className="text-xs text-muted-foreground">
+                                            {formatConfidenceLabel(row.attribution.confidenceTier)} · {formatNumber(row.attribution.confidenceScore)}
+                                        </TableCell>
                                     </TableRow>
                                 );
                             })
                         ) : (
                             <TableRow>
-                                <TableCell colSpan={5} className="text-center text-muted-foreground">
+                                <TableCell colSpan={6} className="text-center text-muted-foreground">
                                     No rows available.
                                 </TableCell>
                             </TableRow>
@@ -330,6 +345,7 @@ function EditorialQueueTable({ title, description, rows }: { title: string; desc
                             <TableHead>Target</TableHead>
                             <TableHead className="text-right">ICP</TableHead>
                             <TableHead className="text-right">Qualified</TableHead>
+                            <TableHead>Confidence</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -347,11 +363,14 @@ function EditorialQueueTable({ title, description, rows }: { title: string; desc
                                     <TableCell className="text-muted-foreground">{row.targetWindow}</TableCell>
                                     <TableCell className="text-right">{formatNumber(row.icpScore, 1)}</TableCell>
                                     <TableCell className="text-right">{formatNumber(row.qualification.qualifiedConversions)}</TableCell>
+                                    <TableCell className="text-xs text-muted-foreground">
+                                        {formatConfidenceLabel(row.attribution.confidenceTier)} · {formatNumber(row.attribution.confidenceScore)}
+                                    </TableCell>
                                 </TableRow>
                             ))
                         ) : (
                             <TableRow>
-                                <TableCell colSpan={5} className="text-center text-muted-foreground">
+                                <TableCell colSpan={6} className="text-center text-muted-foreground">
                                     No queue items available.
                                 </TableCell>
                             </TableRow>
@@ -688,7 +707,7 @@ export default function AnalyticsDashboard({ gscData, ga4Data, contentAuditData,
                             <StrategicKpiCard
                                 title="Qualified conversions"
                                 value={formatNumber(strategicSummary.totalQualified)}
-                                description="Quiz completions + email captures across the mapped content portfolio."
+                                description="Quiz completions + email captures across the mapped content portfolio, not all with equal attribution confidence."
                             />
                             <StrategicKpiCard
                                 title="Direct-answer coverage"
@@ -701,7 +720,7 @@ export default function AnalyticsDashboard({ gscData, ga4Data, contentAuditData,
                             <Card>
                                 <CardHeader>
                                     <CardTitle className="text-xl">Executive summary</CardTitle>
-                                    <CardDescription>Portfolio-level readout from the strategic audit layer.</CardDescription>
+                                    <CardDescription>Portfolio-level readout from the strategic audit layer, with attribution confidence caveats surfaced explicitly.</CardDescription>
                                 </CardHeader>
                                 <CardContent className="grid gap-4 md:grid-cols-3">
                                     <div className="space-y-2">
@@ -994,6 +1013,15 @@ export default function AnalyticsDashboard({ gscData, ga4Data, contentAuditData,
                                                         {formatDuration(strategicSummary.spotlight.ga4.averageEngagementTime)}
                                                     </p>
                                                 </div>
+                                                <div className="rounded-lg border bg-muted/20 p-3 md:col-span-2">
+                                                    <p className="text-sm text-muted-foreground">Attribution confidence</p>
+                                                    <p className="mt-1 text-2xl font-semibold">
+                                                        {formatConfidenceLabel(strategicSummary.spotlight.attribution.confidenceTier)}
+                                                    </p>
+                                                    <p className="mt-1 text-sm text-muted-foreground">
+                                                        Score {formatNumber(strategicSummary.spotlight.attribution.confidenceScore, 1)} · qualification weight {formatNumber(strategicSummary.spotlight.attribution.qualificationWeight, 1)}
+                                                    </p>
+                                                </div>
                                             </div>
                                             <div className="grid gap-2 text-sm text-muted-foreground">
                                                 <p>
@@ -1018,6 +1046,13 @@ export default function AnalyticsDashboard({ gscData, ga4Data, contentAuditData,
                                                     ))}
                                                 </ul>
                                             ) : null}
+                                            <ul className="space-y-2 text-sm text-muted-foreground">
+                                                {strategicSummary.spotlight.attribution.notes.map((note) => (
+                                                    <li key={note} className="rounded-md border border-border/60 bg-muted/20 p-3">
+                                                        {note}
+                                                    </li>
+                                                ))}
+                                            </ul>
                                         </div>
                                     ) : (
                                         <div className="text-sm text-muted-foreground">No audit rows available yet.</div>

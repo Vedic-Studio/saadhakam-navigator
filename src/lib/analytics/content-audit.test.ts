@@ -54,11 +54,19 @@ function buildRow(overrides: Partial<ContentPerformanceRow> = {}): ContentPerfor
                 appOpen: 0,
             },
         },
+        attribution: {
+            confidenceScore: 55,
+            confidenceTier: "medium",
+            qualificationWeight: 0.7,
+            hasJourneySignals: false,
+            notes: ["Qualification is inferred from route-level event proximity."],
+        },
         icp: {
             score: 60,
             intentFit: "high",
             geoFit: 70,
             behaviorFit: 50,
+            qualificationFitRaw: 28,
             qualificationFit: 20,
         },
         decisionBucket: "monitor",
@@ -72,7 +80,8 @@ describe("content audit editorial queue helpers", () => {
         expect(
             decideBucket(
                 buildRow({
-                    icp: { score: 75, intentFit: "high", geoFit: 70, behaviorFit: 60, qualificationFit: 40 },
+                    attribution: { confidenceScore: 80, confidenceTier: "high", qualificationWeight: 1, hasJourneySignals: true, notes: [] },
+                    icp: { score: 75, intentFit: "high", geoFit: 70, behaviorFit: 60, qualificationFitRaw: 40, qualificationFit: 40 },
                     gsc: { clicks: 24, impressions: 180, ctr: 0.05, position: 6, clicksDelta: 0, impressionsDelta: 0, ctrDelta: 0, positionDelta: 0 },
                     ga4: {
                         sessions: 25,
@@ -166,7 +175,8 @@ describe("content audit editorial queue helpers", () => {
             queuePriorityForRow(
                 buildRow({
                     decisionBucket: "double-down",
-                    icp: { score: 76, intentFit: "high", geoFit: 70, behaviorFit: 50, qualificationFit: 30 },
+                    attribution: { confidenceScore: 82, confidenceTier: "high", qualificationWeight: 1, hasJourneySignals: true, notes: [] },
+                    icp: { score: 76, intentFit: "high", geoFit: 70, behaviorFit: 50, qualificationFitRaw: 30, qualificationFit: 30 },
                 }),
             ),
         ).toBe("p1");
@@ -175,7 +185,7 @@ describe("content audit editorial queue helpers", () => {
             queuePriorityForRow(
                 buildRow({
                     decisionBucket: "double-down",
-                    icp: { score: 72, intentFit: "high", geoFit: 70, behaviorFit: 50, qualificationFit: 30 },
+                    icp: { score: 72, intentFit: "high", geoFit: 70, behaviorFit: 50, qualificationFitRaw: 30, qualificationFit: 30 },
                     ga4: {
                         sessions: 20,
                         sessionsDelta: 0,
@@ -202,7 +212,8 @@ describe("content audit editorial queue helpers", () => {
             title: "Advaita Explained",
             decisionBucket: "aeo-llm-repair",
             aeoLlmFlags: ["Missing direct-answer metadata", "Thin related-link support"],
-            icp: { score: 58, intentFit: "high", geoFit: 65, behaviorFit: 45, qualificationFit: 25 },
+            attribution: { confidenceScore: 38, confidenceTier: "low", qualificationWeight: 0.4, hasJourneySignals: false, notes: ["Low confidence"] },
+            icp: { score: 58, intentFit: "high", geoFit: 65, behaviorFit: 45, qualificationFitRaw: 25, qualificationFit: 10 },
             gsc: { clicks: 14, impressions: 300, ctr: 0.03, position: 7, clicksDelta: 0, impressionsDelta: 0, ctrDelta: 0, positionDelta: 0 },
             ga4: {
                 sessions: 18,
@@ -234,6 +245,10 @@ describe("content audit editorial queue helpers", () => {
                 quizComplete: 2,
                 emailCapture: 1,
                 qualifiedConversions: 3,
+            },
+            attribution: {
+                confidenceTier: "low",
+                confidenceScore: 38,
             },
             aeoLlmFlags: ["Missing direct-answer metadata", "Thin related-link support"],
         });

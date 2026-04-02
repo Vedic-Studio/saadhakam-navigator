@@ -90,7 +90,14 @@ export const ResultsPage = ({ result, onRestart }: ResultsPageProps) => {
         const shareUrl = window.location.href;
 
         if (typeof window !== "undefined" && typeof window.sadhaka?.shareResult === "function") {
-            window.sadhaka.shareResult(result.primaryPath, "results_page");
+            window.sadhaka.shareResult(result.primaryPath, "results_page", {
+                primaryPath: result.primaryPath,
+                source: "results_page",
+                pageArchetype: "quiz-result",
+                pageTemplate: window.location.pathname,
+                bridgeType: "faith-finder-results",
+                ctaSlot: "results_share",
+            });
         }
 
         if (navigator.share) {

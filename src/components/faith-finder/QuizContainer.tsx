@@ -26,9 +26,13 @@ export const QuizContainer = ({ onComplete }: QuizContainerProps) => {
 
     useEffect(() => {
         if (typeof window !== "undefined" && typeof window.sadhaka?.quizStart === "function") {
-            window.sadhaka.quizStart();
+            window.sadhaka.quizStart({
+                pageArchetype: "conversion-bridge",
+                pageTemplate: "/faith-finder",
+                bridgeType: "faith-finder-quiz",
+            });
         }
-         
+
     }, []);
 
     const handleAnswer = (optionId: string) => {
@@ -43,7 +47,12 @@ export const QuizContainer = ({ onComplete }: QuizContainerProps) => {
             setCurrentQuestion(currentQuestion + 1);
         } else {
             if (typeof window !== "undefined" && typeof window.sadhaka?.quizComplete === "function") {
-                window.sadhaka.quizComplete(result.primaryPath, scores);
+                window.sadhaka.quizComplete(result.primaryPath, scores, {
+                    primaryPath: result.primaryPath,
+                    pageArchetype: "conversion-bridge",
+                    pageTemplate: "/faith-finder",
+                    bridgeType: "faith-finder-quiz",
+                });
             }
             setStep("calculating");
         }

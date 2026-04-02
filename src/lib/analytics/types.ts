@@ -81,6 +81,8 @@ export type ContentAuditEventCounts = {
     appOpen: number;
 };
 
+export type AttributionConfidenceTier = "high" | "medium" | "low";
+
 export type ContentAuditBucket =
     | "double-down"
     | "improve-ctr-rank"
@@ -129,11 +131,19 @@ export type ContentPerformanceRow = {
         averageEngagementTime: number;
         events: ContentAuditEventCounts;
     };
+    attribution: {
+        confidenceScore: number;
+        confidenceTier: AttributionConfidenceTier;
+        qualificationWeight: number;
+        hasJourneySignals: boolean;
+        notes: string[];
+    };
     icp: {
         score: number;
         intentFit: IntentFit;
         geoFit: number;
         behaviorFit: number;
+        qualificationFitRaw: number;
         qualificationFit: number;
     };
     decisionBucket: ContentAuditBucket;
@@ -158,6 +168,10 @@ export type EditorialQueueItem = {
         quizComplete: number;
         emailCapture: number;
         qualifiedConversions: number;
+    };
+    attribution: {
+        confidenceTier: AttributionConfidenceTier;
+        confidenceScore: number;
     };
     aeoLlmFlags: string[];
 };

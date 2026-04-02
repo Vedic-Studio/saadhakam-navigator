@@ -79,7 +79,13 @@ export default function FaithFinderResultsPage() {
                     typeof window !== "undefined" &&
                     typeof window.sadhaka?.quizResultView === "function"
                 ) {
-                    window.sadhaka.quizResultView(data.result.primaryPath, "share_page");
+                    window.sadhaka.quizResultView(data.result.primaryPath, "share_page", {
+                        primaryPath: data.result.primaryPath,
+                        source: "share_page",
+                        pageArchetype: "quiz-result",
+                        pageTemplate: window.location.pathname,
+                        bridgeType: "faith-finder-results",
+                    });
                 }
             } catch (e) {
                 if (cancelled) return;
@@ -108,7 +114,14 @@ export default function FaithFinderResultsPage() {
             typeof window !== "undefined" &&
             typeof window.sadhaka?.shareResult === "function"
         ) {
-            window.sadhaka.shareResult(result.primaryPath, "share_button");
+            window.sadhaka.shareResult(result.primaryPath, "share_button", {
+                primaryPath: result.primaryPath,
+                source: "share_button",
+                pageArchetype: "quiz-result",
+                pageTemplate: window.location.pathname,
+                bridgeType: "faith-finder-results",
+                ctaSlot: "share_button",
+            });
         }
 
         if (navigator.share) {

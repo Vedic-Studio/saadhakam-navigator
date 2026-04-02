@@ -2,6 +2,7 @@ import "server-only";
 
 import { articles } from "@/data/articles";
 import type {
+    AttributionConfidenceTier,
     ContentAuditBucket,
     ContentAuditData,
     ContentAuditEventCounts,
@@ -195,6 +196,35 @@ function weightedPosition(rows: Array<{ position: number; impressions: number }>
 
 function routeFamilyForPath(path: string) {
     return path.split("/").filter(Boolean)[0] || "root";
+}
+
+function attributionConfidenceTier(score: number): AttributionConfidenceTier {
+    if (score >= 75) return "high";
+    if (score >= 45) return "medium";
+    return "low";
+}
+
+function attributionNotesForRow(events: ContentAuditEventCounts): string[] {
+    const notes: string[] = [];
+
+    if (events.articleRead === 0) {
+        notes.push("No article-read signal recorded for this route in the audit window.");
+    }
+    if (events.ctaClick === 0) {
+        notes.push("No CTA-click signal recorded, so quiz progression is inferred from page proximity.");
+    }
+    if (events.quizComplete + events.emailCapture > 0 && events.ctaClick === 0) {
+        notes.push("Qualification events exist without observed CTA clicks, reducing causal confidence.");
+    }
+    if (events.resultView + events.resultShare > 0) {
+        notes.push("Downstream result events add behavioral support, but route-level matching remains inferred.");
+    }
+
+    if (notes.length === 0) {
+        notes.push("Article read, CTA activity, and downstream qualification signals are all present on this route.");
+    }
+
+    return notes;
 }
 
 function intentFitForText(text: string): IntentFit {
@@ -471,6 +501,10 @@ export function buildEditorialQueueItem(row: ContentPerformanceRow): EditorialQu
             emailCapture,
             qualifiedConversions: quizComplete + emailCapture,
         },
+        attribution: {
+            confidenceTier: row.attribution.confidenceTier,
+            confidenceScore: row.attribution.confidenceScore,
+        },
         aeoLlmFlags: row.aeoLlmFlags,
     };
 }
@@ -611,7 +645,21 @@ export async function fetchContentAuditData(): Promise<ContentAuditData> {
 
             const intentFit = intentFitForText(`${article.title} ${article.primaryKeyword}`);
             const behaviorFit = Math.min(100, round(events.articleRead * 8 + events.ctaClick * 12 + events.pathExplore * 10 + landing.engagementRate * 40, 1));
-            const qualificationFit = Math.min(100, round(events.quizComplete * 20 + events.emailCapture * 25 + events.resultView * 8 + events.resultShare * 10, 1));
+            const qualificationFitRaw = Math.min(100, round(events.quizComplete * 20 + events.emailCapture * 25 + events.resultView * 8 + events.resultShare * 10, 1));
+            const hasJourneySignals = events.articleRead > 0 && events.ctaClick > 0 && (events.quizComplete > 0 || events.emailCapture > 0);
+            const attributionConfidenceScore = Math.min(
+                100,
+                round(
+                    (events.articleRead > 0 ? 25 : 0) +
+                    (events.ctaClick > 0 ? 30 : 0) +
+                    (events.quizComplete + events.emailCapture > 0 ? 25 : 0) +
+                    (events.resultView + events.resultShare > 0 ? 10 : 0) +
+                    (hasJourneySignals ? 10 : 0),
+                    1,
+                ),
+            );
+            const qualificationWeight = attributionConfidenceScore >= 75 ? 1 : attributionConfidenceScore >= 45 ? 0.7 : 0.4;
+            const qualificationFit = round(qualificationFitRaw * qualificationWeight, 1);
             const icpScore = round(intentScore(intentFit) * 0.35 + geoFit * 0.15 + behaviorFit * 0.2 + qualificationFit * 0.3, 1);
             const aeoLlmFlags = [
                 !article.aeoAnswer ? "Missing direct-answer metadata" : null,
@@ -655,11 +703,19 @@ export async function fetchContentAuditData(): Promise<ContentAuditData> {
                     averageEngagementTime: landing.averageEngagementTime,
                     events,
                 },
+                attribution: {
+                    confidenceScore: attributionConfidenceScore,
+                    confidenceTier: attributionConfidenceTier(attributionConfidenceScore),
+                    qualificationWeight,
+                    hasJourneySignals,
+                    notes: attributionNotesForRow(events),
+                },
                 icp: {
                     score: icpScore,
                     intentFit,
                     geoFit,
                     behaviorFit,
+                    qualificationFitRaw,
                     qualificationFit,
                 },
                 decisionBucket: "monitor",
@@ -717,10 +773,11 @@ export async function fetchContentAuditData(): Promise<ContentAuditData> {
         methodology: {
             notes: [
                 "Data sources: Google Search Console page/query/country views; GA4 landing-page, source/medium, referrer, and page-event views; repository article metadata.",
-                "ICP score combines intent fit, geo fit, behavioral depth, and qualification depth.",
+                "ICP score combines intent fit, geo fit, behavioral depth, and attribution-weighted qualification depth.",
             ],
             instrumentationCaveats: [
                 "Current event coverage is strong enough for inferred ICP scoring but not for precise article-to-quiz attribution modeling.",
+                "Qualification fit is downweighted when journey linkage is weak, so low-confidence rows stop implying false causal precision.",
                 "llms-full.txt still exposes metadata plus FAQs, not full editorial body content.",
                 "brand-facts is useful but still generic about authority model and editorial method.",
             ],
@@ -774,6 +831,7 @@ export async function fetchContentAuditData(): Promise<ContentAuditData> {
             instrumentationLater: [
                 "Add explicit article-to-quiz attribution metadata on CTA events.",
                 "Pass page archetype/template markers into analytics payloads.",
+                "Expose GA4 custom dimensions for attribution token, source route, CTA slot, and archetype so audit joins can move beyond route proximity.",
                 "Capture richer downstream qualification context on result and email events.",
             ],
         },

@@ -47,7 +47,14 @@ export const EmailCaptureForm = ({ result, onSuccess, inline = true }: EmailCapt
             }
 
             if (typeof window !== "undefined" && typeof window.sadhaka?.emailCapture === "function") {
-                window.sadhaka.emailCapture(result.primaryPath);
+                window.sadhaka.emailCapture(result.primaryPath, {
+                    primaryPath: result.primaryPath,
+                    pageArchetype: window.location.pathname.startsWith("/faith-finder/results/") ? "quiz-result" : "conversion-bridge",
+                    pageTemplate: window.location.pathname,
+                    bridgeType: "faith-finder-email-capture",
+                    variant: inline ? "inline" : "overlay",
+                    ctaSlot: inline ? "results_inline_email" : "results_overlay_email",
+                });
             }
 
             setSuccess(true);
