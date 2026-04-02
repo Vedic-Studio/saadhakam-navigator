@@ -11,7 +11,7 @@ import { ArrowRight, MessageSquare, BookOpen, User, Zap, Globe, Sparkles } from 
 export const metadata: Metadata = {
     title: "Compare Indian Philosophy, Masters, and Texts | Sadhaka",
     description:
-        "Explore deep comparisons between different schools of thought, spiritual masters, and sacred texts. Understand the nuances of Advaita, Yoga, Buddhism, and more.",
+        "Reference-style comparisons across Indian philosophies, practices, teachers, and texts with emphasis on definitions, differences, overlaps, and historical framing.",
     keywords: [
         "compare philosophies",
         "vedanta vs buddhism",
@@ -53,7 +53,10 @@ export default function CompareIndexPage() {
                                 Comparative Analysis
                             </h1>
                             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                                &ldquo;Ekam sat vipra bahudha vadanti&rdquo; &mdash; &ldquo;Truth is one; the wise call it by many names&rdquo; (Rigveda 1.164.46). These comparisons map the structural differences between schools, teachers, and texts so you can see where they agree, where they diverge, and why.
+                                This hub is for side-by-side reading, not for flattening traditions into slogans. Each page compares two schools, practices, teachers, or texts by asking concrete questions: what each term means in its own tradition, where the categories overlap, where they diverge, and what historical or philosophical stakes are actually involved.
+                            </p>
+                            <p className="text-base text-muted-foreground max-w-3xl mx-auto mt-4">
+                                Use it when a pair looks superficially similar &mdash; Advaita and Buddhism, Samkhya and Yoga, mantra and prayer &mdash; or when two related traditions are often confused. The aim is clarity, attribution, and conceptual precision rather than ranking one side as the winner.
                             </p>
                         </div>
 

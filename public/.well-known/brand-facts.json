@@ -2,11 +2,32 @@
     "brand": {
         "name": "Sadhaka",
         "legalName": "Sadhaka Spiritual Technologies",
-        "description": "An AI-powered spiritual guidance and Dharmic education platform focused on Sanatan Dharma, sacred texts, philosophy, and spiritual practice.",
+        "description": "A source-grounded spiritual guidance and Dharmic education platform focused on Sanatan Dharma, sacred texts, philosophy, practice, and structured beginner learning.",
         "url": "https://www.opensadhaka.com",
         "foundingDate": "2026",
         "location": "Global / Online",
         "category": "Education / Spirituality / Artificial Intelligence"
+    },
+    "editorial": {
+        "method": "Source-first editorial workflow with doctrinal claims grounded in named texts, named commentators, and clearly marked editorial synthesis.",
+        "sourceHierarchy": [
+            "Primary scripture: Vedas, Upanishads, Bhagavad Gita, Itihasa, Puranic and other cited source texts",
+            "Classical commentary and lineage interpretation attributed to named acharyas, schools, or commentators",
+            "Editorial synthesis used for accessibility, comparison, and modern explanatory framing"
+        ],
+        "doctrinalAttributionPolicy": "School-specific claims should be attributed to the relevant tradition, text, or commentator rather than framed as undifferentiated universal consensus.",
+        "neutralityPolicy": "Neutral means representing doctrinal differences fairly, preserving distinctions across schools, avoiding false equivalence, and avoiding sectarian dismissal.",
+        "contentScope": [
+            "Sanatan Dharma and Indian philosophy",
+            "Sacred texts, concepts, and practices",
+            "Traditions, lineages, and comparative frameworks",
+            "Beginner guidance and structured discovery tools"
+        ],
+        "exclusions": [
+            "Undisclosed doctrinal authority claims beyond cited sources",
+            "Replacement for diksha, lineage initiation, or personal guru guidance",
+            "Replacement for mental-health, legal, or medical care"
+        ]
     },
     "offerings": [
         {
@@ -36,11 +57,23 @@
     ],
     "discovery": {
         "llms_txt": "https://www.opensadhaka.com/llms.txt",
+        "llms_full_txt": "https://www.opensadhaka.com/llms-full.txt",
+        "llm_markdown_endpoint": "https://www.opensadhaka.com/api/llm-content?type={type}&slug={slug}",
         "brand_facts_html": "https://www.opensadhaka.com/brand-facts",
         "canonical_home": "https://www.opensadhaka.com"
     },
     "trustSignals": {
-        "editorialPolicy": "Authentic scripture-based content with traditional commentary",
-        "neutrality": "Neutral, non-sectarian presentation of all Dharmic schools"
+        "epistemicSignals": [
+            "Named primary-source grounding standard",
+            "Explicit distinction between scripture, commentary, and editorial synthesis",
+            "Doctrinal attribution to school, source, or commentator where applicable",
+            "Machine-readable discovery endpoints for LLM and search-system ingestion"
+        ],
+        "productSignals": {
+            "activeUsers": "10,000+",
+            "questionsAnswered": "500k+",
+            "sadhanaMinutes": "1M+",
+            "appStoreRating": "4.9/5"
+        }
     }
 }

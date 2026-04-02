@@ -76,7 +76,7 @@ const categories = [
   },
   {
     title: "Articles",
-    description: "Guides on Vedanta, yoga, mantras, sacred texts, and spiritual practice",
+    description: "Research-grounded guides across Vedanta, practice, sacred texts, and major traditions",
     href: "/articles",
     icon: FileText,
     color: "text-teal-400",

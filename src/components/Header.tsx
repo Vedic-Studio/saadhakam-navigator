@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sheet";
 
 const navLinks = [
+  { label: "Articles", href: "/articles" },
   { label: "Philosophies", href: "/ancient-wisdom-philosophies" },
   { label: "Texts", href: "/sacred-texts-teachings" },
   { label: "Deities", href: "/deities" },
@@ -27,7 +28,6 @@ const moreLinks = [
   { label: "Sanskrit Dictionary", href: "/learn/sanskrit" },
   { label: "Compare Paths", href: "/compare" },
   { label: "Greats", href: "/greats" },
-  { label: "Articles", href: "/articles" },
   { label: "Daily Guidance", href: "/jyotish/today" },
   { label: "AI Tutor", href: "/app" },
 ];

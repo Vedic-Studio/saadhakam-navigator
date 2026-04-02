@@ -9,6 +9,7 @@ import { Mail } from "lucide-react";
 
 const footerLinks = {
   explore: [
+    { label: "Articles", href: "/articles" },
     { label: "Philosophies", href: "/philosophies" },
     { label: "Traditions", href: "/traditions" },
     { label: "Deities", href: "/deities" },
