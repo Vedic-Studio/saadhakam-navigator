@@ -144,7 +144,7 @@ export async function GET() {
         vishnuSahasranama.description,
         ``
     );
-    for (const n of vishnuSahasranama.names ?? []) {
+    for (const n of vishnuSahasranama.names) {
         parts.push(`## ${n.name} (Name ${n.number})`);
         parts.push(`URL: ${BASE_URL}/stotras/vishnu-sahasranama/${n.slug}`);
         parts.push(`**Transliteration:** ${n.transliteration}`);
@@ -163,7 +163,7 @@ export async function GET() {
         lalitaSahasranama.description,
         ``
     );
-    for (const n of lalitaSahasranama.names ?? []) {
+    for (const n of lalitaSahasranama.names) {
         parts.push(`## ${n.name} (Name ${n.number})`);
         parts.push(`URL: ${BASE_URL}/stotras/lalita-sahasranama/${n.slug}`);
         parts.push(`**Transliteration:** ${n.transliteration}`);

@@ -10,7 +10,7 @@ export function getContentAgentApiBase() {
     }
 
     throw new Error(
-        "CONTENT_AGENT_API_BASE is not configured. Set CONTENT_AGENT_API_BASE to your content agent API base URL.",
+        "CONTENT_AGENT_API_BASE is not configured. Set CONTENT_AGENT_API_BASE to your content agent API base URL (production: https://content-agent.opensadhaka.com/api).",
     );
 }
 

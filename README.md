@@ -30,6 +30,31 @@ These legacy files are currently retained for reference only and should not be u
 
 ## Local development
 
+### Content agent frontend ↔ backend wiring
+
+The `/content-agent` workbench and pipeline endpoints in the Next.js app proxy to the FastAPI content-agent backend via:
+
+- `CONTENT_AGENT_API_BASE`
+- or `NEXT_PUBLIC_CONTENT_AGENT_API_BASE`
+
+Local default behavior in non-production falls back to:
+
+- `http://localhost:8000/api`
+
+Recommended local root `.env.local` entry:
+
+```sh
+CONTENT_AGENT_API_BASE=http://localhost:8000/api
+```
+
+Production must set this explicitly in the frontend deployment environment. Current production backend base URL:
+
+```sh
+CONTENT_AGENT_API_BASE=https://content-agent.opensadhaka.com/api
+```
+
+Important: this value belongs in the **frontend deployment env** (for the Next.js app / Vercel project), not only in the backend env.
+
 ### Frontend
 
 ```sh
@@ -85,10 +110,12 @@ Recommended production setup on Vercel:
 1. Connect the GitHub repo to Vercel
 2. Provision a hosted Postgres database for the project
 3. Add the database connection env vars in Vercel
-4. Add CMS protection env vars:
+4. Add content-agent backend routing env var in Vercel:
+   - `CONTENT_AGENT_API_BASE=https://content-agent.opensadhaka.com/api`
+5. Add CMS protection env vars:
    - `CMS_BASIC_AUTH_USER`
    - `CMS_BASIC_AUTH_PASSWORD`
-5. Push to `main` to trigger production deployment
+6. Push to `main` to trigger production deployment
 
 Behavior:
 
