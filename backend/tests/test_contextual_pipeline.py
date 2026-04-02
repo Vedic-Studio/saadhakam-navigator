@@ -109,12 +109,34 @@ def test_writer_prompt_includes_sadhaka_contextual_requirements(knowledge_store:
     brief = researcher.build_brief("What is Vedanta", "topic_hub", config)
     request = GenerateRequest(topic="What is Vedanta", page_type="topic_hub", audience="seekers")
 
-    prompt = writer._build_prompt(request, research_brief=brief)
+    prompt = writer._build_prompt(request, knowledge_handoff=brief.to_writer_handoff())
 
-    assert "Context Pack" in prompt
-    assert "Sadhaka Article Requirements" in prompt
-    assert "Hard-ban Phrases" in prompt
+    assert "Writer Handoff" in prompt
+    assert "Must Include" in prompt
+    assert "Must Avoid" in prompt
     assert "Sources & Commentaries section" in prompt
+
+
+def test_research_brief_builds_compact_retry_packet(knowledge_store: KnowledgeStore):
+    researcher = ResearchAgent(knowledge_store=knowledge_store)
+    config = OrchestratorAgent(knowledge_store=knowledge_store).configure(
+        topic="What is Vedanta",
+        page_type="topic_hub",
+    )
+    brief = researcher.build_brief("What is Vedanta", "topic_hub", config)
+
+    draft = (
+        "# What is Vedanta\n\n"
+        "## Overview\nText\n\n"
+        "## Practice Guidance\nText\n\n"
+        "### What is Vedanta?\nAnswer\n\n"
+        "[Vedanta](/what-is-vedanta)"
+    )
+    packet = brief.build_revision_packet(draft, "Add more source signals.")
+
+    assert "Revision Packet" in packet
+    assert "Keep heading: # What is Vedanta" in packet
+    assert "Add more source signals." in packet
 
 
 def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: Session, knowledge_store: KnowledgeStore):
@@ -136,7 +158,16 @@ def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: S
     service.researcher = ResearchAgent(knowledge_store=knowledge_store)
 
     class StubWriter:
-        async def generate(self, request, research_brief=None, revision_notes=None):
+        calls = []
+
+        async def generate(self, request, research_brief=None, knowledge_handoff=None, revision_packet=None, revision_notes=None):
+            self.calls.append(
+                {
+                    "knowledge_handoff": knowledge_handoff,
+                    "revision_packet": revision_packet,
+                    "revision_notes": revision_notes,
+                }
+            )
             return type("WriterResult", (), {"content": (
                 "# What is Vedanta\n\n"
                 "Vedanta is a darshana grounded in the Upanishads and Bhagavad Gita 2.47.\n\n"
@@ -164,3 +195,56 @@ def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: S
     assert any(output.stage == "research_brief" for output in outputs)
     assert any(output.stage == "writer_draft" for output in outputs)
     assert any(output.stage == "editor_score" for output in outputs)
+    assert service.writer.calls[0]["knowledge_handoff"] is not None
+    assert "Writer Handoff" in service.writer.calls[0]["knowledge_handoff"]
+
+
+def test_pipeline_service_uses_retry_handoff_on_redraft(db_session: Session, knowledge_store: KnowledgeStore):
+    pipeline = ContentPipeline(
+        topic="What is Vedanta",
+        page_type="topic_hub",
+        audience="spiritual seekers",
+        context_module="long_form",
+        status="queued",
+        quality_threshold=9.5,
+        revision_limit=1,
+    )
+    db_session.add(pipeline)
+    db_session.commit()
+    db_session.refresh(pipeline)
+
+    service = PipelineService()
+    service.orchestrator = OrchestratorAgent(knowledge_store=knowledge_store)
+    service.researcher = ResearchAgent(knowledge_store=knowledge_store)
+
+    class StubWriter:
+        def __init__(self):
+            self.calls = []
+
+        async def generate(self, request, research_brief=None, knowledge_handoff=None, revision_packet=None, revision_notes=None):
+            self.calls.append(
+                {
+                    "knowledge_handoff": knowledge_handoff,
+                    "revision_packet": revision_packet,
+                    "revision_notes": revision_notes,
+                }
+            )
+            return type("WriterResult", (), {"content": (
+                "# What is Vedanta\n\n"
+                "Vedanta is a tradition.\n\n"
+                "## Overview\nShort text.\n\n"
+                "## Practice Guidance\nShort text.\n\n"
+                "## Frequently Asked Questions\nShort text.\n\n"
+                "[One](/a) [Two](/b) [Three](/c)"
+            )})()
+
+    service.writer = StubWriter()
+
+    updated = asyncio.run(service.run(db_session, pipeline.id))
+
+    assert updated.status == "needs_review"
+    assert len(service.writer.calls) == 2
+    assert "Writer Handoff" in service.writer.calls[0]["knowledge_handoff"]
+    assert "Retry Constraints" in service.writer.calls[1]["knowledge_handoff"]
+    assert service.writer.calls[1]["revision_packet"] is not None
+    assert "Revision Packet" in service.writer.calls[1]["revision_packet"]

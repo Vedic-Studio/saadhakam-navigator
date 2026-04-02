@@ -84,11 +84,12 @@ class PipelineService:
             version=version,
             stage="research_brief",
             agent="research",
-            content=brief.to_text(),
+            content=brief.to_writer_handoff(goal=request.goal),
             research_brief_json=brief.to_json(),
         )
 
         revision_notes: Optional[str] = None
+        revision_packet: Optional[str] = None
 
         # --- Steps 2-N: Write → Edit → (revision loop) ---
         for attempt in range(1, config.revision_limit + 2):  # +2: initial + up to limit re-drafts
@@ -100,7 +101,12 @@ class PipelineService:
 
             writer_result = await self.writer.generate(
                 request,
-                research_brief=brief,
+                knowledge_handoff=(
+                    brief.to_writer_handoff(goal=request.goal)
+                    if attempt == 1
+                    else brief.to_retry_handoff(goal=request.goal)
+                ),
+                revision_packet=revision_packet,
                 revision_notes=revision_notes,
             )
             draft = writer_result.content
@@ -157,6 +163,7 @@ class PipelineService:
 
             # Below threshold + budget remains → send revision notes back to writer
             revision_notes = notes
+            revision_packet = brief.build_revision_packet(draft, notes)
             pipeline.revision_count = attempt
             db.commit()
 

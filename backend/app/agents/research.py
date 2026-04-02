@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import asdict, dataclass, field
 from typing import Dict, List, Optional
 
@@ -51,6 +52,107 @@ class ResearchBrief:
     context_doc_paths: List[str] = field(default_factory=list)
     article_requirements: List[str] = field(default_factory=list)
     forbidden_phrases: List[str] = field(default_factory=list)
+
+    def to_writer_handoff(self, goal: Optional[str] = None) -> str:
+        """Compact first-pass handoff for the writer prompt."""
+        lines = [
+            f"# Writer Handoff: {self.topic}",
+            f"- Page type: {self.page_type}",
+            f"- Context module: {self.context_module}",
+            f"- Minimum word count: {self.min_word_count}",
+            f"- Tone: {self.voice_tone}",
+            *( [f"- Goal: {goal}"] if goal else []),
+            "",
+            "## Must Include",
+            *[f"- Section: {section}" for section in self.required_sections],
+            *[f"- Requirement: {item}" for item in self.article_requirements],
+            *( [f"- Context summary: {self.context_pack_summary}"] if self.context_pack_summary else []),
+            "",
+            "## Must Avoid",
+            *[f"- Phrase: {item}" for item in self.forbidden_phrases[:10]],
+            *[f"- Voice anti-pattern: {item}" for item in self.anti_patterns[:8]],
+            "",
+        ]
+
+        if self.techniques:
+            lines += [
+                "## Apply These Techniques",
+                *[
+                    f"- {item.get('text', '')}"
+                    for item in self.techniques[:3]
+                    if item.get("text")
+                ],
+                "",
+            ]
+
+        if self.competitor_insights:
+            lines += [
+                "## Opportunity Gaps",
+                *[f"- {item}" for item in self.competitor_insights[:2]],
+                "",
+            ]
+
+        disclaimer = self.disclaimer_requirement(goal)
+        if disclaimer:
+            lines += [
+                "## Disclaimer Requirement",
+                f"- {disclaimer}",
+                "",
+            ]
+
+        return "\n".join(lines).strip()
+
+    def to_retry_handoff(self, goal: Optional[str] = None) -> str:
+        """Minimal immutable constraints for rewrite attempts."""
+        lines = [
+            f"# Retry Constraints: {self.topic}",
+            f"- Page type: {self.page_type}",
+            f"- Minimum word count: {self.min_word_count}",
+            "",
+            "## Keep True In The Rewrite",
+            *[f"- Maintain section coverage for: {section}" for section in self.required_sections],
+            *[f"- Keep requirement: {item}" for item in self.article_requirements[:4]],
+            *[f"- Avoid phrase: {item}" for item in self.forbidden_phrases[:8]],
+            *[f"- Avoid voice marker: {item}" for item in self.anti_patterns[:6]],
+        ]
+
+        disclaimer = self.disclaimer_requirement(goal)
+        if disclaimer:
+            lines.append(f"- Required disclaimer: {disclaimer}")
+
+        return "\n".join(lines).strip()
+
+    def build_revision_packet(self, draft: str, revision_notes: str) -> str:
+        """Targeted retry packet: preserve structure, then fix only failed areas."""
+        headings = self._extract_headings(draft)
+        preserved_sections = headings[:8]
+        internal_links = len(re.findall(r"\]\(/[^)]+\)", draft))
+
+        lines = [
+            f"# Revision Packet: {self.topic}",
+            "## Preserve Where Possible",
+            *([f"- Keep heading: {heading}" for heading in preserved_sections] or ["- Preserve any accurate structure already present"]),
+            f"- Preserve or improve internal links count (currently {internal_links})",
+            "",
+            "## Fix These Issues",
+            revision_notes.strip(),
+        ]
+        return "\n".join(lines).strip()
+
+    def disclaimer_requirement(self, goal: Optional[str] = None) -> Optional[str]:
+        if not goal:
+            return None
+        if goal.lower() not in {item.lower() for item in self.sensitive_goals}:
+            return None
+        return self.disclaimer_text or "Include educational medical disclaimer."
+
+    @staticmethod
+    def _extract_headings(content: str) -> List[str]:
+        return [
+            line.strip()
+            for line in content.splitlines()
+            if line.strip().startswith(("# ", "## ", "### "))
+        ]
 
     def to_text(self) -> str:
         """Format the brief as a compact markdown block for the Writer system prompt."""

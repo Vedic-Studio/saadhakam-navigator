@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 from typing import TYPE_CHECKING, List, Optional
 
 import httpx
@@ -15,6 +16,11 @@ from .base import BaseAgent
 
 if TYPE_CHECKING:
     from app.agents.research import ResearchBrief
+
+
+FALLBACK_WRITER_BASE_SKILL = """Write concise, structured markdown for Sadhaka. Prioritize clarity, fidelity to tradition, practical usefulness, and clean section hierarchy."""
+
+FALLBACK_WRITER_ARTICLE_SKILL = """Use one H1, strong H2 sections, useful FAQ coverage, and natural internal links. Prefer concrete guidance over filler. Avoid banned or over-polished AI phrases."""
 
 
 @dataclass
@@ -34,9 +40,17 @@ class WriterAgent(BaseAgent):
         request: GenerateRequest,
         *,
         research_brief: Optional["ResearchBrief"] = None,
+        knowledge_handoff: Optional[str] = None,
+        revision_packet: Optional[str] = None,
         revision_notes: Optional[str] = None,
     ) -> WriterResult:
-        prompt = self._build_prompt(request, research_brief=research_brief, revision_notes=revision_notes)
+        prompt = self._build_prompt(
+            request,
+            research_brief=research_brief,
+            knowledge_handoff=knowledge_handoff,
+            revision_packet=revision_packet,
+            revision_notes=revision_notes,
+        )
 
         if self.settings.anthropic_api_key:
             try:
@@ -53,16 +67,15 @@ class WriterAgent(BaseAgent):
         request: GenerateRequest,
         *,
         research_brief: Optional["ResearchBrief"] = None,
+        knowledge_handoff: Optional[str] = None,
+        revision_packet: Optional[str] = None,
         revision_notes: Optional[str] = None,
     ) -> str:
-        skills_text = "\n\n".join(
-            [
-                self.load_skill("writer/base.md"),
-                self.load_skill("writer/article.md"),
-            ]
-        ).strip()
+        skills_text = self._load_writer_skills()
 
-        if research_brief is not None:
+        if knowledge_handoff is not None:
+            knowledge_text = knowledge_handoff
+        elif research_brief is not None:
             knowledge_text = research_brief.to_text()
         else:
             page_rule = self.knowledge_store.get_content_rules(request.page_type)
@@ -84,6 +97,8 @@ class WriterAgent(BaseAgent):
         )
 
         task_section = "[TASK]\nGenerate complete markdown content with clear H2 sections, FAQ, and at least 3 internal links."
+        if revision_packet:
+            task_section += f"\n\n[REVISION PACKET]\n{revision_packet}"
         if revision_notes:
             task_section += f"\n\n[REVISION NOTES FROM EDITOR]\n{revision_notes}\n\nPlease address all revision notes above in this re-draft."
 
@@ -96,6 +111,14 @@ class WriterAgent(BaseAgent):
                 task_section,
             ]
         )
+
+    @classmethod
+    @lru_cache(maxsize=1)
+    def _load_writer_skills(cls) -> str:
+        probe = cls("writer")
+        base_skill = probe.load_skill("writer/base.md") or FALLBACK_WRITER_BASE_SKILL
+        article_skill = probe.load_skill("writer/article.md") or FALLBACK_WRITER_ARTICLE_SKILL
+        return "\n\n".join([base_skill, article_skill]).strip()
 
     async def _generate_with_anthropic(self, prompt: str) -> str:
         if not self.settings.anthropic_api_key:
