@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from functools import lru_cache
 from pathlib import Path
 from typing import List, Literal
@@ -39,6 +40,7 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         env_prefix="SADHAKA_",
         case_sensitive=False,
+        enable_decoding=False,
         extra="ignore",
     )
 
@@ -46,6 +48,13 @@ class Settings(BaseSettings):
     @classmethod
     def parse_cors_origins(cls, value: str | List[str]) -> List[str]:
         if isinstance(value, str):
+            value = value.strip()
+            if not value:
+                return []
+            if value.startswith("["):
+                parsed = json.loads(value)
+                if isinstance(parsed, list):
+                    return [str(item).strip() for item in parsed if str(item).strip()]
             return [item.strip() for item in value.split(",") if item.strip()]
         return value
 
