@@ -74,6 +74,10 @@ export const PipelineListItemSchema = z.object({
 // --- Detail schema (used by materialize route) ---
 
 export const PipelineDetailSchema = PipelineListItemSchema.extend({
+    description: z.string().nullish(),
+    reference_links: z.array(z.string()),
+    key_angles: z.array(z.string()),
+    source_notes: z.string().nullish(),
     goal: z.string().nullish(),
     audience: z.string().nullish(),
     context_module: z.string().nullish(),
@@ -99,6 +103,10 @@ export const MaterializationContractSchema = z.object({
     topic: z.string().min(1),
     status: z.literal("approved"),
     page_type: z.string(),
+    description: z.string().nullish(),
+    reference_links: z.array(z.string()),
+    key_angles: z.array(z.string()),
+    source_notes: z.string().nullish(),
     goal: z.string().nullish(),
     audience: z.string().nullish(),
     context_module: z.string().nullish(),

@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 import { ReadProgress } from "@/components/animations/ReadProgress";
+import { Toaster } from "@/components/ui/sonner";
 
 // Always use www — env var may lack it, causing canonical confusion with Google
 const siteUrl = "https://www.opensadhaka.com";
@@ -446,6 +447,7 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <AnalyticsTracker />
         </Suspense>
+        <Toaster />
         {children}
       </body>
     </html>

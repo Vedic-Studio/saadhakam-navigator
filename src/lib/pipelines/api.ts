@@ -52,6 +52,10 @@ export async function createPipeline(input: PipelineCreateInput) {
         body: JSON.stringify({
             topic: input.topic,
             page_type: input.pageType,
+            description: input.description,
+            reference_links: input.referenceLinks,
+            key_angles: input.keyAngles,
+            source_notes: input.sourceNotes,
             goal: input.goal,
             audience: input.audience,
             quality_threshold: input.qualityThreshold,

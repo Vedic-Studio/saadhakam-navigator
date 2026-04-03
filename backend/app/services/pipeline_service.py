@@ -105,6 +105,10 @@ class PipelineService:
         db: Session,
         topic: str,
         page_type: str,
+        description: Optional[str] = None,
+        reference_links: Optional[list[str]] = None,
+        key_angles: Optional[list[str]] = None,
+        source_notes: Optional[str] = None,
         goal: Optional[str] = None,
         audience: Optional[str] = None,
         quality_threshold: Optional[float] = None,
@@ -114,6 +118,10 @@ class PipelineService:
             db=db,
             topic=topic,
             page_type=page_type,
+            description=description,
+            reference_links=reference_links,
+            key_angles=key_angles,
+            source_notes=source_notes,
             goal=goal,
             audience=audience,
             quality_threshold=quality_threshold,
@@ -173,7 +181,15 @@ class PipelineService:
         pipeline.status = "researching"
         db.commit()
 
-        brief = self.researcher.build_brief(topic=pipeline.topic, page_type=pipeline.page_type, config=config)
+        brief = self.researcher.build_brief(
+            topic=pipeline.topic,
+            page_type=pipeline.page_type,
+            config=config,
+            description=pipeline.description,
+            reference_links=pipeline.reference_links,
+            key_angles=pipeline.key_angles,
+            source_notes=pipeline.source_notes,
+        )
         brief_json = brief.to_json()
 
         _save_output(
@@ -224,7 +240,15 @@ class PipelineService:
         revision_notes = None
 
         if trigger_gate in {"draft_review", "edit_review"}:
-            brief = self.researcher.build_brief(topic=pipeline.topic, page_type=pipeline.page_type, config=config)
+            brief = self.researcher.build_brief(
+                topic=pipeline.topic,
+                page_type=pipeline.page_type,
+                config=config,
+                description=pipeline.description,
+                reference_links=pipeline.reference_links,
+                key_angles=pipeline.key_angles,
+                source_notes=pipeline.source_notes,
+            )
             knowledge_handoff = brief.to_retry_handoff(goal=request.goal)
             combined_notes = self._combine_notes(
                 human_feedback.notes if human_feedback else None,

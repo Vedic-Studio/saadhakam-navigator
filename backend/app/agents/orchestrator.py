@@ -116,6 +116,10 @@ class OrchestratorAgent(BaseAgent):
         db: Session,
         topic: str,
         page_type: str,
+        description: Optional[str] = None,
+        reference_links: Optional[list[str]] = None,
+        key_angles: Optional[list[str]] = None,
+        source_notes: Optional[str] = None,
         goal: Optional[str] = None,
         audience: Optional[str] = None,
         quality_threshold: Optional[float] = None,
@@ -134,6 +138,8 @@ class OrchestratorAgent(BaseAgent):
         pipeline = ContentPipeline(
             topic=topic,
             page_type=page_type,
+            description=description,
+            source_notes=source_notes,
             goal=goal,
             audience=audience,
             context_module=config.context_module,
@@ -141,6 +147,8 @@ class OrchestratorAgent(BaseAgent):
             quality_threshold=config.quality_threshold,
             revision_limit=config.revision_limit,
         )
+        pipeline.reference_links = reference_links or []
+        pipeline.key_angles = key_angles or []
         db.add(pipeline)
         db.commit()
         db.refresh(pipeline)

@@ -55,6 +55,11 @@ class StubPipelineService(PipelineService):
         self.advance_calls: list[dict] = []
         self.revise_calls: list[dict] = []
 
+    async def run(self, db, pipeline_id: str):
+        pipeline = db.get(ContentPipeline, pipeline_id)
+        db.refresh(pipeline)
+        return pipeline
+
     async def advance(self, db, pipeline_id: str, notes: str | None = None):
         self.advance_calls.append({"pipeline_id": pipeline_id, "notes": notes})
         pipeline = db.get(ContentPipeline, pipeline_id)
@@ -153,3 +158,32 @@ def test_advance_rejects_final_review(client_and_session):
 
     assert response.status_code == 422
     assert "Cannot advance pipeline" in response.json()["detail"]
+
+
+def test_create_pipeline_accepts_and_returns_richer_intake_fields(client_and_session):
+    client, _session = client_and_session
+    stub_service = StubPipelineService()
+    pipelines_route._pipeline_service = stub_service
+
+    response = client.post(
+        "/api/pipelines",
+        json={
+            "topic": "What is Vedanta",
+            "page_type": "topic_hub",
+            "description": "Explain the core idea simply.",
+            "reference_links": ["https://example.com/ref-1", "https://example.com/ref-2"],
+            "key_angles": ["historical roots", "practical relevance"],
+            "source_notes": "Prefer source-backed explanations.",
+            "goal": "clarity",
+            "audience": "beginners",
+            "quality_threshold": 7.0,
+            "revision_limit": 3,
+        },
+    )
+
+    assert response.status_code == 202
+    payload = response.json()
+    assert payload["description"] == "Explain the core idea simply."
+    assert payload["reference_links"] == ["https://example.com/ref-1", "https://example.com/ref-2"]
+    assert payload["key_angles"] == ["historical roots", "practical relevance"]
+    assert payload["source_notes"] == "Prefer source-backed explanations."

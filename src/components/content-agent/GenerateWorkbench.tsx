@@ -1,18 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { getContextPackDocs } from "@/lib/content-agent/doc-registry";
-import { BackendUnavailableError, createPipeline, getPipelineDetail, getTechniques } from "@/lib/pipelines/api";
-import {
-    getPipelineStageView,
-    isPipelineTerminal,
-    parseEditorScore,
-    PIPELINE_PROGRESS_STEPS,
-    canReviewPipeline,
-    type PipelineDetail,
-    type PipelinePageType,
-    type TechniqueItem,
-} from "@/lib/pipelines/types";
+
+import { BackendUnavailableError, createPipeline, listPipelines } from "@/lib/pipelines/api";
+import type { PipelineListItem, PipelinePageType } from "@/lib/pipelines/types";
 
 const PAGE_TYPES: Array<{ value: PipelinePageType; label: string }> = [
     { value: "topic_hub", label: "Topic Hub" },
@@ -22,131 +15,132 @@ const PAGE_TYPES: Array<{ value: PipelinePageType; label: string }> = [
     { value: "sanskrit_lexicon", label: "Sanskrit Lexicon" },
 ];
 
+function splitOnCommaOrNewline(value: string) {
+    return value.split(/[\n,]+/).map((item) => item.trim()).filter(Boolean);
+}
+
+function splitOnNewline(value: string) {
+    return value.split(/\r?\n/).map((item) => item.trim()).filter(Boolean);
+}
+
+function formatRelativeDate(value: string) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+
+    const diffMs = Date.now() - date.getTime();
+    const diffMinutes = Math.round(diffMs / 60000);
+
+    if (diffMinutes < 1) return "just now";
+    if (diffMinutes < 60) return `${diffMinutes}m ago`;
+
+    const diffHours = Math.round(diffMinutes / 60);
+    if (diffHours < 24) return `${diffHours}h ago`;
+
+    return `${Math.round(diffHours / 24)}d ago`;
+}
+
 export function GenerateWorkbench() {
+    const router = useRouter();
+
     const [topic, setTopic] = useState("What is Vedanta");
     const [pageType, setPageType] = useState<PipelinePageType>("topic_hub");
+    const [description, setDescription] = useState("");
+    const [keyAnglesInput, setKeyAnglesInput] = useState("");
+    const [referenceLinksInput, setReferenceLinksInput] = useState("");
+    const [sourceNotes, setSourceNotes] = useState("");
     const [goal, setGoal] = useState("");
     const [audience, setAudience] = useState("spiritual seekers");
+    const [qualityThreshold, setQualityThreshold] = useState("7.0");
+    const [revisionLimit, setRevisionLimit] = useState("3");
+    const [showAdvanced, setShowAdvanced] = useState(false);
 
+    const [recentPipelines, setRecentPipelines] = useState<PipelineListItem[]>([]);
+    const [isLoadingRecent, setIsLoadingRecent] = useState(true);
     const [isGenerating, setIsGenerating] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [backendUnavailableMessage, setBackendUnavailableMessage] = useState<string | null>(null);
-    const [result, setResult] = useState<PipelineDetail | null>(null);
-    const [activePipelineId, setActivePipelineId] = useState<string | null>(null);
 
-    const [techniques, setTechniques] = useState<TechniqueItem[]>([]);
-    const [techniquesError, setTechniquesError] = useState<string | null>(null);
+    const parsedKeyAngles = useMemo(() => splitOnCommaOrNewline(keyAnglesInput), [keyAnglesInput]);
+    const parsedReferenceLinks = useMemo(() => splitOnNewline(referenceLinksInput), [referenceLinksInput]);
 
     useEffect(() => {
         let cancelled = false;
 
-        async function fetchTechniques() {
+        async function loadRecentPipelines() {
             try {
-                setTechniquesError(null);
-                const data = await getTechniques();
+                setIsLoadingRecent(true);
+                const pipelines = await listPipelines();
                 if (!cancelled) {
-                    setTechniques(data ?? []);
+                    setRecentPipelines((pipelines ?? []).slice(0, 6));
                     setBackendUnavailableMessage(null);
                 }
             } catch (err) {
                 if (!cancelled) {
                     if (err instanceof BackendUnavailableError) {
                         setBackendUnavailableMessage(err.message);
-                        setTechniques([]);
-                        setTechniquesError(null);
+                        setRecentPipelines([]);
+                        setError(null);
                     } else {
-                        setTechniquesError(err instanceof Error ? err.message : "Unable to load techniques");
+                        setError(err instanceof Error ? err.message : "Unable to load recent pipelines");
                     }
+                }
+            } finally {
+                if (!cancelled) {
+                    setIsLoadingRecent(false);
                 }
             }
         }
 
-        void fetchTechniques();
+        void loadRecentPipelines();
+
         return () => {
             cancelled = true;
         };
     }, []);
 
-    useEffect(() => {
-        if (!activePipelineId) {
-            return;
-        }
-
-        let cancelled = false;
-        let timeoutId: ReturnType<typeof setTimeout> | null = null;
-
-        const poll = async () => {
-            try {
-                const detail = await getPipelineDetail(activePipelineId);
-                if (cancelled) return;
-                setResult(detail);
-                setBackendUnavailableMessage(null);
-                if (!isPipelineTerminal(detail.status) && !canReviewPipeline(detail.status)) {
-                    timeoutId = setTimeout(poll, 2000);
-                } else {
-                    setIsGenerating(false);
-                }
-            } catch (err) {
-                if (!cancelled) {
-                    if (err instanceof BackendUnavailableError) {
-                        setBackendUnavailableMessage(err.message);
-                        setError(null);
-                    } else {
-                        setError(err instanceof Error ? err.message : "Failed to load pipeline progress");
-                    }
-                    setIsGenerating(false);
-                }
-            }
-        };
-
-        void poll();
-
-        return () => {
-            cancelled = true;
-            if (timeoutId) clearTimeout(timeoutId);
-        };
-    }, [activePipelineId]);
-
-    const stageView = useMemo(() => (result ? getPipelineStageView(result) : null), [result]);
-    const editorScore = useMemo(() => parseEditorScore(stageView?.latestEditorScore), [stageView]);
-    const sortedDimensions = useMemo(() => {
-        if (!editorScore?.dimensions) return [];
-        return Object.entries(editorScore.dimensions).sort((a, b) => b[1].weight - a[1].weight);
-    }, [editorScore]);
-    const docs = useMemo(() => getContextPackDocs(result?.context_module), [result?.context_module]);
-
-    async function handleGenerate(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
+    async function handleGenerate(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
         setError(null);
         setBackendUnavailableMessage(null);
-        setResult(null);
         setIsGenerating(true);
 
         try {
             const detail = await createPipeline({
-                topic,
+                topic: topic.trim(),
                 pageType,
+                description: description.trim() || undefined,
+                keyAngles: parsedKeyAngles,
+                referenceLinks: parsedReferenceLinks,
+                sourceNotes: sourceNotes.trim() || undefined,
                 goal: goal.trim() || undefined,
                 audience: audience.trim() || undefined,
+                qualityThreshold: Number.parseFloat(qualityThreshold),
+                revisionLimit: Number.parseInt(revisionLimit, 10),
             });
-            setResult(detail);
-            setActivePipelineId(detail.id);
+
+            router.push(`/content-agent/editor-desk/pipelines/${detail.id}`);
         } catch (err) {
             if (err instanceof BackendUnavailableError) {
                 setBackendUnavailableMessage(err.message);
                 setError(null);
             } else {
-                setError(err instanceof Error ? err.message : "Failed to generate content");
+                setError(err instanceof Error ? err.message : "Failed to create pipeline");
             }
             setIsGenerating(false);
         }
     }
 
     return (
-        <div className="grid gap-8 lg:grid-cols-[minmax(360px,420px)_minmax(0,1fr)]">
-            <section className="rounded-xl border border-border bg-card p-5 shadow-sm">
-                <h2 className="text-lg font-medium">Generate</h2>
-                <form className="mt-4 space-y-4" onSubmit={handleGenerate}>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(280px,0.7fr)]">
+            <section className="rounded-xl border border-border bg-card p-6 shadow-sm">
+                <div className="mb-6">
+                    <h2 className="text-xl font-semibold">Create a new pipeline</h2>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                        Capture the brief here, then continue the run inside the review workspace.
+                    </p>
+                </div>
+
+                <form className="space-y-5" onSubmit={handleGenerate}>
                     {backendUnavailableMessage ? (
                         <div className="rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-700 dark:text-amber-200">
                             <p className="font-medium">Pipeline backend unavailable</p>
@@ -154,51 +148,143 @@ export function GenerateWorkbench() {
                         </div>
                     ) : null}
 
-                    <div className="space-y-1.5">
-                        <label className="text-sm font-medium">Topic</label>
-                        <input
-                            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
-                            value={topic}
-                            onChange={(e) => setTopic(e.target.value)}
-                            placeholder="e.g. What is Vedanta"
-                            required
-                            minLength={3}
-                        />
+                    <div className="grid gap-4 md:grid-cols-2">
+                        <div className="space-y-1.5 md:col-span-2">
+                            <label className="text-sm font-medium">Topic</label>
+                            <input
+                                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                value={topic}
+                                onChange={(e) => setTopic(e.target.value)}
+                                placeholder="e.g. What is Vedanta"
+                                required
+                                minLength={3}
+                            />
+                        </div>
+
+                        <div className="space-y-1.5">
+                            <label className="text-sm font-medium">Page Type</label>
+                            <select
+                                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                value={pageType}
+                                onChange={(e) => setPageType(e.target.value as PipelinePageType)}
+                            >
+                                {PAGE_TYPES.map((item) => (
+                                    <option key={item.value} value={item.value}>
+                                        {item.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="space-y-1.5">
+                            <label className="text-sm font-medium">Audience</label>
+                            <input
+                                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                value={audience}
+                                onChange={(e) => setAudience(e.target.value)}
+                                placeholder="spiritual seekers"
+                            />
+                        </div>
+
+                        <div className="space-y-1.5 md:col-span-2">
+                            <label className="text-sm font-medium">Description / Brief</label>
+                            <textarea
+                                className="min-h-28 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                placeholder="Describe the desired article, framing, constraints, and what success should look like."
+                            />
+                        </div>
+
+                        <div className="space-y-1.5 md:col-span-2">
+                            <label className="text-sm font-medium">Key Angles</label>
+                            <textarea
+                                className="min-h-24 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                value={keyAnglesInput}
+                                onChange={(e) => setKeyAnglesInput(e.target.value)}
+                                placeholder="One per line or comma-separated"
+                            />
+                            {parsedKeyAngles.length > 0 ? (
+                                <p className="text-xs text-muted-foreground">Parsed {parsedKeyAngles.length} angle(s).</p>
+                            ) : null}
+                        </div>
+
+                        <div className="space-y-1.5 md:col-span-2">
+                            <label className="text-sm font-medium">Reference Links</label>
+                            <textarea
+                                className="min-h-24 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                value={referenceLinksInput}
+                                onChange={(e) => setReferenceLinksInput(e.target.value)}
+                                placeholder="One URL per line"
+                            />
+                            {parsedReferenceLinks.length > 0 ? (
+                                <p className="text-xs text-muted-foreground">Parsed {parsedReferenceLinks.length} reference link(s).</p>
+                            ) : null}
+                        </div>
+
+                        <div className="space-y-1.5 md:col-span-2">
+                            <label className="text-sm font-medium">Source Notes</label>
+                            <textarea
+                                className="min-h-24 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                value={sourceNotes}
+                                onChange={(e) => setSourceNotes(e.target.value)}
+                                placeholder="Notes about sources, citations, exclusions, or fact-check expectations."
+                            />
+                        </div>
+
+                        <div className="space-y-1.5">
+                            <label className="text-sm font-medium">Goal</label>
+                            <input
+                                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                value={goal}
+                                onChange={(e) => setGoal(e.target.value)}
+                                placeholder="e.g. clarity, trust, conversion"
+                            />
+                        </div>
                     </div>
 
-                    <div className="space-y-1.5">
-                        <label className="text-sm font-medium">Page Type</label>
-                        <select
-                            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
-                            value={pageType}
-                            onChange={(e) => setPageType(e.target.value as PipelinePageType)}
+                    <div className="rounded-lg border border-border bg-muted/30 p-4">
+                        <button
+                            type="button"
+                            onClick={() => setShowAdvanced((value) => !value)}
+                            className="flex w-full items-center justify-between text-left"
                         >
-                            {PAGE_TYPES.map((item) => (
-                                <option key={item.value} value={item.value}>
-                                    {item.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                            <span>
+                                <span className="block text-sm font-medium">Advanced</span>
+                                <span className="block text-xs text-muted-foreground">Quality threshold and revision limit</span>
+                            </span>
+                            <span className="text-sm text-muted-foreground">{showAdvanced ? "Hide" : "Show"}</span>
+                        </button>
 
-                    <div className="space-y-1.5">
-                        <label className="text-sm font-medium">Goal (optional)</label>
-                        <input
-                            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
-                            value={goal}
-                            onChange={(e) => setGoal(e.target.value)}
-                            placeholder="e.g. anxiety, focus, clarity"
-                        />
-                    </div>
+                        {showAdvanced ? (
+                            <div className="mt-4 grid gap-4 md:grid-cols-2">
+                                <div className="space-y-1.5">
+                                    <label className="text-sm font-medium">Quality Threshold</label>
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="10"
+                                        step="0.1"
+                                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                        value={qualityThreshold}
+                                        onChange={(e) => setQualityThreshold(e.target.value)}
+                                    />
+                                </div>
 
-                    <div className="space-y-1.5">
-                        <label className="text-sm font-medium">Audience (optional)</label>
-                        <input
-                            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
-                            value={audience}
-                            onChange={(e) => setAudience(e.target.value)}
-                            placeholder="spiritual seekers"
-                        />
+                                <div className="space-y-1.5">
+                                    <label className="text-sm font-medium">Revision Limit</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max="5"
+                                        step="1"
+                                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-primary"
+                                        value={revisionLimit}
+                                        onChange={(e) => setRevisionLimit(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        ) : null}
                     </div>
 
                     <button
@@ -206,207 +292,52 @@ export function GenerateWorkbench() {
                         className="inline-flex w-full items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                         disabled={isGenerating || Boolean(backendUnavailableMessage)}
                     >
-                        {isGenerating ? "Running pipeline..." : "Create Pipeline Run"}
+                        {isGenerating ? "Creating pipeline..." : "Create pipeline and open review workspace"}
                     </button>
 
                     {error ? <p className="text-sm text-red-500">{error}</p> : null}
                 </form>
+            </section>
 
-                {!backendUnavailableMessage ? (
-                    <div className="mt-8">
-                        <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                            Knowledge Techniques
-                        </h3>
-                        {techniquesError ? (
-                            <p className="mt-2 text-sm text-red-500">{techniquesError}</p>
-                        ) : (
-                            <ul className="mt-2 max-h-64 space-y-2 overflow-auto pr-1 text-sm">
-                                {techniques.slice(0, 14).map((item, index) => (
-                                    <li key={`${item.source}-${index}`} className="rounded-md border border-border p-2">
-                                        <p className="font-medium">
-                                            {item.source} <span className="text-muted-foreground">({item.type})</span>
+            <aside className="space-y-4 rounded-xl border border-border bg-card p-6 shadow-sm">
+                <div className="flex items-center justify-between gap-3">
+                    <div>
+                        <h2 className="text-lg font-medium">Recent Pipelines</h2>
+                        <p className="mt-1 text-sm text-muted-foreground">Jump back into runs already in progress.</p>
+                    </div>
+                    <Link href="/content-agent/editor-desk" className="text-sm font-medium text-primary hover:underline">
+                        View all
+                    </Link>
+                </div>
+
+                {isLoadingRecent ? (
+                    <p className="text-sm text-muted-foreground">Loading recent pipelines…</p>
+                ) : recentPipelines.length === 0 ? (
+                    <p className="text-sm text-muted-foreground">No recent pipelines yet.</p>
+                ) : (
+                    <div className="space-y-3">
+                        {recentPipelines.map((pipeline) => (
+                            <Link
+                                key={pipeline.id}
+                                href={`/content-agent/editor-desk/pipelines/${pipeline.id}`}
+                                className="block rounded-lg border border-border bg-background/50 p-4 transition hover:border-primary/40 hover:bg-muted/40"
+                            >
+                                <div className="flex items-start justify-between gap-3">
+                                    <div className="min-w-0">
+                                        <p className="truncate text-sm font-medium text-foreground">{pipeline.topic}</p>
+                                        <p className="mt-1 text-xs text-muted-foreground">
+                                            {pipeline.page_type} · {pipeline.status}
                                         </p>
-                                        <p className="mt-1 text-muted-foreground">{item.text}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                ) : null}
-
-                {result ? (
-                    <div className="mt-8 rounded-lg border border-border bg-muted/30 p-4">
-                        <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Prompt Pack / Context Pack</h3>
-                        <div className="mt-3 space-y-2 text-sm">
-                            <p><strong>Context module:</strong> {result.context_module || "long_form"}</p>
-                            <p><strong>Quality threshold:</strong> {result.quality_threshold}</p>
-                            <p><strong>Revision limit:</strong> {result.revision_limit}</p>
-                            <p><strong>Selected techniques:</strong> {techniques.slice(0, 3).map((item) => item.source).join(", ") || "Not available"}</p>
-                        </div>
-                        <div className="mt-4 space-y-2 text-sm">
-                            {docs.map((doc) => (
-                                <div key={doc.id} className="rounded-md border border-border p-3">
-                                    <p className="font-medium">{doc.title}</p>
-                                    <p className="text-muted-foreground">{doc.summary}</p>
-                                    <p className="mt-1 text-xs text-muted-foreground">{doc.path}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ) : null}
-            </section>
-
-            <section className="space-y-4">
-                <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
-                    <h2 className="text-lg font-medium">Pipeline Timeline</h2>
-                    {!result ? (
-                        <p className="mt-3 text-sm text-muted-foreground">
-                            Start a pipeline to monitor the async editorial lifecycle.
-                        </p>
-                    ) : (
-                        <>
-                            <div className="mt-4 grid gap-3 md:grid-cols-5">
-                                {PIPELINE_PROGRESS_STEPS.map((step, index) => {
-                                    const currentIndex = PIPELINE_PROGRESS_STEPS.indexOf(
-                                        result.status === "approved" || result.status === "rejected" || result.status === "failed"
-                                            ? "final_review"
-                                            : (result.status as (typeof PIPELINE_PROGRESS_STEPS)[number]),
-                                    );
-                                    const isDone = currentIndex >= index;
-                                    return (
-                                        <div key={step} className={`rounded-lg border p-3 text-sm ${isDone ? "border-emerald-500/40 bg-emerald-500/10" : "border-border bg-muted/20"}`}>
-                                            <p className="font-medium capitalize">{step.replaceAll("_", " ")}</p>
-                                            <p className="mt-1 text-xs text-muted-foreground">
-                                                {result.status === step ? "Current stage" : isDone ? "Reached" : "Pending"}
-                                            </p>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
-                                <span className="rounded-full bg-secondary px-3 py-1">Status: <strong>{result.status}</strong></span>
-                                <span className="rounded-full bg-secondary px-3 py-1">Revisions: <strong>{result.revision_count}</strong></span>
-                                {typeof result.final_score === "number" ? (
-                                    <span className="rounded-full bg-secondary px-3 py-1">Final Score: <strong>{result.final_score.toFixed(2)}</strong></span>
-                                ) : null}
-                            </div>
-
-                            {result.error_message ? (
-                                <div className="mt-4 rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
-                                    {result.error_message}
-                                </div>
-                            ) : null}
-                        </>
-                    )}
-                </div>
-
-                <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
-                    <h2 className="text-lg font-medium">Research Brief</h2>
-                    {!stageView?.latestResearchBrief ? (
-                        <p className="mt-3 text-sm text-muted-foreground">Research output will appear here.</p>
-                    ) : (
-                        <pre className="mt-4 max-h-[320px] overflow-auto whitespace-pre-wrap rounded-md bg-muted/40 p-4 text-sm leading-6">
-                            {stageView.latestResearchBrief.content}
-                        </pre>
-                    )}
-                </div>
-
-                <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
-                    <h2 className="text-lg font-medium">Writer Draft</h2>
-                    {!stageView?.latestWriterDraft ? (
-                        <p className="mt-3 text-sm text-muted-foreground">Draft output will appear here after writing.</p>
-                    ) : (
-                        <pre className="mt-4 max-h-[420px] overflow-auto whitespace-pre-wrap rounded-md bg-muted/40 p-4 text-sm leading-6">
-                            {stageView.latestWriterDraft.content}
-                        </pre>
-                    )}
-                </div>
-
-                <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
-                    <h2 className="text-lg font-medium">Editor Score / Revision Notes</h2>
-                    {!stageView?.latestEditorScore ? (
-                        <p className="mt-3 text-sm text-muted-foreground">Editor scorecard will appear here.</p>
-                    ) : (
-                        <>
-                            <div className="mt-4 flex flex-wrap items-center gap-3">
-                                <span className="rounded-full bg-secondary px-3 py-1 text-sm">
-                                    Total Score: <strong>{editorScore?.total_score?.toFixed(2) ?? "—"}</strong> / 10
-                                </span>
-                                <span
-                                    className={`rounded-full px-3 py-1 text-sm ${editorScore?.passed
-                                        ? "bg-emerald-100 text-emerald-800"
-                                        : "bg-red-100 text-red-700"
-                                        }`}
-                                >
-                                    {editorScore?.passed ? "Pass" : "Needs revision"}
-                                </span>
-                            </div>
-
-                            <div className="mt-4 overflow-x-auto rounded-lg border border-border">
-                                <table className="w-full text-left text-sm">
-                                    <thead className="bg-muted/40 text-muted-foreground">
-                                        <tr>
-                                            <th className="px-3 py-2 font-medium">Dimension</th>
-                                            <th className="px-3 py-2 font-medium">Score</th>
-                                            <th className="px-3 py-2 font-medium">Weight</th>
-                                            <th className="px-3 py-2 font-medium">Notes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {sortedDimensions.map(([name, value]) => (
-                                            <tr key={name} className="border-t border-border align-top">
-                                                <td className="px-3 py-2 font-medium">{name.replaceAll("_", " ")}</td>
-                                                <td className="px-3 py-2">{value.score.toFixed(2)}</td>
-                                                <td className="px-3 py-2">{(value.weight * 100).toFixed(0)}%</td>
-                                                <td className="px-3 py-2 text-muted-foreground">{value.notes}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            {editorScore?.violations?.length ? (
-                                <div className="mt-4 rounded-md border border-red-200 bg-red-50 p-3">
-                                    <p className="font-medium text-red-700">Policy violations</p>
-                                    <ul className="mt-1 list-disc space-y-1 pl-5 text-sm text-red-700">
-                                        {editorScore.violations.map((violation) => (
-                                            <li key={violation}>{violation}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ) : null}
-
-                            {stageView.latestRevisionNotes ? (
-                                <div className="mt-4 rounded-md border border-border bg-muted/30 p-3 text-sm">
-                                    <p className="font-medium">Latest revision notes</p>
-                                    <p className="mt-1 whitespace-pre-wrap text-muted-foreground">{stageView.latestRevisionNotes}</p>
-                                </div>
-                            ) : null}
-                        </>
-                    )}
-                </div>
-
-                <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
-                    <h2 className="text-lg font-medium">Human Feedback History</h2>
-                    {!result?.feedback?.length ? (
-                        <p className="mt-3 text-sm text-muted-foreground">Feedback history will appear here once editors respond.</p>
-                    ) : (
-                        <div className="mt-4 space-y-3">
-                            {result.feedback.map((entry) => (
-                                <div key={entry.id} className="rounded-md border border-border p-3 text-sm">
-                                    <div className="flex flex-wrap items-center gap-2">
-                                        <span className="font-medium capitalize">{entry.action}</span>
-                                        <span className="text-muted-foreground">{entry.stage}</span>
-                                        <span className="text-muted-foreground">{new Date(entry.created_at).toLocaleString()}</span>
                                     </div>
-                                    {entry.notes ? <p className="mt-2 whitespace-pre-wrap text-muted-foreground">{entry.notes}</p> : null}
+                                    <span className="shrink-0 text-xs text-muted-foreground">
+                                        {formatRelativeDate(pipeline.updated_at)}
+                                    </span>
                                 </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            </section>
+                            </Link>
+                        ))}
+                    </div>
+                )}
+            </aside>
         </div>
     );
 }

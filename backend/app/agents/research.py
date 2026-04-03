@@ -25,6 +25,10 @@ class ResearchBrief:
     topic: str
     page_type: str
     context_module: str
+    description: Optional[str] = None
+    reference_links: List[str] = field(default_factory=list)
+    key_angles: List[str] = field(default_factory=list)
+    source_notes: Optional[str] = None
 
     # Content rules for this page type
     min_word_count: int = 900
@@ -68,6 +72,7 @@ class ResearchBrief:
             f"- Minimum word count: {self.min_word_count}",
             *( [f"- Goal: {goal}"] if goal else []),
             "",
+            *self._intake_context_lines(),
             "## Required Structure",
             "- Exactly one H1",
             *[f"- Required section: {section}" for section in self.required_sections],
@@ -105,6 +110,7 @@ class ResearchBrief:
             f"- Tone: {self.voice_tone}",
             *( [f"- Goal: {goal}"] if goal else []),
             "",
+            *self._intake_context_lines(),
             "## Must Include",
             *[f"- Section: {section}" for section in self.required_sections],
             *[f"- Requirement: {item}" for item in self.article_requirements],
@@ -151,6 +157,7 @@ class ResearchBrief:
             f"- Page type: {self.page_type}",
             f"- Minimum word count: {self.min_word_count}",
             "",
+            *self._intake_context_lines(),
             "## Keep True In The Rewrite",
             *[f"- Maintain section coverage for: {section}" for section in self.required_sections],
             *[f"- Keep requirement: {item}" for item in self.article_requirements[:4]],
@@ -264,6 +271,7 @@ class ResearchBrief:
             f"**Page type:** {self.page_type}  |  **Context:** {self.context_module}",
             f"**Min words:** {self.min_word_count}  |  **Tone:** {self.voice_tone}",
             "",
+            *self._intake_context_lines(),
             "## Required Sections",
             *[f"- {s}" for s in self.required_sections],
             "",
@@ -326,6 +334,34 @@ class ResearchBrief:
     def to_json(self) -> str:
         return json.dumps(asdict(self), ensure_ascii=False, indent=2)
 
+    def _intake_context_lines(self) -> List[str]:
+        lines: List[str] = []
+        if self.description:
+            lines.extend([
+                "## Intake Description",
+                f"- {self.description}",
+                "",
+            ])
+        if self.key_angles:
+            lines.extend([
+                "## Priority Angles",
+                *[f"- {angle}" for angle in self.key_angles],
+                "",
+            ])
+        if self.reference_links:
+            lines.extend([
+                "## Reference Links",
+                *[f"- {link}" for link in self.reference_links],
+                "",
+            ])
+        if self.source_notes:
+            lines.extend([
+                "## Source Notes",
+                f"- {self.source_notes}",
+                "",
+            ])
+        return lines
+
 
 # ---------------------------------------------------------------------------
 # Research Agent
@@ -346,6 +382,11 @@ class ResearchAgent(BaseAgent):
         topic: str,
         page_type: str,
         config: PipelineConfig,
+        *,
+        description: Optional[str] = None,
+        reference_links: Optional[List[str]] = None,
+        key_angles: Optional[List[str]] = None,
+        source_notes: Optional[str] = None,
     ) -> ResearchBrief:
         """Retrieve relevant knowledge and synthesize a ResearchBrief."""
         # Content rules
@@ -391,6 +432,10 @@ class ResearchAgent(BaseAgent):
             topic=topic,
             page_type=page_type,
             context_module=config.context_module,
+            description=description,
+            reference_links=reference_links or [],
+            key_angles=key_angles or [],
+            source_notes=source_notes,
             min_word_count=min_words,
             required_sections=required_sections,
             voice_tone=config.tone,

@@ -87,6 +87,10 @@ PipelineFeedbackStageLiteral = Literal[
 class PipelineCreateRequest(BaseModel):
     topic: str = Field(min_length=3)
     page_type: PageType
+    description: Optional[str] = None
+    reference_links: List[str] = Field(default_factory=list)
+    key_angles: List[str] = Field(default_factory=list)
+    source_notes: Optional[str] = None
     goal: Optional[str] = None
     audience: Optional[str] = "spiritual seekers"
     quality_threshold: Optional[float] = Field(default=None, ge=1.0, le=10.0)
@@ -124,6 +128,10 @@ class PipelineStatus(BaseModel):
     id: str
     topic: str
     page_type: str
+    description: Optional[str] = None
+    reference_links: List[str] = Field(default_factory=list)
+    key_angles: List[str] = Field(default_factory=list)
+    source_notes: Optional[str] = None
     goal: Optional[str] = None
     audience: Optional[str] = None
     context_module: Optional[str] = None

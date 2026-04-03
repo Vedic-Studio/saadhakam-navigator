@@ -45,6 +45,47 @@ describe("pipelines api client", () => {
         await expect(createPipeline({ topic: "Vedanta", pageType: "topic_hub" })).rejects.toThrow("Validation failed");
     });
 
+    it("posts richer intake fields on pipeline creation", async () => {
+        const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+            new Response(JSON.stringify({ id: "pipeline-1", status: "queued" }), {
+                status: 202,
+                headers: { "Content-Type": "application/json" },
+            }),
+        );
+
+        await createPipeline({
+            topic: "Vedanta for beginners",
+            pageType: "topic_hub",
+            description: "Foundational explainer",
+            referenceLinks: ["https://example.com/ref-1"],
+            keyAngles: ["historical context", "core ideas"],
+            sourceNotes: "Prefer primary sources.",
+            goal: "clarity",
+            audience: "new seekers",
+            qualityThreshold: 7,
+            revisionLimit: 3,
+        });
+
+        expect(fetchSpy).toHaveBeenCalledWith(
+            "/api/pipelines",
+            expect.objectContaining({
+                method: "POST",
+                body: JSON.stringify({
+                    topic: "Vedanta for beginners",
+                    page_type: "topic_hub",
+                    description: "Foundational explainer",
+                    reference_links: ["https://example.com/ref-1"],
+                    key_angles: ["historical context", "core ideas"],
+                    source_notes: "Prefer primary sources.",
+                    goal: "clarity",
+                    audience: "new seekers",
+                    quality_threshold: 7,
+                    revision_limit: 3,
+                }),
+            }),
+        );
+    });
+
     it("returns parsed successful payloads", async () => {
         vi.spyOn(globalThis, "fetch").mockResolvedValue(
             new Response(

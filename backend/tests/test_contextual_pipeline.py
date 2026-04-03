@@ -117,6 +117,45 @@ def test_writer_prompt_includes_sadhaka_contextual_requirements(knowledge_store:
     assert "Sources & Commentaries section" in prompt
 
 
+def test_research_brief_includes_richer_intake_context(knowledge_store: KnowledgeStore):
+    researcher = ResearchAgent(knowledge_store=knowledge_store)
+    config = OrchestratorAgent(knowledge_store=knowledge_store).configure(
+        topic="What is Vedanta",
+        page_type="topic_hub",
+    )
+
+    brief = researcher.build_brief(
+        "What is Vedanta",
+        "topic_hub",
+        config,
+        description="Explain the core idea simply.",
+        reference_links=["https://example.com/ref-1", "https://example.com/ref-2"],
+        key_angles=["historical roots", "practical relevance"],
+        source_notes="Prefer source-backed explanations.",
+    )
+
+    writer_handoff = brief.to_writer_handoff()
+    editor_handoff = brief.to_editor_structural_handoff()
+    retry_handoff = brief.to_retry_handoff()
+    brief_json = json.loads(brief.to_json())
+
+    for handoff in [writer_handoff, editor_handoff, retry_handoff]:
+        assert "## Intake Description" in handoff
+        assert "Explain the core idea simply." in handoff
+        assert "## Priority Angles" in handoff
+        assert "historical roots" in handoff
+        assert "practical relevance" in handoff
+        assert "## Reference Links" in handoff
+        assert "https://example.com/ref-1" in handoff
+        assert "## Source Notes" in handoff
+        assert "Prefer source-backed explanations." in handoff
+
+    assert brief_json["description"] == "Explain the core idea simply."
+    assert brief_json["reference_links"] == ["https://example.com/ref-1", "https://example.com/ref-2"]
+    assert brief_json["key_angles"] == ["historical roots", "practical relevance"]
+    assert brief_json["source_notes"] == "Prefer source-backed explanations."
+
+
 def test_research_brief_builds_compact_retry_packet(knowledge_store: KnowledgeStore):
     researcher = ResearchAgent(knowledge_store=knowledge_store)
     config = OrchestratorAgent(knowledge_store=knowledge_store).configure(
@@ -190,6 +229,8 @@ def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: S
     pipeline = ContentPipeline(
         topic="What is Vedanta",
         page_type="topic_hub",
+        description="Explain the core idea simply.",
+        source_notes="Prefer source-backed explanations.",
         audience="spiritual seekers",
         context_module="long_form",
         status="queued",
@@ -197,6 +238,10 @@ def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: S
         revision_limit=1,
     )
     db_session.add(pipeline)
+    db_session.commit()
+    db_session.refresh(pipeline)
+    pipeline.reference_links = ["https://example.com/ref-1", "https://example.com/ref-2"]
+    pipeline.key_angles = ["historical roots", "practical relevance"]
     db_session.commit()
     db_session.refresh(pipeline)
 
@@ -259,6 +304,17 @@ def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: S
     assert any(output.stage == "editor_score" for output in outputs)
     assert service.writer.calls[0]["knowledge_handoff"] is not None
     assert "Writer Handoff" in service.writer.calls[0]["knowledge_handoff"]
+    assert "Explain the core idea simply." in service.writer.calls[0]["knowledge_handoff"]
+    assert "historical roots" in service.writer.calls[0]["knowledge_handoff"]
+    assert "https://example.com/ref-1" in service.writer.calls[0]["knowledge_handoff"]
+    assert "Prefer source-backed explanations." in service.writer.calls[0]["knowledge_handoff"]
+
+    research_output = max((o for o in outputs if o.stage == "research_brief"), key=lambda item: item.version)
+    research_payload = json.loads(research_output.research_brief_json or "{}")
+    assert research_payload["description"] == "Explain the core idea simply."
+    assert research_payload["reference_links"] == ["https://example.com/ref-1", "https://example.com/ref-2"]
+    assert research_payload["key_angles"] == ["historical roots", "practical relevance"]
+    assert research_payload["source_notes"] == "Prefer source-backed explanations."
 
 
 def test_editor_structural_handoff_fail_closes_missing_required_structure(knowledge_store: KnowledgeStore):

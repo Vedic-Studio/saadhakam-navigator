@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import uuid
+import json
 from datetime import datetime
 from typing import Optional
 
@@ -26,6 +27,10 @@ class ContentPipeline(Base):
     # Request parameters
     topic: Mapped[str] = mapped_column(String(500), nullable=False)
     page_type: Mapped[str] = mapped_column(String(50), nullable=False)
+    description: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    reference_links_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    key_angles_json: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    source_notes: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     goal: Mapped[Optional[str]] = mapped_column(String(200), nullable=True)
     audience: Mapped[Optional[str]] = mapped_column(String(200), nullable=True)
     context_module: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
@@ -61,6 +66,34 @@ class ContentPipeline(Base):
     feedback: Mapped[list[FeedbackEntry]] = relationship(
         "FeedbackEntry", back_populates="pipeline", order_by="FeedbackEntry.created_at"
     )
+
+    @property
+    def reference_links(self) -> list[str]:
+        if not self.reference_links_json:
+            return []
+        try:
+            parsed = json.loads(self.reference_links_json)
+            return parsed if isinstance(parsed, list) else []
+        except Exception:
+            return []
+
+    @reference_links.setter
+    def reference_links(self, value: list[str] | None) -> None:
+        self.reference_links_json = json.dumps(value or [])
+
+    @property
+    def key_angles(self) -> list[str]:
+        if not self.key_angles_json:
+            return []
+        try:
+            parsed = json.loads(self.key_angles_json)
+            return parsed if isinstance(parsed, list) else []
+        except Exception:
+            return []
+
+    @key_angles.setter
+    def key_angles(self, value: list[str] | None) -> None:
+        self.key_angles_json = json.dumps(value or [])
 
 
 class ContentOutput(Base):

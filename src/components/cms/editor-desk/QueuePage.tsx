@@ -1,22 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FileText, RefreshCw } from "lucide-react";
 import { BackendUnavailableError } from "@/lib/pipelines/api";
-import { createEditorialPipeline, getPipelineQueue, getQueue } from "./api";
+import { getPipelineQueue, getQueue } from "./api";
 import { ArticleCard } from "./ArticleCard";
 import type { CmsArticle } from "./types";
 import type { PipelineListItem } from "@/lib/pipelines/types";
 import { timeAgo } from "./utils";
-
-const PAGE_TYPES = [
-    { value: "topic_hub", label: "Topic Hub" },
-    { value: "combinatorial", label: "Practice for Goal" },
-    { value: "sacred_text_chapter", label: "Sacred Text Chapter" },
-    { value: "sacred_text_shloka", label: "Sacred Text Shloka" },
-    { value: "sanskrit_lexicon", label: "Sanskrit Lexicon" },
-] as const;
 
 export function QueuePage() {
     const router = useRouter();
@@ -24,11 +17,6 @@ export function QueuePage() {
     const [pipelines, setPipelines] = useState<PipelineListItem[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [pipelineError, setPipelineError] = useState<string | null>(null);
-    const [topic, setTopic] = useState("What is Vedanta");
-    const [pageType, setPageType] = useState<(typeof PAGE_TYPES)[number]["value"]>("topic_hub");
-    const [goal, setGoal] = useState("");
-    const [audience, setAudience] = useState("spiritual seekers");
-    const [isGenerating, setIsGenerating] = useState(false);
     const [isRefreshing, setIsRefreshing] = useState(false);
 
     async function loadQueue() {
@@ -66,26 +54,6 @@ export function QueuePage() {
         setIsRefreshing(false);
     }
 
-    async function handleGenerate(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        setError(null);
-        setIsGenerating(true);
-
-        try {
-            const pipeline = await createEditorialPipeline({
-                topic,
-                pageType,
-                goal: goal.trim() || undefined,
-                audience: audience.trim() || undefined,
-            });
-            router.push(`/content-agent/editor-desk/pipelines/${pipeline.id}`);
-        } catch (err) {
-            setError(err instanceof Error ? err.message : "Failed to create pipeline");
-        } finally {
-            setIsGenerating(false);
-        }
-    }
-
     return (
         <div className="mx-auto max-w-5xl">
             <div className="mb-6 flex items-center gap-3">
@@ -96,73 +64,22 @@ export function QueuePage() {
                 </span>
             </div>
 
-            <form onSubmit={handleGenerate} className="mb-8 rounded-2xl border border-white/10 bg-black/20 p-5">
-                <div className="mb-4">
-                    <h2 className="text-base font-semibold text-white">Idea / Topic Intake</h2>
-                    <p className="mt-1 text-sm text-white/60">
-                        Create a pipeline run first, then review and materialize approved output into CMS.
-                    </p>
-                </div>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                    <div className="space-y-1.5 md:col-span-2">
-                        <label className="text-sm font-medium text-white">Topic</label>
-                        <input
-                            className="w-full rounded-md border border-white/10 bg-black/20 px-3 py-2 text-sm text-white outline-none focus:ring-1 focus:ring-orange-400"
-                            value={topic}
-                            onChange={(e) => setTopic(e.target.value)}
-                            placeholder="e.g. What is Vedanta"
-                            required
-                            minLength={3}
-                        />
+            <div className="mb-8 rounded-2xl border border-white/10 bg-black/20 p-5">
+                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h2 className="text-base font-semibold text-white">Start a new pipeline</h2>
+                        <p className="mt-1 text-sm text-white/60">
+                            Use the content agent workbench to create a new pipeline run, then return here for review and CMS materialization.
+                        </p>
                     </div>
-
-                    <div className="space-y-1.5">
-                        <label className="text-sm font-medium text-white">Page Type</label>
-                        <select
-                            className="w-full rounded-md border border-white/10 bg-black/20 px-3 py-2 text-sm text-white outline-none focus:ring-1 focus:ring-orange-400"
-                            value={pageType}
-                            onChange={(e) => setPageType(e.target.value as (typeof PAGE_TYPES)[number]["value"])}
-                        >
-                            {PAGE_TYPES.map((item) => (
-                                <option key={item.value} value={item.value}>
-                                    {item.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-
-                    <div className="space-y-1.5">
-                        <label className="text-sm font-medium text-white">Audience (optional)</label>
-                        <input
-                            className="w-full rounded-md border border-white/10 bg-black/20 px-3 py-2 text-sm text-white outline-none focus:ring-1 focus:ring-orange-400"
-                            value={audience}
-                            onChange={(e) => setAudience(e.target.value)}
-                            placeholder="spiritual seekers"
-                        />
-                    </div>
-
-                    <div className="space-y-1.5 md:col-span-2">
-                        <label className="text-sm font-medium text-white">Goal (optional)</label>
-                        <input
-                            className="w-full rounded-md border border-white/10 bg-black/20 px-3 py-2 text-sm text-white outline-none focus:ring-1 focus:ring-orange-400"
-                            value={goal}
-                            onChange={(e) => setGoal(e.target.value)}
-                            placeholder="e.g. anxiety, focus, clarity"
-                        />
-                    </div>
-                </div>
-
-                <div className="mt-4 flex items-center justify-end">
-                    <button
-                        type="submit"
-                        disabled={isGenerating}
-                        className="inline-flex items-center justify-center rounded-md bg-orange-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-60"
+                    <Link
+                        href="/content-agent"
+                        className="inline-flex items-center justify-center rounded-md bg-orange-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-400"
                     >
-                        {isGenerating ? "Creating pipeline..." : "Create pipeline"}
-                    </button>
+                        New Pipeline
+                    </Link>
                 </div>
-            </form>
+            </div>
 
             <div className="mb-8 rounded-2xl border border-white/10 bg-black/20 p-5">
                 <div className="mb-4 flex items-center justify-between gap-4">

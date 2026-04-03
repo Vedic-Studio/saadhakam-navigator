@@ -86,6 +86,10 @@ export interface PipelineListItem {
 }
 
 export interface PipelineDetail extends PipelineListItem {
+    description?: string | null;
+    reference_links: string[];
+    key_angles: string[];
+    source_notes?: string | null;
     goal?: string | null;
     audience?: string | null;
     context_module?: string | null;
@@ -104,6 +108,10 @@ export interface PipelineListResponse {
 export interface PipelineCreateInput {
     topic: string;
     pageType: PipelinePageType;
+    description?: string;
+    referenceLinks?: string[];
+    keyAngles?: string[];
+    sourceNotes?: string;
     goal?: string;
     audience?: string;
     qualityThreshold?: number;
