@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
-from typing import List
+from typing import List, Literal
 
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -28,6 +28,9 @@ class Settings(BaseSettings):
     )
 
     knowledge_refresh_on_startup: bool = True
+    llm_provider: Literal["openai", "anthropic"] = "openai"
+    openai_api_key: str | None = None
+    openai_model: str = "gpt-4o-mini"
     anthropic_api_key: str | None = None
     anthropic_model: str = "claude-3-5-sonnet-20241022"
 

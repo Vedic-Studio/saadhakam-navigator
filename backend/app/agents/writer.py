@@ -52,7 +52,16 @@ class WriterAgent(BaseAgent):
             revision_notes=revision_notes,
         )
 
-        if self.settings.anthropic_api_key:
+        provider = self.settings.llm_provider.lower()
+
+        if provider == "openai" and self.settings.openai_api_key:
+            try:
+                content = await self._generate_with_openai(prompt)
+                return WriterResult(content=content, prompt_preview=prompt[:1500])
+            except Exception:
+                pass
+
+        if provider == "anthropic" and self.settings.anthropic_api_key:
             try:
                 content = await self._generate_with_anthropic(prompt)
                 return WriterResult(content=content, prompt_preview=prompt[:1500])
@@ -144,6 +153,42 @@ class WriterAgent(BaseAgent):
         blocks = data.get("content", [])
         text_blocks = [block.get("text", "") for block in blocks if block.get("type") == "text"]
         return "\n".join(text_blocks).strip()
+
+    async def _generate_with_openai(self, prompt: str) -> str:
+        if not self.settings.openai_api_key:
+            raise RuntimeError("OpenAI key missing")
+
+        headers = {
+            "Authorization": f"Bearer {self.settings.openai_api_key}",
+            "content-type": "application/json",
+        }
+        payload = {
+            "model": self.settings.openai_model,
+            "max_tokens": 2400,
+            "temperature": 0.4,
+            "messages": [{"role": "user", "content": prompt}],
+        }
+
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            resp = await client.post(
+                "https://api.openai.com/v1/chat/completions",
+                headers=headers,
+                json=payload,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+
+        choices = data.get("choices", [])
+        if not choices:
+            return ""
+
+        content = choices[0].get("message", {}).get("content", "")
+        if isinstance(content, str):
+            return content.strip()
+        if isinstance(content, list):
+            text_parts = [item.get("text", "") for item in content if item.get("type") in {"text", "output_text"}]
+            return "\n".join(part for part in text_parts if part).strip()
+        return ""
 
     def _generate_deterministic(self, request: GenerateRequest) -> str:
         page_rule = self.knowledge_store.get_content_rules(request.page_type)

@@ -35,7 +35,7 @@ class TwitterAgent(BasePlatformAgent):
         )
 
         try:
-            return await self._generate_with_anthropic(prompt)
+            return await self._generate_with_selected_provider(prompt)
         except Exception:
             # Deterministic fallback
             return f"🧵 Thread on {pipeline.topic}\n\n{approved_content[:200]}...\n\nRead more at opensadhaka.com"

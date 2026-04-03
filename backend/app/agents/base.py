@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 
 
@@ -30,13 +31,18 @@ class BaseAgent:
         self.agent_name = agent_name
 
     def load_soul(self) -> str:
-        return _safe_read(AGENT_WORKSPACE_DIR / self.agent_name / "SOUL.md")
+        return self._load_agent_file(self.agent_name, "SOUL.md")
 
     def load_memory(self) -> str:
-        return _safe_read(AGENT_WORKSPACE_DIR / self.agent_name / "MEMORY.md")
+        return self._load_agent_file(self.agent_name, "MEMORY.md")
 
     def load_skill(self, relative_path: str) -> str:
         return _safe_read(SKILLS_DIR / relative_path)
+
+    @staticmethod
+    @lru_cache(maxsize=None)
+    def _load_agent_file(agent_name: str, filename: str) -> str:
+        return _safe_read(AGENT_WORKSPACE_DIR / agent_name / filename)
 
     def assemble_prompt_parts(self, *, skills_text: str, knowledge_text: str) -> AgentPromptParts:
         return AgentPromptParts(
