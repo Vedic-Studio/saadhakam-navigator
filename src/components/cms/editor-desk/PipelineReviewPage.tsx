@@ -7,19 +7,23 @@ import { ArrowLeft } from "lucide-react";
 import { getContextPackDocs } from "@/lib/content-agent/doc-registry";
 import { BackendUnavailableError } from "@/lib/pipelines/api";
 import {
+    canAdvancePipeline,
     canApprovePipeline,
     canMaterializePipeline,
     canRejectPipeline,
+    canRevisePipeline,
     getDefaultFeedbackStage,
     getPipelineStageView,
     parseEditorScore,
     type PipelineDetail,
 } from "@/lib/pipelines/types";
 import {
+    advancePipelineReview,
     approvePipelineReview,
     getPipelineReviewDetail,
     materializePipelineDraft,
     rejectPipelineReview,
+    revisePipelineReview,
     submitPipelineFeedback,
 } from "./api";
 import { timeAgo } from "./utils";
@@ -30,7 +34,7 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
     const [error, setError] = useState<string | null>(null);
     const [backendUnavailableMessage, setBackendUnavailableMessage] = useState<string | null>(null);
     const [notes, setNotes] = useState("");
-    const [busy, setBusy] = useState<"approve" | "reject" | "feedback" | "materialize" | null>(null);
+    const [busy, setBusy] = useState<"approve" | "reject" | "advance" | "revise" | "feedback" | "materialize" | null>(null);
     const [materializedSlug, setMaterializedSlug] = useState<string | null>(null);
 
     const load = useCallback(async () => {
@@ -59,7 +63,13 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
     const feedbackStage = useMemo(() => (detail ? getDefaultFeedbackStage(detail) : "final"), [detail]);
     const canApprove = detail ? canApprovePipeline(detail.status) : false;
     const canReject = detail ? canRejectPipeline(detail.status) : false;
+    const canAdvance = detail ? canAdvancePipeline(detail.status) : false;
+    const canRevise = detail ? canRevisePipeline(detail.status) : false;
     const canMaterialize = detail ? canMaterializePipeline(detail) : false;
+    const currentArtifact = stageView?.latestPolishedDraft || stageView?.latestWriterDraft;
+    const currentScore = parseEditorScore(stageView?.latestPolishScore || stageView?.latestEditorScore);
+
+    const gateLabel = detail ? (detail.status === "needs_review" ? "final_review" : detail.status) : "—";
 
     async function handleApprove() {
         setError(null);
@@ -97,6 +107,48 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
                 setBackendUnavailableMessage(err.message);
             } else {
                 setError(err instanceof Error ? err.message : "Pipeline rejection failed");
+            }
+        } finally {
+            setBusy(null);
+        }
+    }
+
+    async function handleAdvance() {
+        setError(null);
+        setBackendUnavailableMessage(null);
+        setBusy("advance");
+        try {
+            await advancePipelineReview(pipelineId, { notes: notes || undefined });
+            setNotes("");
+            await load();
+        } catch (err) {
+            if (err instanceof BackendUnavailableError) {
+                setBackendUnavailableMessage(err.message);
+            } else {
+                setError(err instanceof Error ? err.message : "Pipeline advance failed");
+            }
+        } finally {
+            setBusy(null);
+        }
+    }
+
+    async function handleRevise() {
+        if (!notes.trim()) {
+            setError("Revision requires notes.");
+            return;
+        }
+        setError(null);
+        setBackendUnavailableMessage(null);
+        setBusy("revise");
+        try {
+            await revisePipelineReview(pipelineId, { notes: notes.trim() });
+            setNotes("");
+            await load();
+        } catch (err) {
+            if (err instanceof BackendUnavailableError) {
+                setBackendUnavailableMessage(err.message);
+            } else {
+                setError(err instanceof Error ? err.message : "Pipeline revision failed");
             }
         } finally {
             setBusy(null);
@@ -211,6 +263,7 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
                             <p><strong>Quality threshold:</strong> {detail.quality_threshold}</p>
                             <p><strong>Revision limit:</strong> {detail.revision_limit}</p>
                             <p><strong>Pipeline ID:</strong> {detail.id}</p>
+                            <p><strong>Current gate:</strong> {gateLabel}</p>
                         </div>
                     </div>
 
@@ -222,20 +275,20 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
                     </div>
 
                     <div className="rounded-lg border border-white/10 bg-black/20 p-5">
-                        <h2 className="text-base font-semibold text-white">Latest writer draft</h2>
+                        <h2 className="text-base font-semibold text-white">Current draft artifact</h2>
                         <pre className="mt-4 max-h-[460px] overflow-auto whitespace-pre-wrap rounded-lg bg-black/20 p-4 text-sm text-white/80">
-                            {stageView?.latestWriterDraft?.content || "Writer draft not available yet."}
+                            {currentArtifact?.content || "Draft artifact not available yet."}
                         </pre>
                     </div>
 
                     <div className="rounded-lg border border-white/10 bg-black/20 p-5">
                         <h2 className="text-base font-semibold text-white">Editor scorecard</h2>
-                        {editorScore ? (
+                        {currentScore ? (
                             <div className="mt-4 space-y-4">
                                 <div className="flex flex-wrap gap-3 text-sm text-white">
-                                    <span className="rounded-full bg-white/10 px-3 py-1">Total {editorScore.total_score?.toFixed(2) ?? "—"} / 10</span>
-                                    <span className={`rounded-full px-3 py-1 ${editorScore.passed ? "bg-green-500/20 text-green-300" : "bg-red-500/20 text-red-300"}`}>
-                                        {editorScore.passed ? "Pass" : "Needs revision"}
+                                    <span className="rounded-full bg-white/10 px-3 py-1">Total {currentScore.total_score?.toFixed(2) ?? "—"} / 10</span>
+                                    <span className={`rounded-full px-3 py-1 ${currentScore.passed ? "bg-green-500/20 text-green-300" : "bg-red-500/20 text-red-300"}`}>
+                                        {currentScore.passed ? "Pass" : "Needs revision"}
                                     </span>
                                 </div>
                                 {stageView?.latestRevisionNotes ? (
@@ -283,6 +336,22 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
                         <div className="mt-3 grid gap-2">
                             <button
                                 type="button"
+                                disabled={busy !== null || !canAdvance}
+                                onClick={handleAdvance}
+                                className="rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
+                            >
+                                Advance stage
+                            </button>
+                            <button
+                                type="button"
+                                disabled={busy !== null || !canRevise}
+                                onClick={handleRevise}
+                                className="rounded-lg bg-amber-600 px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
+                            >
+                                Revise stage
+                            </button>
+                            <button
+                                type="button"
                                 disabled={busy !== null || !canApprove}
                                 onClick={handleApprove}
                                 className="rounded-lg bg-green-600 px-3 py-2 text-sm font-medium text-white disabled:opacity-60"
@@ -314,7 +383,7 @@ export function PipelineReviewPage({ pipelineId }: { pipelineId: string }) {
                                 Send to CMS draft
                             </button>
                             <p className="text-xs text-white/50">
-                                Feedback is currently archival only and tagged to the latest concrete artifact stage.
+                                Use advance for forward guidance, revise for targeted reruns, and feedback for extra archival notes.
                             </p>
                             {materializedSlug ? (
                                 <button

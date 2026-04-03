@@ -12,6 +12,7 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.models.pipeline import ContentPipeline, FeedbackEntry
 from app.models.schemas import (
+    AdvanceRequest,
     ApproveRequest,
     FeedbackRequest,
     PipelineCreateRequest,
@@ -19,6 +20,7 @@ from app.models.schemas import (
     PipelineListResponse,
     PipelineStatus,
     RejectRequest,
+    ReviseRequest,
 )
 from app.services.pipeline_service import PipelineService
 
@@ -76,20 +78,53 @@ async def create_pipeline(
     )
 
     # Kick off pipeline in background so we can return immediately
-    background_tasks.add_task(_run_pipeline_bg, pipeline.id)
+    background_tasks.add_task(_run_create_pipeline_bg, pipeline.id)
 
     db.refresh(pipeline)
     return _pipeline_to_status(pipeline)
 
 
-async def _run_pipeline_bg(pipeline_id: str) -> None:
-    """Background task: get a fresh DB session and run the pipeline."""
+async def _run_create_pipeline_bg(pipeline_id: str) -> None:
+    """Background task: create flow runs only through research and parks at review."""
     from app.db.session import SessionLocal  # local import avoids circular
     db = SessionLocal()
     try:
         await _get_pipeline_service().run(db, pipeline_id)
     except Exception as exc:
         logger.error("Background pipeline %s error: %s", pipeline_id, exc)
+    finally:
+        db.close()
+
+
+async def _advance_pipeline_bg(pipeline_id: str, notes: str | None = None) -> None:
+    from app.db.session import SessionLocal
+
+    db = SessionLocal()
+    try:
+        await _get_pipeline_service().advance(db, pipeline_id, notes=notes)
+    except Exception as exc:
+        logger.error("Background advance %s error: %s", pipeline_id, exc)
+    finally:
+        db.close()
+
+
+async def _revise_pipeline_bg(
+    pipeline_id: str,
+    notes: str,
+    target_dimensions: list[str] | None = None,
+) -> None:
+    from app.db.session import SessionLocal
+
+    db = SessionLocal()
+    try:
+        await _get_pipeline_service().revise(
+            db,
+            pipeline_id,
+            notes=notes,
+            target_dimensions=target_dimensions,
+        )
+    except Exception as exc:
+        logger.error("Background revise %s error: %s", pipeline_id, exc)
     finally:
         db.close()
 
@@ -127,7 +162,8 @@ def approve_pipeline(
 ):
     """Human gate: approve the pipeline (status → approved)."""
     pipeline = _get_pipeline_or_404(db, pipeline_id)
-    if pipeline.status != "needs_review":
+    normalized_status = "final_review" if pipeline.status == "needs_review" else pipeline.status
+    if normalized_status != "final_review":
         raise HTTPException(
             status_code=422,
             detail=f"Cannot approve pipeline in status '{pipeline.status}'",
@@ -136,7 +172,7 @@ def approve_pipeline(
         raise HTTPException(status_code=422, detail="Cannot approve a failed pipeline")
 
     pipeline.status = "approved"
-    _store_feedback(db, pipeline_id, stage="final", action="approve", notes=body.notes)
+    _store_feedback(db, pipeline_id, stage="final_review", action="approve", notes=body.notes)
     db.commit()
     db.refresh(pipeline)
     return _pipeline_to_status(pipeline)
@@ -150,15 +186,56 @@ def reject_pipeline(
 ):
     """Human gate: reject the pipeline (status → rejected)."""
     pipeline = _get_pipeline_or_404(db, pipeline_id)
-    if pipeline.status != "needs_review":
+    normalized_status = "final_review" if pipeline.status == "needs_review" else pipeline.status
+    if not normalized_status.endswith("_review"):
         raise HTTPException(
             status_code=422,
             detail=f"Cannot reject pipeline in status '{pipeline.status}'",
         )
 
     pipeline.status = "rejected"
-    _store_feedback(db, pipeline_id, stage="final", action="reject", notes=body.notes)
+    _store_feedback(db, pipeline_id, stage=normalized_status, action="reject", notes=body.notes)
     db.commit()
+    db.refresh(pipeline)
+    return _pipeline_to_status(pipeline)
+
+
+@router.post("/{pipeline_id}/advance", response_model=PipelineStatus, status_code=202)
+def advance_pipeline(
+    pipeline_id: str,
+    body: AdvanceRequest,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db),
+):
+    pipeline = _get_pipeline_or_404(db, pipeline_id)
+    normalized_status = "final_review" if pipeline.status == "needs_review" else pipeline.status
+    if not normalized_status.endswith("_review") or normalized_status == "final_review":
+        raise HTTPException(
+            status_code=422,
+            detail=f"Cannot advance pipeline in status '{pipeline.status}'",
+        )
+
+    background_tasks.add_task(_advance_pipeline_bg, pipeline.id, body.notes)
+    db.refresh(pipeline)
+    return _pipeline_to_status(pipeline)
+
+
+@router.post("/{pipeline_id}/revise", response_model=PipelineStatus, status_code=202)
+def revise_pipeline(
+    pipeline_id: str,
+    body: ReviseRequest,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db),
+):
+    pipeline = _get_pipeline_or_404(db, pipeline_id)
+    normalized_status = "final_review" if pipeline.status == "needs_review" else pipeline.status
+    if not normalized_status.endswith("_review"):
+        raise HTTPException(
+            status_code=422,
+            detail=f"Cannot revise pipeline in status '{pipeline.status}'",
+        )
+
+    background_tasks.add_task(_revise_pipeline_bg, pipeline.id, body.notes, body.target_dimensions)
     db.refresh(pipeline)
     return _pipeline_to_status(pipeline)
 

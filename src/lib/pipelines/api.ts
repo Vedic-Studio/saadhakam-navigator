@@ -1,10 +1,12 @@
 import type {
+    PipelineAdvanceInput,
     MaterializePipelineResponse,
     PipelineCreateInput,
     PipelineDetail,
     PipelineFeedbackInput,
     PipelineListItem,
     PipelineListResponse,
+    PipelineReviseInput,
     PipelineReviewDecisionInput,
     TechniqueItem,
 } from "./types";
@@ -74,6 +76,17 @@ export async function approvePipeline(id: string, input: PipelineReviewDecisionI
 
 export async function rejectPipeline(id: string, input: Required<Pick<PipelineReviewDecisionInput, "notes">>) {
     return postPipelineAction<PipelineDetail>(id, "reject", input);
+}
+
+export async function advancePipeline(id: string, input: PipelineAdvanceInput = {}) {
+    return postPipelineAction<PipelineDetail>(id, "advance", { notes: input.notes });
+}
+
+export async function revisePipeline(id: string, input: PipelineReviseInput) {
+    return postPipelineAction<PipelineDetail>(id, "revise", {
+        notes: input.notes,
+        target_dimensions: input.targetDimensions,
+    });
 }
 
 export async function addPipelineFeedback(id: string, input: PipelineFeedbackInput) {

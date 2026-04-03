@@ -8,8 +8,13 @@ export type PipelinePageType =
 export type PipelineStatus =
     | "queued"
     | "researching"
+    | "research_review"
     | "writing"
+    | "draft_review"
     | "editing"
+    | "edit_review"
+    | "polishing"
+    | "final_review"
     | "needs_review"
     | "approved"
     | "rejected"
@@ -19,16 +24,34 @@ export type PipelineFeedbackAction = "approve" | "reject" | "edit";
 
 export type PipelineOutputStage = "research_brief" | "writer_draft" | "editor_score" | "final" | string;
 
-export type PipelineFeedbackStage = "research_brief" | "writer_draft" | "editor_score" | "final";
+export type PipelineFeedbackStage = "research_review" | "draft_review" | "edit_review" | "final_review" | "final";
 
-export const PIPELINE_REVIEWABLE_STATUSES: PipelineStatus[] = ["needs_review"];
+export const PIPELINE_REVIEWABLE_STATUSES: PipelineStatus[] = [
+    "research_review",
+    "draft_review",
+    "edit_review",
+    "final_review",
+    "needs_review",
+];
 export const PIPELINE_TERMINAL_STATUSES: PipelineStatus[] = ["approved", "rejected", "failed"];
 export const PIPELINE_PROGRESS_STEPS: Array<Exclude<PipelineStatus, "approved" | "rejected" | "failed">> = [
     "queued",
     "researching",
+    "research_review",
     "writing",
+    "draft_review",
     "editing",
+    "edit_review",
+    "polishing",
+    "final_review",
     "needs_review",
+];
+
+export const PIPELINE_ACTIVE_REVIEW_STATUSES: PipelineStatus[] = [
+    "research_review",
+    "draft_review",
+    "edit_review",
+    "final_review",
 ];
 
 export interface PipelineOutput {
@@ -98,6 +121,15 @@ export interface PipelineReviewDecisionInput {
     notes?: string;
 }
 
+export interface PipelineAdvanceInput {
+    notes?: string;
+}
+
+export interface PipelineReviseInput {
+    notes: string;
+    targetDimensions?: string[];
+}
+
 export interface MaterializePipelineResponse {
     slug: string;
     version: number;
@@ -125,6 +157,8 @@ export type PipelineStageView = {
     latestResearchBrief?: PipelineOutput;
     latestWriterDraft?: PipelineOutput;
     latestEditorScore?: PipelineOutput;
+    latestPolishedDraft?: PipelineOutput;
+    latestPolishScore?: PipelineOutput;
     latestRevisionNotes?: string;
 };
 
@@ -160,13 +194,21 @@ export function getPipelineStageView(detail: PipelineDetail): PipelineStageView 
     const latestResearchBrief = getLatestPipelineOutput(detail.outputs, "research_brief");
     const latestWriterDraft = getLatestPipelineOutput(detail.outputs, "writer_draft");
     const latestEditorScore = getLatestPipelineOutput(detail.outputs, "editor_score");
+    const latestPolishedDraft = getLatestPipelineOutput(detail.outputs, "polished_draft");
+    const latestPolishScore = getLatestPipelineOutput(detail.outputs, "polish_score");
 
     return {
         latestResearchBrief,
         latestWriterDraft,
         latestEditorScore,
+        latestPolishedDraft,
+        latestPolishScore,
         latestRevisionNotes: coerceOptionalString(
-            latestEditorScore?.revision_notes || latestWriterDraft?.revision_notes || latestResearchBrief?.revision_notes,
+            latestPolishScore?.revision_notes
+            || latestPolishedDraft?.revision_notes
+            || latestEditorScore?.revision_notes
+            || latestWriterDraft?.revision_notes
+            || latestResearchBrief?.revision_notes,
         ),
     };
 }
@@ -197,10 +239,18 @@ export function canReviewPipeline(status: PipelineStatus | string) {
 }
 
 export function canApprovePipeline(status: PipelineStatus | string) {
-    return canReviewPipeline(status);
+    return ["final_review", "needs_review"].includes(status as PipelineStatus);
 }
 
 export function canRejectPipeline(status: PipelineStatus | string) {
+    return canReviewPipeline(status);
+}
+
+export function canAdvancePipeline(status: PipelineStatus | string) {
+    return ["research_review", "draft_review", "edit_review"].includes(status as PipelineStatus);
+}
+
+export function canRevisePipeline(status: PipelineStatus | string) {
     return canReviewPipeline(status);
 }
 
@@ -208,6 +258,11 @@ export function getApprovedPipelineArtifact(outputs: PipelineOutput[]): Approved
     const latestFinal = getLatestPipelineOutput(outputs, "final");
     if (latestFinal?.content) {
         return { output: latestFinal, stage: "final" };
+    }
+
+    const latestPolishedDraft = getLatestPipelineOutput(outputs, "polished_draft");
+    if (latestPolishedDraft?.content) {
+        return { output: latestPolishedDraft, stage: "writer_draft" };
     }
 
     const latestWriterDraft = getLatestPipelineOutput(outputs, "writer_draft");
@@ -227,14 +282,17 @@ export function canMaterializePipeline(detail: Pick<PipelineDetail, "status" | "
 }
 
 export function getDefaultFeedbackStage(detail: Pick<PipelineDetail, "outputs">): PipelineFeedbackStage {
+    if (getLatestPipelineOutput(detail.outputs, "polish_score") || getLatestPipelineOutput(detail.outputs, "polished_draft")) {
+        return "final_review";
+    }
     if (getLatestPipelineOutput(detail.outputs, "editor_score")) {
-        return "editor_score";
+        return "edit_review";
     }
     if (getLatestPipelineOutput(detail.outputs, "writer_draft")) {
-        return "writer_draft";
+        return "draft_review";
     }
     if (getLatestPipelineOutput(detail.outputs, "research_brief")) {
-        return "research_brief";
+        return "research_review";
     }
 
     return "final";

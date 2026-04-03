@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+    canAdvancePipeline,
     canApprovePipeline,
     canMaterializePipeline,
+    canRevisePipeline,
     getDefaultFeedbackStage,
     getApprovedPipelineArtifact,
     type PipelineDetail,
@@ -26,9 +28,25 @@ function buildDetail(overrides: Partial<PipelineDetail> = {}): PipelineDetail {
 
 describe("pipeline workflow helpers", () => {
     it("only allows approval from explicit review state", () => {
+        expect(canApprovePipeline("final_review")).toBe(true);
         expect(canApprovePipeline("needs_review")).toBe(true);
         expect(canApprovePipeline("approved")).toBe(false);
         expect(canApprovePipeline("editing")).toBe(false);
+    });
+
+    it("allows advance only on pre-final review gates", () => {
+        expect(canAdvancePipeline("research_review")).toBe(true);
+        expect(canAdvancePipeline("draft_review")).toBe(true);
+        expect(canAdvancePipeline("edit_review")).toBe(true);
+        expect(canAdvancePipeline("final_review")).toBe(false);
+    });
+
+    it("allows revise on any review gate", () => {
+        expect(canRevisePipeline("research_review")).toBe(true);
+        expect(canRevisePipeline("draft_review")).toBe(true);
+        expect(canRevisePipeline("edit_review")).toBe(true);
+        expect(canRevisePipeline("final_review")).toBe(true);
+        expect(canRevisePipeline("writing")).toBe(false);
     });
 
     it("requires approved status, no error, and a writer draft before materialization", () => {
@@ -108,7 +126,7 @@ describe("pipeline workflow helpers", () => {
                     ],
                 }),
             ),
-        ).toBe("research_brief");
+        ).toBe("research_review");
 
         expect(
             getDefaultFeedbackStage(
@@ -133,6 +151,25 @@ describe("pipeline workflow helpers", () => {
                     ],
                 }),
             ),
-        ).toBe("editor_score");
+        ).toBe("edit_review");
+    });
+
+    it("maps polished artifacts to final review feedback stage", () => {
+        expect(
+            getDefaultFeedbackStage(
+                buildDetail({
+                    outputs: [
+                        {
+                            id: "out-1",
+                            version: 1,
+                            stage: "polished_draft",
+                            agent: "writer",
+                            content: "polished",
+                            created_at: new Date().toISOString(),
+                        },
+                    ],
+                }),
+            ),
+        ).toBe("final_review");
     });
 });

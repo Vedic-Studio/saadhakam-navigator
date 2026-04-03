@@ -62,8 +62,13 @@ class TechniquesResponse(BaseModel):
 PipelineStatusLiteral = Literal[
     "queued",
     "researching",
+    "research_review",
     "writing",
+    "draft_review",
     "editing",
+    "edit_review",
+    "polishing",
+    "final_review",
     "needs_review",
     "approved",
     "rejected",
@@ -71,10 +76,10 @@ PipelineStatusLiteral = Literal[
 ]
 
 PipelineFeedbackStageLiteral = Literal[
-    "research_brief",
-    "editor_structural_handoff",
-    "writer_draft",
-    "editor_score",
+    "research_review",
+    "draft_review",
+    "edit_review",
+    "final_review",
     "final",
 ]
 
@@ -161,8 +166,17 @@ class ApproveRequest(BaseModel):
     notes: Optional[str] = None
 
 
+class AdvanceRequest(BaseModel):
+    notes: Optional[str] = None
+
+
 class RejectRequest(BaseModel):
     notes: str
+
+
+class ReviseRequest(BaseModel):
+    notes: str
+    target_dimensions: Optional[List[str]] = None
 
 
 class FeedbackRequest(BaseModel):

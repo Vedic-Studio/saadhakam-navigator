@@ -8,6 +8,7 @@ import {
     isPipelineTerminal,
     parseEditorScore,
     PIPELINE_PROGRESS_STEPS,
+    canReviewPipeline,
     type PipelineDetail,
     type PipelinePageType,
     type TechniqueItem,
@@ -80,7 +81,7 @@ export function GenerateWorkbench() {
                 if (cancelled) return;
                 setResult(detail);
                 setBackendUnavailableMessage(null);
-                if (!isPipelineTerminal(detail.status) && detail.status !== "needs_review") {
+                if (!isPipelineTerminal(detail.status) && !canReviewPipeline(detail.status)) {
                     timeoutId = setTimeout(poll, 2000);
                 } else {
                     setIsGenerating(false);
@@ -268,7 +269,7 @@ export function GenerateWorkbench() {
                                 {PIPELINE_PROGRESS_STEPS.map((step, index) => {
                                     const currentIndex = PIPELINE_PROGRESS_STEPS.indexOf(
                                         result.status === "approved" || result.status === "rejected" || result.status === "failed"
-                                            ? "needs_review"
+                                            ? "final_review"
                                             : (result.status as (typeof PIPELINE_PROGRESS_STEPS)[number]),
                                     );
                                     const isDone = currentIndex >= index;

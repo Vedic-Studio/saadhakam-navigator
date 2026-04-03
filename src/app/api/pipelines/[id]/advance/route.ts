@@ -5,12 +5,12 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
     try {
         const { id } = await context.params;
         const body = await request.text();
-        const response = await proxyContentAgentJson(`/pipelines/${id}/reject`, { method: "POST", body });
+        const response = await proxyContentAgentJson(`/pipelines/${id}/advance`, { method: "POST", body });
         const payload = await response.json().catch(() => ({}));
         return NextResponse.json(payload, { status: response.status });
     } catch (error) {
         return NextResponse.json(
-            { error: error instanceof Error ? error.message : "Pipeline rejection failed at review gate" },
+            { error: error instanceof Error ? error.message : "Pipeline advance failed" },
             { status: 500 },
         );
     }

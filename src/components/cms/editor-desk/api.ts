@@ -1,14 +1,23 @@
 import type { CmsArticleDetail, CmsReview, CmsVersion } from "./types";
 import {
     addPipelineFeedback,
+    advancePipeline,
     approvePipeline,
     createPipeline,
     getPipelineDetail,
     listPipelines,
     materializePipeline,
     rejectPipeline,
+    revisePipeline,
 } from "@/lib/pipelines/api";
-import type { PipelineCreateInput, PipelineDetail, PipelineFeedbackInput, PipelineListItem } from "@/lib/pipelines/types";
+import type {
+    PipelineAdvanceInput,
+    PipelineCreateInput,
+    PipelineDetail,
+    PipelineFeedbackInput,
+    PipelineListItem,
+    PipelineReviseInput,
+} from "@/lib/pipelines/types";
 
 async function parseResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
@@ -73,6 +82,14 @@ export async function approvePipelineReview(id: string, notes?: string) {
 
 export async function rejectPipelineReview(id: string, notes: string) {
     return rejectPipeline(id, { notes });
+}
+
+export async function advancePipelineReview(id: string, input: PipelineAdvanceInput = {}) {
+    return advancePipeline(id, input);
+}
+
+export async function revisePipelineReview(id: string, input: PipelineReviseInput) {
+    return revisePipeline(id, input);
 }
 
 export async function submitPipelineFeedback(id: string, input: PipelineFeedbackInput) {

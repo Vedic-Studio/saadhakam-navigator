@@ -21,8 +21,13 @@ export const PipelinePageTypeSchema = z.enum([
 export const PipelineStatusSchema = z.enum([
     "queued",
     "researching",
+    "research_review",
     "writing",
+    "draft_review",
     "editing",
+    "edit_review",
+    "polishing",
+    "final_review",
     "needs_review",
     "approved",
     "rejected",

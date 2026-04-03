@@ -240,10 +240,17 @@ def test_pipeline_service_uses_threshold_gate_and_persists_outputs(db_session: S
 
     updated = asyncio.run(service.run(db_session, pipeline.id))
     outputs = db_session.query(ContentOutput).filter(ContentOutput.pipeline_id == pipeline.id).all()
+    assert updated.status == "research_review"
+
+    updated = asyncio.run(service.advance(db_session, pipeline.id))
+    assert updated.status == "draft_review"
+
+    updated = asyncio.run(service.advance(db_session, pipeline.id))
+    outputs = db_session.query(ContentOutput).filter(ContentOutput.pipeline_id == pipeline.id).all()
     latest_editor = max((o for o in outputs if o.stage == "editor_score"), key=lambda item: item.version)
     scorecard = json.loads(latest_editor.scorecard_json or "{}")
 
-    assert updated.status == "needs_review"
+    assert updated.status == "edit_review"
     assert updated.final_score is not None
     assert scorecard["passed"] is True
     assert any(output.stage == "research_brief" for output in outputs)
@@ -327,14 +334,21 @@ def test_pipeline_service_uses_retry_handoff_on_redraft(db_session: Session, kno
 
     updated = asyncio.run(service.run(db_session, pipeline.id))
 
-    assert updated.status == "needs_review"
+    assert updated.status == "research_review"
+
+    updated = asyncio.run(service.advance(db_session, pipeline.id))
+    assert updated.status == "draft_review"
+
+    updated = asyncio.run(service.revise(db_session, pipeline.id, notes="Add more structure"))
+
+    assert updated.status == "draft_review"
     assert len(service.writer.calls) == 2
     assert "Writer Handoff" in service.writer.calls[0]["knowledge_handoff"]
     assert "Retry Constraints" in service.writer.calls[1]["knowledge_handoff"]
     assert service.writer.calls[1]["revision_packet"] is not None
     assert "Retry Packet" in service.writer.calls[1]["revision_packet"]
     assert "Immutable Constraints" in service.writer.calls[1]["revision_packet"]
-    assert service.writer.calls[1]["revision_notes"] is None
+    assert service.writer.calls[1]["revision_notes"] == "Add more structure"
 
 
 def test_pipeline_service_materializes_handoffs_once(db_session: Session, knowledge_store: KnowledgeStore, monkeypatch: pytest.MonkeyPatch):
@@ -406,5 +420,49 @@ def test_pipeline_service_materializes_handoffs_once(db_session: Session, knowle
 
     updated = asyncio.run(service.run(db_session, pipeline.id))
 
-    assert updated.status == "needs_review"
-    assert call_counts == {"writer": 1, "retry": 1, "editor": 1}
+    assert updated.status == "research_review"
+    assert call_counts == {"writer": 1, "retry": 0, "editor": 1}
+
+
+def test_pipeline_service_polish_stage_parks_at_final_review(db_session: Session, knowledge_store: KnowledgeStore):
+    pipeline = ContentPipeline(
+        topic="What is Vedanta",
+        page_type="topic_hub",
+        audience="spiritual seekers",
+        context_module="long_form",
+        status="queued",
+        quality_threshold=6.0,
+        revision_limit=1,
+    )
+    db_session.add(pipeline)
+    db_session.commit()
+    db_session.refresh(pipeline)
+
+    service = PipelineService()
+    service.orchestrator = OrchestratorAgent(knowledge_store=knowledge_store)
+    service.researcher = ResearchAgent(knowledge_store=knowledge_store)
+
+    class StubWriter:
+        def __init__(self):
+            self.calls = []
+
+        async def generate(self, request, research_brief=None, knowledge_handoff=None, revision_packet=None, revision_notes=None):
+            self.calls.append({
+                "knowledge_handoff": knowledge_handoff,
+                "revision_packet": revision_packet,
+                "revision_notes": revision_notes,
+            })
+            return type("WriterResult", (), {"content": "# What is Vedanta\n\n## Topic overview (clear, encyclopedic definition + cultural context)\nDetailed content\n\n## Recommended practices (with internal links)\nPractice [Japa](/how-to-start-japa) [Paths](/topics/spiritual-paths) [Advaita](/advaita-vedanta-explained)\n\n## Recommended traditions/lineages\nLineage content\n\n## Curated reading/guides list\nGuide content\n\n## Call-to-action (Faith Finder or related pathway)\nCTA\n\n## AEO Summary\nSummary text\n\n### What is Vedanta?\nAnswer\n\n### How do beginners start?\nAnswer\n\n### Which sources matter most?\nAnswer\n\n### Is it practical?\nAnswer\n\n### Does it reject devotion?\nAnswer\n\n## Sources & Commentaries\nSources"})()
+
+    service.writer = StubWriter()
+
+    asyncio.run(service.run(db_session, pipeline.id))
+    asyncio.run(service.advance(db_session, pipeline.id))
+    asyncio.run(service.advance(db_session, pipeline.id))
+    updated = asyncio.run(service.advance(db_session, pipeline.id, notes="Polish voice only"))
+
+    outputs = db_session.query(ContentOutput).filter(ContentOutput.pipeline_id == pipeline.id).all()
+
+    assert updated.status == "final_review"
+    assert any(output.stage == "polished_draft" for output in outputs)
+    assert any(output.stage == "polish_score" for output in outputs)
