@@ -25,7 +25,7 @@ export function getContentAgentApiBase() {
     const configuredBase = process.env.CONTENT_AGENT_API_BASE ?? process.env.NEXT_PUBLIC_CONTENT_AGENT_API_BASE;
 
     if (configuredBase) {
-        return configuredBase.replace(/\/$/, "");
+        return configuredBase.trim().replace(/\/$/, "");
     }
 
     if (process.env.NODE_ENV !== "production") {

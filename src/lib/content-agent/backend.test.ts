@@ -50,4 +50,11 @@ describe("content-agent backend proxy", () => {
         expect(payload.detail).toContain("Content agent is unreachable");
         expect(payload.detail).toContain("connect ECONNREFUSED");
     });
+
+    it("trims whitespace around the configured API base", () => {
+        vi.stubEnv("NODE_ENV", "production");
+        vi.stubEnv("CONTENT_AGENT_API_BASE", " https://content-agent.opensadhaka.com/api/ ");
+
+        expect(getContentAgentApiBase()).toBe("https://content-agent.opensadhaka.com/api");
+    });
 });
