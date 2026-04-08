@@ -45,7 +45,7 @@ Treat the dating as *live* when writing, not settled.
 
 - **RV 10.129 (Nasadiya Sukta)** — the creation hymn; widely cited for its non-committal, question-posing cosmology
 - **RV 10.90 (Purusha Sukta)** — the cosmic-person hymn; source of later varna interpretations
-- **RV 10.34 (Aksha Sukta / Gambler's Lament)** — monologue of a repentant gambler; a remarkable early literary depiction of compulsive behavior and social consequences
+- **RV 10.34 (Aksha Sukta / Gambler's Lament)** — monologue of a repentant gambler; a remarkable early literary depiction of compulsive behavior and social consequences. See the [Aksha Sukta concept file](../concepts/aksha-sukta-addiction.md) and the [Gambler's Lament addiction claim](../claims/gamblers-lament-addiction-claim.md) for the scoped "earliest portrait of addiction psychology" decomposition.
 - Hymns attributed to women rishis (see the [women rishis claim card](../claims/rigveda-women-rishis-claim.md) for attribution caution) — Lopamudra, Ghosha, Apala, and others; the tradition names them, but sweeping numerical claims ("27 women wrote X") circulating online rarely have a single primary source
 
 ## Modern translations worth citing
@@ -57,6 +57,7 @@ Treat the dating as *live* when writing, not settled.
 ## Claims anchored to this text
 
 - [Rigveda women rishis claim](../claims/rigveda-women-rishis-claim.md)
+- [Gambler's Lament addiction claim](../claims/gamblers-lament-addiction-claim.md)
 - *(backlog: "Nasadiya Sukta anticipates quantum cosmology" decomposition; "Rigveda contains descriptions of airplanes" decomposition)*
 
 ## Adjacent texts

@@ -43,3 +43,6 @@ The distinction is a classical one, articulated across commentarial literature a
 ## Related concepts
 
 - [Pramana](pramana-epistemology.md) — the classical theory of how we come to know anything, in which testimony (śabda) of shruti plays a particular role
+- [Vedangas framework](vedangas-framework.md) — the six auxiliary sciences (Smriti-level) that preserve Shruti
+- [Upavedas framework](upavedas-framework.md) — the four applied sciences (Smriti-level) that apply Vedic knowledge
+- [Darshanas framework](darshanas-framework.md) — the six orthodox philosophical schools (Smriti-level) that interpret Shruti

@@ -19,6 +19,8 @@ The master domain map. Every file in `kb/` is listed here with a one-line hook.
 - [Arthashastra (Statecraft)](shastras/arthashastra-statecraft.md) — political economy, intelligence, war ethics; the Shamasastry rediscovery story
 - [Vaisheshika (Atomism & Natural Philosophy)](shastras/vaisheshika-atomism.md) — anu/paramanu, plural Indian atomisms, and why it is not lab physics
 - [Dhanurveda (Martial Tradition)](shastras/dhanurveda-martial.md) — archery and warfare as shastric literature, Agni Purana and modern historiography
+- [Nyaya (Logic & Epistemology)](shastras/nyaya-logic-epistemology.md) — classical Indian logic, pramana theory, and Navya-Nyaya as a technical peer of medieval scholastic logic
+- [Mimamsa (Ritual Hermeneutics)](shastras/mimamsa-ritual-hermeneutics.md) — the philosophy of interpretation; Kumarila and Prabhakara; the "authorless Veda" thesis
 
 ---
 
@@ -67,6 +69,10 @@ The master domain map. Every file in `kb/` is listed here with a one-line hook.
 - [Prakriti & Dosha](concepts/prakriti-dosha.md) — Ayurvedic constitution/pathology framework and its modern research posture
 - [Dharmayuddha vs Kutayuddha](concepts/dharmayuddha-vs-kutayuddha.md) — just war vs pragmatic war in Indian military ethics
 - [Pramana (means of knowledge)](concepts/pramana-epistemology.md) — perception, inference, testimony across the darshanas
+- [Darshanas framework](concepts/darshanas-framework.md) — the six orthodox schools as a classificatory map (Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, Vedanta)
+- [Vedangas framework](concepts/vedangas-framework.md) — the six auxiliary sciences of the Veda (Shiksha, Chandas, Vyakarana, Nirukta, Kalpa, Jyotisha)
+- [Upavedas framework](concepts/upavedas-framework.md) — the four applied-knowledge systems (Ayurveda, Dhanurveda, Gandharvaveda, Sthapatyaveda)
+- [Aksha Sukta (Gambler's Lament)](concepts/aksha-sukta-addiction.md) — Rigveda 10.34 as the earliest surviving first-person portrait of addiction phenomenology
 
 ---
 
@@ -82,6 +88,7 @@ The master domain map. Every file in `kb/` is listed here with a one-line hook.
 - [Sushruta surgery scope claim](claims/sushruta-surgery-scope-claim.md) — nasal reconstruction, cataract couching, and the real Sushruta-to-modern-surgery line
 - [Vaisheshika atomism claim](claims/vaisheshika-atomism-claim.md) — paramanu as philosophical atomism, not modern physics
 - [Arthashastra intelligence state claim](claims/arthashastra-intelligence-state-claim.md) — Kautilyan HUMINT doctrine as normative treatise vs historical practice
+- [Gambler's Lament addiction claim](claims/gamblers-lament-addiction-claim.md) — whether the Rigveda contains "the earliest portrait of addiction psychology," scoped carefully
 
 ---
 
@@ -89,10 +96,10 @@ The master domain map. Every file in `kb/` is listed here with a one-line hook.
 
 The following are known-to-exist nodes in the domain that this seeding pass has NOT yet created. A future pass should fill them. (This list IS the backlog.)
 
-- **Shastras**: Nyaya (logic), Mimamsa (ritual hermeneutics), Silpashastra (architecture), Ganita (mathematics proper), Rasashastra (alchemy/chemistry), Natyashastra (dramaturgy), Dharmashastra (law)
-- **Texts**: Manusmriti, Agni Purana, Aryabhatiya, Brahmasphutasiddhanta, Lilavati, Bijaganita, Brahma Sutras, principal Upanishads, Yoga Sutras, Tirukkural
-- **People**: Aryabhata, Brahmagupta, Bhaskara II, Madhava of Sangamagrama, Vagbhata, Nagarjuna, Jamison & Witzel, Patrick Olivelle (Dharmashastra vs Arthashastra roles), Kaushik Roy (warfare ethics), Laurie Patton (gender & textual authority)
-- **Concepts**: padarthas (Vaisheshika's six categories), kala (time), yajna (sacrifice as cosmology), rna (debt/obligation), varna/jati distinction, guna theory
-- **Claims**: "no zero in India before ~5th c.?" decomposition; "Sushruta performed plastic surgery" decomposition; "Indus script deciphered" decomposition; "Aryan invasion vs migration" claim; "ancient India knew heliocentrism" decomposition
+- **Shastras**: Samkhya (dualist cosmology), Yoga (practice darshana), Silpashastra (architecture), Ganita (mathematics proper), Rasashastra (alchemy/chemistry), Natyashastra (dramaturgy), Dharmashastra (law), Gandharvaveda (music/dramaturgy), Sthapatyaveda (architecture/engineering)
+- **Texts**: Nyaya Sutras, Mimamsa Sutras, Samkhya Karika, Yoga Sutras, Brahma Sutras, Manusmriti, Agni Purana, Aryabhatiya, Brahmasphutasiddhanta, Lilavati, Bijaganita, principal Upanishads, Natya Shastra, Tirukkural, Nirukta (Yaska)
+- **People**: Aryabhata, Brahmagupta, Bhaskara II, Madhava of Sangamagrama, Vagbhata, Nagarjuna, Jamison & Witzel, Kaushik Roy (warfare ethics), Laurie Patton (gender & textual authority), Gautama/Akshapada (Nyaya), Jaimini (Mimamsa), Kumarila Bhatta, Prabhakara, Gangesha Upadhyaya, B. K. Matilal, Jonardon Ganeri
+- **Concepts**: padarthas (Vaisheshika's six categories), kala (time), yajna (sacrifice as cosmology), rna (debt/obligation), varna/jati distinction, guna theory, anumana (Nyaya inference), apaurusheyatva (Vedic authorlessness), arthavada/vidhi
+- **Claims**: "no zero in India before ~5th c.?" decomposition; "Sushruta performed plastic surgery" (partially covered by sushruta-surgery-scope-claim — needs a narrower "did Sushruta perform plastic surgery in the modern sense" companion); "Indus script deciphered" decomposition; "Aryan invasion vs migration" claim; "ancient India knew heliocentrism" decomposition; "Nyaya anticipated first-order logic" decomposition; "Mimamsa invented modern hermeneutics" decomposition
 
 Adding to this list when you notice a gap is itself a valid contribution.

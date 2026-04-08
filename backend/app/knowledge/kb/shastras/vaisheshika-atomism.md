@@ -56,9 +56,12 @@ Vaisheshika historically merges with **Nyaya** (the logic/epistemology school) i
 
 ## Adjacent shastras
 
-- **Nyaya** *(not yet seeded)* — the epistemology/logic tradition Vaisheshika fuses with; together they form Nyaya-Vaisheshika
+- [Nyaya (Logic & Epistemology)](nyaya-logic-epistemology.md) — the epistemology/logic tradition Vaisheshika fuses with; together they form Nyaya-Vaisheshika
+- [Mimamsa (Ritual Hermeneutics)](mimamsa-ritual-hermeneutics.md) — a fellow darshana with its own sophisticated epistemology
 - **Samkhya / Yoga** *(not yet seeded)* — the dualist counterpart that offers a different natural philosophy
 - [Ayurveda](ayurveda-medicine.md) — inherits part of its metaphysical vocabulary from Vaisheshika and allied schools
+
+See also [Darshanas framework](../concepts/darshanas-framework.md) for the classificatory map of the six orthodox schools.
 
 ## Claim cards
 
