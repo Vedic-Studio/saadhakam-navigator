@@ -75,8 +75,13 @@ If any of these are skipped, the page is effectively invisible to users navigati
 ### Content Quality
 - **Voice skill**: `~/.claude/skills/sadhaka-voice.md` (v2.0) — THE authority for all prose. Overrides LLM defaults. Integrates stop-slop rules.
 - **Anti-slop references**: `~/.claude/skills/stop-slop/references/` — phrase, structure, and example catalogs
-- **Publish gate**: Score every article on 5 dimensions (Directness, Rhythm, Trust, Authenticity, Density). Minimum 35/50 to publish.
+- **Post-write SEO/AEO/GEO pass**: Run `/seo-optimize <slug>` after `/write-article` and before committing. Generates meta, JSON-LD, FAQ audit, heading audit, E-E-A-T check, and the GEO Citability Score.
+- **Publish gates** (all three must pass before commit):
+  - **Voice score** ≥ 35/50 (5 dimensions: Directness, Rhythm, Trust, Authenticity, Density)
+  - **AEO block grade**: PASS (opening paragraph)
+  - **GEO Citability Score** ≥ 8/10 (body-level extractability — see `.claude/skills/seo-optimize/SKILL.md` §11.5)
 - Always load the voice skill when writing or reviewing article content.
+- For cluster-level AEO strategy (Answer Intent Mapping, Answer Hub design): `.agents/skills/answer-engine-optimization/`. For IndexNow/Google Indexing setup: `.agents/skills/llm-indexing/`. For sitemap/metadata reference: `docs/agents/04-seo-indexing.md`.
 
 ### gstack Workflow Tools
 - Use `/browse` for all web browsing — never use `mcp__claude-in-chrome__*` tools

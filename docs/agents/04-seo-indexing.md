@@ -4,6 +4,26 @@
 
 ---
 
+## Skill Hierarchy (which skill to invoke when)
+
+Sadhaka has several SEO/AEO/GEO skills. Use this table to pick the right one:
+
+| Task | Use |
+|---|---|
+| Post-write per-article SEO/AEO/GEO pass (meta, JSON-LD, FAQ audit, heading audit, E-E-A-T, numeric GEO Citability Score) | `/seo-optimize <slug>` |
+| Cluster-level AEO strategy (Answer Intent Mapping, Answer Hub design, picking which queries to target) | `.agents/skills/answer-engine-optimization/` + `.agents/workflows/answer-engine-optimization.md` |
+| Sadhaka Facts page, `Organization` schema, brand-level authority signals | `.agents/skills/answer-engine-optimization/` |
+| IndexNow / Google Indexing API setup + LLM directory submission | `.agents/skills/llm-indexing/` |
+| `llms.txt` / `llms-full.txt` route maintenance, sitemap, metadata standards, JSON-LD reference | **This document** (see sections below) |
+| Crawler verification (GPTBot, PerplexityBot, ClaudeBot logs) | `.agents/skills/llm-indexing/` §4 |
+
+**Publish gates for every article** (all must pass before commit):
+- **AEO Block Grade** (opening paragraph) — PASS from `/seo-optimize`
+- **GEO Citability Score** (body-level) — **≥ 8/10** from `/seo-optimize` §11.5
+- **Voice Score** — ≥ 35/50 from `sadhaka-voice.md`
+
+---
+
 ## SEO Library
 
 All SEO utilities are in `src/lib/seo/index.ts`.
@@ -124,28 +144,6 @@ This calls `scripts/submit-priority-indexnow.mjs`, which reads from `scripts/ind
 
 ### Adding URLs to Priority Config
 Edit `scripts/indexnow-priority-config.mjs` — add new slugs to the appropriate priority tier.
-
----
-
-## AEO (AI Engine Optimization)
-
-AEO is about getting Sadhaka content cited as answers by ChatGPT, Perplexity, Claude, Gemini.
-
-### Requirements for every page
-1. **Direct answer block** at the top — 60–100 words, plain prose, directly answers the primary query
-2. **Structured headings** — H1 exact matches the primary keyword; H2s match common question variants
-3. **FAQ schema** — structured data that AI engines can extract directly
-4. **Concise definitions** — key Sanskrit terms defined inline in ≤20 words
-5. **Source citations** — name the Purana/text. AI engines prefer citable sources.
-
-### AEO Audit Checklist
-For each page:
-- [ ] AEO block present and ≤100 words
-- [ ] AEO block is plain prose (no bullets)
-- [ ] H1 matches primary keyword intent
-- [ ] FAQ schema JSON-LD present if page has FAQs
-- [ ] Canonical URL correct and absolute
-- [ ] meta description 150–160 chars
 
 ---
 

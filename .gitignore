@@ -41,13 +41,15 @@ __pycache__/
 
 # Legacy / dead directories (kept locally, not in repo)
 .agent/
-.agents/
 .claire/
 .roo/
 workspace/
 frontend/
 content-pipeline/
-skills/
+
+# Note: .agents/ and .claude/skills/ ARE tracked — they hold active skill
+# definitions (seo-optimize, answer-engine-optimization, llm-indexing, etc.)
+# that inform the Claude Code workflow for this project.
 
 plans/
 venv/
