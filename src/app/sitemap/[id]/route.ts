@@ -286,6 +286,7 @@ function getEntries(id: string): SitemapEntry[] {
       return [
         { url: `${baseUrl}/jyotish`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
         { url: `${baseUrl}/jyotish/today`, lastModified: now, changeFrequency: "daily", priority: 0.85 },
+        { url: `${baseUrl}/vedic-clock`, lastModified: now, changeFrequency: "daily", priority: 0.86 },
         { url: `${baseUrl}/jyotish/nakshatras`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.85 },
         ...nakshatras.map((item) => ({
           url: `${baseUrl}/jyotish/nakshatras/${item.slug}`,

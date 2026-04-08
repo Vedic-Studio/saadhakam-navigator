@@ -34,6 +34,11 @@ const sections = [
         href: "/jyotish/today",
         description: "Daily vara-led guidance with graceful 2026 calendar enrichment for nakshatra and tithi.",
     },
+    {
+        name: "Vedic Clock",
+        href: "/vedic-clock",
+        description: "Live sunrise-based muhūrta clock with location-aware pañchānga fields, preset cities, geolocation, and visible calculation provenance.",
+    },
 ];
 
 export const metadata = buildPageMetadata({
