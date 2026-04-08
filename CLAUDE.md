@@ -82,6 +82,7 @@ If any of these are skipped, the page is effectively invisible to users navigati
   - **GEO Citability Score** ≥ 8/10 (body-level extractability — see `.claude/skills/seo-optimize/SKILL.md` §11.5)
 - Always load the voice skill when writing or reviewing article content.
 - For cluster-level AEO strategy (Answer Intent Mapping, Answer Hub design): `.agents/skills/answer-engine-optimization/`. For IndexNow/Google Indexing setup: `.agents/skills/llm-indexing/`. For sitemap/metadata reference: `docs/agents/04-seo-indexing.md`.
+- **Knowledge base for classical Indian claims**: `backend/app/knowledge/kb/` (see `kb/INDEX.md`). Five object types — shastra / text / person / concept / claim. Articles must cite from `kb/claims/*.md` rather than restating sensational claims ("Sushruta invented plastic surgery", "Panini wrote an algorithm", "Surya Siddhanta matches NASA"). Each claim file decomposes the popular framing into scoped sub-claims with verdict tags and primary sources, so the article can link to the claim by slug and inherit the correct scope. If a claim you need is not seeded, add it to the "Not yet seeded" backlog in `kb/INDEX.md` and create the file before writing the article.
 
 ### gstack Workflow Tools
 - Use `/browse` for all web browsing — never use `mcp__claude-in-chrome__*` tools
@@ -140,6 +141,7 @@ Each module below is a self-contained instruction set for a focused agent task. 
 | Build & Deploy | `docs/agents/05-build-deploy.md` | Build checks, Vercel, git hygiene |
 | pSEO Pages | `docs/agents/06-pseo-pages.md` | Creating programmatic SEO page routes |
 | Data Schema | `docs/agents/07-data-schema.md` | Modifying data files and TypeScript types |
+| Knowledge Base (IKS) | `backend/app/knowledge/kb/INDEX.md` | Citing classical Indian knowledge systems (shastras, texts, people, concepts, claims). Articles MUST cite from `kb/claims/*.md` rather than restating sensational claims from scratch. |
 
 ---
 
