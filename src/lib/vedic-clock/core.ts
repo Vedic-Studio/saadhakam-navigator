@@ -85,13 +85,17 @@ function buildObservationDate(
 }
 
 function buildMuhurtas(sunriseMinutes: number, currentLocalMinutes: number) {
+    // Compute how far into the sunrise-anchored 24-hour cycle the current
+    // local moment sits. `currentLocalMinutes` is always a time-of-day in
+    // [0, 1440). The cycle starts at `sunriseMinutes` and wraps around once.
+    const elapsedSinceSunrise = ((currentLocalMinutes - sunriseMinutes) % 1440 + 1440) % 1440;
+
     const muhurtas = Array.from({ length: 30 }, (_, index) => {
-        const startMinutes = sunriseMinutes + index * 48;
-        const endMinutes = startMinutes + 48;
-        const wrapsMidnight = endMinutes > 1440;
-        const isActive = wrapsMidnight
-            ? currentLocalMinutes >= ((startMinutes % 1440) + 1440) % 1440 || currentLocalMinutes < endMinutes % 1440
-            : currentLocalMinutes >= startMinutes && currentLocalMinutes < endMinutes;
+        const segmentStart = index * 48;
+        const segmentEnd = segmentStart + 48;
+        const startMinutes = sunriseMinutes + segmentStart;
+        const endMinutes = sunriseMinutes + segmentEnd;
+        const isActive = elapsedSinceSunrise >= segmentStart && elapsedSinceSunrise < segmentEnd;
 
         return {
             index: index + 1,

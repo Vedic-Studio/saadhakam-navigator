@@ -59,4 +59,44 @@ describe("buildVedicClockResponse", () => {
         expect(payload.panchanga.yoga).toBeTruthy();
         expect(payload.panchanga.karana).toBeTruthy();
     });
+
+    it("marks exactly one muhurta active and handles pre-sunrise wrap", () => {
+        // Varanasi, 2026-04-09, local time 03:18 IST (before 05:41 sunrise).
+        // The moment sits 1297 minutes into the cycle that began at the
+        // previous sunrise, which is muhurta 28 (1-indexed).
+        const payload = buildVedicClockResponse(
+            { cityId: "varanasi", date: "2026-04-09" },
+            new Date("2026-04-08T21:48:00.000Z"), // 03:18 IST
+        );
+
+        const activeSegments = payload.clock.muhurtas.filter((m) => m.isActive);
+        expect(activeSegments).toHaveLength(1);
+        expect(activeSegments[0].index).toBe(payload.clock.currentMuhurtaIndex);
+        // Elapsed since sunrise: 03:18 - 05:41 + 24h = 21h 37m = 1297 min.
+        // 1297 / 48 = 27.02 → segment index 27 → muhurta 28.
+        expect(payload.clock.currentMuhurtaIndex).toBe(28);
+        expect(activeSegments[0].phase).toBe("night");
+    });
+
+    it("marks the first muhurta active at the exact sunrise moment", () => {
+        // Construct an observation at the exact sunrise instant.
+        const provisional = buildVedicClockResponse(
+            { cityId: "varanasi", date: "2026-04-09" },
+            new Date("2026-04-09T00:00:00.000Z"),
+        );
+        const [sunriseHour, sunriseMinute] = provisional.clock.sunriseTime.split(":").map(Number);
+        // 2026-04-09 05:41 IST == 00:11 UTC
+        const sunriseUtc = new Date(
+            Date.UTC(2026, 3, 9, sunriseHour - 5, sunriseMinute - 30),
+        );
+        const payload = buildVedicClockResponse(
+            { cityId: "varanasi", date: "2026-04-09" },
+            sunriseUtc,
+        );
+
+        const activeSegments = payload.clock.muhurtas.filter((m) => m.isActive);
+        expect(activeSegments).toHaveLength(1);
+        expect(payload.clock.currentMuhurtaIndex).toBe(1);
+        expect(activeSegments[0].phase).toBe("day");
+    });
 });
