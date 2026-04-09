@@ -63,6 +63,7 @@ A serious content treatment names the stage, anchors in primary sources, and tre
 ## Adjacent shastras
 
 - [Vaisheshika (Atomism)](vaisheshika-atomism.md) — the natural-philosophy tradition from which Ayurveda inherited parts of its metaphysical vocabulary
+- [Rasashastra (Alchemy & Iatrochemistry)](rasashastra-alchemy.md) — the mercury/mineral-based medical tradition that develops from the early medieval period onward as a sibling and partial successor discipline to classical Ayurveda
 - [Jyotisha (Astronomy)](jyotisha-astronomy.md) — classical medicine interacted with astrological diagnosis in later texts (muhurta and medical astrology)
 
 ## Claim cards

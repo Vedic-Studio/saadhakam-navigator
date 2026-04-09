@@ -29,11 +29,11 @@ These are traditionally grouped in three pairs by topical affinity: **Nyaya–Va
 ## Where it appears
 
 - [Vaisheshika Sutras (Kanada)](../texts/vaisheshika-sutras.md) — the foundational sutra of Vaisheshika
-- **Nyaya Sutras (Gautama / Akshapada)** *(not yet seeded)* — foundational logic text
-- **Samkhya Karika (Ishvarakrishna)** *(not yet seeded)* — the standard Samkhya manual
-- **Yoga Sutras (Patanjali)** *(not yet seeded)* — the foundational yoga text
-- **Purva Mimamsa Sutras (Jaimini)** *(not yet seeded)* — the foundational mimamsa text
-- **Brahma Sutras (Badarayana)** *(not yet seeded)* — the foundational Vedanta text
+- [Nyaya Sutras (Gautama / Akshapada)](../texts/nyaya-sutras.md) — foundational logic text
+- [Samkhya Karika (Ishvarakrishna)](../texts/samkhya-karika.md) — the standard Samkhya manual
+- [Yoga Sutras (Patanjali)](../texts/yoga-sutras.md) — the foundational yoga text
+- [Purva Mimamsa Sutras (Jaimini)](../texts/mimamsa-sutras.md) — the foundational mimamsa text
+- [Brahma Sutras (Badarayana)](../texts/brahma-sutras.md) — the foundational Vedanta text
 
 ## The three pairs
 
@@ -71,13 +71,19 @@ These are traditionally grouped in three pairs by topical affinity: **Nyaya–Va
 
 - [Shruti vs Smriti](shruti-vs-smriti.md) — the darshanas are Smriti-level systematic interpretations of the Shruti
 - [Vaisheshika anu / paramanu](vaisheshika-anu.md) — the atomism concept
+- [Padarthas (categories)](padarthas.md) — the Vaisheshika ontological scheme shared with Nyaya
+- [Anumana (inference)](anumana.md) — the Nyaya inference schema
+- [Guna theory (sattva-rajas-tamas)](guna-theory.md) — the Samkhya-Yoga triad of prakriti constituents
+- [Apaurusheyatva (Vedic authorlessness)](apaurusheyatva.md) — the Mimamsa foundational doctrine
 - [Pramana (means of knowledge)](pramana-epistemology.md) — how the darshanas handle epistemology
 - [Vedangas framework](vedangas-framework.md) — the parallel system of auxiliary sciences
 - [Upavedas framework](upavedas-framework.md) — the parallel system of applied knowledge
 
 ## Adjacent shastras
 
-- [Vaisheshika](../shastras/vaisheshika-atomism.md) — the atomist darshana, currently the most-seeded
+- [Vaisheshika](../shastras/vaisheshika-atomism.md) — the atomist darshana
 - [Nyaya (logic and epistemology)](../shastras/nyaya-logic-epistemology.md) — the logic darshana
 - [Mimamsa (ritual hermeneutics)](../shastras/mimamsa-ritual-hermeneutics.md) — the hermeneutics darshana
-- **Samkhya / Yoga / Vedanta** *(not yet seeded in kb/shastras/)* — Vedanta is partially covered by `backend/app/knowledge/domains/advaita-vedanta.md`
+- [Samkhya (dualist metaphysics)](../shastras/samkhya-dualism.md) — purusha/prakriti dualism and guna theory
+- [Yoga (psychological discipline of liberation)](../shastras/yoga-darshana.md) — the disciplined practice built on Samkhya metaphysics
+- **Vedanta** — partially covered by `backend/app/knowledge/domains/advaita-vedanta.md`

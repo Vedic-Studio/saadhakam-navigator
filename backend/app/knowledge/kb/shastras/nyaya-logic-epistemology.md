@@ -20,24 +20,25 @@ Historically, Nyaya fuses with **Vaisheshika** (the ontology/atomism school) int
 
 ## Textual strata
 
-- **Nyaya Sutras (Gautama/Akshapada)** *(not yet seeded)* — the foundational sutra text, traditionally dated c. 2nd century BCE to 2nd century CE
+- [Nyaya Sutras (Gautama/Akshapada)](../texts/nyaya-sutras.md) — the foundational sutra text, traditionally dated c. 2nd century BCE to 2nd century CE
 - **Nyaya Bhashya (Vatsyayana)** *(not yet seeded)* — the foundational commentary, ~4th–5th c. CE
 - **Nyaya Varttika (Uddyotakara)** *(not yet seeded)* — a major sub-commentary
 - **Tattvacintamani (Gangesha)** *(not yet seeded)* — the founding Navya-Nyaya text, 13th c. CE
 
 ## Key figures
 
-- **Gautama / Akshapada** *(not yet seeded)* — traditional founder; the received Nyaya Sutras carry his name
+- [Gautama / Akshapada](../people/gautama-akshapada.md) — traditional founder; the received Nyaya Sutras carry his name
 - **Vatsyayana** *(not yet seeded)* — earliest major commentator
 - **Uddyotakara** *(not yet seeded)* — key early sub-commentator in dialogue with Buddhist logicians
 - **Gangesha Upadhyaya** *(not yet seeded)* — 13th c. founder of Navya-Nyaya
-- [Bimal Krishna Matilal](../people/matilal.md) *(not yet seeded)* — the most important modern scholar on Indian logic; his Oxford and SUNY monographs are the standard modern anchors
-- [Jonardon Ganeri](../people/ganeri.md) *(not yet seeded)* — modern Oxford-trained scholar working at the intersection of Indian philosophy and analytic philosophy
+- [Bimal Krishna Matilal](../people/matilal.md) — the most important modern scholar on Indian logic; his Oxford and SUNY monographs are the standard modern anchors
+- [Jonardon Ganeri](../people/ganeri.md) — modern Oxford-trained scholar working at the intersection of Indian philosophy and analytic philosophy
 
 ## Core concepts
 
 - [Pramana (means of knowledge)](../concepts/pramana-epistemology.md) — Nyaya canonically recognizes four: perception (pratyaksha), inference (anumana), comparison (upamana), and testimony (shabda)
-- **Anumana (inference)** *(not yet seeded as a concept file)* — the Nyaya syllogism has a distinctive five-member structure (thesis, reason, example, application, conclusion) that differs meaningfully from the Aristotelian three-member syllogism
+- [Anumana (inference)](../concepts/anumana.md) — the Nyaya syllogism has a distinctive five-member structure (thesis, reason, example, application, conclusion) that differs meaningfully from the Aristotelian three-member syllogism
+- [Padarthas (categories)](../concepts/padarthas.md) — the shared Nyaya-Vaisheshika ontological categories (substance, quality, action, universal, particular, inherence, absence)
 - **Hetvabhasa (fallacies)** *(not yet seeded)* — Nyaya develops a detailed typology of reasoning fallacies
 - **Debate theory (katha, vada, jalpa, vitanda)** *(not yet seeded)* — Nyaya classifies debate into honest philosophical dialogue, victory-oriented disputation, and mere refutation
 
@@ -67,4 +68,6 @@ Historically, Nyaya fuses with **Vaisheshika** (the ontology/atomism school) int
 
 ## Claim cards
 
-*(Backlog: "Nyaya anticipated first-order logic" decomposition; "Navya-Nyaya vs. scholastic logic" comparison claim; "Indian logic is more sophisticated than Western / less sophisticated than Western" decomposition — both framings are common and both need unpacking.)*
+- [Did Nyaya anticipate first-order logic?](../claims/nyaya-first-order-logic-claim.md) — the careful version: Nyaya is a sophisticated peer tradition of modern logic with real structural parallels, but is not equivalent to modern first-order predicate logic (no recursive syntax, no model-theoretic semantics, different home problems)
+
+*(Backlog: "Navya-Nyaya vs. scholastic logic" comparison claim; "Indian logic is more sophisticated than Western / less sophisticated than Western" decomposition — both framings are common and both need unpacking.)*

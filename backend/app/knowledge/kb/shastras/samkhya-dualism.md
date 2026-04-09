@@ -19,7 +19,7 @@ Samkhya is unusual among orthodox darshanas in being **formally atheistic** in i
 
 ## Textual strata
 
-- **Samkhya Karika (Ishvarakrishna)** *(not yet seeded)* — c. 350–450 CE, 72 verses; the oldest surviving systematic Samkhya text and the standard reference
+- [Samkhya Karika (Ishvarakrishna)](../texts/samkhya-karika.md) — c. 350–450 CE, 72 verses; the oldest surviving systematic Samkhya text and the standard reference
 - **Samkhya Sutras (attributed to Kapila)** *(not yet seeded)* — later text, not the original; a later compilation that bears the founder's name
 - **Gaudapada Bhashya** *(not yet seeded)* — early commentary on the Samkhya Karika
 - **Vachaspati Mishra's Tattva Kaumudi** *(not yet seeded)* — the standard Sanskrit commentary

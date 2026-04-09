@@ -27,7 +27,7 @@ Dharmashastra is also the tradition within which classical Indian **moral and po
 - **Vasishtha Dharma Sutra** *(not yet seeded)*
 
 ### Dharma Shastras (the later verse layer, ~200 BCE – 1000 CE)
-- [Manusmriti (Manava Dharmashastra)](../texts/manusmriti.md) *(not yet seeded)* — the most famous and most translated; Olivelle's 2005 Oxford critical edition is the current standard
+- [Manusmriti (Manava Dharmashastra)](../texts/manusmriti.md) — the most famous and most translated; Olivelle's 2005 Oxford critical edition is the current standard
 - **Yajnavalkya Smriti** *(not yet seeded)* — shorter, more systematic, and historically more important in actual legal practice than Manusmriti
 - **Narada Smriti** *(not yet seeded)* — the most procedurally sophisticated on civil and criminal law
 - **Parashara Smriti** *(not yet seeded)* — treated as authoritative for the Kali Yuga in some medieval traditions

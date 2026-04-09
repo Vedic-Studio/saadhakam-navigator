@@ -21,7 +21,7 @@ This tradition is the classical Indian tradition's single most sophisticated con
 
 ## Textual strata
 
-- [Natya Shastra (Bharata Muni)](../texts/natya-shastra.md) *(not yet seeded)* — c. 200 BCE – 200 CE (composite); 36 chapters, ~6,000 verses; the foundational text of the entire tradition
+- [Natya Shastra (Bharata Muni)](../texts/natya-shastra.md) — c. 200 BCE – 200 CE (composite); 36 chapters, ~6,000 verses; the foundational text of the entire tradition
 - **Abhinavabharati (Abhinavagupta)** *(not yet seeded)* — c. 10th c. CE; the most important commentary on the Natya Shastra; extensively elaborates rasa theory and has been more influential on later aesthetic theory than some sections of the original
 - **Dhvanyaloka (Anandavardhana)** *(not yet seeded)* — 9th c. CE; on suggestion (dhvani) in poetry; the central text of later Indian literary theory
 - **Dasarupaka (Dhananjaya)** *(not yet seeded)* — 10th c. CE; a summary of Natya Shastra's dramatic theory
@@ -30,7 +30,7 @@ This tradition is the classical Indian tradition's single most sophisticated con
 
 ## Key figures
 
-- [Bharata Muni](../people/bharata-muni.md) *(not yet seeded)* — the attributed author of the Natya Shastra; largely legendary; "Bharata" in the text itself may be a generic term for an actor
+- [Bharata Muni](../people/bharata-muni.md) — the attributed author of the Natya Shastra; largely legendary; "Bharata" in the text itself may be a generic term for an actor
 - **Abhinavagupta** *(not yet seeded)* — 10th–11th c. CE Kashmir; the most important theorist in the rasa tradition; his Abhinavabharati is foundational for later aesthetics; also a major Shaiva philosopher
 - **Anandavardhana** *(not yet seeded)* — 9th c. CE Kashmir; articulated the theory of dhvani (poetic suggestion)
 - **Sharngadeva** *(not yet seeded)* — 13th c. CE; author of Sangita Ratnakara

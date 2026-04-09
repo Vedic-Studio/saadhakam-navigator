@@ -20,24 +20,24 @@ Ganita is tied to [Jyotisha (astronomy and timekeeping)](jyotisha-astronomy.md) 
 
 ## Textual strata
 
-- [Aryabhatiya (Aryabhata)](../texts/aryabhatiya.md) *(not yet seeded)* — 499 CE; 4 padas (Gitika, Ganita, Kalakriya, Gola); place-value, sine tables, pi ≈ 3.1416, earth's rotation
-- [Brahmasphutasiddhanta (Brahmagupta)](../texts/brahmasphutasiddhanta.md) *(not yet seeded)* — 628 CE; the first systematic arithmetic rules for zero and negative numbers; Brahmagupta's theorem on cyclic quadrilaterals
-- **Mahasiddhanta (Aryabhata II)** *(not yet seeded)* — c. 950 CE, a later synthesis
-- [Lilavati (Bhaskara II)](../texts/lilavati.md) *(not yet seeded)* — 1150 CE; the arithmetic book of the Siddhanta Shiromani; arguably the most widely used Indian math textbook ever written
-- **Bijaganita (Bhaskara II)** *(not yet seeded)* — 1150 CE; the algebra book of the Siddhanta Shiromani; solutions of indeterminate equations, chakravala method
-- **Tantrasangraha (Nilakantha Somayaji)** *(not yet seeded)* — 1501 CE, Kerala school; refinements of Aryabhata's planetary model
-- **Yuktibhasa (Jyesthadeva)** *(not yet seeded)* — 1530 CE, Kerala school; written in Malayalam; preserves the derivations and "proofs" of the Madhava tradition including infinite series for pi and sine/cosine
-- **Karanapaddhati (Putumana Somayaji)** *(not yet seeded)* — 17th c. CE, Kerala school
+- [Aryabhatiya (Aryabhata)](../texts/aryabhatiya.md) — 499 CE; 4 padas (Gitika, Ganita, Kalakriya, Gola); place-value, sine tables, pi ≈ 3.1416, earth's rotation
+- [Brahmasphutasiddhanta (Brahmagupta)](../texts/brahmasphutasiddhanta.md) — 628 CE; the first systematic arithmetic rules for zero and negative numbers; Brahmagupta's theorem on cyclic quadrilaterals
+- **Mahasiddhanta (Aryabhata II)** — c. 950 CE, a later synthesis
+- [Lilavati (Bhaskara II)](../texts/lilavati.md) — 1150 CE; the arithmetic book of the Siddhanta Shiromani; arguably the most widely used Indian math textbook ever written
+- **Bijaganita (Bhaskara II)** — 1150 CE; the algebra book of the Siddhanta Shiromani; solutions of indeterminate equations, chakravala method
+- **Tantrasangraha (Nilakantha Somayaji)** — 1501 CE, Kerala school; refinements of Aryabhata's planetary model
+- **Yuktibhasa (Jyesthadeva)** — 1530 CE, Kerala school; written in Malayalam; preserves the derivations and "proofs" of the Madhava tradition including infinite series for pi and sine/cosine
+- **Karanapaddhati (Putumana Somayaji)** — 17th c. CE, Kerala school
 
 ## Key figures
 
-- [Aryabhata](../people/aryabhata.md) *(not yet seeded)* — 476–550 CE, from Kusumapura (Patna); the first named mathematician whose work survives
-- [Brahmagupta](../people/brahmagupta.md) *(not yet seeded)* — 598–668 CE, from Bhillamala (Rajasthan); zero arithmetic, negative numbers
-- **Mahavira** *(not yet seeded)* — 9th c. CE, Jain mathematician; author of Ganita Sara Sangraha
-- **Sridhara** *(not yet seeded)* — 9th–10th c. CE; Trisatika and Patiganita
-- [Bhaskara II](../people/bhaskara-ii.md) *(not yet seeded)* — 1114–1185 CE; author of the Siddhanta Shiromani (Lilavati, Bijaganita, Ganitadhyaya, Goladhyaya); the culminating figure of classical Indian mathematics
-- [Madhava of Sangamagrama](../people/madhava-sangamagrama.md) *(not yet seeded)* — c. 1340–1425 CE, Kerala; founder of the Kerala school; his own works are mostly lost but his results are preserved in disciples' texts
-- **Parameshvara, Nilakantha Somayaji, Jyesthadeva** *(not yet seeded)* — the Kerala school transmission lineage
+- [Aryabhata](../people/aryabhata.md) — 476–550 CE, from Kusumapura (Patna); the first named mathematician whose work survives
+- [Brahmagupta](../people/brahmagupta.md) — 598–668 CE, from Bhillamala (Rajasthan); zero arithmetic, negative numbers
+- **Mahavira** — 9th c. CE, Jain mathematician; author of Ganita Sara Sangraha
+- **Sridhara** — 9th–10th c. CE; Trisatika and Patiganita
+- [Bhaskara II](../people/bhaskara-ii.md) — 1114–1185 CE; author of the Siddhanta Shiromani (Lilavati, Bijaganita, Ganitadhyaya, Goladhyaya); the culminating figure of classical Indian mathematics
+- [Madhava of Sangamagrama](../people/madhava-sangamagrama.md) — c. 1340–1425 CE, Kerala; founder of the Kerala school; his own works are mostly lost but his results are preserved in disciples' texts
+- **Parameshvara, Nilakantha Somayaji, Jyesthadeva** — the Kerala school transmission lineage
 - [Kim Plofker](../people/plofker.md) — modern historian; her Mathematics in India is the current standard single-volume history
 
 ## Core concepts

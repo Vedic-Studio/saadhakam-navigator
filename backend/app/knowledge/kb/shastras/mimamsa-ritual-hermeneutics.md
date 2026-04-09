@@ -22,22 +22,22 @@ Mimamsa's reputation in the modern conversation is low precisely because its sub
 
 ## Textual strata
 
-- **Mimamsa Sutras (Jaimini)** *(not yet seeded)* — foundational text, ~12 chapters, ~2,700 sutras
+- [Mimamsa Sutras (Jaimini)](../texts/mimamsa-sutras.md) — foundational text, ~12 chapters, ~2,700 sutras
 - **Shabara Bhashya (Shabara)** *(not yet seeded)* — foundational commentary, ~5th–6th c. CE
 - **Shlokavarttika, Tantravarttika, and Tuptika (Kumarila Bhatta)** *(not yet seeded)* — the Kumarila school
 - **Brhati (Prabhakara)** *(not yet seeded)* — the Prabhakara school, a rival Mimamsa lineage to Kumarila
 
 ## Key figures
 
-- **Jaimini** *(not yet seeded)* — attributed author of the Mimamsa Sutras
+- [Jaimini](../people/jaimini.md) — attributed author of the Mimamsa Sutras
 - **Shabara** *(not yet seeded)* — the standard early commentator
-- **Kumarila Bhatta** *(not yet seeded)* — 7th–8th c. CE; the most famous Mimamsaka; founder of the Kumarila school; known for sophisticated arguments against Buddhist epistemology
+- [Kumarila Bhatta](../people/kumarila-bhatta.md) — 7th–8th c. CE; the most famous Mimamsaka; founder of the Kumarila school; known for sophisticated arguments against Buddhist epistemology
 - **Prabhakara** *(not yet seeded)* — contemporaneous rival Mimamsa school with distinct technical positions
 - **Mandana Mishra** *(not yet seeded)* — later figure straddling Mimamsa and Vedanta; traditionally debated Shankara
 
 ## Core concepts
 
-- **Apaurusheyatva (Vedic authorlessness)** *(not yet seeded)* — Mimamsa's striking claim that the Veda has no author (neither human nor divine); the corpus is eternal and uncreated. This is a foundational move that distinguishes Mimamsa from almost all other classical interpretation traditions worldwide.
+- [Apaurusheyatva (Vedic authorlessness)](../concepts/apaurusheyatva.md) — Mimamsa's striking claim that the Veda has no author (neither human nor divine); the corpus is eternal and uncreated. This is a foundational move that distinguishes Mimamsa from almost all other classical interpretation traditions worldwide.
 - **Arthavada vs vidhi (descriptive statements vs. injunctions)** *(not yet seeded)* — the hermeneutic distinction between Vedic passages that *command* action and passages that merely *describe*, with elaborate rules for how the two interact
 - **Dharma as that which is enjoined** *(not yet seeded)* — Mimamsa's distinctive definition of dharma: "dharma is that which is known by Vedic injunction," a strikingly narrow technical definition compared to the broader dharmashastra usage
 - [Pramana (means of knowledge)](../concepts/pramana-epistemology.md) — Mimamsa accepts additional pramanas beyond the Nyaya four: arthapatti (postulation) and anupalabdhi (non-apprehension, absence)

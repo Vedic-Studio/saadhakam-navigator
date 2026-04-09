@@ -55,10 +55,12 @@ The received text is the sutras themselves, but the school's intellectual life r
 
 ## Claims anchored to this text
 
+- [Vaisheshika atomism claim](../claims/vaisheshika-atomism-claim.md) — the decomposed Kanada/atomism framing
 - [Vaisheshika anu / paramanu concept](../concepts/vaisheshika-anu.md) anchors here
-- *(Backlog: "Kanada discovered atoms before Democritus" decomposition; "Vaisheshika predicted dark matter" decomposition)*
+- [Padarthas (categories)](../concepts/padarthas.md) anchors here
+- *(Backlog: "Vaisheshika predicted dark matter" decomposition)*
 
 ## Adjacent texts
 
-- **Nyaya Sutras (Gautama)** *(not yet seeded)* — the sister school's foundational text
+- [Nyaya Sutras (Gautama)](nyaya-sutras.md) — the sister school's foundational text; together with Vaisheshika Sutras they constitute the textual foundation of Nyaya-Vaisheshika
 - **Prashastapada's Padartha-dharma-sangraha** *(not yet seeded)* — the mature exposition that most later tradition engages with

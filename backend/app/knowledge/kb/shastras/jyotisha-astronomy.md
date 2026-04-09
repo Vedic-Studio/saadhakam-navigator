@@ -27,14 +27,17 @@ Both strata include genuine observational and computational sophistication, but 
 
 - [Vedanga Jyotisha](../texts/vedanga-jyotisha.md) — attributed to Lagadha; a calendrical manual in service of ritual timing. Dating is contested — what a text *describes* astronomically and when it was *composed/transmitted* can differ significantly.
 - [Surya Siddhanta](../texts/surya-siddhanta.md) — Siddhanta-era treatise surviving in multiple manuscripts and recensions across centuries
-- **Aryabhatiya (Aryabhata, 499 CE)** — *not yet seeded*; a foundational Siddhanta-phase mathematical astronomy text
-- **Brahmasphutasiddhanta (Brahmagupta, 628 CE)** — *not yet seeded*
-- Kerala school texts (14th–16th c., Madhava and successors) — *not yet seeded*; infinite series for trigonometric functions, a major mathematical tradition
+- [Aryabhatiya (Aryabhata, 499 CE)](../texts/aryabhatiya.md) — a foundational Siddhanta-phase mathematical astronomy text; 121 verses; contains the earth-rotation claim and the pi approximation 3.1416
+- [Brahmasphutasiddhanta (Brahmagupta, 628 CE)](../texts/brahmasphutasiddhanta.md) — 24-chapter masterwork containing the first systematic arithmetic of zero and negative numbers; transmitted to Arabic as the Sindhind
+- Kerala school texts (14th–16th c., Madhava and successors) — infinite series for trigonometric functions, a major mathematical tradition; see [Madhava of Sangamagrama](../people/madhava-sangamagrama.md)
 
 ## Key figures
 
 - [Lagadha](../people/lagadha.md) — traditional author of Vedanga Jyotisha
-- **Aryabhata** (*not yet seeded*) — pivotal figure in Siddhanta astronomy
+- [Aryabhata](../people/aryabhata.md) — 476–550 CE; pivotal figure in Siddhanta astronomy; author of the Aryabhatiya; argued for earth rotation
+- [Brahmagupta](../people/brahmagupta.md) — 598–668 CE; author of the Brahmasphutasiddhanta; explicitly rejected Aryabhata's rotation claim
+- [Bhaskara II](../people/bhaskara-ii.md) — 1114–1185 CE; author of Siddhanta Shiromani and Lilavati; proto-calculus and chakravala method
+- [Madhava of Sangamagrama](../people/madhava-sangamagrama.md) — c. 1340–1425 CE; Kerala school founder; infinite series for pi and trigonometric functions
 - [Kim Plofker](../people/plofker.md) — modern historian of Indian mathematics and astronomy; the best single anchor for responsible framing
 - **David Pingree** (*not yet seeded*) — historiographer of cross-cultural astronomical transmission
 
@@ -65,9 +68,11 @@ Both strata include genuine observational and computational sophistication, but 
 
 ## Adjacent shastras
 
+- [Ganita (Mathematics)](ganita-mathematics.md) — Siddhanta astronomy shares authors, computational techniques, and fundamental questions with the mathematical tradition; the two are often inseparable
 - [Prosody & Combinatorics](prosody-combinatorics.md) — both rose out of ritual precision as a first-class problem
 - [Ayurveda](ayurveda-medicine.md) — classical India's other great systematic calculative tradition, grounded in a different pragmatic problem
 
 ## Claim cards
 
 - [Surya Siddhanta accuracy claim](../claims/surya-siddhanta-accuracy-claim.md)
+- [Did Aryabhata discover heliocentrism before Copernicus?](../claims/ancient-heliocentrism-claim.md) — the careful version: Aryabhata argued for earth rotation (supported) but not heliocentrism (not supported); Nilakantha's Kerala-school model has a narrow heliocentric element for Mercury and Venus

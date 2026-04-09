@@ -20,7 +20,7 @@ sources:
 
 ## Textual strata
 
-- [Yoga Sutras (Patanjali)](../texts/yoga-sutras.md) *(not yet seeded)* — 196 sutras in 4 padas (Samadhi, Sadhana, Vibhuti, Kaivalya); the foundational text
+- [Yoga Sutras (Patanjali)](../texts/yoga-sutras.md) — 196 sutras in 4 padas (Samadhi, Sadhana, Vibhuti, Kaivalya); the foundational text
 - **Vyasa's Yoga Bhashya** *(not yet seeded)* — the standard early commentary, functionally inseparable from the sutras in the received tradition; some modern scholarship treats the "sutras + bhashya" as a single compositional unit (the "Patanjala Yoga Shastra")
 - **Vachaspati Mishra's Tattvavaisharadi** *(not yet seeded)* — the standard sub-commentary
 - **Bhoja's Rajamartanda** *(not yet seeded)* — 11th c. CE royal commentary
@@ -29,7 +29,7 @@ sources:
 
 ## Key figures
 
-- [Patanjali](../people/patanjali.md) *(not yet seeded)* — attributed author; possibly conflated with the grammarian Patanjali (author of the Mahabhashya)
+- [Patanjali](../people/patanjali.md) — attributed author; possibly conflated with the grammarian Patanjali (author of the Mahabhashya)
 - **Vyasa** *(not yet seeded)* — the standard commentator; the Yoga Bhashya is functionally part of the received text
 - **Vachaspati Mishra** *(not yet seeded)* — 9th c. CE, wrote across darshanas including a major Yoga sub-commentary
 - **Philipp Maas** *(not yet seeded)* — modern Indologist whose critical-edition work has shifted recent scholarship on Patanjala Yoga authorship

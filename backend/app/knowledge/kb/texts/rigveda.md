@@ -58,6 +58,7 @@ Treat the dating as *live* when writing, not settled.
 
 - [Rigveda women rishis claim](../claims/rigveda-women-rishis-claim.md)
 - [Gambler's Lament addiction claim](../claims/gamblers-lament-addiction-claim.md)
+- [Aryan invasion / migration / indigenous origin claim](../claims/aryan-invasion-migration-claim.md) — decomposes the AIT vs IAMT vs OIT debate and explains why current scholarship rejects the 19th-c. invasion framing but also why the fully indigenous-Aryan position is a minority view
 - *(backlog: "Nasadiya Sukta anticipates quantum cosmology" decomposition; "Rigveda contains descriptions of airplanes" decomposition)*
 
 ## Adjacent texts

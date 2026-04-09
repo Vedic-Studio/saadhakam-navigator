@@ -28,8 +28,8 @@ The list is traditional and not perfectly fixed. Different classical sources giv
 
 - [**Ayurveda**](../shastras/ayurveda-medicine.md) — the medical tradition running from Atharvaveda healing hymns through the classical compendia (Charaka, Sushruta, Vagbhata). This is the most textually developed and institutionally continuous Upaveda. See also [Prakriti & Dosha](prakriti-dosha.md) and the [Ayurgenomics claim](../claims/ayurgenomics-prakriti-claim.md).
 - [**Dhanurveda**](../shastras/dhanurveda-martial.md) — the military-science tradition, covering weapons, training, battle formations (vyuhas), and martial ethics. See also [Dharmayuddha vs Kutayuddha](dharmayuddha-vs-kutayuddha.md).
-- **Gandharvaveda** *(not yet seeded)* — the tradition of music, dance, and performing arts. Its foundational text is typically taken to be **Bharata's Natya Shastra** (dated roughly 200 BCE to 200 CE), which is actually a comprehensive treatise on dramaturgy covering acting, music, dance, stagecraft, and aesthetic theory (rasa). Modern Indian classical music and dance descend from this tradition.
-- **Sthapatyaveda / Vastuvidya** *(not yet seeded)* — the tradition of architecture, temple-building, and town-planning. Foundational texts include the **Mayamatam**, the **Manasara**, and the **Vishvakarma-vastushastra**. The tradition is practical engineering, aesthetic theory, and ritual geometry combined.
+- [**Natyashastra / Gandharvaveda**](../shastras/natyashastra-gandharvaveda.md) — the tradition of music, dance, and performing arts. Its foundational text is **Bharata's Natya Shastra** (dated roughly 200 BCE to 200 CE), a comprehensive treatise on dramaturgy covering acting, music, dance, stagecraft, and aesthetic theory (rasa). Modern Indian classical music and dance descend from this tradition. See also [Natya Shastra (text)](../texts/natya-shastra.md) and [Bharata Muni](../people/bharata-muni.md).
+- [**Silpashastra / Sthapatyaveda**](../shastras/silpashastra-sthapatyaveda.md) — the tradition of architecture, temple-building, iconography, and town-planning. Foundational texts include the **Mayamatam**, the **Manasara**, and the **Vishvakarma-vastushastra**. The tradition combines practical engineering, aesthetic theory, and ritual geometry.
 
 ## Why the framework matters
 
@@ -53,5 +53,5 @@ The list is traditional and not perfectly fixed. Different classical sources giv
 
 - [Ayurveda (Medicine)](../shastras/ayurveda-medicine.md)
 - [Dhanurveda (Martial)](../shastras/dhanurveda-martial.md)
-- **Gandharvaveda (Music/Dramaturgy)** *(not yet seeded)*
-- **Sthapatyaveda / Vastuvidya (Architecture)** *(not yet seeded)*
+- [Natyashastra / Gandharvaveda (Music/Dramaturgy)](../shastras/natyashastra-gandharvaveda.md)
+- [Silpashastra / Sthapatyaveda (Architecture)](../shastras/silpashastra-sthapatyaveda.md)

@@ -32,7 +32,8 @@ Vaisheshika historically merges with **Nyaya** (the logic/epistemology school) i
 ## Core concepts
 
 - [Vaisheshika anu / paramanu](../concepts/vaisheshika-anu.md) — the atomic units, how they combine, and what "indivisible" means in this tradition
-- **Padarthas (six categories)** — substance, quality, action, generality, particularity, inherence; the six fundamental categories of Vaisheshika ontology *(concept file not yet seeded)*
+- [Padarthas (categories)](../concepts/padarthas.md) — substance, quality, action, generality, particularity, inherence (and later absence); the six (later seven) fundamental categories of Vaisheshika ontology
+- [Anumana (inference)](../concepts/anumana.md) — the inferential method Vaisheshika uses to argue from perceived composites to imperceptible atoms
 - [Pramana](../concepts/pramana-epistemology.md) — how Vaisheshika (and allied Nyaya) handles perception and inference as means of knowledge
 
 ## Live debates
