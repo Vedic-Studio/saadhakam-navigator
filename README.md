@@ -150,3 +150,24 @@ If `CMS_BASIC_AUTH_USER` and `CMS_BASIC_AUTH_PASSWORD` are set, the following pa
 
 - `/content-agent/**`
 - `/api/cms/**`
+
+## Multi-agent Git worktree workflow
+
+This repo is actively worked on by multiple agents in parallel. To keep Source Control clean:
+
+- keep the root checkout on `main`
+- do active work in dedicated external worktrees
+- use one branch per task
+- remove worktrees after merge
+
+Helper scripts:
+
+```sh
+./scripts/git-worktree-new.sh <branch-slug> [branch-prefix] [base-branch]
+./scripts/git-worktree-status.sh
+./scripts/git-worktree-clean.sh <branch-name> <worktree-path>
+```
+
+Full operating guide:
+
+- `docs/worktree-workflow.md`
