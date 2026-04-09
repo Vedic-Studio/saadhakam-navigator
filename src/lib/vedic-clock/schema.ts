@@ -133,6 +133,13 @@ export const VedicClockKalaSchema = z.object({
     isActive: z.boolean(),
 });
 
+export const VedicClockSolarEventSchema = z.object({
+    localDate: z.string(),
+    localTime: z.string(),
+    localDateTime: z.string(),
+    minutes: z.number().int().min(0).max(1439),
+});
+
 export const VedicClockResponseSchema = z.object({
     requestedDate: z.string(),
     requestedDateTime: z.string(),
@@ -150,11 +157,17 @@ export const VedicClockResponseSchema = z.object({
         currentLocalDateTime: z.string(),
         sunriseTime: z.string(),
         sunsetTime: z.string(),
+        solarNoonTime: z.string(),
         dayLengthMinutes: z.number().int(),
         minutesSinceSunrise: z.number().min(0).max(1439),
         cycleProgress: z.number().min(0).max(1),
         currentMuhurtaIndex: z.number().int().min(1).max(30),
         currentKalaIndex: z.number().int().min(1).max(4),
+        sunriseDayStart: VedicClockSolarEventSchema,
+        sunriseDayEnd: VedicClockSolarEventSchema,
+        sunriseToday: VedicClockSolarEventSchema,
+        previousSunrise: VedicClockSolarEventSchema,
+        nextSunrise: VedicClockSolarEventSchema,
         muhurtas: z.array(VedicClockMuhuratSchema).length(30),
         kalaSegments: z.array(VedicClockKalaSchema).length(4),
     }),

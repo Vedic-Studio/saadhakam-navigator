@@ -69,10 +69,13 @@ describe("buildVedicClockResponse", () => {
         expect(payload.requestedDate).toBe("2026-04-09");
         expect(payload.requestedDateTime).toBe("2026-04-09T03:18");
         expect(payload.clock.currentLocalDateTime).toBe("2026-04-09T03:18");
-        expect(payload.clock.minutesSinceSunrise).toBe(1297);
-        expect(payload.clock.cycleProgress).toBeCloseTo(1297 / 1440, 6);
+        expect(payload.clock.minutesSinceSunrise).toBe(1296);
+        expect(payload.clock.cycleProgress).toBeCloseTo(1296 / 1440, 6);
         expect(payload.clock.currentKalaIndex).toBeGreaterThanOrEqual(1);
         expect(payload.clock.kalaSegments).toHaveLength(4);
+        expect(payload.clock.solarNoonTime).toBeTruthy();
+        expect(payload.clock.sunriseDayStart.localDateTime).toBe("2026-04-08T05:43");
+        expect(payload.clock.sunriseDayEnd.localDateTime).toBe("2026-04-09T05:42");
     });
 
     it("supports non-hour-offset timezones without breaking requested local datetime", () => {

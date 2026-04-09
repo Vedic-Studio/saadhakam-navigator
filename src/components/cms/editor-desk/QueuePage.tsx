@@ -5,22 +5,123 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FileText, RefreshCw } from "lucide-react";
 import { BackendUnavailableError } from "@/lib/pipelines/api";
-import { getPipelineQueue, getQueue } from "./api";
+import type { ContentAuditBucket, ContentAuditData, EditorialQueueItem, EditorialQueuePriority } from "@/lib/analytics/types";
+import { getEditorialAuditQueue, getPipelineQueue, getQueue } from "./api";
 import { ArticleCard } from "./ArticleCard";
 import type { CmsArticle } from "./types";
 import type { PipelineListItem } from "@/lib/pipelines/types";
 import { timeAgo } from "./utils";
 
+function priorityLabel(priority: EditorialQueuePriority) {
+    switch (priority) {
+        case "p1":
+            return "P1 · this week";
+        case "p2":
+            return "P2 · next sprint";
+        case "p3":
+            return "P3 · backlog";
+        case "hold":
+            return "Hold";
+    }
+}
+
+function priorityTone(priority: EditorialQueuePriority) {
+    switch (priority) {
+        case "p1":
+            return "border-rose-500/30 bg-rose-500/10 text-rose-100";
+        case "p2":
+            return "border-amber-500/30 bg-amber-500/10 text-amber-100";
+        case "p3":
+            return "border-sky-500/30 bg-sky-500/10 text-sky-100";
+        case "hold":
+            return "border-white/15 bg-white/5 text-white/70";
+    }
+}
+
+function bucketLabel(bucket: ContentAuditBucket) {
+    return bucket.replace(/-/g, " ");
+}
+
+function BucketQueueCard({
+    title,
+    description,
+    items,
+}: {
+    title: string;
+    description: string;
+    items: EditorialQueueItem[];
+}) {
+    return (
+        <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+            <div className="mb-4 flex items-start justify-between gap-3">
+                <div>
+                    <h3 className="text-sm font-semibold text-white">{title}</h3>
+                    <p className="mt-1 text-xs leading-relaxed text-white/60">{description}</p>
+                </div>
+                <span className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-white/70">{items.length}</span>
+            </div>
+
+            {items.length === 0 ? (
+                <div className="rounded-lg border border-dashed border-white/10 p-4 text-xs text-white/50">No items in this lane right now.</div>
+            ) : (
+                <div className="space-y-3">
+                    {items.map((item) => (
+                        <div key={`${item.priority}-${item.route}`} className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
+                            <div className="flex flex-wrap items-center gap-2">
+                                <span className={`rounded-full border px-2 py-1 text-[11px] font-medium ${priorityTone(item.priority)}`}>
+                                    {priorityLabel(item.priority)}
+                                </span>
+                                <span className="rounded-full border border-white/10 px-2 py-1 text-[11px] uppercase tracking-wide text-white/60">
+                                    {item.owner}
+                                </span>
+                                <span className="rounded-full border border-white/10 px-2 py-1 text-[11px] text-white/60">
+                                    {bucketLabel(item.decisionBucket)}
+                                </span>
+                            </div>
+
+                            <h4 className="mt-3 text-sm font-semibold text-white">{item.title}</h4>
+                            <p className="mt-1 text-xs text-white/50">{item.route}</p>
+                            <p className="mt-2 text-xs leading-relaxed text-white/70">{item.proposedFix}</p>
+
+                            <div className="mt-3 grid gap-2 text-[11px] text-white/55 sm:grid-cols-3">
+                                <div>ICP {item.icpScore.toFixed(1)}</div>
+                                <div>
+                                    {item.traffic.clicks} clicks · {item.traffic.sessions} sessions
+                                </div>
+                                <div>
+                                    {item.qualification.qualifiedConversions} qualified · {item.attribution.confidenceTier} confidence
+                                </div>
+                            </div>
+
+                            {item.aeoLlmFlags.length > 0 ? (
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                    {item.aeoLlmFlags.map((flag) => (
+                                        <span key={flag} className="rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-2 py-1 text-[10px] text-fuchsia-100">
+                                            {flag}
+                                        </span>
+                                    ))}
+                                </div>
+                            ) : null}
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
 export function QueuePage() {
     const router = useRouter();
     const [articles, setArticles] = useState<CmsArticle[]>([]);
     const [pipelines, setPipelines] = useState<PipelineListItem[]>([]);
+    const [audit, setAudit] = useState<ContentAuditData | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [pipelineError, setPipelineError] = useState<string | null>(null);
+    const [auditError, setAuditError] = useState<string | null>(null);
     const [isRefreshing, setIsRefreshing] = useState(false);
 
     async function loadQueue() {
-        const [cmsResult, pipelineResult] = await Promise.allSettled([getQueue(), getPipelineQueue()]);
+        const [cmsResult, pipelineResult, auditResult] = await Promise.allSettled([getQueue(), getPipelineQueue(), getEditorialAuditQueue()]);
 
         if (cmsResult.status === "fulfilled") {
             setArticles(cmsResult.value);
@@ -41,6 +142,14 @@ export function QueuePage() {
                         ? pipelineResult.reason.message
                         : "Pipeline queue unavailable",
             );
+        }
+
+        if (auditResult.status === "fulfilled") {
+            setAudit(auditResult.value);
+            setAuditError(null);
+        } else {
+            setAudit(null);
+            setAuditError(auditResult.reason instanceof Error ? auditResult.reason.message : "Editorial audit queue unavailable");
         }
     }
 
@@ -144,6 +253,117 @@ export function QueuePage() {
                             </button>
                         ))}
                     </div>
+                )}
+            </div>
+
+            <div className="mb-8 rounded-2xl border border-white/10 bg-black/20 p-5">
+                <div className="mb-4 flex items-start justify-between gap-4">
+                    <div>
+                        <h2 className="text-base font-semibold text-white">Phase 3 editorial queue</h2>
+                        <p className="mt-1 max-w-3xl text-sm text-white/60">
+                            Weekly execution board derived from the strategic content audit. Use P1 for immediate work, P2 for next sprint commitment, P3 as true backlog, and Hold for contained pages.
+                        </p>
+                    </div>
+                    {audit ? (
+                        <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/60">
+                            Audit {audit.range.current.startDate} → {audit.range.current.endDate}
+                        </span>
+                    ) : null}
+                </div>
+
+                {auditError ? (
+                    <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
+                        <p className="font-medium text-amber-200">Editorial queue unavailable</p>
+                        <p className="mt-1 text-amber-100/90">{auditError}</p>
+                    </div>
+                ) : audit ? (
+                    <div className="space-y-6">
+                        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                            {([
+                                ["P1 now", "Immediate work that should start this week.", audit.editorialQueues.p1],
+                                ["P2 next", "Strong candidates for the next sprint planning pass.", audit.editorialQueues.p2],
+                                ["P3 backlog", "Real backlog items, not implied commitments.", audit.editorialQueues.p3],
+                                ["Hold", "Contained pages to revisit only if strategy changes.", audit.editorialQueues.hold],
+                            ] as const).map(([title, description, items]) => (
+                                <div key={title} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                                    <div className="flex items-center justify-between gap-3">
+                                        <div>
+                                            <p className="text-sm font-semibold text-white">{title}</p>
+                                            <p className="mt-1 text-xs text-white/60">{description}</p>
+                                        </div>
+                                        <span className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-white/70">{items.length}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="grid gap-6 xl:grid-cols-2">
+                            <BucketQueueCard title="P1 now" description="Immediate editorial, conversion, and AEO repairs." items={audit.editorialQueues.p1} />
+                            <BucketQueueCard title="P2 next" description="Next-sprint candidates once P1 staffing is clear." items={audit.editorialQueues.p2} />
+                            <BucketQueueCard title="P3 backlog" description="Backlog candidates to revisit after current commitments." items={audit.editorialQueues.p3} />
+                            <BucketQueueCard title="Hold" description="Contained pages kept visible without active staffing." items={audit.editorialQueues.hold} />
+                        </div>
+
+                        <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+                            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                                <h3 className="text-sm font-semibold text-white">Bucket routing</h3>
+                                <p className="mt-1 text-xs leading-relaxed text-white/60">
+                                    Default owner mapping from decision bucket to the function that owns the next move.
+                                </p>
+                                <div className="mt-4 space-y-3">
+                                    {audit.editorialQueues.byBucket.map(({ bucket, items }) => (
+                                        <div key={bucket} className="rounded-xl border border-white/10 bg-black/20 p-3">
+                                            <div className="flex items-center justify-between gap-3">
+                                                <div>
+                                                    <p className="text-xs font-semibold uppercase tracking-wide text-white/80">{bucketLabel(bucket)}</p>
+                                                    <p className="mt-1 text-xs text-white/55">
+                                                        {items[0]?.owner ? `${items[0].owner} owner` : "No routed items"}
+                                                    </p>
+                                                </div>
+                                                <span className="rounded-full border border-white/10 px-2 py-1 text-[11px] text-white/60">{items.length}</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="space-y-6">
+                                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                                    <h3 className="text-sm font-semibold text-white">Weekly ritual</h3>
+                                    <ol className="mt-3 space-y-2 text-xs leading-relaxed text-white/65">
+                                        <li>1. Review P1 as the execution board for this week.</li>
+                                        <li>2. Promote or demote P2 before sprint planning.</li>
+                                        <li>3. Sweep P3 and Hold only for status changes.</li>
+                                        <li>4. Convert selected items into staffed assignments.</li>
+                                    </ol>
+                                </div>
+
+                                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                                    <h3 className="text-sm font-semibold text-white">Action plan snapshot</h3>
+                                    <div className="mt-3 space-y-3 text-xs text-white/65">
+                                        <div>
+                                            <p className="font-medium text-white/80">Refresh now</p>
+                                            <ul className="mt-1 space-y-1">
+                                                {audit.actionPlan.refreshNow.slice(0, 3).map((item) => (
+                                                    <li key={item}>{item}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p className="font-medium text-white/80">Build next</p>
+                                            <ul className="mt-1 space-y-1">
+                                                {audit.actionPlan.buildNext.slice(0, 3).map((item) => (
+                                                    <li key={item}>{item}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="rounded-lg border border-dashed border-white/10 p-6 text-sm text-white/60">Loading editorial queue…</div>
                 )}
             </div>
 

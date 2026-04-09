@@ -62,6 +62,30 @@ npm install
 npm run dev
 ```
 
+### Frontend analytics env vars
+
+The Next.js app's analytics routes require frontend deployment env vars for Google Search Console and GA4 access.
+
+Recommended local / Vercel envs:
+
+```sh
+# Base64-encoded contents of the full Google service account JSON key.
+# Preferred for Vercel / production because the app no longer relies on a checked-out file in .data/.
+GOOGLE_SERVICE_ACCOUNT_JSON_BASE64=eyJ0eXBlIjoic2VydmljZV9hY2NvdW50IiwiY2xpZW50X2VtYWlsIjoiLi4uIn0=
+
+# Optional local fallback only. If GOOGLE_SERVICE_ACCOUNT_JSON_BASE64 is absent,
+# the app falls back to GOOGLE_SERVICE_ACCOUNT_FILE, then .data/google-service-account.json.
+GOOGLE_SERVICE_ACCOUNT_FILE=/absolute/path/to/google-service-account.json
+
+# GSC site selector used by analytics routes.
+GSC_SITE_URL=sc-domain:opensadhaka.com
+
+# Required for /api/analytics/ga4.
+GA4_PROPERTY_ID=123456789
+```
+
+Production should set `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64` and `GA4_PROPERTY_ID` explicitly in the frontend deployment environment.
+
 ### Frontend tests
 
 ```sh

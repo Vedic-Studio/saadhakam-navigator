@@ -1,4 +1,5 @@
 import type { CmsArticleDetail, CmsReview, CmsVersion } from "./types";
+import type { ContentAuditData } from "@/lib/analytics/types";
 import {
     addPipelineFeedback,
     advancePipeline,
@@ -30,6 +31,11 @@ async function parseResponse<T>(response: Response): Promise<T> {
 export async function getQueue() {
     const response = await fetch("/api/cms/queue", { cache: "no-store" });
     return parseResponse<{ articles: CmsArticleDetail["article"][] }>(response).then((data) => data.articles);
+}
+
+export async function getEditorialAuditQueue() {
+    const response = await fetch("/api/analytics/content-audit", { cache: "no-store" });
+    return parseResponse<ContentAuditData>(response);
 }
 
 export async function getArticleDetail(slug: string) {

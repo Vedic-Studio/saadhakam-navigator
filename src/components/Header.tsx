@@ -2,35 +2,145 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { label: "Articles", href: "/articles" },
-  { label: "Philosophies", href: "/ancient-wisdom-philosophies" },
-  { label: "Texts", href: "/sacred-texts-teachings" },
-  { label: "Deities", href: "/deities" },
-  { label: "Practices", href: "/practical-spiritual-practices" },
-  { label: "History", href: "/sanatan-history" },
-  { label: "Jyotish", href: "/jyotish" },
-  { label: "Traditions", href: "/spiritual-traditions-paths" },
+type NavLinkItem = {
+  label: string;
+  href: string;
+  description?: string;
+};
+
+type NavGroup = {
+  label: string;
+  items: NavLinkItem[];
+};
+
+type NavSection =
+  | { type: "link"; item: NavLinkItem }
+  | { type: "group"; group: NavGroup };
+
+const navSections: NavSection[] = [
+  { type: "link", item: { label: "Articles", href: "/articles" } },
+  { type: "link", item: { label: "Philosophies", href: "/ancient-wisdom-philosophies" } },
+  { type: "link", item: { label: "Practices", href: "/practical-spiritual-practices" } },
+  { type: "link", item: { label: "Vedic Clock", href: "/vedic-clock" } },
+  { type: "link", item: { label: "Jyotish", href: "/jyotish" } },
+  {
+    type: "group",
+    group: {
+      label: "Explore",
+      items: [
+        { label: "Texts", href: "/sacred-texts-teachings", description: "Scriptures, teachings, and foundational sources." },
+        { label: "Deities", href: "/deities", description: "Meet forms, symbolism, and devotional significance." },
+        { label: "Traditions", href: "/spiritual-traditions-paths", description: "Understand lineages, sampradayas, and approaches." },
+        { label: "History", href: "/sanatan-history", description: "Explore civilizational context and sacred history." },
+        { label: "Greats", href: "/greats", description: "Learn from sages, teachers, and realized exemplars." },
+      ],
+    },
+  },
+  {
+    type: "group",
+    group: {
+      label: "Resources",
+      items: [
+        { label: "Mantras", href: "/mantras", description: "Browse mantra guides, meanings, and use cases." },
+        { label: "Stotras", href: "/stotras/shiva-tandava-stotram", description: "Access devotional hymns and recitation texts." },
+        { label: "Sanskrit Dictionary", href: "/learn/sanskrit", description: "Study key Sanskrit terms and language basics." },
+        { label: "Compare Paths", href: "/compare", description: "Contrast spiritual paths to find personal fit." },
+        { label: "Daily Guidance", href: "/jyotish/today", description: "Check today’s spiritual timing and orientation." },
+        { label: "AI Tutor", href: "/app", description: "Get guided help for questions, study, and practice." },
+      ],
+    },
+  },
 ];
 
-const moreLinks = [
-  { label: "Mantras", href: "/mantras" },
-  { label: "Stotras", href: "/stotras/shiva-tandava-stotram" },
-  { label: "Sanskrit Dictionary", href: "/learn/sanskrit" },
-  { label: "Compare Paths", href: "/compare" },
-  { label: "Greats", href: "/greats" },
-  { label: "Daily Guidance", href: "/jyotish/today" },
-  { label: "AI Tutor", href: "/app" },
-];
+const primaryNavItems = navSections
+  .filter((section): section is Extract<NavSection, { type: "link" }> => section.type === "link")
+  .map((section) => section.item);
+
+const navGroups = navSections
+  .filter((section): section is Extract<NavSection, { type: "group" }> => section.type === "group")
+  .map((section) => section.group);
+
+function MobileNavGroup({
+  group,
+  onNavigate,
+}: {
+  group: NavGroup;
+  onNavigate: () => void;
+}) {
+  return (
+    <Collapsible className="border-b border-border/50 pb-2">
+      <CollapsibleTrigger className="flex w-full items-center justify-between py-2 text-left text-base font-medium text-foreground transition-colors hover:text-primary">
+        <span>{group.label}</span>
+        <ChevronDown className="h-4 w-4 text-muted-foreground" />
+      </CollapsibleTrigger>
+      <CollapsibleContent className="space-y-1 pb-2 pl-3 pt-1">
+        {group.items.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={onNavigate}
+            className="block rounded-md py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
+
+function DesktopDropdownGroup({ group }: { group: NavGroup }) {
+  return (
+    <NavigationMenuItem>
+      <NavigationMenuTrigger className="bg-transparent text-sm font-medium text-muted-foreground hover:bg-transparent hover:text-foreground focus:bg-transparent focus:text-foreground data-[active]:bg-transparent data-[state=open]:bg-transparent">
+        {group.label}
+      </NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <div className="grid w-[420px] gap-1 p-3">
+          {group.items.map((item) => (
+            <NavigationMenuLink key={item.href} asChild>
+              <Link
+                href={item.href}
+                className="block rounded-lg p-3 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none"
+              >
+                <div className="text-sm font-medium leading-none text-foreground">{item.label}</div>
+                {item.description ? (
+                  <p className="mt-1.5 line-clamp-2 text-sm leading-snug text-muted-foreground">
+                    {item.description}
+                  </p>
+                ) : null}
+              </Link>
+            </NavigationMenuLink>
+          ))}
+        </div>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+  );
+}
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,17 +176,29 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="hidden md:flex items-center gap-2">
+            <nav className="flex items-center gap-1">
+              {primaryNavItems.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "h-9 bg-transparent px-3 text-sm font-medium text-muted-foreground hover:bg-transparent hover:text-foreground focus:bg-transparent focus:text-foreground"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+            <NavigationMenu className="z-20">
+              <NavigationMenuList className="gap-1 space-x-0">
+                {navGroups.map((group) => (
+                  <DesktopDropdownGroup key={group.label} group={group} />
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
@@ -98,8 +220,8 @@ export function Header() {
             <SheetContent side="right" className="w-[300px] bg-background">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="flex flex-col h-full pt-8">
-                <nav className="flex flex-col gap-4">
-                  {navLinks.map((link) => (
+                <nav className="flex flex-col gap-2">
+                  {primaryNavItems.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
@@ -110,20 +232,14 @@ export function Header() {
                     </Link>
                   ))}
                 </nav>
-                <div className="mt-6 pt-6 border-t border-border/50">
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">More</p>
-                  <nav className="flex flex-col gap-2">
-                    {moreLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setIsOpen(false)}
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1.5"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </nav>
+                <div className="mt-6 space-y-3 border-t border-border/50 pt-6">
+                  {navGroups.map((group) => (
+                    <MobileNavGroup
+                      key={group.label}
+                      group={group}
+                      onNavigate={() => setIsOpen(false)}
+                    />
+                  ))}
                 </div>
                 <div className="mt-8">
                   <Link href="/faith-finder" onClick={() => setIsOpen(false)}>

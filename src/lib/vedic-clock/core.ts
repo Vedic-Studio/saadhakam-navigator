@@ -3,7 +3,7 @@ import { tithis, yogas } from "@/data/panchang";
 import { nakshatras } from "@/data/nakshatras";
 import { getPresetCityById } from "@/lib/vedic-clock/presets";
 import type { VedicClockQuery, VedicClockResponse } from "@/lib/vedic-clock/schema";
-import { getAstronomicalSunWindow, getComputedPanchanga, getTimeZoneOffsetMinutes } from "@/lib/vedic-clock/astronomy";
+import { getComputedPanchanga, getSunriseDayWindow, getTimeZoneOffsetMinutes } from "@/lib/vedic-clock/astronomy";
 import {
     buildMuhurtaSegments,
     buildKalaSegments,
@@ -164,14 +164,10 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
     const nakshatra = getNakshatraBySlug(getNakshatraSlugFromIndex(computedPanchanga.nakshatraIndex));
     const yoga = yogas[computedPanchanga.yogaIndex] ?? yogas[0];
     const karana = getKaranaNameFromHalfTithiIndex(computedPanchanga.karanaIndex);
-    const { sunriseMinutes, sunsetMinutes, dayLengthMinutes } = getAstronomicalSunWindow(
-        localDate.year,
-        localDate.month,
-        localDate.day,
-        latitude,
-        longitude,
-        timezone,
-    );
+    const sunriseDayWindow = getSunriseDayWindow(observationDate, latitude, longitude, timezone);
+    const sunriseMinutes = sunriseDayWindow.sunriseToday.minutes;
+    const sunsetMinutes = sunriseDayWindow.sunsetToday.minutes;
+    const dayLengthMinutes = sunriseDayWindow.dayLengthMinutes;
     const { muhurtas, currentMuhurtaIndex, minutesSinceSunrise } = buildMuhurtas(sunriseMinutes, currentLocalMinutes);
     const kalaSegments = buildKalaSegments(sunriseMinutes, sunsetMinutes, currentLocalMinutes);
     const currentKalaIndex = kalaSegments.find((segment) => segment.isActive)?.index ?? 1;
@@ -224,11 +220,42 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
             currentLocalDateTime,
             sunriseTime: formatMinutes(sunriseMinutes),
             sunsetTime: formatMinutes(sunsetMinutes),
+            solarNoonTime: sunriseDayWindow.solarNoonToday.localTime,
             dayLengthMinutes,
             minutesSinceSunrise,
             cycleProgress: getCycleProgress(sunriseMinutes, currentLocalMinutes),
             currentMuhurtaIndex,
             currentKalaIndex,
+            sunriseDayStart: {
+                localDate: sunriseDayWindow.sunriseDayStart.localDate,
+                localTime: sunriseDayWindow.sunriseDayStart.localTime,
+                localDateTime: sunriseDayWindow.sunriseDayStart.localDateTime,
+                minutes: sunriseDayWindow.sunriseDayStart.minutes,
+            },
+            sunriseDayEnd: {
+                localDate: sunriseDayWindow.sunriseDayEnd.localDate,
+                localTime: sunriseDayWindow.sunriseDayEnd.localTime,
+                localDateTime: sunriseDayWindow.sunriseDayEnd.localDateTime,
+                minutes: sunriseDayWindow.sunriseDayEnd.minutes,
+            },
+            sunriseToday: {
+                localDate: sunriseDayWindow.sunriseToday.localDate,
+                localTime: sunriseDayWindow.sunriseToday.localTime,
+                localDateTime: sunriseDayWindow.sunriseToday.localDateTime,
+                minutes: sunriseDayWindow.sunriseToday.minutes,
+            },
+            previousSunrise: {
+                localDate: sunriseDayWindow.previousSunrise.localDate,
+                localTime: sunriseDayWindow.previousSunrise.localTime,
+                localDateTime: sunriseDayWindow.previousSunrise.localDateTime,
+                minutes: sunriseDayWindow.previousSunrise.minutes,
+            },
+            nextSunrise: {
+                localDate: sunriseDayWindow.nextSunrise.localDate,
+                localTime: sunriseDayWindow.nextSunrise.localTime,
+                localDateTime: sunriseDayWindow.nextSunrise.localDateTime,
+                minutes: sunriseDayWindow.nextSunrise.minutes,
+            },
             muhurtas,
             kalaSegments,
         },
@@ -245,8 +272,8 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
             },
             {
                 label: "Sunrise model",
-                value: "Ephemeris rise/set search",
-                detail: "Sunrise and sunset now come from Astronomy Engine rise-set event searches for the requested observer coordinates instead of the earlier approximation.",
+                value: "NOAA 90.833° sunrise equation",
+                detail: `Sunrise, sunset, solar noon, and sunrise-day boundaries are computed with the NOAA-style zenith 90.833° model. The active Vedic day runs from ${sunriseDayWindow.sunriseDayStart.localDateTime} to ${sunriseDayWindow.sunriseDayEnd.localDateTime}.`,
             },
             {
                 label: "Current longitudes",

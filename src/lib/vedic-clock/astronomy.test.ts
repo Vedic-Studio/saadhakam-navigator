@@ -7,9 +7,10 @@ describe("vedic clock astronomy fixtures", () => {
         const panchanga = getComputedPanchanga(new Date("2026-04-09T06:15:00.000Z"));
 
         expect(sun).toEqual({
-            sunriseMinutes: 341,
+            sunriseMinutes: 342,
             sunsetMinutes: 1098,
-            dayLengthMinutes: 757,
+            dayLengthMinutes: 756,
+            solarNoonMinutes: 720,
         });
         expect(panchanga.tithiIndex).toBe(15);
         expect(panchanga.nakshatraIndex).toBe(13);
@@ -25,9 +26,10 @@ describe("vedic clock astronomy fixtures", () => {
         const panchanga = getComputedPanchanga(new Date("2026-04-09T18:30:00.000Z"));
 
         expect(sun).toEqual({
-            sunriseMinutes: 402,
-            sunsetMinutes: 1180,
-            dayLengthMinutes: 778,
+            sunriseMinutes: 405,
+            sunsetMinutes: 1179,
+            dayLengthMinutes: 774,
+            solarNoonMinutes: 792,
         });
         expect(panchanga.tithiIndex).toBe(15);
         expect(panchanga.nakshatraIndex).toBe(13);
@@ -44,8 +46,9 @@ describe("vedic clock astronomy fixtures", () => {
 
         expect(sun).toEqual({
             sunriseMinutes: 435,
-            sunsetMinutes: 1065,
-            dayLengthMinutes: 630,
+            sunsetMinutes: 1064,
+            dayLengthMinutes: 629,
+            solarNoonMinutes: 749,
         });
         expect(panchanga.tithiIndex).toBe(14);
         expect(panchanga.nakshatraIndex).toBe(6);

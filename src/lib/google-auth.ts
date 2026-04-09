@@ -17,24 +17,53 @@ type CachedToken = {
 const DEFAULT_SERVICE_ACCOUNT_PATH = resolve(process.cwd(), ".data", "google-service-account.json");
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
 const tokenCache = new Map<string, CachedToken>();
+const GOOGLE_SERVICE_ACCOUNT_JSON_BASE64_ENV = "GOOGLE_SERVICE_ACCOUNT_JSON_BASE64";
 
 export function resolveGoogleServiceAccountFile() {
     return process.env.GOOGLE_SERVICE_ACCOUNT_FILE || DEFAULT_SERVICE_ACCOUNT_PATH;
 }
 
+function normalizeServiceAccountKey(parsed: Partial<ServiceAccountKey>, sourceLabel: string): ServiceAccountKey {
+    if (!parsed.client_email || !parsed.private_key) {
+        throw new Error(`Service account key from ${sourceLabel} is missing client_email or private_key`);
+    }
+
+    return {
+        client_email: parsed.client_email,
+        private_key: parsed.private_key,
+    };
+}
+
+function readGoogleServiceAccountKeyFromEnv(): ServiceAccountKey | null {
+    const encoded = process.env[GOOGLE_SERVICE_ACCOUNT_JSON_BASE64_ENV]?.trim();
+    if (!encoded) return null;
+
+    try {
+        const raw = Buffer.from(encoded, "base64").toString("utf-8");
+        if (!raw.trim()) {
+            throw new Error("decoded value was empty");
+        }
+
+        const parsed = JSON.parse(raw) as Partial<ServiceAccountKey>;
+        return normalizeServiceAccountKey(parsed, GOOGLE_SERVICE_ACCOUNT_JSON_BASE64_ENV);
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Unknown error";
+        throw new Error(
+            `Failed to read Google service account key from ${GOOGLE_SERVICE_ACCOUNT_JSON_BASE64_ENV}: ${message}`,
+        );
+    }
+}
+
 export function readGoogleServiceAccountKey(filePath = resolveGoogleServiceAccountFile()): ServiceAccountKey {
+    const envKey = readGoogleServiceAccountKeyFromEnv();
+    if (envKey) {
+        return envKey;
+    }
+
     try {
         const raw = readFileSync(filePath, "utf-8");
         const parsed = JSON.parse(raw) as Partial<ServiceAccountKey>;
-
-        if (!parsed.client_email || !parsed.private_key) {
-            throw new Error("Service account key is missing client_email or private_key");
-        }
-
-        return {
-            client_email: parsed.client_email,
-            private_key: parsed.private_key,
-        };
+        return normalizeServiceAccountKey(parsed, filePath);
     } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error";
         throw new Error(`Failed to read Google service account key from ${filePath}: ${message}`);
