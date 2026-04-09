@@ -1,7 +1,15 @@
 import "server-only";
 
 import { getGoogleAccessToken } from "@/lib/google-auth";
-import type { Ga4DashboardData, GscDashboardData } from "@/lib/analytics/types";
+import type {
+    Ga4DashboardData,
+    GscCtrAuditData,
+    GscPageCtrRow,
+    GscQueryCtrRow,
+    GscQueryPageCtrRow,
+    GscSearchAppearanceRow,
+    GscDashboardData,
+} from "@/lib/analytics/types";
 
 const GSC_SITE_URL = process.env.GSC_SITE_URL || "sc-domain:opensadhaka.com";
 const GSC_SCOPE = "https://www.googleapis.com/auth/webmasters.readonly";
@@ -108,6 +116,158 @@ async function ga4RunReport(body: Record<string, unknown>) {
     return {
         propertyId,
         data: (text ? JSON.parse(text) : {}) as Ga4ApiResponse,
+    };
+}
+
+// Expected click-through rate by average SERP position.
+// Source: aggregated click-curve studies (Advanced Web Ranking 2024, Backlinko 2023,
+// First Page Sage 2024) — informational SERP, averaged across desktop+mobile.
+// Used only to compute a relative "CTR gap" score for prioritizing work —
+// absolute values are not treated as targets.
+const CTR_BENCHMARK_BY_POSITION: Array<{ maxPosition: number; expectedCtr: number }> = [
+    { maxPosition: 1.5, expectedCtr: 0.32 },
+    { maxPosition: 2.5, expectedCtr: 0.19 },
+    { maxPosition: 3.5, expectedCtr: 0.13 },
+    { maxPosition: 4.5, expectedCtr: 0.09 },
+    { maxPosition: 5.5, expectedCtr: 0.07 },
+    { maxPosition: 6.5, expectedCtr: 0.05 },
+    { maxPosition: 7.5, expectedCtr: 0.04 },
+    { maxPosition: 8.5, expectedCtr: 0.03 },
+    { maxPosition: 9.5, expectedCtr: 0.025 },
+    { maxPosition: 10.5, expectedCtr: 0.022 },
+    { maxPosition: 15.5, expectedCtr: 0.015 },
+    { maxPosition: 20.5, expectedCtr: 0.009 },
+    { maxPosition: Number.POSITIVE_INFINITY, expectedCtr: 0.005 },
+];
+
+export function expectedCtrForPosition(position: number): number {
+    if (!Number.isFinite(position) || position <= 0) return 0;
+    for (const bucket of CTR_BENCHMARK_BY_POSITION) {
+        if (position <= bucket.maxPosition) return bucket.expectedCtr;
+    }
+    return 0;
+}
+
+export function ctrOpportunityScore(params: {
+    impressions: number;
+    ctr: number;
+    position: number;
+}): { expectedCtr: number; ctrGap: number; opportunityScore: number } {
+    const { impressions, ctr, position } = params;
+    const expectedCtr = expectedCtrForPosition(position);
+    const ctrGap = Math.max(0, expectedCtr - ctr);
+    // Opportunity = impressions "left on the table" = impressions × gap.
+    // Interpret as: "how many additional clicks would we get if this row
+    // hit the position-adjusted benchmark CTR".
+    const opportunityScore = Math.round(impressions * ctrGap);
+    return { expectedCtr, ctrGap, opportunityScore };
+}
+
+type GscCtrAuditOptions = {
+    minImpressions?: number;
+    queryRowLimit?: number;
+    pageRowLimit?: number;
+    pairRowLimit?: number;
+    onlyArticleRoutes?: boolean;
+};
+
+export async function fetchGscCtrAudit(options: GscCtrAuditOptions = {}): Promise<GscCtrAuditData> {
+    const {
+        minImpressions = 100,
+        queryRowLimit = 250,
+        pageRowLimit = 250,
+        pairRowLimit = 500,
+        onlyArticleRoutes = false,
+    } = options;
+
+    const range = getRecentDateRange();
+    const baseBody = {
+        startDate: range.startDate,
+        endDate: range.endDate,
+    };
+
+    const [overviewResult, appearanceResult, queryResult, pageResult, pairResult] = await Promise.all([
+        gscPost<{ rows?: GscApiRow[] }>("/searchAnalytics/query", {
+            ...baseBody,
+            rowLimit: 1,
+        }),
+        gscPost<{ rows?: GscApiRow[] }>("/searchAnalytics/query", {
+            ...baseBody,
+            dimensions: ["searchAppearance"],
+            rowLimit: 30,
+        }),
+        gscPost<{ rows?: GscApiRow[] }>("/searchAnalytics/query", {
+            ...baseBody,
+            dimensions: ["query"],
+            rowLimit: queryRowLimit,
+        }),
+        gscPost<{ rows?: GscApiRow[] }>("/searchAnalytics/query", {
+            ...baseBody,
+            dimensions: ["page"],
+            rowLimit: pageRowLimit,
+        }),
+        gscPost<{ rows?: GscApiRow[] }>("/searchAnalytics/query", {
+            ...baseBody,
+            dimensions: ["query", "page"],
+            rowLimit: pairRowLimit,
+        }),
+    ]);
+
+    const overview = mapGscRow(overviewResult.rows?.[0]);
+
+    const searchAppearance: GscSearchAppearanceRow[] = (appearanceResult.rows ?? []).map((row) => ({
+        appearance: row.keys?.[0] || "(unknown)",
+        ...mapGscRow(row),
+    }));
+
+    const queryCtrOpportunities: GscQueryCtrRow[] = (queryResult.rows ?? [])
+        .map((row) => ({
+            query: row.keys?.[0] || "(unknown)",
+            ...mapGscRow(row),
+        }))
+        .filter((row) => row.impressions >= minImpressions);
+
+    const pageCtrOpportunities: GscPageCtrRow[] = (pageResult.rows ?? [])
+        .map((row) => ({
+            page: normalizePagePath(row.keys?.[0] || "/"),
+            ...mapGscRow(row),
+        }))
+        .filter((row) => row.impressions >= minImpressions)
+        .filter((row) => (onlyArticleRoutes ? !row.page.startsWith("/api") : true));
+
+    const queryPageOpportunities: GscQueryPageCtrRow[] = (pairResult.rows ?? [])
+        .map((row) => {
+            const base = mapGscRow(row);
+            const scoring = ctrOpportunityScore({
+                impressions: base.impressions,
+                ctr: base.ctr,
+                position: base.position,
+            });
+            return {
+                query: row.keys?.[0] || "(unknown)",
+                page: normalizePagePath(row.keys?.[1] || "/"),
+                ...base,
+                ...scoring,
+            };
+        })
+        .filter((row) => row.impressions >= minImpressions)
+        .sort((a, b) => b.opportunityScore - a.opportunityScore);
+
+    return {
+        source: "gsc-ctr-audit",
+        siteUrl: GSC_SITE_URL,
+        range,
+        thresholds: {
+            minImpressions,
+            queryRowLimit,
+            pageRowLimit,
+            pairRowLimit,
+        },
+        overview,
+        searchAppearance,
+        queryCtrOpportunities,
+        pageCtrOpportunities,
+        queryPageOpportunities,
     };
 }
 

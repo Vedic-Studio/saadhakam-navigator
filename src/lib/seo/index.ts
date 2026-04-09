@@ -34,6 +34,22 @@ export function buildCanonicalUrl(route: string): string {
     return buildUrl(route);
 }
 
+/**
+ * Resolve the canonical path for a Sanskrit lexicon entry.
+ *
+ * When a matching concept page exists at `/what-is-<slug>`, the lexicon entry
+ * canonicalises to the concept page so Google consolidates ranking signals on
+ * a single URL instead of splitting them across the two page-types (lexicon
+ * "Sanskrit Lexicon" and concept "Concept Explorer") that cover the same
+ * queries. When no matching concept exists, the lexicon page is self-canonical.
+ */
+export function resolveLexiconCanonicalPath(
+    slug: string,
+    hasMatchingConcept: boolean,
+): string {
+    return hasMatchingConcept ? `/what-is-${slug}` : `/learn/sanskrit/${slug}`;
+}
+
 // ============================================================================
 // Metadata Builders
 // ============================================================================

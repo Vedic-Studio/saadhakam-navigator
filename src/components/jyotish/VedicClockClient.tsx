@@ -1,84 +1,271 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { VedicClockResponse } from "@/lib/vedic-clock";
 import { vedicClockPresetCities } from "@/lib/vedic-clock";
 import { muhurtaNames, getMuhurtaName } from "@/lib/vedic-clock/muhurta-names";
+import {
+    buildDateTimeFromCycleOffset,
+    buildKalaSegments,
+    buildMuhurtaSegments,
+    getDatePart,
+    getElapsedSinceSunrise,
+    getMuhurtaIndex,
+    getTimePart,
+    shiftLocalDateTime,
+    timeToMinutes,
+    withDateAndTime,
+} from "@/lib/vedic-clock/interactive";
 import { VedicMuhurtaDial } from "@/components/jyotish/visuals/VedicMuhurtaDial";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { MapPin, Navigation, Sunrise, Sunset, Compass, Sparkles } from "lucide-react";
+import { CalendarDays, ChevronLeft, ChevronRight, Clock3, Compass, Loader2, MapPin, Navigation, Sparkles, Sunrise, Sunset } from "lucide-react";
 
-type LoadState =
-    | { kind: "idle" | "loading" }
-    | { kind: "error"; message: string }
-    | { kind: "ready"; payload: VedicClockResponse };
-
-async function fetchClock(query: URLSearchParams) {
-    const response = await fetch(`/api/vedic-clock?${query.toString()}`, { cache: "no-store" });
-    const payload = (await response.json()) as VedicClockResponse | { error?: string };
-
-    if (!response.ok || !("clock" in payload)) {
-        throw new Error(("error" in payload && payload.error) || "Vedic clock request failed");
-    }
-
-    return payload;
-}
+type RequestSource =
+    | { cityId: string; latitude?: never; longitude?: never; timezone?: never }
+    | { cityId?: never; latitude: string; longitude: string; timezone: string };
 
 export function VedicClockClient() {
-    const [state, setState] = useState<LoadState>({ kind: "idle" });
-    const [activeCityId, setActiveCityId] = useState<string>("varanasi");
+    const [requestSource, setRequestSource] = useState<RequestSource>({ cityId: "varanasi" });
+    const [payload, setPayload] = useState<VedicClockResponse | null>(null);
+    const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [draftDateTime, setDraftDateTime] = useState<string | null>(null);
+    const [dateInput, setDateInput] = useState<string>("");
+    const [timeInput, setTimeInput] = useState<string>("");
+    const [hoveredMuhurtaIndex, setHoveredMuhurtaIndex] = useState<number | null>(null);
+    const [hoveredKalaIndex, setHoveredKalaIndex] = useState<number | null>(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [reducedMotion, setReducedMotion] = useState(false);
+    const latestRequestIdRef = useRef(0);
+    const activeRequestControllerRef = useRef<AbortController | null>(null);
+
+    const loadPayload = useCallback(
+        async (source: RequestSource, datetime?: string) => {
+            const requestId = ++latestRequestIdRef.current;
+            activeRequestControllerRef.current?.abort();
+            const controller = new AbortController();
+            activeRequestControllerRef.current = controller;
+            const query = new URLSearchParams(
+                source.cityId
+                    ? { cityId: source.cityId }
+                    : {
+                        latitude: source.latitude,
+                        longitude: source.longitude,
+                        timezone: source.timezone,
+                    },
+            );
+
+            if (datetime) {
+                query.set("datetime", datetime);
+            }
+
+            setStatus("loading");
+            setErrorMessage(null);
+
+            try {
+                const response = await fetch(`/api/vedic-clock?${query.toString()}`, {
+                    cache: "no-store",
+                    signal: controller.signal,
+                });
+                const nextPayload = ((await response.json()) as VedicClockResponse | { error?: string });
+                if (!response.ok || !("clock" in nextPayload)) {
+                    throw new Error(("error" in nextPayload && nextPayload.error) || "Vedic clock request failed");
+                }
+                if (requestId !== latestRequestIdRef.current) {
+                    return;
+                }
+                setPayload(nextPayload);
+                setDraftDateTime(null);
+                setStatus("ready");
+            } catch (error) {
+                if (error instanceof DOMException && error.name === "AbortError") {
+                    return;
+                }
+                if (requestId !== latestRequestIdRef.current) {
+                    return;
+                }
+                setStatus("error");
+                setDraftDateTime(null);
+                setErrorMessage(error instanceof Error ? error.message : "Unable to load the Vedic clock.");
+            } finally {
+                if (activeRequestControllerRef.current === controller) {
+                    activeRequestControllerRef.current = null;
+                }
+            }
+        },
+        [],
+    );
 
     useEffect(() => {
-        if (!activeCityId) return;
-        const query = new URLSearchParams({ cityId: activeCityId });
-        setState({ kind: "loading" });
+        loadPayload(requestSource);
+    }, [loadPayload, requestSource]);
 
-        fetchClock(query)
-            .then((payload) => setState({ kind: "ready", payload }))
-            .catch((error: unknown) =>
-                setState({
-                    kind: "error",
-                    message: error instanceof Error ? error.message : "Unable to load the Vedic clock.",
-                }),
-            );
-    }, [activeCityId]);
+    useEffect(() => {
+        return () => {
+            activeRequestControllerRef.current?.abort();
+        };
+    }, []);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        setReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    }, []);
+
+    useEffect(() => {
+        const current = draftDateTime ?? payload?.requestedDateTime;
+        if (!current) return;
+        setDateInput(getDatePart(current));
+        setTimeInput(getTimePart(current));
+    }, [draftDateTime, payload?.requestedDateTime]);
+
+    const commitDateTime = useCallback(
+        async (nextDateTime: string) => {
+            setDraftDateTime(nextDateTime);
+            await loadPayload(requestSource, nextDateTime);
+        },
+        [loadPayload, requestSource],
+    );
 
     async function useMyLocation() {
         if (!navigator.geolocation) {
-            setState({ kind: "error", message: "Geolocation is not supported in this browser." });
+            setStatus("error");
+            setErrorMessage("Geolocation is not supported in this browser.");
             return;
         }
 
-        setState({ kind: "loading" });
+        setStatus("loading");
+        setErrorMessage(null);
 
         navigator.geolocation.getCurrentPosition(
             async (position) => {
                 try {
-                    const query = new URLSearchParams({
+                    const nextSource: RequestSource = {
                         latitude: String(position.coords.latitude),
                         longitude: String(position.coords.longitude),
                         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                    });
-                    const payload = await fetchClock(query);
-                    setActiveCityId("");
-                    setState({ kind: "ready", payload });
+                    };
+                    setRequestSource(nextSource);
+                    setDraftDateTime(null);
                 } catch (error) {
-                    setState({
-                        kind: "error",
-                        message: error instanceof Error ? error.message : "Unable to use your current location.",
-                    });
+                    setStatus("error");
+                    setErrorMessage(error instanceof Error ? error.message : "Unable to use your current location.");
                 }
             },
             (error) => {
-                setState({ kind: "error", message: error.message || "Location access was denied." });
+                setStatus("error");
+                setErrorMessage(error.message || "Location access was denied.");
             },
             { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 },
         );
     }
 
-    const payload = state.kind === "ready" ? state.payload : null;
-    const activeMuhurta = payload ? getMuhurtaName(payload.clock.currentMuhurtaIndex) : null;
+    const displayDateTime = draftDateTime ?? payload?.requestedDateTime ?? "";
+    const previewPayload = useMemo(() => {
+        if (!payload || !draftDateTime || getDatePart(draftDateTime) !== payload.requestedDate) return null;
+
+        const displayMinutes = timeToMinutes(getTimePart(draftDateTime));
+        const sunriseMinutes = timeToMinutes(payload.clock.sunriseTime);
+        const sunsetMinutes = timeToMinutes(payload.clock.sunsetTime);
+        const minutesSinceSunrise = getElapsedSinceSunrise(sunriseMinutes, displayMinutes);
+        const muhurtas = buildMuhurtaSegments(sunriseMinutes, displayMinutes);
+        const kalaSegments = buildKalaSegments(sunriseMinutes, sunsetMinutes, displayMinutes);
+        const currentMuhurtaIndex = getMuhurtaIndex(minutesSinceSunrise);
+        const currentKalaIndex = kalaSegments.find((segment) => segment.isActive)?.index ?? 1;
+
+        return {
+            ...payload,
+            requestedDate: getDatePart(draftDateTime),
+            requestedDateTime: draftDateTime,
+            clock: {
+                ...payload.clock,
+                currentLocalDateTime: draftDateTime,
+                currentLocalTime: getTimePart(draftDateTime),
+                minutesSinceSunrise,
+                cycleProgress: minutesSinceSunrise / 1440,
+                currentMuhurtaIndex,
+                currentKalaIndex,
+                muhurtas,
+                kalaSegments,
+            },
+        };
+    }, [draftDateTime, payload]);
+
+    const activePayload = previewPayload ?? payload;
+    const displayMuhurtaIndex = hoveredMuhurtaIndex ?? activePayload?.clock.currentMuhurtaIndex ?? null;
+    const activeMuhurta = displayMuhurtaIndex ? getMuhurtaName(displayMuhurtaIndex) : null;
+    const activeKala = hoveredKalaIndex
+        ? activePayload?.clock.kalaSegments.find((segment) => segment.index === hoveredKalaIndex)
+        : activePayload?.clock.kalaSegments.find((segment) => segment.isActive);
+
+    const jumpToMuhurta = useCallback(
+        (index: number) => {
+            if (!activePayload) return;
+            const nextDateTime = buildDateTimeFromCycleOffset(
+                activePayload.requestedDate,
+                activePayload.clock.sunriseTime,
+                (index - 1) * 48 + 24,
+            );
+            void commitDateTime(nextDateTime);
+        },
+        [activePayload, commitDateTime],
+    );
+
+    const jumpToKala = useCallback(
+        (index: number) => {
+            const segment = activePayload?.clock.kalaSegments.find((item) => item.index === index);
+            if (!activePayload || !segment) return;
+            const midpoint = Math.round((segment.startCycleMinute + segment.endCycleMinute) / 2);
+            void commitDateTime(
+                buildDateTimeFromCycleOffset(activePayload.requestedDate, activePayload.clock.sunriseTime, midpoint),
+            );
+        },
+        [activePayload, commitDateTime],
+    );
+
+    const shiftByMinutes = useCallback(
+        (minutes: number) => {
+            if (!displayDateTime) return;
+            void commitDateTime(shiftLocalDateTime(displayDateTime, minutes));
+        },
+        [commitDateTime, displayDateTime],
+    );
+
+    const resetToNow = useCallback(async () => {
+        setDraftDateTime(null);
+        await loadPayload(requestSource);
+    }, [loadPayload, requestSource]);
+
+    const previewCycleProgress = useCallback(
+        (cycleProgress: number) => {
+            if (!payload) return;
+            const nextDateTime = buildDateTimeFromCycleOffset(
+                payload.requestedDate,
+                payload.clock.sunriseTime,
+                Math.round(cycleProgress * 1440),
+            );
+            setDraftDateTime(nextDateTime);
+        },
+        [payload],
+    );
+
+    const cancelCyclePreview = useCallback(() => {
+        setDraftDateTime(null);
+    }, []);
+
+    const commitCycleProgress = useCallback(
+        (cycleProgress: number) => {
+            if (!payload) return;
+            const nextDateTime = buildDateTimeFromCycleOffset(
+                payload.requestedDate,
+                payload.clock.sunriseTime,
+                Math.round(cycleProgress * 1440),
+            );
+            void commitDateTime(nextDateTime);
+        },
+        [commitDateTime, payload],
+    );
 
     return (
         <div className="space-y-10">
@@ -120,12 +307,17 @@ export function VedicClockClient() {
                 </div>
                 <div className="relative mt-6 flex flex-wrap gap-2.5">
                     {vedicClockPresetCities.map((city) => {
-                        const isActive = activeCityId === city.id;
+                        const isActive = requestSource.cityId === city.id;
                         return (
                             <button
                                 key={city.id}
                                 type="button"
-                                onClick={() => setActiveCityId(city.id)}
+                                onClick={() => {
+                                    setHoveredMuhurtaIndex(null);
+                                    setHoveredKalaIndex(null);
+                                    setDraftDateTime(null);
+                                    setRequestSource({ cityId: city.id });
+                                }}
                                 className={cn(
                                     "rounded-full border px-4 py-1.5 text-sm transition-all duration-300",
                                     isActive
@@ -140,20 +332,20 @@ export function VedicClockClient() {
                 </div>
             </section>
 
-            {state.kind === "loading" && !payload && (
+            {status === "loading" && !payload && (
                 <section className="rounded-3xl border border-amber-500/15 bg-[#0f0b1e]/80 p-10 text-center">
                     <div className="inline-block h-2 w-2 animate-pulse rounded-full bg-amber-400" />
                     <p className="mt-3 text-sm text-amber-100/60">Aligning muhūrta wheel to your horizon…</p>
                 </section>
             )}
 
-            {state.kind === "error" && (
+            {status === "error" && errorMessage && (
                 <section className="rounded-3xl border border-red-500/30 bg-red-500/5 p-6">
-                    <p className="text-sm text-red-200">{state.message}</p>
+                    <p className="text-sm text-red-200">{errorMessage}</p>
                 </section>
             )}
 
-            {payload && (
+            {activePayload && (
                 <>
                     {/* The dial — full-width hero centerpiece */}
                     <section className="relative overflow-hidden rounded-[2rem] border border-amber-500/20 bg-gradient-to-b from-[#0a0616] via-[#050210] to-[#0a0616] px-4 py-8 sm:px-6 md:px-10 md:py-12">
@@ -171,23 +363,23 @@ export function VedicClockClient() {
                             <span className="inline-flex items-center gap-1.5">
                                 <MapPin className="h-3.5 w-3.5 text-amber-300" />
                                 <span className="font-display text-sm font-semibold text-amber-50">
-                                    {payload.location.name}
+                                    {activePayload.location.name}
                                 </span>
-                                {payload.location.region && (
-                                    <span className="text-amber-100/40">· {payload.location.region}</span>
+                                {activePayload.location.region && (
+                                    <span className="text-amber-100/40">· {activePayload.location.region}</span>
                                 )}
                             </span>
                             <span className="hidden h-3 w-px bg-amber-500/20 sm:block" />
                             <span className="inline-flex items-center gap-1.5">
                                 <Sunrise className="h-3.5 w-3.5 text-amber-300" />
-                                <span className="font-mono text-amber-50">{payload.clock.sunriseTime}</span>
+                                <span className="font-mono text-amber-50">{activePayload.clock.sunriseTime}</span>
                                 <span className="text-[10px] uppercase tracking-[0.18em] text-amber-300/60">
                                     Sūryodaya
                                 </span>
                             </span>
                             <span className="inline-flex items-center gap-1.5">
                                 <Sunset className="h-3.5 w-3.5 text-indigo-300" />
-                                <span className="font-mono text-amber-50">{payload.clock.sunsetTime}</span>
+                                <span className="font-mono text-amber-50">{activePayload.clock.sunsetTime}</span>
                                 <span className="text-[10px] uppercase tracking-[0.18em] text-indigo-300/60">
                                     Sūryāsta
                                 </span>
@@ -198,23 +390,92 @@ export function VedicClockClient() {
                                     Ahorātra
                                 </span>
                                 <span className="font-mono text-amber-50">
-                                    {Math.floor(payload.clock.dayLengthMinutes / 60)}h{" "}
-                                    {payload.clock.dayLengthMinutes % 60}m
+                                    {Math.floor(activePayload.clock.dayLengthMinutes / 60)}h{" "}
+                                    {activePayload.clock.dayLengthMinutes % 60}m
                                 </span>
                             </span>
                             <span className="hidden h-3 w-px bg-amber-500/20 sm:block" />
-                            <span className="font-mono text-amber-100/50">{payload.requestedDate}</span>
+                            <span className="font-mono text-amber-100/50">{activePayload.requestedDateTime}</span>
+                            {status === "loading" && payload && (
+                                <span className="inline-flex items-center gap-1.5 text-amber-200/70">
+                                    <Loader2 className="h-3.5 w-3.5 animate-spin" /> Syncing
+                                </span>
+                            )}
+                        </div>
+
+                        <div className="relative mx-auto mt-6 grid w-full max-w-5xl gap-4 rounded-3xl border border-amber-500/10 bg-white/[0.03] p-4 md:mt-8 md:grid-cols-[1.4fr_1fr] md:p-5">
+                            <div className="grid gap-3 sm:grid-cols-2">
+                                <label className="space-y-1.5">
+                                    <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.22em] text-amber-200/60">
+                                        <CalendarDays className="h-3.5 w-3.5" /> Date
+                                    </span>
+                                    <Input
+                                        type="date"
+                                        value={dateInput}
+                                        onChange={(event) => setDateInput(event.target.value)}
+                                        className="border-amber-500/20 bg-[#0e0919] text-amber-50"
+                                    />
+                                </label>
+                                <label className="space-y-1.5">
+                                    <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.22em] text-amber-200/60">
+                                        <Clock3 className="h-3.5 w-3.5" /> Time
+                                    </span>
+                                    <Input
+                                        type="time"
+                                        value={timeInput}
+                                        onChange={(event) => setTimeInput(event.target.value)}
+                                        className="border-amber-500/20 bg-[#0e0919] text-amber-50"
+                                    />
+                                </label>
+                            </div>
+                            <div className="flex flex-wrap items-end gap-2">
+                                <Button
+                                    type="button"
+                                    variant="outline"
+                                    className="border-amber-400/30 bg-amber-500/5 text-amber-50 hover:bg-amber-500/15"
+                                    onClick={() => dateInput && timeInput && void commitDateTime(withDateAndTime(dateInput, timeInput))}
+                                >
+                                    Apply
+                                </Button>
+                                <Button type="button" variant="outline" className="border-amber-400/20 bg-transparent text-amber-100" onClick={() => shiftByMinutes(-1440)}>
+                                    <ChevronLeft className="mr-1 h-4 w-4" /> Day
+                                </Button>
+                                <Button type="button" variant="outline" className="border-amber-400/20 bg-transparent text-amber-100" onClick={() => shiftByMinutes(1440)}>
+                                    Day <ChevronRight className="ml-1 h-4 w-4" />
+                                </Button>
+                                <Button type="button" variant="outline" className="border-amber-400/20 bg-transparent text-amber-100" onClick={() => void commitDateTime(withDateAndTime(activePayload.requestedDate, activePayload.clock.sunriseTime))}>
+                                    Sunrise
+                                </Button>
+                                <Button type="button" variant="outline" className="border-indigo-400/20 bg-transparent text-indigo-100" onClick={() => void commitDateTime(withDateAndTime(activePayload.requestedDate, activePayload.clock.sunsetTime))}>
+                                    Sunset
+                                </Button>
+                                <Button type="button" className="bg-amber-500 text-[#140d04] hover:bg-amber-400" onClick={() => void resetToNow()}>
+                                    Now
+                                </Button>
+                            </div>
                         </div>
 
                         {/* Dial — the hero */}
                         <div className="relative mx-auto mt-6 w-full max-w-[820px] md:mt-8">
                             <VedicMuhurtaDial
-                                muhurtas={payload.clock.muhurtas}
-                                currentLocalTime={payload.clock.currentLocalTime}
-                                sunriseTime={payload.clock.sunriseTime}
-                                sunsetTime={payload.clock.sunsetTime}
-                                currentMuhurtaIndex={payload.clock.currentMuhurtaIndex}
+                                muhurtas={activePayload.clock.muhurtas}
+                                kalaSegments={activePayload.clock.kalaSegments}
+                                currentLocalTime={activePayload.clock.currentLocalTime}
+                                sunriseTime={activePayload.clock.sunriseTime}
+                                sunsetTime={activePayload.clock.sunsetTime}
+                                currentMuhurtaIndex={displayMuhurtaIndex ?? activePayload.clock.currentMuhurtaIndex}
                                 muhurtaNames={muhurtaNames}
+                                hoveredMuhurtaIndex={hoveredMuhurtaIndex}
+                                hoveredKalaIndex={hoveredKalaIndex}
+                                onMuhurtaHover={setHoveredMuhurtaIndex}
+                                onKalaHover={setHoveredKalaIndex}
+                                onMuhurtaSelect={jumpToMuhurta}
+                                onKalaSelect={jumpToKala}
+                                onScrubPreview={previewCycleProgress}
+                                onScrubCommit={commitCycleProgress}
+                                onScrubCancel={cancelCyclePreview}
+                                onScrubStateChange={setIsDragging}
+                                reducedMotion={reducedMotion}
                             />
                         </div>
 
@@ -234,21 +495,40 @@ export function VedicClockClient() {
                                                 {activeMuhurta.name}
                                             </p>
                                             <p className="mt-1 text-xs text-amber-100/60">
-                                                Presided by{" "}
+                                                {hoveredMuhurtaIndex || isDragging ? "Previewing" : "Presided by"}{" "}
                                                 <span className="text-amber-100/90">{activeMuhurta.deity}</span>
                                             </p>
+                                            {activeKala && (
+                                                <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-amber-200/60">
+                                                    {activeKala.devanagari} · {activeKala.name}
+                                                </p>
+                                            )}
                                         </div>
                                         <div className="shrink-0 rounded-xl border border-amber-400/30 bg-amber-500/10 px-3 py-2 text-right">
                                             <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-amber-300/70">
                                                 Muhūrta
                                             </p>
                                             <p className="font-display text-2xl font-bold text-amber-50">
-                                                {String(payload.clock.currentMuhurtaIndex).padStart(2, "0")}
+                                                {String(displayMuhurtaIndex ?? activePayload.clock.currentMuhurtaIndex).padStart(2, "0")}
                                             </p>
                                             <p className="text-[9px] uppercase tracking-[0.2em] text-amber-300/60">
                                                 of 30
                                             </p>
                                         </div>
+                                    </div>
+                                    <div className="mt-4 flex flex-wrap gap-2">
+                                        <Button type="button" variant="outline" className="border-amber-400/25 bg-transparent text-amber-100" onClick={() => shiftByMinutes(-48)}>
+                                            Prev muhūrta
+                                        </Button>
+                                        <Button type="button" variant="outline" className="border-amber-400/25 bg-transparent text-amber-100" onClick={() => shiftByMinutes(48)}>
+                                            Next muhūrta
+                                        </Button>
+                                        <Button type="button" variant="outline" className="border-amber-400/25 bg-transparent text-amber-100" onClick={() => shiftByMinutes(-15)}>
+                                            −15 min
+                                        </Button>
+                                        <Button type="button" variant="outline" className="border-amber-400/25 bg-transparent text-amber-100" onClick={() => shiftByMinutes(15)}>
+                                            +15 min
+                                        </Button>
                                     </div>
                                 </div>
                             )}
@@ -264,35 +544,35 @@ export function VedicClockClient() {
                                     <PanchangaRow
                                         label="Vāra"
                                         devanagari="वार"
-                                        value={payload.panchanga.vara.name}
-                                        sub={payload.panchanga.vara.sanskritName}
+                                        value={activePayload.panchanga.vara.name}
+                                        sub={activePayload.panchanga.vara.sanskritName}
                                     />
                                     <PanchangaRow
                                         label="Tithi"
                                         devanagari="तिथि"
-                                        value={payload.panchanga.tithi.name}
-                                        sub={payload.panchanga.tithi.sanskritName}
+                                        value={activePayload.panchanga.tithi.name}
+                                        sub={activePayload.panchanga.tithi.sanskritName}
                                     />
                                     <PanchangaRow
                                         label="Nakshatra"
                                         devanagari="नक्षत्र"
-                                        value={payload.panchanga.nakshatra.name}
-                                        sub={payload.panchanga.nakshatra.sanskritName}
+                                        value={activePayload.panchanga.nakshatra.name}
+                                        sub={activePayload.panchanga.nakshatra.sanskritName}
                                     />
                                     <PanchangaRow
                                         label="Yoga"
                                         devanagari="योग"
-                                        value={payload.panchanga.yoga}
+                                        value={activePayload.panchanga.yoga}
                                     />
                                     <PanchangaRow
                                         label="Karaṇa"
                                         devanagari="करण"
-                                        value={payload.panchanga.karana}
+                                        value={activePayload.panchanga.karana}
                                     />
                                     <PanchangaRow
                                         label="Date"
                                         devanagari="दिनांक"
-                                        value={payload.requestedDate}
+                                        value={activePayload.requestedDateTime}
                                     />
                                 </dl>
                             </div>
@@ -324,15 +604,28 @@ export function VedicClockClient() {
                         </div>
 
                         <ol className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-                            {payload.clock.muhurtas.map((muhurta) => {
+                            {activePayload.clock.muhurtas.map((muhurta) => {
                                 const meta = getMuhurtaName(muhurta.index);
                                 const isDay = muhurta.phase === "day";
                                 return (
                                     <li
                                         key={muhurta.index}
+                                        onMouseEnter={() => setHoveredMuhurtaIndex(muhurta.index)}
+                                        onMouseLeave={() => setHoveredMuhurtaIndex(null)}
+                                        onFocus={() => setHoveredMuhurtaIndex(muhurta.index)}
+                                        onBlur={() => setHoveredMuhurtaIndex(null)}
+                                        onClick={() => jumpToMuhurta(muhurta.index)}
+                                        onKeyDown={(event) => {
+                                            if (event.key === "Enter" || event.key === " ") {
+                                                event.preventDefault();
+                                                jumpToMuhurta(muhurta.index);
+                                            }
+                                        }}
+                                        role="button"
+                                        tabIndex={0}
                                         className={cn(
-                                            "group relative overflow-hidden rounded-2xl border p-3.5 transition-all duration-300",
-                                            muhurta.isActive
+                                            "group relative overflow-hidden rounded-2xl border p-3.5 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60",
+                                            muhurta.isActive || hoveredMuhurtaIndex === muhurta.index
                                                 ? "border-amber-400/70 bg-gradient-to-br from-amber-500/20 via-orange-500/10 to-transparent shadow-[0_0_30px_rgba(251,191,36,0.18)]"
                                                 : isDay
                                                     ? "border-amber-500/10 bg-amber-500/[0.03] hover:border-amber-400/30 hover:bg-amber-500/[0.06]"
@@ -344,7 +637,7 @@ export function VedicClockClient() {
                                                 <p
                                                     className={cn(
                                                         "font-sanskrit text-lg leading-none",
-                                                        muhurta.isActive ? "text-amber-100" : "text-amber-200/60",
+                                                        muhurta.isActive || hoveredMuhurtaIndex === muhurta.index ? "text-amber-100" : "text-amber-200/60",
                                                     )}
                                                 >
                                                     {meta.devanagari}
@@ -352,7 +645,7 @@ export function VedicClockClient() {
                                                 <p
                                                     className={cn(
                                                         "mt-1 font-display text-sm font-bold tracking-tight",
-                                                        muhurta.isActive ? "text-amber-50" : "text-amber-100/80",
+                                                        muhurta.isActive || hoveredMuhurtaIndex === muhurta.index ? "text-amber-50" : "text-amber-100/80",
                                                     )}
                                                 >
                                                     {meta.name}
@@ -364,7 +657,7 @@ export function VedicClockClient() {
                                             <span
                                                 className={cn(
                                                     "shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em]",
-                                                    muhurta.isActive
+                                                    muhurta.isActive || hoveredMuhurtaIndex === muhurta.index
                                                         ? "border-amber-300/60 bg-amber-400/15 text-amber-100"
                                                         : isDay
                                                             ? "border-amber-500/20 bg-amber-500/5 text-amber-200/50"
@@ -377,7 +670,7 @@ export function VedicClockClient() {
                                         <p
                                             className={cn(
                                                 "mt-2.5 font-mono text-[11px] tracking-wider",
-                                                muhurta.isActive
+                                                muhurta.isActive || hoveredMuhurtaIndex === muhurta.index
                                                     ? "text-amber-100/80"
                                                     : "text-amber-100/45",
                                             )}
@@ -403,7 +696,7 @@ export function VedicClockClient() {
                             Visible provenance — every field traces to its source
                         </p>
                         <div className="mt-6 grid gap-4 lg:grid-cols-2">
-                            {payload.provenance.map((entry) => (
+                            {activePayload.provenance.map((entry) => (
                                 <div
                                     key={entry.label}
                                     className="rounded-2xl border border-amber-500/10 bg-white/[0.02] p-5"

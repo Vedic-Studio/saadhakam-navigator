@@ -54,6 +54,8 @@ content-pipeline/
 plans/
 venv/
 .venv/
+backend/venv/
+backend/.venv/
 
 # Local backend secrets
 backend/.env

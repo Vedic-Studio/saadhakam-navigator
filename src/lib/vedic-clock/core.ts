@@ -4,6 +4,17 @@ import { nakshatras } from "@/data/nakshatras";
 import { getPresetCityById } from "@/lib/vedic-clock/presets";
 import type { VedicClockQuery, VedicClockResponse } from "@/lib/vedic-clock/schema";
 import { getAstronomicalSunWindow, getComputedPanchanga, getTimeZoneOffsetMinutes } from "@/lib/vedic-clock/astronomy";
+import {
+    buildMuhurtaSegments,
+    buildKalaSegments,
+    formatLocalDateTime,
+    formatMinutes,
+    getCycleProgress,
+    getElapsedSinceSunrise,
+    getMuhurtaIndex,
+    parseLocalDate,
+    parseLocalDateTime,
+} from "@/lib/vedic-clock/interactive";
 
 function getLocalDateParts(now: Date, timeZone: string) {
     const formatter = new Intl.DateTimeFormat("en-CA", {
@@ -41,13 +52,6 @@ function getLocalMinutes(now: Date, timeZone: string) {
     return hour * 60 + minute;
 }
 
-function formatMinutes(minutes: number) {
-    const normalized = ((minutes % 1440) + 1440) % 1440;
-    const hour = Math.floor(normalized / 60);
-    const minute = normalized % 60;
-    return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
-}
-
 function getTithiSlugFromIndex(index: number) {
     return tithis[index]?.slug ?? tithis[0].slug;
 }
@@ -71,15 +75,22 @@ function getKaranaNameFromHalfTithiIndex(index: number) {
 
 function buildObservationDate(
     queryDate: string | undefined,
+    queryDateTime: string | undefined,
     now: Date,
     timeZone: string,
     currentLocalMinutes: number,
 ) {
+    if (queryDateTime) {
+        const { year, month, day, hour, minute } = parseLocalDateTime(queryDateTime);
+        const offsetMinutes = getTimeZoneOffsetMinutes(year, month, day, timeZone);
+        return new Date(Date.UTC(year, month - 1, day, hour, minute, 0) - offsetMinutes * 60000);
+    }
+
     if (!queryDate) {
         return now;
     }
 
-    const [year, month, day] = queryDate.split("-").map(Number);
+    const { year, month, day } = parseLocalDate(queryDate);
     const offsetMinutes = getTimeZoneOffsetMinutes(year, month, day, timeZone);
     return new Date(Date.UTC(year, month - 1, day, 0, currentLocalMinutes, 0) - offsetMinutes * 60000);
 }
@@ -88,29 +99,14 @@ function buildMuhurtas(sunriseMinutes: number, currentLocalMinutes: number) {
     // Compute how far into the sunrise-anchored 24-hour cycle the current
     // local moment sits. `currentLocalMinutes` is always a time-of-day in
     // [0, 1440). The cycle starts at `sunriseMinutes` and wraps around once.
-    const elapsedSinceSunrise = ((currentLocalMinutes - sunriseMinutes) % 1440 + 1440) % 1440;
+    const elapsedSinceSunrise = getElapsedSinceSunrise(sunriseMinutes, currentLocalMinutes);
 
-    const muhurtas = Array.from({ length: 30 }, (_, index) => {
-        const segmentStart = index * 48;
-        const segmentEnd = segmentStart + 48;
-        const startMinutes = sunriseMinutes + segmentStart;
-        const endMinutes = sunriseMinutes + segmentEnd;
-        const isActive = elapsedSinceSunrise >= segmentStart && elapsedSinceSunrise < segmentEnd;
+    const muhurtas = buildMuhurtaSegments(sunriseMinutes, currentLocalMinutes);
 
-        return {
-            index: index + 1,
-            label: `Muhūrta ${String(index + 1).padStart(2, "0")}`,
-            phase: index < 15 ? "day" : "night",
-            startTime: formatMinutes(startMinutes),
-            endTime: formatMinutes(endMinutes),
-            isActive,
-        } as const;
-    });
-
-    const current = muhurtas.find((muhurta) => muhurta.isActive) ?? muhurtas[0];
     return {
         muhurtas,
-        currentMuhurtaIndex: current.index,
+        currentMuhurtaIndex: getMuhurtaIndex(elapsedSinceSunrise),
+        minutesSinceSunrise: elapsedSinceSunrise,
     };
 }
 
@@ -126,19 +122,41 @@ const weekdayMap = [
 
 export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()): VedicClockResponse {
     const preset = query.cityId ? getPresetCityById(query.cityId) : undefined;
-    const timezone = preset?.timezone ?? query.timezone ?? "Asia/Kolkata";
-    const currentLocalMinutes = getLocalMinutes(now, timezone);
-    const observationDate = buildObservationDate(query.date, now, timezone, currentLocalMinutes);
-    const localDate = query.date
+    if (query.cityId && !preset) {
+        throw new Error(`Unknown preset city: ${query.cityId}`);
+    }
+
+    const timezone = preset?.timezone ?? query.timezone;
+    if (!timezone) {
+        throw new Error("Vedic Clock requires either a preset city or latitude/longitude/timezone coordinates");
+    }
+
+    const currentLocalMinutes = query.datetime
         ? (() => {
-              const [year, month, day] = query.date.split("-").map(Number);
-              return { isoDate: query.date, year, month, day };
-          })()
-        : getLocalDateParts(observationDate, timezone);
+            const { hour, minute } = parseLocalDateTime(query.datetime);
+            return hour * 60 + minute;
+        })()
+        : getLocalMinutes(now, timezone);
+    const observationDate = buildObservationDate(query.date, query.datetime, now, timezone, currentLocalMinutes);
+    const localDate = query.datetime
+        ? (() => {
+            const { year, month, day } = parseLocalDateTime(query.datetime);
+            return { isoDate: query.datetime.slice(0, 10), year, month, day };
+        })()
+        : query.date
+            ? (() => {
+                const { year, month, day } = parseLocalDate(query.date);
+                return { isoDate: query.date, year, month, day };
+            })()
+            : getLocalDateParts(observationDate, timezone);
     const weekday = new Date(`${localDate.isoDate}T12:00:00Z`).getUTCDay();
     const vara = getVaraBySlug(weekdayMap[weekday]);
-    const latitude = preset?.latitude ?? query.latitude ?? 25.3176;
-    const longitude = preset?.longitude ?? query.longitude ?? 82.9739;
+    const latitude = preset?.latitude ?? query.latitude;
+    const longitude = preset?.longitude ?? query.longitude;
+    if (latitude === undefined || longitude === undefined) {
+        throw new Error("Vedic Clock requires latitude and longitude when no preset city is selected");
+    }
+
     const region = preset?.region ?? null;
     const locationName = preset?.name ?? "Current coordinates";
     const computedPanchanga = getComputedPanchanga(observationDate);
@@ -154,10 +172,22 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
         longitude,
         timezone,
     );
-    const { muhurtas, currentMuhurtaIndex } = buildMuhurtas(sunriseMinutes, currentLocalMinutes);
+    const { muhurtas, currentMuhurtaIndex, minutesSinceSunrise } = buildMuhurtas(sunriseMinutes, currentLocalMinutes);
+    const kalaSegments = buildKalaSegments(sunriseMinutes, sunsetMinutes, currentLocalMinutes);
+    const currentKalaIndex = kalaSegments.find((segment) => segment.isActive)?.index ?? 1;
+    const currentLocalDateTime = query.datetime
+        ? query.datetime
+        : formatLocalDateTime({
+            year: localDate.year,
+            month: localDate.month,
+            day: localDate.day,
+            hour: Math.floor(currentLocalMinutes / 60),
+            minute: currentLocalMinutes % 60,
+        });
 
     return {
         requestedDate: localDate.isoDate,
+        requestedDateTime: currentLocalDateTime,
         location: {
             kind: preset ? "preset" : "coordinates",
             name: locationName,
@@ -183,7 +213,7 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
                 slug: nakshatra?.slug ?? "unknown",
                 name: nakshatra?.name ?? "Unknown nakshatra",
                 sanskritName: nakshatra?.sanskritName ?? null,
-                summary: nakshatra?.summary ?? "Nakshatra data is not yet available.",
+                summary: nakshatra?.description ?? "Nakshatra data is not yet available.",
             },
             yoga,
             karana,
@@ -191,11 +221,16 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
         clock: {
             mode: "fixed-48-minute",
             currentLocalTime: formatMinutes(currentLocalMinutes),
+            currentLocalDateTime,
             sunriseTime: formatMinutes(sunriseMinutes),
             sunsetTime: formatMinutes(sunsetMinutes),
             dayLengthMinutes,
+            minutesSinceSunrise,
+            cycleProgress: getCycleProgress(sunriseMinutes, currentLocalMinutes),
             currentMuhurtaIndex,
+            currentKalaIndex,
             muhurtas,
+            kalaSegments,
         },
         provenance: [
             {

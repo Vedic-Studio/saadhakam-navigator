@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getConceptBySlug } from "@/data/concepts";
+import { buildUrl, resolveLexiconCanonicalPath } from "@/lib/seo";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -31,18 +32,22 @@ export async function generateMetadata({
     return { title: "Sanskrit Word Not Found" };
   }
 
+  const canonicalUrl = buildUrl(
+    resolveLexiconCanonicalPath(word.slug, Boolean(concept)),
+  );
+
   return {
     title: `${word.wordEnglish} in Sanskrit: Etymology, Meaning & Scriptural Usage | Sadhaka`,
     description: concept
       ? `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings.`
       : `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings in Sanatan Dharma.`,
     alternates: {
-      canonical: `https://www.opensadhaka.com/learn/sanskrit/${word.slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: `${word.wordEnglish} in Sanskrit`,
       description: `Lexicon-style breakdown of ${word.wordEnglish}: etymology, transliteration, usage, and scriptural context.`,
-      url: `https://www.opensadhaka.com/learn/sanskrit/${word.slug}`,
+      url: canonicalUrl,
     },
   };
 }
@@ -73,12 +78,16 @@ export default async function SanskritLexiconPage({
     })),
   };
 
+  const canonicalUrl = buildUrl(
+    resolveLexiconCanonicalPath(word.slug, Boolean(concept)),
+  );
+
   const definedTermSchema = {
     "@context": "https://schema.org",
     "@type": "DefinedTerm",
     name: word.wordEnglish,
     description: word.summary,
-    url: `https://www.opensadhaka.com/learn/sanskrit/${word.slug}`,
+    url: canonicalUrl,
     inDefinedTermSet: "https://www.opensadhaka.com/learn/sanskrit",
   };
 

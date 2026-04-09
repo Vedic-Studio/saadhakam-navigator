@@ -16,7 +16,9 @@
  * top corners of the frame.
  */
 
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
+import type { VedicClockResponse } from "@/lib/vedic-clock";
+import { KALA_SEGMENTS, timeToMinutes } from "@/lib/vedic-clock/interactive";
 
 interface MuhurtaSegment {
     index: number;
@@ -26,17 +28,60 @@ interface MuhurtaSegment {
     isActive: boolean;
 }
 
+type KalaSegment = VedicClockResponse["clock"]["kalaSegments"][number];
+
 interface VedicMuhurtaDialProps {
     muhurtas: MuhurtaSegment[];
+    kalaSegments: KalaSegment[];
     currentLocalTime: string;
     sunriseTime: string;
     sunsetTime: string;
     currentMuhurtaIndex: number;
     muhurtaNames: { name: string; devanagari: string; deity: string }[];
+    hoveredMuhurtaIndex?: number | null;
+    hoveredKalaIndex?: number | null;
+    onMuhurtaSelect?: (index: number) => void;
+    onMuhurtaHover?: (index: number | null) => void;
+    onKalaSelect?: (index: number) => void;
+    onKalaHover?: (index: number | null) => void;
+    onScrubPreview?: (cycleProgress: number) => void;
+    onScrubCommit?: (cycleProgress: number) => void;
+    onScrubCancel?: () => void;
+    onScrubStateChange?: (isDragging: boolean) => void;
+    reducedMotion?: boolean;
     size?: number;
 }
 
 const TAU = Math.PI * 2;
+
+export function getCycleProgressFromPoint(input: {
+    clientX: number;
+    clientY: number;
+    rect: Pick<DOMRect, "left" | "top" | "width" | "height">;
+    size: number;
+    cx: number;
+    cy: number;
+    minRadius: number;
+    maxRadius: number;
+    startOffset: number;
+}) {
+    const localX = ((input.clientX - input.rect.left) / input.rect.width) * input.size;
+    const localY = ((input.clientY - input.rect.top) / input.rect.height) * input.size;
+    const dx = localX - input.cx;
+    const dy = localY - input.cy;
+    const distance = Math.hypot(dx, dy);
+    if (!Number.isFinite(distance)) {
+        return null;
+    }
+
+    if (distance < input.minRadius || distance > input.maxRadius) {
+        return null;
+    }
+
+    const rawAngle = Math.atan2(dy, dx);
+    const progress = ((rawAngle - input.startOffset) % TAU + TAU) % TAU / TAU;
+    return Number.isFinite(progress) ? progress : null;
+}
 
 function polar(cx: number, cy: number, r: number, angleRad: number) {
     return {
@@ -68,30 +113,31 @@ function arcPath(
     ].join(" ");
 }
 
-function timeToMinutes(time: string) {
-    const [h, m] = time.split(":").map(Number);
-    return h * 60 + m;
-}
-
 const ROMAN = ["XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"];
-
-// Four day-periods. Arc spans are approximate equal quarters of the civil day.
-const CATURYAMA = [
-    { name: "Prātaḥ", devanagari: "प्रातःकाल" },
-    { name: "Madhyāhna", devanagari: "मध्याह्न" },
-    { name: "Sāyam", devanagari: "सायंकाल" },
-    { name: "Niśītha", devanagari: "निशीथ" },
-];
 
 export function VedicMuhurtaDial({
     muhurtas,
+    kalaSegments,
     currentLocalTime,
     sunriseTime,
     sunsetTime,
     currentMuhurtaIndex,
     muhurtaNames,
+    hoveredMuhurtaIndex = null,
+    hoveredKalaIndex = null,
+    onMuhurtaSelect,
+    onMuhurtaHover,
+    onKalaSelect,
+    onKalaHover,
+    onScrubPreview,
+    onScrubCommit,
+    onScrubCancel,
+    onScrubStateChange,
+    reducedMotion = false,
     size = 620,
 }: VedicMuhurtaDialProps) {
+    const svgRef = useRef<SVGSVGElement | null>(null);
+    const draggingRef = useRef(false);
     const cx = size / 2;
     const cy = size / 2;
 
@@ -123,15 +169,6 @@ export function VedicMuhurtaDial({
         return startOffset + fraction * TAU;
     }, [currentLocalTime, sunriseTime, startOffset]);
 
-    // Sunset fraction (for the moon marker and caturyāma anchoring).
-    const sunsetFraction = useMemo(() => {
-        const sunriseMin = timeToMinutes(sunriseTime);
-        const sunsetMin = timeToMinutes(sunsetTime);
-        let delta = sunsetMin - sunriseMin;
-        if (delta <= 0) delta += 1440;
-        return delta / 1440;
-    }, [sunriseTime, sunsetTime]);
-
     // Seeded mandala star field
     const stars = useMemo(() => {
         const out: { x: number; y: number; r: number; opacity: number }[] = [];
@@ -155,34 +192,103 @@ export function VedicMuhurtaDial({
     // weighted by day/night balance. Day halves: prātaḥ (sunrise..midday),
     // madhyāhna (midday..sunset). Night halves: sāyam (sunset..midnight),
     // niśītha (midnight..next sunrise).
-    const caturyamaArcs = useMemo(() => {
-        const half = sunsetFraction / 2;
-        const nightHalf = (1 - sunsetFraction) / 2;
-        const p0 = 0;
-        const p1 = half;
-        const p2 = sunsetFraction;
-        const p3 = sunsetFraction + nightHalf;
-        const p4 = 1;
-        return [
-            { ...CATURYAMA[0], start: p0, end: p1, phase: "day" as const },
-            { ...CATURYAMA[1], start: p1, end: p2, phase: "day" as const },
-            { ...CATURYAMA[2], start: p2, end: p3, phase: "night" as const },
-            { ...CATURYAMA[3], start: p3, end: p4, phase: "night" as const },
-        ];
-    }, [sunsetFraction]);
+    const caturyamaArcs = useMemo(
+        () =>
+            kalaSegments.map((segment, index) => ({
+                ...segment,
+                name: segment.name || KALA_SEGMENTS[index]?.name,
+                devanagari: segment.devanagari || KALA_SEGMENTS[index]?.devanagari,
+                start: segment.startCycleMinute / 1440,
+                end: segment.endCycleMinute / 1440,
+            })),
+        [kalaSegments],
+    );
 
     // Sun / moon medallion positions — outside the dial, 9 o'clock & 3 o'clock
     const sunMedallionX = cx - frameOuter - 6;
     const moonMedallionX = cx + frameOuter + 6;
     const medallionR = 24;
 
+    function getCycleProgressFromClientPoint(clientX: number, clientY: number) {
+        const svg = svgRef.current;
+        if (!svg) return null;
+
+        const rect = svg.getBoundingClientRect();
+        return getCycleProgressFromPoint({
+            clientX,
+            clientY,
+            rect,
+            size,
+            cx,
+            cy,
+            minRadius: core,
+            maxRadius: muhurtaOuter + 24,
+            startOffset,
+        });
+    }
+
+    function updateScrub(clientX: number, clientY: number) {
+        const progress = getCycleProgressFromClientPoint(clientX, clientY);
+        if (progress == null) {
+            onScrubCancel?.();
+            return;
+        }
+        onScrubPreview?.(progress);
+    }
+
+    function handlePointerDown(event: React.PointerEvent<SVGSVGElement>) {
+        const progress = getCycleProgressFromClientPoint(event.clientX, event.clientY);
+        if (progress == null) return;
+
+        draggingRef.current = true;
+        event.currentTarget.setPointerCapture(event.pointerId);
+        onScrubStateChange?.(true);
+        onScrubPreview?.(progress);
+    }
+
+    function handlePointerMove(event: React.PointerEvent<SVGSVGElement>) {
+        if (!draggingRef.current) return;
+        updateScrub(event.clientX, event.clientY);
+    }
+
+    function handlePointerUp(event: React.PointerEvent<SVGSVGElement>) {
+        if (!draggingRef.current) return;
+        draggingRef.current = false;
+        const progress = getCycleProgressFromClientPoint(event.clientX, event.clientY);
+        if (progress != null) {
+            onScrubCommit?.(progress);
+        } else {
+            onScrubCancel?.();
+        }
+        onScrubStateChange?.(false);
+        if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+            event.currentTarget.releasePointerCapture(event.pointerId);
+        }
+    }
+
+    function handlePointerCancel(event: React.PointerEvent<SVGSVGElement>) {
+        if (!draggingRef.current) return;
+        draggingRef.current = false;
+        onScrubCancel?.();
+        onScrubStateChange?.(false);
+        if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+            event.currentTarget.releasePointerCapture(event.pointerId);
+        }
+    }
+
     return (
         <svg
+            ref={svgRef}
             viewBox={`-${medallionR + 18} 0 ${size + 2 * (medallionR + 18)} ${size + 30}`}
             width="100%"
             height="100%"
             className="mx-auto max-w-full h-auto drop-shadow-[0_0_60px_rgba(245,158,11,0.22)]"
             aria-label="Vedic muhūrta dial with 30 segments from sunrise to sunrise"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerCancel}
+            style={{ touchAction: "none", userSelect: "none" }}
         >
             <defs>
                 {/* Brass rim — warm gold gradient with darker shadow band */}
@@ -265,10 +371,10 @@ export function VedicMuhurtaDial({
 
             {/* Top diyas — a pair of lamps flanking the crown of the dial */}
             <g transform={`translate(${cx - frameOuter * 0.72}, 18)`}>
-                <Diya />
+                <Diya reducedMotion={reducedMotion} />
             </g>
             <g transform={`translate(${cx + frameOuter * 0.72}, 18)`}>
-                <Diya />
+                <Diya reducedMotion={reducedMotion} />
             </g>
 
             {/* Outermost ornate brass frame */}
@@ -330,8 +436,31 @@ export function VedicMuhurtaDial({
                         <path
                             d={arcPath(cx, cy, yamaOuter, yamaInner, start, end)}
                             fill={yama.phase === "day" ? "url(#vmd-day-band)" : "url(#vmd-night-band)"}
-                            stroke="rgba(245,201,119,0.4)"
-                            strokeWidth={0.8}
+                            stroke={hoveredKalaIndex === yama.index || yama.isActive ? "#fde68a" : "rgba(245,201,119,0.4)"}
+                            strokeWidth={hoveredKalaIndex === yama.index || yama.isActive ? 1.4 : 0.8}
+                            style={{
+                                filter: hoveredKalaIndex === yama.index || yama.isActive ? "url(#vmd-soft-glow)" : undefined,
+                                transition: reducedMotion ? undefined : "all 220ms ease",
+                            }}
+                        />
+                        <path
+                            d={arcPath(cx, cy, yamaOuter + 8, yamaInner - 8, start, end)}
+                            fill="transparent"
+                            role="button"
+                            tabIndex={0}
+                            aria-label={`Jump to ${yama.name} kala`}
+                            onMouseEnter={() => onKalaHover?.(yama.index)}
+                            onMouseLeave={() => onKalaHover?.(null)}
+                            onFocus={() => onKalaHover?.(yama.index)}
+                            onBlur={() => onKalaHover?.(null)}
+                            onClick={() => onKalaSelect?.(yama.index)}
+                            onKeyDown={(event) => {
+                                if (event.key === "Enter" || event.key === " ") {
+                                    event.preventDefault();
+                                    onKalaSelect?.(yama.index);
+                                }
+                            }}
+                            style={{ cursor: onKalaSelect ? "pointer" : "default" }}
                         />
                         <text
                             x={p.x}
@@ -358,6 +487,8 @@ export function VedicMuhurtaDial({
                 const mid = start + segmentAngle / 2;
                 const meta = muhurtaNames[i];
                 const isActive = segment.isActive;
+                const isHovered = hoveredMuhurtaIndex === segment.index;
+                const isHighlighted = isActive || isHovered;
                 const fillId = isActive
                     ? "url(#vmd-active)"
                     : segment.phase === "day"
@@ -377,12 +508,31 @@ export function VedicMuhurtaDial({
                         <path
                             d={arcPath(cx, cy, muhurtaOuter, muhurtaInner, start, end)}
                             fill={fillId}
-                            stroke={isActive ? "#fde68a" : "rgba(245,201,119,0.35)"}
-                            strokeWidth={isActive ? 1.6 : 0.5}
+                            stroke={isHighlighted ? "#fde68a" : "rgba(245,201,119,0.35)"}
+                            strokeWidth={isHighlighted ? 1.6 : 0.5}
                             style={{
-                                filter: isActive ? "url(#vmd-glow)" : undefined,
-                                transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)",
+                                filter: isHighlighted ? "url(#vmd-glow)" : undefined,
+                                transition: reducedMotion ? undefined : "all 0.4s cubic-bezier(0.16,1,0.3,1)",
                             }}
+                        />
+                        <path
+                            d={arcPath(cx, cy, muhurtaOuter + 8, muhurtaInner - 8, start, end)}
+                            fill="transparent"
+                            role="button"
+                            tabIndex={0}
+                            aria-label={`Jump to muhūrta ${segment.index}`}
+                            onMouseEnter={() => onMuhurtaHover?.(segment.index)}
+                            onMouseLeave={() => onMuhurtaHover?.(null)}
+                            onFocus={() => onMuhurtaHover?.(segment.index)}
+                            onBlur={() => onMuhurtaHover?.(null)}
+                            onClick={() => onMuhurtaSelect?.(segment.index)}
+                            onKeyDown={(event) => {
+                                if (event.key === "Enter" || event.key === " ") {
+                                    event.preventDefault();
+                                    onMuhurtaSelect?.(segment.index);
+                                }
+                            }}
+                            style={{ cursor: onMuhurtaSelect ? "pointer" : "default" }}
                         />
                         <text
                             x={devPos.x}
@@ -390,11 +540,11 @@ export function VedicMuhurtaDial({
                             textAnchor="middle"
                             dominantBaseline="central"
                             fontSize={12}
-                            fill={isActive ? "#fffbeb" : "rgba(253, 230, 138, 0.85)"}
+                            fill={isHighlighted ? "#fffbeb" : "rgba(253, 230, 138, 0.85)"}
                             fontFamily="'Noto Serif Devanagari', serif"
                             transform={`rotate(${rotate + rotateAdjust} ${devPos.x} ${devPos.y})`}
                             style={{
-                                filter: isActive ? "drop-shadow(0 0 3px rgba(255,251,235,0.7))" : undefined,
+                                filter: isHighlighted ? "drop-shadow(0 0 3px rgba(255,251,235,0.7))" : undefined,
                             }}
                         >
                             {meta?.devanagari ?? ""}
@@ -406,9 +556,9 @@ export function VedicMuhurtaDial({
                             dominantBaseline="central"
                             fontSize={6.6}
                             letterSpacing="1"
-                            fill={isActive ? "#fff7ed" : "rgba(226, 200, 140, 0.65)"}
+                            fill={isHighlighted ? "#fff7ed" : "rgba(226, 200, 140, 0.65)"}
                             fontFamily="'Inter', sans-serif"
-                            fontWeight={isActive ? 700 : 500}
+                            fontWeight={isHighlighted ? 700 : 500}
                             transform={`rotate(${rotate + rotateAdjust} ${latPos.x} ${latPos.y})`}
                         >
                             {meta?.name.toUpperCase() ?? `M${segment.index}`}
@@ -470,12 +620,14 @@ export function VedicMuhurtaDial({
             {/* Star field inside mandala core */}
             {stars.map((s, i) => (
                 <circle key={`star-${i}`} cx={s.x} cy={s.y} r={s.r} fill="#fef3c7" opacity={s.opacity}>
-                    <animate
-                        attributeName="opacity"
-                        values={`${s.opacity};${s.opacity * 0.25};${s.opacity}`}
-                        dur={`${3 + (i % 5)}s`}
-                        repeatCount="indefinite"
-                    />
+                    {!reducedMotion ? (
+                        <animate
+                            attributeName="opacity"
+                            values={`${s.opacity};${s.opacity * 0.25};${s.opacity}`}
+                            dur={`${3 + (i % 5)}s`}
+                            repeatCount="indefinite"
+                        />
+                    ) : null}
                 </circle>
             ))}
 
@@ -564,9 +716,16 @@ export function VedicMuhurtaDial({
                             stroke="url(#vmd-brass-light)"
                             strokeWidth={3}
                             strokeLinecap="round"
+                            style={{ transition: reducedMotion ? undefined : "all 220ms cubic-bezier(0.16,1,0.3,1)" }}
                         />
-                        <circle cx={tip.x} cy={tip.y} r={4} fill="#fff7ed">
-                            <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite" />
+                        <circle
+                            cx={tip.x}
+                            cy={tip.y}
+                            r={4}
+                            fill="#fff7ed"
+                            style={{ transition: reducedMotion ? undefined : "all 220ms cubic-bezier(0.16,1,0.3,1)" }}
+                        >
+                            {!reducedMotion ? <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite" /> : null}
                         </circle>
                     </g>
                 );
@@ -667,17 +826,17 @@ export function VedicMuhurtaDial({
  * corners of the dial frame to evoke the crown diyas on traditional
  * temple clocks.
  */
-function Diya() {
+function Diya({ reducedMotion = false }: { reducedMotion?: boolean }) {
     return (
         <g>
             {/* Flame halo */}
             <ellipse cx={0} cy={-12} rx={6} ry={10} fill="url(#vmd-diya-flame)">
-                <animate attributeName="ry" values="10;12;10" dur="2.4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="1;0.85;1" dur="2.4s" repeatCount="indefinite" />
+                {!reducedMotion ? <animate attributeName="ry" values="10;12;10" dur="2.4s" repeatCount="indefinite" /> : null}
+                {!reducedMotion ? <animate attributeName="opacity" values="1;0.85;1" dur="2.4s" repeatCount="indefinite" /> : null}
             </ellipse>
             {/* Flame inner */}
             <ellipse cx={0} cy={-10} rx={2.5} ry={5} fill="#fef3c7">
-                <animate attributeName="ry" values="5;6;5" dur="2.4s" repeatCount="indefinite" />
+                {!reducedMotion ? <animate attributeName="ry" values="5;6;5" dur="2.4s" repeatCount="indefinite" /> : null}
             </ellipse>
             {/* Wick */}
             <line x1={0} y1={-4} x2={0} y2={0} stroke="#1c1006" strokeWidth={1} />

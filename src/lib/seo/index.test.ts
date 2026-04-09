@@ -7,6 +7,7 @@ import {
     buildUrl,
     buildPersonSchema,
     buildPlaceSchema,
+    resolveLexiconCanonicalPath,
     SPEAKABLE_SPEC,
     SITE_NAME,
     SITE_URL,
@@ -50,6 +51,36 @@ describe("seo helpers", () => {
 
         expect(meta.title).toBe("Test Page Title");
         expect(meta.title).not.toContain("Sadhaka");
+    });
+});
+
+describe("resolveLexiconCanonicalPath", () => {
+    it("points to the concept page when a matching concept exists", () => {
+        expect(resolveLexiconCanonicalPath("mantra", true)).toBe("/what-is-mantra");
+    });
+
+    it("stays on the lexicon page when no matching concept exists", () => {
+        expect(resolveLexiconCanonicalPath("ashtanga", false)).toBe(
+            "/learn/sanskrit/ashtanga",
+        );
+    });
+
+    it("preserves multi-hyphen slugs in both branches", () => {
+        expect(resolveLexiconCanonicalPath("kriya-yoga", true)).toBe(
+            "/what-is-kriya-yoga",
+        );
+        expect(resolveLexiconCanonicalPath("kriya-yoga", false)).toBe(
+            "/learn/sanskrit/kriya-yoga",
+        );
+    });
+
+    it("produces a fully-qualified canonical URL when passed through buildUrl", () => {
+        expect(buildUrl(resolveLexiconCanonicalPath("prasad", true))).toBe(
+            "https://www.opensadhaka.com/what-is-prasad",
+        );
+        expect(buildUrl(resolveLexiconCanonicalPath("ashtanga", false))).toBe(
+            "https://www.opensadhaka.com/learn/sanskrit/ashtanga",
+        );
     });
 });
 

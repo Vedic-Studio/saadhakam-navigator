@@ -36,6 +36,50 @@ export type GscDashboardData = {
     }>;
 };
 
+export type GscCtrAuditRow = {
+    clicks: number;
+    impressions: number;
+    ctr: number;
+    position: number;
+};
+
+export type GscSearchAppearanceRow = GscCtrAuditRow & {
+    appearance: string;
+};
+
+export type GscQueryCtrRow = GscCtrAuditRow & {
+    query: string;
+};
+
+export type GscPageCtrRow = GscCtrAuditRow & {
+    page: string;
+};
+
+export type GscQueryPageCtrRow = GscCtrAuditRow & {
+    query: string;
+    page: string;
+    expectedCtr: number;
+    ctrGap: number;
+    opportunityScore: number;
+};
+
+export type GscCtrAuditData = {
+    source: "gsc-ctr-audit";
+    siteUrl: string;
+    range: DateRange;
+    thresholds: {
+        minImpressions: number;
+        queryRowLimit: number;
+        pageRowLimit: number;
+        pairRowLimit: number;
+    };
+    overview: GscCtrAuditRow;
+    searchAppearance: GscSearchAppearanceRow[];
+    queryCtrOpportunities: GscQueryCtrRow[];
+    pageCtrOpportunities: GscPageCtrRow[];
+    queryPageOpportunities: GscQueryPageCtrRow[];
+};
+
 export type Ga4DashboardData = {
     source: "ga4";
     propertyId: string;
