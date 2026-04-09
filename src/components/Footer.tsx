@@ -78,29 +78,32 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-background text-foreground border-t border-border/50">
       <div className="container-padding mx-auto max-w-7xl py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <img
-                src="/favicon.svg"
-                alt="Sadhaka Logo"
-                className="w-10 h-10 rounded-full bg-secondary p-1"
-              />
-              <span className="font-display text-2xl font-semibold">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary/20 blur-md rounded-full shadow-primary/20" />
+                <img
+                  src="/favicon.svg"
+                  alt="Sadhaka Logo"
+                  className="relative w-10 h-10 rounded-full bg-background border border-border p-1.5 shadow-sm"
+                />
+              </div>
+              <span className="font-display text-2xl font-semibold tracking-tight">
                 Sadhaka
               </span>
             </div>
-            <p className="text-primary-foreground/70 mb-6 max-w-sm">
+            <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed">
               A respectful guide for seekers exploring the paths, philosophies, and
               practices of Sanatan Dharma — powered by authentic wisdom.
             </p>
 
             {/* Newsletter signup */}
-            <div>
-              <p className="text-sm font-medium mb-3">Subscribe to our newsletter</p>
+            <div className="glass-card p-6 rounded-2xl border-white/5 bg-white/[0.02]">
+              <p className="text-sm font-medium mb-4 text-foreground/90">Subscribe to our newsletter</p>
               <form onSubmit={handleSubmit} className="flex gap-2">
                 <div className="relative flex-1">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -109,14 +112,14 @@ export function Footer() {
                     placeholder="your@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-9 bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40"
+                    className="pl-9 bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-primary/30"
                     required
                   />
                 </div>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all active:scale-95"
                 >
                   {isSubmitting ? "..." : "Subscribe"}
                 </Button>
@@ -128,13 +131,13 @@ export function Footer() {
           {(Object.entries(footerLinks) as [string, { label: string; href: string }[]][]).map(
             ([key, links]) => (
               <div key={key}>
-                <h3 className="font-semibold mb-4 capitalize">{key}</h3>
-                <ul className="space-y-3">
+                <h3 className="font-display text-sm font-bold mb-6 uppercase tracking-widest text-foreground/40">{key}</h3>
+                <ul className="space-y-4">
                   {links.map((link) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
+                        className="text-muted-foreground hover:text-primary transition-all duration-200 text-sm inline-block translate-x-0 hover:translate-x-1"
                       >
                         {link.label}
                       </Link>
@@ -148,20 +151,24 @@ export function Footer() {
         </div>
 
         {/* Sanskrit quote */}
-        <div className="text-center py-8 border-t border-primary-foreground/10">
-          <p className="font-sanskrit text-xl text-secondary mb-2">
+        <div className="text-center py-12 border-t border-border/20">
+          <p className="font-sanskrit text-2xl text-primary/80 mb-3 animate-pulse-slow">
             सर्वे भवन्तु सुखिनः
           </p>
-          <p className="text-sm text-primary-foreground/60 italic">
-            "May all beings be happy" — Ancient Vedic blessing
+          <p className="text-sm text-muted-foreground italic max-w-md mx-auto leading-relaxed">
+            "May all beings be happy, may all beings be free from fear, may all see what is auspicious."
           </p>
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 border-t border-primary-foreground/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
+        <div className="pt-8 border-t border-border/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-medium text-muted-foreground/50 uppercase tracking-tighter">
             <p>© {new Date().getFullYear()} Sadhaka. Created with reverence for the tradition.</p>
-            <p>Content drawn from authentic sources within Sanatan Dharma.</p>
+            <div className="flex gap-6">
+              <Link href="/brand-facts" className="hover:text-foreground transition-colors">Brand Facts</Link>
+              <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
+              <Link href="/terms" className="hover:text-foreground transition-colors">Terms</Link>
+            </div>
           </div>
         </div>
       </div>
