@@ -26,12 +26,49 @@ type RequestSource =
     | { cityId: string; latitude?: never; longitude?: never; timezone?: never }
     | { cityId?: never; latitude: string; longitude: string; timezone: string };
 
+const LIVE_TICK_INTERVAL_MS = 1000;
+const LIVE_RESYNC_INTERVAL_MS = 5 * 60 * 1000;
+
+function buildDerivedPayload(basePayload: VedicClockResponse, displayDateTime: string, allowCrossDate = false) {
+    if (!allowCrossDate && getDatePart(displayDateTime) !== basePayload.requestedDate) {
+        return null;
+    }
+
+    const displayMinutes = timeToMinutes(getTimePart(displayDateTime));
+    const sunriseMinutes = timeToMinutes(basePayload.clock.sunriseTime);
+    const sunsetMinutes = timeToMinutes(basePayload.clock.sunsetTime);
+    const minutesSinceSunrise = getElapsedSinceSunrise(sunriseMinutes, displayMinutes);
+    const muhurtas = buildMuhurtaSegments(sunriseMinutes, displayMinutes);
+    const kalaSegments = buildKalaSegments(sunriseMinutes, sunsetMinutes, displayMinutes);
+    const currentMuhurtaIndex = getMuhurtaIndex(minutesSinceSunrise);
+    const currentKalaIndex = kalaSegments.find((segment) => segment.isActive)?.index ?? 1;
+
+    return {
+        ...basePayload,
+        requestedDate: getDatePart(displayDateTime),
+        requestedDateTime: displayDateTime,
+        clock: {
+            ...basePayload.clock,
+            currentLocalDateTime: displayDateTime,
+            currentLocalTime: getTimePart(displayDateTime),
+            minutesSinceSunrise,
+            cycleProgress: minutesSinceSunrise / 1440,
+            currentMuhurtaIndex,
+            currentKalaIndex,
+            muhurtas,
+            kalaSegments,
+        },
+    };
+}
+
 export function VedicClockClient() {
     const [requestSource, setRequestSource] = useState<RequestSource>({ cityId: "varanasi" });
     const [payload, setPayload] = useState<VedicClockResponse | null>(null);
     const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [draftDateTime, setDraftDateTime] = useState<string | null>(null);
+    const [isLiveNow, setIsLiveNow] = useState(true);
+    const [liveTickMs, setLiveTickMs] = useState(() => Date.now());
     const [dateInput, setDateInput] = useState<string>("");
     const [timeInput, setTimeInput] = useState<string>("");
     const [hoveredMuhurtaIndex, setHoveredMuhurtaIndex] = useState<number | null>(null);
@@ -40,6 +77,8 @@ export function VedicClockClient() {
     const [reducedMotion, setReducedMotion] = useState(false);
     const latestRequestIdRef = useRef(0);
     const activeRequestControllerRef = useRef<AbortController | null>(null);
+    const lastServerSyncAtRef = useRef<number>(0);
+    const previousLiveMinutesSinceSunriseRef = useRef<number | null>(null);
 
     const loadPayload = useCallback(
         async (source: RequestSource, datetime?: string) => {
@@ -77,6 +116,8 @@ export function VedicClockClient() {
                     return;
                 }
                 setPayload(nextPayload);
+                lastServerSyncAtRef.current = Date.now();
+                previousLiveMinutesSinceSunriseRef.current = nextPayload.clock.minutesSinceSunrise;
                 setDraftDateTime(null);
                 setStatus("ready");
             } catch (error) {
@@ -114,19 +155,46 @@ export function VedicClockClient() {
     }, []);
 
     useEffect(() => {
-        const current = draftDateTime ?? payload?.requestedDateTime;
-        if (!current) return;
-        setDateInput(getDatePart(current));
-        setTimeInput(getTimePart(current));
-    }, [draftDateTime, payload?.requestedDateTime]);
+        if (!isLiveNow) return;
+
+        const interval = window.setInterval(() => {
+            setLiveTickMs(Date.now());
+        }, LIVE_TICK_INTERVAL_MS);
+
+        return () => {
+            window.clearInterval(interval);
+        };
+    }, [isLiveNow]);
 
     const commitDateTime = useCallback(
         async (nextDateTime: string) => {
+            setIsLiveNow(false);
             setDraftDateTime(nextDateTime);
             await loadPayload(requestSource, nextDateTime);
         },
         [loadPayload, requestSource],
     );
+
+    const liveDateTime = useMemo(() => {
+        if (!payload || !isLiveNow) return null;
+        const elapsedMinutes = Math.max(0, Math.floor((liveTickMs - lastServerSyncAtRef.current) / 60_000));
+        return shiftLocalDateTime(payload.requestedDateTime, elapsedMinutes);
+    }, [isLiveNow, liveTickMs, payload]);
+
+    const liveSeconds = useMemo(() => {
+        if (!payload || !isLiveNow) return 0;
+        const elapsedMs = liveTickMs - lastServerSyncAtRef.current;
+        return Math.floor((elapsedMs / 1000) % 60);
+    }, [isLiveNow, liveTickMs, payload]);
+
+    const displayDateTime = isLiveNow ? liveDateTime ?? payload?.requestedDateTime ?? "" : draftDateTime ?? payload?.requestedDateTime ?? "";
+
+    useEffect(() => {
+        const current = displayDateTime || payload?.requestedDateTime;
+        if (!current) return;
+        setDateInput(getDatePart(current));
+        setTimeInput(getTimePart(current));
+    }, [displayDateTime, payload?.requestedDateTime]);
 
     async function useMyLocation() {
         if (!navigator.geolocation) {
@@ -146,6 +214,7 @@ export function VedicClockClient() {
                         longitude: String(position.coords.longitude),
                         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
                     };
+                    setIsLiveNow(true);
                     setRequestSource(nextSource);
                     setDraftDateTime(null);
                 } catch (error) {
@@ -161,36 +230,33 @@ export function VedicClockClient() {
         );
     }
 
-    const displayDateTime = draftDateTime ?? payload?.requestedDateTime ?? "";
-    const previewPayload = useMemo(() => {
-        if (!payload || !draftDateTime || getDatePart(draftDateTime) !== payload.requestedDate) return null;
+    useEffect(() => {
+        if (!payload || !isLiveNow || !liveDateTime || status === "loading") return;
 
-        const displayMinutes = timeToMinutes(getTimePart(draftDateTime));
+        const currentMinutes = timeToMinutes(getTimePart(liveDateTime));
         const sunriseMinutes = timeToMinutes(payload.clock.sunriseTime);
-        const sunsetMinutes = timeToMinutes(payload.clock.sunsetTime);
-        const minutesSinceSunrise = getElapsedSinceSunrise(sunriseMinutes, displayMinutes);
-        const muhurtas = buildMuhurtaSegments(sunriseMinutes, displayMinutes);
-        const kalaSegments = buildKalaSegments(sunriseMinutes, sunsetMinutes, displayMinutes);
-        const currentMuhurtaIndex = getMuhurtaIndex(minutesSinceSunrise);
-        const currentKalaIndex = kalaSegments.find((segment) => segment.isActive)?.index ?? 1;
+        const liveMinutesSinceSunrise = getElapsedSinceSunrise(sunriseMinutes, currentMinutes);
+        const crossedSunriseWindow =
+            previousLiveMinutesSinceSunriseRef.current != null &&
+            liveMinutesSinceSunrise < previousLiveMinutesSinceSunriseRef.current;
+        const crossedLocalDate = getDatePart(liveDateTime) !== payload.requestedDate;
+        const needsPeriodicResync = Date.now() - lastServerSyncAtRef.current >= LIVE_RESYNC_INTERVAL_MS;
 
-        return {
-            ...payload,
-            requestedDate: getDatePart(draftDateTime),
-            requestedDateTime: draftDateTime,
-            clock: {
-                ...payload.clock,
-                currentLocalDateTime: draftDateTime,
-                currentLocalTime: getTimePart(draftDateTime),
-                minutesSinceSunrise,
-                cycleProgress: minutesSinceSunrise / 1440,
-                currentMuhurtaIndex,
-                currentKalaIndex,
-                muhurtas,
-                kalaSegments,
-            },
-        };
-    }, [draftDateTime, payload]);
+        previousLiveMinutesSinceSunriseRef.current = liveMinutesSinceSunrise;
+
+        if (crossedLocalDate || crossedSunriseWindow || needsPeriodicResync) {
+            void loadPayload(requestSource);
+        }
+    }, [isLiveNow, liveDateTime, loadPayload, payload, requestSource, status]);
+
+    const previewPayload = useMemo(() => {
+        if (!payload) return null;
+        if (isLiveNow && liveDateTime) {
+            return buildDerivedPayload(payload, liveDateTime, true);
+        }
+        if (!draftDateTime) return null;
+        return buildDerivedPayload(payload, draftDateTime, false);
+    }, [draftDateTime, isLiveNow, liveDateTime, payload]);
 
     const activePayload = previewPayload ?? payload;
     const displayMuhurtaIndex = hoveredMuhurtaIndex ?? activePayload?.clock.currentMuhurtaIndex ?? null;
@@ -233,6 +299,8 @@ export function VedicClockClient() {
     );
 
     const resetToNow = useCallback(async () => {
+        setIsLiveNow(true);
+        setLiveTickMs(Date.now());
         setDraftDateTime(null);
         await loadPayload(requestSource);
     }, [loadPayload, requestSource]);
@@ -240,6 +308,7 @@ export function VedicClockClient() {
     const previewCycleProgress = useCallback(
         (cycleProgress: number) => {
             if (!payload) return;
+            setIsLiveNow(false);
             const nextDateTime = buildDateTimeFromCycleOffset(
                 payload.requestedDate,
                 payload.clock.sunriseTime,
@@ -315,6 +384,7 @@ export function VedicClockClient() {
                                 onClick={() => {
                                     setHoveredMuhurtaIndex(null);
                                     setHoveredKalaIndex(null);
+                                    setIsLiveNow(true);
                                     setDraftDateTime(null);
                                     setRequestSource({ cityId: city.id });
                                 }}
@@ -396,6 +466,9 @@ export function VedicClockClient() {
                             </span>
                             <span className="hidden h-3 w-px bg-amber-500/20 sm:block" />
                             <span className="font-mono text-amber-100/50">{activePayload.requestedDateTime}</span>
+                            {isLiveNow && (
+                                <span className="font-mono text-amber-100/35">:{String(liveSeconds).padStart(2, "0")}</span>
+                            )}
                             {status === "loading" && payload && (
                                 <span className="inline-flex items-center gap-1.5 text-amber-200/70">
                                     <Loader2 className="h-3.5 w-3.5 animate-spin" /> Syncing
@@ -476,6 +549,7 @@ export function VedicClockClient() {
                                 onScrubCancel={cancelCyclePreview}
                                 onScrubStateChange={setIsDragging}
                                 reducedMotion={reducedMotion}
+                                secondsOffset={isLiveNow ? liveSeconds : 0}
                             />
                         </div>
 

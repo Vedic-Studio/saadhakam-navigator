@@ -49,6 +49,7 @@ interface VedicMuhurtaDialProps {
     onScrubCancel?: () => void;
     onScrubStateChange?: (isDragging: boolean) => void;
     reducedMotion?: boolean;
+    secondsOffset?: number;
     size?: number;
 }
 
@@ -134,6 +135,7 @@ export function VedicMuhurtaDial({
     onScrubCancel,
     onScrubStateChange,
     reducedMotion = false,
+    secondsOffset = 0,
     size = 620,
 }: VedicMuhurtaDialProps) {
     const svgRef = useRef<SVGSVGElement | null>(null);
@@ -159,15 +161,15 @@ export function VedicMuhurtaDial({
     const startOffset = -Math.PI / 2;
     const segmentAngle = TAU / 30;
 
-    // Time hand rotation based on fraction of elapsed minutes since sunrise.
+    // Time hand rotation based on fraction of elapsed minutes (+ seconds) since sunrise.
     const handAngle = useMemo(() => {
         const nowMin = timeToMinutes(currentLocalTime);
         const sunriseMin = timeToMinutes(sunriseTime);
         let delta = nowMin - sunriseMin;
         if (delta < 0) delta += 1440;
-        const fraction = (delta % 1440) / 1440;
+        const fraction = (delta + secondsOffset / 60) / 1440;
         return startOffset + fraction * TAU;
-    }, [currentLocalTime, sunriseTime, startOffset]);
+    }, [currentLocalTime, sunriseTime, startOffset, secondsOffset]);
 
     // Seeded mandala star field
     const stars = useMemo(() => {
@@ -515,6 +517,16 @@ export function VedicMuhurtaDial({
                                 transition: reducedMotion ? undefined : "all 0.4s cubic-bezier(0.16,1,0.3,1)",
                             }}
                         />
+                        {/* Live muhurta progress sweep — shows elapsed portion of active segment */}
+                        {isActive && secondsOffset > 0 && handAngle > start && (
+                            <path
+                                d={arcPath(cx, cy, muhurtaOuter - 1, muhurtaInner + 1, start, Math.min(handAngle, end))}
+                                fill="rgba(251, 191, 36, 0.12)"
+                                stroke="rgba(251, 191, 36, 0.3)"
+                                strokeWidth={0.5}
+                                style={{ filter: "url(#vmd-soft-glow)" }}
+                            />
+                        )}
                         <path
                             d={arcPath(cx, cy, muhurtaOuter + 8, muhurtaInner - 8, start, end)}
                             fill="transparent"
@@ -554,8 +566,8 @@ export function VedicMuhurtaDial({
                             y={latPos.y}
                             textAnchor="middle"
                             dominantBaseline="central"
-                            fontSize={6.6}
-                            letterSpacing="1"
+                            fontSize={5.2}
+                            letterSpacing="0"
                             fill={isHighlighted ? "#fff7ed" : "rgba(226, 200, 140, 0.65)"}
                             fontFamily="'Inter', sans-serif"
                             fontWeight={isHighlighted ? 700 : 500}
@@ -645,26 +657,51 @@ export function VedicMuhurtaDial({
                 ॐ
             </text>
 
-            {/* Live time */}
-            <text
-                x={cx}
-                y={cy - core * 0.02}
-                textAnchor="middle"
-                dominantBaseline="central"
-                fontSize={core * 0.34}
-                fill="#fff7ed"
-                fontFamily="'Playfair Display', serif"
-                fontWeight={700}
-                letterSpacing="2"
-                style={{ filter: "drop-shadow(0 0 6px rgba(255, 247, 237, 0.25))" }}
-            >
-                {currentLocalTime}
-            </text>
+            {/* Live time — split into fixed-position elements to prevent layout shift */}
+            {(() => {
+                const timeBaseline = cy + core * 0.05;
+                const timeFontSize = core * 0.34;
+                const secsFontSize = core * 0.18;
+                const [hh = "00", mm = "00"] = currentLocalTime.split(":");
+                const ss = String(secondsOffset).padStart(2, "0");
+                // Fixed positions: HH right-aligned, colon centered, MM left-aligned, :SS further right
+                const colonX = cx - core * 0.02;
+                const hhX = colonX - core * 0.06;
+                const mmX = colonX + core * 0.06;
+                const secsColonX = mmX + core * 0.22;
+                const timeFilter = "drop-shadow(0 0 6px rgba(255, 247, 237, 0.25))";
+                const timeFont = "'Playfair Display', serif";
+                const tabNums = { fontVariantNumeric: "tabular-nums" as const };
+                return (
+                    <g>
+                        <text x={hhX} y={timeBaseline} textAnchor="end" dominantBaseline="alphabetic"
+                            fontSize={timeFontSize} fill="#fff7ed" fontFamily={timeFont} fontWeight={700}
+                            style={{ ...tabNums, filter: timeFilter }}>
+                            {hh}
+                        </text>
+                        <text x={colonX} y={timeBaseline} textAnchor="middle" dominantBaseline="alphabetic"
+                            fontSize={timeFontSize} fill="#fff7ed" fontFamily={timeFont} fontWeight={700}
+                            style={{ filter: timeFilter }}>
+                            :
+                        </text>
+                        <text x={mmX} y={timeBaseline} textAnchor="start" dominantBaseline="alphabetic"
+                            fontSize={timeFontSize} fill="#fff7ed" fontFamily={timeFont} fontWeight={700}
+                            style={{ ...tabNums, filter: timeFilter }}>
+                            {mm}
+                        </text>
+                        <text x={secsColonX} y={timeBaseline} textAnchor="start" dominantBaseline="alphabetic"
+                            fontSize={secsFontSize} fill="rgba(255,247,237,0.5)" fontFamily={timeFont} fontWeight={700}
+                            style={tabNums}>
+                            :{ss}
+                        </text>
+                    </g>
+                );
+            })()}
 
             {/* Active muhūrta name in Devanagari */}
             <text
                 x={cx}
-                y={cy + core * 0.3}
+                y={cy + core * 0.22}
                 textAnchor="middle"
                 dominantBaseline="central"
                 fontSize={core * 0.2}
@@ -678,7 +715,7 @@ export function VedicMuhurtaDial({
             {/* Muhūrta index + deity */}
             <text
                 x={cx}
-                y={cy + core * 0.52}
+                y={cy + core * 0.44}
                 textAnchor="middle"
                 dominantBaseline="central"
                 fontSize={core * 0.1}
@@ -691,7 +728,7 @@ export function VedicMuhurtaDial({
             </text>
             <text
                 x={cx}
-                y={cy + core * 0.68}
+                y={cy + core * 0.6}
                 textAnchor="middle"
                 dominantBaseline="central"
                 fontSize={core * 0.085}

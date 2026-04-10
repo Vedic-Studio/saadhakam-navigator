@@ -1,5 +1,5 @@
-import { describe, expect, it, beforeEach, vi } from "vitest";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { describe, expect, it, beforeEach, afterEach, vi } from "vitest";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { VedicClockClient } from "@/components/jyotish/VedicClockClient";
 import type { VedicClockResponse } from "@/lib/vedic-clock";
 import * as interactive from "@/lib/vedic-clock/interactive";
@@ -134,10 +134,163 @@ function setDialBounds(element: Element) {
 describe("VedicClockClient", () => {
     beforeEach(() => {
         vi.restoreAllMocks();
+        vi.useRealTimers();
         Object.defineProperty(window, "matchMedia", {
             writable: true,
             value: vi.fn().mockReturnValue({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }),
         });
+    });
+
+    afterEach(() => {
+        vi.useRealTimers();
+    });
+
+    it("advances the displayed time locally while live mode is active", async () => {
+        vi.useFakeTimers();
+        vi.setSystemTime(new Date("2026-04-09T05:41:00+05:30"));
+        vi.spyOn(global, "fetch").mockImplementation(() => mockFetchResponse(basePayload));
+
+        render(<VedicClockClient />);
+
+        await act(async () => {
+            await Promise.resolve();
+        });
+
+        expect(screen.getAllByText("Varanasi").length).toBeGreaterThan(0);
+        expect(screen.getAllByText("2026-04-09T05:41").length).toBeGreaterThan(0);
+
+        await act(async () => {
+            vi.advanceTimersByTime(60_000);
+        });
+
+        expect(screen.getAllByText("2026-04-09T05:42").length).toBeGreaterThan(0);
+    });
+
+    it("stops live mode after manual interaction until Now is pressed again", async () => {
+        vi.useFakeTimers();
+        vi.setSystemTime(new Date("2026-04-09T05:41:00+05:30"));
+        const manualPayload: VedicClockResponse = {
+            ...basePayload,
+            requestedDateTime: "2026-04-09T05:56",
+            clock: {
+                ...basePayload.clock,
+                currentLocalDateTime: "2026-04-09T05:56",
+                currentLocalTime: "05:56",
+                minutesSinceSunrise: 15,
+                cycleProgress: 15 / 1440,
+            },
+        };
+
+        const fetchMock = vi
+            .spyOn(global, "fetch")
+            .mockImplementationOnce(() => mockFetchResponse(basePayload))
+            .mockImplementationOnce(() => mockFetchResponse(manualPayload));
+
+        render(<VedicClockClient />);
+
+        await act(async () => {
+            await Promise.resolve();
+        });
+
+        expect(screen.getAllByText("Varanasi").length).toBeGreaterThan(0);
+        fireEvent.click(screen.getByRole("button", { name: /\+15 min/i }));
+
+        await act(async () => {
+            await Promise.resolve();
+        });
+
+        expect(screen.getAllByText("2026-04-09T05:56").length).toBeGreaterThan(0);
+
+        await act(async () => {
+            vi.advanceTimersByTime(5 * 60_000);
+        });
+
+        expect(screen.getAllByText("2026-04-09T05:56").length).toBeGreaterThan(0);
+        expect(fetchMock).toHaveBeenCalledTimes(2);
+    });
+
+    it("resumes live ticking when Now is pressed after manual mode", async () => {
+        vi.useFakeTimers();
+        vi.setSystemTime(new Date("2026-04-09T05:41:00+05:30"));
+        const manualPayload: VedicClockResponse = {
+            ...basePayload,
+            requestedDateTime: "2026-04-09T05:56",
+            clock: {
+                ...basePayload.clock,
+                currentLocalDateTime: "2026-04-09T05:56",
+                currentLocalTime: "05:56",
+                minutesSinceSunrise: 15,
+                cycleProgress: 15 / 1440,
+            },
+        };
+
+        const fetchMock = vi
+            .spyOn(global, "fetch")
+            .mockImplementationOnce(() => mockFetchResponse(basePayload))
+            .mockImplementationOnce(() => mockFetchResponse(manualPayload))
+            .mockImplementationOnce(() => mockFetchResponse(basePayload));
+
+        render(<VedicClockClient />);
+
+        await act(async () => {
+            await Promise.resolve();
+        });
+
+        expect(screen.getAllByText("Varanasi").length).toBeGreaterThan(0);
+        fireEvent.click(screen.getByRole("button", { name: /\+15 min/i }));
+        await act(async () => {
+            await Promise.resolve();
+        });
+        expect(screen.getAllByText("2026-04-09T05:56").length).toBeGreaterThan(0);
+
+        fireEvent.click(screen.getByRole("button", { name: /^now$/i }));
+
+        await act(async () => {
+            await Promise.resolve();
+        });
+        expect(fetchMock).toHaveBeenCalledTimes(3);
+
+        expect(screen.getAllByText("2026-04-09T05:41").length).toBeGreaterThan(0);
+
+        await act(async () => {
+            vi.advanceTimersByTime(60_000);
+        });
+
+        expect(screen.getAllByText("2026-04-09T05:42").length).toBeGreaterThan(0);
+    });
+
+    it("shows live seconds that tick every second and hides them in manual mode", async () => {
+        vi.useFakeTimers();
+        vi.setSystemTime(new Date("2026-04-09T05:41:00+05:30"));
+        vi.spyOn(global, "fetch").mockImplementation(() => mockFetchResponse(basePayload));
+
+        render(<VedicClockClient />);
+
+        await act(async () => {
+            await Promise.resolve();
+        });
+
+        // Initially shows :00
+        expect(screen.getByText(":00")).toBeDefined();
+
+        // Advance 5 seconds — should show :05
+        await act(async () => {
+            vi.advanceTimersByTime(5_000);
+        });
+        expect(screen.getByText(":05")).toBeDefined();
+
+        // Advance to 30 seconds — should show :30
+        await act(async () => {
+            vi.advanceTimersByTime(25_000);
+        });
+        expect(screen.getByText(":30")).toBeDefined();
+
+        // Enter manual mode — seconds display should disappear
+        fireEvent.click(screen.getByRole("button", { name: /\+15 min/i }));
+        await act(async () => {
+            await Promise.resolve();
+        });
+        expect(screen.queryByText(":30")).toBeNull();
     });
 
     it("does not synthesize cross-date preview state from stale astronomy", async () => {
