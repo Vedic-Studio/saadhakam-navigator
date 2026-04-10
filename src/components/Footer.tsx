@@ -28,7 +28,7 @@ const footerLinks = {
     { label: "Mantras", href: "/mantras" },
     { label: "Stotras", href: "/stotras/shiva-tandava-stotram" },
     { label: "Jyotish", href: "/jyotish" },
-    { label: "Daily Guidance", href: "/jyotish/today" },
+    { label: "Panchang", href: "/panchang" },
     { label: "AI Tutor", href: "/app" },
   ],
   articles: [

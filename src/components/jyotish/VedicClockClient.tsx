@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { VedicClockResponse } from "@/lib/vedic-clock";
 import { vedicClockPresetCities } from "@/lib/vedic-clock";
+import { computeAuspiciousWindows } from "@/lib/vedic-clock/auspicious-windows";
+import { computeInauspiciousKalas } from "@/lib/vedic-clock/inauspicious-kalas";
 import { muhurtaNames, getMuhurtaName } from "@/lib/vedic-clock/muhurta-names";
 import {
     buildDateTimeFromCycleOffset,
@@ -42,6 +44,9 @@ function buildDerivedPayload(basePayload: VedicClockResponse, displayDateTime: s
     const kalaSegments = buildKalaSegments(sunriseMinutes, sunsetMinutes, displayMinutes);
     const currentMuhurtaIndex = getMuhurtaIndex(minutesSinceSunrise);
     const currentKalaIndex = kalaSegments.find((segment) => segment.isActive)?.index ?? 1;
+    const weekday = new Date(`${getDatePart(displayDateTime)}T12:00:00Z`).getUTCDay();
+    const inauspiciousKalas = computeInauspiciousKalas(weekday, sunriseMinutes, sunsetMinutes, displayMinutes);
+    const auspiciousWindows = computeAuspiciousWindows(sunriseMinutes, sunsetMinutes, displayMinutes);
 
     return {
         ...basePayload,
@@ -57,6 +62,8 @@ function buildDerivedPayload(basePayload: VedicClockResponse, displayDateTime: s
             currentKalaIndex,
             muhurtas,
             kalaSegments,
+            inauspiciousKalas,
+            auspiciousWindows,
         },
     };
 }

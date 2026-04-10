@@ -26,6 +26,13 @@ const categories = [
     color: "text-yellow-400",
   },
   {
+    title: "Daily Panchang",
+    description: "Live vara, tithi, nakshatra, auspicious windows, and caution periods",
+    href: "/panchang",
+    icon: Compass,
+    color: "text-orange-400",
+  },
+  {
     title: "Deities",
     description: "Shiva, Vishnu, Lakshmi, Ganesha, and more",
     href: "/deities",

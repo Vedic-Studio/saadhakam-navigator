@@ -16,6 +16,8 @@ describe("buildVedicClockResponse", () => {
         expect(payload.location.name).toBe("Varanasi");
         expect(payload.clock.mode).toBe("fixed-48-minute");
         expect(payload.clock.muhurtas).toHaveLength(30);
+        expect(payload.clock.inauspiciousKalas).toHaveLength(3);
+        expect(payload.clock.auspiciousWindows).toHaveLength(4);
         expect(payload.provenance).toHaveLength(4);
         expect(payload.panchanga.vara.name).toBeTruthy();
         expect(toMinutes(payload.clock.sunriseTime)).toBeGreaterThanOrEqual(300);
@@ -73,9 +75,22 @@ describe("buildVedicClockResponse", () => {
         expect(payload.clock.cycleProgress).toBeCloseTo(1296 / 1440, 6);
         expect(payload.clock.currentKalaIndex).toBeGreaterThanOrEqual(1);
         expect(payload.clock.kalaSegments).toHaveLength(4);
+        expect(payload.clock.inauspiciousKalas.some((window) => window.isActive)).toBe(false);
+        expect(payload.clock.auspiciousWindows.filter((window) => window.isActive)).toHaveLength(0);
         expect(payload.clock.solarNoonTime).toBeTruthy();
         expect(payload.clock.sunriseDayStart.localDateTime).toBe("2026-04-08T05:43");
         expect(payload.clock.sunriseDayEnd.localDateTime).toBe("2026-04-09T05:42");
+    });
+
+    it("keeps auspicious and inauspicious windows aligned with current local time", () => {
+        const payload = buildVedicClockResponse(
+            { cityId: "varanasi", datetime: "2026-04-09T17:58" },
+            new Date("2026-04-09T12:28:00.000Z"),
+        );
+
+        expect(payload.clock.auspiciousWindows.filter((window) => window.isActive)).toHaveLength(1);
+        expect(payload.clock.auspiciousWindows.find((window) => window.isActive)?.name).toBe("Sayahna Sandhya");
+        expect(payload.clock.inauspiciousKalas.filter((kala) => kala.isActive)).toHaveLength(0);
     });
 
     it("supports non-hour-offset timezones without breaking requested local datetime", () => {

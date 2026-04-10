@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor" stroke="none" aria-hidden="true">
+  <!-- Base plinth (extends wider than the pyramid body) -->
+  <rect x="4" y="88" width="92" height="5" />
+
+  <!-- Stepped gopuram body with A-portal cut out via even-odd fill -->
+  <path fill-rule="evenodd" d="M 12 88 V 79 H 17 V 70 H 22 V 61 H 27 V 52 H 32 V 43 H 37 V 34 H 63 V 43 H 68 V 52 H 73 V 61 H 78 V 70 H 83 V 79 H 88 V 88 H 12 Z M 32 86 L 50 40 L 68 86 Z" />
+
+  <!-- Finial platform (between body top and amalaka) -->
+  <rect x="44" y="31" width="12" height="3" />
+
+  <!-- Amalaka (ribbed disc) -->
+  <ellipse cx="50" cy="27" rx="11" ry="2.5" />
+
+  <!-- Kalasha (pot) -->
+  <circle cx="50" cy="20" r="3" />
+
+  <!-- Finial tip / flame -->
+  <circle cx="50" cy="13" r="2" />
+</svg>

@@ -4,6 +4,8 @@ import { nakshatras } from "@/data/nakshatras";
 import { getPresetCityById } from "@/lib/vedic-clock/presets";
 import type { VedicClockQuery, VedicClockResponse } from "@/lib/vedic-clock/schema";
 import { getComputedPanchanga, getSunriseDayWindow, getTimeZoneOffsetMinutes } from "@/lib/vedic-clock/astronomy";
+import { computeAuspiciousWindows } from "@/lib/vedic-clock/auspicious-windows";
+import { computeInauspiciousKalas } from "@/lib/vedic-clock/inauspicious-kalas";
 import {
     buildMuhurtaSegments,
     buildKalaSegments,
@@ -170,6 +172,8 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
     const dayLengthMinutes = sunriseDayWindow.dayLengthMinutes;
     const { muhurtas, currentMuhurtaIndex, minutesSinceSunrise } = buildMuhurtas(sunriseMinutes, currentLocalMinutes);
     const kalaSegments = buildKalaSegments(sunriseMinutes, sunsetMinutes, currentLocalMinutes);
+    const inauspiciousKalas = computeInauspiciousKalas(weekday, sunriseMinutes, sunsetMinutes, currentLocalMinutes);
+    const auspiciousWindows = computeAuspiciousWindows(sunriseMinutes, sunsetMinutes, currentLocalMinutes);
     const currentKalaIndex = kalaSegments.find((segment) => segment.isActive)?.index ?? 1;
     const currentLocalDateTime = query.datetime
         ? query.datetime
@@ -258,6 +262,8 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
             },
             muhurtas,
             kalaSegments,
+            inauspiciousKalas,
+            auspiciousWindows,
         },
         provenance: [
             {

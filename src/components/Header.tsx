@@ -47,6 +47,7 @@ const navSections: NavSection[] = [
   { type: "link", item: { label: "Practices", href: "/practical-spiritual-practices" } },
   { type: "link", item: { label: "Vedic Clock", href: "/vedic-clock" } },
   { type: "link", item: { label: "Jyotish", href: "/jyotish" } },
+  { type: "link", item: { label: "Panchang", href: "/panchang" } },
   {
     type: "group",
     group: {
@@ -69,7 +70,7 @@ const navSections: NavSection[] = [
         { label: "Stotras", href: "/stotras/shiva-tandava-stotram", description: "Access devotional hymns and recitation texts." },
         { label: "Sanskrit Dictionary", href: "/learn/sanskrit", description: "Study key Sanskrit terms and language basics." },
         { label: "Compare Paths", href: "/compare", description: "Contrast spiritual paths to find personal fit." },
-        { label: "Daily Guidance", href: "/jyotish/today", description: "Check today’s spiritual timing and orientation." },
+        { label: "Daily Guidance", href: "/panchang", description: "Check today’s spiritual timing and orientation." },
         { label: "AI Tutor", href: "/app", description: "Get guided help for questions, study, and practice." },
       ],
     },

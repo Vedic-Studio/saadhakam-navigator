@@ -133,6 +133,28 @@ export const VedicClockKalaSchema = z.object({
     isActive: z.boolean(),
 });
 
+export const InauspiciousKalaSchema = z.object({
+    name: z.string(),
+    devanagari: z.string(),
+    startTime: z.string(),
+    endTime: z.string(),
+    startMinutes: z.number().min(0).max(1439),
+    endMinutes: z.number().min(0).max(1439),
+    isActive: z.boolean(),
+});
+
+export const AuspiciousWindowSchema = z.object({
+    name: z.string(),
+    devanagari: z.string(),
+    description: z.string(),
+    startTime: z.string(),
+    endTime: z.string(),
+    startMinutes: z.number().min(0).max(1439),
+    endMinutes: z.number().min(0).max(1439),
+    isActive: z.boolean(),
+    isPast: z.boolean(),
+});
+
 export const VedicClockSolarEventSchema = z.object({
     localDate: z.string(),
     localTime: z.string(),
@@ -170,6 +192,8 @@ export const VedicClockResponseSchema = z.object({
         nextSunrise: VedicClockSolarEventSchema,
         muhurtas: z.array(VedicClockMuhuratSchema).length(30),
         kalaSegments: z.array(VedicClockKalaSchema).length(4),
+        inauspiciousKalas: z.array(InauspiciousKalaSchema).length(3),
+        auspiciousWindows: z.array(AuspiciousWindowSchema).length(4),
     }),
     provenance: z.array(
         z.object({

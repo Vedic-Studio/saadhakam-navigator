@@ -73,6 +73,11 @@ const nextConfig: NextConfig = {
                 destination: "/vedanta-vs-buddhism",
                 permanent: true,
             },
+            {
+                source: "/jyotish/today",
+                destination: "/panchang",
+                permanent: true,
+            },
         ];
 
         const dynamicRedirects = concepts.map((concept) => ({
