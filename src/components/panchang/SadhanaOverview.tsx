@@ -15,9 +15,9 @@ export function SadhanaOverview({ guidance }: { guidance: SadhanaGuidance }) {
     return (
         <section className="rounded-3xl border border-border/60 bg-card p-6 shadow-sm">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-orange-400">Sadhana guidance</p>
-            <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            <h3 className="mt-2 text-xl font-medium tracking-tight md:text-2xl lg:w-4/5 text-foreground leading-[1.3]">
                 {guidance.headline}
-            </h2>
+            </h3>
             <div className="mt-4 flex flex-wrap gap-2">
                 {guidance.chips.map((chip) => (
                     <Badge key={chip.label} variant="outline" className={cn("h-auto whitespace-normal px-3 py-1.5 text-left", toneClasses[chip.tone])}>

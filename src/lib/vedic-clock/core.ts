@@ -3,7 +3,10 @@ import { tithis, yogas } from "@/data/panchang";
 import { nakshatras } from "@/data/nakshatras";
 import { getPresetCityById } from "@/lib/vedic-clock/presets";
 import type { VedicClockQuery, VedicClockResponse } from "@/lib/vedic-clock/schema";
-import { getComputedPanchanga, getSunriseDayWindow, getTimeZoneOffsetMinutes } from "@/lib/vedic-clock/astronomy";
+import { getComputedPanchanga, getSunriseDayWindow, getTimeZoneOffsetMinutes, getMoonEvents, getLahiriAyanamsha } from "@/lib/vedic-clock/astronomy";
+import { findNextTransition } from "@/lib/vedic-clock/transitions";
+import { getHinduCalendarContext } from "@/lib/vedic-clock/hindu-calendar";
+import { getRashiBySlug, rashis } from "@/data/rashis";
 import { computeAuspiciousWindows } from "@/lib/vedic-clock/auspicious-windows";
 import { computeInauspiciousKalas } from "@/lib/vedic-clock/inauspicious-kalas";
 import {
@@ -98,11 +101,7 @@ function buildObservationDate(
 }
 
 function buildMuhurtas(sunriseMinutes: number, currentLocalMinutes: number) {
-    // Compute how far into the sunrise-anchored 24-hour cycle the current
-    // local moment sits. `currentLocalMinutes` is always a time-of-day in
-    // [0, 1440). The cycle starts at `sunriseMinutes` and wraps around once.
     const elapsedSinceSunrise = getElapsedSinceSunrise(sunriseMinutes, currentLocalMinutes);
-
     const muhurtas = buildMuhurtaSegments(sunriseMinutes, currentLocalMinutes);
 
     return {
@@ -161,11 +160,46 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
 
     const region = preset?.region ?? null;
     const locationName = preset?.name ?? "Current coordinates";
-    const computedPanchanga = getComputedPanchanga(observationDate);
+    const ayanamsha = getLahiriAyanamsha(observationDate);
+    const computedPanchanga = getComputedPanchanga(observationDate, ayanamsha);
     const tithi = getTithiBySlug(getTithiSlugFromIndex(computedPanchanga.tithiIndex));
     const nakshatra = getNakshatraBySlug(getNakshatraSlugFromIndex(computedPanchanga.nakshatraIndex));
-    const yoga = yogas[computedPanchanga.yogaIndex] ?? yogas[0];
-    const karana = getKaranaNameFromHalfTithiIndex(computedPanchanga.karanaIndex);
+    const yogaName = yogas[computedPanchanga.yogaIndex] ?? yogas[0];
+    const karanaName = getKaranaNameFromHalfTithiIndex(computedPanchanga.karanaIndex);
+    
+    const yoga = {
+        slug: yogaName.toLowerCase().replace(/\s+/g, '-'),
+        name: yogaName,
+        sanskritName: null,
+        summary: `${yogaName} is a Yoga in the panchang system.`
+    };
+    
+    const karana = {
+        slug: karanaName.toLowerCase().replace(/\s+/g, '-'),
+        name: karanaName,
+        sanskritName: null,
+        summary: `${karanaName} is a Karana (half tithi) in the panchang system.`
+    };
+    
+    const rashiIndex = Math.floor(computedPanchanga.longitudes.lunarLongitude / 30);
+    const rashiDef = rashis[rashiIndex] || rashis[0];
+    const rashi = {
+        slug: rashiDef.slug,
+        name: rashiDef.name,
+        sanskritName: rashiDef.sanskritName,
+        lunarLongitude: computedPanchanga.longitudes.lunarLongitude
+    };
+    
+    const hinduCalendar = getHinduCalendarContext(observationDate, computedPanchanga.longitudes.solarLongitude, computedPanchanga.tithiIndex);
+    
+    const transitions = {
+        tithi: findNextTransition(observationDate, timezone, p => p.tithiIndex, idx => getTithiBySlug(getTithiSlugFromIndex(idx))?.name ?? "Unknown", ayanamsha),
+        nakshatra: findNextTransition(observationDate, timezone, p => p.nakshatraIndex, idx => getNakshatraBySlug(getNakshatraSlugFromIndex(idx))?.name ?? "Unknown", ayanamsha),
+        yoga: findNextTransition(observationDate, timezone, p => p.yogaIndex, idx => yogas[idx] ?? yogas[0], ayanamsha),
+        karana: findNextTransition(observationDate, timezone, p => p.karanaIndex, idx => getKaranaNameFromHalfTithiIndex(idx), ayanamsha),
+    };
+
+    const moonEvents = getMoonEvents(observationDate, latitude, longitude, timezone);
     const sunriseDayWindow = getSunriseDayWindow(observationDate, latitude, longitude, timezone);
     const sunriseMinutes = sunriseDayWindow.sunriseToday.minutes;
     const sunsetMinutes = sunriseDayWindow.sunsetToday.minutes;
@@ -196,6 +230,7 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
             longitude,
             timezone,
         },
+        hinduCalendar,
         panchanga: {
             vara: {
                 slug: vara?.slug ?? "unknown",
@@ -217,7 +252,9 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
             },
             yoga,
             karana,
+            rashi,
         },
+        transitions,
         clock: {
             mode: "fixed-48-minute",
             currentLocalTime: formatMinutes(currentLocalMinutes),
@@ -225,6 +262,8 @@ export function buildVedicClockResponse(query: VedicClockQuery, now = new Date()
             sunriseTime: formatMinutes(sunriseMinutes),
             sunsetTime: formatMinutes(sunsetMinutes),
             solarNoonTime: sunriseDayWindow.solarNoonToday.localTime,
+            moonrise: moonEvents.moonrise,
+            moonset: moonEvents.moonset,
             dayLengthMinutes,
             minutesSinceSunrise,
             cycleProgress: getCycleProgress(sunriseMinutes, currentLocalMinutes),

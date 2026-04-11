@@ -3,6 +3,9 @@ export {
     AuspiciousWindowSchema,
     formatVedicClockSchemaError,
     InauspiciousKalaSchema,
+    HinduCalendarSchema,
+    PanchangTransitionsSchema,
+    RashiSchema,
     VedicClockQuerySchema,
     VedicClockResponseSchema,
 } from "@/lib/vedic-clock/schema";

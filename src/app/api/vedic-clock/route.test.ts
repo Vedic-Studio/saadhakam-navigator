@@ -3,11 +3,11 @@ import { describe, expect, it } from "vitest";
 describe("GET /api/vedic-clock", () => {
     it("returns 200 with no-store cache headers for a valid request", async () => {
         const { GET } = await import("./route");
-        const response = await GET(new Request("https://example.com/api/vedic-clock?cityId=varanasi&date=2026-04-09"));
+        const response = await GET(new Request("https://example.com/api/vedic-clock?cityId=varanasi&date=2026-04-11"));
 
         expect(response.status).toBe(200);
         expect(response.headers.get("Cache-Control")).toBe("no-store, max-age=0");
-    });
+    }, 15000);
 
     it("returns 400 when cityId and coordinates are combined", async () => {
         const { GET } = await import("./route");

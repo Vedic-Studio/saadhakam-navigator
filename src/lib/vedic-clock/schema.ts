@@ -112,6 +112,37 @@ export const VedicClockPanchangaFieldSchema = z.object({
     summary: z.string(),
 });
 
+export const PanchangLimbTransitionSchema = z.object({
+    currentName: z.string(),
+    currentIndex: z.number(),
+    endsAt: z.string(),
+    endsAtDateTime: z.string(),
+    nextName: z.string(),
+    nextIndex: z.number(),
+});
+
+export const PanchangTransitionsSchema = z.object({
+    tithi: PanchangLimbTransitionSchema,
+    nakshatra: PanchangLimbTransitionSchema,
+    yoga: PanchangLimbTransitionSchema,
+    karana: PanchangLimbTransitionSchema,
+});
+
+export const HinduCalendarSchema = z.object({
+    monthName: z.string(),
+    monthSanskrit: z.string(),
+    paksha: z.enum(["Shukla", "Krishna"]),
+    samvatYear: z.number(),
+    samvatName: z.string(),
+});
+
+export const RashiSchema = z.object({
+    slug: z.string(),
+    name: z.string(),
+    sanskritName: z.string(),
+    lunarLongitude: z.number(),
+});
+
 export const VedicClockMuhuratSchema = z.object({
     index: z.number().int().min(1).max(30),
     label: z.string(),
@@ -166,13 +197,16 @@ export const VedicClockResponseSchema = z.object({
     requestedDate: z.string(),
     requestedDateTime: z.string(),
     location: VedicClockLocationSchema,
+    hinduCalendar: HinduCalendarSchema,
     panchanga: z.object({
         vara: VedicClockPanchangaFieldSchema,
         tithi: VedicClockPanchangaFieldSchema,
         nakshatra: VedicClockPanchangaFieldSchema,
-        yoga: z.string(),
-        karana: z.string(),
+        yoga: VedicClockPanchangaFieldSchema,
+        karana: VedicClockPanchangaFieldSchema,
+        rashi: RashiSchema,
     }),
+    transitions: PanchangTransitionsSchema,
     clock: z.object({
         mode: z.literal("fixed-48-minute"),
         currentLocalTime: z.string(),
@@ -180,6 +214,8 @@ export const VedicClockResponseSchema = z.object({
         sunriseTime: z.string(),
         sunsetTime: z.string(),
         solarNoonTime: z.string(),
+        moonrise: VedicClockSolarEventSchema.nullable(),
+        moonset: VedicClockSolarEventSchema.nullable(),
         dayLengthMinutes: z.number().int(),
         minutesSinceSunrise: z.number().min(0).max(1439),
         cycleProgress: z.number().min(0).max(1),

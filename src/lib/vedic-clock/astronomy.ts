@@ -1,4 +1,4 @@
-import { Body, DefineStar, EclipticLongitude, SunPosition } from "astronomy-engine";
+import { Body, DefineStar, EclipticLongitude, SunPosition, SearchRiseSet, Observer } from "astronomy-engine";
 
 export interface AstronomicalSunWindow {
     sunriseMinutes: number;
@@ -283,15 +283,54 @@ export function getSunriseDayWindow(observationDate: Date, latitude: number, lon
     };
 }
 
+export function getMoonEvents(observationDate: Date, latitude: number, longitude: number, timeZone: string): {
+    moonrise: SolarEventReference | null;
+    moonset: SolarEventReference | null;
+} {
+    const observer = new Observer(latitude, longitude, 0);
+    const localDate = getLocalDateParts(observationDate, timeZone);
+    
+    // We look for events starting from the localized midnight.
+    const offsetMinutes = getTimeZoneOffsetMinutes(localDate.year, localDate.month, localDate.day, timeZone);
+    const midnightUtc = new Date(Date.UTC(localDate.year, localDate.month - 1, localDate.day, 0, 0, 0) - offsetMinutes * 60000);
+    
+    // We look for events within the next 24 hours of local time
+    const searchMoonrise = SearchRiseSet(Body.Moon, observer, 1, midnightUtc, 1);
+    const searchMoonset = SearchRiseSet(Body.Moon, observer, -1, midnightUtc, 1);
+    
+    let moonrise: SolarEventReference | null = null;
+    let moonset: SolarEventReference | null = null;
+    
+    // Process moonrise
+    if (searchMoonrise) {
+        const riseDate = searchMoonrise.date;
+        const riseMinutesLocal = (riseDate.getTime() - midnightUtc.getTime()) / 60000;
+        if (riseMinutesLocal >= 0 && riseMinutesLocal < 1440) {
+            moonrise = buildEventReference(localDate.year, localDate.month, localDate.day, riseMinutesLocal, timeZone);
+        }
+    }
+    
+    // Process moonset
+    if (searchMoonset) {
+        const setDate = searchMoonset.date;
+        const setMinutesLocal = (setDate.getTime() - midnightUtc.getTime()) / 60000;
+        if (setMinutesLocal >= 0 && setMinutesLocal < 1440) {
+            moonset = buildEventReference(localDate.year, localDate.month, localDate.day, setMinutesLocal, timeZone);
+        }
+    }
+
+    return { moonrise, moonset };
+}
+
 export function getLahiriAyanamsha(date: Date) {
     ensureSpicaDefined();
     return normalizeDegrees(EclipticLongitude(Body.Star1, date) - LAHIRI_SPICA_TARGET_DEGREES);
 }
 
-export function getSiderealLongitudes(observationDate: Date) {
-    const ayanamsha = getLahiriAyanamsha(observationDate);
-    const solarLongitude = normalizeDegrees(SunPosition(observationDate).elon - ayanamsha);
-    const lunarLongitude = normalizeDegrees(EclipticLongitude(Body.Moon, observationDate) - ayanamsha);
+export function getSiderealLongitudes(observationDate: Date, ayanamsha?: number) {
+    const activeAyanamsha = ayanamsha ?? getLahiriAyanamsha(observationDate);
+    const solarLongitude = normalizeDegrees(SunPosition(observationDate).elon - activeAyanamsha);
+    const lunarLongitude = normalizeDegrees(EclipticLongitude(Body.Moon, observationDate) - activeAyanamsha);
 
     return {
         solarLongitude,
@@ -299,8 +338,8 @@ export function getSiderealLongitudes(observationDate: Date) {
     };
 }
 
-export function getComputedPanchanga(observationDate: Date): ComputedPanchanga {
-    const { solarLongitude, lunarLongitude } = getSiderealLongitudes(observationDate);
+export function getComputedPanchanga(observationDate: Date, ayanamsha?: number): ComputedPanchanga {
+    const { solarLongitude, lunarLongitude } = getSiderealLongitudes(observationDate, ayanamsha);
     const angularDifference = normalizeDegrees(lunarLongitude - solarLongitude);
 
     return {

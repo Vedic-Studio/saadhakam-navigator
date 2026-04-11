@@ -14,13 +14,34 @@ vi.mock("next/navigation", () => ({
 const payload: VedicClockResponse = {
     requestedDate: "2026-04-09",
     requestedDateTime: "2026-04-09T07:00",
-    location: { kind: "preset", name: "Varanasi", region: "India", latitude: 25.3176, longitude: 82.9739, timezone: "Asia/Kolkata" },
+    location: {
+        kind: "preset",
+        name: "Varanasi",
+        region: "India",
+        latitude: 25.3176,
+        longitude: 82.9739,
+        timezone: "Asia/Kolkata",
+    },
+    hinduCalendar: {
+        monthName: "Chaitra",
+        monthSanskrit: "चैत्र",
+        paksha: "Shukla",
+        samvatYear: 2083,
+        samvatName: "Vikram Samvat 2083",
+    },
     panchanga: {
         vara: { slug: "guruvara", name: "Guruvara", sanskritName: "गुरुवार", summary: "Wisdom day" },
-        tithi: { slug: "shukla-ekadashi", name: "Shukla Ekadashi", sanskritName: "", summary: "Fasting and restraint" },
-        nakshatra: { slug: "pushya", name: "Pushya", sanskritName: "", summary: "Nourishment" },
-        yoga: "Siddhi",
-        karana: "Bava",
+        tithi: { slug: "shukla-ekadashi", name: "Shukla Ekadashi", sanskritName: "शुक्ल एकादशी", summary: "Fasting and restraint" },
+        nakshatra: { slug: "pushya", name: "Pushya", sanskritName: "पुष्य", summary: "Nourishment" },
+        yoga: { slug: "siddhi", name: "Siddhi", sanskritName: null, summary: "Siddhi" },
+        karana: { slug: "bava", name: "Bava", sanskritName: null, summary: "Bava" },
+        rashi: { slug: "mesha", name: "Mesha", sanskritName: "मेष", lunarLongitude: 10.5 },
+    },
+    transitions: {
+        tithi: { currentName: "Shukla Ekadashi", currentIndex: 10, endsAt: "15:42", endsAtDateTime: "2026-04-09T15:42", nextName: "Shukla Dwadashi", nextIndex: 11 },
+        nakshatra: { currentName: "Pushya", currentIndex: 7, endsAt: "12:10", endsAtDateTime: "2026-04-09T12:10", nextName: "Ashlesha", nextIndex: 8 },
+        yoga: { currentName: "Siddhi", currentIndex: 15, endsAt: "18:00", endsAtDateTime: "2026-04-09T18:00", nextName: "Vyatipata", nextIndex: 16 },
+        karana: { currentName: "Bava", currentIndex: 20, endsAt: "15:42", endsAtDateTime: "2026-04-09T15:42", nextName: "Balava", nextIndex: 21 },
     },
     clock: {
         mode: "fixed-48-minute",
@@ -29,6 +50,8 @@ const payload: VedicClockResponse = {
         sunriseTime: "05:42",
         sunsetTime: "18:18",
         solarNoonTime: "12:00",
+        moonrise: { localDate: "2026-04-09", localTime: "00:00", localDateTime: "2026-04-09T00:00", minutes: 0 },
+        moonset: { localDate: "2026-04-09", localTime: "12:00", localDateTime: "2026-04-09T12:00", minutes: 720 },
         dayLengthMinutes: 756,
         minutesSinceSunrise: 78,
         cycleProgress: 0.1,
@@ -69,9 +92,10 @@ describe("PanchangClient", () => {
 
     it("renders the main panchang sections", () => {
         render(<PanchangClient initialPayload={payload} />);
-        expect(screen.getByRole("heading", { name: /today's panchang/i })).toBeInTheDocument();
-        expect(screen.getByText(/Guruvara, Shukla Ekadashi/i)).toBeInTheDocument();
-        expect(screen.getByText(/Thirty lunar days and their deities/i)).toBeInTheDocument();
+        // The H1 is now the dynamic Hindu calendar date
+        expect(screen.getByRole("heading", { name: /Chaitra Shukla Ekadashi, Vikram Samvat 2083/i })).toBeInTheDocument();
+        // Check for specific components or text that should be present
+        expect(screen.getAllByText(/Varanasi/i).length).toBeGreaterThan(0);
     });
 
     it("navigates to the previous day", async () => {

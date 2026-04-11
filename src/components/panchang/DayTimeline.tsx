@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { getMuhurtaName } from "@/lib/vedic-clock/muhurta-names";
 import type { VedicClockResponse } from "@/lib/vedic-clock";
 import { cn } from "@/lib/utils";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 function toCycleMinuteFromTime(time: string, sunriseMinute: number) {
     const [hours, minutes] = time.split(":").map(Number);
@@ -33,60 +34,72 @@ export function DayTimeline({ payload }: { payload: VedicClockResponse }) {
 
             <div className="overflow-x-auto pb-2">
                 <div className="min-w-[900px]">
-                    <svg viewBox="0 0 1200 180" className="w-full" role="img" aria-label="Panchang day timeline">
-                        {payload.clock.muhurtas.map((muhurta) => {
-                            const x = ((muhurta.index - 1) / 30) * 1200;
-                            const width = 1200 / 30;
-                            const meta = getMuhurtaName(muhurta.index);
-                            const isAuspicious = payload.clock.auspiciousWindows.some((window) => {
-                                const start = toCycleMinuteFromTime(window.startTime, sunriseMinute);
-                                const end = toCycleMinuteFromTime(window.endTime, sunriseMinute);
-                                const center = (muhurta.index - 0.5) * 48;
-                                return center >= start && center <= end;
-                            });
+                    <TooltipProvider delayDuration={0}>
+                        <svg viewBox="0 0 1200 180" className="w-full" role="img" aria-label="Panchang day timeline">
+                            {payload.clock.muhurtas.map((muhurta) => {
+                                const x = ((muhurta.index - 1) / 30) * 1200;
+                                const width = 1200 / 30;
+                                const meta = getMuhurtaName(muhurta.index);
+                                const isAuspicious = payload.clock.auspiciousWindows.some((window) => {
+                                    const start = toCycleMinuteFromTime(window.startTime, sunriseMinute);
+                                    const end = toCycleMinuteFromTime(window.endTime, sunriseMinute);
+                                    const center = (muhurta.index - 0.5) * 48;
+                                    return center >= start && center <= end;
+                                });
 
-                            return (
-                                <g key={muhurta.index}>
-                                    <rect
-                                        x={x}
-                                        y={50}
-                                        width={width - 2}
-                                        height={50}
-                                        rx={8}
-                                        className={cn(
-                                            muhurta.isActive
-                                                ? "fill-orange-400/80"
-                                                : isAuspicious
-                                                    ? "fill-amber-300/60"
-                                                    : muhurta.phase === "night"
-                                                        ? "fill-indigo-400/40"
-                                                        : "fill-slate-400/30",
-                                        )}
-                                    />
-                                    <text x={x + width / 2} y={35} textAnchor="middle" className="fill-muted-foreground text-[10px]">
-                                        {String(muhurta.index).padStart(2, "0")}
-                                    </text>
-                                    <title>{`${meta.name} · ${meta.deity} · ${muhurta.startTime}–${muhurta.endTime}`}</title>
-                                </g>
-                            );
-                        })}
+                                return (
+                                    <Tooltip key={muhurta.index}>
+                                        <TooltipTrigger asChild>
+                                            <g className="cursor-pointer hover:opacity-80 transition-opacity">
+                                                <rect
+                                                    x={x}
+                                                    y={50}
+                                                    width={width - 2}
+                                                    height={50}
+                                                    rx={8}
+                                                    className={cn(
+                                                        muhurta.isActive
+                                                            ? "fill-orange-400/80"
+                                                            : isAuspicious
+                                                                ? "fill-amber-300/60"
+                                                                : muhurta.phase === "night"
+                                                                    ? "fill-indigo-400/40"
+                                                                    : "fill-slate-400/30",
+                                                    )}
+                                                />
+                                                <text x={x + width / 2} y={35} textAnchor="middle" className="fill-muted-foreground text-[10px]">
+                                                    {String(muhurta.index).padStart(2, "0")}
+                                                </text>
+                                            </g>
+                                        </TooltipTrigger>
+                                        <TooltipContent className="shadow-lg border-border">
+                                            <p className="font-semibold text-orange-400">{meta.name}</p>
+                                            <p className="text-xs text-muted-foreground mt-0.5">Deity: {meta.deity}</p>
+                                            <p className="text-xs font-mono mt-1 pt-1 border-t border-border">{muhurta.startTime} – {muhurta.endTime}</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                );
+                            })}
 
-                        {overlays.map((period) => {
-                            const x = (period.startCycleMinute / 1440) * 1200;
-                            const width = (((period.endCycleMinute - period.startCycleMinute + 1440) % 1440) || (period.endCycleMinute - period.startCycleMinute)) / 1440 * 1200;
-                            return (
-                                <g key={period.name}>
-                                    <rect x={x} y={44} width={width} height={62} rx={8} fill="rgba(239,68,68,0.28)" />
-                                    <text x={x + 6} y={120} className="fill-red-300 text-[10px]">{period.name}</text>
-                                </g>
-                            );
-                        })}
+                            {overlays.map((period) => {
+                                const x = (period.startCycleMinute / 1440) * 1200;
+                                const width = (((period.endCycleMinute - period.startCycleMinute + 1440) % 1440) || (period.endCycleMinute - period.startCycleMinute)) / 1440 * 1200;
+                                return (
+                                    <g key={period.name} className="pointer-events-none">
+                                        <rect x={x} y={44} width={width} height={62} rx={8} fill="rgba(239,68,68,0.28)" />
+                                        <text x={x + 6} y={120} className="fill-red-300 text-[10px]">{period.name}</text>
+                                    </g>
+                                );
+                            })}
 
-                        <line x1={(currentCycleMinute / 1440) * 1200} x2={(currentCycleMinute / 1440) * 1200} y1={38} y2={112} stroke="#f97316" strokeWidth="3" />
-                        <text x={0} y={145} className="fill-muted-foreground text-xs">Sunrise {payload.clock.sunriseTime}</text>
-                        <text x={580} y={145} className="fill-muted-foreground text-xs">Sunset {payload.clock.sunsetTime}</text>
-                        <text x={1080} y={145} className="fill-muted-foreground text-xs">Next sunrise {payload.clock.nextSunrise.localTime}</text>
-                    </svg>
+                            <g className="pointer-events-none">
+                                <line x1={(currentCycleMinute / 1440) * 1200} x2={(currentCycleMinute / 1440) * 1200} y1={38} y2={112} stroke="#f97316" strokeWidth="3" />
+                            </g>
+                            <text x={0} y={145} className="fill-muted-foreground text-xs">Sunrise {payload.clock.sunriseTime}</text>
+                            <text x={580} y={145} className="fill-muted-foreground text-xs">Sunset {payload.clock.sunsetTime}</text>
+                            <text x={1080} y={145} className="fill-muted-foreground text-xs">Next sunrise {payload.clock.nextSunrise.localTime}</text>
+                        </svg>
+                    </TooltipProvider>
                 </div>
             </div>
         </section>

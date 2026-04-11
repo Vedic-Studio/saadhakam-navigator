@@ -5,32 +5,46 @@ import type { VedicClockResponse } from "@/lib/vedic-clock";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export function PanchangaTable({ payload }: { payload: VedicClockResponse }) {
+    const { panchanga, transitions } = payload;
     const rows = [
         {
             limb: "Vara",
             devanagari: "वार",
-            value: payload.panchanga.vara.name,
-            detail: payload.panchanga.vara.summary,
-            href: `/jyotish/panchang/varas/${payload.panchanga.vara.slug}`,
+            value: panchanga.vara.name,
+            detail: "Whole day",
+            href: `/jyotish/panchang/varas/${panchanga.vara.slug}`,
         },
         {
             limb: "Tithi",
             devanagari: "तिथि",
-            value: payload.panchanga.tithi.name,
-            detail: payload.panchanga.tithi.summary,
-            href: `/jyotish/panchang/tithis/${payload.panchanga.tithi.slug}`,
+            value: panchanga.tithi.name,
+            detail: transitions.tithi.endsAt ? `upto ${transitions.tithi.endsAt}, then ${transitions.tithi.nextName}` : panchanga.tithi.summary,
+            href: `/jyotish/panchang/tithis/${panchanga.tithi.slug}`,
         },
         {
             limb: "Nakshatra",
             devanagari: "नक्षत्र",
-            value: payload.panchanga.nakshatra.name,
-            detail: payload.panchanga.nakshatra.summary,
+            value: panchanga.nakshatra.name,
+            detail: transitions.nakshatra.endsAt ? `upto ${transitions.nakshatra.endsAt}, then ${transitions.nakshatra.nextName}` : panchanga.nakshatra.summary,
         },
-        { limb: "Yoga", devanagari: "योग", value: payload.panchanga.yoga, detail: "Daily combination quality in classical panchang." },
-        { limb: "Karana", devanagari: "करण", value: payload.panchanga.karana, detail: "Half-tithi action texture used in ritual timing." },
-        { limb: "Sunrise", devanagari: "सूर्योदय", value: payload.clock.sunriseTime, detail: "Local sunrise for this observer." },
-        { limb: "Solar noon", devanagari: "मध्यान्ह", value: payload.clock.solarNoonTime, detail: "Local solar midpoint of the day." },
-        { limb: "Sunset", devanagari: "सूर्यास्त", value: payload.clock.sunsetTime, detail: "Local sunset for this observer." },
+        {
+            limb: "Yoga",
+            devanagari: "योग",
+            value: panchanga.yoga.name,
+            detail: transitions.yoga.endsAt ? `upto ${transitions.yoga.endsAt}, then ${transitions.yoga.nextName}` : panchanga.yoga.summary,
+        },
+        {
+            limb: "Karana",
+            devanagari: "करण",
+            value: panchanga.karana.name,
+            detail: transitions.karana.endsAt ? `upto ${transitions.karana.endsAt}, then ${transitions.karana.nextName}` : panchanga.karana.summary,
+        },
+        {
+            limb: "Rashi",
+            devanagari: "राशि",
+            value: panchanga.rashi.name,
+            detail: `${panchanga.rashi.lunarLongitude.toFixed(2)}°`,
+        },
     ];
 
     return (
@@ -45,7 +59,7 @@ export function PanchangaTable({ payload }: { payload: VedicClockResponse }) {
                     <TableRow>
                         <TableHead>Limb</TableHead>
                         <TableHead>Value</TableHead>
-                        <TableHead className="hidden md:table-cell">Meaning</TableHead>
+                        <TableHead className="hidden md:table-cell">Transition / Details</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
