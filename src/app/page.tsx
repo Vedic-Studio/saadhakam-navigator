@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { buildFaqSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
+import { homepageFaqs } from "@/data/homepage-faqs";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileCTA } from "@/components/MobileCTA";
@@ -27,8 +29,17 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const faqSchema = buildFaqSchema(homepageFaqs);
+  const webPageSchema = buildWebPageSchema({
+    name: "Sadhaka | Encyclopedic Guide to Sanatan Dharma",
+    description: "Study Sanatan Dharma from primary texts. 73 articles, 60 philosophical comparisons, 18 Gita chapters with verse-level Sanskrit analysis.",
+    url: buildUrl("/"),
+  });
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
       <main className="overflow-x-hidden">
         {/* Hero — Dharma & Endurance */}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildBreadcrumbSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
@@ -21,8 +22,22 @@ export const metadata: Metadata = {
 };
 
 export default function VedicClockPage() {
+    const breadcrumbItems = [
+        { label: "Home", href: "/" },
+        { label: "Vedic Clock", href: "/vedic-clock" },
+    ];
+    const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
+    const webPageSchema = buildWebPageSchema({
+        name: "Vedic Clock — 30 Muhurtas from Sunrise",
+        description: "A live Vedic clock modelled on the Vikram Vaidika Ghati at Kashi. Thirty 48-minute muhurtas from local sunrise, presiding devatas, and panchanga aligned to your observer horizon.",
+        url: buildUrl("/vedic-clock"),
+        breadcrumbItems,
+    });
+
     return (
         <div className="flex min-h-screen flex-col bg-background text-foreground">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <Header />
             <main className="relative flex-1 overflow-hidden pt-28 pb-20">
                 {/* Ambient celestial backdrop */}

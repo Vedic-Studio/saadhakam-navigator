@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildBreadcrumbSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -74,22 +75,24 @@ export default async function VishnuSahasranamaVersePage({
   const firstN = verse.names[0]?.number;
   const lastN = verse.names[verse.names.length - 1]?.number;
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.opensadhaka.com/" },
-      { "@type": "ListItem", position: 2, name: "Vishnu Sahasranama", item: `https://www.opensadhaka.com/stotras/${SLUG}` },
-      { "@type": "ListItem", position: 3, name: `Shloka ${verse.verse}`, item: `https://www.opensadhaka.com/stotras/${SLUG}/${verse.slug}` },
-    ],
-  };
+  const pagePath = `/stotras/${SLUG}/${verse.slug}`;
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Vishnu Sahasranama", href: `/stotras/${SLUG}` },
+    { label: `Shloka ${verse.verse}`, href: pagePath },
+  ];
+  const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
+  const webPageSchema = buildWebPageSchema({
+    name: `Vishnu Sahasranama — Shloka ${verse.verse}`,
+    description: `Shloka ${verse.verse} of the Vishnu Sahasranama with Sanskrit, transliteration, and meaning for names ${firstN}–${lastN}.`,
+    url: buildUrl(pagePath),
+    breadcrumbItems,
+  });
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Header />
       <main className="flex-grow pt-24 pb-16">
         <div className="container-padding max-w-4xl mx-auto">

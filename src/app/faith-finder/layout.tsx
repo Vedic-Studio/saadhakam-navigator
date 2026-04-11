@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildToolSchemas, buildBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Faith Finder: A Four-Yoga Orientation Quiz | Sadhaka",
@@ -13,10 +14,28 @@ export const metadata: Metadata = {
   },
 };
 
+const toolSchemas = buildToolSchemas({
+  name: "Faith Finder",
+  description: "A seven-question interpretive quiz that maps temperament and practice preference to four classical yogic emphases: Jnana, Bhakti, Karma, and Raja.",
+  path: "/faith-finder",
+  category: "LifestyleApplication",
+});
+const breadcrumbSchema = buildBreadcrumbSchema([
+  { label: "Home", href: "/" },
+  { label: "Faith Finder", href: "/faith-finder" },
+]);
+
 export default function FaithFinderLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchemas.softwareApplication) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchemas.webPage) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {children}
+    </>
+  );
 }

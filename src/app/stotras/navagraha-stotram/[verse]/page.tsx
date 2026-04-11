@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildBreadcrumbSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -18,11 +19,18 @@ export async function generateMetadata({ params }: { params: Promise<{ verse: st
     const stotra = loadStotra("navagraha-stotram");
     const verse = getStotraVerseBySlug(stotra, verseSlug);
     if (!verse) return {};
+    const title = `Navagraha Stotram Verse ${verse.verse} | Sanskrit, Transliteration, Meaning`;
+    const description = verse.translation;
+    const canonical = `https://www.opensadhaka.com/stotras/navagraha-stotram/${verse.slug}`;
     return {
-        title: `Navagraha Stotram Verse ${verse.verse}`,
-        description: verse.translation,
-        alternates: {
-            canonical: `https://www.opensadhaka.com/stotras/navagraha-stotram/${verse.slug}`,
+        title,
+        description,
+        alternates: { canonical },
+        openGraph: {
+            title,
+            description,
+            url: canonical,
+            type: "article",
         },
     };
 }
@@ -34,8 +42,24 @@ export default async function NavagrahaVersePage({ params }: { params: Promise<{
     if (!verse) notFound();
     const adjacent = getAdjacentVerses(stotra, verse.verse);
 
+    const pagePath = `/stotras/navagraha-stotram/${verse.slug}`;
+    const breadcrumbItems = [
+        { label: "Home", href: "/" },
+        { label: "Navagraha Stotram", href: "/stotras/navagraha-stotram" },
+        { label: `Verse ${verse.verse}`, href: pagePath },
+    ];
+    const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
+    const webPageSchema = buildWebPageSchema({
+        name: `Navagraha Stotram — Verse ${verse.verse}`,
+        description: verse.translation,
+        url: buildUrl(pagePath),
+        breadcrumbItems,
+    });
+
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <Header />
             <main className="flex-grow pt-24 pb-16">
                 <div className="container-padding max-w-4xl mx-auto">

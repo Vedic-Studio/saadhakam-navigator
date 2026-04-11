@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildBreadcrumbSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -29,8 +30,24 @@ export default async function LalitaSahasranamaNamePage({ params }: { params: Pr
   const name = getSahasranamaNameBySlug(sahasranama, slug);
   if (!name) notFound();
 
+  const pagePath = `/stotras/lalita-sahasranama/${name.slug}`;
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Lalita Sahasranama", href: "/stotras/lalita-sahasranama" },
+    { label: `Name ${name.number}`, href: pagePath },
+  ];
+  const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
+  const webPageSchema = buildWebPageSchema({
+    name: `Lalita Sahasranama #${name.number} — ${name.transliteration}`,
+    description: `Lalita Sahasranama name ${name.number}: ${name.name}. ${name.meaning}`,
+    url: buildUrl(pagePath),
+    breadcrumbItems,
+  });
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <Header />
       <main className="flex-grow pt-24 pb-16">
         <div className="container-padding max-w-3xl mx-auto">

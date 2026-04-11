@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -20,8 +21,25 @@ export const metadata: Metadata = {
 };
 
 export default function YogaSutrasGuidePage() {
+    const schemas = {
+        article: buildArticleSchema({
+            headline: "The Yoga Sutras of Patanjali | The Complete Guide to the Mind",
+            description: "A deep dive into Patanjali's Yoga Sutras. Explore the Eight Limbs of Yoga (Ashtanga), the nature of concentration, and the path to mental liberation.",
+            url: "https://www.opensadhaka.com/yoga-sutras-complete-guide",
+            datePublished: "2026-03-20",
+            section: "Sacred Texts",
+        }),
+        breadcrumb: buildBreadcrumbSchema([
+            { label: "Home", href: "/" },
+            { label: "Sacred Texts", href: "/sacred-texts-teachings" },
+            { label: "The Yoga Sutras of Patanjali", href: "/yoga-sutras-complete-guide" },
+        ]),
+    };
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
       <ContentPageTracker slug="yoga-sutras-complete-guide" pillar="sacred-texts" />
       <Header />
 

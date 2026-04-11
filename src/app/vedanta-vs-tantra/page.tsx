@@ -1,8 +1,10 @@
 import { Header } from "@/components/Header";
+import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo";
 import { Footer } from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Metadata } from "next";
 import { Sparkles, ArrowRight, Flame, Eye } from "lucide-react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Vedanta vs Tantra: Escape vs Transformation | Sadhaka",
@@ -14,8 +16,25 @@ export const metadata: Metadata = {
 };
 
 export default function VedantaVsTantraPage() {
+    const schemas = {
+        article: buildArticleSchema({
+            headline: "Vedanta vs Tantra: Escape vs Transformation",
+            description: "Understand the two major frameworks of Indian spiritual practice. Is the world an illusion to be transcended (Vedanta) or a power to be harnessed (Tantra)?",
+            url: "https://www.opensadhaka.com/vedanta-vs-tantra",
+            datePublished: "2026-03-20",
+            section: "Ancient Wisdom",
+        }),
+        breadcrumb: buildBreadcrumbSchema([
+            { label: "Home", href: "/" },
+            { label: "Ancient Wisdom", href: "/ancient-wisdom-philosophies" },
+            { label: "Vedanta vs Tantra: Escape vs Transformation", href: "/vedanta-vs-tantra" },
+        ]),
+    };
+
     return (
         <div className="min-h-screen bg-background text-foreground">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
             <Header />
             <main className="pt-24 pb-20">
                 <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-primary/5 to-transparent relative overflow-hidden">
@@ -127,11 +146,11 @@ export default function VedantaVsTantraPage() {
                                     Your temperament (Guna) and current life stage (Ashrama) determine whether the path of
                                     withdrawal or the path of engagement will bear fruit for you.
                                 </p>
-                                <a href="/faith-finder">
+                                <Link href="/faith-finder">
                                     <button className="bg-orange-500 text-white font-bold px-10 h-16 rounded-2xl hover:scale-105 transition-transform flex items-center mx-auto shadow-xl shadow-orange-500/20">
                                         Discovery Your Path <ArrowRight className="ml-2 w-5 h-5" />
                                     </button>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

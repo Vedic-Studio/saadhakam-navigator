@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -20,8 +21,25 @@ export const metadata: Metadata = {
 };
 
 export default function YogaVsVedantaPage() {
+    const schemas = {
+        article: buildArticleSchema({
+            headline: "Yoga vs. Vedanta: What's the Real Difference?",
+            description: "Explore the relationship between Yoga and Vedanta. Learn how Yoga provides the practice and Vedanta provides the vision for spiritual liberation.",
+            url: "https://www.opensadhaka.com/difference-between-yoga-and-vedanta",
+            datePublished: "2026-03-20",
+            section: "Ancient Wisdom",
+        }),
+        breadcrumb: buildBreadcrumbSchema([
+            { label: "Home", href: "/" },
+            { label: "Ancient Wisdom", href: "/ancient-wisdom-philosophies" },
+            { label: "Yoga vs. Vedanta: What's the Real Difference?", href: "/difference-between-yoga-and-vedanta" },
+        ]),
+    };
+
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
             <ContentPageTracker slug="difference-between-yoga-and-vedanta" pillar="ancient-wisdom" />
             <Header />
 

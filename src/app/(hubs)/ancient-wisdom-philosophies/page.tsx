@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { buildBreadcrumbSchema } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
@@ -194,6 +195,10 @@ export default function AncientWisdomPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(buildBreadcrumbSchema([{ label: "Home", href: "/" }, { label: "Ancient Wisdom & Philosophies", href: "/ancient-wisdom-philosophies" }])) }}
             />
             <Header />
 

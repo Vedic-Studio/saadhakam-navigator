@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { getArticleBySlug, getPillarConfig } from "@/features/articles";
+import { buildArticleSchemas } from "@/lib/seo";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -77,8 +79,15 @@ const pillars = [
 ];
 
 export default function WhatIsSanatanDharmaPage() {
+    const article = getArticleBySlug("what-is-sanatan-dharma")!;
+    const pillar = getPillarConfig(article.pillar);
+    const schemas = buildArticleSchemas(article, pillar.label, pillar.href);
+
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.faq) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
             <ContentPageTracker slug="what-is-sanatan-dharma" pillar="ancient-wisdom" />
             <Header />
 
