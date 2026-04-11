@@ -10,20 +10,21 @@ interface CitySelectorProps {
     onCityChange: (cityId: string) => void;
     onUseMyLocation: () => void;
     disabled?: boolean;
+    compact?: boolean;
 }
 
 export const PANCHANG_CITY_STORAGE_KEY = "sadhaka:panchang:city-id";
 
-export function CitySelector({ cityId, cityName, onCityChange, onUseMyLocation, disabled = false }: CitySelectorProps) {
+export function CitySelector({ cityId, cityName, onCityChange, onUseMyLocation, disabled = false, compact = false }: CitySelectorProps) {
     return (
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className={compact ? "flex flex-wrap items-center gap-2" : "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"}>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-orange-400" />
-                <span>Showing timings for</span>
+                {compact ? null : <span>Showing timings for</span>}
                 <span className="font-medium text-foreground">{cityName ?? "your selected city"}</span>
             </div>
 
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+            <div className={compact ? "flex flex-wrap items-center gap-2" : "flex flex-col gap-2 sm:flex-row sm:items-center"}>
                 <select
                     aria-label="Select city"
                     className="h-10 rounded-md border border-border bg-background px-3 text-sm"

@@ -3,6 +3,7 @@ import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { VedicClockClient } from "@/components/jyotish/VedicClockClient";
 import type { VedicClockResponse } from "@/lib/vedic-clock";
 import * as interactive from "@/lib/vedic-clock/interactive";
+import { vedicClockResponseFixture } from "@/test/fixtures/vedic-clock-response";
 
 vi.mock("@/components/jyotish/visuals/VedicMuhurtaDial", () => ({
     VedicMuhurtaDial: (props: any) => (
@@ -37,65 +38,7 @@ vi.mock("@/components/jyotish/visuals/VedicMuhurtaDial", () => ({
     ),
 }));
 
-const basePayload: VedicClockResponse = {
-    requestedDate: "2026-04-09",
-    requestedDateTime: "2026-04-09T05:41",
-    location: {
-        kind: "preset",
-        name: "Varanasi",
-        region: "India",
-        latitude: 25.3176,
-        longitude: 82.9739,
-        timezone: "Asia/Kolkata",
-    },
-    panchanga: {
-        vara: { slug: "somavara", name: "Somavara", sanskritName: "सोमवार", summary: "summary" },
-        tithi: { slug: "pratipada", name: "Pratipada", sanskritName: null, summary: "summary" },
-        nakshatra: { slug: "ashwini", name: "Ashwini", sanskritName: "अश्विनी", summary: "summary" },
-        yoga: "Vishkambha",
-        karana: "Bava",
-    },
-    clock: {
-        mode: "fixed-48-minute",
-        currentLocalTime: "05:41",
-        currentLocalDateTime: "2026-04-09T05:41",
-        sunriseTime: "05:41",
-        sunsetTime: "18:18",
-        dayLengthMinutes: 757,
-        minutesSinceSunrise: 0,
-        cycleProgress: 0,
-        currentMuhurtaIndex: 1,
-        currentKalaIndex: 1,
-        muhurtas: Array.from({ length: 30 }, (_, index) => ({
-            index: index + 1,
-            label: `Muhūrta ${String(index + 1).padStart(2, "0")}`,
-            phase: index < 15 ? "day" as const : "night" as const,
-            startTime: "05:41",
-            endTime: "06:29",
-            isActive: index === 0,
-        })),
-        kalaSegments: [
-            { index: 1, name: "Prātaḥ", devanagari: "प्रातःकाल", phase: "day", startTime: "05:41", endTime: "12:00", startCycleMinute: 0, endCycleMinute: 378.5, isActive: true },
-            { index: 2, name: "Madhyāhna", devanagari: "मध्याह्न", phase: "day", startTime: "12:00", endTime: "18:18", startCycleMinute: 378.5, endCycleMinute: 757, isActive: false },
-            { index: 3, name: "Sāyam", devanagari: "सायंकाल", phase: "night", startTime: "18:18", endTime: "00:00", startCycleMinute: 757, endCycleMinute: 1098.5, isActive: false },
-            { index: 4, name: "Niśītha", devanagari: "निशीथ", phase: "night", startTime: "00:00", endTime: "05:41", startCycleMinute: 1098.5, endCycleMinute: 1440, isActive: false },
-        ],
-        inauspiciousKalas: [
-            { name: "Rahu Kala", devanagari: "राहु काल", startTime: "16:43", endTime: "18:17", startMinutes: 1003, endMinutes: 1097, isActive: false },
-            { name: "Yamaganda", devanagari: "यमगण्ड", startTime: "11:59", endTime: "13:34", startMinutes: 719, endMinutes: 814, isActive: false },
-            { name: "Gulika Kala", devanagari: "गुलिक काल", startTime: "15:08", endTime: "16:43", startMinutes: 908, endMinutes: 1003, isActive: false },
-        ],
-        auspiciousWindows: [
-            { name: "Brahma Muhurta", devanagari: "ब्रह्म मुहूर्त", description: "Ideal for meditation, japa, and scriptural study. Sattva is strongest.", startTime: "04:05", endTime: "04:53", startMinutes: 245, endMinutes: 293, isActive: false, isPast: true },
-            { name: "Pratah Sandhya", devanagari: "प्रातः सन्ध्या", description: "Dawn junction for sandhyavandana, gayatri japa, and pranyama.", startTime: "05:17", endTime: "06:05", startMinutes: 317, endMinutes: 365, isActive: true, isPast: false },
-            { name: "Abhijit Muhurta", devanagari: "अभिजित् मुहूर्त", description: "Universally auspicious midday window for important beginnings and sankalpa.", startTime: "11:17", endTime: "12:05", startMinutes: 677, endMinutes: 725, isActive: false, isPast: false },
-            { name: "Sayahna Sandhya", devanagari: "सायं सन्ध्या", description: "Dusk junction for evening arati, japa, and contemplative reflection.", startTime: "17:54", endTime: "18:42", startMinutes: 1074, endMinutes: 1122, isActive: false, isPast: false },
-        ],
-    },
-    provenance: [
-        { label: "Clock mode", value: "Fixed 48-minute muhūrta MVP", detail: "detail" },
-    ],
-};
+const basePayload: VedicClockResponse = vedicClockResponseFixture;
 
 function mockFetchResponse(payload: VedicClockResponse, ok = true) {
     return Promise.resolve({
@@ -319,8 +262,9 @@ describe("VedicClockClient", () => {
 
         render(<VedicClockClient />);
 
-        await screen.findByText("Varanasi");
-        expect(screen.getAllByText("2026-04-09T05:41").length).toBeGreaterThan(0);
+        await waitFor(() => {
+            expect(screen.getAllByText("2026-04-09T05:41").length).toBeGreaterThan(0);
+        });
 
         fireEvent.click(screen.getAllByRole("button", { name: /day/i })[1]!);
 

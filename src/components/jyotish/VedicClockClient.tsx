@@ -484,8 +484,8 @@ export function VedicClockClient() {
                         </div>
 
                         <div className="relative mx-auto mt-6 grid w-full max-w-5xl gap-4 rounded-3xl border border-amber-500/10 bg-white/[0.03] p-4 md:mt-8 md:grid-cols-[1.4fr_1fr] md:p-5">
-                            <div className="grid gap-3 sm:grid-cols-2">
-                                <label className="space-y-1.5">
+                            <div className="grid gap-3 sm:grid-cols-2 min-w-0">
+                                <label className="flex flex-col space-y-1.5 min-w-0">
                                     <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.22em] text-amber-200/60">
                                         <CalendarDays className="h-3.5 w-3.5" /> Date
                                     </span>
@@ -496,7 +496,7 @@ export function VedicClockClient() {
                                         className="border-amber-500/20 bg-[#0e0919] text-amber-50"
                                     />
                                 </label>
-                                <label className="space-y-1.5">
+                                <label className="flex flex-col space-y-1.5 min-w-0">
                                     <span className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.22em] text-amber-200/60">
                                         <Clock3 className="h-3.5 w-3.5" /> Time
                                     </span>
@@ -643,12 +643,14 @@ export function VedicClockClient() {
                                     <PanchangaRow
                                         label="Yoga"
                                         devanagari="योग"
-                                        value={activePayload.panchanga.yoga}
+                                        value={activePayload.panchanga.yoga.name}
+                                        sub={activePayload.panchanga.yoga.sanskritName}
                                     />
                                     <PanchangaRow
                                         label="Karaṇa"
                                         devanagari="करण"
-                                        value={activePayload.panchanga.karana}
+                                        value={activePayload.panchanga.karana.name}
+                                        sub={activePayload.panchanga.karana.sanskritName}
                                     />
                                     <PanchangaRow
                                         label="Date"
