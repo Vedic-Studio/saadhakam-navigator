@@ -2133,7 +2133,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 5,
         primaryKeyword: "deepak chopra meditation course review",
         aeoAnswer:
-            "Celebrity spiritual courses are usually strongest as polished beginner-friendly introductions, not as the deepest value per dollar. The central question is whether you are paying for guidance, lineage, and practice correction, or mainly for production quality and a recognizable personal brand. In many cases, free or low-cost lineage-based teaching is more substantive.",
+            "Celebrity spiritual courses are usually polished introductions, not the deepest route into Sanatan study. If a course barely engages primary sources such as the Bhagavad Gita or Upanishads, offers no parampara, and provides little practice correction, you are mostly paying for brand and production value. In most cases, lineage-based teachers such as Chinmaya Mission or Swami Sarvapriyananda offer more substance at far lower cost.",
         relatedLinks: [
             { text: "How to Study Indian Philosophy", href: "/how-to-study-indian-philosophy-home" },
             { text: "How to Spot a Fake Spiritual Guru", href: "/how-to-spot-fake-spiritual-guru" },
@@ -2974,7 +2974,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 16,
         primaryKeyword: "which meditation is right for me",
         aeoAnswer:
-            "The right meditation depends on the structure of your mind, not on generic advice. Restless or anxious minds often benefit from object-based methods such as japa, breath-led attention, or trataka. More stable minds may be ready for subtler practices such as self-inquiry or open meditative absorption. Meditation is therefore a family of different operations, not one universal technique.",
+            "The right meditation depends on the mind's dominant obstacle, not on generic advice. Patanjali distinguishes dharana, dhyana, and samadhi in Yoga Sutras 3.1-3, which means concentration, meditative flow, and absorption are not one operation. Restless minds usually need object-based practice such as japa or trataka first, while steadier minds may be ready for subtler methods such as self-inquiry or open meditative absorption.",
         relatedLinks: [
             { text: "Dhyana Practice", href: "/practices/dhyana" },
             { text: "How to Start Japa", href: "/how-to-start-japa" },
