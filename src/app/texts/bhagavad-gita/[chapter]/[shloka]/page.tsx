@@ -5,6 +5,8 @@ import { getBgChapterByNumber } from "@/data/bgChapters";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
+export const revalidate = 86400;
+
 function parseChapterSlug(chapterSlug: string): number | null {
     const match = /^chapter-(\d+)$/.exec(chapterSlug);
     if (!match) return null;

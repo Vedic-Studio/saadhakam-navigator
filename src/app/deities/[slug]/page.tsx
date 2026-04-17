@@ -15,6 +15,8 @@ import {
 } from "@/lib/seo";
 import { FeaturedImage } from "@/components/FeaturedImage";
 
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
     return deities.map((deity) => ({ slug: deity.slug }));
 }

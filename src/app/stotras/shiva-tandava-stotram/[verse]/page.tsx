@@ -9,6 +9,8 @@ import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { SanskritTypewriter } from "@/components/visuals/SanskritTypewriter";
 import { loadStotra, getStotraVerseBySlug, getAdjacentVerses } from "@/lib/stotras";
 
+export const revalidate = 86400;
+
 export function generateStaticParams() {
   const stotra = loadStotra("shiva-tandava-stotram");
   return stotra.verses.map((v) => ({ verse: v.slug }));

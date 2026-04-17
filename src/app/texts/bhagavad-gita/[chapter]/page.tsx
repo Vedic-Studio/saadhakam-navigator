@@ -5,6 +5,8 @@ import { getBgShlokasByChapter } from "@/data/bgShlokas";
 import Link from "next/link";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
+export const revalidate = 86400;
+
 function parseChapterSlug(chapterSlug: string): number | null {
     const match = /^chapter-(\d+)$/.exec(chapterSlug);
     if (!match) return null;

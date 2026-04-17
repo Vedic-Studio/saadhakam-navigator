@@ -7,6 +7,8 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { loadSahasranama, getSahasranamaNameBySlug } from "@/lib/stotras";
 
+export const revalidate = 86400;
+
 export function generateStaticParams() {
   const sahasranama = loadSahasranama("lalita-sahasranama");
   return sahasranama.names.map((n) => ({ slug: n.slug }));

@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Book, Quote, Compass, Languages, Info, Sparkles } from "lucide-react";
 
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
   return sanskritVocab.map((word) => ({
     word: word.slug,
