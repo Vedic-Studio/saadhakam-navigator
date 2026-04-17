@@ -122,6 +122,28 @@ describe("sites data integrity", () => {
         ).toBeGreaterThan(0);
       }
     });
+
+    // Ahrefs 13 Apr 2026 flagged all 15 /sanatan-history/sites/* pages with
+    // schema.org validation errors. Root cause: gulf-of-cambay had no
+    // `coordinates`, so page.tsx fell back to (0, 0) — the Gulf of Guinea.
+    // Lock the invariant so no site can ship without valid geo.
+    it("every site has valid coordinates (present, finite, not (0, 0))", () => {
+      for (const site of sites) {
+        expect(
+          site.coordinates,
+          `Site "${site.id}" missing coordinates`
+        ).toBeDefined();
+        const { lat, lng } = site.coordinates!;
+        expect(
+          Number.isFinite(lat) && Number.isFinite(lng),
+          `Site "${site.id}" has non-finite coordinates`
+        ).toBe(true);
+        expect(
+          lat === 0 && lng === 0,
+          `Site "${site.id}" has (0, 0) coordinates — likely a fallback`
+        ).toBe(false);
+      }
+    });
   });
 
   // -------------------------------------------------------------------------

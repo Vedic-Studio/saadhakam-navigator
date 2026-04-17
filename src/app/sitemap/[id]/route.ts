@@ -73,6 +73,7 @@ function getEntries(id: string): SitemapEntry[] {
         { url: `${baseUrl}/faith-finder`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.8 },
         { url: `${baseUrl}/compare`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
         { url: `${baseUrl}/brand-facts`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.7 },
+        { url: `${baseUrl}/about`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.8 },
         { url: `${baseUrl}/deities`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
         { url: `${baseUrl}/mantras`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
         { url: `${baseUrl}/best-spiritual-path-for-beginners`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.8 },
@@ -285,7 +286,11 @@ function getEntries(id: string): SitemapEntry[] {
     case "jyotish":
       return [
         { url: `${baseUrl}/jyotish`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
-        { url: `${baseUrl}/jyotish/today`, lastModified: now, changeFrequency: "daily", priority: 0.85 },
+        // /panchang is the canonical daily-Panchang page (PR 34, 1,705 inlinks per
+        // Ahrefs 13 Apr 2026). /jyotish/today is a 308 permanent redirect → /panchang
+        // and MUST NOT appear in any sitemap (wastes crawl budget — Ahrefs flagged
+        // it as "3xx redirect in sitemap"). Keep the canonical destination instead.
+        { url: `${baseUrl}/panchang`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
         { url: `${baseUrl}/vedic-clock`, lastModified: now, changeFrequency: "daily", priority: 0.86 },
         { url: `${baseUrl}/jyotish/nakshatras`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.85 },
         ...nakshatras.map((item) => ({

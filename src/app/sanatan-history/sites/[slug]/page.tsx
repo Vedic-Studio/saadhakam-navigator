@@ -53,14 +53,43 @@ export default async function SiteDetailPage({
     { label: site.name, href: "/sanatan-history/sites/" + site.id },
   ]);
 
+  // ISO-3166-1 alpha-2 country codes per archaeological site. Required for
+  // valid Place schema after Ahrefs 13 Apr 2026 flagged missing address on
+  // all 15 site pages. Keep this mapping next to the call-site so additions
+  // to sites.ts are caught at review time rather than silently emitting a
+  // geo-only Place.
+  const siteCountryById: Record<string, string> = {
+    bhimbetka: "IN",
+    mehrgarh: "PK",
+    rakhigarhi: "IN",
+    dholavira: "IN",
+    lothal: "IN",
+    kalibangan: "IN",
+    "dwarka-underwater": "IN",
+    hastinapura: "IN",
+    sinauli: "IN",
+    "gulf-of-cambay": "IN",
+    "mohenjo-daro": "PK",
+    harappa: "PK",
+    ayodhya: "IN",
+    "gobekli-tepe": "TR",
+    "karahan-tepe": "TR",
+  };
+
+  const hasCoords = site.coordinates !== undefined;
+
   const siteSchema = buildArchaeologicalSiteSchema({
     name: site.name,
     description: site.metaDescription,
     url: buildUrl("/sanatan-history/sites/" + site.id),
-    latitude: site.coordinates?.lat ?? 0,
-    longitude: site.coordinates?.lng ?? 0,
+    // Use NaN when coords are missing so the schema builder skips `geo`
+    // cleanly instead of emitting (0, 0), which points to the Gulf of Guinea.
+    latitude: hasCoords ? site.coordinates!.lat : Number.NaN,
+    longitude: hasCoords ? site.coordinates!.lng : Number.NaN,
     dateRange: site.dateRange,
     keyFindings: site.keyFindings,
+    addressLocality: site.location,
+    addressCountry: siteCountryById[site.id],
   });
 
   // Build sidebar items, filtering out unresolved lookups

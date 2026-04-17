@@ -15,6 +15,35 @@ export const SITE_NAME = "Sadhaka";
 export const SITE_TWITTER = "@opensadhaka";
 export const DEFAULT_LOCALE = "en_US";
 
+// E-E-A-T signals referenced from both root layout and per-page schemas.
+export const ORG_FOUNDING_DATE = "2025";
+export const ORG_EDITORIAL_POLICY = `${SITE_URL}/about#editorial-standards`;
+export const ORG_SAME_AS = [
+    "https://twitter.com/opensadhaka",
+    "https://instagram.com/opensadhaka",
+    "https://youtube.com/@opensadhaka",
+    "https://github.com/opensadhaka",
+    "https://www.linkedin.com/company/opensadhaka",
+    "https://www.crunchbase.com/organization/sadhaka",
+    "https://en.wikipedia.org/wiki/Sanatan_Dharma",
+];
+export const ORG_KNOWS_ABOUT = [
+    "Sanatan Dharma",
+    "Advaita Vedanta",
+    "Dvaita Vedanta",
+    "Vishishtadvaita Vedanta",
+    "Kashmir Shaivism",
+    "Shakta tradition",
+    "Bhagavad Gita",
+    "Upanishads",
+    "Vedas",
+    "Yoga Sutras",
+    "Puranas",
+    "Sanskrit philology",
+    "Vedic philosophy",
+    "Meditation techniques",
+];
+
 // ============================================================================
 // URL Helpers
 // ============================================================================
@@ -37,17 +66,25 @@ export function buildCanonicalUrl(route: string): string {
 /**
  * Resolve the canonical path for a Sanskrit lexicon entry.
  *
- * When a matching concept page exists at `/what-is-<slug>`, the lexicon entry
- * canonicalises to the concept page so Google consolidates ranking signals on
- * a single URL instead of splitting them across the two page-types (lexicon
- * "Sanskrit Lexicon" and concept "Concept Explorer") that cover the same
- * queries. When no matching concept exists, the lexicon page is self-canonical.
+ * Always self-canonical: `/learn/sanskrit/<slug>`.
+ *
+ * Prior behavior (pre Ahrefs audit 13 Apr 2026) pointed the canonical at
+ * `/what-is-<slug>` whenever a matching concept page existed — intended as
+ * ranking-signal consolidation, but flagged 68 previously-indexable lexicon
+ * pages as "non-indexable" and both pages remained live at 200 (no 301),
+ * so no equity actually transferred. Lexicon and concept pages serve
+ * overlapping but distinct intents (etymology/scripture vs. philosophy),
+ * so each stands on its own URL. If consolidation is desired later, pair
+ * it with a permanent redirect, not just a canonical rewrite.
+ *
+ * The `hasMatchingConcept` argument is retained for call-site compatibility
+ * and to allow pages to still render a "Read Concept Guide" CTA.
  */
 export function resolveLexiconCanonicalPath(
     slug: string,
-    hasMatchingConcept: boolean,
+    _hasMatchingConcept: boolean = false,
 ): string {
-    return hasMatchingConcept ? `/what-is-${slug}` : `/learn/sanskrit/${slug}`;
+    return `/learn/sanskrit/${slug}`;
 }
 
 // ============================================================================
@@ -592,27 +629,131 @@ export interface ArchaeologicalSiteSchemaMeta {
     longitude: number;
     dateRange: string;
     keyFindings?: string[];
+    /** ISO 3166-1 alpha-2 country code (e.g., "IN", "PK", "TR"). */
+    addressCountry?: string;
+    /** First-level admin region (state/province), e.g., "Gujarat". */
+    addressRegion?: string;
+    /** City/town/locality, e.g., "Dholka" or "Varanasi". */
+    addressLocality?: string;
 }
 
 export function buildArchaeologicalSiteSchema(meta: ArchaeologicalSiteSchemaMeta) {
-    return {
+    // Validate coordinates — (0, 0) is Gulf of Guinea, almost certainly a
+    // data-entry fallback rather than an actual site. Omit `geo` rather than
+    // emit an invalid Place; Ahrefs flagged this on 13 Apr 2026 when
+    // /sanatan-history/sites/gulf-of-cambay had no coordinates.
+    const hasValidGeo =
+        Number.isFinite(meta.latitude) &&
+        Number.isFinite(meta.longitude) &&
+        !(meta.latitude === 0 && meta.longitude === 0);
+
+    const hasAddress = Boolean(
+        meta.addressCountry || meta.addressRegion || meta.addressLocality,
+    );
+
+    const schema: Record<string, unknown> = {
         "@context": "https://schema.org",
         "@type": "Place",
         additionalType: "https://schema.org/ArchaeologicalSite",
         name: meta.name,
         description: meta.description,
         url: meta.url,
-        geo: {
+        temporalCoverage: meta.dateRange,
+    };
+
+    if (hasValidGeo) {
+        schema.geo = {
             "@type": "GeoCoordinates",
             latitude: meta.latitude,
             longitude: meta.longitude,
+        };
+    }
+
+    if (hasAddress) {
+        schema.address = {
+            "@type": "PostalAddress",
+            ...(meta.addressLocality ? { addressLocality: meta.addressLocality } : {}),
+            ...(meta.addressRegion ? { addressRegion: meta.addressRegion } : {}),
+            ...(meta.addressCountry ? { addressCountry: meta.addressCountry } : {}),
+        };
+    }
+
+    if (meta.keyFindings && meta.keyFindings.length > 0) {
+        schema.keywords = meta.keyFindings;
+    }
+
+    // Note: `speakable` is intentionally omitted. Google Search Central
+    // documents `speakable` support only for Article and WebPage types.
+    // Emitting it on Place was the most likely root cause of the
+    // "Schema.org validation error" on all 15 site pages (Ahrefs 13 Apr 2026).
+    return schema;
+}
+
+// ============================================================================
+// Organization Schema (E-E-A-T default)
+// ============================================================================
+
+export interface OrganizationSchemaOptions {
+    /** Override the default organization @id. Leave undefined for the canonical site-wide org node. */
+    id?: string;
+    /** Attach additional sameAs URLs beyond the defaults. */
+    extraSameAs?: string[];
+}
+
+/**
+ * Build the canonical Organization JSON-LD schema for Sadhaka.
+ *
+ * Kept in one place so per-page schemas, the root layout, and the About page
+ * all reference the same E-E-A-T signals (logo, sameAs, knowsAbout, founding
+ * date, editorial policy).
+ */
+export function buildOrganizationSchema(opts: OrganizationSchemaOptions = {}) {
+    const { id = `${SITE_URL}/#organization`, extraSameAs = [] } = opts;
+    return {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": id,
+        name: SITE_NAME,
+        alternateName: "Sadhaka — opensadhaka.com",
+        url: SITE_URL,
+        logo: {
+            "@type": "ImageObject",
+            url: `${SITE_URL}/logo.png`,
+            width: 600,
+            height: 60,
         },
-        temporalCoverage: meta.dateRange,
-        ...(meta.keyFindings && meta.keyFindings.length > 0
-            ? { keywords: meta.keyFindings }
-            : {}),
-        ...SPEAKABLE_SPEC,
+        description:
+            "Sadhaka is an English-language reference platform for Sanatan Dharma — the philosophies, sacred texts, and living practices of the Indian spiritual inheritance. Editorial content covers Vedanta, Shaiva, Shakta, and Vaishnava traditions.",
+        foundingDate: ORG_FOUNDING_DATE,
+        knowsAbout: ORG_KNOWS_ABOUT,
+        knowsLanguage: ["en", "sa"],
+        sameAs: [...ORG_SAME_AS, ...extraSameAs],
+        publishingPrinciples: ORG_EDITORIAL_POLICY,
     };
+}
+
+// ============================================================================
+// AEO Answer Block Helper
+// ============================================================================
+
+/**
+ * Render the CSS selector used by `SpeakableSpecification`.
+ *
+ * Apply the matching `data-speakable` attribute to any paragraph you want AI
+ * voice assistants and search engines to treat as the canonical extractable
+ * answer for the page. The selector is stable across the whole site.
+ */
+export const AEO_SPEAKABLE_ATTR = "data-speakable";
+
+/**
+ * Extract the first N words of a longer paragraph for an AEO opening block.
+ * Used when a page has no dedicated aeoAnswer field but still needs a
+ * short, quotable direct-answer paragraph up top.
+ */
+export function truncateToAeoAnswer(text: string, maxWords = 90): string {
+    const words = text.trim().split(/\s+/);
+    if (words.length <= maxWords) return text.trim();
+    return words.slice(0, maxWords).join(" ") + "…";
 }
 
 export interface ItemListSchemaMeta {

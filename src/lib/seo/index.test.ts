@@ -42,7 +42,10 @@ describe("seo helpers", () => {
         expect(schemas.faq.mainEntity).toHaveLength(article.faqs.length);
     });
 
-    it("buildPageMetadata title does not append site name (layout template handles it)", () => {
+    it("buildPageMetadata returns the title verbatim without a Sadhaka suffix", () => {
+        // Root layout uses template "%s" (no suffix) post Ahrefs audit
+        // (13 Apr 2026). Pages that want branding must include "| Sadhaka"
+        // in their title string explicitly — doubling is now impossible.
         const meta = buildPageMetadata({
             title: "Test Page Title",
             description: "A test description",
@@ -52,31 +55,63 @@ describe("seo helpers", () => {
         expect(meta.title).toBe("Test Page Title");
         expect(meta.title).not.toContain("Sadhaka");
     });
+
+    it("pages that include | Sadhaka in their title render it exactly once", () => {
+        // Guards against the 13 Apr 2026 regression where template
+        // "%s | Sadhaka" + page title "... | Sadhaka" produced
+        // "... | Sadhaka | Sadhaka" on 378+ pages.
+        const title = "Seva in Sanskrit: Etymology, Meaning & Scriptural Usage | Sadhaka";
+        const meta = buildPageMetadata({
+            title,
+            description: "A test description",
+            path: "/learn/sanskrit/seva",
+        });
+        const rendered = String(meta.title);
+        expect(rendered).toBe(title);
+        // Exactly one "| Sadhaka" token; never doubled.
+        const occurrences = rendered.split("| Sadhaka").length - 1;
+        expect(occurrences).toBe(1);
+    });
 });
 
 describe("resolveLexiconCanonicalPath", () => {
-    it("points to the concept page when a matching concept exists", () => {
-        expect(resolveLexiconCanonicalPath("mantra", true)).toBe("/what-is-mantra");
-    });
+    // Post Ahrefs-audit 13 Apr 2026: lexicon pages are always self-canonical.
+    // Previously they pointed at /what-is-<slug> when a concept existed, which
+    // made 68 pages non-indexable without any 301 redirect to actually
+    // consolidate ranking signals. Keep these tests to prevent regression.
 
-    it("stays on the lexicon page when no matching concept exists", () => {
+    it("is self-canonical whether or not a matching concept page exists", () => {
+        expect(resolveLexiconCanonicalPath("mantra", true)).toBe(
+            "/learn/sanskrit/mantra",
+        );
         expect(resolveLexiconCanonicalPath("ashtanga", false)).toBe(
             "/learn/sanskrit/ashtanga",
         );
     });
 
-    it("preserves multi-hyphen slugs in both branches", () => {
+    it("preserves multi-hyphen slugs", () => {
         expect(resolveLexiconCanonicalPath("kriya-yoga", true)).toBe(
-            "/what-is-kriya-yoga",
+            "/learn/sanskrit/kriya-yoga",
         );
         expect(resolveLexiconCanonicalPath("kriya-yoga", false)).toBe(
             "/learn/sanskrit/kriya-yoga",
         );
     });
 
+    it("never rewrites the canonical away from the lexicon URL", () => {
+        for (const slug of ["seva", "samadhi", "manas", "prasad", "atman"]) {
+            expect(resolveLexiconCanonicalPath(slug, true)).toBe(
+                `/learn/sanskrit/${slug}`,
+            );
+            expect(resolveLexiconCanonicalPath(slug, true)).not.toContain(
+                "what-is-",
+            );
+        }
+    });
+
     it("produces a fully-qualified canonical URL when passed through buildUrl", () => {
         expect(buildUrl(resolveLexiconCanonicalPath("prasad", true))).toBe(
-            "https://www.opensadhaka.com/what-is-prasad",
+            "https://www.opensadhaka.com/learn/sanskrit/prasad",
         );
         expect(buildUrl(resolveLexiconCanonicalPath("ashtanga", false))).toBe(
             "https://www.opensadhaka.com/learn/sanskrit/ashtanga",
@@ -335,7 +370,7 @@ describe("buildArchaeologicalSiteSchema", () => {
         expect(schema.additionalType).toBe("https://schema.org/ArchaeologicalSite");
     });
 
-    it("includes geo coordinates", () => {
+    it("includes geo coordinates for valid lat/lng", () => {
         const schema = buildArchaeologicalSiteSchema(baseMeta);
         expect(schema.geo).toEqual({
             "@type": "GeoCoordinates",
@@ -365,9 +400,61 @@ describe("buildArchaeologicalSiteSchema", () => {
         expect(schema).not.toHaveProperty("keywords");
     });
 
-    it("includes speakable specification", () => {
+    it("does NOT emit speakable — invalid on Place per Google Search docs", () => {
+        // Regression guard: post Ahrefs audit 13 Apr 2026. Google only
+        // supports speakable on Article/WebPage; emitting it on Place
+        // caused schema.org validation errors on all 15 site pages.
         const schema = buildArchaeologicalSiteSchema(baseMeta);
-        expect(schema.speakable).toBeDefined();
+        expect(schema).not.toHaveProperty("speakable");
+    });
+
+    it("omits geo when coordinates are (0, 0) — Gulf of Guinea sentinel", () => {
+        const schema = buildArchaeologicalSiteSchema({
+            ...baseMeta,
+            latitude: 0,
+            longitude: 0,
+        });
+        expect(schema).not.toHaveProperty("geo");
+    });
+
+    it("omits geo when coordinates are NaN (missing in source data)", () => {
+        const schema = buildArchaeologicalSiteSchema({
+            ...baseMeta,
+            latitude: Number.NaN,
+            longitude: Number.NaN,
+        });
+        expect(schema).not.toHaveProperty("geo");
+    });
+
+    it("emits PostalAddress when any address field is provided", () => {
+        const schema = buildArchaeologicalSiteSchema({
+            ...baseMeta,
+            addressCountry: "IN",
+            addressRegion: "Haryana",
+            addressLocality: "Rakhigarhi",
+        });
+        expect(schema.address).toEqual({
+            "@type": "PostalAddress",
+            addressLocality: "Rakhigarhi",
+            addressRegion: "Haryana",
+            addressCountry: "IN",
+        });
+    });
+
+    it("omits address when no address field is provided", () => {
+        const schema = buildArchaeologicalSiteSchema(baseMeta);
+        expect(schema).not.toHaveProperty("address");
+    });
+
+    it("emits PostalAddress containing only provided fields (partial address)", () => {
+        const schema = buildArchaeologicalSiteSchema({
+            ...baseMeta,
+            addressCountry: "PK",
+        });
+        expect(schema.address).toEqual({
+            "@type": "PostalAddress",
+            addressCountry: "PK",
+        });
     });
 });
 
