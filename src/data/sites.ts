@@ -282,6 +282,11 @@ export const sites: ArchaeologicalSite[] = [
     name: "Gulf of Cambay Structures",
     location: "Gujarat coast, India",
     region: "south-asia",
+    // Approximate centre of the Gulf of Khambhat survey area. Prior to this
+    // fix the field was absent, and the page.tsx fallback to (0, 0) emitted
+    // an invalid geo pointing at the Gulf of Guinea — a Place schema.org
+    // validation error flagged by Ahrefs 13 Apr 2026.
+    coordinates: { lat: 21.5, lng: 72.5 },
     dateRange: "C14: 7,500 — 9,000 BP",
     startYear: -7000,
     endYear: -5500,

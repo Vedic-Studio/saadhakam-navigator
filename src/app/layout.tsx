@@ -5,6 +5,7 @@ import "./globals.css";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 import { ReadProgress } from "@/components/animations/ReadProgress";
 import { Toaster } from "@/components/ui/sonner";
+import { buildOrganizationSchema } from "@/lib/seo";
 
 // Always use www — env var may lack it, causing canonical confusion with Google
 const siteUrl = "https://www.opensadhaka.com";
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "Sadhaka | AI-Powered Sanatan Dharma Spiritual Companion",
-    template: "%s | Sadhaka",
+    // Page titles already carry the "| Sadhaka" suffix where needed.
+    // Using "%s" here prevents the auto-appended suffix from producing
+    // duplicates like "Seva ... | Sadhaka | Sadhaka" (Ahrefs audit 13 Apr).
+    template: "%s",
   },
   description:
     "Explore 10,000 years of Vedic wisdom with Sadhaka AI. Learn Bhagavad Gita, Vedas, Upanishads, and authentic spiritual practices. Your guide to Sanatan Dharma.",
@@ -74,39 +78,9 @@ export const metadata: Metadata = {
   verification: gscVerificationCode ? { google: gscVerificationCode } : undefined,
 };
 
-// Organization structured data — site-wide
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": `${siteUrl}/#organization`,
-  "name": "Sadhaka",
-  "url": siteUrl,
-  "logo": {
-    "@type": "ImageObject",
-    "url": `${siteUrl}/logo.png`,
-    "width": 600,
-    "height": 60
-  },
-  "description": "Sadhaka is a comprehensive AI-powered spiritual encyclopedia and practitioner platform dedicated to 10,000 years of Sanatan Dharma wisdom, including Vedas, Upanishads, and Yoga philosophy.",
-  "sameAs": [
-    "https://twitter.com/opensadhaka",
-    "https://instagram.com/opensadhaka",
-    "https://youtube.com/@opensadhaka",
-    "https://github.com/opensadhaka",
-    "https://www.linkedin.com/company/opensadhaka",
-    "https://www.crunchbase.com/organization/sadhaka",
-    "https://en.wikipedia.org/wiki/Sanatan_Dharma"
-  ],
-  "knowsAbout": [
-    "Sanatan Dharma",
-    "Bhagavad Gita",
-    "Vedanta",
-    "Yoga Sutras",
-    "Sanskrit Philology",
-    "Vedic Philosophy",
-    "Meditation Techniques"
-  ]
-};
+// Organization structured data — site-wide.
+// Shared constants live in src/lib/seo so per-page schemas stay in sync.
+const organizationSchema = buildOrganizationSchema();
 
 const websiteSchema = {
   "@context": "https://schema.org",

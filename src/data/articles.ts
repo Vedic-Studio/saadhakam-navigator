@@ -1158,7 +1158,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 12,
         primaryKeyword: "what are the vedas and upanishads",
         aeoAnswer:
-            "India's sacred texts are commonly grouped as Shruti and Smriti. The Vedas and Upanishads belong to Shruti, the revealed scriptural core, while the Bhagavad Gita belongs to Smriti, the remembered tradition. The Vedas establish liturgical and cosmological foundations, the Upanishads turn toward Atman and Brahman, and the Gita applies those teachings to action, duty, devotion, and liberation within ordinary life.",
+            "The Vedas are the oldest Shruti texts of Sanatan Dharma, and the Upanishads are their philosophical culmination, asking about Atman, Brahman, death, and liberation in texts such as Katha, Chandogya, and Brihadaranyaka. The Bhagavad Gita, a Smriti text inside the Mahabharata, applies those teachings to dharma, action, devotion, and moksha. In sequence: Vedas establish, Upanishads reveal, and the Gita operationalizes.",
         relatedLinks: [
             { text: "What Are the Upanishads?", href: "/what-are-the-upanishads" },
             { text: "Bhagavad Gita Complete Guide", href: "/bhagavad-gita-complete-guide" },
@@ -1241,7 +1241,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 9,
         primaryKeyword: "spiritual meaning of midlife crisis",
         aeoAnswer:
-            "A midlife crisis is often a stage-transition problem rather than a defect. In the Vedic ashrama model, it reflects movement from the householder phase of accumulation toward Vanaprastha, the stage of detachment, mentoring, and deeper purpose. Distress appears when inner priorities change but life remains organized around status, possession, and comparison.",
+            "A midlife crisis is often a stage-transition problem, not a defect. In the classical ashrama model of Sanatan life, it reflects movement from grihastha toward vanaprastha, the stage of loosening worldly fixation and turning toward study, detachment, and guidance of others; Manusmriti 6.2-3 describes this shift. The crisis appears when inner priorities change but life remains organized around accumulation, comparison, and status.",
         relatedLinks: [
             { text: "Overcoming Fear of Death", href: "/fear-of-death-advaita-vedanta" },
             { text: "Dark Night of the Soul", href: "/dark-night-of-the-soul" },
@@ -1272,7 +1272,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 8,
         primaryKeyword: "overcoming fear of death eastern philosophy",
         aeoAnswer:
-            "Advaita Vedanta locates fear of death in mistaken identity. What is born and dies is the body-mind complex, not the witnessing awareness, Atman. The practice is therefore not to manufacture consolation but to see clearly that consciousness is not produced by birth and is not destroyed when the body falls away.",
+            "Advaita Vedanta locates fear of death in mistaken identity with the body-mind. Bhagavad Gita 2.20 says the Self is never born and never dies, and the Katha Upanishad likewise teaches that the wise one is not slain when the body is slain. The point is not consolation but recognition: Atman, the witnessing awareness, is not produced by birth and is not destroyed by death.",
         relatedLinks: [
             { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
             { text: "What is Maya?", href: "/what-is-maya" },
@@ -1303,7 +1303,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 9,
         primaryKeyword: "how to navigate a dark night of the soul",
         aeoAnswer:
-            "A dark night of the soul is a phase in which identity and meaning structures collapse during genuine spiritual maturation. Spiritual bypassing is the opposite movement: using spiritual language to avoid grief, accountability, or unresolved wounds. The first confronts reality and destabilizes the ego honestly; the second protects the ego behind elevated language.",
+            "A dark night of the soul is a period in which former identity and meaning structures break down during real spiritual maturation. The Bhagavad Gita describes a necessary destabilization before clarity: when delusion falls away, understanding becomes steady (2.52-53). Spiritual bypassing is the opposite move; it uses spiritual language to avoid grief, accountability, or unresolved pain rather than pass through them honestly.",
         relatedLinks: [
             { text: "Spiritual Meaning of Midlife Crisis", href: "/midlife-crisis-spiritual-meaning" },
             { text: "Finding Purpose Without Achievement", href: "/spiritual-antidote-to-hustle-culture" },
@@ -1334,7 +1334,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 8,
         primaryKeyword: "how to find your life purpose spiritually",
         aeoAnswer:
-            "The Bhagavad Gita rejects achievement as the source of meaning. Its alternative is svadharma: the right action arising from your nature, role, and present circumstance, performed with full attention and reduced attachment to outcomes. Meaning therefore comes from alignment and action quality, not from visibility, applause, or constant achievement.",
+            "The Bhagavad Gita rejects achievement as the basis of meaning and redirects the seeker toward svadharma. In Bhagavad Gita 3.35, your own dharma, even imperfectly lived, is better than performing another's well; 2.47 adds that action is yours, but not the fruits. The antidote to hustle culture is therefore disciplined right action, inner alignment, and reduced attachment to applause, status, and outcome.",
         relatedLinks: [
             { text: "How Karma and Dharma Work", href: "/how-karma-dharma-work" },
             { text: "Dark Night of the Soul", href: "/dark-night-of-the-soul" },
@@ -1397,7 +1397,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 8,
         primaryKeyword: "meditation for severe anxiety and overthinking",
         aeoAnswer:
-            "For severe anxiety and overthinking, open silent meditation is often not the best starting point because it can leave the mind too unstructured. Practices that assign the mind a specific task, such as mantra repetition, coherent breathing, or anchoring to a physical sensation, usually work better because they interrupt the catastrophic loop rather than asking for immediate emptiness.",
+            "For severe anxiety and overthinking, completely open silent meditation is often the wrong starting point because it gives the agitated mind too little structure. Patanjali recommends one-pointed stabilization (Yoga Sutra 1.32), and mantra repetition with meaning (1.28) is especially useful. In practice, japa, counted breathing, or a physical anchor work better because they interrupt the panic loop instead of demanding instant emptiness.",
         relatedLinks: [
             { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
             { text: "Meditation for Burnout", href: "/meditation-for-burnout" },
@@ -1428,7 +1428,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 8,
         primaryKeyword: "meditation for corporate burnout spiritual approach",
         aeoAnswer:
-            "Burnout is not only overwork. In spiritual terms, it often reflects misalignment between daily action and dharma. The practical response is twofold: restore the nervous system through stabilizing practices such as Yoga Nidra or meditation, and re-examine work through Karma Yoga so meaning is not outsourced entirely to reward, status, or approval.",
+            "Burnout is not only overwork; in spiritual terms it is often a breakdown in the relationship between karma and dharma. Bhagavad Gita 2.47 and 3.19 redirect attention from compulsive results to right action performed steadily and without clinging. Meditation can calm the exhausted nervous system, but recovery becomes deeper when work is re-examined through Karma Yoga rather than status, reward, or approval alone.",
         relatedLinks: [
             { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
             { text: "The Spiritual Antidote to Hustle Culture", href: "/spiritual-antidote-to-hustle-culture" },
@@ -1459,7 +1459,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 9,
         primaryKeyword: "is meditation safe for trauma survivors",
         aeoAnswer:
-            "Meditation is not always safe in its standard form for trauma survivors because closing the eyes and going inward can trigger flashbacks, dissociation, or acute anxiety. Trauma-sensitive meditation modifies the method: eyes can remain open, external anchors are preferred, sessions stay short, and the practitioner keeps full agency to stop at any time.",
+            "Meditation is not always safe in its standard form for trauma survivors because inward focus can trigger flashbacks, dissociation, or panic. Patanjali does not require blank inwardness; Yoga Sutra 1.34 and 1.39 allow regulated breath and stabilizing supports. In practice, trauma-sensitive meditation keeps the eyes open if needed, uses external anchors, short sessions, and preserves full agency to pause or stop at any moment.",
         relatedLinks: [
             { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
             { text: "Meditation for Anxiety", href: "/meditation-for-anxiety-overthinking" },
@@ -1491,7 +1491,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 10,
         primaryKeyword: "what exactly is kriya yoga",
         aeoAnswer:
-            "Kriya Yoga is not posture-based yoga but an internal discipline centered on breath, prana, and the subtle body. In modern usage it usually refers to lineage-based techniques that move energy through the spinal channel to accelerate concentration and transformation. Because the practice affects breath and nervous system regulation deeply, traditional instruction insists on preparation and guidance rather than unguided experimentation.",
+            "In Patanjali, Kriya Yoga means tapas, svadhyaya, and Ishvara-pranidhana (Yoga Sutra 2.1). In modern Sanatan lineages, especially those shaped by Yogananda, it also refers to initiated pranayama that works with prana and the spinal axis to deepen concentration and transformation. It is not posture yoga, and because it directly affects breath and the nervous system, it should be learned through qualified guidance rather than imitation.",
         relatedLinks: [
             { text: "Kundalini Awakening Guide", href: "/kundalini-awakening" },
             { text: "Paramahansa Yogananda's Teachings", href: "/paramahansa-yogananda-teachings" },
@@ -1522,7 +1522,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 9,
         primaryKeyword: "kundalini awakening symptoms physical",
         aeoAnswer:
-            "Kundalini awakening refers to the rising of dormant spiritual energy, Kundalini Shakti, through the subtle system. Reported symptoms can include heat, tremors, altered breathing, emotional surges, and unusual states of perception. The practical distinction from destabilizing psychiatric crisis is not spectacle but trajectory: healthy awakening tends toward greater clarity and integration over time and requires grounding, restraint, and qualified support.",
+            "Kundalini awakening refers to the ascent of Kundalini Shakti through the subtle body, especially the sushumna nadi and cakra system described in Hatha Yoga and Tantric literature. Symptoms may include heat, tremors, altered breath, emotional surges, and intensified perception, but classical texts never recommend forcing the process. A healthy unfolding moves toward greater clarity and integration over time and should be supported by grounding, restraint, and qualified guidance.",
         relatedLinks: [
             { text: "What is Kriya Yoga?", href: "/what-is-kriya-yoga" },
             { text: "What is Tantra?", href: "/what-is-tantra" },
@@ -1553,7 +1553,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 8,
         primaryKeyword: "what is tantra really about",
         aeoAnswer:
-            "Tantra is a broad family of ritual, mantra, visualization, and energy traditions that treat the world as divine power rather than mere illusion. In classical Hindu and Buddhist contexts, it is a demanding path of transformation, not a synonym for sexual technique. Its central claim is that embodiment, desire, symbol, and energy can be refined into realization when held within disciplined practice and proper guidance.",
+            "Tantra is a disciplined body of mantra, yantra, ritual, deity-visualization, and subtle-body practice found in Shaiva, Shakta, and Buddhist traditions. Texts such as the Kularnava Tantra present it as a path of transformation in which Shakti and the embodied world are used consciously rather than rejected. It is not shorthand for sacred sexuality; that modern reduction ignores the metaphysics, vows, and initiatory structure of classical Tantra.",
         relatedLinks: [
             { text: "What is Kriya Yoga?", href: "/what-is-kriya-yoga" },
             { text: "Kundalini Awakening", href: "/kundalini-awakening" },
@@ -1617,7 +1617,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 10,
         primaryKeyword: "how to spot a fake spiritual guru",
         aeoAnswer:
-            "A true guru reduces ignorance and dependence; a false guru builds personal power around money, sex, secrecy, or unquestioning obedience. Major warning signs include unverifiable lineage, financial exploitation, boundary violations, grandiosity, isolation from other sources of wisdom, and a private life that contradicts the teaching. Discernment matters more than charisma.",
+            "A real guru is classically defined not by charisma but by qualification: shrotriya and brahma-nishtha, as in Mundaka Upanishad 1.2.12. A fake guru typically reverses that standard, using secrecy, sexual or financial exploitation, unverifiable lineage, and demands for absolute obedience to build dependence. If the teacher's private conduct contradicts the teaching, walk away; discernment matters more than spiritual theater.",
         relatedLinks: [
             { text: "Do You Need a Guru?", href: "/do-you-need-a-guru" },
             { text: "Red Flags in Yoga Studios", href: "/red-flags-yoga-studios" },
@@ -1648,7 +1648,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 8,
         primaryKeyword: "do you need a guru for enlightenment",
         aeoAnswer:
-            "Classical Indian traditions generally say a guru is necessary for final liberation because the mind cannot completely diagnose its own blind spots. That does not always mean an immediately available charismatic teacher. In practice, guidance can begin through scripture, lineage, and disciplined self-honesty, while the living teacher question is approached with caution rather than desperation.",
+            "Classical Sanatan sources say a guru is ordinarily necessary for liberation because ignorance does not remove itself. Mundaka Upanishad 1.2.12 instructs the seeker to approach a teacher who is both shrotriya and brahma-nishtha, and Bhagavad Gita 4.34 adds inquiry, humility, and service. That said, scripture, lineage, and disciplined practice can prepare the seeker before a trustworthy living teacher appears.",
         relatedLinks: [
             { text: "How to Spot a Fake Guru", href: "/how-to-spot-fake-spiritual-guru" },
             { text: "Ramana Maharshi: Who Am I?", href: "/ramana-maharshi-who-am-i" },
@@ -1679,7 +1679,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 9,
         primaryKeyword: "Ramana Maharshi who am I technique",
         aeoAnswer:
-            "Ramana Maharshi's self-inquiry is not an intellectual exercise but a redirection of attention toward the felt sense of 'I.' When thought arises, the practitioner asks to whom it appears, then traces that I-thought back toward its source. The aim is not a verbal answer but the dissolution of false identification into the prior awareness Ramana calls the Self.",
+            "Ramana Maharshi's Atma Vichara asks you to trace the 'I'-thought back to its source, not to answer 'Who am I?' conceptually. In Nan Yar? and Upadesa Saram, Ramana says that when thoughts arise, you ask 'To whom?' and return attention to the sense of 'I' until it subsides in the Self. The method is direct, silent, and rooted in Advaita Vedanta.",
         relatedLinks: [
             { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
             { text: "Do You Need a Guru?", href: "/do-you-need-a-guru" },
@@ -2133,7 +2133,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 5,
         primaryKeyword: "deepak chopra meditation course review",
         aeoAnswer:
-            "Celebrity spiritual courses are usually strongest as polished beginner-friendly introductions, not as the deepest value per dollar. The central question is whether you are paying for guidance, lineage, and practice correction, or mainly for production quality and a recognizable personal brand. In many cases, free or low-cost lineage-based teaching is more substantive.",
+            "Celebrity spiritual courses are usually polished introductions, not the deepest route into Sanatan study. If a course barely engages primary sources such as the Bhagavad Gita or Upanishads, offers no parampara, and provides little practice correction, you are mostly paying for brand and production value. In most cases, lineage-based teachers such as Chinmaya Mission or Swami Sarvapriyananda offer more substance at far lower cost.",
         relatedLinks: [
             { text: "How to Study Indian Philosophy", href: "/how-to-study-indian-philosophy-home" },
             { text: "How to Spot a Fake Spiritual Guru", href: "/how-to-spot-fake-spiritual-guru" },
@@ -2434,7 +2434,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 10,
         primaryKeyword: "advaita vedanta explained",
         aeoAnswer:
-            "Advaita Vedanta teaches that your deepest Self is not separate from ultimate reality, Brahman. The path is therefore not about adopting a new belief but about removing false identification with body, mind, and ego through inquiry, discrimination, and knowledge. Its central claim is non-duality: the apparent separation between self and reality is due to ignorance, not truth.",
+            "Advaita Vedanta teaches that Atman and Brahman are one, as expressed in mahavakyas such as 'tat tvam asi' (Chandogya Upanishad 6.8.7) and 'aham brahmasmi' (Brihadaranyaka Upanishad 1.4.10). Liberation comes not from creating a new state but from removing ignorance through viveka, shravana, manana, and nididhyasana, a path systematized by Adi Shankaracharya.",
         relatedLinks: [
             { text: "What is Vedanta? A Complete Beginner's Guide", href: "/what-is-vedanta" },
             { text: "Non-Duality vs Dualism", href: "/non-duality-vs-dualism" },
@@ -2974,7 +2974,7 @@ export const articles: ArticleMeta[] = [
         readingTime: 16,
         primaryKeyword: "which meditation is right for me",
         aeoAnswer:
-            "The right meditation depends on the structure of your mind, not on generic advice. Restless or anxious minds often benefit from object-based methods such as japa, breath-led attention, or trataka. More stable minds may be ready for subtler practices such as self-inquiry or open meditative absorption. Meditation is therefore a family of different operations, not one universal technique.",
+            "The right meditation depends on the mind's dominant obstacle, not on generic advice. Patanjali distinguishes dharana, dhyana, and samadhi in Yoga Sutras 3.1-3, which means concentration, meditative flow, and absorption are not one operation. Restless minds usually need object-based practice such as japa or trataka first, while steadier minds may be ready for subtler methods such as self-inquiry or open meditative absorption.",
         relatedLinks: [
             { text: "Dhyana Practice", href: "/practices/dhyana" },
             { text: "How to Start Japa", href: "/how-to-start-japa" },
