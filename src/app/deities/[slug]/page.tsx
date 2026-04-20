@@ -13,6 +13,7 @@ import {
     buildFaqSchema,
     buildUrl,
 } from "@/lib/seo";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import { FeaturedImage } from "@/components/FeaturedImage";
 
 export const revalidate = 86400;
@@ -34,7 +35,13 @@ export async function generateMetadata({
 
     return buildPageMetadata({
         title: `${deity.name} — Sadhaka`,
-        description: deity.description,
+        description: composeMetaDescription(
+            [`${deity.name} — symbolism, iconography, and worship`, deity.description],
+            {
+                fallback:
+                    "Explore the mythology, iconography, mantras, and devotional practice associated with this deity on Sadhaka.",
+            },
+        ),
         path: `/deities/${deity.slug}`,
         images: imageUrl ? [imageUrl] : undefined,
     });
