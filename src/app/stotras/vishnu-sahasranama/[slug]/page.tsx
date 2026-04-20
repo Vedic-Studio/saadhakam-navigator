@@ -16,6 +16,8 @@ import {
 
 const SLUG = "vishnu-sahasranama";
 
+export const revalidate = 86400;
+
 export function generateStaticParams() {
   const sahasranama = loadSahasranama(SLUG);
   return sahasranama.verses.map((v) => ({ slug: v.slug }));

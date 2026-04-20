@@ -8,6 +8,8 @@ import { panchangFaqs } from "@/data/panchang-faq";
 import { buildVedicClockResponse } from "@/lib/vedic-clock";
 import { buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata, buildUrl, buildWebPageSchema } from "@/lib/seo";
 
+export const revalidate = 3600;
+
 type PanchangPageProps = {
     searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };

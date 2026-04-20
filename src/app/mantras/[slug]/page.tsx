@@ -8,6 +8,8 @@ import { SanskritTypewriter } from "@/components/visuals/SanskritTypewriter";
 import { getMantraBySlug, mantras } from "@/data/mantras";
 import { buildPageMetadata, buildFaqSchema, buildWebPageSchema, buildBreadcrumbSchema, buildUrl } from "@/lib/seo";
 
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
     return mantras.map((m) => ({ slug: m.slug }));
 }

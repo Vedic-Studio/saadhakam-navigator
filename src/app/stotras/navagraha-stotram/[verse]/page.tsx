@@ -9,6 +9,8 @@ import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { SanskritTypewriter } from "@/components/visuals/SanskritTypewriter";
 import { getAdjacentVerses, getStotraVerseBySlug, loadStotra } from "@/lib/stotras";
 
+export const revalidate = 86400;
+
 export function generateStaticParams() {
     const stotra = loadStotra("navagraha-stotram");
     return stotra.verses.map((verse) => ({ verse: verse.slug }));
