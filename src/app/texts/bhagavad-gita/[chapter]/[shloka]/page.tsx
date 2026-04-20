@@ -4,6 +4,7 @@ import { bgShlokas, getBgShlokaById } from "@/data/bgShlokas";
 import { getBgChapterByNumber } from "@/data/bgChapters";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 
 export const revalidate = 86400;
 
@@ -52,7 +53,13 @@ export async function generateMetadata({
 
     return {
         title: `Bhagavad Gita Chapter ${shloka.chapter} Verse ${shloka.verse} | Meaning & Translation`,
-        description: `Read the meaning and translation of Bhagavad Gita ${shlokaId}. ${shloka.translation}`,
+        description: composeMetaDescription(
+            [`Bhagavad Gita ${shlokaId} — meaning, translation, and Sanskrit`, shloka.translation],
+            {
+                fallback:
+                    "Read the full verse with Devanagari, word-by-word meaning, and commentary on Sadhaka.",
+            },
+        ),
         alternates: {
             canonical: `https://www.opensadhaka.com/texts/bhagavad-gita/chapter-${shloka.chapter}/shloka-${shloka.verse}`,
         },

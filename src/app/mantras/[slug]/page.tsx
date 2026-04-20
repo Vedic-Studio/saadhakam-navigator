@@ -7,6 +7,7 @@ import { MantraCounter } from "@/components/visuals/MantraCounter";
 import { SanskritTypewriter } from "@/components/visuals/SanskritTypewriter";
 import { getMantraBySlug, mantras } from "@/data/mantras";
 import { buildPageMetadata, buildFaqSchema, buildWebPageSchema, buildBreadcrumbSchema, buildUrl } from "@/lib/seo";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 
 export const revalidate = 86400;
 
@@ -20,7 +21,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!mantra) return {};
     return buildPageMetadata({
         title: `${mantra.name} Meaning & Practice`,
-        description: mantra.oneLineMeaning,
+        description: composeMetaDescription(
+            [`${mantra.name} — meaning, pronunciation, and practice`, mantra.oneLineMeaning],
+            {
+                fallback:
+                    "Learn the Sanskrit, transliteration, benefits, and when and how to chant this mantra on Sadhaka.",
+            },
+        ),
         path: `/mantras/${mantra.slug}`,
     });
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildBreadcrumbSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -48,7 +49,16 @@ export async function generateMetadata({
   const lastN = verse.names[verse.names.length - 1]?.number;
   return {
     title: `Vishnu Sahasranama Shloka ${verse.verse} (Names ${firstN}–${lastN}) | Sanskrit & Meaning`,
-    description: `Shloka ${verse.verse} of the Vishnu Sahasranama with Sanskrit Devanagari, IAST transliteration, and meaning for names ${firstN}–${lastN}: ${verse.names.map((n) => n.transliteration).join(", ")}.`,
+    description: composeMetaDescription(
+      [
+        `Vishnu Sahasranama shloka ${verse.verse} — Sanskrit, transliteration, and meaning for names ${firstN}–${lastN}`,
+        verse.names.slice(0, 3).map((n) => n.transliteration).join(", "),
+      ],
+      {
+        fallback:
+          "Read the full verse with Devanagari, IAST, and devotional commentary on Sadhaka.",
+      },
+    ),
     alternates: {
       canonical: `https://www.opensadhaka.com/stotras/${SLUG}/${verse.slug}`,
     },

@@ -7,6 +7,7 @@ import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggeredList } from "@/components/animations/StaggeredList";
 import { LazyPlanetOrbit } from "@/components/jyotish/visuals/LazyPlanetOrbit";
 import { buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata, buildUrl, buildWebPageSchema } from "@/lib/seo";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import { getDeityBySlug } from "@/data/deities";
 import { getGrahaBySlug, grahas } from "@/data/grahas";
 import { getMantraBySlug } from "@/data/mantras";
@@ -22,7 +23,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!graha) return {};
     return buildPageMetadata({
         title: `${graha.name} in Jyotish`,
-        description: graha.description,
+        description: composeMetaDescription(
+            [`${graha.name} graha in Jyotish — symbolism, mantra, and practice`, graha.description],
+            {
+                fallback:
+                    "Explore the nature, ruling rashis, related nakshatras, and contemplative guidance for this graha on Sadhaka.",
+            },
+        ),
         path: `/jyotish/grahas/${graha.slug}`,
     });
 }
