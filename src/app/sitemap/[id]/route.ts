@@ -74,6 +74,8 @@ function getEntries(id: string): SitemapEntry[] {
         { url: `${baseUrl}/compare`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
         { url: `${baseUrl}/brand-facts`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.7 },
         { url: `${baseUrl}/about`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.8 },
+        { url: `${baseUrl}/privacy`, lastModified: contentDate, changeFrequency: "yearly", priority: 0.3 },
+        { url: `${baseUrl}/terms`, lastModified: contentDate, changeFrequency: "yearly", priority: 0.3 },
         { url: `${baseUrl}/deities`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
         { url: `${baseUrl}/mantras`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
         { url: `${baseUrl}/best-spiritual-path-for-beginners`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.8 },

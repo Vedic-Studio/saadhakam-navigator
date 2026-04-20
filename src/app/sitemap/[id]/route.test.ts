@@ -75,6 +75,12 @@ describe("child sitemaps", () => {
         expect(xml).toContain("<loc>https://www.opensadhaka.com/panchang</loc>");
     });
 
+    it("core sitemap includes /privacy and /terms", async () => {
+        const xml = await fetchChild("core");
+        expect(xml).toContain("<loc>https://www.opensadhaka.com/privacy</loc>");
+        expect(xml).toContain("<loc>https://www.opensadhaka.com/terms</loc>");
+    });
+
     it("returns 404 for unknown sitemap ids", async () => {
         const res = await getChildSitemap(new Request("http://localhost/sitemap/nope.xml") as never, {
             params: Promise.resolve({ id: "nope.xml" }),
