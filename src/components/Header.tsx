@@ -58,6 +58,7 @@ const navSections: NavSection[] = [
         { label: "Traditions", href: "/spiritual-traditions-paths", description: "Understand lineages, sampradayas, and approaches." },
         { label: "History", href: "/sanatan-history", description: "Explore civilizational context and sacred history." },
         { label: "Greats", href: "/greats", description: "Learn from sages, teachers, and realized exemplars." },
+        { label: "About Sadhaka", href: "/about", description: "Editorial standards, sourcing, and methodology." },
       ],
     },
   },

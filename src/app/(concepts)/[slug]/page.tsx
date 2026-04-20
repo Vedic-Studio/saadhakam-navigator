@@ -9,6 +9,12 @@ import { getConceptBySlug, getAllConcepts } from "@/data/concepts";
 import { getSanskritWordBySlug } from "@/data/sanskritVocab";
 import { listArticles } from "@/features/articles";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import {
+  buildArticleSchema,
+  buildBreadcrumbSchema,
+  buildWebPageSchema,
+  buildUrl,
+} from "@/lib/seo";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
 import { Badge } from "@/components/ui/badge";
@@ -141,13 +147,15 @@ export default async function PseoConceptPage({
     )
     .slice(0, 3);
 
+  const pageUrl = buildUrl(`/what-is-${concept.slug}`);
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
       {
         "@type": "Question",
-        name: `What is the spiritual definition of ${conceptName}?`,
+        name: `What is ${conceptName}?`,
         acceptedAnswer: {
           "@type": "Answer",
           text: concept.shortDefinition,
@@ -161,12 +169,67 @@ export default async function PseoConceptPage({
           text: concept.practicalApplication,
         },
       },
+      {
+        "@type": "Question",
+        name: `Which texts discuss ${conceptName}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `${conceptName} is discussed across ${concept.sourceTexts.join(", ")}. These sources treat the concept at different levels — from ritual and ethical application to metaphysical analysis.`,
+        },
+      },
     ],
   };
+
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Concepts", href: "/learn" },
+    { label: conceptName, href: `/what-is-${concept.slug}` },
+  ];
+
+  const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
+
+  const webPageSchema = buildWebPageSchema({
+    name: `What is ${conceptName}? — Meaning, Role, and Practice`,
+    description: concept.shortDefinition,
+    url: pageUrl,
+    breadcrumbItems,
+    image: concept.featuredImage ? buildUrl(concept.featuredImage.src) : undefined,
+  });
+
+  const articleSchema = buildArticleSchema({
+    headline: `What is ${conceptName}? Meaning & Vedic Context`,
+    description: concept.shortDefinition,
+    url: pageUrl,
+    // Concept pages are curated explanations — surface them as evergreen
+    // scholarship rather than dated news. Use site-founding year as a stable
+    // datePublished so the signal is present without misleading freshness.
+    datePublished: "2025-01-01",
+    dateModified: "2026-03-15",
+    section: "Concept Explorer",
+    keywords: [
+      conceptName,
+      concept.sanskritWord,
+      ...concept.tags,
+      ...concept.relatedConcepts,
+    ],
+    image: concept.featuredImage ? buildUrl(concept.featuredImage.src) : undefined,
+  });
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <ContentPageTracker slug={concept.slug} pillar="concepts" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -191,9 +254,13 @@ export default async function PseoConceptPage({
             <p className="text-xl md:text-2xl text-muted-foreground font-medium mb-4 leading-relaxed max-w-3xl border-l-4 border-primary/30 pl-8 py-2">
               {concept.sanskritWord} — {concept.englishTranslation}
             </p>
-            <div className="text-lg text-muted-foreground max-w-2xl mt-8">
+            <p
+              data-speakable
+              className="text-lg md:text-xl text-foreground/90 max-w-3xl mt-8 leading-relaxed font-medium"
+            >
+              <strong className="text-primary font-black">Direct answer:</strong>{" "}
               {concept.shortDefinition}
-            </div>
+            </p>
           </header>
 
           {concept.featuredImage && (

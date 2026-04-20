@@ -12,6 +12,8 @@
     "indexing:priority": "node scripts/generate-priority-indexing-urls.mjs",
     "indexnow:check:prod": "node scripts/check-indexnow-prod.mjs",
     "indexnow:submit:prod": "node scripts/submit-priority-indexnow.mjs",
+    "llms:generate": "npx tsx scripts/generate-llms-txt.mjs",
+    "cwv:pseo": "node scripts/check-cwv-pseo.mjs",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
