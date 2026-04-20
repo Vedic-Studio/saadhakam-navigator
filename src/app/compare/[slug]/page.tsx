@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
-import { buildBreadcrumbSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildWebPageSchema, buildArticleSchema, buildUrl } from "@/lib/seo";
 import { FeaturedImage } from "@/components/FeaturedImage";
 
 interface Props {
@@ -88,6 +88,17 @@ export default async function ComparisonPage({ params }: Props) {
     breadcrumbItems,
   });
 
+  const articleSchema = buildArticleSchema({
+    headline: comp.title,
+    description: comp.metaDescription,
+    url: buildUrl(`/compare/${comp.slug}`),
+    datePublished: "2025-01-01",
+    dateModified: "2026-03-15",
+    section: `Comparisons · ${comp.category}`,
+    keywords: [comp.entityA, comp.entityB, comp.category, `${comp.entityA} vs ${comp.entityB}`],
+    image: comp.featuredImage ? buildUrl(comp.featuredImage.src) : undefined,
+  });
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -122,6 +133,10 @@ export default async function ComparisonPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
       <ContentPageTracker slug={comp.slug} pillar="comparisons" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -160,9 +175,12 @@ export default async function ComparisonPage({ params }: Props) {
               <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 md:p-8 mb-10">
                 <h3 className="font-semibold text-xl mb-3 flex items-center gap-2">
                   <CheckCircle2 className="text-primary w-5 h-5" />
-                  TL;DR Summary
+                  Direct answer
                 </h3>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p
+                  data-speakable
+                  className="text-lg leading-relaxed text-muted-foreground"
+                >
                   {comp.tldr}
                 </p>
               </div>

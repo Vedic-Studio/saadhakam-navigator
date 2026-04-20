@@ -67,3 +67,9 @@ bun.lockb
 # Backlink status reports (generated, ephemeral)
 scripts/backlinks/status-*.json
 scripts/backlinks/CHECKLIST.md
+
+# Ahrefs audit CSV exports (local working data)
+Ahfrens Audit/
+
+# Scheduled tasks lock file (local runtime)
+.claude/scheduled_tasks.lock

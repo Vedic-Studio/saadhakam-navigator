@@ -15,6 +15,7 @@ const footerLinks = {
     { label: "Deities", href: "/deities" },
     { label: "Greats", href: "/greats" },
     { label: "Sanatan History", href: "/sanatan-history" },
+    { label: "About Sadhaka", href: "/about" },
     { label: "Brand Facts", href: "/brand-facts" },
   ],
   learn: [
@@ -165,6 +166,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-medium text-muted-foreground/50 uppercase tracking-tighter">
             <p>© {new Date().getFullYear()} Sadhaka. Created with reverence for the tradition.</p>
             <div className="flex gap-6">
+              <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
               <Link href="/brand-facts" className="hover:text-foreground transition-colors">Brand Facts</Link>
               <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
               <Link href="/terms" className="hover:text-foreground transition-colors">Terms</Link>

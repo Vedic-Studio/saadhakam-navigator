@@ -127,6 +127,7 @@ export const articles: ArticleMeta[] = [
         },
         relatedLinks: [
             { text: "Bhagavad Gita Text Hub", href: "/texts/bhagavad-gita" },
+            { text: "Bhagavad Gita Chapter 2", href: "/bhagavad-gita-chapter-2" },
             { text: "What is Dharma?", href: "/what-is-dharma" },
             { text: "How Karma and Dharma Work", href: "/how-karma-dharma-work" },
             { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
@@ -2546,6 +2547,7 @@ export const articles: ArticleMeta[] = [
             "Bhagavad Gita Chapter 1 introduces Arjuna's collapse on the battlefield of Kurukshetra after seeing his teachers, relatives, and companions on both sides of the war. Traditionally called Arjuna Vishada Yoga, it is not a mere preface but the existential and moral crisis that makes Krishna's later teaching necessary. The chapter establishes the problem of grief, duty, and paralysis before any solution is offered.",
         relatedLinks: [
             { text: "Bhagavad Gita Complete Guide", href: "/bhagavad-gita-complete-guide" },
+            { text: "Bhagavad Gita Chapter 2", href: "/bhagavad-gita-chapter-2" },
             { text: "Read BG Chapter 1 in Detail", href: "/texts/bhagavad-gita/chapter-1" },
             { text: "Sacred Texts & Teachings Hub", href: "/sacred-texts-teachings" },
             { text: "What is Dharma?", href: "/what-is-dharma" },
@@ -2660,6 +2662,7 @@ export const articles: ArticleMeta[] = [
             "Not all Sanskrit mantras are interchangeable. A mantra is a structured sacred sound used for devotion, concentration, protection, or transformation, and its suitability depends on lineage, initiation requirements, pronunciation, and the seeker's level. For beginners, publicly transmitted nama mantras are usually more appropriate than restricted seed or tantric formulas.",
         relatedLinks: [
             { text: "How to Start Japa", href: "/how-to-start-japa" },
+            { text: "Can I Chant a Mantra Without Initiation?", href: "/can-i-chant-a-mantra-without-initiation" },
             { text: "Mantra Hub", href: "/mantras" },
             { text: "How to Choose a Mantra", href: "/how-to-choose-a-mantra" },
             { text: "Mantra vs Affirmation", href: "/compare/mantra-vs-affirmation" },
@@ -2830,6 +2833,7 @@ export const articles: ArticleMeta[] = [
         },
         relatedLinks: [
             { text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
+            { text: "Spiritual Practice Sequence", href: "/spiritual-practice-sequence" },
             { text: "How to Start Japa", href: "/how-to-start-japa" },
             { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
             { text: "What is Kriya Yoga", href: "/what-is-kriya-yoga" },
