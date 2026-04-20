@@ -1,7 +1,10 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { bgShlokas, getBgShlokaById } from "@/data/bgShlokas";
+import { bgShlokas, getBgShlokaById, getBgShlokasByChapter } from "@/data/bgShlokas";
 import { getBgChapterByNumber } from "@/data/bgChapters";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { composeMetaDescription } from "@/lib/seo/metaDescription";
@@ -87,6 +90,13 @@ export default async function BgShlokaPage({
     }
 
     const chapterDetails = getBgChapterByNumber(shloka.chapter);
+    const chapterShlokas = getBgShlokasByChapter(shloka.chapter).sort((a, b) => a.verse - b.verse);
+    const currentIndex = chapterShlokas.findIndex((s) => s.verse === shloka.verse);
+    const prevShloka = currentIndex > 0 ? chapterShlokas[currentIndex - 1] : null;
+    const nextShloka = currentIndex >= 0 && currentIndex < chapterShlokas.length - 1
+        ? chapterShlokas[currentIndex + 1]
+        : null;
+    const nextChapter = !nextShloka ? getBgChapterByNumber(shloka.chapter + 1) : null;
 
     const faqSchema = {
         "@context": "https://schema.org",
@@ -112,7 +122,9 @@ export default async function BgShlokaPage({
     };
 
     return (
-        <div className="container mx-auto px-4 py-16 max-w-4xl">
+        <div className="min-h-screen bg-background text-foreground flex flex-col">
+            <Header />
+            <main className="container mx-auto px-4 py-16 max-w-4xl flex-1">
             <ContentPageTracker
                 slug={`bhagavad-gita-${shlokaId}`}
                 pillar="scripture-verse"
@@ -212,6 +224,69 @@ export default async function BgShlokaPage({
                 </div>
             </div>
 
+            <nav
+                aria-label="Shloka navigation"
+                className="border-t border-neutral-200 pt-10 mt-12 grid gap-4 sm:grid-cols-3"
+            >
+                <div className="text-left">
+                    {prevShloka ? (
+                        <Link
+                            href={`/texts/bhagavad-gita/chapter-${prevShloka.chapter}/shloka-${prevShloka.verse}`}
+                            className="inline-flex flex-col gap-1 text-sm text-neutral-700 hover:text-primary"
+                        >
+                            <span className="text-xs uppercase tracking-wider text-neutral-500">← Previous</span>
+                            <span className="font-semibold">
+                                BG {prevShloka.chapter}.{prevShloka.verse}
+                            </span>
+                        </Link>
+                    ) : (
+                        <span className="inline-flex flex-col gap-1 text-sm text-neutral-400">
+                            <span className="text-xs uppercase tracking-wider">← Previous</span>
+                            <span>Start of chapter</span>
+                        </span>
+                    )}
+                </div>
+                <div className="text-center">
+                    <Link
+                        href={`/texts/bhagavad-gita/chapter-${shloka.chapter}`}
+                        className="inline-flex flex-col gap-1 text-sm text-neutral-700 hover:text-primary"
+                    >
+                        <span className="text-xs uppercase tracking-wider text-neutral-500">Chapter</span>
+                        <span className="font-semibold">
+                            {chapterDetails?.nameEnglish ?? `Chapter ${shloka.chapter}`}
+                        </span>
+                    </Link>
+                </div>
+                <div className="text-right">
+                    {nextShloka ? (
+                        <Link
+                            href={`/texts/bhagavad-gita/chapter-${nextShloka.chapter}/shloka-${nextShloka.verse}`}
+                            className="inline-flex flex-col gap-1 text-sm text-neutral-700 hover:text-primary"
+                        >
+                            <span className="text-xs uppercase tracking-wider text-neutral-500">Next →</span>
+                            <span className="font-semibold">
+                                BG {nextShloka.chapter}.{nextShloka.verse}
+                            </span>
+                        </Link>
+                    ) : nextChapter ? (
+                        <Link
+                            href={`/texts/bhagavad-gita/chapter-${nextChapter.chapter}`}
+                            className="inline-flex flex-col gap-1 text-sm text-neutral-700 hover:text-primary"
+                        >
+                            <span className="text-xs uppercase tracking-wider text-neutral-500">Next chapter →</span>
+                            <span className="font-semibold">
+                                {nextChapter.nameEnglish ?? `Chapter ${nextChapter.chapter}`}
+                            </span>
+                        </Link>
+                    ) : (
+                        <span className="inline-flex flex-col gap-1 text-sm text-neutral-400">
+                            <span className="text-xs uppercase tracking-wider">Next →</span>
+                            <span>End of Gita</span>
+                        </span>
+                    )}
+                </div>
+            </nav>
+
             <div className="border-t border-neutral-200 pt-12 mt-8 flex flex-col md:flex-row justify-between gap-6">
                 <div>
                     <h3 className="font-bold text-neutral-900">Chapter Content</h3>
@@ -231,6 +306,8 @@ export default async function BgShlokaPage({
                     </button>
                 </div>
             </div>
+            </main>
+            <Footer />
         </div>
     );
 }
