@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
 import { buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata, buildUrl, buildWebPageSchema } from "@/lib/seo";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import { getTithiBySlug, tithis } from "@/lib/jyotish";
 
 export async function generateStaticParams() {
@@ -15,7 +16,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!tithi) return {};
     return buildPageMetadata({
         title: `${tithi.name} Tithi`,
-        description: tithi.description,
+        description: composeMetaDescription(
+            [`${tithi.name} tithi — meaning, significance, and practice`, tithi.description],
+            {
+                fallback:
+                    "Explore the meaning, presiding deity, and contemplative guidance for this lunar day on Sadhaka.",
+            },
+        ),
         path: `/jyotish/panchang/tithis/${tithi.slug}`,
     });
 }

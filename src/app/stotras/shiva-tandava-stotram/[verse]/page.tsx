@@ -8,6 +8,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { SanskritTypewriter } from "@/components/visuals/SanskritTypewriter";
 import { loadStotra, getStotraVerseBySlug, getAdjacentVerses } from "@/lib/stotras";
+import { clampMetaDescription } from "@/lib/seo/metaDescription";
 
 export const revalidate = 86400;
 
@@ -22,7 +23,9 @@ export async function generateMetadata({ params }: { params: Promise<{ verse: st
   const verse = getStotraVerseBySlug(stotra, verseSlug);
   if (!verse) return { title: "Verse Not Found" };
   const title = `Shiva Tandava Stotram Verse ${verse.verse} | Sanskrit, Transliteration, Meaning`;
-  const description = verse.translation;
+  const description = clampMetaDescription(
+    `Shiva Tandava Stotram verse ${verse.verse} — Sanskrit, transliteration, and meaning. ${verse.translation}`,
+  );
   const canonical = `https://www.opensadhaka.com/stotras/shiva-tandava-stotram/${verse.slug}`;
   return {
     title,

@@ -7,6 +7,7 @@ import { NakshatraMap } from "@/components/jyotish/visuals/NakshatraMap";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { getNakshatraBySlug, nakshatras } from "@/data/nakshatras";
 import { buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata, buildUrl, buildWebPageSchema } from "@/lib/seo";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import { getDeityBySlug } from "@/data/deities";
 import { getGrahaBySlug, getRashiBySlug } from "@/lib/jyotish";
 
@@ -20,7 +21,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!nakshatra) return {};
     return buildPageMetadata({
         title: `${nakshatra.name} Nakshatra`,
-        description: nakshatra.description,
+        description: composeMetaDescription(
+            [`${nakshatra.name} nakshatra — ruling graha, deity, and qualities`, nakshatra.description],
+            {
+                fallback:
+                    "Explore the ruling graha, presiding deity, shadow qualities, and practice guidance for this nakshatra on Sadhaka.",
+            },
+        ),
         path: `/jyotish/nakshatras/${nakshatra.slug}`,
     });
 }

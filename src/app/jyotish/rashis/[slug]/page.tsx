@@ -7,6 +7,7 @@ import { ZodiacWheel } from "@/components/jyotish/visuals/ZodiacWheel";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { getRashiBySlug, rashis } from "@/data/rashis";
 import { buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata, buildUrl, buildWebPageSchema } from "@/lib/seo";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import { getRelatedGrahaForRashi, getRelatedNakshatrasForRashi } from "@/lib/jyotish";
 
 export async function generateStaticParams() {
@@ -19,7 +20,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!rashi) return {};
     return buildPageMetadata({
         title: `${rashi.name} in Jyotish`,
-        description: rashi.description,
+        description: composeMetaDescription(
+            [`${rashi.name} rashi in Jyotish — ruling graha, element, and traits`, rashi.description],
+            {
+                fallback:
+                    "Explore the element, ruling graha, nakshatras, and contemplative guidance for this zodiac sign on Sadhaka.",
+            },
+        ),
         path: `/jyotish/rashis/${rashi.slug}`,
     });
 }

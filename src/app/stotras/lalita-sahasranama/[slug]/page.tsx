@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildBreadcrumbSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -19,9 +20,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const sahasranama = loadSahasranama("lalita-sahasranama");
   const name = getSahasranamaNameBySlug(sahasranama, slug);
   if (!name) return { title: "Name Not Found" };
+  const description = composeMetaDescription(
+    [
+      `Lalita Sahasranama name ${name.number}: ${name.transliteration} (${name.name})`,
+      name.meaning,
+    ],
+    {
+      fallback:
+        "Explore the Sanskrit, IAST transliteration, and devotional meaning from the thousand names of the Divine Mother on Sadhaka.",
+    },
+  );
   return {
     title: `Lalita Sahasranama #${name.number} — ${name.transliteration}`,
-    description: `Lalita Sahasranama name ${name.number}: ${name.name}.`,
+    description,
     alternates: { canonical: `https://www.opensadhaka.com/stotras/lalita-sahasranama/${name.slug}` },
   };
 }

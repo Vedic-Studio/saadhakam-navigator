@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
 import { buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata, buildUrl, buildWebPageSchema } from "@/lib/seo";
+import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import { getGrahaBySlug, getVaraBySlug, varas } from "@/lib/jyotish";
 
 export async function generateStaticParams() {
@@ -15,7 +16,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!vara) return {};
     return buildPageMetadata({
         title: `${vara.name} Vara`,
-        description: vara.description,
+        description: composeMetaDescription(
+            [`${vara.name} vara — ruling graha, significance, and practice`, vara.description],
+            {
+                fallback:
+                    "Explore the ruling graha, presiding qualities, and contemplative guidance for this weekday on Sadhaka.",
+            },
+        ),
         path: `/jyotish/panchang/varas/${vara.slug}`,
     });
 }
