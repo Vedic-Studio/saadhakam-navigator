@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -57,6 +58,37 @@ export default async function TithiDetailPage({ params }: { params: Promise<{ sl
                         <p><strong className="text-foreground">Deity:</strong> {tithi.deity}</p>
                         <p>{tithi.description}</p>
                     </div>
+
+                    <section className="mt-12">
+                        <h2 className="text-xl font-semibold mb-4">All 30 tithis</h2>
+                        <div className="grid gap-6 sm:grid-cols-2">
+                            {(["shukla", "krishna"] as const).map((paksha) => (
+                                <div key={paksha}>
+                                    <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                                        {paksha === "shukla" ? "Shukla Paksha (Waxing)" : "Krishna Paksha (Waning)"}
+                                    </h3>
+                                    <ul className="space-y-1 text-sm">
+                                        {tithis
+                                            .filter((t) => t.paksha.toLowerCase().includes(paksha))
+                                            .map((t) => (
+                                                <li key={t.slug}>
+                                                    <Link
+                                                        href={`/jyotish/panchang/tithis/${t.slug}`}
+                                                        className={
+                                                            t.slug === tithi.slug
+                                                                ? "font-semibold text-primary"
+                                                                : "hover:text-primary"
+                                                        }
+                                                    >
+                                                        {t.name}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
                 </div>
             </main>
             <Footer />

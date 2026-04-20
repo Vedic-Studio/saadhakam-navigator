@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { loadSahasranama, getSahasranamaNameBySlug } from "@/lib/stotras";
+import { loadSahasranama, getSahasranamaNameBySlug, getAllSahasranamaNames } from "@/lib/stotras";
 
 export const revalidate = 86400;
 
@@ -43,6 +43,11 @@ export default async function LalitaSahasranamaNamePage({ params }: { params: Pr
   const name = getSahasranamaNameBySlug(sahasranama, slug);
   if (!name) notFound();
 
+  const allNames = getAllSahasranamaNames(sahasranama);
+  const currentIndex = allNames.findIndex((n) => n.slug === name.slug);
+  const prevName = currentIndex > 0 ? allNames[currentIndex - 1] : null;
+  const nextName = currentIndex >= 0 && currentIndex < allNames.length - 1 ? allNames[currentIndex + 1] : null;
+
   const pagePath = `/stotras/lalita-sahasranama/${name.slug}`;
   const breadcrumbItems = [
     { label: "Home", href: "/" },
@@ -71,6 +76,78 @@ export default async function LalitaSahasranamaNamePage({ params }: { params: Pr
             <p className="italic text-muted-foreground">{name.transliteration}</p>
             <p>{name.meaning}</p>
           </div>
+          <nav
+            aria-label="Name navigation"
+            className="mt-10 border-t border-border/40 pt-8 grid gap-4 sm:grid-cols-3"
+          >
+            <div className="text-left">
+              {prevName ? (
+                <Link
+                  href={`/stotras/lalita-sahasranama/${prevName.slug}`}
+                  className="inline-flex flex-col gap-1 text-sm hover:text-primary"
+                >
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground">← Previous</span>
+                  <span className="font-semibold">
+                    #{prevName.number} {prevName.transliteration}
+                  </span>
+                </Link>
+              ) : (
+                <span className="inline-flex flex-col gap-1 text-sm text-muted-foreground/60">
+                  <span className="text-xs uppercase tracking-wider">← Previous</span>
+                  <span>First name</span>
+                </span>
+              )}
+            </div>
+            <div className="text-center">
+              <Link
+                href="/stotras/lalita-sahasranama"
+                className="inline-flex flex-col gap-1 text-sm hover:text-primary"
+              >
+                <span className="text-xs uppercase tracking-wider text-muted-foreground">Index</span>
+                <span className="font-semibold">All 1,000 names</span>
+              </Link>
+            </div>
+            <div className="text-right">
+              {nextName ? (
+                <Link
+                  href={`/stotras/lalita-sahasranama/${nextName.slug}`}
+                  className="inline-flex flex-col gap-1 text-sm hover:text-primary"
+                >
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground">Next →</span>
+                  <span className="font-semibold">
+                    #{nextName.number} {nextName.transliteration}
+                  </span>
+                </Link>
+              ) : (
+                <span className="inline-flex flex-col gap-1 text-sm text-muted-foreground/60">
+                  <span className="text-xs uppercase tracking-wider">Next →</span>
+                  <span>Last name</span>
+                </span>
+              )}
+            </div>
+          </nav>
+
+          <div className="mt-10 rounded-2xl border border-border/40 p-6">
+            <h2 className="font-semibold mb-4">Jump to a name</h2>
+            <ul className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-sm">
+              {[1, 250, 500, 750, 999].map((num) => {
+                const target = allNames.find((n) => n.number === num);
+                if (!target) return null;
+                return (
+                  <li key={num}>
+                    <Link
+                      href={`/stotras/lalita-sahasranama/${target.slug}`}
+                      className="block rounded-md border border-border/30 px-3 py-2 hover:border-primary hover:text-primary"
+                    >
+                      <span className="block text-xs text-muted-foreground">Name #{target.number}</span>
+                      <span className="block font-medium">{target.transliteration}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
           <Link href="/stotras/lalita-sahasranama" className="inline-block mt-8 hover:underline">← Back to all names</Link>
         </div>
       </main>
