@@ -3,9 +3,8 @@ import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { execFileSync } from "node:child_process";
 import postgres, { type Sql } from "postgres";
-import { articles, getArticleBySlug, type ArticleMeta } from "@/data/articles";
+import type { ArticleMeta } from "@/data/articles";
 import { authenticityDeduction, scanContent } from "./exclusion-scan";
-import { buildPilotCmsMarkdown } from "./markdown";
 import type {
     CmsArticleIntake,
     CmsConsistencyIssue,
@@ -34,6 +33,15 @@ const postgresSql: Sql | null = POSTGRES_URL
 
 let cmsBootstrapPromise: Promise<void> | null = null;
 let publishedCmsContentMapPromise: Promise<Map<string, string>> | null = null;
+
+// Lazy-load heavy data modules to keep this module's static bundle small.
+// Bootstrap functions are the only callers of articles/buildPilotCmsMarkdown;
+// getArticleBySlug is called throughout but only from async contexts.
+let _articlesModule: typeof import("@/data/articles") | null = null;
+async function getArticlesModule() {
+    if (!_articlesModule) _articlesModule = await import("@/data/articles");
+    return _articlesModule;
+}
 
 type SqlScalar = string | number | null | undefined;
 
@@ -198,10 +206,11 @@ function toArticleIntake(row?: Partial<CmsArticleRow> & Record<string, unknown>)
     return { topic, goal, audience, pageType, pipelineId, contextModule, qualityThreshold, finalScore };
 }
 
-function createQueueArticle(
+async function createQueueArticle(
     meta: Pick<ArticleMeta, "slug" | "title" | "pillar" | "publishDate">,
     row?: Partial<CmsArticleRow> & Record<string, unknown>,
-): CmsQueueArticle {
+): Promise<CmsQueueArticle> {
+    const { getArticleBySlug } = await getArticlesModule();
     const hasCmsContent = Boolean(row?.version_count && Number(row.version_count) > 0);
     const sourceKind = (row?.source_kind as CmsSourceKind | undefined) || (hasCmsContent ? "cms-native" : "legacy-page");
     const stage = (row?.stage as CmsStage | undefined) || (hasCmsContent ? "published" : "legacy");
@@ -235,15 +244,16 @@ function createFallbackMeta(slug: string, row?: Partial<CmsArticleRow> & Record<
     };
 }
 
-function resolveArticleMeta(slug: string, row?: Partial<CmsArticleRow> & Record<string, unknown>) {
+async function resolveArticleMeta(slug: string, row?: Partial<CmsArticleRow> & Record<string, unknown>) {
+    const { getArticleBySlug } = await getArticlesModule();
     return getArticleBySlug(slug) ?? createFallbackMeta(slug, row);
 }
 
-function deriveMigrationState(slug: string, versions: CmsVersion[]) {
+async function deriveMigrationState(slug: string, versions: CmsVersion[]) {
     if (versions.length === 0) {
         return "legacy-fallback" as const;
     }
-
+    const { getArticleBySlug } = await getArticlesModule();
     return getArticleBySlug(slug) ? ("cms" as const) : ("cms-native" as const);
 }
 
@@ -259,6 +269,7 @@ function slugifyTopic(input: string): string {
 }
 
 async function slugExists(slug: string): Promise<boolean> {
+    const { getArticleBySlug } = await getArticlesModule();
     if (getArticleBySlug(slug)) {
         return true;
     }
@@ -549,6 +560,9 @@ async function ensureLocalCmsBootstrap(): Promise<void> {
         }
     }
 
+    const { articles } = await getArticlesModule();
+    const { buildPilotCmsMarkdown } = await import("./markdown");
+
     for (const meta of articles) {
         const now = meta.publishDate;
         runSql(`
@@ -645,6 +659,9 @@ async function ensurePostgresCmsBootstrap(): Promise<void> {
             created_at TEXT NOT NULL
         );
     `;
+
+    const { articles } = await getArticlesModule();
+    const { buildPilotCmsMarkdown } = await import("./markdown");
 
     for (const meta of articles) {
         await sql`
@@ -799,12 +816,12 @@ export async function getCmsQueue(): Promise<CmsQueueArticle[]> {
             ORDER BY a.updated_at DESC, a.slug ASC;
         `;
 
-        return result
-            .map((row) => {
-                const meta = resolveArticleMeta(String(row.slug), row);
-                return createQueueArticle(meta, row);
-            })
-            .filter((value): value is CmsQueueArticle => Boolean(value));
+        return (await Promise.all(
+            result.map(async (row) => {
+                const meta = await resolveArticleMeta(String(row.slug), row);
+                return await createQueueArticle(meta, row);
+            }),
+        )).filter((value): value is CmsQueueArticle => Boolean(value));
     }
 
     const rows = selectSql<Record<string, unknown>>(`
@@ -815,12 +832,12 @@ export async function getCmsQueue(): Promise<CmsQueueArticle[]> {
         ORDER BY datetime(a.updated_at) DESC, a.slug ASC;
     `);
 
-    return rows
-        .map((row) => {
-            const meta = resolveArticleMeta(String(row.slug), row);
+    return (await Promise.all(
+        rows.map(async (row) => {
+            const meta = await resolveArticleMeta(String(row.slug), row);
             return createQueueArticle(meta, row);
-        })
-        .filter((value): value is CmsQueueArticle => Boolean(value));
+        }),
+    )).filter((value): value is CmsQueueArticle => Boolean(value));
 }
 
 export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetail | null> {
@@ -839,7 +856,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
         if (!articleRow) {
             return null;
         }
-        const meta = resolveArticleMeta(slug, articleRow);
+        const meta = await resolveArticleMeta(slug, articleRow);
         const versions = await getPostgresVersions(slug);
         const reviewsResult = await sql<CmsReviewRow[]>`
             SELECT action, comment, version, created_at
@@ -848,9 +865,10 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
             ORDER BY id DESC;
         `;
         const latestVersion = versions[versions.length - 1];
+        const { getArticleBySlug } = await getArticlesModule();
 
         return {
-            article: createQueueArticle(meta, articleRow),
+            article: await createQueueArticle(meta, articleRow),
             meta: getArticleBySlug(slug),
             content: latestVersion?.content || "",
             versions,
@@ -861,7 +879,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
                 createdAt: review.created_at,
             })),
             score: latestVersion?.content ? buildCmsScore(latestVersion.content) : null,
-            migrationState: deriveMigrationState(slug, versions),
+            migrationState: await deriveMigrationState(slug, versions),
         };
     }
 
@@ -875,7 +893,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
     if (!articleRow) {
         return null;
     }
-    const meta = resolveArticleMeta(slug, articleRow);
+    const meta = await resolveArticleMeta(slug, articleRow);
     const versions = await getLocalVersions(slug);
     const reviews = selectSql<CmsReviewRow>(`
         SELECT action, comment, version, created_at
@@ -885,9 +903,10 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
     `);
     const latestVersion = versions[versions.length - 1];
 
+    const { getArticleBySlug: getArticleBySlugLocal } = await getArticlesModule();
     return {
-        article: createQueueArticle(meta, articleRow),
-        meta: getArticleBySlug(slug),
+        article: await createQueueArticle(meta, articleRow),
+        meta: getArticleBySlugLocal(slug),
         content: latestVersion?.content || "",
         versions,
         reviews: reviews.map((review): CmsReview => ({
@@ -897,7 +916,7 @@ export async function getCmsArticleDetail(slug: string): Promise<CmsArticleDetai
             createdAt: review.created_at,
         })),
         score: latestVersion?.content ? buildCmsScore(latestVersion.content) : null,
-        migrationState: deriveMigrationState(slug, versions),
+        migrationState: await deriveMigrationState(slug, versions),
     };
 }
 
@@ -1115,6 +1134,7 @@ export async function submitCmsReview(slug: string, action: CmsReviewAction, com
 export async function setCmsPublished(slug: string, published: boolean): Promise<void> {
     await ensureCmsBootstrap();
     const updatedAt = new Date().toISOString();
+    const { getArticleBySlug } = await getArticlesModule();
     const existingMeta = getArticleBySlug(slug);
 
     if (!existingMeta && published) {

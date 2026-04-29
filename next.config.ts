@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import { concepts } from "./src/data/concepts";
 
 const nextConfig: NextConfig = {
+    serverExternalPackages: ["postgres"],
     images: {
         remotePatterns: [
             {
