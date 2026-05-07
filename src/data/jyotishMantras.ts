@@ -124,6 +124,10 @@ export const jyotishMantras: Mantra[] = [
                 answer: "It suits students, teachers, writers, and anyone wanting steadier speech and thought.",
             },
         ],
+        seoTitle: "Budha Mantra: Om Bram Brim Braum Sah Budhaya Namah",
+        seoDescription: "The Wednesday Navagraha mantra for Budha (Mercury). Sanskrit, word-by-word meaning, when to chant, and how it sharpens speech, study, and clarity.",
+        ogTitle: "Budha Mantra: For Speech, Study, and Clarity",
+        ogDescription: "Chant 9, 27, or 108 times on Wednesday before writing, teaching, or planning. The full Navagraha-tradition meaning and method, with sources.",
     },
     {
         id: "mantra-brihaspati-graha",

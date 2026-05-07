@@ -88,8 +88,12 @@ export async function generateMetadata({
   if (!concept) return {};
 
   const conceptName = getConceptDisplayName(concept.sanskritWord, concept.slug);
-  const title = `What is ${conceptName}? Meaning & Vedic Context | Sadhaka`;
-  const description = concept.shortDefinition;
+  const defaultTitle = `What is ${conceptName}? Meaning & Vedic Context | Sadhaka`;
+  const defaultDescription = concept.shortDefinition;
+  const title = concept.seoTitle ?? defaultTitle;
+  const description = concept.seoDescription ?? defaultDescription;
+  const ogTitle = concept.ogTitle ?? title;
+  const ogDescription = concept.ogDescription ?? description;
 
   const ogImage = concept.featuredImage
     ? `https://www.opensadhaka.com${concept.featuredImage.src}`
@@ -102,15 +106,15 @@ export async function generateMetadata({
       canonical: `https://www.opensadhaka.com/what-is-${concept.slug}`,
     },
     openGraph: {
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       url: `https://www.opensadhaka.com/what-is-${concept.slug}`,
       images: ogImage ? [{ url: ogImage }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: ogTitle,
+      description: ogDescription,
       images: ogImage ? [ogImage] : undefined,
     },
   };

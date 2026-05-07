@@ -19,17 +19,36 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const { slug } = await params;
     const mantra = getMantraBySlug(slug);
     if (!mantra) return {};
-    return buildPageMetadata({
-        title: `${mantra.name} Meaning & Practice`,
-        description: composeMetaDescription(
-            [`${mantra.name} — meaning, pronunciation, and practice`, mantra.oneLineMeaning],
-            {
-                fallback:
-                    "Learn the Sanskrit, transliteration, benefits, and when and how to chant this mantra on Sadhaka.",
-            },
-        ),
+    const defaultTitle = `${mantra.name} Meaning & Practice`;
+    const defaultDescription = composeMetaDescription(
+        [`${mantra.name} — meaning, pronunciation, and practice`, mantra.oneLineMeaning],
+        {
+            fallback:
+                "Learn the Sanskrit, transliteration, benefits, and when and how to chant this mantra on Sadhaka.",
+        },
+    );
+    const title = mantra.seoTitle ?? defaultTitle;
+    const description = mantra.seoDescription ?? defaultDescription;
+    const base = buildPageMetadata({
+        title,
+        description,
         path: `/mantras/${mantra.slug}`,
     });
+    const ogTitle = mantra.ogTitle ?? title;
+    const ogDescription = mantra.ogDescription ?? description;
+    return {
+        ...base,
+        openGraph: {
+            ...(base.openGraph ?? {}),
+            title: ogTitle,
+            description: ogDescription,
+        },
+        twitter: {
+            ...(base.twitter ?? {}),
+            title: ogTitle,
+            description: ogDescription,
+        },
+    };
 }
 
 export default async function MantraDetailPage({ params }: { params: Promise<{ slug: string }> }) {

@@ -121,4 +121,54 @@ describe("mantras data integrity", () => {
       `Broken relatedMantras refs:\n${broken.join("\n")}`
     ).toHaveLength(0);
   });
+
+  // SEO override fields exist for CTR-optimization on specific mantras.
+  // The dynamic /mantras/[slug] page reads these directly. If the field
+  // disappears from the type or the data, CTR fixes silently regress.
+  // Aligned with the strict 60/160 budget enforced sitewide by
+  // src/app/__tests__/ctr-metadata-budget.test.ts.
+  it("seo override fields are non-empty strings within SERP-safe lengths when present", () => {
+    const TITLE_MAX = 60;
+    const DESC_MAX = 160;
+
+    for (const mantra of mantras) {
+      if (mantra.seoTitle !== undefined) {
+        expect(
+          mantra.seoTitle.length,
+          `Mantra "${mantra.slug}" has empty seoTitle`,
+        ).toBeGreaterThan(0);
+        expect(
+          mantra.seoTitle.length,
+          `Mantra "${mantra.slug}" seoTitle exceeds ${TITLE_MAX} chars: "${mantra.seoTitle}"`,
+        ).toBeLessThanOrEqual(TITLE_MAX);
+      }
+      if (mantra.seoDescription !== undefined) {
+        expect(
+          mantra.seoDescription.length,
+          `Mantra "${mantra.slug}" has empty seoDescription`,
+        ).toBeGreaterThan(0);
+        expect(
+          mantra.seoDescription.length,
+          `Mantra "${mantra.slug}" seoDescription exceeds ${DESC_MAX} chars`,
+        ).toBeLessThanOrEqual(DESC_MAX);
+      }
+      if (mantra.ogTitle !== undefined) {
+        expect(mantra.ogTitle.length).toBeGreaterThan(0);
+      }
+      if (mantra.ogDescription !== undefined) {
+        expect(mantra.ogDescription.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("budha mantra ships with all four SEO overrides (CTR PR 1, 2026-05-07)", () => {
+    const budha = mantras.find(
+      (m) => m.slug === "om-bram-brim-braum-sah-budhaya-namah",
+    );
+    expect(budha, "budha mantra slug missing").toBeDefined();
+    expect(budha?.seoTitle).toBeDefined();
+    expect(budha?.seoDescription).toBeDefined();
+    expect(budha?.ogTitle).toBeDefined();
+    expect(budha?.ogDescription).toBeDefined();
+  });
 });

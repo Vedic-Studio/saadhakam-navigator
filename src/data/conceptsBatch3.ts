@@ -5,6 +5,10 @@ export const conceptsBatch3: Concept[] = [
         slug: "prasad",
         sanskritWord: "प्रसाद (Prasāda)",
         englishTranslation: "Grace / Blessed Offering",
+        seoTitle: "What is Prasad? Meaning, Etiquette & Hidden Reading",
+        seoDescription: "Prasad is food offered to a deity and returned blessed. The Sanskrit meaning, right-hand etiquette, and how Prasada becomes serene clarity in the Gita.",
+        ogTitle: "What is Prasad? Meaning, Etiquette, Hidden Reading",
+        ogDescription: "More than blessed food. Prasad is a model for receiving every outcome (success and loss) as grace. Rooted in Bhakti tradition and Bhagavad Gita 2.64.",
         shortDefinition: "The tangible, material blessing—often in the form of food—returned to a devotee after being offered and consecrated by the Divine.",
         longDescription: "In the transactional mechanics of a Puja, the devotee approaches the altar to offer food, flowers, or resources. This is an act of letting go. But the universe in the Sanatan framework is fundamentally generous. The offering is visually consumed by the deity's presence and instantly returned. The apple is no longer just an apple; it is Prasad—matter infused with Grace. It represents the profound theological shift from the anxiety of acquisition to the gratitude of receiving. The highest spiritual state is actually termed 'Prasada': a serene, luminous clarity of mind that descends unaccountably after intense struggle ceases.",
         keyPrinciples: [
