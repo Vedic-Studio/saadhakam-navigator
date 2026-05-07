@@ -7,16 +7,16 @@ import { ArrowRight, Circle, Volume2, Wind } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "How to Start Japa Meditation: 7-Step Beginner's Guide (Mala, Mantra, Method)",
+    title: "How to Start Japa: A 7-Step Beginner Guide (Mantra & Mala)",
     description:
-        "Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels — vaikhari, upamshu, manasika. Beginner's full method.",
+        "Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels: vaikhari, upamshu, manasika.",
     alternates: {
         canonical: "https://www.opensadhaka.com/how-to-start-japa",
     },
     openGraph: {
         title: "How to Start Japa Meditation: 7 Steps from Mala to Manasika",
         description:
-            "Bhagavad Gita 10.25 + Yoga Sutra 1.28: the canonical practice. Choose a mantra, use the mala correctly, and move through three voiced-to-mental levels.",
+            "Bhagavad Gita 10.25 + Yoga Sutra 1.28: the canonical practice. Choose a mantra, use the mala, and move through the three voiced-to-mental levels.",
         url: "https://www.opensadhaka.com/how-to-start-japa",
         type: "article",
     },
@@ -98,9 +98,9 @@ export default function HowToStartJapaPage() {
         "@graph": [
             {
                 "@type": "Article",
-                headline: "How to Start Japa Meditation: 7-Step Beginner's Guide (Mala, Mantra, Method)",
+                headline: "How to Start Japa: A 7-Step Beginner Guide (Mantra & Mala)",
                 description:
-                    "Japa meditation gives the restless mind a specific job: 108 repetitions of a sacred sound. BG 10.25 calls it the highest sacrifice. Here is how to begin correctly.",
+                    "Japa gives the restless mind a specific job: 108 repetitions of a sacred sound. BG 10.25 calls it the highest sacrifice. Here is how to begin.",
                 url: "https://www.opensadhaka.com/how-to-start-japa",
                 datePublished: "2026-03-20",
                 dateModified: "2026-03-20",

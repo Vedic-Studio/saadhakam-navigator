@@ -7,9 +7,9 @@ import { ArrowRight, Sun, Wind, Circle, BookOpen, Brain } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "Daily Spiritual Routine for Beginners: 5-Step Morning Sequence (Patanjali to Sivananda)",
+    title: "Daily Spiritual Routine: A 5-Step Morning for Beginners",
     description:
-        "Most morning routines skip the order. The 5-step sequence — Brahma Muhurta, pranayama, japa, svadhyaya, meditation — sourced from Patanjali, Vagbhata, Sivananda, Chinmaya Mission.",
+        "Most morning routines skip the order. The 5-step sequence: Brahma Muhurta, pranayama, japa, svadhyaya, meditation. Sourced from Patanjali to Sivananda.",
     alternates: {
         canonical: "https://www.opensadhaka.com/daily-spiritual-routine-beginners",
     },
@@ -455,7 +455,7 @@ export default function DailySpiritualRoutineBeginnersPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Article",
-                        headline: "Daily Spiritual Routine for Beginners: 5-Step Morning Sequence (Patanjali to Sivananda)",
+                        headline: "Daily Spiritual Routine: A 5-Step Morning for Beginners",
                         description:
                             "Rise at Brahma Muhurta, regulate breath, do japa, study scripture, then meditate. Each step prepares the mind for the next.",
                         url: "https://www.opensadhaka.com/daily-spiritual-routine-beginners",

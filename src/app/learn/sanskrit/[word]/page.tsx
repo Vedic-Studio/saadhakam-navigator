@@ -38,12 +38,14 @@ export async function generateMetadata({
     resolveLexiconCanonicalPath(word.slug, Boolean(concept)),
   );
 
-  const defaultTitle = `${word.wordEnglish} in Sanskrit: Etymology, Meaning & Scriptural Usage | Sadhaka`;
+  // Defaults stay under 60 chars even for the longest English headword
+  // (Purushartha, 11 chars) and never use the "| Sadhaka" suffix pattern.
+  const defaultTitle = `${word.wordEnglish} in Sanskrit: Meaning, Etymology, Source Texts`;
   const defaultDescription = concept
-    ? `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings.`
-    : `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings in Sanatan Dharma.`;
-  const defaultOgTitle = `${word.wordEnglish} in Sanskrit`;
-  const defaultOgDescription = `Lexicon-style breakdown of ${word.wordEnglish}: etymology, transliteration, usage, and scriptural context.`;
+    ? `${word.wordDevanagari} (${word.wordEnglish}): Sanskrit meaning, etymology, transliteration, scriptural usage, and tradition-specific meanings, sourced from primary texts.`
+    : `${word.wordDevanagari} (${word.wordEnglish}): Sanskrit meaning, etymology, transliteration, and scriptural usage in Sanatan Dharma, sourced from primary texts.`;
+  const defaultOgTitle = `${word.wordEnglish} in Sanskrit (Sourced Lexicon)`;
+  const defaultOgDescription = `Lexicon-style breakdown of ${word.wordEnglish}: etymology, transliteration, scriptural use, and meaning in Sanatan Dharma.`;
 
   return {
     title: word.seoTitle ?? defaultTitle,

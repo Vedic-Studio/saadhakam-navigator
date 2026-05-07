@@ -39,9 +39,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "how-to-start-japa",
         route: "/how-to-start-japa",
-        title: "How to Start Japa Meditation: 7-Step Beginner's Guide (Mala, Mantra, Method)",
+        title: "How to Start Japa: A 7-Step Beginner Guide (Mantra & Mala)",
         metaDescription:
-            "Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels — vaikhari, upamshu, manasika. Beginner's full method.",
+            "Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels: vaikhari, upamshu, manasika.",
         pillar: "practical-practices",
         publishDate: "2026-03-20",
         readingTime: 9,
@@ -1120,9 +1120,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "how-karma-dharma-work",
         route: "/how-karma-dharma-work",
-        title: "How Karma and Dharma Actually Work: 4 Laws Beyond Reward & Punishment",
+        title: "Karma and Dharma: The 4 Laws Beyond Reward & Punishment",
         metaDescription:
-            "Karma is not cosmic punishment — it is the physics of action. Four operating laws from Brihadaranyaka, Gita 2.47, and Patanjali. Plus how Dharma decides which karma binds you.",
+            "Karma is not punishment but the physics of action. Four operating laws from Brihadaranyaka, Gita 2.47, and Patanjali, with Dharma's role in the chain.",
         pillar: "ancient-wisdom",
         publishDate: "2026-03-10",
         readingTime: 8,
@@ -1182,9 +1182,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "what-is-maya",
         route: "/what-is-maya",
-        title: "What Maya Actually Means in Vedanta: 3 Levels of Reality (Not 'Illusion')",
+        title: "What is Maya? The 3 Levels of Reality (Not 'Illusion')",
         metaDescription:
-            "Maya doesn't mean the world is fake. It means the world has conditional reality, not absolute. The 3 ontological levels — paramarthika, vyavaharika, pratibhasika — sourced from Shankara.",
+            "Maya is not 'illusion' but conditional reality. Three ontological levels from Shankara: paramarthika, vyavaharika, pratibhasika. A precise guide.",
         pillar: "ancient-wisdom",
         publishDate: "2026-03-19",
         readingTime: 7,
@@ -2210,9 +2210,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "can-i-chant-a-mantra-without-initiation",
         route: "/can-i-chant-a-mantra-without-initiation",
-        title: "Can I Chant a Mantra Without Initiation? (Yes — But Not All Mantras)",
+        title: "Can I Chant a Mantra Without Initiation? (Not All Mantras)",
         metaDescription:
-            "Public mantras like Om Namah Shivaya are beginner-safe without diksha. Restricted bija and tantric mantras aren't. The 3 categories explained, plus how to start a 40-day cycle.",
+            "Public mantras like Om Namah Shivaya are beginner-safe without diksha. Restricted bija and tantric mantras are not. The 3 categories, plus a 40-day cycle.",
         pillar: "practical-practices",
         publishDate: "2026-03-10",
         readingTime: 10,
@@ -2427,9 +2427,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "advaita-vedanta-explained",
         route: "/advaita-vedanta-explained",
-        title: "Advaita Vedanta Explained: 9 Core Teachings of Non-Duality (Shankara's System)",
+        title: "Advaita Vedanta Explained: Shankara's 9 Core Teachings",
         metaDescription:
-            "Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha actually happens.",
+            "Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha happens.",
         pillar: "ancient-wisdom",
         publishDate: "2026-03-04",
         readingTime: 10,
@@ -2749,9 +2749,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "daily-spiritual-routine-beginners",
         route: "/daily-spiritual-routine-beginners",
-        title: "Daily Spiritual Routine for Beginners: 5-Step Morning Sequence (Patanjali to Sivananda)",
+        title: "Daily Spiritual Routine: A 5-Step Morning for Beginners",
         metaDescription:
-            "Most morning routines skip the order. The 5-step sequence — Brahma Muhurta, pranayama, japa, svadhyaya, meditation — sourced from Patanjali, Vagbhata, Sivananda, Chinmaya Mission.",
+            "Most morning routines skip the order. The 5-step sequence: Brahma Muhurta, pranayama, japa, svadhyaya, meditation. Sourced from Patanjali to Sivananda.",
         pillar: "practical-practices",
         publishDate: "2026-03-21",
         readingTime: 10,

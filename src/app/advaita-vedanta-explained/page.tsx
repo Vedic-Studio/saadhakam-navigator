@@ -9,16 +9,16 @@ import { ArrowRight, BookOpen, Zap } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "Advaita Vedanta Explained: 9 Core Teachings of Non-Duality (Shankara's System)",
+    title: "Advaita Vedanta Explained: Shankara's 9 Core Teachings",
     description:
-        "Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha actually happens.",
+        "Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha happens.",
     alternates: {
         canonical: "https://www.opensadhaka.com/advaita-vedanta-explained",
     },
     openGraph: {
         title: "Advaita Vedanta: 9 Core Teachings (and Why They Matter)",
         description:
-            "The non-dual school of Vedanta in primary-source detail — from the Mandukya Karika to Vivekachudamani. Atman = Brahman, and what that actually means.",
+            "The non-dual school of Vedanta in primary-source detail, from the Mandukya Karika to Vivekachudamani. Atman = Brahman, and what that means.",
         url: "https://www.opensadhaka.com/advaita-vedanta-explained",
         type: "article",
     },

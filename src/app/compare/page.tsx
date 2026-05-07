@@ -9,9 +9,9 @@ import { comparisons } from "@/data/comparisons";
 import { ArrowRight, MessageSquare, BookOpen, User, Zap, Globe, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "60+ Indian Philosophy Comparisons: Vedanta, Schools, Texts, Masters",
+    title: "60+ Indian Philosophy Comparisons: Vedanta, Texts, Masters",
     description:
-        "Side-by-side reference for Vedanta vs. Buddhism, Advaita vs. Dvaita, Shankara vs. Ramanuja, Bhagavad Gita vs. Ashtavakra Gita, and 60+ other philosophical pairings.",
+        "Side-by-side: Vedanta vs Buddhism, Advaita vs Dvaita, Shankara vs Ramanuja, Bhagavad Gita vs Ashtavakra Gita, and 60+ philosophical pairings.",
     keywords: [
         "compare philosophies",
         "vedanta vs buddhism",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Indian Philosophy Comparisons: 60+ Side-by-Side References",
         description:
-            "From Vedanta vs. Buddhism to Atman vs. Brahman — the most-asked philosophical comparisons in Sanatan Dharma, each grounded in primary texts.",
+            "From Vedanta vs Buddhism to Atman vs Brahman: the most-asked philosophical comparisons in Sanatan Dharma, each grounded in primary texts.",
         url: "https://www.opensadhaka.com/compare",
     },
 };

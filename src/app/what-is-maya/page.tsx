@@ -7,16 +7,16 @@ import { ArrowRight } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "What Maya Actually Means in Vedanta: 3 Levels of Reality (Not 'Illusion')",
+    title: "What is Maya? The 3 Levels of Reality (Not 'Illusion')",
     description:
-        "Maya doesn't mean the world is fake. It means the world has conditional reality, not absolute. Learn the 3 ontological levels — paramarthika, vyavaharika, pratibhasika — sourced from Shankara.",
+        "Maya is not 'illusion' but conditional reality. Three ontological levels from Shankara: paramarthika, vyavaharika, pratibhasika. A precise guide.",
     alternates: {
         canonical: "https://www.opensadhaka.com/what-is-maya",
     },
     openGraph: {
         title: "Maya Explained: 3 Levels of Reality in Advaita Vedanta",
         description:
-            "Maya is not 'illusion' — it is the precise Vedantic claim that fire still burns but isn't ultimately real. Three levels of reality from Shankara, with Upanishad sources.",
+            "Maya is not 'illusion'. It is the Vedantic claim that fire still burns but isn't ultimately real. Three levels of reality from Shankara.",
         url: "https://www.opensadhaka.com/what-is-maya",
         type: "article",
     },
@@ -27,9 +27,9 @@ const jsonLd = {
     "@graph": [
         {
             "@type": "Article",
-            headline: "What Maya Actually Means in Vedanta: 3 Levels of Reality (Not 'Illusion')",
+            headline: "What is Maya? The 3 Levels of Reality (Not 'Illusion')",
             description:
-                "Maya doesn't mean the world is fake. It means the world has conditional reality, not absolute. The 3 ontological levels — paramarthika, vyavaharika, pratibhasika — sourced from Shankara.",
+                "Maya doesn't mean the world is fake. It means conditional reality, not absolute. The 3 ontological levels (paramarthika, vyavaharika, pratibhasika) sourced from Shankara.",
             url: "https://www.opensadhaka.com/what-is-maya",
             datePublished: "2026-03-19",
             dateModified: "2026-03-19",
