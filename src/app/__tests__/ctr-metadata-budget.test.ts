@@ -172,7 +172,7 @@ describe("Sanskrit per-word SEO overrides — within budget", () => {
     }
 });
 
-describe("PR #20 touched comparison + article entries — within budget", () => {
+describe("CTR-rewritten comparison + article entries — within budget", () => {
     // Computed comparison title is `${comp.title} | Sadhaka Comparisons` in
     // compare/[slug]/page.tsx. The suffix is 22 chars. Even if the suffix gets
     // truncated by Google in practice, a too-long base title means the value-
@@ -181,15 +181,31 @@ describe("PR #20 touched comparison + article entries — within budget", () => 
     const SUFFIX = " | Sadhaka Comparisons";
     const COMPARISON_TITLE_MAX_RAW = TITLE_MAX; // base title alone
 
-    for (const slug of ["atman-vs-brahman", "ashtavakra-gita-vs-bhagavad-gita"]) {
+    // Each PR adds its rewritten compare slugs here. PR #20 added the first
+    // two, PR #25 added the next three (top-10 GSC compare cluster). New
+    // entries auto-lock the moment they land.
+    const COMPARE_REWRITTEN_SLUGS = [
+        "atman-vs-brahman",
+        "ashtavakra-gita-vs-bhagavad-gita",
+        "adi-shankaracharya-vs-ramanuja",
+        "pranayama-vs-breathwork",
+        "mantra-vs-affirmation",
+    ];
+
+    for (const slug of COMPARE_REWRITTEN_SLUGS) {
         it(`comparison ${slug}: base title and meta description within budget`, () => {
             const comp = comparisons.find((c) => c.slug === slug);
             expect(comp).toBeTruthy();
             if (!comp) return;
             expect(comp.title.length, `${slug} title=${comp.title.length} :: ${comp.title}`).toBeLessThanOrEqual(COMPARISON_TITLE_MAX_RAW);
             expect(comp.title.includes("—"), `${slug} title contains em dash`).toBe(false);
+            expect(comp.metaDescription.length, `${slug} desc=${comp.metaDescription.length}`).toBeGreaterThanOrEqual(DESC_MIN);
             expect(comp.metaDescription.length, `${slug} desc=${comp.metaDescription.length}`).toBeLessThanOrEqual(DESC_MAX);
             expect(comp.metaDescription.includes("—"), `${slug} desc contains em dash`).toBe(false);
+            for (const phrase of HARDBAN) {
+                const blob = `${comp.title} ${comp.metaDescription}`.toLowerCase();
+                expect(blob.includes(phrase.toLowerCase()), `${slug} contains banned phrase "${phrase}"`).toBe(false);
+            }
             // Computed full title (base + suffix) should also stay under a
             // generous SERP-rendered cap of 80, beyond which Google truncates
             // mid-suffix and shows ellipsis.

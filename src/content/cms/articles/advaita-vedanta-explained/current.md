@@ -1,7 +1,7 @@
 ---
 slug: advaita-vedanta-explained
-title: Advaita Vedanta Explained: 9 Core Teachings of Non-Duality (Shankara's System)
-description: Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha actually happens.
+title: Advaita Vedanta Explained: Shankara's 9 Core Teachings
+description: Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha happens.
 publishDate: 2026-03-04
 updatedAt: 2026-03-04
 pillar: ancient-wisdom

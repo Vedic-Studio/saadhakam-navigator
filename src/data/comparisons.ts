@@ -1257,12 +1257,12 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "adi-shankaracharya-vs-ramanuja",
-    title: "Adi Shankaracharya vs Ramanuja: Two Pillars of Vedanta",
+    title: "Shankara vs Ramanuja: 5 Real Disagreements (Vedanta)",
     category: "Teacher vs Teacher",
     entityA: "Adi Shankaracharya",
     entityB: "Ramanuja",
     metaDescription:
-      "The intellectual giant of Advaita vs the devotional visionary of Vishishtadvaita. Compare the two most influential philosophers in Indian history.",
+      "Shankara (Advaita) and Ramanuja (Vishishtadvaita) split on God's nature, the soul, the world, the path, and Maya. The 5 disagreements that defined Vedanta.",
     tldr: "Shankara taught that the world is an illusion (Maya) and the soul is identical to Brahman. Ramanuja taught that the world is real and the soul is an eternal, distinct part of Brahman. It's the classic debate between Pure Knowledge and Divine Love.",
     content: `
 <h2>The Head and the Heart of Indian Philosophy</h2>
@@ -1799,12 +1799,12 @@ export const comparisons: Comparison[] = [
   // Practice vs Practice — Mantra, Japa, Prayer, Pranayama, Meditation
   {
     slug: "mantra-vs-affirmation",
-    title: "Mantra vs Affirmation: Sacred Sound vs Positive Self-Talk",
+    title: "Mantra vs Affirmation: 4 Differences (Sound vs Belief)",
     category: "Practice vs Practice",
     entityA: "Mantra",
     entityB: "Affirmation",
     metaDescription:
-      "Mantra vs affirmation: one is a sacred sound-form with deity, tradition, and rules. The other is a self-directed statement. Here is what separates them.",
+      "Mantra is rishi-heard, deity-anchored, vibratory. Affirmation is self-composed, semantic, psychological. 4 differences in origin, theory, and how they work.",
     tldr: "A mantra is a sacred sound-form tied to a deity, tradition, and specific practice rules. An affirmation is a self-directed positive statement. They share repetition as a method but differ in origin, authority, and the theory of how they work.",
     content: `
 <h2>Both Use Repetition. That Is Where the Similarity Ends.</h2>
@@ -1913,12 +1913,12 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "pranayama-vs-breathwork",
-    title: "Pranayama vs Breathwork: Vedic Prana Control vs Modern Techniques",
+    title: "Pranayama vs Breathwork: Yoga Limb vs Wim Hof Method",
     category: "Practice vs Practice",
     entityA: "Pranayama",
     entityB: "Breathwork",
     metaDescription:
-      "Pranayama vs breathwork: one is a Vedic practice controlling prana for meditation. The other is modern, secular, and physiology-focused. Key differences explained.",
+      "Pranayama is Patanjali's 4th limb, controlling prana for meditation. Modern breathwork (Wim Hof, holotropic) is secular and physiological. 5 real differences.",
     tldr: "Pranayama is a Vedic practice aimed at controlling prana (vital energy) as preparation for meditation. Modern breathwork (Wim Hof, holotropic, etc.) focuses on physiological and emotional effects. Pranayama is embedded in a spiritual framework; breathwork is typically secular.",
     content: `
 <h2>Same Breath, Different Universes</h2>

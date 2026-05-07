@@ -1,7 +1,7 @@
 ---
 slug: how-to-start-japa
-title: How to Start Japa Meditation: 7-Step Beginner's Guide (Mala, Mantra, Method)
-description: Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels — vaikhari, upamshu, manasika. Beginner's full method.
+title: How to Start Japa: A 7-Step Beginner Guide (Mantra & Mala)
+description: Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels: vaikhari, upamshu, manasika.
 publishDate: 2026-03-20
 updatedAt: 2026-03-20
 pillar: practical-practices
