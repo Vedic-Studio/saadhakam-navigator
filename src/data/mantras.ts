@@ -19,6 +19,16 @@ export interface Mantra {
     faq: { question: string; answer: string }[];
     etymology?: { wordByWord: { word: string; meaning: string }[]; overallMeaning: string };
     shastraContext?: string;
+    /**
+     * Optional SEO overrides for the SERP snippet.
+     * When omitted, the page falls back to the templated `${name} Meaning & Practice`
+     * title and a description built from `oneLineMeaning`. Override these when GSC
+     * shows below-expected CTR for a specific mantra slug.
+     */
+    seoTitle?: string;
+    seoDescription?: string;
+    ogTitle?: string;
+    ogDescription?: string;
 }
 
 import { jyotishMantras } from "@/data/jyotishMantras";

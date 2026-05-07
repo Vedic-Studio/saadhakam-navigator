@@ -16,6 +16,15 @@ export interface Concept {
   sourceTexts: string[];
   tags: string[];
   featuredImage?: ContentImage;
+  /**
+   * Optional SEO overrides for the SERP snippet on `/what-is-<slug>`.
+   * When omitted, the page falls back to `What is ${conceptName}? Meaning & Vedic Context | Sadhaka`
+   * and `shortDefinition`. Override these when GSC shows below-expected CTR for a specific concept.
+   */
+  seoTitle?: string;
+  seoDescription?: string;
+  ogTitle?: string;
+  ogDescription?: string;
 }
 
 export const concepts: Concept[] = [

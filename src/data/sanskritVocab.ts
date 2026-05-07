@@ -1609,6 +1609,8 @@ export const sanskritVocab: SanskritWord[] = [
     seoTitle: "Bhakti: Not Western Devotion (Shankara vs Ramanuja)",
     seoDescription:
       "Bhakti (भक्ति) is supreme love (parama-prema), not Western devotion. Narada Sutra 2, Gita 9.26, and the 9 forms in Bhagavata Purana, sourced from texts.",
+    ogTitle: "Bhakti: Not 'Devotion' in the Western Sense",
+    ogDescription: "Bhakti comes from bhaj, meaning to share or participate. The Sanskrit lexicon entry: root, scriptural usage, Navavidha (9 forms), and how Narada defines it.",
   },
   {
     slug: "jnana",
