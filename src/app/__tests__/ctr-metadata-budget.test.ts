@@ -134,38 +134,36 @@ describe("Phase 1 CTR rewrites — title + description budgets", () => {
 describe("Sanskrit per-word SEO overrides — within budget", () => {
     const overrideWords = sanskritVocab.filter((w) => w.seoTitle || w.seoDescription || w.ogTitle || w.ogDescription);
 
-    it("at least three words use the override fields PR #20 introduced", () => {
-        // If this drops below 3, the override architecture is being silently
-        // unwound — likely from a refactor that didn't notice the fields exist.
-        expect(overrideWords.length).toBeGreaterThanOrEqual(3);
+    it("Sanskrit override coverage stays at PR #22 floor", () => {
+        // PR #20 seeded 3 overrides (karma, moksha, nirvana). PR #22 added 17
+        // more for the GSC-flagged top-of-page-2 cluster (Apr 2026 pull). If
+        // this drops below 17, the override architecture is being silently
+        // unwound — likely a refactor that did not notice the fields exist.
+        expect(overrideWords.length).toBeGreaterThanOrEqual(17);
     });
 
-    for (const w of [
-        "karma",
-        "moksha",
-        "nirvana",
-    ]) {
-        it(`${w}: every override field clears budgets and bans`, () => {
-            const word = sanskritVocab.find((x) => x.slug === w);
-            expect(word).toBeTruthy();
-            if (!word) return;
-
+    // Lock every override word, not just the original three. This keeps PR
+    // #22's 17 GSC-flagged words on-budget and bans-clear, and any future
+    // word that gets an override is auto-locked the moment it lands.
+    for (const word of overrideWords) {
+        it(`${word.slug}: every override field clears budgets and bans`, () => {
             for (const f of ["seoTitle", "ogTitle"] as const) {
                 const v = word[f];
                 if (!v) continue;
-                expect(v.length, `${w}.${f} length=${v.length} :: ${v}`).toBeLessThanOrEqual(TITLE_MAX);
-                expect(v.includes("—"), `${w}.${f} contains em dash`).toBe(false);
+                expect(v.length, `${word.slug}.${f} length=${v.length} :: ${v}`).toBeLessThanOrEqual(TITLE_MAX);
+                expect(v.includes("—"), `${word.slug}.${f} contains em dash`).toBe(false);
                 for (const phrase of HARDBAN) {
-                    expect(v.toLowerCase().includes(phrase.toLowerCase()), `${w}.${f} has banned phrase "${phrase}"`).toBe(false);
+                    expect(v.toLowerCase().includes(phrase.toLowerCase()), `${word.slug}.${f} has banned phrase "${phrase}"`).toBe(false);
                 }
             }
             for (const f of ["seoDescription", "ogDescription"] as const) {
                 const v = word[f];
                 if (!v) continue;
-                expect(v.length, `${w}.${f} length=${v.length} :: ${v}`).toBeLessThanOrEqual(DESC_MAX);
-                expect(v.includes("—"), `${w}.${f} contains em dash`).toBe(false);
+                expect(v.length, `${word.slug}.${f} length=${v.length} :: ${v}`).toBeGreaterThanOrEqual(DESC_MIN);
+                expect(v.length, `${word.slug}.${f} length=${v.length} :: ${v}`).toBeLessThanOrEqual(DESC_MAX);
+                expect(v.includes("—"), `${word.slug}.${f} contains em dash`).toBe(false);
                 for (const phrase of HARDBAN) {
-                    expect(v.toLowerCase().includes(phrase.toLowerCase()), `${w}.${f} has banned phrase "${phrase}"`).toBe(false);
+                    expect(v.toLowerCase().includes(phrase.toLowerCase()), `${word.slug}.${f} has banned phrase "${phrase}"`).toBe(false);
                 }
             }
         });

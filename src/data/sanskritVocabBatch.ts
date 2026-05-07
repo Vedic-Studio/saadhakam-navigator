@@ -90,6 +90,9 @@ export const newSanskritVocab: SanskritWord[] = [
             }
         ],
         summary: "Prakriti is the primal, foundational matter of the universe from which all physical forms, biology, and mental phenomena evolve.",
+        seoTitle: "Prakriti in Sanskrit: Matter vs. Purusha (Gita 13.20)",
+        seoDescription:
+            "Prakriti (प्रकृति) is primal matter of three gunas in Samkhya. Gita 13.20 calls Prakriti and Purusha both beginningless. Why mind itself counts as Prakriti.",
     },
     {
         slug: "ahamkara",
@@ -234,6 +237,9 @@ export const newSanskritVocab: SanskritWord[] = [
             }
         ],
         summary: "Chitta refers to the total landscape of the mind, particularly the deep subconscious storehouse of memories, habits, and impressions.",
+        seoTitle: "Chitta in Sanskrit: Mind-Storehouse (Yoga Sutra 1.2)",
+        seoDescription:
+            "Chitta (चित्त) is the total mind-field where vrittis arise. Yoga Sutra 1.2 defines yoga as 'chitta-vritti-nirodhah': stilling these mental waves at root.",
     },
     {
         slug: "vritti",
@@ -269,6 +275,9 @@ export const newSanskritVocab: SanskritWord[] = [
             }
         ],
         summary: "A Vritti is a thought-wave or fluctuation in the mind. The goal of classical yoga is to quiet these fluctuations.",
+        seoTitle: "Vritti in Sanskrit: Thought-Waves in Yoga Sutra 1.2",
+        seoDescription:
+            "Vritti (वृत्ति) is a thought-wave in the chitta. Yoga Sutra 1.2 defines yoga as 'cessation of vrittis'. Klishta vs aklishta categories from Patanjali's text.",
     },
     {
         slug: "avidya",
@@ -386,6 +395,9 @@ export const newSanskritVocab: SanskritWord[] = [
             }
         ],
         summary: "Samskaras are the deep subconscious impressions and habit-patterns formed by our past actions and thoughts, which drive our future behavior.",
+        seoTitle: "Samskara in Sanskrit: 2 Meanings (Mind-Grooves + Rites)",
+        seoDescription:
+            "Samskara (संस्कार) means subconscious impressions in chitta and the 16 Vedic rites of passage. Yoga Sutra 1.50 on how practice rewires the mind.",
     },
     {
         slug: "ishvara",
@@ -486,6 +498,9 @@ export const newSanskritVocab: SanskritWord[] = [
             }
         ],
         summary: "Jiva is the individual living being or soul as it experiences embodied life under the conditions of karma, mind, and rebirth.",
+        seoTitle: "Jiva in Sanskrit: Atman vs. Embodied Soul (Gita 15.7)",
+        seoDescription:
+            "Jiva (जीव) is the individual soul under karma and embodiment. Gita 15.7 calls it 'an eternal part of Me'. How Advaita, Vishishtadvaita, and Dvaita read it.",
     },
     {
         slug: "karma-yoga",
@@ -615,6 +630,9 @@ export const newSanskritVocab: SanskritWord[] = [
             }
         ],
         summary: "Advaita is the non-dual vision that ultimate reality is one without a second, and that apparent separateness is born of ignorance.",
+        seoTitle: "Advaita in Sanskrit: Non-Duality (Shankara's Vedanta)",
+        seoDescription:
+            "Advaita (अद्वैत) means 'not-two': Brahman alone is real, the world conditionally apparent, the soul identical to Brahman. Shankara's reading of the Mahavakyas.",
     },
     {
         slug: "niskama-karma",
