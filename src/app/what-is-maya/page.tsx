@@ -7,16 +7,16 @@ import { ArrowRight } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "What is Maya in Indian Philosophy? Illusion, Mithya, and Moksha",
+    title: "What Maya Actually Means in Vedanta: 3 Levels of Reality (Not 'Illusion')",
     description:
-        "Maya doesn't mean the world is fake. It means the world has conditional reality, not absolute reality. A precise guide to maya, mithya, and how moksha is achieved in Advaita Vedanta.",
+        "Maya doesn't mean the world is fake. It means the world has conditional reality, not absolute. Learn the 3 ontological levels — paramarthika, vyavaharika, pratibhasika — sourced from Shankara.",
     alternates: {
         canonical: "https://www.opensadhaka.com/what-is-maya",
     },
     openGraph: {
-        title: "What is Maya in Indian Philosophy? The Vedantic Concept Explained",
+        title: "Maya Explained: 3 Levels of Reality in Advaita Vedanta",
         description:
-            "Maya is the cosmic power that conceals Brahman and projects a world of apparent multiplicity. It is not a claim that fire doesn't burn. It is a claim about fire's ultimate ontological status.",
+            "Maya is not 'illusion' — it is the precise Vedantic claim that fire still burns but isn't ultimately real. Three levels of reality from Shankara, with Upanishad sources.",
         url: "https://www.opensadhaka.com/what-is-maya",
         type: "article",
     },
@@ -27,9 +27,9 @@ const jsonLd = {
     "@graph": [
         {
             "@type": "Article",
-            headline: "What is Maya in Indian Philosophy? Illusion, Mithya, and Moksha",
+            headline: "What Maya Actually Means in Vedanta: 3 Levels of Reality (Not 'Illusion')",
             description:
-                "Maya doesn't mean the world is fake. It means the world has conditional reality, not absolute reality. A precise guide to maya, mithya, and how moksha is achieved in Advaita Vedanta.",
+                "Maya doesn't mean the world is fake. It means the world has conditional reality, not absolute. The 3 ontological levels — paramarthika, vyavaharika, pratibhasika — sourced from Shankara.",
             url: "https://www.opensadhaka.com/what-is-maya",
             datePublished: "2026-03-19",
             dateModified: "2026-03-19",

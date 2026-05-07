@@ -16,10 +16,17 @@ import { philosophies } from "@/data/philosophies";
 import { comparisons } from "@/data/comparisons";
 
 export const metadata: Metadata = {
-  title: "The Six Darshanas: Systems of Indian Philosophy | Sadhaka",
-  description: "The six orthodox schools of Hindu philosophy — Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, and Vedanta — with their foundational sutras, paired relationships, and paths to liberation.",
+  title: "The 6 Darshanas: Indian Philosophy Systems Compared (2026 Reference)",
+  description:
+    "Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, Vedanta — the six classical schools side-by-side: foundational sutras, paired relationships, and each school's path to Moksha.",
   alternates: {
     canonical: "https://www.opensadhaka.com/philosophies",
+  },
+  openGraph: {
+    title: "The 6 Darshanas: Hindu Philosophy Systems Compared",
+    description:
+      "The six orthodox schools of Indian philosophy in a single reference: sutras, founders, and how each one defines liberation.",
+    url: "https://www.opensadhaka.com/philosophies",
   },
 };
 

@@ -7,16 +7,16 @@ import { ArrowRight, Circle, Volume2, Wind } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "How to Start Japa Meditation: Step-by-Step Guide [2026]",
+    title: "How to Start Japa Meditation: 7-Step Beginner's Guide (Mala, Mantra, Method)",
     description:
-        "Krishna called japa the highest sacrifice (BG 10.25). This guide covers choosing a mantra, using a mala, the 3 levels of practice, and the one mistake most beginners make.",
+        "Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels — vaikhari, upamshu, manasika. Beginner's full method.",
     alternates: {
         canonical: "https://www.opensadhaka.com/how-to-start-japa",
     },
     openGraph: {
-        title: "How to Start Japa: Mala, Mantra, and the 3 Levels of Practice",
+        title: "How to Start Japa Meditation: 7 Steps from Mala to Manasika",
         description:
-            "Krishna calls japa the highest of all sacrifices (BG 10.25). Patanjali's Yoga Sutra 1.28 adds: repeat it and contemplate its meaning. Here is the full practice guide.",
+            "Bhagavad Gita 10.25 + Yoga Sutra 1.28: the canonical practice. Choose a mantra, use the mala correctly, and move through three voiced-to-mental levels.",
         url: "https://www.opensadhaka.com/how-to-start-japa",
         type: "article",
     },
@@ -98,7 +98,7 @@ export default function HowToStartJapaPage() {
         "@graph": [
             {
                 "@type": "Article",
-                headline: "How to Start Japa: The Complete Practice Guide (Mala, Mantra, Timing)",
+                headline: "How to Start Japa Meditation: 7-Step Beginner's Guide (Mala, Mantra, Method)",
                 description:
                     "Japa meditation gives the restless mind a specific job: 108 repetitions of a sacred sound. BG 10.25 calls it the highest sacrifice. Here is how to begin correctly.",
                 url: "https://www.opensadhaka.com/how-to-start-japa",

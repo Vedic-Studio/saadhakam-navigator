@@ -33,6 +33,10 @@ export interface SanskritWord {
   relatedWords: string[]; // slugs of other words in the DB
   faqs: FaqItem[];
   summary: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  ogTitle?: string;
+  ogDescription?: string;
 }
 
 export const sanskritVocab: SanskritWord[] = [
@@ -183,6 +187,13 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Karma is the universal law of cause and effect in which intentional actions dictate one's future experiences and bind the soul to the cycle of rebirth.",
+    seoTitle:
+      "Karma in Sanskrit: 3 Types Explained (Sanchita, Prarabdha, Agami)",
+    seoDescription:
+      "Karma is not punishment. It is the precise law of action: Sanchita (accumulated), Prarabdha (ripening), Agami (new). Vedic origins, Gita 2.47, Upanishad sources.",
+    ogTitle: "Karma in Sanskrit: 3 Types of Action (and What 'Burns' Them)",
+    ogDescription:
+      "Brihadaranyaka 4.4.5 to Bhagavad Gita 2.47: how karma actually works, why three types matter, and how Jnana erases all of it. Lexicon-style breakdown.",
   },
   {
     slug: "moksha",
@@ -258,6 +269,13 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Moksha is the ultimate spiritual goal in Sanatan Dharma, representing complete liberation from the cycle of birth and death and the realization of one's true, eternal nature.",
+    seoTitle:
+      "Moksha in Sanskrit: 4 Paths to Liberation (Vedanta vs. Yoga vs. Tantra)",
+    seoDescription:
+      "Moksha (मोक्ष) is liberation while living, not after death. Compare Advaita's Jnana, Dvaita's Bhakti, Patanjali's Yoga, and Tantra. Sourced from Upanishads & Gita.",
+    ogTitle: "Moksha: Why Liberation Happens While You Live, Not After Death",
+    ogDescription:
+      "Svetasvatara Upanishad 6.15 to Gita 18.66: the four classical paths to Moksha and what 'Jivanmukti' means. Lexicon-style breakdown with primary sources.",
   },
   {
     slug: "yoga",
@@ -3030,6 +3048,13 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Nirvana in the Hindu tradition refers to Brahma-nirvana—the supreme bliss of liberation in which the fires of desire, ignorance, and ego are extinguished and the soul rests in union with Brahman.",
+    seoTitle:
+      "Nirvana in Sanskrit: Hindu Origin Before Buddha (Brahma-Nirvana Explained)",
+    seoDescription:
+      "Nirvana is older than Buddhism. Bhagavad Gita 2.72 and 5.24 use 'Brahma-nirvana' for union with Brahman. Compare Vedanta, Buddhist, and Shaiva readings of the term.",
+    ogTitle: "Nirvana: Pre-Buddhist Origins and 3 Tradition-Specific Meanings",
+    ogDescription:
+      "Mahabharata calls it 'parama sukham' — supreme bliss. Krishna calls it 'Brahma-nirvana'. Buddha reframes it as cessation. The full Sanskrit lexicon entry.",
   },
   {
     slug: "tantra",
