@@ -90,4 +90,52 @@ describe("concepts data integrity", () => {
       ).toBeLessThanOrEqual(300);
     }
   });
+
+  // SEO override fields exist for CTR-optimization on specific concept pages.
+  // The /what-is-<slug> page reads these directly. If the field disappears
+  // from the type or the data, the CTR fix silently regresses.
+  // Aligned with the strict 60/160 budget enforced sitewide by
+  // src/app/__tests__/ctr-metadata-budget.test.ts.
+  it("seo override fields are non-empty strings within SERP-safe lengths when present", () => {
+    const TITLE_MAX = 60;
+    const DESC_MAX = 160;
+
+    for (const concept of concepts) {
+      if (concept.seoTitle !== undefined) {
+        expect(
+          concept.seoTitle.length,
+          `Concept "${concept.slug}" has empty seoTitle`,
+        ).toBeGreaterThan(0);
+        expect(
+          concept.seoTitle.length,
+          `Concept "${concept.slug}" seoTitle exceeds ${TITLE_MAX} chars: "${concept.seoTitle}"`,
+        ).toBeLessThanOrEqual(TITLE_MAX);
+      }
+      if (concept.seoDescription !== undefined) {
+        expect(
+          concept.seoDescription.length,
+          `Concept "${concept.slug}" has empty seoDescription`,
+        ).toBeGreaterThan(0);
+        expect(
+          concept.seoDescription.length,
+          `Concept "${concept.slug}" seoDescription exceeds ${DESC_MAX} chars`,
+        ).toBeLessThanOrEqual(DESC_MAX);
+      }
+      if (concept.ogTitle !== undefined) {
+        expect(concept.ogTitle.length).toBeGreaterThan(0);
+      }
+      if (concept.ogDescription !== undefined) {
+        expect(concept.ogDescription.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("prasad concept ships with all four SEO overrides (CTR PR 1, 2026-05-07)", () => {
+    const prasad = concepts.find((c) => c.slug === "prasad");
+    expect(prasad, "prasad concept slug missing").toBeDefined();
+    expect(prasad?.seoTitle).toBeDefined();
+    expect(prasad?.seoDescription).toBeDefined();
+    expect(prasad?.ogTitle).toBeDefined();
+    expect(prasad?.ogDescription).toBeDefined();
+  });
 });

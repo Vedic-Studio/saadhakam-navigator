@@ -1120,9 +1120,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "how-karma-dharma-work",
         route: "/how-karma-dharma-work",
-        title: "Karma and Dharma: The 4 Laws Beyond Reward & Punishment",
+        title: "How Karma and Dharma Actually Work: 4 Laws Beyond Reward & Punishment",
         metaDescription:
-            "Karma is not punishment but the physics of action. Four operating laws from Brihadaranyaka, Gita 2.47, and Patanjali, with Dharma's role in the chain.",
+            "Karma is not cosmic punishment — it is the physics of action. Four operating laws from Brihadaranyaka, Gita 2.47, and Patanjali. Plus how Dharma decides which karma binds you.",
         pillar: "ancient-wisdom",
         publishDate: "2026-03-10",
         readingTime: 8,
@@ -1182,9 +1182,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "what-is-maya",
         route: "/what-is-maya",
-        title: "What is Maya? The 3 Levels of Reality (Not 'Illusion')",
+        title: "What Maya Actually Means in Vedanta: 3 Levels of Reality (Not 'Illusion')",
         metaDescription:
-            "Maya is not 'illusion' but conditional reality. Three ontological levels from Shankara: paramarthika, vyavaharika, pratibhasika. A precise guide.",
+            "Maya doesn't mean the world is fake. It means the world has conditional reality, not absolute. The 3 ontological levels — paramarthika, vyavaharika, pratibhasika — sourced from Shankara.",
         pillar: "ancient-wisdom",
         publishDate: "2026-03-19",
         readingTime: 7,
@@ -2427,9 +2427,9 @@ export const articles: ArticleMeta[] = [
     {
         slug: "advaita-vedanta-explained",
         route: "/advaita-vedanta-explained",
-        title: "Advaita Vedanta Explained: Shankara's 9 Core Teachings",
+        title: "Advaita Vedanta Explained: 9 Core Teachings of Non-Duality (Shankara's System)",
         metaDescription:
-            "Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha happens.",
+            "Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha actually happens.",
         pillar: "ancient-wisdom",
         publishDate: "2026-03-04",
         readingTime: 10,

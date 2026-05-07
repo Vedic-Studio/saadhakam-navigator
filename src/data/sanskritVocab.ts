@@ -1591,6 +1591,10 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Bhakti is the path of supreme love and devotion to the Divine, serving as a powerful and accessible means to achieve spiritual liberation and union.",
+    seoTitle: "Bhakti: Etymology, Meaning, and the 9 Forms (Navavidha)",
+    seoDescription: "Bhakti is participation in the Divine, from the root bhaj (to share). Etymology, the 9 Navavidha forms, and Gita 9.26 in plain English with primary sources.",
+    ogTitle: "Bhakti: Not 'Devotion' in the Western Sense",
+    ogDescription: "Bhakti comes from bhaj, meaning to share or participate. The Sanskrit lexicon entry: root, scriptural usage, Navavidha (9 forms), and how Narada defines it.",
   },
   {
     slug: "jnana",
