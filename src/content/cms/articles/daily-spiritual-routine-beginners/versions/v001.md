@@ -1,7 +1,7 @@
 ---
 slug: daily-spiritual-routine-beginners
-title: Daily Spiritual Routine for Beginners: 5 Steps in the Right Order
-description: The order matters more than the practice. This 5-step sequence from Patanjali, Sivananda, and Chinmaya Mission puts pranayama, japa, study, and meditation in the position where each one actually works.
+title: Daily Spiritual Routine for Beginners: 5-Step Morning Sequence (Patanjali to Sivananda)
+description: Most morning routines skip the order. The 5-step sequence — Brahma Muhurta, pranayama, japa, svadhyaya, meditation — sourced from Patanjali, Vagbhata, Sivananda, Chinmaya Mission.
 publishDate: 2026-03-21
 updatedAt: 2026-03-21
 pillar: practical-practices

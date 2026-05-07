@@ -38,17 +38,22 @@ export async function generateMetadata({
     resolveLexiconCanonicalPath(word.slug, Boolean(concept)),
   );
 
+  const defaultTitle = `${word.wordEnglish} in Sanskrit: Etymology, Meaning & Scriptural Usage | Sadhaka`;
+  const defaultDescription = concept
+    ? `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings.`
+    : `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings in Sanatan Dharma.`;
+  const defaultOgTitle = `${word.wordEnglish} in Sanskrit`;
+  const defaultOgDescription = `Lexicon-style breakdown of ${word.wordEnglish}: etymology, transliteration, usage, and scriptural context.`;
+
   return {
-    title: `${word.wordEnglish} in Sanskrit: Etymology, Meaning & Scriptural Usage | Sadhaka`,
-    description: concept
-      ? `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings.`
-      : `Explore the Sanskrit lexicon entry for ${word.wordDevanagari} (${word.wordEnglish}) with etymology, transliteration, scriptural usage, and tradition-specific meanings in Sanatan Dharma.`,
+    title: word.seoTitle ?? defaultTitle,
+    description: word.seoDescription ?? defaultDescription,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${word.wordEnglish} in Sanskrit`,
-      description: `Lexicon-style breakdown of ${word.wordEnglish}: etymology, transliteration, usage, and scriptural context.`,
+      title: word.ogTitle ?? word.seoTitle ?? defaultOgTitle,
+      description: word.ogDescription ?? word.seoDescription ?? defaultOgDescription,
       url: canonicalUrl,
     },
   };

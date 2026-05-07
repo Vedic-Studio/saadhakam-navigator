@@ -9,14 +9,16 @@ import { ArrowRight, BookOpen, Zap } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "Advaita Vedanta Explained | The Philosophy of Non-Duality",
-    description: "A comprehensive guide to Advaita Vedanta, the non-dual school of Hindu philosophy. Explore the teachings of Adi Shankara, atman, brahman, and maya.",
+    title: "Advaita Vedanta Explained: 9 Core Teachings of Non-Duality (Shankara's System)",
+    description:
+        "Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha actually happens.",
     alternates: {
         canonical: "https://www.opensadhaka.com/advaita-vedanta-explained",
     },
     openGraph: {
-        title: "Advaita Vedanta Explained: The Ultimate Guide to Non-Duality",
-        description: "Discover the core principles of Advaita Vedanta, from the rope-snake analogy to the realization of the absolute Self.",
+        title: "Advaita Vedanta: 9 Core Teachings (and Why They Matter)",
+        description:
+            "The non-dual school of Vedanta in primary-source detail — from the Mandukya Karika to Vivekachudamani. Atman = Brahman, and what that actually means.",
         url: "https://www.opensadhaka.com/advaita-vedanta-explained",
         type: "article",
     },

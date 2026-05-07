@@ -1,7 +1,7 @@
 ---
 slug: advaita-vedanta-explained
-title: Advaita Vedanta Explained Simply for Western Minds
-description: Advaita Vedanta teaches that your deepest self and ultimate reality are one. A clear, jargon-free explanation of non-dualism, Maya, Brahman, and the path to self-realization.
+title: Advaita Vedanta Explained: 9 Core Teachings of Non-Duality (Shankara's System)
+description: Adi Shankara's non-dual Vedanta in nine teachings: Brahman, Atman, Maya, Tat Tvam Asi, the rope-snake, three levels of reality, and how Moksha actually happens.
 publishDate: 2026-03-04
 updatedAt: 2026-03-04
 pillar: ancient-wisdom

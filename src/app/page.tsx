@@ -14,16 +14,16 @@ import { ConversionSection } from "@/components/landing/ConversionSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Sadhaka | Encyclopedic Guide to Sanatan Dharma",
+  title: "Sadhaka (opensadhaka.com) — Vedanta, Upanishads, Stotras & Sanatan Dharma",
   description:
-    "Study Sanatan Dharma from primary texts. 73 articles, 60 philosophical comparisons, 18 Gita chapters with verse-level Sanskrit analysis. AI tutor coming soon.",
+    "Sadhaka (Sanskrit: साधक, a practitioner). Also the open library of Vedanta, Upanishad study, Bhagavad Gita verse-level commentary, stotras, and daily sadhana. Free to read.",
   alternates: {
     canonical: "https://www.opensadhaka.com",
   },
   openGraph: {
-    title: "Sadhaka | Encyclopedic Guide to Sanatan Dharma",
+    title: "Sadhaka — Open Library of Vedanta, Upanishads & Sanatan Dharma",
     description:
-      "Study Sanatan Dharma from primary texts. 73 articles, 60 philosophical comparisons, 18 Gita chapters with verse-level Sanskrit analysis.",
+      "Study Sanatan Dharma from primary texts. 73+ articles, 60+ philosophical comparisons, 18 Gita chapters with verse-level Sanskrit analysis. Free to read.",
     url: "https://www.opensadhaka.com",
   },
 };
