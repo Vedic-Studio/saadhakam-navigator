@@ -692,12 +692,12 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "atman-vs-brahman",
-    title: "Atman vs Brahman: Are They the Same? (Tat Tvam Asi Explained)",
+    title: "Atman vs Brahman: Are They the Same? (Tat Tvam Asi)",
     category: "Concept vs Concept",
     entityA: "Atman",
     entityB: "Brahman",
     metaDescription:
-      "Atman is your innermost self; Brahman is the infinite ground of being. Advaita's claim: they are identical. Tat Tvam Asi unpacked from Chandogya Upanishad and Shankara.",
+      "Atman is your innermost self; Brahman is the infinite ground of being. Advaita: they are identical. Tat Tvam Asi from Chandogya and Shankara.",
     tldr: "Brahman is the infinite, universal consciousness — the ground of all being. Atman is the individual soul — what you really are beneath the body, mind, and personality. Advaita's revolutionary claim: Atman and Brahman are ultimately identical. The drop and the ocean are the same water.",
     content: `
 <h2>The Most Important Equation in Philosophy</h2>
@@ -1690,12 +1690,12 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "ashtavakra-gita-vs-bhagavad-gita",
-    title: "Ashtavakra Gita vs Bhagavad Gita: 7 Real Differences (Which to Read First)",
+    title: "Ashtavakra Gita vs Bhagavad Gita: Which to Read First?",
     category: "Text vs Text",
     entityA: "Ashtavakra Gita",
     entityB: "Bhagavad Gita",
     metaDescription:
-      "The Bhagavad Gita teaches you how to act in the world. The Ashtavakra Gita tells you you're already free. Compare audience, method, and which one you should read first.",
+      "The Bhagavad Gita teaches you how to act in the world. The Ashtavakra Gita says you're already free. Compare audience, method, and read order.",
     tldr: "The Bhagavad Gita is the 'Kindergarten' of Advaita (for everyone); the Ashtavakra Gita is the 'Post-Doctorate' (for those ready for absolute non-duality). The Gita teaches how to act; Ashtavakra teaches how to simply be.",
     content: `
 <h2>The Action and the Absolute</h2>

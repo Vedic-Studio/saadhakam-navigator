@@ -10,16 +10,16 @@ import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
 
 export const metadata: Metadata = {
-    title: "How Karma and Dharma Actually Work: 4 Laws Beyond Reward & Punishment",
+    title: "Karma and Dharma: The 4 Laws Beyond Reward & Punishment",
     description:
-        "Karma is not cosmic punishment — it is the physics of action. Four operating laws from Brihadaranyaka, Gita 2.47, and Patanjali. Plus how Dharma decides which karma binds you.",
+        "Karma is not punishment but the physics of action. Four operating laws from Brihadaranyaka, Gita 2.47, and Patanjali, with Dharma's role in the chain.",
     alternates: {
         canonical: "https://www.opensadhaka.com/how-karma-dharma-work",
     },
     openGraph: {
-        title: "How Karma and Dharma Actually Work: The 4 Laws of Action",
+        title: "How Karma and Dharma Work: The 4 Laws of Action",
         description:
-            "Sanchita, Prarabdha, Kriyamana, Agami — the four mechanics of karma in primary-source detail. Plus where Dharma fits in the cause-and-effect chain.",
+            "Sanchita, Prarabdha, Kriyamana, Agami: the four mechanics of karma in primary-source detail. Plus where Dharma fits in the cause-and-effect chain.",
         url: "https://www.opensadhaka.com/how-karma-dharma-work",
         type: "article",
     },
