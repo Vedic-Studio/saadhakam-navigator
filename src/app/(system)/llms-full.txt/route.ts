@@ -9,7 +9,7 @@ import { buildPilotCmsMarkdown } from "@/lib/cms/markdown";
 import { bgShlokas } from "@/data/bgShlokas";
 
 // Stotra / Sahasranama JSON loaders
-import { loadStotra, loadSahasranama } from "@/lib/stotras";
+import { loadStotra, loadSahasranama, getAllSahasranamaNames } from "@/lib/stotras";
 
 // pSEO entity data (brief summaries for entity pages)
 import { philosophies } from "@/data/philosophies";
@@ -25,16 +25,26 @@ const shivaTandava = loadStotra("shiva-tandava-stotram");
 const vishnuSahasranama = loadSahasranama("vishnu-sahasranama");
 const lalitaSahasranama = loadSahasranama("lalita-sahasranama");
 
+// Render the route at build time and re-generate daily — this also surfaces
+// regressions like missing/renamed JSON keys in CI rather than at request time.
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 function stripFrontmatter(markdown: string): string {
     return markdown.replace(/^---\n[\s\S]*?\n---\n*/, "").trim();
 }
 
 async function getArticleMarkdown(slug: string, fallbackMetaDescription: string) {
-    const article = articles.find((item) => item.slug === slug);
-    if (!article) return fallbackMetaDescription;
-    const cmsMarkdown = await getPublishedCmsContent(slug);
-    const fallbackMarkdown = buildPilotCmsMarkdown(article);
-    return stripFrontmatter(cmsMarkdown || fallbackMarkdown || fallbackMetaDescription);
+    try {
+        const article = articles.find((item) => item.slug === slug);
+        if (!article) return fallbackMetaDescription;
+        const cmsMarkdown = await getPublishedCmsContent(slug);
+        const fallbackMarkdown = buildPilotCmsMarkdown(article);
+        return stripFrontmatter(cmsMarkdown || fallbackMarkdown || fallbackMetaDescription);
+    } catch (error) {
+        console.warn(`[llms-full] Failed to load CMS content for '${slug}', falling back to meta description.`, error);
+        return fallbackMetaDescription;
+    }
 }
 
 export async function GET() {
@@ -136,6 +146,9 @@ export async function GET() {
     }
 
     // ── Vishnu Sahasranama ────────────────────────────────────────────────────
+    // Vishnu uses verse-based JSON ({verses:[{names:[...]}]}); Lalita is still
+    // flat ({names:[...]}). getAllSahasranamaNames() flattens both shapes so
+    // the route works regardless of which schema a sahasranama uses.
     parts.push(
         `---`, ``,
         `# VISHNU SAHASRANAMA — 1000 DIVINE NAMES OF VISHNU`,
@@ -144,7 +157,7 @@ export async function GET() {
         vishnuSahasranama.description,
         ``
     );
-    for (const n of vishnuSahasranama.names) {
+    for (const n of getAllSahasranamaNames(vishnuSahasranama)) {
         parts.push(`## ${n.name} (Name ${n.number})`);
         parts.push(`URL: ${BASE_URL}/stotras/vishnu-sahasranama/${n.slug}`);
         parts.push(`**Transliteration:** ${n.transliteration}`);
@@ -163,7 +176,7 @@ export async function GET() {
         lalitaSahasranama.description,
         ``
     );
-    for (const n of lalitaSahasranama.names) {
+    for (const n of getAllSahasranamaNames(lalitaSahasranama)) {
         parts.push(`## ${n.name} (Name ${n.number})`);
         parts.push(`URL: ${BASE_URL}/stotras/lalita-sahasranama/${n.slug}`);
         parts.push(`**Transliteration:** ${n.transliteration}`);
