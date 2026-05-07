@@ -777,6 +777,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Satya represents both the ethical practice of absolute honesty and the philosophical concept of the unchanging, ultimate Reality.",
+    seoTitle: "Satya in Sanskrit: Truth (Mundaka Up. 'Satyameva Jayate')",
+    seoDescription:
+      "Satya (सत्य) means truthfulness and ultimate reality. Mundaka 3.1.6 'Satyameva Jayate' is India's national motto. Yoga Sutra 2.36 on its mystical power.",
   },
   {
     slug: "prana",
@@ -1226,6 +1229,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "A Mantra is a potent, sacred sound formula used as an instrument of the mind to focus consciousness, alter subtle energy, and protect against negativity.",
+    seoTitle: "Mantra in Sanskrit: 'Mind Vehicle' (Mandukya Up. 1)",
+    seoDescription:
+      "Mantra (मन्त्र) means 'instrument of the mind'. Mandukya Upanishad 1 calls Om the root mantra. Bija mantras, Vedic shruti origin, and why initiation matters.",
   },
   {
     slug: "seva",
@@ -1371,6 +1377,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Dharana is the rigorous yogic practice of focusing and binding the mind to a single object or point, forming the essential bridge to true meditation.",
+    seoTitle: "Dharana in Sanskrit: Patanjali's 6th Limb (Sutra 3.1)",
+    seoDescription:
+      "Dharana (धारणा) is binding the mind to one point: Patanjali's 6th limb (Yoga Sutra 3.1). Why it precedes dhyana, and the 112 techniques in Vijnana Bhairava.",
   },
   {
     slug: "prajna",
@@ -1443,6 +1452,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Prajna is the supreme, spontaneous, and direct experiential wisdom of eternal truth that transcends the limitations of the intellectual mind.",
+    seoTitle: "Prajna in Sanskrit: Wisdom (Mahavakya 'Prajnanam Brahma')",
+    seoDescription:
+      "Prajna (प्रज्ञा) is direct wisdom, not data. The Mahavakya 'Prajnanam Brahma' identifies awareness with Brahman. Vedanta and Buddhist Sunyata readings.",
   },
   {
     slug: "lila",
@@ -1517,6 +1529,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Lila represents the joyous, spontaneous, and dramatic play of the Divine, offering a beautiful perspective that views the creation of the universe as an act of ecstatic cosmic sport rather than necessity.",
+    seoTitle: "Lila in Sanskrit: Divine Play (Brahma Sutra 2.1.33)",
+    seoDescription:
+      "Lila (लीला) is divine play: the cosmos as God's spontaneous sport. Brahma Sutra 2.1.33 calls creation 'lokavat-tu lila'. Why Vyasa answers theodicy this way.",
   },
   {
     slug: "bhakti",
@@ -1591,8 +1606,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Bhakti is the path of supreme love and devotion to the Divine, serving as a powerful and accessible means to achieve spiritual liberation and union.",
-    seoTitle: "Bhakti: Etymology, Meaning, and the 9 Forms (Navavidha)",
-    seoDescription: "Bhakti is participation in the Divine, from the root bhaj (to share). Etymology, the 9 Navavidha forms, and Gita 9.26 in plain English with primary sources.",
+    seoTitle: "Bhakti: Not Western Devotion (Shankara vs Ramanuja)",
+    seoDescription:
+      "Bhakti (भक्ति) is supreme love (parama-prema), not Western devotion. Narada Sutra 2, Gita 9.26, and the 9 forms in Bhagavata Purana, sourced from texts.",
     ogTitle: "Bhakti: Not 'Devotion' in the Western Sense",
     ogDescription: "Bhakti comes from bhaj, meaning to share or participate. The Sanskrit lexicon entry: root, scriptural usage, Navavidha (9 forms), and how Narada defines it.",
   },
@@ -1874,6 +1890,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Gunas are the three fundamental qualities or forces (Sattva, Rajas, Tamas) that govern the nature of the mind and the physical universe.",
+    seoTitle: "Guna in Sanskrit: Sattva, Rajas, Tamas (Gita 14.5)",
+    seoDescription:
+      "Guna (गुण) means 'thread'. Three weave Prakriti: sattva (clarity), rajas (activity), tamas (inertia). Gita 14.5 explains how they bind the soul to embodiment.",
   },
   {
     slug: "vairagya",
@@ -2747,6 +2766,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Dhyana is the state of deep, unbroken meditation and contemplation where the mind completely merges into its point of focus.",
+    seoTitle: "Dhyana in Sanskrit: Patanjali's 7th Limb (Sutra 3.2)",
+    seoDescription:
+      "Dhyana (ध्यान) is meditation: unbroken flow of attention per Yoga Sutra 3.2. Why it is Patanjali's 7th limb, and how it differs from concentration (dharana).",
   },
   {
     slug: "yantra",
@@ -2792,6 +2814,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "A Yantra is a sacred geometric diagram used as a visual tool for concentration, representing cosmic forces and deities.",
+    seoTitle: "Yantra in Sanskrit: Sacred Geometry (Sri Chakra, Tantra)",
+    seoDescription:
+      "Yantra (यन्त्र) is a meditative diagram, the visual body of a deity. Sri Chakra is the famous example. Etymology from yam (to hold) and Tantra use of it.",
   },
   {
     slug: "sankalpa",
@@ -2881,6 +2906,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Darshan means 'vision' or 'auspicious sight'; receiving Darshan implies a direct spiritual exchange of grace through the act of seeing.",
+    seoTitle: "Darshan in Sanskrit: 2 Meanings (Sight + Philosophy)",
+    seoDescription:
+      "Darshan (दर्शन) names both auspicious sight of a deity or guru, and the six classical Indian philosophy schools. Same root drs (to see), two distinct uses.",
   },
   {
     slug: "prasad",
@@ -2927,6 +2955,9 @@ export const sanskritVocab: SanskritWord[] = [
     ],
     summary:
       "Prasad refers to Divine grace or favor, most commonly manifesting as the blessed food distributed after ritual worship.",
+    seoTitle: "Prasad in Sanskrit: 2 Meanings (Gita 2.65 + Temple Food)",
+    seoDescription:
+      "Prasad (प्रसाद) means divine grace and blessed food. Gita 2.65 uses it for the tranquil mind. Etymology, Sanskrit usage, and how Bhakti deploys both.",
   },
   {
     slug: "arati",
