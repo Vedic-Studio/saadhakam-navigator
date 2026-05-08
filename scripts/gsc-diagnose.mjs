@@ -21,15 +21,30 @@ const ROOT = resolve(__dirname, "..");
 const KEY_FILE = process.env.GOOGLE_SERVICE_ACCOUNT_FILE || resolve(ROOT, ".data", "google-service-account.json");
 const SITE_URL = process.env.GSC_SITE_URL || "sc-domain:opensadhaka.com";
 const SITE_ORIGIN = "https://www.opensadhaka.com";
+const USE_ADC = process.env.GSC_AUTH === "adc";
+
+const SCOPES = [
+  "https://www.googleapis.com/auth/webmasters",
+  "https://www.googleapis.com/auth/webmasters.readonly",
+];
 
 // ── Auth (reused from gsc-submit-sitemaps.mjs) ──────────────────────────────
 
 async function getAccessToken() {
+  if (USE_ADC) {
+    const { google } = await import("googleapis");
+    const auth = new google.auth.GoogleAuth({ scopes: SCOPES });
+    const client = await auth.getClient();
+    const token = await client.getAccessToken();
+    return token.token;
+  }
+
   let keyData;
   try {
     keyData = JSON.parse(readFileSync(KEY_FILE, "utf-8"));
   } catch {
     console.error(`Failed to read service account key at ${KEY_FILE}`);
+    console.error("Tip: set GSC_AUTH=adc to use gcloud application-default credentials instead.");
     process.exit(1);
   }
 
@@ -37,10 +52,7 @@ async function getAccessToken() {
     const { google } = await import("googleapis");
     const auth = new google.auth.GoogleAuth({
       keyFile: KEY_FILE,
-      scopes: [
-        "https://www.googleapis.com/auth/webmasters",
-        "https://www.googleapis.com/auth/webmasters.readonly",
-      ],
+      scopes: SCOPES,
     });
     const client = await auth.getClient();
     const token = await client.getAccessToken();
@@ -80,11 +92,17 @@ async function getAccessTokenManual(keyData) {
 
 // ── API helpers ──────────────────────────────────────────────────────────────
 
+const QUOTA_PROJECT = process.env.GOOGLE_CLOUD_PROJECT || process.env.GSC_QUOTA_PROJECT || "sadhaka-seo";
+
+function authHeaders(token) {
+  const h = { Authorization: `Bearer ${token}` };
+  if (USE_ADC) h["x-goog-user-project"] = QUOTA_PROJECT;
+  return h;
+}
+
 async function gscGet(path, token) {
   const url = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE_URL)}${path}`;
-  const res = await fetch(url, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const res = await fetch(url, { headers: authHeaders(token) });
   const text = await res.text();
   if (!res.ok) throw new Error(`GET ${path}: ${res.status} ${text}`);
   return text ? JSON.parse(text) : null;
@@ -94,10 +112,7 @@ async function gscPost(path, body, token) {
   const url = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE_URL)}${path}`;
   const res = await fetch(url, {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
+    headers: { ...authHeaders(token), "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
   const text = await res.text();
@@ -109,10 +124,7 @@ async function inspectUrl(inspectionUrl, token) {
   const url = "https://searchconsole.googleapis.com/v1/urlInspection/index:inspect";
   const res = await fetch(url, {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
+    headers: { ...authHeaders(token), "Content-Type": "application/json" },
     body: JSON.stringify({
       inspectionUrl,
       siteUrl: SITE_URL,

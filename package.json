@@ -19,6 +19,8 @@
     "gsc:indexing:submit": "node scripts/google-indexing-submit.mjs",
     "gsc:indexing:priority": "node scripts/google-indexing-submit.mjs --priority",
     "gsc:indexing:priority:dry": "node scripts/google-indexing-submit.mjs --priority --dry-run",
+    "analytics:snapshot:gsc": "node scripts/gsc-pull-snapshot.mjs",
+    "analytics:snapshot:ga4": "node scripts/ga4-pull-snapshot.mjs",
     "llms:generate": "npx tsx scripts/generate-llms-txt.mjs",
     "cwv:pseo": "node scripts/check-cwv-pseo.mjs",
     "test": "vitest",
