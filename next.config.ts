@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     turbopack: {
         root: projectRoot,
     },
+    serverExternalPackages: ["postgres"],
     images: {
         remotePatterns: [
             {
