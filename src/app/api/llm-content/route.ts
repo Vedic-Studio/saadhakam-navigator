@@ -1,17 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getPhilosophyBySlug } from "@/data/philosophies";
-import { getTraditionBySlug } from "@/data/traditions";
-import { getTextBySlug } from "@/data/texts";
-import { getConceptBySlug } from "@/data/concepts";
-import { getPracticeBySlug } from "@/data/practices";
-import { getGreatBySlug } from "@/data/greats";
-import { getArticleBySlug } from "@/data/articles";
-import { getTopicBySlug } from "@/data/topics";
-import { getComparisonBySlug } from "@/data/comparisons";
-import { getGrahaBySlug } from "@/data/grahas";
-import { getRashiBySlug } from "@/data/rashis";
-import { getNakshatraBySlug } from "@/data/nakshatras";
-import { getTithiBySlug, getVaraBySlug } from "@/data/panchang";
 import { getPublishedCmsContent } from "@/lib/cms/storage";
 import { buildPilotCmsMarkdown } from "@/lib/cms/markdown";
 
@@ -34,6 +21,7 @@ export async function GET(request: NextRequest) {
     try {
         switch (type) {
             case "philosophies": {
+                const { getPhilosophyBySlug } = await import("@/data/philosophies");
                 const p = getPhilosophyBySlug(slug);
                 if (!p) break;
                 title = p.title;
@@ -58,6 +46,7 @@ ${p.recommendedTexts.map(t => `- ${t}`).join("\n")}
                 break;
             }
             case "traditions": {
+                const { getTraditionBySlug } = await import("@/data/traditions");
                 const t = getTraditionBySlug(slug);
                 if (!t) break;
                 title = t.title;
@@ -78,6 +67,7 @@ ${t.primaryPractices.map((p: string) => `- ${p}`).join("\n")}
                 break;
             }
             case "texts": {
+                const { getTextBySlug } = await import("@/data/texts");
                 const t = getTextBySlug(slug);
                 if (!t) break;
                 title = t.title;
@@ -98,6 +88,7 @@ ${t.themes.map((s: string) => `- ${s}`).join("\n")}
                 break;
             }
             case "concepts": {
+                const { getConceptBySlug } = await import("@/data/concepts");
                 // Concept slugs in the sitemap often include prefixes like "what-is-dharma"
                 const cleanSlug = slug.replace("what-is-", "").replace("-meaning", "");
                 const c = getConceptBySlug(cleanSlug);
@@ -123,6 +114,7 @@ ${c.sourceTexts.map(s => `- ${s}`).join("\n")}
                 break;
             }
             case "practices": {
+                const { getPracticeBySlug } = await import("@/data/practices");
                 const p = getPracticeBySlug(slug);
                 if (!p) break;
                 title = p.title;
@@ -144,6 +136,7 @@ ${p.benefits.map(b => `- ${b}`).join("\n")}
                 break;
             }
             case "greats": {
+                const { getGreatBySlug } = await import("@/data/greats");
                 const g = getGreatBySlug(slug);
                 if (!g) break;
                 title = g.name;
@@ -163,6 +156,7 @@ ${g.relevanceToday}
                 break;
             }
             case "articles": {
+                const { getArticleBySlug } = await import("@/data/articles");
                 const article = getArticleBySlug(slug);
                 if (!article) break;
                 title = article.title;
@@ -188,6 +182,7 @@ ${article.faqs.map((faq) => `### ${faq.question}\n${faq.answer}`).join("\n\n")}
                 break;
             }
             case "topics": {
+                const { getTopicBySlug } = await import("@/data/topics");
                 const t = getTopicBySlug(slug);
                 if (!t) break;
                 title = t.name;
@@ -205,6 +200,7 @@ ${t.content}
                 break;
             }
             case "comparisons": {
+                const { getComparisonBySlug } = await import("@/data/comparisons");
                 const c = getComparisonBySlug(slug);
                 if (!c) break;
                 title = c.title;
@@ -218,6 +214,7 @@ ${c.content}
                 break;
             }
             case "grahas": {
+                const { getGrahaBySlug } = await import("@/data/grahas");
                 const g = getGrahaBySlug(slug);
                 if (!g) break;
                 title = g.name;
@@ -241,6 +238,7 @@ ${g.significations.map((item) => `- ${item}`).join("\n")}
                 break;
             }
             case "rashis": {
+                const { getRashiBySlug } = await import("@/data/rashis");
                 const r = getRashiBySlug(slug);
                 if (!r) break;
                 title = r.name;
@@ -263,6 +261,7 @@ ${r.nakshatraSlugs.map((item) => `- ${item}`).join("\n")}
                 break;
             }
             case "nakshatras": {
+                const { getNakshatraBySlug } = await import("@/data/nakshatras");
                 const n = getNakshatraBySlug(slug);
                 if (!n) break;
                 title = n.name;
@@ -290,6 +289,7 @@ ${n.shadowQualities.map((item) => `- ${item}`).join("\n")}
                 break;
             }
             case "panchang": {
+                const { getTithiBySlug, getVaraBySlug } = await import("@/data/panchang");
                 const t = getTithiBySlug(slug);
                 if (t) {
                     title = t.name;

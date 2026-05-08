@@ -41,6 +41,23 @@ const SITEMAP_URLS = SITEMAP_IDS.map(
 // ── Auth ─────────────────────────────────────────────────────────────────────
 
 async function getAccessToken() {
+  // ADC path: use the user's gcloud `application-default login` credentials
+  // (skips service-account file entirely). Set GSC_USE_ADC=1 to opt in.
+  // Useful when the service account hasn't been granted Owner on the GSC property.
+  if (process.env.GSC_USE_ADC === "1") {
+    const quotaProject = process.env.GOOGLE_CLOUD_QUOTA_PROJECT || process.env.GCLOUD_PROJECT || "sadhaka-seo";
+    if (!process.env.GOOGLE_CLOUD_QUOTA_PROJECT) {
+      process.env.GOOGLE_CLOUD_QUOTA_PROJECT = quotaProject;
+    }
+    const { google } = await import("googleapis");
+    const auth = new google.auth.GoogleAuth({
+      scopes: ["https://www.googleapis.com/auth/webmasters"],
+    });
+    const client = await auth.getClient();
+    const token = await client.getAccessToken();
+    return token.token;
+  }
+
   let keyData;
   try {
     keyData = JSON.parse(readFileSync(KEY_FILE, "utf-8"));
@@ -48,6 +65,7 @@ async function getAccessToken() {
     console.error(`Failed to read service account key at ${KEY_FILE}`);
     console.error("Create one at https://console.cloud.google.com/iam-admin/serviceaccounts");
     console.error("Then grant it Owner access to your GSC property.");
+    console.error("Or run with GSC_USE_ADC=1 to use your gcloud user credentials instead.");
     process.exit(1);
   }
 
@@ -108,13 +126,15 @@ async function getAccessTokenManual(keyData) {
 
 async function gscRequest(method, path, token) {
   const url = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE_URL)}${path}`;
-  const res = await fetch(url, {
-    method,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  });
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  };
+  // User-credential ADC requires an explicit quota project header.
+  // Service-account creds embed the project so this is harmless when present.
+  const quotaProject = process.env.GOOGLE_CLOUD_QUOTA_PROJECT || process.env.GCLOUD_PROJECT;
+  if (quotaProject) headers["X-Goog-User-Project"] = quotaProject;
+  const res = await fetch(url, { method, headers });
 
   if (method === "PUT" && res.status === 204) return null;
   if (method === "DELETE" && (res.status === 204 || res.status === 200)) return null;

@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+
+logger = logging.getLogger(__name__)
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes.generate import router as generate_router
@@ -23,7 +26,14 @@ settings = get_settings()
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)
     if settings.knowledge_refresh_on_startup:
-        get_knowledge_store().reload()
+        try:
+            get_knowledge_store().reload()
+        except Exception:
+            logger.warning(
+                "Knowledge store reload failed (source markdown files may be missing). "
+                "Falling back to pre-built knowledge bundle.",
+                exc_info=True,
+            )
     yield
 
 
