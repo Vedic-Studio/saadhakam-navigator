@@ -110,3 +110,43 @@ export function checkQuotaWarning(count) {
   }
   return null;
 }
+
+export const DEFAULT_QUOTA_PROJECT = "sadhaka-seo";
+
+/**
+ * Resolve which auth path the Indexing API script should use.
+ *
+ * - mode "adc": uses gcloud Application Default Credentials. Requires the
+ *   request to send `x-goog-user-project: <quotaProject>` because user creds
+ *   need a billing/quota project attached when hitting metered APIs.
+ * - mode "sa": legacy service-account JWT path. The SA must be a verified
+ *   Owner of the GSC property — otherwise Google returns HTTP 403
+ *   "Failed to verify the URL ownership" on every submission.
+ *
+ * Selection: `GSC_AUTH=adc` opts in to ADC. Anything else falls back to SA.
+ * Quota project: `GOOGLE_CLOUD_PROJECT` > `GSC_QUOTA_PROJECT` > default.
+ */
+export function resolveAuthMode(env = {}) {
+  if (env.GSC_AUTH === "adc") {
+    return {
+      mode: "adc",
+      quotaProject: env.GOOGLE_CLOUD_PROJECT || env.GSC_QUOTA_PROJECT || DEFAULT_QUOTA_PROJECT,
+    };
+  }
+  return { mode: "sa", quotaProject: null };
+}
+
+/**
+ * Build the headers required for an Indexing API call.
+ * Adds `x-goog-user-project` when the auth mode requires it.
+ */
+export function buildAuthHeaders(token, authMode) {
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  };
+  if (authMode?.mode === "adc" && authMode.quotaProject) {
+    headers["x-goog-user-project"] = authMode.quotaProject;
+  }
+  return headers;
+}

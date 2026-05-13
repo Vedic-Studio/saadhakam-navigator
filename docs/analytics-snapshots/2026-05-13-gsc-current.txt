@@ -1,0 +1,106 @@
+=== GSC Full Diagnostic ===
+
+── Sitemaps ──
+
+  ✓ https://www.opensadhaka.com/sitemap/jyotish.xml
+  ✓ https://www.opensadhaka.com/sitemap/mantras.xml
+  ✓ https://www.opensadhaka.com/sitemap/deities.xml
+  ✓ https://www.opensadhaka.com/sitemap/stotras.xml
+  ✓ https://www.opensadhaka.com/sitemap/articles.xml
+  ✓ https://www.opensadhaka.com/sitemap/sanskrit.xml
+  ✓ https://www.opensadhaka.com/sitemap/shlokas.xml
+  ✓ https://www.opensadhaka.com/sitemap/practices.xml
+  ✓ https://www.opensadhaka.com/sitemap/topics.xml
+  ✓ https://www.opensadhaka.com/sitemap/comparisons.xml
+  ✓ https://www.opensadhaka.com/sitemap/concepts.xml
+  ✓ https://www.opensadhaka.com/sitemap/greats.xml
+  ✓ https://www.opensadhaka.com/sitemap/texts.xml
+  ✓ https://www.opensadhaka.com/sitemap/traditions.xml
+  ✓ https://www.opensadhaka.com/sitemap/philosophies.xml
+  ✓ https://www.opensadhaka.com/sitemap/core.xml
+
+  Total: 16 sitemaps, 0 with issues
+
+── Top 20 Pages (last 28 days) ──
+
+  Page                                              Clicks  Impr   CTR    Pos
+  ─────────────────────────────────────────────────────────────────────────────────────
+  /10-powerful-sanskrit-mantras                           4    488   0.8%   14.3
+  /compare/psychology-vs-yoga-philosophy                  3     70   4.3%   19.0
+  /compare/ashtavakra-gita-vs-bhagavad-gita               2    604   0.3%    7.8
+  /compare/ramana-maharshi-vs-nisargadatta-maharaj        2    169   1.2%    6.0
+  /jyotish/panchang/tithis/krishna-saptami                2     76   2.6%    7.6
+  /jyotish/panchang/tithis/krishna-tritiya                2    110   1.8%    6.6
+  https://opensadhaka.com/how-to-choose-a-mantra          1     19   5.3%    7.3
+  https://opensadhaka.com/jyotish/panchang/tithis/sh      1     17   5.9%    7.4
+  https://opensadhaka.com/mantras/om-shram-shrim-shr      1     18   5.6%    6.7
+  https://opensadhaka.com/texts/bhagavad-gita/chapte      1      2  50.0%   18.0
+  /compare/hatha-yoga-vs-raja-yoga                        1     31   3.2%   15.6
+  /compare/mantra-vs-prayer                               1     60   1.7%   15.1
+  /compare/raja-yoga-vs-kundalini-yoga                    1     29   3.4%    4.2
+  /compare/sadhguru-vs-ramana-maharshi                    1     48   2.1%    5.6
+  /daily-spiritual-routine-beginners                      1    294   0.3%    8.0
+  /fear-of-death-advaita-vedanta                          1    148   0.7%    7.6
+  /jyotish/panchang/tithis/krishna-amavasya               1     29   3.4%    9.2
+  /jyotish/panchang/tithis/krishna-navami                 1     43   2.3%    7.7
+  /jyotish/panchang/tithis/krishna-pratipada              1     33   3.0%   14.6
+  /jyotish/panchang/tithis/krishna-trayodashi             1     87   1.1%   10.5
+
+── Zero-Click Pages (impressions but no clicks, last 28 days) ──
+
+  /advaita-vedanta-explained                              592 impressions, pos 8.0
+  /how-to-start-japa                                      409 impressions, pos 9.2
+  /how-karma-dharma-work                                  381 impressions, pos 8.9
+  /                                                       376 impressions, pos 9.2
+  /compare                                                337 impressions, pos 8.1
+  /learn/sanskrit/nirvana                                 323 impressions, pos 8.0
+  /philosophies                                           313 impressions, pos 8.9
+  /how-to-read-upanishads-western-beginner                216 impressions, pos 8.2
+  /compare/atman-vs-brahman                               210 impressions, pos 16.1
+  /learn/sanskrit/karma                                   203 impressions, pos 12.0
+  /isha-foundation-sadhguru                               199 impressions, pos 14.5
+  /sanatan-history/evidence/rakhigarhi-largest-site       190 impressions, pos 10.5
+  /compare/advaita-vs-buddhism                            177 impressions, pos 8.7
+  /advaita-vs-dvaita                                      161 impressions, pos 12.1
+  /jyotish/panchang/tithis/shukla-dashami                 146 impressions, pos 8.8
+
+── Top 20 Queries ──
+
+  Query                                             Clicks  Impr   CTR    Pos
+  ─────────────────────────────────────────────────────────────────────────────────────
+  brihadratha dynasty                                     1     20   5.0%   13.2
+  krishna saptami tithi                                   1      3  33.3%    7.3
+  krishna tritiya                                         1     41   2.4%    6.8
+  krishna tritiya tithi                                   1      3  33.3%    6.3
+  nisargadatta maharaj vs ramana maharshi                 1      3  33.3%    7.0
+  ok give me                                              1      1 100.0%    5.0
+  powerful sanskrit mantras in sanskrit                   1     12   8.3%    9.5
+  "karma operates within the framework of dharma"         0      3   0.0%    7.0
+  "may all beings be free from fear" ashoka               0      4   0.0%    4.3
+  "nādarūpiṇī" saraswati                              0      1   0.0%    2.0
+  "om hram hrim hraum sah suryaya namah"                  0      1   0.0%    9.0
+  "weapons do not cut it, fire does not burn it, wat      0     19   0.0%    6.0
+  10 mantra pendek sansekerta                             0      1   0.0%    8.0
+  12,000 bce                                              0      1   0.0%   12.0
+  12000 bce                                               0      4   0.0%   12.3
+  12209 bce in years                                      0      4   0.0%    7.5
+  4th chapter of bhagavad gita                            0      1   0.0%   63.0
+  5561 bce                                                0      2   0.0%   19.5
+  6 darshanas                                             0      3   0.0%   55.7
+  adhikari sadhaka                                        0      2   0.0%    9.5
+
+── Pages With Errors (from Search Analytics — pages appearing in search with issues) ──
+
+  Potential issues (high impressions, near-zero CTR, poor position):
+  /learn/sanskrit/chakra                                  86 impr, 0.00% CTR, pos 34
+  /sanatan-history/sites/mehrgarh                         48 impr, 0.00% CTR, pos 33
+  /learn/sanskrit/ojas                                    41 impr, 0.00% CTR, pos 31
+  /learn/sanskrit/manas                                   32 impr, 0.00% CTR, pos 37
+  /sanatan-history/dynasties/maurya                       22 impr, 0.00% CTR, pos 70
+
+=== Diagnostic complete ===
+
+Next steps:
+  • Run with --inspect <url> to check indexing status of specific pages
+  • Run with --not-indexed to find submitted but unindexed pages
+  • Run with --low-impressions to find zombie indexed pages

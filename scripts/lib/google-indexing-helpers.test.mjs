@@ -6,6 +6,9 @@ import {
   buildPublishBody,
   summarizeResponses,
   checkQuotaWarning,
+  resolveAuthMode,
+  buildAuthHeaders,
+  DEFAULT_QUOTA_PROJECT,
   VALID_TYPES,
   INDEXING_API_QUOTA_PER_DAY,
 } from "./google-indexing-helpers.mjs";
@@ -180,5 +183,70 @@ describe("checkQuotaWarning", () => {
 describe("VALID_TYPES", () => {
   it("only accepts the two Google-supported notification types", () => {
     expect([...VALID_TYPES].sort()).toEqual(["URL_DELETED", "URL_UPDATED"]);
+  });
+});
+
+describe("resolveAuthMode", () => {
+  it("defaults to service-account when GSC_AUTH is unset", () => {
+    expect(resolveAuthMode({})).toEqual({ mode: "sa", quotaProject: null });
+  });
+
+  it("defaults to service-account when GSC_AUTH is something other than 'adc'", () => {
+    expect(resolveAuthMode({ GSC_AUTH: "sa" })).toEqual({ mode: "sa", quotaProject: null });
+    expect(resolveAuthMode({ GSC_AUTH: "ADC" })).toEqual({ mode: "sa", quotaProject: null });
+  });
+
+  it("selects ADC mode when GSC_AUTH=adc and uses the default quota project", () => {
+    expect(resolveAuthMode({ GSC_AUTH: "adc" })).toEqual({
+      mode: "adc",
+      quotaProject: DEFAULT_QUOTA_PROJECT,
+    });
+  });
+
+  it("prefers GOOGLE_CLOUD_PROJECT over GSC_QUOTA_PROJECT for the quota project", () => {
+    expect(
+      resolveAuthMode({
+        GSC_AUTH: "adc",
+        GOOGLE_CLOUD_PROJECT: "from-gcp",
+        GSC_QUOTA_PROJECT: "from-gsc",
+      }),
+    ).toEqual({ mode: "adc", quotaProject: "from-gcp" });
+  });
+
+  it("falls through to GSC_QUOTA_PROJECT when GOOGLE_CLOUD_PROJECT is unset", () => {
+    expect(
+      resolveAuthMode({ GSC_AUTH: "adc", GSC_QUOTA_PROJECT: "from-gsc" }),
+    ).toEqual({ mode: "adc", quotaProject: "from-gsc" });
+  });
+});
+
+describe("buildAuthHeaders", () => {
+  it("returns bearer + content-type for SA mode without quota-project header", () => {
+    const headers = buildAuthHeaders("token-xyz", { mode: "sa", quotaProject: null });
+    expect(headers).toEqual({
+      Authorization: "Bearer token-xyz",
+      "Content-Type": "application/json",
+    });
+    expect(headers["x-goog-user-project"]).toBeUndefined();
+  });
+
+  it("adds x-goog-user-project header for ADC mode", () => {
+    expect(buildAuthHeaders("token-xyz", { mode: "adc", quotaProject: "sadhaka-seo" })).toEqual({
+      Authorization: "Bearer token-xyz",
+      "Content-Type": "application/json",
+      "x-goog-user-project": "sadhaka-seo",
+    });
+  });
+
+  it("omits x-goog-user-project for ADC mode when quotaProject is falsy", () => {
+    const headers = buildAuthHeaders("token-xyz", { mode: "adc", quotaProject: null });
+    expect(headers["x-goog-user-project"]).toBeUndefined();
+  });
+
+  it("handles a missing authMode argument as if it were SA", () => {
+    expect(buildAuthHeaders("token-xyz")).toEqual({
+      Authorization: "Bearer token-xyz",
+      "Content-Type": "application/json",
+    });
   });
 });

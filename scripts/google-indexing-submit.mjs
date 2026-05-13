@@ -7,25 +7,38 @@
  * widely used to nudge faster recrawls. Quota: 200 URLs/day per project by
  * default (raise via console request).
  *
- * Prerequisites:
- *   1. Place service account JSON at .data/google-service-account.json
- *      (or set GOOGLE_SERVICE_ACCOUNT_FILE env var)
- *   2. Enable the Indexing API in the GCP project
- *      (https://console.cloud.google.com/apis/library/indexing.googleapis.com)
- *   3. Add the service account email as an "Owner" of the GSC property
- *      that owns the URLs being submitted
+ * Two auth paths are supported (mirrors gsc-diagnose.mjs):
+ *
+ *   • ADC (recommended) — set `GSC_AUTH=adc`. Uses your gcloud Application
+ *     Default Credentials. You (the human owner of the GSC property) must have
+ *     run:
+ *         gcloud auth application-default login \
+ *           --scopes=...,https://www.googleapis.com/auth/indexing
+ *     and `gcloud auth application-default set-quota-project sadhaka-seo`.
+ *     The Indexing API authenticates as the user, who is already a verified
+ *     property owner, so no extra ownership-verification step is needed.
+ *
+ *   • Service account (legacy) — leave `GSC_AUTH` unset. Reads a JSON key at
+ *     `.data/google-service-account.json` (or `GOOGLE_SERVICE_ACCOUNT_FILE`).
+ *     The service account email must be added as an *Owner* of the GSC
+ *     property; otherwise Google returns HTTP 403 "Failed to verify the URL
+ *     ownership" on every submission.
  *
  * Usage:
+ *   GSC_AUTH=adc node scripts/google-indexing-submit.mjs --priority
  *   node scripts/google-indexing-submit.mjs <url> [<url>...]
  *   node scripts/google-indexing-submit.mjs --url https://a.test/ --url https://b.test/
  *   node scripts/google-indexing-submit.mjs --from path/to/urls.txt
- *   node scripts/google-indexing-submit.mjs --priority           # use priority list (CTR-surgery URLs)
  *   node scripts/google-indexing-submit.mjs --type URL_DELETED <url>
  *   node scripts/google-indexing-submit.mjs --dry-run --priority # preview without submitting
  *
  * Environment variables:
+ *   GSC_AUTH                     — set to "adc" to use ADC instead of SA
  *   GOOGLE_SERVICE_ACCOUNT_FILE  — path to service account JSON
  *                                  (default: .data/google-service-account.json)
+ *   GOOGLE_CLOUD_PROJECT /
+ *   GSC_QUOTA_PROJECT            — quota project for ADC mode
+ *                                  (default: sadhaka-seo)
  */
 
 import { readFileSync } from "node:fs";
@@ -39,6 +52,8 @@ import {
   buildPublishBody,
   summarizeResponses,
   checkQuotaWarning,
+  resolveAuthMode,
+  buildAuthHeaders,
 } from "./lib/google-indexing-helpers.mjs";
 import { CTR_SURGERY_PRIORITY_URLS } from "./lib/google-indexing-priority.mjs";
 
@@ -54,13 +69,38 @@ const INDEXING_ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:p
 
 // ── Auth ─────────────────────────────────────────────────────────────────────
 
-async function getAccessToken() {
+async function getAccessToken(authMode) {
+  if (authMode.mode === "adc") {
+    return getAccessTokenAdc();
+  }
+  return getAccessTokenServiceAccount();
+}
+
+async function getAccessTokenAdc() {
+  try {
+    const { google } = await import("googleapis");
+    const auth = new google.auth.GoogleAuth({ scopes: [INDEXING_SCOPE] });
+    const client = await auth.getClient();
+    const token = await client.getAccessToken();
+    if (!token.token) throw new Error("ADC returned empty access token");
+    return token.token;
+  } catch (err) {
+    console.error("ADC auth failed:", err.message);
+    console.error("Tip: run `gcloud auth application-default login` with the");
+    console.error("     https://www.googleapis.com/auth/indexing scope, then");
+    console.error("     `gcloud auth application-default set-quota-project sadhaka-seo`.");
+    process.exit(1);
+  }
+}
+
+async function getAccessTokenServiceAccount() {
   let keyData;
   try {
     keyData = JSON.parse(readFileSync(KEY_FILE, "utf-8"));
   } catch {
     console.error(`Failed to read service account key at ${KEY_FILE}`);
-    console.error("Create one at https://console.cloud.google.com/iam-admin/serviceaccounts");
+    console.error("Tip: set GSC_AUTH=adc to use gcloud application-default credentials instead.");
+    console.error("Or create a service account at https://console.cloud.google.com/iam-admin/serviceaccounts");
     console.error("Then enable the Indexing API and grant Owner access to the GSC property.");
     process.exit(1);
   }
@@ -99,14 +139,11 @@ async function getAccessToken() {
 
 // ── API call ─────────────────────────────────────────────────────────────────
 
-async function publishUrlNotification(url, type, token) {
+async function publishUrlNotification(url, type, token, authMode) {
   const body = buildPublishBody(url, type);
   const res = await fetch(INDEXING_ENDPOINT, {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
+    headers: buildAuthHeaders(token, authMode),
     body: JSON.stringify(body),
   });
 
@@ -202,8 +239,13 @@ async function main() {
   const quotaWarning = checkQuotaWarning(urls.length);
   if (quotaWarning) console.warn(`⚠ ${quotaWarning}\n`);
 
+  const authMode = resolveAuthMode(process.env);
+  const authLabel = authMode.mode === "adc"
+    ? `ADC (quota project: ${authMode.quotaProject})`
+    : "service account";
+
   console.log(
-    `${opts.dryRun ? "[dry-run] " : ""}Submitting ${urls.length} URL(s) to Google Indexing API (${opts.type})...\n`
+    `${opts.dryRun ? "[dry-run] " : ""}Submitting ${urls.length} URL(s) to Google Indexing API (${opts.type}) via ${authLabel}...\n`
   );
 
   if (opts.dryRun) {
@@ -212,11 +254,11 @@ async function main() {
     return;
   }
 
-  const token = await getAccessToken();
+  const token = await getAccessToken(authMode);
 
   const responses = [];
   for (const url of urls) {
-    const result = await publishUrlNotification(url, opts.type, token);
+    const result = await publishUrlNotification(url, opts.type, token, authMode);
     if (result.ok) {
       console.log(`  ✓ ${url}${result.notifyTime ? ` (notified at ${result.notifyTime})` : ""}`);
     } else {
