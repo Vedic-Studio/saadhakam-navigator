@@ -90,12 +90,98 @@ export default function SacredSitesIndiaPage() {
     const article = getArticleBySlug("sacred-sites-india")!;
     const pillar = getPillarConfig(article.pillar);
     const schemas = buildArticleSchemas(article, pillar.label, pillar.href);
+    const sacredSitesItemList = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Sacred Sites in India",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                    "@type": "Place",
+                    name: "Varanasi (Kashi)",
+                    description:
+                        "The oldest continuously inhabited city in the world, sacred to Shiva. Tradition holds that dying in Kashi grants moksha. The Manikarnika and Harishchandra cremation ghats have burned continuously for thousands of years.",
+                    geo: {
+                        "@type": "GeoCoordinates",
+                        latitude: 25.3176,
+                        longitude: 82.9739,
+                    },
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Varanasi",
+                        addressRegion: "Uttar Pradesh",
+                        addressCountry: "IN",
+                    },
+                },
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                    "@type": "Place",
+                    name: "Tiruvannamalai (Ramanasramam and Arunachala)",
+                    description:
+                        "Home of the Sri Ramanasramam — Ramana Maharshi's ashram — and the sacred Arunachala mountain, considered an embodiment of Shiva as the fire of consciousness. The 14 km pradakshina circumambulation of Arunachala is a major practice.",
+                    geo: {
+                        "@type": "GeoCoordinates",
+                        latitude: 12.2253,
+                        longitude: 79.0747,
+                    },
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Tiruvannamalai",
+                        addressRegion: "Tamil Nadu",
+                        addressCountry: "IN",
+                    },
+                },
+            },
+            {
+                "@type": "ListItem",
+                position: 3,
+                item: {
+                    "@type": "Place",
+                    name: "Auroville",
+                    description:
+                        "International experimental township founded in 1968 near Pondicherry, based on Sri Aurobindo and the Mother's integral yoga. Home to approximately 3,000 residents from 55+ countries, centred on the Matrimandir meditation sphere.",
+                    geo: {
+                        "@type": "GeoCoordinates",
+                        latitude: 12.0050,
+                        longitude: 79.8100,
+                    },
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Auroville",
+                        addressRegion: "Tamil Nadu",
+                        addressCountry: "IN",
+                    },
+                },
+            },
+            {
+                "@type": "ListItem",
+                position: 4,
+                item: {
+                    "@type": "Place",
+                    name: "Kerala",
+                    description:
+                        "The global centre of authentic Ayurvedic Panchakarma. The climate, endemic herbs, and unbroken Vaidya lineages make Kerala the optimal environment for the classical 14–28 day purification protocol.",
+                    address: {
+                        "@type": "PostalAddress",
+                        addressRegion: "Kerala",
+                        addressCountry: "IN",
+                    },
+                },
+            },
+        ],
+    };
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.faq) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sacredSitesItemList) }} />
             <ContentPageTracker slug="sacred-sites-india" pillar="practical-practices" />
             <Header />
 

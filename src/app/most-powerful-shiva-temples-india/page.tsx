@@ -42,16 +42,148 @@ const faqs = [
     },
 ];
 
+const JYOTIRLINGAS: Array<{
+    name: string;
+    description: string;
+    latitude: number;
+    longitude: number;
+    addressLocality: string;
+    addressRegion: string;
+}> = [
+    {
+        name: "Somnath Jyotirlinga",
+        description: "The first of the 12 Jyotirlingas, on the Arabian Sea coast of Gujarat. Reconstructed multiple times after historical raids; presently in its modern form rebuilt in 1951.",
+        latitude: 20.8880,
+        longitude: 70.4011,
+        addressLocality: "Prabhas Patan",
+        addressRegion: "Gujarat",
+    },
+    {
+        name: "Mallikarjuna Jyotirlinga",
+        description: "Hilltop Shiva shrine at Srisailam on the Krishna River, sacred to both Shaiva and Shakta traditions.",
+        latitude: 16.0731,
+        longitude: 78.8687,
+        addressLocality: "Srisailam",
+        addressRegion: "Andhra Pradesh",
+    },
+    {
+        name: "Mahakaleshwar Jyotirlinga",
+        description: "Self-manifested (Swayambhu) Shiva shrine in Ujjain, famous for the Bhasma Aarti performed before dawn.",
+        latitude: 23.1828,
+        longitude: 75.7681,
+        addressLocality: "Ujjain",
+        addressRegion: "Madhya Pradesh",
+    },
+    {
+        name: "Omkareshwar Jyotirlinga",
+        description: "Shiva shrine on Mandhata island in the Narmada River, shaped like the sacred syllable Om.",
+        latitude: 22.2410,
+        longitude: 76.1500,
+        addressLocality: "Omkareshwar",
+        addressRegion: "Madhya Pradesh",
+    },
+    {
+        name: "Kedarnath Jyotirlinga",
+        description: "Himalayan shrine at 3,583 meters, reached by a 16 km mountain trek and open only between May and November. Survived the 2013 Uttarakhand floods.",
+        latitude: 30.7346,
+        longitude: 79.0669,
+        addressLocality: "Kedarnath",
+        addressRegion: "Uttarakhand",
+    },
+    {
+        name: "Bhimashankar Jyotirlinga",
+        description: "Shiva shrine in the Sahyadri hills of Maharashtra, source of the Bhima River.",
+        latitude: 19.0728,
+        longitude: 73.5363,
+        addressLocality: "Bhimashankar",
+        addressRegion: "Maharashtra",
+    },
+    {
+        name: "Kashi Vishwanath Jyotirlinga",
+        description: "Varanasi's central Shiva shrine; tradition holds that dying in Kashi grants moksha because Shiva himself whispers the Taraka mantra to the dying. Rebuilt in 1780 by Maharani Ahilyabai Holkar.",
+        latitude: 25.3109,
+        longitude: 83.0107,
+        addressLocality: "Varanasi",
+        addressRegion: "Uttar Pradesh",
+    },
+    {
+        name: "Trimbakeshwar Jyotirlinga",
+        description: "Shiva shrine near Nashik at the source of the Godavari River, distinctive for its three faces representing Brahma, Vishnu, and Rudra.",
+        latitude: 19.9322,
+        longitude: 73.5302,
+        addressLocality: "Trimbak",
+        addressRegion: "Maharashtra",
+    },
+    {
+        name: "Vaidyanath Jyotirlinga",
+        description: "Shiva shrine in Deoghar, Jharkhand, associated with healing (Vaidya = physician). Major destination during the Shravan Mela.",
+        latitude: 24.4925,
+        longitude: 86.7000,
+        addressLocality: "Deoghar",
+        addressRegion: "Jharkhand",
+    },
+    {
+        name: "Nageshwar Jyotirlinga",
+        description: "Shiva shrine near Dwarka on the Gujarat coast, presided over by a giant outdoor Shiva statue.",
+        latitude: 22.2585,
+        longitude: 69.0852,
+        addressLocality: "Dwarka",
+        addressRegion: "Gujarat",
+    },
+    {
+        name: "Rameshwaram Jyotirlinga",
+        description: "Shiva shrine on Pamban island, Tamil Nadu, associated with Rama's worship of Shiva before crossing to Lanka. Features the longest temple corridor in India.",
+        latitude: 9.2881,
+        longitude: 79.3174,
+        addressLocality: "Rameshwaram",
+        addressRegion: "Tamil Nadu",
+    },
+    {
+        name: "Grishneshwar Jyotirlinga",
+        description: "The twelfth Jyotirlinga, located near the Ellora Caves in Maharashtra and reconstructed in the 18th century by Ahilyabai Holkar.",
+        latitude: 20.0237,
+        longitude: 75.1796,
+        addressLocality: "Ellora",
+        addressRegion: "Maharashtra",
+    },
+];
+
 export default function MostPowerfulShivaTemplesIndiaPage() {
     const article = getArticleBySlug("most-powerful-shiva-temples-india")!;
     const pillar = getPillarConfig(article.pillar);
     const schemas = buildArticleSchemas(article, pillar.label, pillar.href);
+    const jyotirlingasItemList = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "The 12 Jyotirlingas of India",
+        itemListElement: JYOTIRLINGAS.map((j, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+                "@type": "Place",
+                name: j.name,
+                description: j.description,
+                geo: {
+                    "@type": "GeoCoordinates",
+                    latitude: j.latitude,
+                    longitude: j.longitude,
+                },
+                address: {
+                    "@type": "PostalAddress",
+                    addressLocality: j.addressLocality,
+                    addressRegion: j.addressRegion,
+                    addressCountry: "IN",
+                },
+            },
+        })),
+    };
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.faq) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jyotirlingasItemList) }} />
             <ContentPageTracker slug="most-powerful-shiva-temples-india" pillar="spiritual-traditions" />
             <Header />
 

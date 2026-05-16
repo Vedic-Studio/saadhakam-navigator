@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getArticleBySlug, getPillarConfig } from "@/features/articles";
-import { buildArticleSchemas } from "@/lib/seo";
+import { buildArticleSchemas, buildArchaeologicalSiteSchema } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -49,12 +49,25 @@ export default function KailasaTempleElloraPage() {
     const article = getArticleBySlug("kailasa-temple-ellora")!;
     const pillar = getPillarConfig(article.pillar);
     const schemas = buildArticleSchemas(article, pillar.label, pillar.href);
+    const placeSchema = buildArchaeologicalSiteSchema({
+        name: "Kailasa Temple (Ellora Cave 16)",
+        description:
+            "The largest monolithic rock-cut structure in the world — a freestanding 8th-century CE Hindu temple carved top-down from a single basalt cliff by the Rashtrakuta dynasty under King Krishna I.",
+        url: "https://www.opensadhaka.com/kailasa-temple-ellora",
+        latitude: 20.0258,
+        longitude: 75.1797,
+        dateRange: "0750/0850",
+        addressCountry: "IN",
+        addressRegion: "Maharashtra",
+        addressLocality: "Ellora",
+    });
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.faq) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }} />
             <ContentPageTracker slug="kailasa-temple-ellora" pillar="spiritual-traditions" />
             <Header />
 

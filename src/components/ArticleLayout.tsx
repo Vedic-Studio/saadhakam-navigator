@@ -75,7 +75,10 @@ export async function ArticleLayout({
                             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-400 mb-2">
                                 Direct answer
                             </p>
-                            <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-0">
+                            <p
+                                data-speakable
+                                className="text-base md:text-lg leading-relaxed text-foreground/90 mb-0"
+                            >
                                 {meta.aeoAnswer || `${meta.metaDescription} This guide explains ${meta.primaryKeyword} with clear source-grounded distinctions, practical examples, and next-step links for deeper study.`}
                             </p>
                         </div>

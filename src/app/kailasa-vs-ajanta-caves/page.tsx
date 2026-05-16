@@ -46,12 +46,64 @@ export default function KailasaVsAjantaCavesPage() {
     const article = getArticleBySlug("kailasa-vs-ajanta-caves")!;
     const pillar = getPillarConfig(article.pillar);
     const schemas = buildArticleSchemas(article, pillar.label, pillar.href);
+    const placesItemList = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Ajanta and Ellora Caves",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                    "@type": "Place",
+                    name: "Ajanta Caves",
+                    description:
+                        "A UNESCO World Heritage Site of 30 Buddhist rock-cut caves above the Waghora River, celebrated for ceiling-to-floor fresco paintings of Jataka tales executed from the 2nd century BCE onward.",
+                    url: "https://www.opensadhaka.com/kailasa-vs-ajanta-caves",
+                    geo: {
+                        "@type": "GeoCoordinates",
+                        latitude: 20.5519,
+                        longitude: 75.7000,
+                    },
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Ajanta",
+                        addressRegion: "Maharashtra",
+                        addressCountry: "IN",
+                    },
+                },
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                    "@type": "Place",
+                    name: "Ellora Caves (Kailasa Temple, Cave 16)",
+                    description:
+                        "A UNESCO World Heritage Site of 34 Buddhist, Hindu, and Jain rock-cut caves, anchored by the 8th-century CE Kailasa Temple — the world's largest monolithic carved structure.",
+                    url: "https://www.opensadhaka.com/kailasa-temple-ellora",
+                    geo: {
+                        "@type": "GeoCoordinates",
+                        latitude: 20.0258,
+                        longitude: 75.1797,
+                    },
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Ellora",
+                        addressRegion: "Maharashtra",
+                        addressCountry: "IN",
+                    },
+                },
+            },
+        ],
+    };
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.faq) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(placesItemList) }} />
             <ContentPageTracker slug="kailasa-vs-ajanta-caves" pillar="spiritual-traditions" />
             <Header />
 
