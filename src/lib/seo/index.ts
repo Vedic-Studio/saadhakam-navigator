@@ -181,6 +181,26 @@ export function buildBreadcrumbSchema(items: BreadcrumbItem[]) {
     };
 }
 
+/**
+ * Image object for an Article schema with optional attribution fields.
+ *
+ * Follows Google's Article structured data guide
+ * (https://developers.google.com/search/docs/appearance/structured-data/article)
+ * which now blends `caption`, `creditText`, `creator`, and `copyrightNotice`
+ * into AI Overviews thumbnail attribution. Use this shape when you want the
+ * full attribution surface; a plain URL string is still accepted for
+ * back-compat with older call sites.
+ */
+export interface ArticleImageSchema {
+    url: string;
+    caption?: string;
+    creditText?: string;
+    creator?: string;
+    copyrightNotice?: string;
+    width?: number;
+    height?: number;
+}
+
 export interface ArticleSchemaMeta {
     headline: string;
     description: string;
@@ -191,13 +211,38 @@ export interface ArticleSchemaMeta {
     keywords?: string[];
     author?: string;
     authorType?: "Person" | "Organization";
-    image?: string;
+    image?: string | ArticleImageSchema;
 }
 
 /**
  * Build Article JSON-LD schema
  */
 export function buildArticleSchema(meta: ArticleSchemaMeta) {
+    let imageNode: unknown;
+    if (typeof meta.image === "string") {
+        imageNode = meta.image;
+    } else if (meta.image && typeof meta.image === "object") {
+        const img = meta.image;
+        const node: Record<string, unknown> = {
+            "@type": "ImageObject",
+            url: img.url,
+        };
+        if (img.caption !== undefined) node.caption = img.caption;
+        if (img.creditText !== undefined) node.creditText = img.creditText;
+        if (img.creator !== undefined) {
+            node.creator = {
+                "@type": "Organization",
+                name: img.creator,
+            };
+        }
+        if (img.copyrightNotice !== undefined) {
+            node.copyrightNotice = img.copyrightNotice;
+        }
+        if (img.width !== undefined) node.width = img.width;
+        if (img.height !== undefined) node.height = img.height;
+        imageNode = node;
+    }
+
     return {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -219,7 +264,7 @@ export function buildArticleSchema(meta: ArticleSchemaMeta) {
             name: SITE_NAME,
             url: SITE_URL,
         },
-        ...(meta.image ? { image: meta.image } : {}),
+        ...(imageNode !== undefined ? { image: imageNode } : {}),
     };
 }
 
@@ -355,7 +400,20 @@ export function buildArticleMetadata(article: ArticleMeta): Metadata {
 export function buildArticleSchemas(article: ArticleMeta, pillarLabel: string, pillarHref: string) {
     const pageUrl = buildUrl(article.route);
 
-    const imageUrl = article.featuredImage ? buildUrl(article.featuredImage.src) : undefined;
+    let articleImage: ArticleImageSchema | undefined;
+    if (article.featuredImage) {
+        const img = article.featuredImage;
+        articleImage = {
+            url: buildUrl(img.src),
+            // alt text doubles as caption for accessibility + AI Overview attribution
+            caption: img.alt,
+            creator: SITE_NAME,
+            creditText: SITE_NAME,
+            copyrightNotice: `© ${SITE_NAME}`,
+            width: img.width,
+            height: img.height,
+        };
+    }
 
     return {
         article: buildArticleSchema({
@@ -365,7 +423,7 @@ export function buildArticleSchemas(article: ArticleMeta, pillarLabel: string, p
             datePublished: article.publishDate,
             section: pillarLabel,
             keywords: [article.primaryKeyword],
-            image: imageUrl,
+            image: articleImage,
         }),
         faq: buildFaqSchema(article.faqs),
         breadcrumb: buildBreadcrumbSchema([

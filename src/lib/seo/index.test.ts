@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { requireArticleMeta } from "@/features/articles";
 import {
     buildArticleMetadata,
+    buildArticleSchema,
     buildArticleSchemas,
     buildPageMetadata,
     buildUrl,
@@ -71,6 +72,105 @@ describe("seo helpers", () => {
         // Exactly one "| Sadhaka" token; never doubled.
         const occurrences = rendered.split("| Sadhaka").length - 1;
         expect(occurrences).toBe(1);
+    });
+});
+
+describe("buildArticleSchema image handling", () => {
+    const baseMeta = {
+        headline: "Test Article",
+        description: "A test article",
+        url: "https://www.opensadhaka.com/test",
+        datePublished: "2026-01-01",
+    };
+
+    it("emits a string image as-is for back-compat", () => {
+        const schema = buildArticleSchema({
+            ...baseMeta,
+            image: "https://www.opensadhaka.com/img.webp",
+        });
+        expect(schema.image).toBe("https://www.opensadhaka.com/img.webp");
+    });
+
+    it("emits an ImageObject when image is an object", () => {
+        const schema = buildArticleSchema({
+            ...baseMeta,
+            image: {
+                url: "https://www.opensadhaka.com/img.webp",
+                caption: "A serene mountain view",
+                creditText: "Sadhaka",
+                creator: "Sadhaka",
+                copyrightNotice: "© Sadhaka",
+                width: 1200,
+                height: 630,
+            },
+        });
+        expect(schema.image).toEqual({
+            "@type": "ImageObject",
+            url: "https://www.opensadhaka.com/img.webp",
+            caption: "A serene mountain view",
+            creditText: "Sadhaka",
+            creator: {
+                "@type": "Organization",
+                name: "Sadhaka",
+            },
+            copyrightNotice: "© Sadhaka",
+            width: 1200,
+            height: 630,
+        });
+    });
+
+    it("omits undefined keys in the ImageObject", () => {
+        const schema = buildArticleSchema({
+            ...baseMeta,
+            image: {
+                url: "https://www.opensadhaka.com/img.webp",
+                caption: "Only caption set",
+            },
+        });
+        expect(schema.image).toEqual({
+            "@type": "ImageObject",
+            url: "https://www.opensadhaka.com/img.webp",
+            caption: "Only caption set",
+        });
+        const img = schema.image as Record<string, unknown>;
+        expect(img).not.toHaveProperty("creditText");
+        expect(img).not.toHaveProperty("creator");
+        expect(img).not.toHaveProperty("copyrightNotice");
+        expect(img).not.toHaveProperty("width");
+        expect(img).not.toHaveProperty("height");
+    });
+
+    it("omits image entirely when not provided", () => {
+        const schema = buildArticleSchema(baseMeta);
+        expect(schema).not.toHaveProperty("image");
+    });
+
+    it("buildArticleSchemas wraps featuredImage into an ImageObject", () => {
+        const article = requireArticleMeta("bhagavad-gita-complete-guide");
+        const schemas = buildArticleSchemas(
+            article,
+            "Sacred Texts",
+            "/sacred-texts-teachings",
+        );
+
+        if (!article.featuredImage) {
+            // If the article has no featured image, the schema must omit `image`.
+            expect(schemas.article).not.toHaveProperty("image");
+            return;
+        }
+
+        const img = schemas.article.image as Record<string, unknown>;
+        expect(img["@type"]).toBe("ImageObject");
+        expect(img.url).toBe(
+            `https://www.opensadhaka.com${article.featuredImage.src}`,
+        );
+        expect(img.caption).toBe(article.featuredImage.alt);
+        expect(img.creator).toEqual({
+            "@type": "Organization",
+            name: SITE_NAME,
+        });
+        expect(img.width).toBe(article.featuredImage.width);
+        expect(img.height).toBe(article.featuredImage.height);
     });
 });
 

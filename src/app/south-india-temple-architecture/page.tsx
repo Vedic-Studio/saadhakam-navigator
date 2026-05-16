@@ -46,12 +46,62 @@ export default function SouthIndiaTempleArchitecturePage() {
     const article = getArticleBySlug("south-india-temple-architecture")!;
     const pillar = getPillarConfig(article.pillar);
     const schemas = buildArticleSchemas(article, pillar.label, pillar.href);
+    const templesItemList = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "South Indian Dravidian Temples",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                    "@type": "Place",
+                    name: "Brihadeeswarar Temple (Peruvudaiyar Kovil)",
+                    description:
+                        "Built by Raja Raja Chola I around 1010 CE in Thanjavur. Its 216-foot Vimana is capped by a single 80-ton granite Kalasha. A UNESCO 'Great Living Chola Temples' World Heritage Site, still in continuous ritual use.",
+                    geo: {
+                        "@type": "GeoCoordinates",
+                        latitude: 10.7828,
+                        longitude: 79.1318,
+                    },
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Thanjavur",
+                        addressRegion: "Tamil Nadu",
+                        addressCountry: "IN",
+                    },
+                },
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                    "@type": "Place",
+                    name: "Meenakshi Amman Temple",
+                    description:
+                        "A living goddess-city in Madurai dedicated to Meenakshi (a form of Parvati). Fourteen Gopurams — the tallest 52 meters — covered in approximately 33,000 painted sculptures. Continuously active for at least 2,000 years.",
+                    geo: {
+                        "@type": "GeoCoordinates",
+                        latitude: 9.9195,
+                        longitude: 78.1193,
+                    },
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Madurai",
+                        addressRegion: "Tamil Nadu",
+                        addressCountry: "IN",
+                    },
+                },
+            },
+        ],
+    };
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.article) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.faq) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas.breadcrumb) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(templesItemList) }} />
             <ContentPageTracker slug="south-india-temple-architecture" pillar="spiritual-traditions" />
             <Header />
 
