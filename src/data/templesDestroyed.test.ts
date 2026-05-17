@@ -6,14 +6,21 @@ import {
   getDestroyedTempleById,
   getTemplesByDestroyer,
   getTemplesByState,
+  getTemplesByRegion,
+  getTemplesByDistrict,
+  getTemplesBySourceTier,
+  TEMPLE_REGIONS,
 } from "./templesDestroyed";
 
+const ALLOWED_TIERS = new Set(["A-primary", "B-corroborated", "C-listed"]);
+const ALLOWED_REGIONS = new Set(TEMPLE_REGIONS);
+
 describe("destroyedTemples data", () => {
-  it("contains at least 15 documented cases", () => {
-    expect(destroyedTemples.length).toBeGreaterThanOrEqual(15);
+  it("contains at least 75 documented cases", () => {
+    expect(destroyedTemples.length).toBeGreaterThanOrEqual(75);
   });
 
-  it("every entry has all required fields", () => {
+  it("every entry has all required core fields", () => {
     for (const t of destroyedTemples) {
       expect(t.id).toBeTruthy();
       expect(t.name).toBeTruthy();
@@ -31,15 +38,73 @@ describe("destroyedTemples data", () => {
     }
   });
 
+  it("every entry has district and region populated", () => {
+    for (const t of destroyedTemples) {
+      expect(
+        t.location.district,
+        `${t.id} is missing location.district`,
+      ).toBeTruthy();
+      expect(
+        t.location.region,
+        `${t.id} is missing location.region`,
+      ).toBeTruthy();
+    }
+  });
+
+  it("every region value is in the allowed enum", () => {
+    for (const t of destroyedTemples) {
+      expect(
+        t.location.region && ALLOWED_REGIONS.has(t.location.region),
+        `${t.id} has invalid region: ${t.location.region}`,
+      ).toBe(true);
+    }
+  });
+
+  it("every entry has a sourceTier of A-primary | B-corroborated | C-listed", () => {
+    for (const t of destroyedTemples) {
+      expect(
+        ALLOWED_TIERS.has(t.sourceTier),
+        `${t.id} has invalid sourceTier: ${t.sourceTier}`,
+      ).toBe(true);
+    }
+  });
+
+  it("primarySource.chronicle and primarySource.author are non-empty on every entry", () => {
+    for (const t of destroyedTemples) {
+      expect(t.primarySource.chronicle.trim().length, `${t.id} chronicle is empty`).toBeGreaterThan(0);
+      expect(t.primarySource.author.trim().length, `${t.id} author is empty`).toBeGreaterThan(0);
+    }
+  });
+
+  it("when coordinates are present, lat/lng are sensible numbers", () => {
+    for (const t of destroyedTemples) {
+      if (!t.location.coordinates) continue;
+      const { lat, lng } = t.location.coordinates;
+      expect(typeof lat).toBe("number");
+      expect(typeof lng).toBe("number");
+      expect(lat).toBeGreaterThan(5);
+      expect(lat).toBeLessThan(40);
+      expect(lng).toBeGreaterThan(65);
+      expect(lng).toBeLessThan(100);
+    }
+  });
+
   it("has no duplicate ids", () => {
     const ids = destroyedTemples.map((t) => t.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it("years are plausible (between 700 and 1750 CE for medieval cases, or 1528+ for early modern)", () => {
+  it("years are plausible (between 700 and 2025 CE)", () => {
     for (const t of destroyedTemples) {
       expect(t.destroyer.year).toBeGreaterThan(700);
       expect(t.destroyer.year).toBeLessThan(2025);
+    }
+  });
+
+  it("ids are kebab-case (lowercase letters, digits, hyphens only)", () => {
+    const kebab = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+    for (const t of destroyedTemples) {
+      expect(kebab.test(t.id), `${t.id} is not kebab-case`).toBe(true);
     }
   });
 
@@ -50,6 +115,22 @@ describe("destroyedTemples data", () => {
     expect(ids).toContain("keshavdev-mathura-aurangzeb-1670");
     expect(ids).toContain("ram-janmasthan-babri-1528");
     expect(ids).toContain("vijayanagara-talikota-1565");
+  });
+
+  it("includes the Vol II Ch 6 epigraphic-evidence cases", () => {
+    const ids = destroyedTemples.map((t) => t.id);
+    expect(ids).toContain("srikakulam-sher-muhammad-1641");
+    expect(ids).toContain("nuh-sainthali-bahadur-khan-1400");
+    expect(ids).toContain("balasore-sri-chandi-1668");
+    expect(ids).toContain("tadpatri-mahmud-1695");
+    expect(ids).toContain("ritpur-aurangzeb-1878");
+    expect(ids).toContain("patna-patthar-masjid-parwiz-1626");
+  });
+
+  it("covers at least the 14 major states from the state summary", () => {
+    const states = new Set(destroyedTemples.map((t) => t.location.state));
+    // J&K, Telangana (Maisaram) and West Bengal (Navadvipa) appear in addition.
+    expect(states.size).toBeGreaterThanOrEqual(14);
   });
 });
 
@@ -118,5 +199,36 @@ describe("aggregate helpers", () => {
     const lower = getTemplesByState("gujarat");
     const upper = getTemplesByState("Gujarat");
     expect(lower.length).toBe(upper.length);
+  });
+
+  it("getTemplesByRegion returns at least one entry for every populated region", () => {
+    const regionsInData = new Set(
+      destroyedTemples
+        .map((t) => t.location.region)
+        .filter((r): r is NonNullable<typeof r> => Boolean(r)),
+    );
+    for (const region of regionsInData) {
+      const matches = getTemplesByRegion(region);
+      expect(matches.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("getTemplesByDistrict is case-insensitive and returns matches when known", () => {
+    const lower = getTemplesByDistrict("varanasi");
+    const upper = getTemplesByDistrict("Varanasi");
+    expect(lower.length).toBe(upper.length);
+    expect(lower.length).toBeGreaterThan(0);
+  });
+
+  it("getTemplesBySourceTier filters correctly and the three tiers all have entries", () => {
+    const aTier = getTemplesBySourceTier("A-primary");
+    const bTier = getTemplesBySourceTier("B-corroborated");
+    const cTier = getTemplesBySourceTier("C-listed");
+    expect(aTier.length).toBeGreaterThan(0);
+    expect(bTier.length).toBeGreaterThan(0);
+    expect(cTier.length).toBeGreaterThan(0);
+    expect(aTier.length + bTier.length + cTier.length).toBe(
+      destroyedTemples.length,
+    );
   });
 });
