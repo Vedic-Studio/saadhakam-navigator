@@ -2032,6 +2032,53 @@ export const articles: ArticleMeta[] = [
             height: 630,
         },
     },
+    {
+        slug: "temples-destroyed-medieval-india",
+        route: "/temples-destroyed-medieval-india",
+        title: "Hindu Temples Destroyed in Medieval India: The Documented Record",
+        metaDescription:
+            "What happened to India's pre-Islamic temple corpus? The Muslim chronicles themselves — Maasir-i-Alamgiri, Tabaqat-i-Nasiri, the Quwwat-ul-Islam inscription — name names, places, and dates. Somnath, Kashi, Mathura, Vijayanagara, and 2,000 documented cases.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-05-16",
+        readingTime: 14,
+        primaryKeyword: "hindu temples destroyed in medieval india",
+        aeoAnswer:
+            "Thousands of Hindu, Buddhist, and Jain temples across the Indian subcontinent were destroyed or converted into mosques during medieval Islamic rule (c. 1000–1700 CE). The evidence is not Hindu polemic — it is recorded in the Muslim chronicles themselves: Mahmud of Ghazni's destruction of Somnath in 1026 (Tabaqat-i-Nasiri), Aurangzeb's 1669 firman ordering the demolition of the Kashi Vishwanath temple (Maasir-i-Alamgiri), the 1670 destruction of the Keshavdev temple at Krishna's birthplace in Mathura, the five-month sacking of Vijayanagara in 1565, and 2,000+ Muslim monuments built on temple sites catalogued from Archaeological Survey of India field reports.",
+        relatedLinks: [
+            { text: "Most Powerful Shiva Temples", href: "/most-powerful-shiva-temples-india" },
+            { text: "South India Temple Architecture", href: "/south-india-temple-architecture" },
+            { text: "Kailasa Temple Ellora", href: "/kailasa-temple-ellora" },
+            { text: "Sacred Sites in India", href: "/sacred-sites-india" },
+        ],
+        faqs: [
+            {
+                question: "How many Hindu temples were destroyed during Muslim rule in India?",
+                answer:
+                    "The most thorough documentary survey (Hindu Temples — What Happened to Them?, Voice of India, 1990–93) catalogues over 2,000 Muslim monuments — mosques, dargahs, tombs, idgahs — built on the sites of, or using materials from, demolished Hindu, Buddhist, and Jain temples. These are documented cases with archaeological survey provenance. The actual total is higher; the listed monuments are the ones for which inscriptional, literary, or archaeological evidence survives. Uttar Pradesh alone has 400+ documented cases.",
+            },
+            {
+                question: "Did Aurangzeb really order the destruction of the Kashi Vishwanath temple?",
+                answer:
+                    "Yes — Aurangzeb's own court chronicle, the Maasir-i-Alamgiri (compiled 1710 from Mughal state archives), records the April 1669 firman ordering the demolition of temples in Tatta, Multan, and especially Benares, followed by the specific report: 'It was reported that, according to the Emperor's command, his officers had demolished the temple of Viswanath at Kashi.' The Gyanvapi Mosque was built on the western half of the destroyed temple. Visible temple-fabric (pillars, plinth carvings) still embedded in the mosque's western wall is independent corroboration.",
+            },
+            {
+                question: "Was the Babri Masjid actually built on a Ram temple?",
+                answer:
+                    "Four pre-British Muslim sources document this directly: Mirza Jan's Hadiqah-i Shuhada (Lucknow, 1856), Shykh Azamat Ali Kakorawi's Tarikh-i Avadh (1869), Mirza Rajab Ali Beg Surur's Fasanah-i Ibrat, and an 1858 legal application by the mosque's own Khatib that refers to the structure as 'masjid-i Janmasthan.' The 2003 Archaeological Survey of India excavation under court direction confirmed a pre-existing massive structure with 50+ pillar bases and a north–south wall beneath the mosque. The Supreme Court's 2019 verdict drew on this combined evidence.",
+            },
+            {
+                question: "Who was Sikandar Butshikan and what did he do in Kashmir?",
+                answer:
+                    "Sikandar Shah Miri (r. c. 1389–1413) was the Sultan of Kashmir given the title 'Butshikan' — idol-breaker — by Kashmir's own Persian chroniclers. During his reign, the pre-Islamic Hindu and Buddhist monument corpus of the Kashmir Valley, documented by Kalhana in the 12th-century Rajatarangini, was systematically destroyed. The Martand Sun Temple ruins survive as the most visible casualty. Srinagar's Jami Masjid was built from the materials of converted temples (Jayasvamin, Vishnusvamin, Bhimasvamin, Vishnu Ranasvamin, Narendrasvamin).",
+            },
+        ],
+        featuredImage: {
+            src: "/assets/articles/temples-destroyed-medieval-india/featured.webp",
+            alt: "hindu temples destroyed in medieval india — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
+    },
     // ─── Sprint 5: Cluster 7 — Courses & Structured Learning ─────────────────
     {
         slug: "how-to-study-indian-philosophy-home",

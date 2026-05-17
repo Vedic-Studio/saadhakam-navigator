@@ -38,6 +38,7 @@ const footerLinks = {
     { label: "How to Start Japa", href: "/how-to-start-japa" },
     { label: "10 Sanskrit Mantras", href: "/10-powerful-sanskrit-mantras" },
     { label: "Daily Spiritual Routine", href: "/daily-spiritual-routine-beginners" },
+    { label: "Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
   ],
 };
 
