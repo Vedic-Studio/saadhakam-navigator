@@ -249,6 +249,20 @@ export default function AurangzebTemplesDestroyedPage() {
                             </p>
                         </section>
 
+                        <section>
+                            <h2 className="text-3xl font-display font-bold mb-6">Related Cases</h2>
+                            <ul className="space-y-3 text-lg text-muted-foreground leading-relaxed pl-6 list-disc">
+                                <li>
+                                    <Link href="/kashi-vishwanath-aurangzeb" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">Kashi Vishwanath, 1669</Link>
+                                    : the firman, the September demolition entry, the Gyanvapi mosque on the footprint.
+                                </li>
+                                <li>
+                                    <Link href="/keshavdev-mathura" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">Keshavdev Mathura, January 1670</Link>
+                                    : the four-element entry — destruction, mosque, idol-burial rite at Agra, city renamed.
+                                </li>
+                            </ul>
+                        </section>
+
                         <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                             <Link href="/temples-destroyed-medieval-india" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
                                 Hub: Temples Destroyed in Medieval India <ArrowRight size={16} />

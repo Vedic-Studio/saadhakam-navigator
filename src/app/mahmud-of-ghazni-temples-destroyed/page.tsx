@@ -339,6 +339,16 @@ export default function MahmudOfGhazniTemplesDestroyedPage() {
                             </p>
                         </section>
 
+                        <section>
+                            <h2 className="text-3xl font-display font-bold mb-6">Related Cases</h2>
+                            <ul className="space-y-3 text-lg text-muted-foreground leading-relaxed pl-6 list-disc">
+                                <li>
+                                    <Link href="/somnath-destruction" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">Somnath, January 1026</Link>
+                                    : the deepest-documented Ghaznavid case — Utbi, al-Biruni, Minhaj-us-Siraj converge.
+                                </li>
+                            </ul>
+                        </section>
+
                         <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                             <Link href="/temples-destroyed-medieval-india" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
                                 Hub: Temples Destroyed in Medieval India <ArrowRight size={16} />

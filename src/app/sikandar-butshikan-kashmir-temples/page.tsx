@@ -327,6 +327,16 @@ export default function SikandarButshikanKashmirTemplesPage() {
                             </p>
                         </section>
 
+                        <section>
+                            <h2 className="text-3xl font-display font-bold mb-6">Related Cases</h2>
+                            <ul className="space-y-3 text-lg text-muted-foreground leading-relaxed pl-6 list-disc">
+                                <li>
+                                    <Link href="/martand-sun-temple" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">Martand Sun Temple, c. 1400</Link>
+                                    : the 8th-century Karkota foundation; Persian and Sanskrit sources converge on the destruction.
+                                </li>
+                            </ul>
+                        </section>
+
                         <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                             <Link href="/temples-destroyed-medieval-india" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
                                 Hub: Temples Destroyed in Medieval India <ArrowRight size={16} />
