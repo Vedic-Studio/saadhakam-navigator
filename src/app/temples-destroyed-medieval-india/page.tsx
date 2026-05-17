@@ -315,6 +315,31 @@ export default function TemplesDestroyedMedievalIndiaPage() {
                             </p>
                         </section>
 
+                        <section>
+                            <h2 className="text-3xl font-display font-bold mb-6">Related Cases — Individual Event Pages</h2>
+                            <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+                                Each of the cases below is treated in detail on its own page, with the primary-source quote, the modern-site status, and the sub-claim breakdown drawn from the Sadhaka knowledge-base claim files.
+                            </p>
+                            <ul className="space-y-3 text-lg text-muted-foreground leading-relaxed pl-6 list-disc">
+                                <li>
+                                    <Link href="/somnath-destruction" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">Somnath, January 1026 — Mahmud of Ghazni</Link>
+                                    : the canonical 11th-century case; Utbi, al-Biruni, and Minhaj-us-Siraj.
+                                </li>
+                                <li>
+                                    <Link href="/kashi-vishwanath-aurangzeb" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">Kashi Vishwanath, 1669 — Aurangzeb</Link>
+                                    : the firman, the September demolition entry, the Gyanvapi mosque on the footprint.
+                                </li>
+                                <li>
+                                    <Link href="/keshavdev-mathura" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">Keshavdev Mathura, January 1670 — Aurangzeb</Link>
+                                    : the four-element chronicle entry; idol-burial rite at Agra; Mathura renamed.
+                                </li>
+                                <li>
+                                    <Link href="/martand-sun-temple" className="text-orange-400 font-medium hover:text-orange-300 transition-colors">Martand Sun Temple, c. 1400 — Sikandar Butshikan</Link>
+                                    : Lalitaditya&apos;s 8th-century Surya foundation; Persian and Sanskrit sources converge.
+                                </li>
+                            </ul>
+                        </section>
+
                         <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                             <Link href="/most-powerful-shiva-temples-india" className="inline-flex items-center gap-2 text-orange-400 font-bold hover:text-orange-300 transition-colors">
                                 The 12 Jyotirlingas <ArrowRight size={16} />
