@@ -39,6 +39,9 @@ const footerLinks = {
     { label: "10 Sanskrit Mantras", href: "/10-powerful-sanskrit-mantras" },
     { label: "Daily Spiritual Routine", href: "/daily-spiritual-routine-beginners" },
     { label: "Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
+    { label: "Aurangzeb's Temple Destructions", href: "/aurangzeb-temples-destroyed" },
+    { label: "Mahmud of Ghazni's Destructions", href: "/mahmud-of-ghazni-temples-destroyed" },
+    { label: "Sikandar Butshikan's Kashmir", href: "/sikandar-butshikan-kashmir-temples" },
   ],
 };
 

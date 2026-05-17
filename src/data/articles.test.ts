@@ -130,4 +130,70 @@ describe("articles data integrity", () => {
       }
     }
   });
+
+  describe("per-destroyer temple-destruction hub pages", () => {
+    const expectedSlugs = [
+      "aurangzeb-temples-destroyed",
+      "mahmud-of-ghazni-temples-destroyed",
+      "sikandar-butshikan-kashmir-temples",
+    ];
+
+    it("all three destroyer pages are registered", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(entry, `expected article "${slug}" to be registered in articles.ts`).toBeDefined();
+      }
+    });
+
+    it("each destroyer page sits under the spiritual-traditions pillar", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(entry?.pillar, `"${slug}" should sit under spiritual-traditions pillar`).toBe(
+          "spiritual-traditions",
+        );
+      }
+    });
+
+    it("each destroyer page has the canonical AEO answer block (60-100+ chars)", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(entry?.aeoAnswer, `"${slug}" missing aeoAnswer`).toBeDefined();
+        expect(
+          (entry?.aeoAnswer ?? "").length,
+          `"${slug}" aeoAnswer too short`,
+        ).toBeGreaterThan(200);
+      }
+    });
+
+    it("each destroyer page has at least four FAQs", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(
+          entry?.faqs.length ?? 0,
+          `"${slug}" should have at least 4 FAQs`,
+        ).toBeGreaterThanOrEqual(4);
+      }
+    });
+
+    it("each destroyer page cross-links the hub article", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        const hrefs = entry?.relatedLinks.map((l) => l.href) ?? [];
+        expect(
+          hrefs,
+          `"${slug}" relatedLinks should reference the hub`,
+        ).toContain("/temples-destroyed-medieval-india");
+      }
+    });
+
+    it("title for each destroyer page is under 60 characters (SEO meta limit)", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(
+          (entry?.title ?? "").length,
+          `"${slug}" title is too long for SEO`,
+        ).toBeLessThanOrEqual(60);
+      }
+    });
+  });
 });
