@@ -63,3 +63,32 @@ export const topics: Topic[] = [
 export function getTopicBySlug(slug: string): Topic | undefined {
   return topics.find((t) => t.slug === slug);
 }
+
+/**
+ * Map of concept slugs to their canonical topic hub. Used by
+ * `src/app/(concepts)/[slug]/page.tsx` to surface the corresponding `/topics/<slug>`
+ * page from concept articles. Update this map when new topic-anchoring concepts
+ * are added, rather than hardcoding the relationship in the page template.
+ */
+export const conceptSlugToTopicSlug: Record<string, string> = {
+  karma: "action",
+  "karma-yoga": "action",
+  "niskama-karma": "action",
+  seva: "action",
+  bhakti: "devotion",
+  jnana: "knowledge",
+  viveka: "knowledge",
+  vairagya: "knowledge",
+  dhyana: "meditation",
+  dharana: "meditation",
+  samadhi: "meditation",
+  yoga: "meditation",
+  "raja-yoga": "meditation",
+  dharma: "dharma",
+};
+
+export function getTopicForConcept(conceptSlug: string): Topic | undefined {
+  const topicSlug = conceptSlugToTopicSlug[conceptSlug];
+  if (!topicSlug) return undefined;
+  return getTopicBySlug(topicSlug);
+}

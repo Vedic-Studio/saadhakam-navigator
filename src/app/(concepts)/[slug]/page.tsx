@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getConceptBySlug, getAllConcepts } from "@/data/concepts";
 import { getSanskritWordBySlug } from "@/data/sanskritVocab";
+import { getTopicForConcept } from "@/data/topics";
 import { listArticles } from "@/features/articles";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import {
@@ -140,6 +141,7 @@ export default async function PseoConceptPage({
   const isWhatIs = pageType === "what-is";
   const conceptName = getConceptDisplayName(concept.sanskritWord, concept.slug);
   const sanskritEntry = getSanskritWordBySlug(concept.slug);
+  const topicHub = getTopicForConcept(concept.slug);
   const relatedConceptEntries = concept.relatedConcepts
     .map((relatedSlug) => getConceptBySlug(relatedSlug))
     .filter(Boolean) as NonNullable<ReturnType<typeof getConceptBySlug>>[];
@@ -336,6 +338,31 @@ export default async function PseoConceptPage({
               ))}
             </div>
           </section>
+
+          {topicHub && (
+            <section className="mb-20">
+              <div className="rounded-3xl border border-orange-500/20 bg-orange-500/5 p-8 md:p-10">
+                <div className="text-xs uppercase tracking-widest font-black text-orange-400 mb-3">
+                  Topic Hub
+                </div>
+                <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">
+                  {conceptName} sits inside the topic of {topicHub.name}
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-6 max-w-3xl">
+                  {topicHub.summary}
+                </p>
+                <TrackedLink
+                  href={`/topics/${topicHub.slug}`}
+                  eventLabel={`concept_topic_hub:${concept.slug}:${topicHub.slug}`}
+                  trackPathName={`topic-${topicHub.slug}`}
+                  className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold transition-colors"
+                >
+                  Explore the {topicHub.name} hub
+                  <ArrowRight className="w-4 h-4" />
+                </TrackedLink>
+              </div>
+            </section>
+          )}
 
           {relatedArticles.length > 0 && (
             <section className="mb-20 pt-20 border-t border-border/40">
