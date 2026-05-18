@@ -7,7 +7,6 @@ Disallow: /variant-d
 Disallow: /variant-e
 Disallow: /variant-f
 Disallow: /variant-selector
-Disallow: /start
 
 # Search engine crawlers
 User-agent: Googlebot

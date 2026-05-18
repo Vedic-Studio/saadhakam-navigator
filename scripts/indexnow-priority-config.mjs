@@ -174,6 +174,7 @@ export function getPriorityGroups() {
             "/adi-shankaracharya-life-teachings",
             "/how-to-choose-a-mantra",
             "/daily-spiritual-routine-beginners",
+            "/spiritual-practice-sequence",
             "/non-duality-vs-dualism",
             "/dark-night-of-the-soul",
             "/fear-of-death-advaita-vedanta",

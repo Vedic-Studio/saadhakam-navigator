@@ -6,6 +6,9 @@ import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { DeityAuraGlow } from "@/components/visuals/DeityAuraGlow";
 import { getDeityColor } from "@/lib/deity-colors";
 import { deities, getDeityBySlug } from "@/data/deities";
+import { getMantraBySlug } from "@/data/mantras";
+import { getTraditionBySlug } from "@/data/traditions";
+import { isKnownStotraSlug } from "@/lib/stotras";
 import {
     buildPageMetadata,
     buildWebPageSchema,
@@ -59,6 +62,21 @@ export default async function DeityDetailPage({
     const related = deity.relatedDeities
         .map((relatedSlug) => getDeityBySlug(relatedSlug))
         .filter(Boolean);
+
+    // Defensive filter: only emit links for slugs that resolve to real data
+    // entries. Many deity records reference mantras/traditions/stotras that
+    // are queued for Phase-2 seeding; rendering them now produces broken
+    // internal links (Ahrefs flagged ~20 of them). Filtering here keeps the
+    // deity page deployable while the seeding backlog catches up.
+    const linkableMantras = deity.mantras.filter(
+        (slug: string) => getMantraBySlug(slug) !== undefined,
+    );
+    const linkableStotras = deity.associatedStotras.filter(
+        (slug: string) => isKnownStotraSlug(slug),
+    );
+    const linkableTraditions = deity.associatedTraditions.filter(
+        (slug: string) => getTraditionBySlug(slug) !== undefined,
+    );
 
     const breadcrumbSchema = buildBreadcrumbSchema([
         { label: "Home", href: "/" },
@@ -160,19 +178,19 @@ export default async function DeityDetailPage({
                         <section className="mb-10">
                             <h2 className="text-2xl font-display font-bold mb-4">Practice Links</h2>
                             <div className="flex flex-wrap gap-3 mb-4">
-                                {deity.mantras.map((mantra) => (
+                                {linkableMantras.map((mantra) => (
                                     <Link key={mantra} href={`/mantras/${mantra}`} className="px-3 py-1 rounded-full bg-muted text-sm hover:bg-orange-500/10 transition-colors">
                                         {mantra}
                                     </Link>
                                 ))}
                             </div>
                             <div className="space-y-2">
-                                {deity.associatedStotras.map((stotraSlug) => (
+                                {linkableStotras.map((stotraSlug) => (
                                     <Link key={stotraSlug} href={`/stotras/${stotraSlug}`} className="block text-orange-400 hover:underline">
                                         /stotras/{stotraSlug}
                                     </Link>
                                 ))}
-                                {deity.associatedTraditions.map((traditionSlug) => (
+                                {linkableTraditions.map((traditionSlug) => (
                                     <Link key={traditionSlug} href={`/traditions/${traditionSlug}`} className="block text-orange-400 hover:underline">
                                         /traditions/{traditionSlug}
                                     </Link>

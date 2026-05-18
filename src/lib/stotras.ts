@@ -102,6 +102,27 @@ export type AnyStortraFile = StotraFile | SahasranamaFile;
 
 const STOTRAS_DIR = path.join(process.cwd(), "content", "stotras");
 
+/**
+ * Canonical list of stotra/sahasranama slugs that exist as JSON files in
+ * `content/stotras/` AND have a corresponding page route under
+ * `src/app/stotras/<slug>/page.tsx`. Used by other surfaces (e.g. deity
+ * pages) to filter out internal links to stotras that haven't been seeded.
+ *
+ * Keep this in sync with `content/stotras/*.json` and the route folders.
+ */
+export const STOTRA_SLUGS = [
+  "lalita-sahasranama",
+  "navagraha-stotram",
+  "shiva-tandava-stotram",
+  "vishnu-sahasranama",
+] as const;
+
+export type StotraSlug = (typeof STOTRA_SLUGS)[number];
+
+export function isKnownStotraSlug(slug: string): slug is StotraSlug {
+  return (STOTRA_SLUGS as readonly string[]).includes(slug);
+}
+
 function loadJSON<T>(filename: string): T {
   const filePath = path.join(STOTRAS_DIR, filename);
   return JSON.parse(readFileSync(filePath, "utf-8")) as T;

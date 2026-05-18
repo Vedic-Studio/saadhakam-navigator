@@ -33,7 +33,6 @@ export default function robots(): MetadataRoute.Robots {
           "/variant-e",
           "/variant-f",
           "/variant-selector",
-          "/start",
         ],
       },
       {
