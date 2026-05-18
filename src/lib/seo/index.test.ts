@@ -11,7 +11,13 @@ import {
     resolveLexiconCanonicalPath,
     SPEAKABLE_SPEC,
     SITE_NAME,
+    SITE_TWITTER,
     SITE_URL,
+    DEFAULT_LOCALE,
+    DEFAULT_OG_IMAGE_PATH,
+    DEFAULT_OG_IMAGE_WIDTH,
+    DEFAULT_OG_IMAGE_HEIGHT,
+    DEFAULT_OG_IMAGE_ALT,
     buildHistoricalPeriodSchema,
     buildScholarlyArticleSchema,
     buildProfilePageSchema,
@@ -600,5 +606,226 @@ describe("buildItemListSchema", () => {
             items: [{ name: "A" }],
         });
         expect(schema.itemListElement[0]).not.toHaveProperty("description");
+    });
+});
+
+// ============================================================================
+// P3 Ahrefs OG/Twitter completeness — added 19 May 2026
+// Regression guards for the 766 "incomplete Open Graph" + 201 "og:url ≠ canonical"
+// warnings flagged by Ahrefs on 18 May 2026.
+// ============================================================================
+
+describe("buildPageMetadata — OG block completeness (P3 Ahrefs guarantee)", () => {
+    const base = {
+        title: "Test Page Title",
+        description: "A test description that is long enough to be valid SEO copy for the page.",
+        path: "/test-page",
+    };
+
+    it("emits og:url equal to alternates.canonical (single source of truth)", () => {
+        const meta = buildPageMetadata(base);
+        // Both derive from `path`; if these drift, Ahrefs flags 201 pages
+        // for og:url not matching canonical.
+        expect(meta.openGraph?.url).toBe(meta.alternates?.canonical);
+        expect(meta.openGraph?.url).toBe(
+            "https://www.opensadhaka.com/test-page",
+        );
+    });
+
+    it("emits og:url that always uses the canonical www host", () => {
+        // Defensive: even if a caller drops the leading slash, the helper
+        // composes the canonical URL via buildUrl so the host is stable.
+        const meta = buildPageMetadata({ ...base, path: "test-page" });
+        expect(meta.alternates?.canonical).toBe(
+            "https://www.opensadhaka.com/test-page",
+        );
+        expect(meta.openGraph?.url).toBe(meta.alternates?.canonical);
+    });
+
+    it("emits the full required OG field set", () => {
+        const meta = buildPageMetadata(base);
+        const og = meta.openGraph as Record<string, unknown>;
+        expect(og.title).toBe(base.title);
+        expect(og.description).toBe(base.description);
+        expect(og.url).toBe(meta.alternates?.canonical);
+        expect(og.siteName).toBe(SITE_NAME);
+        expect(og.locale).toBe(DEFAULT_LOCALE);
+        expect(og.type).toBe("website");
+        // og:image is always present (fallback when missing)
+        expect(Array.isArray(og.images)).toBe(true);
+    });
+
+    it("falls back to the default brand OG image when none provided", () => {
+        const meta = buildPageMetadata(base);
+        const images = meta.openGraph?.images as Array<Record<string, unknown>>;
+        expect(images).toHaveLength(1);
+        expect(images[0].url).toBe(`${SITE_URL}${DEFAULT_OG_IMAGE_PATH}`);
+        expect(images[0].width).toBe(DEFAULT_OG_IMAGE_WIDTH);
+        expect(images[0].height).toBe(DEFAULT_OG_IMAGE_HEIGHT);
+        expect(images[0].alt).toBe(DEFAULT_OG_IMAGE_ALT);
+    });
+
+    it("preserves a structured featuredImage and emits width/height/alt", () => {
+        const meta = buildPageMetadata({
+            ...base,
+            featuredImage: {
+                src: "/assets/articles/test/featured.webp",
+                alt: "A bespoke alt text for the article",
+                width: 1200,
+                height: 630,
+            },
+        });
+        const images = meta.openGraph?.images as Array<Record<string, unknown>>;
+        expect(images).toHaveLength(1);
+        expect(images[0].url).toBe(
+            `${SITE_URL}/assets/articles/test/featured.webp`,
+        );
+        expect(images[0].alt).toBe("A bespoke alt text for the article");
+        expect(images[0].width).toBe(1200);
+        expect(images[0].height).toBe(630);
+    });
+
+    it("accepts back-compat plain-URL images via the `images` field", () => {
+        const meta = buildPageMetadata({
+            ...base,
+            images: [`${SITE_URL}/assets/legacy.png`],
+        });
+        const images = meta.openGraph?.images as Array<Record<string, unknown>>;
+        expect(images[0].url).toBe(`${SITE_URL}/assets/legacy.png`);
+        // Still populates width/height/alt with defaults so the OG block isn't partial.
+        expect(images[0].width).toBe(DEFAULT_OG_IMAGE_WIDTH);
+        expect(images[0].height).toBe(DEFAULT_OG_IMAGE_HEIGHT);
+        expect(images[0].alt).toBe(DEFAULT_OG_IMAGE_ALT);
+    });
+
+    it("sets og:type=article when publishedTime is provided", () => {
+        const meta = buildPageMetadata({
+            ...base,
+            publishedTime: "2026-01-01",
+        });
+        expect(meta.openGraph?.type).toBe("article");
+    });
+
+    it("honours an explicit `type` override", () => {
+        const meta = buildPageMetadata({ ...base, type: "article" });
+        expect(meta.openGraph?.type).toBe("article");
+    });
+
+    it("honours an explicit `locale` override", () => {
+        const meta = buildPageMetadata({ ...base, locale: "hi_IN" });
+        expect(meta.openGraph?.locale).toBe("hi_IN");
+    });
+
+    it("emits divergent socialTitle/socialDescription for OG and Twitter", () => {
+        const meta = buildPageMetadata({
+            ...base,
+            socialTitle: "Snappy social title",
+            socialDescription: "Snappier social description.",
+        });
+        // <title> + <meta description> stay verbatim.
+        expect(meta.title).toBe(base.title);
+        expect(meta.description).toBe(base.description);
+        // OG + Twitter use the overrides.
+        expect(meta.openGraph?.title).toBe("Snappy social title");
+        expect(meta.openGraph?.description).toBe("Snappier social description.");
+        const twitter = meta.twitter as Record<string, unknown>;
+        expect(twitter.title).toBe("Snappy social title");
+        expect(twitter.description).toBe("Snappier social description.");
+    });
+});
+
+describe("buildPageMetadata — Twitter block completeness (P3 Ahrefs guarantee)", () => {
+    const base = {
+        title: "Test Page Title",
+        description: "A test description that is long enough to be valid SEO copy for the page.",
+        path: "/test-page",
+    };
+
+    it("emits twitter:card=summary_large_image with image alt + site handle", () => {
+        const meta = buildPageMetadata(base);
+        const twitter = meta.twitter as Record<string, unknown>;
+        expect(twitter.card).toBe("summary_large_image");
+        expect(twitter.site).toBe(SITE_TWITTER);
+        expect(twitter.creator).toBe(SITE_TWITTER);
+        expect(twitter.title).toBe(base.title);
+        expect(twitter.description).toBe(base.description);
+        const images = twitter.images as Array<Record<string, unknown>>;
+        expect(images).toHaveLength(1);
+        expect(images[0].url).toBe(`${SITE_URL}${DEFAULT_OG_IMAGE_PATH}`);
+        expect(images[0].alt).toBe(DEFAULT_OG_IMAGE_ALT);
+    });
+
+    it("passes the same image URL to OG and Twitter blocks (parity)", () => {
+        const meta = buildPageMetadata({
+            ...base,
+            featuredImage: {
+                src: "/assets/foo.webp",
+                alt: "foo",
+                width: 1200,
+                height: 630,
+            },
+        });
+        const ogImages = meta.openGraph?.images as Array<Record<string, unknown>>;
+        const twImages = (meta.twitter as Record<string, unknown>).images as Array<Record<string, unknown>>;
+        expect(ogImages[0].url).toBe(twImages[0].url);
+        expect(ogImages[0].alt).toBe(twImages[0].alt);
+    });
+});
+
+describe("buildArticleMetadata — feeds buildPageMetadata cleanly", () => {
+    it("produces matching og:url and canonical for a real ArticleMeta", () => {
+        const article = requireArticleMeta("bhagavad-gita-complete-guide");
+        const meta = buildArticleMetadata(article);
+        expect(meta.openGraph?.url).toBe(meta.alternates?.canonical);
+        expect(meta.alternates?.canonical).toBe(
+            `https://www.opensadhaka.com${article.route}`,
+        );
+    });
+
+    it("emits og:type=article (publishDate is set for every article)", () => {
+        const article = requireArticleMeta("bhagavad-gita-complete-guide");
+        const meta = buildArticleMetadata(article);
+        expect(meta.openGraph?.type).toBe("article");
+    });
+
+    it("passes through the featuredImage with full dimensions when present", () => {
+        const article = requireArticleMeta("bhagavad-gita-complete-guide");
+        const meta = buildArticleMetadata(article);
+        const images = meta.openGraph?.images as Array<Record<string, unknown>>;
+        if (article.featuredImage) {
+            expect(images[0].url).toBe(
+                `${SITE_URL}${article.featuredImage.src}`,
+            );
+            expect(images[0].alt).toBe(article.featuredImage.alt);
+            expect(images[0].width).toBe(article.featuredImage.width);
+            expect(images[0].height).toBe(article.featuredImage.height);
+        } else {
+            // Falls back to the brand OG default — no partial OG block.
+            expect(images[0].url).toBe(`${SITE_URL}${DEFAULT_OG_IMAGE_PATH}`);
+        }
+    });
+
+    it("emits og:image fallback when article has no featured image", () => {
+        // Find an article with no featuredImage in the registry. If none
+        // exist, the test is a tautology (every article had a fallback by
+        // virtue of the helper), so we synthesize one.
+        const synthetic = {
+            slug: "synthetic-test",
+            route: "/synthetic-test",
+            title: "Synthetic Test",
+            metaDescription:
+                "A synthetic description for the helper fallback path test that is long enough to validate.",
+            pillar: "ancient-wisdom" as const,
+            publishDate: "2026-05-19",
+            readingTime: 5,
+            primaryKeyword: "synthetic",
+            relatedLinks: [],
+            faqs: [],
+            featuredImage: undefined,
+        };
+        const meta = buildArticleMetadata(synthetic);
+        const images = meta.openGraph?.images as Array<Record<string, unknown>>;
+        expect(images[0].url).toBe(`${SITE_URL}${DEFAULT_OG_IMAGE_PATH}`);
+        expect(images[0].alt).toBe(DEFAULT_OG_IMAGE_ALT);
     });
 });

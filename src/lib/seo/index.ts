@@ -15,6 +15,23 @@ export const SITE_NAME = "Sadhaka";
 export const SITE_TWITTER = "@opensadhaka";
 export const DEFAULT_LOCALE = "en_US";
 
+/**
+ * Default OG/Twitter fallback image used when a page provides none.
+ *
+ * Lives at `/public/og-default.svg`. Rendered at 1200×630 to match the
+ * canonical OG aspect ratio (1.91:1). Path is intentionally absolute so the
+ * helper can compose it with `SITE_URL` without depending on the caller.
+ *
+ * Ahrefs 18 May 2026 flagged 766 pages with incomplete Open Graph tags —
+ * almost all because per-page metadata didn't include `og:image`. Fallback
+ * here means every page from the helper now ships a usable preview card.
+ */
+export const DEFAULT_OG_IMAGE_PATH = "/og-default.svg";
+export const DEFAULT_OG_IMAGE_WIDTH = 1200;
+export const DEFAULT_OG_IMAGE_HEIGHT = 630;
+export const DEFAULT_OG_IMAGE_ALT =
+    "Sadhaka — Sanatan Dharma reference (Vedanta, Shaiva, Shakta, Vaishnava).";
+
 // E-E-A-T signals referenced from both root layout and per-page schemas.
 export const ORG_FOUNDING_DATE = "2025";
 export const ORG_EDITORIAL_POLICY = `${SITE_URL}/about#editorial-standards`;
@@ -91,21 +108,120 @@ export function resolveLexiconCanonicalPath(
 // Metadata Builders
 // ============================================================================
 
+/**
+ * Rich image input — supports either a structured ContentImage-shaped object
+ * (dimensions + alt text) or a plain URL string for back-compat.
+ *
+ * The helper normalises both into a fully-qualified OG image entry with
+ * `url`, `width`, `height`, and `alt`. Ahrefs 18 May 2026 flagged 766 pages
+ * for missing or partial OG tags — emitting these four fields together is
+ * what closes those warnings.
+ */
+export interface PageMetaImage {
+    /** Absolute URL OR site-relative path starting with "/". */
+    src: string;
+    /** Used for `og:image:alt` and `twitter:image:alt`. */
+    alt?: string;
+    width?: number;
+    height?: number;
+}
+
 export interface BasePageMeta {
+    /** Page title. Should be ≤ 60 chars; surfaced by the length lint test. */
     title: string;
+    /** Meta description. Should be 70–160 chars; surfaced by the length lint test. */
     description: string;
+    /** Site-relative route (e.g. "/what-is-vedanta"). Becomes both canonical AND og:url. */
     path: string;
     publishedTime?: string;
     modifiedTime?: string;
+    /**
+     * Featured image for OG/Twitter cards. Pass a `ContentImage`-shaped object
+     * (preferred — width/height/alt come along) or a URL string for back-compat.
+     * When omitted, falls back to the brand OG image.
+     */
+    featuredImage?: PageMetaImage | string;
+    /** @deprecated Use `featuredImage`. Retained so older callers compile. */
     images?: string[];
+    /** Override the OG type. Defaults to "article" if publishedTime is set, else "website". */
+    type?: "website" | "article";
+    /** Optional Open Graph locale. Defaults to `DEFAULT_LOCALE`. */
+    locale?: string;
+    /** Optional OG-specific title override (Twitter mirrors this too). Defaults to `title`. */
+    socialTitle?: string;
+    /** Optional OG-specific description override. Defaults to `description`. */
+    socialDescription?: string;
 }
 
 /**
- * Build consistent Next.js Metadata for a page
+ * Normalise the featuredImage input into a single PageMetaImage. Returns the
+ * brand fallback when nothing usable is provided. The `src` is always a
+ * fully-qualified URL after this step so callers don't have to do it.
+ */
+function resolvePageImage(meta: BasePageMeta): Required<PageMetaImage> {
+    const primary =
+        meta.featuredImage ??
+        (meta.images && meta.images.length > 0 ? meta.images[0] : undefined);
+
+    if (typeof primary === "string") {
+        return {
+            src: primary.startsWith("http") ? primary : buildUrl(primary),
+            alt: DEFAULT_OG_IMAGE_ALT,
+            width: DEFAULT_OG_IMAGE_WIDTH,
+            height: DEFAULT_OG_IMAGE_HEIGHT,
+        };
+    }
+
+    if (primary && typeof primary === "object") {
+        return {
+            src: primary.src.startsWith("http")
+                ? primary.src
+                : buildUrl(primary.src),
+            alt: primary.alt ?? DEFAULT_OG_IMAGE_ALT,
+            width: primary.width ?? DEFAULT_OG_IMAGE_WIDTH,
+            height: primary.height ?? DEFAULT_OG_IMAGE_HEIGHT,
+        };
+    }
+
+    return {
+        src: buildUrl(DEFAULT_OG_IMAGE_PATH),
+        alt: DEFAULT_OG_IMAGE_ALT,
+        width: DEFAULT_OG_IMAGE_WIDTH,
+        height: DEFAULT_OG_IMAGE_HEIGHT,
+    };
+}
+
+/**
+ * Build consistent Next.js Metadata for a page.
+ *
+ * Guarantees, post Ahrefs P3 audit (May 2026):
+ *  - `alternates.canonical` is set to the fully-qualified URL.
+ *  - `og:url === alternates.canonical` — both derived from `meta.path` only.
+ *  - Open Graph block always includes `title`, `description`, `url`,
+ *    `siteName`, `locale`, `type`, and a complete `image` entry (`url`,
+ *    `width`, `height`, `alt`). Fallback brand image is used when the page
+ *    provides none.
+ *  - Twitter block always includes `card`, `title`, `description`, `image`,
+ *    `site` handle, and image alt. Card type is `summary_large_image` (image
+ *    is always present after fallback).
+ *
+ * Callers MUST pass `path` and SHOULD NOT pass canonical separately — the
+ * single source-of-truth keeps canonical and og:url in lockstep.
  */
 export function buildPageMetadata(meta: BasePageMeta): Metadata {
     const canonicalUrl = buildCanonicalUrl(meta.path);
-    const ogImages = meta.images?.map((img) => ({ url: img }));
+    const image = resolvePageImage(meta);
+    const ogType = meta.type ?? (meta.publishedTime ? "article" : "website");
+    const locale = meta.locale ?? DEFAULT_LOCALE;
+    const ogTitle = meta.socialTitle ?? meta.title;
+    const ogDescription = meta.socialDescription ?? meta.description;
+
+    const ogImage = {
+        url: image.src,
+        width: image.width,
+        height: image.height,
+        alt: image.alt,
+    };
 
     return {
         title: meta.title,
@@ -114,21 +230,30 @@ export function buildPageMetadata(meta: BasePageMeta): Metadata {
             canonical: canonicalUrl,
         },
         openGraph: {
-            title: meta.title,
-            description: meta.description,
+            title: ogTitle,
+            description: ogDescription,
             url: canonicalUrl,
             siteName: SITE_NAME,
-            locale: DEFAULT_LOCALE,
-            type: meta.publishedTime ? "article" : "website",
+            locale,
+            type: ogType,
             publishedTime: meta.publishedTime,
             modifiedTime: meta.modifiedTime,
-            images: ogImages,
+            images: [ogImage],
         },
         twitter: {
             card: "summary_large_image",
-            title: meta.title,
-            description: meta.description,
-            images: meta.images,
+            site: SITE_TWITTER,
+            creator: SITE_TWITTER,
+            title: ogTitle,
+            description: ogDescription,
+            images: [
+                {
+                    url: image.src,
+                    alt: image.alt,
+                    width: image.width,
+                    height: image.height,
+                },
+            ],
         },
     };
 }
@@ -378,19 +503,28 @@ export function buildCollectionSchema(meta: CollectionPageSchemaMeta) {
 import type { ArticleMeta } from "@/features/articles";
 
 /**
- * Build complete metadata for an article from ArticleMeta
+ * Build complete metadata for an article from ArticleMeta.
+ *
+ * Passes the article's featured image through with full alt/dimensions so the
+ * OG block emits `og:image:width`, `og:image:height`, and `og:image:alt`. When
+ * the article has no featured image, `buildPageMetadata` falls back to the
+ * brand OG default so the OG block is never partial.
  */
 export function buildArticleMetadata(article: ArticleMeta): Metadata {
-    const imageUrl = article.featuredImage
-        ? buildUrl(article.featuredImage.src)
-        : undefined;
-
     return buildPageMetadata({
         title: article.title,
         description: article.metaDescription,
         path: article.route,
         publishedTime: article.publishDate,
-        images: imageUrl ? [imageUrl] : undefined,
+        type: "article",
+        featuredImage: article.featuredImage
+            ? {
+                  src: article.featuredImage.src,
+                  alt: article.featuredImage.alt,
+                  width: article.featuredImage.width,
+                  height: article.featuredImage.height,
+              }
+            : undefined,
     });
 }
 

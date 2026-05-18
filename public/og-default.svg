@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Sadhaka — Sanatan Dharma reference">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a0a0f"/>
+      <stop offset="1" stop-color="#1b110a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#fb923c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle radial halo -->
+  <circle cx="940" cy="180" r="240" fill="#f59e0b" opacity="0.05"/>
+  <circle cx="160" cy="500" r="200" fill="#fb923c" opacity="0.04"/>
+
+  <!-- Sikhara mark (mirrors public/brand/icon-sikhara.svg) -->
+  <g transform="translate(108 130) scale(2.8)" fill="url(#accent)">
+    <rect x="4" y="88" width="92" height="5"/>
+    <path fill-rule="evenodd" d="M 12 88 V 79 H 17 V 70 H 22 V 61 H 27 V 52 H 32 V 43 H 37 V 34 H 63 V 43 H 68 V 52 H 73 V 61 H 78 V 70 H 83 V 79 H 88 V 88 H 12 Z M 32 86 L 50 40 L 68 86 Z"/>
+    <rect x="44" y="31" width="12" height="3"/>
+    <ellipse cx="50" cy="27" rx="11" ry="2.5"/>
+    <circle cx="50" cy="20" r="3"/>
+    <circle cx="50" cy="13" r="2"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="500" y="270" font-family="Georgia, 'Times New Roman', serif" font-size="120" font-weight="700" fill="#fafafa" letter-spacing="-2">Sadhaka</text>
+  <text x="500" y="335" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="400" fill="#fcd34d" letter-spacing="6">SANATAN DHARMA REFERENCE</text>
+
+  <!-- Tagline -->
+  <text x="500" y="430" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#d4d4d8">Vedanta. Shaiva. Shakta. Vaishnava.</text>
+  <text x="500" y="475" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#a1a1aa">Texts, practices, and philosophy — explained clearly.</text>
+
+  <!-- URL strip -->
+  <rect x="108" y="546" width="984" height="2" fill="url(#accent)" opacity="0.6"/>
+  <text x="108" y="585" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#f59e0b" letter-spacing="2">opensadhaka.com</text>
+</svg>
