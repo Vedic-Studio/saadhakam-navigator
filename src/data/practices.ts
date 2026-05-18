@@ -13,6 +13,13 @@ export interface Practice {
   tags: string[];
   icon: string;
   featuredImage?: ContentImage;
+  /**
+   * Practice-goal pairs that have published "/practices/<practice>/for/<goal>"
+   * pages. Source of truth for both the practice hub and the static params in
+   * `src/app/practices/[practice]/for/[goal]/page.tsx`. Update both whenever
+   * a new intent page ships.
+   */
+  availableGoals?: string[];
 }
 
 export const practices: Practice[] = [
@@ -37,6 +44,7 @@ export const practices: Practice[] = [
     timeCommitment: "10-30 minutes daily",
     tags: ["meditative", "devotional", "accessible"],
     icon: "Circle",
+    availableGoals: ["anxiety", "focus", "devotion", "sleep"],
   },
   {
     slug: "dhyana",
@@ -58,6 +66,7 @@ export const practices: Practice[] = [
     timeCommitment: "15-60 minutes daily",
     tags: ["meditative", "foundational", "yogic"],
     icon: "Brain",
+    availableGoals: ["spiritual-growth", "focus"],
   },
   {
     slug: "kirtan",
@@ -79,6 +88,7 @@ export const practices: Practice[] = [
     timeCommitment: "1-2 hours per session",
     tags: ["devotional", "communal", "musical"],
     icon: "Music",
+    availableGoals: ["devotion"],
   },
   {
     slug: "puja",
@@ -101,6 +111,7 @@ export const practices: Practice[] = [
     timeCommitment: "15-45 minutes daily",
     tags: ["ritualistic", "devotional", "traditional"],
     icon: "Flame",
+    availableGoals: ["devotion"],
   },
   {
     slug: "seva",
@@ -122,6 +133,7 @@ export const practices: Practice[] = [
     timeCommitment: "Variable—can be integrated into daily life",
     tags: ["active", "karma-yoga", "accessible"],
     icon: "HandHeart",
+    availableGoals: ["spiritual-growth"],
   },
   {
     slug: "svadhyaya",
@@ -143,6 +155,7 @@ export const practices: Practice[] = [
     timeCommitment: "20-45 minutes daily",
     tags: ["intellectual", "contemplative", "foundational"],
     icon: "BookOpen",
+    availableGoals: ["spiritual-growth"],
   },
   {
     slug: "pranayama",
@@ -187,6 +200,7 @@ export const practices: Practice[] = [
     timeCommitment: "30-90 minutes daily",
     tags: ["embodied", "disciplined", "systematic"],
     icon: "Leaf",
+    availableGoals: ["focus"],
   },
   {
     slug: "vrat",

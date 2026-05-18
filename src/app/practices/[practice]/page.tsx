@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { ChakraSpinner } from "@/components/visuals/ChakraSpinner";
 import { getPracticeBySlug, practices } from "@/data/practices";
-import { practiceGoals } from "@/data/practiceGoals";
+import { practiceGoals, getPracticeGoalBySlug } from "@/data/practiceGoals";
 import {
     ArrowLeft,
     ArrowRight,
@@ -59,9 +59,17 @@ export default async function PracticeDetailPage({
     const practice = getPracticeBySlug(slug);
     if (!practice) notFound();
 
-    // Filter goals that are relevant for this practice
-    // For demo, we'll just show some common ones or filter based on a matrix if we had one
-    const relevantGoals = practiceGoals.slice(0, 3);
+    // Source of truth: `practice.availableGoals` lists which `/practices/<slug>/for/<goal>`
+    // intent pages are actually published. Fall back to a generic preview only
+    // when a practice has not declared any (so the hub still feels populated).
+    const relevantGoals =
+        practice.availableGoals && practice.availableGoals.length > 0
+            ? practice.availableGoals
+                  .map((slug) => getPracticeGoalBySlug(slug))
+                  .filter((g): g is NonNullable<ReturnType<typeof getPracticeGoalBySlug>> =>
+                      Boolean(g),
+                  )
+            : practiceGoals.slice(0, 3);
 
     return (
         <div className="min-h-screen bg-background">

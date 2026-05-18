@@ -16,27 +16,15 @@ import { Button } from "@/components/ui/button";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export async function generateStaticParams() {
-  // Generate valid combinations
-  // To implement the matrix from Phase 2 exclusions:
-  // This is hardcoded for demo, normally we use a matrix from DB
-  const validPairs = [
-    { p: "japa", g: "anxiety" },
-    { p: "japa", g: "focus" },
-    { p: "japa", g: "devotion" },
-    { p: "japa", g: "sleep" },
-    { p: "yoga-sadhana", g: "focus" },
-    { p: "dhyana", g: "spiritual-growth" },
-    { p: "dhyana", g: "focus" },
-    { p: "kirtan", g: "devotion" },
-    { p: "puja", g: "devotion" },
-    { p: "svadhyaya", g: "spiritual-growth" },
-    { p: "seva", g: "spiritual-growth" },
-  ];
-
-  return validPairs.map((pair) => ({
-    practice: pair.p,
-    goal: pair.g,
-  }));
+  // Practice-goal pairs are sourced from `practice.availableGoals` so the data
+  // file is the single source of truth shared with /practices/<slug> hubs.
+  const pairs: { practice: string; goal: string }[] = [];
+  for (const practice of practices) {
+    for (const goal of practice.availableGoals ?? []) {
+      pairs.push({ practice: practice.slug, goal });
+    }
+  }
+  return pairs;
 }
 
 export async function generateMetadata({
