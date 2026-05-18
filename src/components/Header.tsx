@@ -54,9 +54,12 @@ const navSections: NavSection[] = [
       label: "Explore",
       items: [
         { label: "Texts", href: "/sacred-texts-teachings", description: "Scriptures, teachings, and foundational sources." },
+        { label: "Bhagavad Gita", href: "/texts/bhagavad-gita", description: "All 18 chapters with Sanskrit names and themes." },
         { label: "Deities", href: "/deities", description: "Meet forms, symbolism, and devotional significance." },
         { label: "Traditions", href: "/spiritual-traditions-paths", description: "Understand lineages, sampradayas, and approaches." },
         { label: "History", href: "/sanatan-history", description: "Explore civilizational context and sacred history." },
+        { label: "Researchers", href: "/sanatan-history/researchers", description: "Scholars behind evidence-based Indian history." },
+        { label: "Dynasties", href: "/sanatan-history/dynasties", description: "Solar, lunar, and historical dynasties." },
         { label: "Greats", href: "/greats", description: "Learn from sages, teachers, and realized exemplars." },
         { label: "About Sadhaka", href: "/about", description: "Editorial standards, sourcing, and methodology." },
       ],
@@ -69,6 +72,8 @@ const navSections: NavSection[] = [
       items: [
         { label: "Mantras", href: "/mantras", description: "Browse mantra guides, meanings, and use cases." },
         { label: "Stotras", href: "/stotras/shiva-tandava-stotram", description: "Access devotional hymns and recitation texts." },
+        { label: "Topics", href: "/topics", description: "Meditation, devotion, action, knowledge, dharma." },
+        { label: "Practice Library", href: "/practices", description: "Japa, dhyana, kirtan, puja, seva and more." },
         { label: "Sanskrit Dictionary", href: "/learn/sanskrit", description: "Study key Sanskrit terms and language basics." },
         { label: "Compare Paths", href: "/compare", description: "Contrast spiritual paths to find personal fit." },
         { label: "Daily Guidance", href: "/panchang", description: "Check today’s spiritual timing and orientation." },

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame, Clock, Compass, Sparkles, ScrollText, Brain, FileText } from "lucide-react";
+import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame, Clock, Compass, Sparkles, ScrollText, Brain, FileText, Book, Layers, GitBranch } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggeredList } from "@/components/animations/StaggeredList";
 
@@ -17,6 +17,13 @@ const categories = [
     href: "/texts",
     icon: ScrollText,
     color: "text-orange-400",
+  },
+  {
+    title: "Bhagavad Gita",
+    description: "All 18 chapters with Sanskrit names, themes, and verses",
+    href: "/texts/bhagavad-gita",
+    icon: Book,
+    color: "text-orange-300",
   },
   {
     title: "Jyotish",
@@ -80,6 +87,34 @@ const categories = [
     href: "/practical-spiritual-practices",
     icon: Sparkles,
     color: "text-pink-400",
+  },
+  {
+    title: "Practice Library",
+    description: "Japa, dhyana, kirtan, puja, seva and more, each with a hub",
+    href: "/practices",
+    icon: Layers,
+    color: "text-pink-300",
+  },
+  {
+    title: "Topics",
+    description: "Meditation, devotion, action, knowledge, and dharma",
+    href: "/topics",
+    icon: Compass,
+    color: "text-amber-300",
+  },
+  {
+    title: "Researchers",
+    description: "Scholars behind evidence-based Indian historical dating",
+    href: "/sanatan-history/researchers",
+    icon: Users,
+    color: "text-violet-300",
+  },
+  {
+    title: "Dynasties",
+    description: "Solar, lunar, and historical Indian royal lineages",
+    href: "/sanatan-history/dynasties",
+    icon: GitBranch,
+    color: "text-cyan-300",
   },
   {
     title: "Articles",
