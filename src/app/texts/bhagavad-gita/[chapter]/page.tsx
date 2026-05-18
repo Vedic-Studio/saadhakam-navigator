@@ -1,8 +1,13 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { bgChapters, getBgChapterByNumber } from "@/data/bgChapters";
+import {
+  bgChapters,
+  getBgChapterByNumber,
+  getAdjacentBgChapters,
+} from "@/data/bgChapters";
 import { getBgShlokasByChapter } from "@/data/bgShlokas";
 import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const revalidate = 86400;
@@ -57,6 +62,9 @@ export default async function BgChapterPage({
     }
 
     const shlokas = getBgShlokasByChapter(chapter.chapterNumber);
+    const { prev: prevChapter, next: nextChapter } = getAdjacentBgChapters(
+        chapter.chapterNumber,
+    );
 
     const faqSchema = {
         "@context": "https://schema.org",
@@ -220,6 +228,50 @@ export default async function BgChapterPage({
                     )}
                 </div>
             </section>
+
+            <nav
+                aria-label="Chapter navigation"
+                className="mt-16 pt-10 border-t border-neutral-200 grid gap-4 sm:grid-cols-2"
+            >
+                {prevChapter ? (
+                    <TrackedLink
+                        href={`/texts/bhagavad-gita/chapter-${prevChapter.chapterNumber}`}
+                        eventLabel={`bg_chapter:${chapter.chapterNumber}:prev:${prevChapter.chapterNumber}`}
+                        trackPathName={`chapter-${chapter.chapterNumber}`}
+                        className="group block p-6 rounded-2xl border border-neutral-200 hover:border-primary hover:shadow-sm transition-all bg-white"
+                    >
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-500 mb-2">
+                            <ArrowLeft className="w-3.5 h-3.5" /> Previous chapter
+                        </div>
+                        <div className="text-sm text-neutral-500 font-mono mb-1">
+                            Chapter {prevChapter.chapterNumber}
+                        </div>
+                        <div className="font-semibold text-lg text-neutral-800 group-hover:text-primary transition-colors">
+                            {prevChapter.nameEnglish}
+                        </div>
+                    </TrackedLink>
+                ) : (
+                    <div aria-hidden="true" className="hidden sm:block" />
+                )}
+                {nextChapter ? (
+                    <TrackedLink
+                        href={`/texts/bhagavad-gita/chapter-${nextChapter.chapterNumber}`}
+                        eventLabel={`bg_chapter:${chapter.chapterNumber}:next:${nextChapter.chapterNumber}`}
+                        trackPathName={`chapter-${chapter.chapterNumber}`}
+                        className="group block p-6 rounded-2xl border border-neutral-200 hover:border-primary hover:shadow-sm transition-all bg-white sm:text-right"
+                    >
+                        <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-500 mb-2 sm:justify-end">
+                            Next chapter <ArrowRight className="w-3.5 h-3.5" />
+                        </div>
+                        <div className="text-sm text-neutral-500 font-mono mb-1">
+                            Chapter {nextChapter.chapterNumber}
+                        </div>
+                        <div className="font-semibold text-lg text-neutral-800 group-hover:text-primary transition-colors">
+                            {nextChapter.nameEnglish}
+                        </div>
+                    </TrackedLink>
+                ) : null}
+            </nav>
         </div>
     );
 }

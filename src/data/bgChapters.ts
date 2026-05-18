@@ -2,7 +2,14 @@ export interface BgChapter {
   chapterNumber: number;
   nameSanskrit: string;
   nameEnglish: string;
+  /** Multi-sentence overview used on chapter pages and AEO blocks. */
   summary: string;
+  /**
+   * Single-sentence theme used on the Bhagavad Gita hub index and chapter cards.
+   * Distinct from `summary` so the hub renders a tight, scannable list without
+   * truncating mid-sentence.
+   */
+  oneSentenceTheme: string;
   keyThemes: string[];
   yogaPath: string;
   totalVerses: number;
@@ -15,6 +22,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Arjuna's Dejection (Arjuna Vishada Yoga)",
     summary:
       "Setting the scene on the battlefield of Kurukshetra, Arjuna is overcome with grief and compassion upon seeing his relatives, teachers, and friends arrayed for battle. He drops his weapons, unable to fight.",
+    oneSentenceTheme:
+      "Arjuna collapses on the battlefield of Kurukshetra, paralysed by grief and moral confusion before the war begins.",
     keyThemes: ["Duty", "Dilemma", "Attachment", "Grief"],
     yogaPath: "Preparation for Yoga",
     totalVerses: 47,
@@ -25,6 +34,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Knowledge (Sankhya Yoga)",
     summary:
       "Krishna begins his teachings by explaining the eternal nature of the soul (Atman) and the temporary nature of the body. He introduces Karma Yoga—acting without attachment to the results.",
+    oneSentenceTheme:
+      "Krishna opens his teaching by distinguishing the eternal Atman from the perishable body and introducing action without attachment.",
     keyThemes: [
       "Immortality of the Soul",
       "Duty",
@@ -40,6 +51,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Action (Karma Yoga)",
     summary:
       "Krishna explains why one must perform their prescribed duties. He clarifies that action is superior to inaction and that the world is bound by action unless it is performed as a sacrifice.",
+    oneSentenceTheme:
+      "Karma Yoga: why prescribed duty performed as sacrifice is superior to renunciation of action.",
     keyThemes: ["Sacrifice", "Duty", "Setting an Example", "Overcoming Desire"],
     yogaPath: "Karma Yoga",
     totalVerses: 43,
@@ -50,6 +63,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Knowledge and the Disciplines of Action",
     summary:
       "Krishna reveals the ancient history of this spiritual science and explains the nature of His divine descent (Avatar). He describes how transcendental knowledge burns away karmic reactions.",
+    oneSentenceTheme:
+      "Krishna reveals the lineage of this knowledge, the logic of divine descent (avatara), and how transcendental knowing burns karma.",
     keyThemes: [
       "Avatara (Divine Descent)",
       "Transcendental Knowledge",
@@ -64,6 +79,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Renunciation of Action",
     summary:
       "Krishna resolves the apparent conflict between renouncing work and working with devotion, explaining that acting in inner detachment and dedicating fruits to God is true renunciation.",
+    oneSentenceTheme:
+      "Acting with inner detachment, and dedicating the fruits of action to the Divine, is the true renunciation.",
     keyThemes: [
       "True Renunciation",
       "Detachment",
@@ -79,6 +96,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Meditation (Dhyana Yoga)",
     summary:
       "Krishna outlines the practical steps of meditation (Dhyana), including lifestyle, posture, and concentration. He assures Arjuna that efforts in spiritual practice are never lost, even across lifetimes.",
+    oneSentenceTheme:
+      "The practical mechanics of meditation: lifestyle, posture, and mind-control, with the assurance that no spiritual effort is wasted.",
     keyThemes: [
       "Meditation",
       "Mind Control",
@@ -94,6 +113,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Knowledge and Wisdom",
     summary:
       "Krishna describes His material and spiritual energies holding the universe together. He identifies four types of pious people who surrender to Him and discusses the illusion of Maya.",
+    oneSentenceTheme:
+      "Material and spiritual energies, the four types of seekers, and the veil of Maya that hides the Divine.",
     keyThemes: [
       "Material & Spiritual Energy",
       "Maya (Illusion)",
@@ -109,6 +130,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of the Imperishable Brahman",
     summary:
       "Krishna explains the significance of one's thoughts at the time of death and how to remember the Divine unceasingly to attain the supreme, imperishable abode.",
+    oneSentenceTheme:
+      "Final remembrance at the time of death, cosmic cycles, and the imperishable abode beyond manifestation.",
     keyThemes: [
       "Brahman",
       "Death and the Afterlife",
@@ -124,6 +147,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of the Sovereign Science and Sovereign Secret",
     summary:
       "A profound chapter revealing the supreme, hidden knowledge of Krishna's absolute, all-pervading nature, emphasizing that pure devotion (Bhakti) is the direct path to liberation.",
+    oneSentenceTheme:
+      "The sovereign secret: Krishna's all-pervading nature, and pure devotion as the direct path to liberation.",
     keyThemes: [
       "The Sovereign Secret",
       "Divine Sovereignty",
@@ -139,6 +164,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Divine Manifestations (Vibhuti Yoga)",
     summary:
       "Krishna describes His opulent manifestations, showing how all beauty, power, and wisdom in the universe are merely a spark of His infinite glory.",
+    oneSentenceTheme:
+      "Krishna catalogues the principal vibhutis -- the divine manifestations through which His glory shines in the world.",
     keyThemes: [
       "Divine Opulence",
       "Manifestations of God in Nature",
@@ -153,6 +180,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of the Vision of the Cosmic Form",
     summary:
       "At Arjuna's request, Krishna reveals His awe-inspiring Cosmic Form (Vishvarupa), encompassing the entire universe, terrifying time, and infinite expanses.",
+    oneSentenceTheme:
+      "Arjuna receives the Vishvarupa darshan: Krishna's overwhelming cosmic form containing all worlds and time itself.",
     keyThemes: [
       "The Cosmic Form",
       "Time as the Destroyer",
@@ -168,6 +197,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Devotion (Bhakti Yoga)",
     summary:
       "Krishna explains the path of loving devotion, comparing the worship of His personal form to the worship of the formless infinite. He lists the qualities of a devotee dear to Him.",
+    oneSentenceTheme:
+      "The path of loving devotion, and the inner qualities that mark a devotee dear to the Divine.",
     keyThemes: [
       "Ways to Worship",
       "Qualities of a True Devotee",
@@ -182,6 +213,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Distinction Between the Field and the Knower",
     summary:
       "Krishna introduces the concepts of the Field (the physical body/matter) and the Knower of the Field (the soul/Paramatman), distinguishing between material nature and consciousness.",
+    oneSentenceTheme:
+      "Kshetra and Kshetrajna: distinguishing the field of matter from the knowing consciousness that inhabits it.",
     keyThemes: [
       "Prakriti and Purusha",
       "The Field (Kshetra)",
@@ -197,6 +230,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of the Division of the Three Gunas",
     summary:
       "An exploration of the three modes of material nature (Gunas): Sattva (goodness), Rajas (passion), and Tamas (ignorance), explaining how they bind the soul and how to transcend them.",
+    oneSentenceTheme:
+      "The three gunas -- sattva, rajas, tamas -- and how they bind the soul to nature until they are transcended.",
     keyThemes: [
       "The Three Gunas",
       "Sattva, Rajas, and Tamas",
@@ -211,6 +246,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of the Supreme Person (Purushottama Yoga)",
     summary:
       "Using the metaphor of an inverted banyan tree, Krishna describes the material world and the process of detachment. He identifies Himself as the Supreme Being beyond the fallible and infallible.",
+    oneSentenceTheme:
+      "The inverted banyan of samsara and Purushottama -- the Supreme Person beyond the perishable and imperishable.",
     keyThemes: [
       "The Cosmic Tree",
       "Detachment",
@@ -225,6 +262,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Division Between Divine and Demonic Endowments",
     summary:
       "Krishna lists the divine qualities that lead to liberation and the demonic or materialistic qualities that lead to bondage and suffering, urging adherence to scriptural guidance.",
+    oneSentenceTheme:
+      "Daivi and asuri qualities: the inner dispositions that lead to liberation versus bondage.",
     keyThemes: [
       "Divine Nature",
       "Demonic Nature",
@@ -240,6 +279,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of the Threefold Division of Faith",
     summary:
       "Krishna explains how faith, food, sacrifices, austerities, and charity are categorized according to the three Gunas (Sattva, Rajas, Tamas). Includes the explanation of 'Om Tat Sat'.",
+    oneSentenceTheme:
+      "Faith, food, austerity, and charity classified by the three gunas, sealed by the mantra Om Tat Sat.",
     keyThemes: [
       "Faith according to Gunas",
       "Food and Temperament",
@@ -255,6 +296,8 @@ export const bgChapters: BgChapter[] = [
     nameEnglish: "The Yoga of Liberation by Renunciation",
     summary:
       "The conclusion of the Gita, summarizing all previous teachings. Krishna defines true renunciation (Tyaga), explains the mechanics of action, and delivers His supreme instruction: surrender wholly to Him.",
+    oneSentenceTheme:
+      "The Gita's conclusion: true renunciation, the mechanics of action, and Krishna's final instruction of complete surrender.",
     keyThemes: [
       "Renunciation vs. Relinquishment",
       "The Mechanics of Action",
@@ -270,4 +313,18 @@ export function getBgChapterByNumber(
   chapterNumber: number,
 ): BgChapter | undefined {
   return bgChapters.find((c) => c.chapterNumber === chapterNumber);
+}
+
+/**
+ * Returns the previous and next chapter relative to the given chapter number.
+ * Chapter 1 has no prev; chapter 18 has no next.
+ */
+export function getAdjacentBgChapters(chapterNumber: number): {
+  prev: BgChapter | undefined;
+  next: BgChapter | undefined;
+} {
+  return {
+    prev: getBgChapterByNumber(chapterNumber - 1),
+    next: getBgChapterByNumber(chapterNumber + 1),
+  };
 }
