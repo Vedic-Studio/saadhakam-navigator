@@ -4,6 +4,7 @@ import {
     buildArticleMetadata,
     buildArticleSchema,
     buildArticleSchemas,
+    buildOrganizationSchema,
     buildPageMetadata,
     buildUrl,
     buildPersonSchema,
@@ -12,6 +13,8 @@ import {
     SPEAKABLE_SPEC,
     SITE_NAME,
     SITE_URL,
+    ORGANIZATION_ID,
+    WEBSITE_ID,
     buildHistoricalPeriodSchema,
     buildScholarlyArticleSchema,
     buildProfilePageSchema,
@@ -171,6 +174,151 @@ describe("buildArticleSchema image handling", () => {
         });
         expect(img.width).toBe(article.featuredImage.width);
         expect(img.height).toBe(article.featuredImage.height);
+    });
+});
+
+describe("Article schema entity cross-linking (May 2026 AI Overviews work)", () => {
+    const baseMeta = {
+        headline: "Test Article",
+        description: "A test article",
+        url: "https://www.opensadhaka.com/test",
+        datePublished: "2026-01-01",
+    };
+
+    it("ORGANIZATION_ID and WEBSITE_ID resolve to the canonical site origin", () => {
+        // These ids are stable cross-references — articles point at them,
+        // root layout emits the matching node. If they ever drift, articles
+        // would reference a non-existent publisher node and the entity
+        // graph would break silently. Lock them down.
+        expect(ORGANIZATION_ID).toBe("https://www.opensadhaka.com/#organization");
+        expect(WEBSITE_ID).toBe("https://www.opensadhaka.com/#website");
+    });
+
+    it("Organization schema uses ORGANIZATION_ID by default", () => {
+        const org = buildOrganizationSchema();
+        expect(org["@id"]).toBe(ORGANIZATION_ID);
+    });
+
+    it("Article publisher references Organization via @id", () => {
+        const schema = buildArticleSchema(baseMeta);
+        expect(schema.publisher).toEqual({
+            "@type": "Organization",
+            "@id": ORGANIZATION_ID,
+            name: SITE_NAME,
+            url: SITE_URL,
+        });
+    });
+
+    it("Article isPartOf references WebSite via @id", () => {
+        const schema = buildArticleSchema(baseMeta);
+        expect(schema.isPartOf).toEqual({
+            "@type": "WebSite",
+            "@id": WEBSITE_ID,
+        });
+    });
+
+    it("default Organization author collapses to ORGANIZATION_ID node", () => {
+        const schema = buildArticleSchema(baseMeta);
+        expect(schema.author).toEqual({
+            "@type": "Organization",
+            "@id": ORGANIZATION_ID,
+            name: SITE_NAME,
+        });
+    });
+
+    it("named Person author gets its own inline node, not a @id reference", () => {
+        // Person authors are distinct entities from the publisher — they
+        // need their own bylined node so Google E-E-A-T attribution works.
+        const schema = buildArticleSchema({
+            ...baseMeta,
+            author: "Ankit Mishra",
+            authorType: "Person",
+        });
+        expect(schema.author).toEqual({
+            "@type": "Person",
+            name: "Ankit Mishra",
+        });
+        expect((schema.author as Record<string, unknown>)["@id"]).toBeUndefined();
+    });
+
+    it("emits wordCount when provided", () => {
+        const schema = buildArticleSchema({ ...baseMeta, wordCount: 2400 });
+        expect(schema.wordCount).toBe(2400);
+    });
+
+    it("omits wordCount when not provided", () => {
+        const schema = buildArticleSchema(baseMeta);
+        expect(schema).not.toHaveProperty("wordCount");
+    });
+
+    it("emits mentions when provided", () => {
+        const schema = buildArticleSchema({
+            ...baseMeta,
+            mentions: [
+                {
+                    name: "Advaita Vedanta",
+                    sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta",
+                    url: "https://www.opensadhaka.com/philosophies/advaita",
+                },
+                { name: "Shankaracharya", type: "Person" },
+            ],
+        });
+        expect(schema.mentions).toEqual([
+            {
+                "@type": "Thing",
+                name: "Advaita Vedanta",
+                sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta",
+                url: "https://www.opensadhaka.com/philosophies/advaita",
+            },
+            { "@type": "Person", name: "Shankaracharya" },
+        ]);
+    });
+
+    it("omits mentions when empty or not provided", () => {
+        expect(buildArticleSchema(baseMeta)).not.toHaveProperty("mentions");
+        expect(
+            buildArticleSchema({ ...baseMeta, mentions: [] }),
+        ).not.toHaveProperty("mentions");
+    });
+
+    it("buildArticleSchemas resolves internal mention urls via buildUrl", () => {
+        // Pass a synthetic article through with mentions set, since the live
+        // catalog hasn't been backfilled yet. We're exercising the wrapper
+        // logic, not asserting against a particular live article.
+        const synthetic = {
+            slug: "synthetic",
+            route: "/synthetic",
+            title: "Synthetic Article",
+            metaDescription: "Description.",
+            pillar: "ancient-wisdom" as const,
+            publishDate: "2026-01-01",
+            readingTime: 5,
+            primaryKeyword: "synthetic",
+            relatedLinks: [],
+            faqs: [],
+            wordCount: 1500,
+            mentions: [
+                {
+                    name: "Advaita Vedanta",
+                    url: "/philosophies/advaita",
+                    sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta",
+                },
+            ],
+        };
+        const schemas = buildArticleSchemas(
+            synthetic,
+            "Ancient Wisdom",
+            "/ancient-wisdom-philosophies",
+        );
+        expect(schemas.article.wordCount).toBe(1500);
+        expect(schemas.article.mentions).toEqual([
+            {
+                "@type": "Thing",
+                name: "Advaita Vedanta",
+                url: "https://www.opensadhaka.com/philosophies/advaita",
+                sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta",
+            },
+        ]);
     });
 });
 
