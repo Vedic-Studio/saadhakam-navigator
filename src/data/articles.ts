@@ -826,6 +826,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 3500,
+        mentions: [
+            { name: "Ramayana", sameAs: "https://en.wikipedia.org/wiki/Ramayana", type: "Book" },
+            { name: "Rama", sameAs: "https://en.wikipedia.org/wiki/Rama", url: "/deities/rama", type: "Person" },
+            { name: "Sita", sameAs: "https://en.wikipedia.org/wiki/Sita", url: "/deities/sita", type: "Person" },
+            { name: "Hanuman", sameAs: "https://en.wikipedia.org/wiki/Hanuman", url: "/deities/hanuman", type: "Person" },
+            { name: "Ravana", sameAs: "https://en.wikipedia.org/wiki/Ravana", type: "Person" },
+            { name: "Lakshmana", sameAs: "https://en.wikipedia.org/wiki/Lakshmana", type: "Person" },
+            { name: "Valmiki", sameAs: "https://en.wikipedia.org/wiki/Valmiki", type: "Person" },
+            { name: "Dharma", sameAs: "https://en.wikipedia.org/wiki/Dharma", url: "/what-is-dharma" },
+        ],
     },
 
     // ─── Cluster 12: Sacred Texts (Western Reader Bridge) ───────────────────
@@ -871,6 +882,16 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 3300,
+        mentions: [
+            { name: "Upanishads", sameAs: "https://en.wikipedia.org/wiki/Upanishads", url: "/what-are-the-upanishads", type: "Book" },
+            { name: "Isha Upanishad", sameAs: "https://en.wikipedia.org/wiki/Isha_Upanishad", type: "Book" },
+            { name: "Katha Upanishad", sameAs: "https://en.wikipedia.org/wiki/Katha_Upanishad", type: "Book" },
+            { name: "Atman", sameAs: "https://en.wikipedia.org/wiki/Atman_(Hinduism)", url: "/what-is-atman" },
+            { name: "Brahman", sameAs: "https://en.wikipedia.org/wiki/Brahman", url: "/what-is-brahman" },
+            { name: "Moksha", sameAs: "https://en.wikipedia.org/wiki/Moksha", url: "/what-is-moksha" },
+            { name: "Vedanta", sameAs: "https://en.wikipedia.org/wiki/Vedanta", url: "/what-is-vedanta" },
+        ],
     },
     {
         slug: "vedas-vs-upanishads-explained",
@@ -914,6 +935,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 3100,
+        mentions: [
+            { name: "Vedas", sameAs: "https://en.wikipedia.org/wiki/Vedas", type: "Book" },
+            { name: "Upanishads", sameAs: "https://en.wikipedia.org/wiki/Upanishads", url: "/what-are-the-upanishads", type: "Book" },
+            { name: "Vedanta", sameAs: "https://en.wikipedia.org/wiki/Vedanta", url: "/what-is-vedanta" },
+            { name: "Rigveda", sameAs: "https://en.wikipedia.org/wiki/Rigveda", type: "Book" },
+            { name: "Bhagavad Gita", sameAs: "https://en.wikipedia.org/wiki/Bhagavad_Gita", url: "/texts/bhagavad-gita", type: "Book" },
+            { name: "Brahma Sutras", sameAs: "https://en.wikipedia.org/wiki/Brahma_Sutras", type: "Book" },
+            { name: "Atman", sameAs: "https://en.wikipedia.org/wiki/Atman_(Hinduism)", url: "/what-is-atman" },
+            { name: "Brahman", sameAs: "https://en.wikipedia.org/wiki/Brahman", url: "/what-is-brahman" },
+        ],
     },
     {
         slug: "bhagavad-gita-vs-bible",
@@ -2444,6 +2476,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 2400,
+        mentions: [
+            { name: "Upanishads", sameAs: "https://en.wikipedia.org/wiki/Upanishads", type: "Book" },
+            { name: "Vedas", sameAs: "https://en.wikipedia.org/wiki/Vedas", type: "Book" },
+            { name: "Vedanta", sameAs: "https://en.wikipedia.org/wiki/Vedanta", url: "/what-is-vedanta" },
+            { name: "Atman", sameAs: "https://en.wikipedia.org/wiki/Atman_(Hinduism)", url: "/what-is-atman" },
+            { name: "Brahman", sameAs: "https://en.wikipedia.org/wiki/Brahman", url: "/what-is-brahman" },
+            { name: "Isha Upanishad", sameAs: "https://en.wikipedia.org/wiki/Isha_Upanishad", type: "Book" },
+            { name: "Katha Upanishad", sameAs: "https://en.wikipedia.org/wiki/Katha_Upanishad", type: "Book" },
+            { name: "Bhagavad Gita", sameAs: "https://en.wikipedia.org/wiki/Bhagavad_Gita", url: "/texts/bhagavad-gita", type: "Book" },
+        ],
     },
     {
         slug: "best-bhagavad-gita-translation-for-beginners",
@@ -3322,6 +3365,17 @@ export const articles: ArticleMeta[] = [
                 answer:
                     "Yes. The sutras are compressed aphorisms and can be badly misunderstood when read without guidance. A reliable commentary helps explain key Sanskrit terms and the practical logic of the text.",
             },
+        ],
+        wordCount: 2200,
+        mentions: [
+            { name: "Yoga Sutras of Patanjali", sameAs: "https://en.wikipedia.org/wiki/Yoga_Sutras_of_Patanjali", url: "/texts/yoga-sutras", type: "Book" },
+            { name: "Patanjali", sameAs: "https://en.wikipedia.org/wiki/Patanjali", type: "Person" },
+            { name: "Ashtanga Yoga", sameAs: "https://en.wikipedia.org/wiki/Ashtanga_(eight_limbs_of_yoga)" },
+            { name: "Kleshas", sameAs: "https://en.wikipedia.org/wiki/Kleshas_(Hinduism)", url: "/what-is-klesha" },
+            { name: "Samadhi", sameAs: "https://en.wikipedia.org/wiki/Samadhi", url: "/what-is-samadhi" },
+            { name: "Vairagya", sameAs: "https://en.wikipedia.org/wiki/Vairagya", url: "/what-is-vairagya" },
+            { name: "Kaivalya", sameAs: "https://en.wikipedia.org/wiki/Kaivalya" },
+            { name: "Ishvara", sameAs: "https://en.wikipedia.org/wiki/Ishvara", url: "/what-is-ishvara" },
         ],
     },
     {
