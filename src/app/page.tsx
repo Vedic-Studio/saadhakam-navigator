@@ -14,16 +14,18 @@ import { ConversionSection } from "@/components/landing/ConversionSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 
 export const metadata: Metadata = {
-  title: "Sadhaka (opensadhaka.com): Vedanta, Stotras, Sanatan Dharma",
+  title:
+    "Sadhaka | Open library of Sanatan Dharma & Daily Sadhana",
   description:
-    "Sadhaka (Sanskrit: साधक, practitioner). Open library of Vedanta, Upanishads, Bhagavad Gita verse-level commentary, stotras, and daily sadhana. Free to read.",
+    "Learn the history of sanatan dharma. Build a daily sadhana. Read the upanishads and shastras, follow the vedic panchang. An open library, free.",
   alternates: {
     canonical: "https://www.opensadhaka.com",
   },
   openGraph: {
-    title: "Sadhaka: Vedanta, Upanishads & Sanatan Dharma Library",
+    title:
+      "Sadhaka | Open library of Sanatan Dharma & Daily Sadhana",
     description:
-      "Study Sanatan Dharma from primary texts. 73+ articles, 60+ philosophical comparisons, 18 Gita chapters with verse-level Sanskrit analysis. Free to read.",
+      "Learn the history of sanatan dharma. Build a daily sadhana. Read the upanishads and shastras, follow the vedic panchang. An open library, free.",
     url: "https://www.opensadhaka.com",
   },
 };
@@ -31,9 +33,9 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const faqSchema = buildFaqSchema(homepageFaqs);
   const webPageSchema = buildWebPageSchema({
-    name: "Sadhaka (opensadhaka.com): Vedanta, Stotras, Sanatan Dharma",
+    name: "Sadhaka | Open library of Sanatan Dharma & Daily Sadhana",
     description:
-      "Sadhaka (Sanskrit: साधक, practitioner). Open library of Vedanta, Upanishads, Bhagavad Gita verse-level commentary, stotras, and daily sadhana. Free to read.",
+      "Learn the history of sanatan dharma. Build a daily sadhana. Read the upanishads and shastras, follow the vedic panchang. An open library, free.",
     url: buildUrl("/"),
   });
 
