@@ -629,6 +629,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 3100,
+        mentions: [
+            { name: "Carl Jung", sameAs: "https://en.wikipedia.org/wiki/Carl_Jung", type: "Person" },
+            { name: "Advaita Vedanta", sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta", url: "/philosophies/advaita" },
+            { name: "Atman", sameAs: "https://en.wikipedia.org/wiki/Atman_(Hinduism)", url: "/what-is-atman" },
+            { name: "Individuation", sameAs: "https://en.wikipedia.org/wiki/Individuation" },
+            { name: "Jungian archetypes", sameAs: "https://en.wikipedia.org/wiki/Jungian_archetypes" },
+            { name: "Ramana Maharshi", sameAs: "https://en.wikipedia.org/wiki/Ramana_Maharshi", url: "/ramana-maharshi-who-am-i", type: "Person" },
+            { name: "Heinrich Zimmer", sameAs: "https://en.wikipedia.org/wiki/Heinrich_Zimmer", type: "Person" },
+            { name: "Maya", sameAs: "https://en.wikipedia.org/wiki/Maya_(religion)", url: "/what-is-maya" },
+        ],
     },
     {
         slug: "neuroscience-of-meditation-hinduism",
@@ -726,6 +737,16 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 3300,
+        mentions: [
+            { name: "Hard problem of consciousness", sameAs: "https://en.wikipedia.org/wiki/Hard_problem_of_consciousness" },
+            { name: "David Chalmers", sameAs: "https://en.wikipedia.org/wiki/David_Chalmers", type: "Person" },
+            { name: "Advaita Vedanta", sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta", url: "/philosophies/advaita" },
+            { name: "Brahman", sameAs: "https://en.wikipedia.org/wiki/Brahman" },
+            { name: "Mandukya Upanishad", sameAs: "https://en.wikipedia.org/wiki/Mandukya_Upanishad", type: "Book" },
+            { name: "Atman", sameAs: "https://en.wikipedia.org/wiki/Atman_(Hinduism)", url: "/what-is-atman" },
+            { name: "Qualia", sameAs: "https://en.wikipedia.org/wiki/Qualia" },
+        ],
     },
 
     // ─── Cluster 11: Deity Bridge for Western Readers ───────────────────────
@@ -1057,6 +1078,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 3300,
+        mentions: [
+            { name: "Christian mysticism", sameAs: "https://en.wikipedia.org/wiki/Christian_mysticism" },
+            { name: "Meister Eckhart", sameAs: "https://en.wikipedia.org/wiki/Meister_Eckhart", type: "Person" },
+            { name: "Advaita Vedanta", sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta", url: "/philosophies/advaita" },
+            { name: "Apophatic theology", sameAs: "https://en.wikipedia.org/wiki/Apophatic_theology" },
+            { name: "Brahman", sameAs: "https://en.wikipedia.org/wiki/Brahman" },
+            { name: "Hesychasm", sameAs: "https://en.wikipedia.org/wiki/Hesychasm" },
+            { name: "Gregory Palamas", sameAs: "https://en.wikipedia.org/wiki/Gregory_Palamas", type: "Person" },
+            { name: "Adi Shankaracharya", sameAs: "https://en.wikipedia.org/wiki/Adi_Shankara", url: "/adi-shankaracharya-life-teachings", type: "Person" },
+        ],
     },
     {
         slug: "sufi-mysticism-and-vedanta",
@@ -1112,6 +1144,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 3300,
+        mentions: [
+            { name: "Sufism", sameAs: "https://en.wikipedia.org/wiki/Sufism" },
+            { name: "Ibn Arabi", sameAs: "https://en.wikipedia.org/wiki/Ibn_Arabi", type: "Person" },
+            { name: "Wahdat al-wujud", sameAs: "https://en.wikipedia.org/wiki/Wahdat_al-wujud" },
+            { name: "Advaita Vedanta", sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta", url: "/philosophies/advaita" },
+            { name: "Dara Shikoh", sameAs: "https://en.wikipedia.org/wiki/Dara_Shikoh", type: "Person" },
+            { name: "Brahman", sameAs: "https://en.wikipedia.org/wiki/Brahman" },
+            { name: "Atman", sameAs: "https://en.wikipedia.org/wiki/Atman_(Hinduism)", url: "/what-is-atman" },
+            { name: "Bhakti", sameAs: "https://en.wikipedia.org/wiki/Bhakti", url: "/what-is-bhakti" },
+        ],
     },
 
     // ─── Sprint 1: Cluster 1 — Indian Spirituality & Concepts ───────────────
@@ -2995,6 +3038,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 3500,
+        mentions: [
+            { name: "Bhagavad Gita", sameAs: "https://en.wikipedia.org/wiki/Bhagavad_Gita", url: "/texts/bhagavad-gita", type: "Book" },
+            { name: "Jnana", sameAs: "https://en.wikipedia.org/wiki/Jnana", url: "/what-is-jnana" },
+            { name: "Bhakti", sameAs: "https://en.wikipedia.org/wiki/Bhakti", url: "/what-is-bhakti" },
+            { name: "Ramana Maharshi", sameAs: "https://en.wikipedia.org/wiki/Ramana_Maharshi", url: "/ramana-maharshi-who-am-i", type: "Person" },
+            { name: "Chandogya Upanishad", sameAs: "https://en.wikipedia.org/wiki/Chandogya_Upanishad", type: "Book" },
+            { name: "Narada Bhakti Sutra", sameAs: "https://en.wikipedia.org/wiki/Narada_Bhakti_Sutra", type: "Book" },
+            { name: "Krishna", sameAs: "https://en.wikipedia.org/wiki/Krishna", url: "/deities/krishna", type: "Person" },
+            { name: "Adi Shankaracharya", sameAs: "https://en.wikipedia.org/wiki/Adi_Shankara", url: "/adi-shankaracharya-life-teachings", type: "Person" },
+        ],
     },
     {
         slug: "which-meditation-for-me",
