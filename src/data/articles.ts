@@ -2271,6 +2271,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 1300,
+        mentions: [
+            { name: "Dravidian architecture", sameAs: "https://en.wikipedia.org/wiki/Dravidian_architecture" },
+            { name: "Brihadeeswarar Temple", sameAs: "https://en.wikipedia.org/wiki/Brihadeeswarar_Temple", type: "Place" },
+            { name: "Meenakshi Temple", sameAs: "https://en.wikipedia.org/wiki/Meenakshi_Temple", type: "Place" },
+            { name: "Gopuram", sameAs: "https://en.wikipedia.org/wiki/Gopuram" },
+            { name: "Vimana", sameAs: "https://en.wikipedia.org/wiki/Vimana_(architectural_feature)" },
+            { name: "Mandapa", sameAs: "https://en.wikipedia.org/wiki/Mandapa" },
+            { name: "Chola dynasty", sameAs: "https://en.wikipedia.org/wiki/Chola_dynasty" },
+            { name: "Shiva", sameAs: "https://en.wikipedia.org/wiki/Shiva", url: "/deities/shiva", type: "Person" },
+        ],
     },
     {
         slug: "most-powerful-shiva-temples-india",
@@ -2300,6 +2311,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 1300,
+        mentions: [
+            { name: "Jyotirlinga", sameAs: "https://en.wikipedia.org/wiki/Jyotirlinga" },
+            { name: "Shiva", sameAs: "https://en.wikipedia.org/wiki/Shiva", url: "/deities/shiva", type: "Person" },
+            { name: "Kashi Vishwanath Temple", sameAs: "https://en.wikipedia.org/wiki/Kashi_Vishwanath_Temple", type: "Place" },
+            { name: "Kedarnath Temple", sameAs: "https://en.wikipedia.org/wiki/Kedarnath_Temple", type: "Place" },
+            { name: "Somnath Temple", sameAs: "https://en.wikipedia.org/wiki/Somnath_temple", type: "Place" },
+            { name: "Mahakaleshwar Jyotirlinga", sameAs: "https://en.wikipedia.org/wiki/Mahakaleshwar_Jyotirlinga", type: "Place" },
+            { name: "Rameshwaram Temple", sameAs: "https://en.wikipedia.org/wiki/Ramanathaswamy_Temple", type: "Place" },
+            { name: "Varanasi", sameAs: "https://en.wikipedia.org/wiki/Varanasi", type: "Place" },
+        ],
     },
     // ─── Sprint 5: Cluster 7 — Courses & Structured Learning ─────────────────
     {
@@ -2331,6 +2353,17 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 2000,
+        mentions: [
+            { name: "Bhagavad Gita", sameAs: "https://en.wikipedia.org/wiki/Bhagavad_Gita", url: "/texts/bhagavad-gita", type: "Book" },
+            { name: "Yoga Sutras of Patanjali", sameAs: "https://en.wikipedia.org/wiki/Yoga_Sutras_of_Patanjali", url: "/texts/yoga-sutras", type: "Book" },
+            { name: "Advaita Vedanta", sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta", url: "/philosophies/advaita" },
+            { name: "Patanjali", sameAs: "https://en.wikipedia.org/wiki/Patanjali", type: "Person" },
+            { name: "Adi Shankaracharya", sameAs: "https://en.wikipedia.org/wiki/Adi_Shankara", url: "/adi-shankaracharya-life-teachings", type: "Person" },
+            { name: "Vivekachudamani", sameAs: "https://en.wikipedia.org/wiki/Vivekachudamani", type: "Book" },
+            { name: "Upanishads", sameAs: "https://en.wikipedia.org/wiki/Upanishads", url: "/what-are-the-upanishads", type: "Book" },
+            { name: "Mahabharata", sameAs: "https://en.wikipedia.org/wiki/Mahabharata", type: "Book" },
+        ],
     },
     {
         slug: "online-yoga-teacher-training-worth-it",
@@ -2360,6 +2393,15 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 1300,
+        mentions: [
+            { name: "Yoga Alliance", sameAs: "https://en.wikipedia.org/wiki/Yoga_Alliance", type: "Organization" },
+            { name: "Yoga Sutras of Patanjali", sameAs: "https://en.wikipedia.org/wiki/Yoga_Sutras_of_Patanjali", url: "/texts/yoga-sutras", type: "Book" },
+            { name: "Patanjali", sameAs: "https://en.wikipedia.org/wiki/Patanjali", type: "Person" },
+            { name: "Bhagavad Gita", sameAs: "https://en.wikipedia.org/wiki/Bhagavad_Gita", url: "/texts/bhagavad-gita", type: "Book" },
+            { name: "Asana", sameAs: "https://en.wikipedia.org/wiki/Asana" },
+            { name: "Pranayama", sameAs: "https://en.wikipedia.org/wiki/Pranayama" },
+        ],
     },
     {
         slug: "how-to-learn-sanskrit",
@@ -2391,6 +2433,16 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 1100,
+        mentions: [
+            { name: "Sanskrit", sameAs: "https://en.wikipedia.org/wiki/Sanskrit" },
+            { name: "Devanagari", sameAs: "https://en.wikipedia.org/wiki/Devanagari" },
+            { name: "Dharma", sameAs: "https://en.wikipedia.org/wiki/Dharma", url: "/what-is-dharma" },
+            { name: "Maya", sameAs: "https://en.wikipedia.org/wiki/Maya_(religion)", url: "/what-is-maya" },
+            { name: "Prana", sameAs: "https://en.wikipedia.org/wiki/Prana" },
+            { name: "Yoga Sutras of Patanjali", sameAs: "https://en.wikipedia.org/wiki/Yoga_Sutras_of_Patanjali", url: "/texts/yoga-sutras", type: "Book" },
+            { name: "Advaita Vedanta", sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta", url: "/philosophies/advaita" },
+        ],
     },
     {
         slug: "celebrity-spiritual-courses-review",
@@ -2420,6 +2472,15 @@ export const articles: ArticleMeta[] = [
             width: 1200,
             height: 630,
         },
+        wordCount: 1100,
+        mentions: [
+            { name: "Deepak Chopra", sameAs: "https://en.wikipedia.org/wiki/Deepak_Chopra", type: "Person" },
+            { name: "Advaita Vedanta", sameAs: "https://en.wikipedia.org/wiki/Advaita_Vedanta", url: "/philosophies/advaita" },
+            { name: "Ayurveda", sameAs: "https://en.wikipedia.org/wiki/Ayurveda" },
+            { name: "Mantra", sameAs: "https://en.wikipedia.org/wiki/Mantra" },
+            { name: "Bhagavad Gita", sameAs: "https://en.wikipedia.org/wiki/Bhagavad_Gita", url: "/texts/bhagavad-gita", type: "Book" },
+            { name: "Upanishads", sameAs: "https://en.wikipedia.org/wiki/Upanishads", url: "/what-are-the-upanishads", type: "Book" },
+        ],
     },
     // ─── Existing articles (from original file) ──────────────────────────────
     {
