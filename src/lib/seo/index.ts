@@ -15,6 +15,15 @@ export const SITE_NAME = "Sadhaka";
 export const SITE_TWITTER = "@opensadhaka";
 export const DEFAULT_LOCALE = "en_US";
 
+// Stable @id anchors used across page-level schemas. Letting every page
+// reference the same node id lets search engines and LLMs de-duplicate the
+// publisher entity into a single graph node, instead of treating each page's
+// inline Organization JSON as a separate brand. Google's AI Overview
+// attribution work (May 2026) leans on these cross-references to attach
+// articles to the right publisher.
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+
 // E-E-A-T signals referenced from both root layout and per-page schemas.
 export const ORG_FOUNDING_DATE = "2025";
 export const ORG_EDITORIAL_POLICY = `${SITE_URL}/about#editorial-standards`;
@@ -201,6 +210,25 @@ export interface ArticleImageSchema {
     height?: number;
 }
 
+/**
+ * A `mentions` link in an Article schema. Lets AI engines build a knowledge
+ * graph from article → entity (philosophical school, sacred text, teacher,
+ * concept). Google's May 2026 AI Overviews update specifically uses these
+ * relationships to surface deep guides under "Explore New Angles".
+ *
+ * - `name`: the entity name, e.g. "Advaita Vedanta", "Bhagavad Gita".
+ * - `sameAs`: optional canonical external URL (Wikipedia, Wikidata, official
+ *   site) so the engine can confirm entity identity across sources.
+ * - `url`: optional internal page on this site that defines the entity.
+ * - `type`: schema.org type for the entity; defaults to "Thing".
+ */
+export interface ArticleMentionSchema {
+    name: string;
+    sameAs?: string;
+    url?: string;
+    type?: string;
+}
+
 export interface ArticleSchemaMeta {
     headline: string;
     description: string;
@@ -212,6 +240,10 @@ export interface ArticleSchemaMeta {
     author?: string;
     authorType?: "Person" | "Organization";
     image?: string | ArticleImageSchema;
+    /** Word count signal — helps AI engines weight extractive depth. */
+    wordCount?: number;
+    /** Entity relationships — see {@link ArticleMentionSchema}. */
+    mentions?: ArticleMentionSchema[];
 }
 
 /**
@@ -243,6 +275,28 @@ export function buildArticleSchema(meta: ArticleSchemaMeta) {
         imageNode = node;
     }
 
+    // For Organization-authored articles, point at the sitewide @id so
+    // search engines collapse author + publisher into the same node. Named
+    // Person authors keep their own inline node — they're a separate entity
+    // from the publisher.
+    const authorType = meta.authorType || "Organization";
+    const authorNode =
+        authorType === "Organization" && (!meta.author || meta.author === SITE_NAME)
+            ? { "@type": "Organization", "@id": ORGANIZATION_ID, name: SITE_NAME }
+            : { "@type": authorType, name: meta.author || SITE_NAME };
+
+    const mentionsNode = meta.mentions?.length
+        ? meta.mentions.map((m) => {
+              const node: Record<string, unknown> = {
+                  "@type": m.type || "Thing",
+                  name: m.name,
+              };
+              if (m.url) node.url = m.url;
+              if (m.sameAs) node.sameAs = m.sameAs;
+              return node;
+          })
+        : undefined;
+
     return {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -255,15 +309,16 @@ export function buildArticleSchema(meta: ArticleSchemaMeta) {
         articleSection: meta.section,
         keywords: meta.keywords,
         inLanguage: "en",
-        author: {
-            "@type": meta.authorType || "Organization",
-            name: meta.author || SITE_NAME,
-        },
+        author: authorNode,
         publisher: {
             "@type": "Organization",
+            "@id": ORGANIZATION_ID,
             name: SITE_NAME,
             url: SITE_URL,
         },
+        isPartOf: { "@type": "WebSite", "@id": WEBSITE_ID },
+        ...(meta.wordCount !== undefined ? { wordCount: meta.wordCount } : {}),
+        ...(mentionsNode ? { mentions: mentionsNode } : {}),
         ...(imageNode !== undefined ? { image: imageNode } : {}),
     };
 }
@@ -424,6 +479,16 @@ export function buildArticleSchemas(article: ArticleMeta, pillarLabel: string, p
             section: pillarLabel,
             keywords: [article.primaryKeyword],
             image: articleImage,
+            wordCount: article.wordCount,
+            // Internal mentions get resolved to fully-qualified URLs so the
+            // schema works even when consumed off-site (RSS readers, AI
+            // crawlers, schema validators).
+            mentions: article.mentions?.map((m) => ({
+                name: m.name,
+                type: m.type,
+                sameAs: m.sameAs,
+                url: m.url ? buildUrl(m.url) : undefined,
+            })),
         }),
         faq: buildFaqSchema(article.faqs),
         breadcrumb: buildBreadcrumbSchema([
@@ -766,7 +831,7 @@ export interface OrganizationSchemaOptions {
  * date, editorial policy).
  */
 export function buildOrganizationSchema(opts: OrganizationSchemaOptions = {}) {
-    const { id = `${SITE_URL}/#organization`, extraSameAs = [] } = opts;
+    const { id = ORGANIZATION_ID, extraSameAs = [] } = opts;
     return {
         "@context": "https://schema.org",
         "@type": "Organization",

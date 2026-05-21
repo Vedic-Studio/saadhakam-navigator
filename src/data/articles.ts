@@ -14,6 +14,31 @@ import type { ContentImage } from "@/types/images";
 /** @deprecated Use ContentImage directly. Kept for backward compatibility. */
 export type ArticleImage = ContentImage;
 
+/**
+ * A `mentions` entity link declared on an article. Used by AI engines
+ * (Google AI Overviews, Perplexity, ChatGPT search) to build entity graphs
+ * across the site — articles that explicitly declare which philosophical
+ * school, sacred text, or teacher they're about get surfaced in topical
+ * "Explore" rails far more reliably than articles that only mention these
+ * entities in prose.
+ *
+ * Keep it short: 3–8 entities per article max, only the ones the article
+ * actually discusses substantively.
+ */
+export interface ArticleMention {
+    /** Entity name as it appears in primary sources. */
+    name: string;
+    /**
+     * Canonical external URL for the entity (Wikipedia, Wikidata, official
+     * site). Lets AI engines confirm identity across sources.
+     */
+    sameAs?: string;
+    /** Internal Sadhaka page that defines the entity, if one exists. */
+    url?: string;
+    /** Schema.org type (e.g. "Thing", "Person", "Book"). Defaults to "Thing". */
+    type?: string;
+}
+
 export interface ArticleMeta {
     slug: string;
     route: string; // top-level URL path, e.g. "/what-is-vedanta"
@@ -33,6 +58,10 @@ export interface ArticleMeta {
     relatedLinks: { text: string; href: string }[];
     faqs: ArticleFaq[];
     featuredImage?: ArticleImage;
+    /** Approximate word count — surfaced in Article schema as `wordCount`. */
+    wordCount?: number;
+    /** Entity relationships — see {@link ArticleMention}. */
+    mentions?: ArticleMention[];
 }
 
 export const articles: ArticleMeta[] = [

@@ -5,7 +5,7 @@ import "./globals.css";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 import { ReadProgress } from "@/components/animations/ReadProgress";
 import { Toaster } from "@/components/ui/sonner";
-import { buildOrganizationSchema } from "@/lib/seo";
+import { buildOrganizationSchema, WEBSITE_ID, ORGANIZATION_ID } from "@/lib/seo";
 
 // Always use www — env var may lack it, causing canonical confusion with Google
 const siteUrl = "https://www.opensadhaka.com";
@@ -82,13 +82,19 @@ export const metadata: Metadata = {
 // Shared constants live in src/lib/seo so per-page schemas stay in sync.
 const organizationSchema = buildOrganizationSchema();
 
+// The @id here is the anchor that per-article `isPartOf` references point at,
+// so search engines collapse "Sadhaka the website" and "the publisher of
+// this article" into one entity node. Article schema uses WEBSITE_ID/
+// ORGANIZATION_ID from @/lib/seo — keep these in sync.
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": WEBSITE_ID,
   name: "Sadhaka",
   url: siteUrl,
   description:
     "Explore Sanatan Dharma with AI-powered spiritual guidance. Learn Bhagavad Gita, Vedas, and Upanishads.",
+  publisher: { "@id": ORGANIZATION_ID },
   potentialAction: {
     "@type": "SearchAction",
     target: {
