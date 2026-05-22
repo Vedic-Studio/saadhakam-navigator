@@ -900,3 +900,238 @@ export function buildItemListSchema(meta: ItemListSchemaMeta) {
         })),
     };
 }
+
+// ============================================================================
+// HowTo Schema (practice articles: japa, dhyana, daily routine, etc.)
+// ============================================================================
+
+export interface HowToStep {
+    name: string;
+    text: string;
+    /** Optional sub-image illustrating this step. */
+    image?: string;
+    /** Optional anchored URL for the step within the page. */
+    url?: string;
+}
+
+export interface HowToSchemaMeta {
+    name: string;
+    description: string;
+    url: string;
+    steps: HowToStep[];
+    /** Required tools or materials (e.g., "japa mala", "meditation cushion"). */
+    tools?: string[];
+    /** ISO-8601 duration string (e.g., "PT15M" for 15 minutes). */
+    totalTime?: string;
+    /** Estimated cost — pass `0` for free practices. */
+    estimatedCost?: { currency: string; value: number };
+}
+
+/**
+ * Build HowTo JSON-LD schema for practice / how-to articles.
+ *
+ * Google supports HowTo rich results in AI Overviews when the schema includes
+ * named, ordered steps. The practice-guide template (`docs/agents/02-article-content.md`)
+ * documents the on-page structure that pairs with this schema.
+ */
+export function buildHowToSchema(meta: HowToSchemaMeta) {
+    const schema: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: meta.name,
+        description: meta.description,
+        url: meta.url,
+        step: meta.steps.map((step, index) => ({
+            "@type": "HowToStep",
+            position: index + 1,
+            name: step.name,
+            text: step.text,
+            ...(step.url ? { url: step.url } : {}),
+            ...(step.image ? { image: step.image } : {}),
+        })),
+    };
+
+    if (meta.tools && meta.tools.length > 0) {
+        schema.tool = meta.tools.map((name) => ({ "@type": "HowToTool", name }));
+    }
+
+    if (meta.totalTime) {
+        schema.totalTime = meta.totalTime;
+    }
+
+    if (meta.estimatedCost) {
+        schema.estimatedCost = {
+            "@type": "MonetaryAmount",
+            currency: meta.estimatedCost.currency,
+            value: meta.estimatedCost.value,
+        };
+    }
+
+    return schema;
+}
+
+// ============================================================================
+// DefinedTerm Schema (Sanskrit glossary pages /learn/sanskrit/<word>)
+// ============================================================================
+
+export interface DefinedTermSchemaMeta {
+    /** The headword as it appears on the page (e.g., "Karma"). */
+    name: string;
+    /** Short definition (one sentence, plain English). */
+    description: string;
+    url: string;
+    /** Optional alternate spellings / transliterations. */
+    alternateName?: string[];
+    /** Optional ID for cross-referencing inside the glossary set. */
+    termCode?: string;
+    /** Name of the glossary set (default: "Sanskrit Lexicon"). */
+    inDefinedTermSet?: string;
+}
+
+/**
+ * Build DefinedTerm JSON-LD schema for glossary / lexicon entries.
+ *
+ * Each Sanskrit word page should emit this in addition to its WebPage schema —
+ * it explicitly tells Google + LLMs that the page is a *definition*, which is
+ * exactly the intent of Wiktionary-style searches we currently lose CTR on.
+ */
+export function buildDefinedTermSchema(meta: DefinedTermSchemaMeta) {
+    return {
+        "@context": "https://schema.org",
+        "@type": "DefinedTerm",
+        name: meta.name,
+        description: meta.description,
+        url: meta.url,
+        inDefinedTermSet: {
+            "@type": "DefinedTermSet",
+            name: meta.inDefinedTermSet || "Sanskrit Lexicon",
+            url: `${SITE_URL}/learn/sanskrit`,
+        },
+        ...(meta.alternateName && meta.alternateName.length > 0
+            ? { alternateName: meta.alternateName }
+            : {}),
+        ...(meta.termCode ? { termCode: meta.termCode } : {}),
+    };
+}
+
+// ============================================================================
+// Quotation Schema (stotra verses, BG shlokas, primary-source quotes)
+// ============================================================================
+
+export interface QuotationSchemaMeta {
+    /** The quoted text (Sanskrit, transliteration, or English translation). */
+    text: string;
+    /** Author or speaker attributed in the source (e.g., "Adi Shankara", "Krishna"). */
+    creator?: string;
+    /** Source work the quotation is part of (e.g., "Bhagavad Gita 2.47"). */
+    isPartOf?: string;
+    /** Canonical URL of the page rendering this quotation. */
+    url?: string;
+    /** Original language (default: "sa" for Sanskrit; use "en" for translations). */
+    inLanguage?: string;
+}
+
+/**
+ * Build Quotation JSON-LD schema for primary-source citations.
+ *
+ * Use this on stotra verse pages, BG shloka pages, and anywhere the page's
+ * central claim *is* a quoted line from scripture or commentary. Pair with
+ * Article schema, not as a replacement.
+ */
+export function buildQuotationSchema(meta: QuotationSchemaMeta) {
+    const schema: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "Quotation",
+        text: meta.text,
+        inLanguage: meta.inLanguage || "sa",
+    };
+
+    if (meta.creator) {
+        schema.creator = {
+            "@type": "Person",
+            name: meta.creator,
+        };
+    }
+    if (meta.isPartOf) {
+        schema.isPartOf = {
+            "@type": "CreativeWork",
+            name: meta.isPartOf,
+        };
+    }
+    if (meta.url) {
+        schema.url = meta.url;
+    }
+
+    return schema;
+}
+
+// ============================================================================
+// ClaimReview Schema (kb/claims public route — Sushruta surgery, etc.)
+// ============================================================================
+
+export type ClaimVerdict = "true" | "mostly-true" | "partial" | "mixed" | "disputed" | "false" | "unsubstantiated";
+
+const CLAIM_RATING_VALUE: Record<ClaimVerdict, { ratingValue: number; alternateName: string }> = {
+    "true": { ratingValue: 5, alternateName: "Supported by primary sources" },
+    "mostly-true": { ratingValue: 4, alternateName: "Mostly supported with caveats" },
+    "partial": { ratingValue: 3, alternateName: "Partial truth, popular framing overstates" },
+    "mixed": { ratingValue: 3, alternateName: "Mixed evidence across scope" },
+    "disputed": { ratingValue: 2, alternateName: "Disputed by scholars" },
+    "false": { ratingValue: 1, alternateName: "Not supported by sources" },
+    "unsubstantiated": { ratingValue: 1, alternateName: "Insufficient primary-source evidence" },
+};
+
+export interface ClaimReviewSchemaMeta {
+    /** The popular framing of the claim being reviewed. */
+    claimReviewed: string;
+    /** Sadhaka's verdict tag. */
+    verdict: ClaimVerdict;
+    /** URL of the claim page itself. */
+    url: string;
+    /** Date the review was authored or last revised. */
+    datePublished: string;
+    /** Optional: the original source where the claim circulates (e.g., URL to Reddit post, news article). */
+    itemReviewedUrl?: string;
+    /** Optional: name of the originator of the claim (e.g., "Internet folklore", "Author X"). */
+    itemReviewedAuthor?: string;
+}
+
+/**
+ * Build ClaimReview JSON-LD for public-facing claim files (`/claims/<slug>`).
+ *
+ * Each claim page decomposes a popular Sanatan-related claim ("Sushruta invented
+ * plastic surgery", "Surya Siddhanta matched NASA", etc.) into scoped sub-claims
+ * with verdict tags and primary sources. The ClaimReview schema makes this
+ * decomposition machine-readable for Google Fact Check + Perplexity / ChatGPT
+ * citation pickup.
+ */
+export function buildClaimReviewSchema(meta: ClaimReviewSchemaMeta) {
+    const rating = CLAIM_RATING_VALUE[meta.verdict];
+
+    return {
+        "@context": "https://schema.org",
+        "@type": "ClaimReview",
+        url: meta.url,
+        datePublished: meta.datePublished,
+        author: {
+            "@type": "Organization",
+            name: SITE_NAME,
+            url: SITE_URL,
+        },
+        claimReviewed: meta.claimReviewed,
+        reviewRating: {
+            "@type": "Rating",
+            ratingValue: rating.ratingValue,
+            bestRating: 5,
+            worstRating: 1,
+            alternateName: rating.alternateName,
+        },
+        itemReviewed: {
+            "@type": "Claim",
+            ...(meta.itemReviewedAuthor
+                ? { author: { "@type": "Person", name: meta.itemReviewedAuthor } }
+                : {}),
+            ...(meta.itemReviewedUrl ? { firstAppearance: meta.itemReviewedUrl } : {}),
+        },
+    };
+}

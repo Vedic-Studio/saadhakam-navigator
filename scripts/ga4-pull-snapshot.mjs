@@ -44,6 +44,14 @@ if (!PROPERTY_ID) {
   process.exit(1);
 }
 
+// When GA4_AUTH=adc, use the gcloud application-default credentials of the
+// signed-in user instead of the service account JSON. Mirrors GSC_AUTH=adc in
+// scripts/gsc-diagnose.mjs. Avoids the need to grant Viewer to a service
+// account on the GA4 property — useful when the user owns the property
+// directly and Google's safety system blocks restricted scope grants.
+const USE_ADC = process.env.GA4_AUTH === "adc";
+const QUOTA_PROJECT = process.env.GOOGLE_CLOUD_PROJECT || process.env.GA4_QUOTA_PROJECT || "sadhaka-seo";
+
 function parseArgs(argv) {
   const out = { days: 28, outDir: resolve(ROOT, "docs/analytics-snapshots"), date: new Date().toISOString().slice(0, 10), check: false };
   for (let i = 0; i < argv.length; i++) {
@@ -59,6 +67,14 @@ const ARGS = parseArgs(process.argv.slice(2));
 mkdirSync(ARGS.outDir, { recursive: true });
 
 async function getAccessToken(scopes) {
+  if (USE_ADC) {
+    const { google } = await import("googleapis");
+    const auth = new google.auth.GoogleAuth({ scopes });
+    const client = await auth.getClient();
+    const token = await client.getAccessToken();
+    if (!token.token) throw new Error("ADC returned no access token — run `gcloud auth application-default login --scopes=...` first.");
+    return token.token;
+  }
   const keyData = JSON.parse(readFileSync(KEY_FILE, "utf-8"));
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: "RS256", typ: "JWT" };
@@ -78,11 +94,21 @@ async function getAccessToken(scopes) {
   return (await res.json()).access_token;
 }
 
+function authHeaders(token) {
+  const h = { Authorization: `Bearer ${token}` };
+  // ADC tokens are issued without an associated billable project; the
+  // x-goog-user-project header tells Google which project to bill the quota
+  // against. The service-account JWT flow doesn't need this — quota is
+  // billed to the SA's home project automatically.
+  if (USE_ADC) h["x-goog-user-project"] = QUOTA_PROJECT;
+  return h;
+}
+
 async function ga4Run(body, token) {
   const url = `https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:runReport`;
   const res = await fetch(url, {
     method: "POST",
-    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    headers: { ...authHeaders(token), "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
   const text = await res.text();
@@ -92,7 +118,7 @@ async function ga4Run(body, token) {
 
 async function adminCheck(token) {
   const res = await fetch(`https://analyticsadmin.googleapis.com/v1beta/properties/${PROPERTY_ID}`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: authHeaders(token),
   });
   const text = await res.text();
   if (!res.ok) {

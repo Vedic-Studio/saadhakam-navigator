@@ -17,6 +17,7 @@ const footerLinks = {
     { label: "Sanatan History", href: "/sanatan-history" },
     { label: "About Sadhaka", href: "/about" },
     { label: "Brand Facts", href: "/brand-facts" },
+    { label: "AI Resources", href: "/ai-resources" },
   ],
   learn: [
     { label: "Sacred Texts", href: "/texts" },

@@ -59,6 +59,10 @@ export async function GET() {
         ``,
         `## Machine-readable Brand Facts`,
         `- ${BASE_URL}/.well-known/brand-facts.json`,
+        ``,
+        `## Docs for Agents`,
+        `Human-readable guide for AI agents and RAG pipelines — discovery endpoints, ingestion patterns, attribution policy, and a sample agent system prompt:`,
+        `- ${BASE_URL}/ai-resources`,
     );
 
     return new NextResponse(lines.join("\n"), {

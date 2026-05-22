@@ -73,3 +73,10 @@ Ahfrens Audit/
 
 # Scheduled tasks lock file (local runtime)
 .claude/scheduled_tasks.lock
+
+# Generated llms.txt snapshots (live URL is served by route handler — see
+# src/app/(system)/llms.txt/route.ts). This dir holds diffs / debug snapshots.
+tmp/
+
+# Local GSC API snapshots (bulky JSON dumps; regenerate with scripts/gsc-pull-snapshot.mjs)
+data/gsc/

@@ -11,13 +11,20 @@
  * Usage:
  *   npx tsx scripts/generate-llms-txt.mjs
  */
-import { writeFile, readFile, readdir } from "node:fs/promises";
+import { writeFile, readFile, readdir, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
-const PUBLIC_DIR = path.join(ROOT, "public");
+// Snapshot directory — not `public/`, because the live /llms.txt and
+// /llms-full.txt URLs are served by the dynamic route handlers at
+// `src/app/(system)/llms.txt/route.ts` and `(system)/llms-full.txt/route.ts`.
+// Writing to `public/` would shadow those routes and cause a Next.js
+// conflict error in dev mode. This script remains useful as a snapshot /
+// debugging tool — the output gets written to `tmp/llms-snapshot/` so you
+// can diff it against what the live route handler is rendering.
+const OUTPUT_DIR = path.join(ROOT, "tmp", "llms-snapshot");
 const SITE_URL = "https://www.opensadhaka.com";
 
 // ----------------------------------------------------------------------------
@@ -251,9 +258,11 @@ function renderLlmsTxt({
     // ----- Optional section for machines -----
     lines.push("## Optional");
     lines.push("");
+    lines.push(`- [Docs for Agents (/ai-resources)](${SITE_URL}/ai-resources): human-readable guide for AI agents and RAG pipelines — discovery endpoints, ingestion patterns, attribution policy, and a sample agent system prompt.`);
     lines.push(`- [Full content dump (llms-full.txt)](${SITE_URL}/llms-full.txt): concatenated structured content — AEO blocks, FAQs, definitions, and comparison TL;DRs for RAG ingestion.`);
+    lines.push(`- [Per-entity Markdown API](${SITE_URL}/api/llm-content?type=concepts&slug=karma): GET /api/llm-content?type={type}&slug={slug} returns a clean Markdown rendering of any individual entity page. Supported types: philosophies, traditions, texts, concepts, practices, greats, comparisons, articles.`);
     lines.push(`- [Sitemap index](${SITE_URL}/sitemap.xml): XML sitemap covering all indexed pages.`);
-    lines.push(`- [GitHub / source](${SITE_URL}): see footer for repositories and social channels.`);
+    lines.push(`- [Brand facts (machine-readable)](${SITE_URL}/.well-known/brand-facts.json): JSON describing editorial scope, sourcing policy, and topic coverage — for entity disambiguation.`);
     lines.push("");
 
     return lines.join("\n");
@@ -483,6 +492,8 @@ async function main() {
         `  articles=${articles.length} concepts=${concepts.length} deities=${deities.length} mantras=${mantras.length} comparisons=${comparisons.length} practices=${practices.length} traditions=${traditions.length} texts=${texts.length} greats=${greats.length} philosophies=${philosophies.length} stotras=${stotras.length}`,
     );
 
+    await mkdir(OUTPUT_DIR, { recursive: true });
+
     const llmsTxt = renderLlmsTxt({
         articles,
         concepts,
@@ -496,12 +507,15 @@ async function main() {
         philosophies,
         stotras,
     });
-    await writeFile(path.join(PUBLIC_DIR, "llms.txt"), llmsTxt, "utf8");
-    console.log(`Wrote public/llms.txt (${llmsTxt.length.toLocaleString()} chars)`);
+    const llmsPath = path.join(OUTPUT_DIR, "llms.txt");
+    await writeFile(llmsPath, llmsTxt, "utf8");
+    console.log(`Wrote ${path.relative(ROOT, llmsPath)} (${llmsTxt.length.toLocaleString()} chars)`);
 
     const llmsFull = renderLlmsFullTxt({ articles, concepts, deities, mantras, comparisons });
-    await writeFile(path.join(PUBLIC_DIR, "llms-full.txt"), llmsFull, "utf8");
-    console.log(`Wrote public/llms-full.txt (${llmsFull.length.toLocaleString()} chars)`);
+    const llmsFullPath = path.join(OUTPUT_DIR, "llms-full.txt");
+    await writeFile(llmsFullPath, llmsFull, "utf8");
+    console.log(`Wrote ${path.relative(ROOT, llmsFullPath)} (${llmsFull.length.toLocaleString()} chars)`);
+    console.log("\nNote: these are SNAPSHOTS for diffing. The live /llms.txt + /llms-full.txt URLs are served by the route handlers at src/app/(system)/.");
 }
 
 main().catch((err) => {
