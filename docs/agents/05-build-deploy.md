@@ -148,3 +148,10 @@ Current `vercel.json` is modified. Check that it has:
 **Chunk BUILD-A**: Fix `.gitignore` to properly exclude `temp_cache/` and `tsconfig.tsbuildinfo`
 **Chunk BUILD-B**: Run full build audit — `npm run build` + `npm run lint` + `npx tsc --noEmit` — document all errors
 **Chunk BUILD-C**: Review and reconcile `vercel.json` vs `next.config.ts` redirects/rewrites for conflicts
+
+## Agentic Browsing check (UI changes)
+
+For any change touching components, pages, or images, run
+`npm run agentic:check` before committing. It statically flags raw `<img>`
+elements that lack a reserved box (CLS risk) or an `alt` (a11y), aligned with
+Chrome's Lighthouse Agentic Browsing audit. See `docs/agents/08-agentic-browsing.md`.
