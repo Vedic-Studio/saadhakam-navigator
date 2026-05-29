@@ -403,3 +403,14 @@ After the user reviews and approves/modifies the SEO package:
    - Ask: "Should I save this as a learning for future SEO optimization?"
    - If yes, save to `.claude/skills/debrief/learnings/seo-optimize/` with date, article slug, and lesson
 3. **If small edits** (meta description tweak, anchor text change): save silently
+
+---
+
+## Related: Agentic Browsing readiness
+
+SEO/AEO/GEO make a page **citable** by answer engines. A separate concern is
+making it **operable** by browsing agents — Chrome's Lighthouse Agentic
+Browsing audit (llms.txt + accessibility tree + CLS + WebMCP). When an article
+introduces new interactive UI or images, also run `npm run agentic:check` and
+see `docs/agents/08-agentic-browsing.md`. Editorial-only article changes do not
+need this; UI/component changes do.

@@ -5,6 +5,7 @@ import "./globals.css";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 import { ReadProgress } from "@/components/animations/ReadProgress";
 import { Toaster } from "@/components/ui/sonner";
+import { WebMCPProvider } from "@/components/WebMCPProvider";
 import { buildOrganizationSchema, WEBSITE_ID, ORGANIZATION_ID } from "@/lib/seo";
 
 // Always use www — env var may lack it, causing canonical confusion with Google
@@ -424,6 +425,7 @@ export default function RootLayout({
           }}
         />
         <ReadProgress />
+        <WebMCPProvider />
         <Suspense fallback={null}>
           <AnalyticsTracker />
         </Suspense>

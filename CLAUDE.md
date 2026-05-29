@@ -141,6 +141,7 @@ Each module below is a self-contained instruction set for a focused agent task. 
 | Build & Deploy | `docs/agents/05-build-deploy.md` | Build checks, Vercel, git hygiene |
 | pSEO Pages | `docs/agents/06-pseo-pages.md` | Creating programmatic SEO page routes |
 | Data Schema | `docs/agents/07-data-schema.md` | Modifying data files and TypeScript types |
+| Agentic Browsing | `docs/agents/08-agentic-browsing.md` | Lighthouse Agentic Browsing audit — llms.txt, accessibility tree, CLS, WebMCP. Run `npm run agentic:check` before committing UI changes. |
 | Knowledge Base (IKS) | `backend/app/knowledge/kb/INDEX.md` | Citing classical Indian knowledge systems (shastras, texts, people, concepts, claims). Articles MUST cite from `kb/claims/*.md` rather than restating sensational claims from scratch. |
 
 ---

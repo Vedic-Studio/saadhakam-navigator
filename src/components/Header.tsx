@@ -170,6 +170,8 @@ export function Header() {
             <img
               src="/favicon.svg"
               alt="Sadhaka Logo"
+              width={32}
+              height={32}
               className="w-8 h-8 rounded-full bg-primary p-1"
             />
             <span className="font-display text-xl font-semibold text-foreground">
