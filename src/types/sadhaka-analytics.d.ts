@@ -22,6 +22,42 @@ type SadhakaSourceTemplate =
     | "faith-finder"
     | "today";
 
+/**
+ * Mirror of the share-destination union in src/lib/analytics/events.ts. Kept here
+ * (rather than imported) because ambient .d.ts files must not import runtime
+ * modules. The events.ts module is the canonical source; keep these in sync.
+ */
+type SadhakaSharePlatform =
+    | "twitter"
+    | "whatsapp"
+    | "facebook"
+    | "copy_link"
+    | "native_share"
+    | "other";
+
+/** Mirror of the share content-type union in src/lib/analytics/events.ts. */
+type SadhakaShareContentType =
+    | "comparison"
+    | "fact_card"
+    | "article"
+    | "verse"
+    | "mantra";
+
+/** Mirror of PanchangViewParams in src/lib/analytics/events.ts. */
+type SadhakaPanchangViewParams = {
+    date: string;
+    tithi: string;
+    vara: string;
+    nakshatra?: string;
+};
+
+/** Mirror of OutboundShareParams in src/lib/analytics/events.ts. */
+type SadhakaOutboundShareParams = {
+    platform: SadhakaSharePlatform;
+    contentType: SadhakaShareContentType;
+    url: string;
+};
+
 type SadhakaJourneyContext = {
     journeyId?: string;
     attributionToken?: string;
@@ -57,6 +93,16 @@ declare global {
             setJourneyContext?: (context?: SadhakaJourneyContext) => SadhakaJourneyContext;
             getJourneyContext?: () => SadhakaJourneyContext;
             clearJourneyContext?: () => void;
+            // Phase 2 deferred events. The canonical contract is the TypeScript
+            // module src/lib/analytics/events.ts (feature components import that
+            // directly). These optional signatures exist only so the inline
+            // layout.tsx bridge can mirror them later if it ever needs to.
+            streakDay?: (streakLen: number, cluster: string) => void;
+            mantraAudioPlay?: (mantraId: string, deity: string, durationPct: number) => void;
+            panchangView?: (params: SadhakaPanchangViewParams) => void;
+            pathStepComplete?: (pathId: string, stepN: number, totalSteps: number) => void;
+            verseBookmark?: (verseId: string, cluster: string) => void;
+            outboundShare?: (params: SadhakaOutboundShareParams) => void;
         };
     }
 }

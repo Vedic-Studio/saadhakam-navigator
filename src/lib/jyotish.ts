@@ -5,6 +5,7 @@ import { getNakshatraBySlug, nakshatras, type Nakshatra } from "@/data/nakshatra
 import { getPracticeBySlug } from "@/data/practices";
 import { getRashiBySlug, rashis, type Rashi } from "@/data/rashis";
 import { getTithiBySlug, getVaraBySlug, resolveTithiSeo, tithis, varas, type Tithi, type Vara } from "@/data/panchang";
+import { buildVedicClockResponse } from "@/lib/vedic-clock/core";
 
 export interface PracticeBundle {
     title: string;
@@ -90,6 +91,111 @@ export function getAllJyotishSlugs() {
         nakshatras: nakshatras.map((item) => item.slug),
         varas: varas.map((item) => item.slug),
         tithis: tithis.map((item) => item.slug),
+    };
+}
+
+/**
+ * Default location for the day's panchang. Varanasi (Kashi) is the canonical
+ * spiritual reference city of the tradition and the first preset in
+ * `vedicClockPresetCities`. The vara (weekday) is timezone-independent, but the
+ * tithi/nakshatra depend on the moment, so they are computed for this city's
+ * civil day (Asia/Kolkata).
+ */
+export const DEFAULT_PANCHANG_CITY_ID = "varanasi";
+const DEFAULT_PANCHANG_TIMEZONE = "Asia/Kolkata";
+
+/**
+ * The day's panchang in the shape downstream features (Round 1) consume. `vara`
+ * is the FULL Vara object so callers can read `vara.rulingGraha` to bind the
+ * day's mantra. `tithi` carries paksha and number for SEO/labels. `nakshatra` is
+ * null only if the underlying response could not resolve a lunar mansion.
+ */
+export interface PanchangForDate {
+    /** The civil date the panchang is for, as YYYY-MM-DD. */
+    date: string;
+    tithi: {
+        slug: string;
+        name: string;
+        paksha: Tithi["paksha"];
+        number: number;
+    };
+    /** Full Vara object (includes rulingGraha for mantra binding). */
+    vara: Vara;
+    nakshatra: {
+        slug: string;
+        name: string;
+    } | null;
+}
+
+const YMD_ONLY = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * Format a Date as YYYY-MM-DD in the default panchang timezone, so a Date built
+ * from a UTC instant still maps to the intended Indian civil day.
+ */
+function toCivilYmd(date: Date): string {
+    const formatter = new Intl.DateTimeFormat("en-CA", {
+        timeZone: DEFAULT_PANCHANG_TIMEZONE,
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    });
+    return formatter.format(date);
+}
+
+/**
+ * Resolve the panchang for a given day at the default city (Varanasi).
+ *
+ * Wraps `buildVedicClockResponse` and reshapes it to `PanchangForDate`. The vara
+ * is weekday-deterministic, so it is stable for a fixed date regardless of the
+ * wall clock. Tithi and nakshatra are derived from the ephemeris model for noon
+ * of that civil day.
+ *
+ * @param date A Date or a date string. A `YYYY-MM-DD` string is used verbatim;
+ *   any other string or a Date is normalised to the Varanasi civil day.
+ * @throws If a string cannot be parsed into a valid date.
+ */
+export function getPanchangForDate(date: Date | string): PanchangForDate {
+    let ymd: string;
+    if (typeof date === "string") {
+        ymd = YMD_ONLY.test(date) ? date : toCivilYmd(new Date(date));
+    } else {
+        ymd = toCivilYmd(date);
+    }
+
+    if (!YMD_ONLY.test(ymd) || Number.isNaN(new Date(`${ymd}T12:00:00Z`).getTime())) {
+        throw new Error(`getPanchangForDate: could not resolve a valid date from input: ${String(date)}`);
+    }
+
+    const response = buildVedicClockResponse({ cityId: DEFAULT_PANCHANG_CITY_ID, date: ymd });
+
+    // Resolve the full Vara so callers get rulingGraha; the response vara.slug is
+    // weekday-derived and always maps to a real vara.
+    const vara = getVaraBySlug(response.panchanga.vara.slug);
+    if (!vara) {
+        throw new Error(`getPanchangForDate: unresolved vara slug "${response.panchanga.vara.slug}" for ${ymd}`);
+    }
+
+    // Resolve the full Tithi for paksha/number; fall back to the response fields
+    // if the slug is unexpectedly absent from the tithi table.
+    const fullTithi = getTithiBySlug(response.panchanga.tithi.slug);
+
+    const nakshatraSlug = response.panchanga.nakshatra.slug;
+    const nakshatra =
+        nakshatraSlug && nakshatraSlug !== "unknown"
+            ? { slug: nakshatraSlug, name: response.panchanga.nakshatra.name }
+            : null;
+
+    return {
+        date: ymd,
+        tithi: {
+            slug: response.panchanga.tithi.slug,
+            name: response.panchanga.tithi.name,
+            paksha: fullTithi?.paksha ?? "Shukla",
+            number: fullTithi?.number ?? 0,
+        },
+        vara,
+        nakshatra,
     };
 }
 
