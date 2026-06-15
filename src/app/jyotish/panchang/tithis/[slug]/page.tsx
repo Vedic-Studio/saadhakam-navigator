@@ -6,10 +6,17 @@ import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
 import { buildArticleSchema, buildBreadcrumbSchema, buildFaqSchema, buildPageMetadata, buildUrl, buildWebPageSchema } from "@/lib/seo";
 import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import { getTithiBySlug, resolveTithiSeo, tithis } from "@/lib/jyotish";
+import { PanchangTodayBlock } from "../../PanchangTodayBlock";
+import { buildTodayBlockProps, resolveTodayYmd } from "../../_lib/todayBlock";
 
 export async function generateStaticParams() {
     return tithis.map((tithi) => ({ slug: tithi.slug }));
 }
+
+// Statically generate every tithi route, then revalidate hourly so the live
+// "Today" block reflects the current civil day without a redeploy. The static
+// content (meaning, deity, FAQ) is unchanged between revalidations.
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -35,6 +42,12 @@ export default async function TithiDetailPage({ params }: { params: Promise<{ sl
     const { slug } = await params;
     const tithi = getTithiBySlug(slug);
     if (!tithi) notFound();
+    const todayBlockProps = buildTodayBlockProps({
+        limb: "tithi",
+        slug: tithi.slug,
+        entityName: tithi.name,
+        todayYmd: resolveTodayYmd(),
+    });
     const breadcrumbItems = [
         { label: "Home", href: "/" },
         { label: "Jyotish", href: "/jyotish" },
@@ -76,6 +89,7 @@ export default async function TithiDetailPage({ params }: { params: Promise<{ sl
                     <p className="text-sm mb-4 text-orange-400 uppercase tracking-widest">Tithi Guide</p>
                     <h1 className="font-display text-4xl md:text-6xl font-black mb-6">{tithi.name}</h1>
                     <p className="text-lg text-muted-foreground mb-8 border-l-4 border-orange-500/30 pl-6">{tithi.aeoBlock}</p>
+                    <PanchangTodayBlock {...todayBlockProps} />
                     {tithi.seoFacts && (
                         <section className="mb-8">
                             <h2 className="text-2xl font-semibold mb-3">{tithi.seoFacts.heading}</h2>
