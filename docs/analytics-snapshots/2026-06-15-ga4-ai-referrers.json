@@ -1,0 +1,69 @@
+{
+  "source": "ga4-ai-referrers",
+  "propertyId": "526473437",
+  "pulledAt": "2026-06-15T09:08:12.016Z",
+  "windowDays": 28,
+  "range": {
+    "startDate": "2026-05-18",
+    "endDate": "2026-06-14"
+  },
+  "enginesQueried": [
+    "chatgpt.com",
+    "chat.openai.com",
+    "perplexity.ai",
+    "www.perplexity.ai",
+    "claude.ai",
+    "gemini.google.com",
+    "bard.google.com",
+    "copilot.microsoft.com",
+    "bing.com/chat",
+    "you.com",
+    "phind.com"
+  ],
+  "matched": [
+    {
+      "source": "chatgpt.com",
+      "medium": "ai-assistant",
+      "sessions": 45,
+      "activeUsers": 43,
+      "engagementRate": 0.4888888888888889
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "(not set)",
+      "sessions": 36,
+      "activeUsers": 34,
+      "engagementRate": 0.2222222222222222
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "referral",
+      "sessions": 32,
+      "activeUsers": 25,
+      "engagementRate": 0.59375
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "(none)",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 0.5
+    },
+    {
+      "source": "perplexity.ai",
+      "medium": "ai-assistant",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 1
+    },
+    {
+      "source": "perplexity.ai",
+      "medium": "referral",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 0
+    }
+  ],
+  "totalSessions": 117,
+  "totalActiveUsers": 106
+}

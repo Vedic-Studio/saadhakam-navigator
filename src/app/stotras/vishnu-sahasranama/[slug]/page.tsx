@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { buildBreadcrumbSchema, buildWebPageSchema, buildUrl } from "@/lib/seo";
 import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -78,7 +78,7 @@ export default async function VishnuSahasranamaVersePage({
     // Old name slug → redirect to parent verse
     const parentVerse = findVerseByNameSlug(sahasranama, slug);
     if (parentVerse) {
-      redirect(`/stotras/${SLUG}/${parentVerse.slug}`);
+      permanentRedirect(`/stotras/${SLUG}/${parentVerse.slug}`);
     }
     notFound();
   }

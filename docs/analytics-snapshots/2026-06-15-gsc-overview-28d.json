@@ -1,0 +1,1627 @@
+{
+  "source": "gsc-snapshot",
+  "siteUrl": "sc-domain:opensadhaka.com",
+  "pulledAt": "2026-06-15T08:42:43.590Z",
+  "windowDays": 28,
+  "range": {
+    "startDate": "2026-05-17",
+    "endDate": "2026-06-13"
+  },
+  "overview": {
+    "clicks": 155,
+    "impressions": 17761,
+    "ctr": 0.008726986093125387,
+    "position": 10.43178875063341
+  },
+  "searchAppearance": [
+    {
+      "appearance": "TRANSLATED_RESULT",
+      "clicks": 5,
+      "impressions": 153,
+      "ctr": 0.032679738562091505,
+      "position": 6.183006535947713
+    }
+  ],
+  "topQueries": [
+    {
+      "query": "sanskrit mantras to chant daily",
+      "clicks": 3,
+      "impressions": 12,
+      "ctr": 0.25,
+      "position": 10.083333333333334
+    },
+    {
+      "query": "27th shloka of vishnu sahasranamam",
+      "clicks": 1,
+      "impressions": 43,
+      "ctr": 0.023255813953488372,
+      "position": 1.5116279069767442
+    },
+    {
+      "query": "om shram shrim shrim sah chandramase namah",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 6
+    },
+    {
+      "query": "powerful sanskrit mantras in sanskrit",
+      "clicks": 1,
+      "impressions": 9,
+      "ctr": 0.1111111111111111,
+      "position": 13.555555555555555
+    },
+    {
+      "query": "sampradaya",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 102
+    },
+    {
+      "query": "shukla ekadashi",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 6
+    },
+    {
+      "query": "shukla navami",
+      "clicks": 1,
+      "impressions": 6,
+      "ctr": 0.16666666666666666,
+      "position": 5.666666666666667
+    },
+    {
+      "query": "shukla panchami",
+      "clicks": 1,
+      "impressions": 71,
+      "ctr": 0.014084507042253521,
+      "position": 8.140845070422536
+    },
+    {
+      "query": "vishnu sahasranamam shloka 83",
+      "clicks": 1,
+      "impressions": 30,
+      "ctr": 0.03333333333333333,
+      "position": 4.933333333333334
+    },
+    {
+      "query": "\"iit gandhinagar\" or \"iitgn\" or \"iit-gandhinagar\" or \"indian institute of technology gandhinagar\"",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 38
+    },
+    {
+      "query": "\"karma operates within dharma\"",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "\"may all beings be free from fear\" ashoka",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 6.571428571428571
+    },
+    {
+      "query": "\"nādarūpiṇī\" saraswati",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 2
+    },
+    {
+      "query": "\"om hram hrim hraum sah suryaya namah\"",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 8.666666666666668
+    },
+    {
+      "query": "\"transformation and spiritual energy\" teacher",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 2.5
+    },
+    {
+      "query": "\"weapons do not cut it, fire does not burn it, water does not wet it, and wind does not dry it\"",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "\"चले वाते चलं चित्तं, निश्चले निश्चलं भवेत्\" source",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 8
+    },
+    {
+      "query": "\"साधुकारी साधुर्भवति पापकारी पापो भवति\"",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 9.333333333333334
+    },
+    {
+      "query": "\"ॐ ब्रां ब्रीं ब्रौं सः बुधाय नमः\"",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 6.2
+    },
+    {
+      "query": "\"ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः\"",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "18.48",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 54
+    },
+    {
+      "query": "27",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 6.5
+    },
+    {
+      "query": "3 most powerful mantras in sanskrit",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 8.333333333333332
+    },
+    {
+      "query": "33 names of lord vishnu",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "query": "42",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 3
+    },
+    {
+      "query": "42nd shloka of vishnu sahasranamam",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5.5
+    },
+    {
+      "query": "42nd sloka in vishnu sahasranamam",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "query": "46 shloka of vishnu sahasranamam",
+      "clicks": 0,
+      "impressions": 52,
+      "ctr": 0,
+      "position": 5.019230769230769
+    },
+    {
+      "query": "46th shloka of vishnu sahasranamam",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 5.611111111111111
+    },
+    {
+      "query": "4th chapter of bhagavad gita",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 46
+    },
+    {
+      "query": "5.13",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 38
+    },
+    {
+      "query": "57",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "query": "6 darshana",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "query": "6 darshanas",
+      "clicks": 0,
+      "impressions": 6,
+      "ctr": 0,
+      "position": 15
+    },
+    {
+      "query": "6 darshanas pdf",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 29
+    },
+    {
+      "query": "6) mystical sanskrit text",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 10
+    },
+    {
+      "query": "61",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "query": "65th sloka of vishnu sahasranamam",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "query": "about gupta empire",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 55
+    },
+    {
+      "query": "adhikari bheda",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 6.5
+    },
+    {
+      "query": "advaita vedanta atman brahman identical",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 9
+    },
+    {
+      "query": "advaita vedanta vs buddhism similarities and differences",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 14.5
+    },
+    {
+      "query": "aham vaishvanaro bhutva",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 39
+    },
+    {
+      "query": "ahankaram balam darpam kamam krodham",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 31
+    },
+    {
+      "query": "ancient sanskrit mantras",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 52
+    },
+    {
+      "query": "ashtavakra gita vs bhagavad gita comparison",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "query": "ashtavakra gita vs bhagavad gita differences",
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 7.444444444444445
+    },
+    {
+      "query": "best version of bhagavad gita for beginners",
+      "clicks": 0,
+      "impressions": 12,
+      "ctr": 0,
+      "position": 8.75
+    },
+    {
+      "query": "bg 10.33",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 30
+    },
+    {
+      "query": "bg 10.35",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 23
+    },
+    {
+      "query": "bg 10.36",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "query": "bg 10.42",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 18.8
+    },
+    {
+      "query": "bg 12.11",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 29
+    },
+    {
+      "query": "bg 13.10",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 17.4
+    },
+    {
+      "query": "bg 13.14",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 35
+    },
+    {
+      "query": "bg 13.15",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 27
+    },
+    {
+      "query": "bg 13.21",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 28.5
+    },
+    {
+      "query": "bg 13.22",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 36
+    },
+    {
+      "query": "bg 13.24",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 22
+    },
+    {
+      "query": "bg 13.30",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 21
+    },
+    {
+      "query": "bg 13.33",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 17
+    },
+    {
+      "query": "bg 15.14",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 29.333333333333332
+    },
+    {
+      "query": "bg 16.17",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 21.2
+    },
+    {
+      "query": "bg 16.18",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 31
+    },
+    {
+      "query": "bg 16.23",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 52
+    },
+    {
+      "query": "bg 16.4",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 32
+    },
+    {
+      "query": "bg 16.6",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 22.666666666666668
+    },
+    {
+      "query": "bg 17.11",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 19
+    },
+    {
+      "query": "bg 17.12",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 20
+    },
+    {
+      "query": "bg 18.15",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 18.142857142857142
+    },
+    {
+      "query": "bg 18.23",
+      "clicks": 0,
+      "impressions": 8,
+      "ctr": 0,
+      "position": 17.75
+    },
+    {
+      "query": "bg 18.31",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10.5
+    },
+    {
+      "query": "bg 18.50",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 8.333333333333332
+    },
+    {
+      "query": "bg 18.52",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 14.666666666666666
+    },
+    {
+      "query": "bg 18.72",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 19.333333333333332
+    },
+    {
+      "query": "bg 18.75",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 14.857142857142858
+    },
+    {
+      "query": "bg 3.38",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 45
+    },
+    {
+      "query": "bg 5.13",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 25
+    },
+    {
+      "query": "bg 5.15",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 32
+    },
+    {
+      "query": "bg 5.22",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 33
+    },
+    {
+      "query": "bhagavad gita",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 53
+    },
+    {
+      "query": "bhagavad gita 10.33",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 28
+    },
+    {
+      "query": "bhagavad gita 10.35",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 25
+    },
+    {
+      "query": "bhagavad gita 10.36",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 48
+    },
+    {
+      "query": "bhagavad gita 10.36 dyutam chalayatam asmi translation vyavasayo asmi sattvam sattvavatam aham",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 11.666666666666666
+    },
+    {
+      "query": "bhagavad gita 10.36 dyutam chalayatam asmi translation vyavasayo'smi sattvam sattvavatam aham",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "query": "bhagavad gita 10.36 dyutam chalayatamasmi tejastejasvinamaham",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 11
+    },
+    {
+      "query": "bhagavad gita 10.42",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 20.333333333333332
+    },
+    {
+      "query": "bhagavad gita 13.14",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 35
+    },
+    {
+      "query": "bhagavad gita 13.21",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 26
+    },
+    {
+      "query": "bhagavad gita 13.25",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 44
+    },
+    {
+      "query": "bhagavad gita 13.3",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 31
+    },
+    {
+      "query": "bhagavad gita 15.14",
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 30.666666666666668
+    },
+    {
+      "query": "bhagavad gita 15.14 digestive fire prana apana",
+      "clicks": 0,
+      "impressions": 4,
+      "ctr": 0,
+      "position": 10.75
+    },
+    {
+      "query": "bhagavad gita 16.17",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 29
+    },
+    {
+      "query": "bhagavad gita 16.18",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 33
+    },
+    {
+      "query": "bhagavad gita 16.23",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 42.5
+    },
+    {
+      "query": "bhagavad gita 16.4",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 30
+    },
+    {
+      "query": "bhagavad gita 16.7",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 30
+    },
+    {
+      "query": "bhagavad gita 17 chapter",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 71
+    }
+  ],
+  "topPages": [
+    {
+      "page": "/10-powerful-sanskrit-mantras",
+      "clicks": 17,
+      "impressions": 819,
+      "ctr": 0.020757020757020756,
+      "position": 13.401709401709402
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-83",
+      "clicks": 10,
+      "impressions": 223,
+      "ctr": 0.04484304932735426,
+      "position": 6.524663677130045
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-27",
+      "clicks": 6,
+      "impressions": 168,
+      "ctr": 0.03571428571428571,
+      "position": 7.285714285714286
+    },
+    {
+      "page": "/mantras/om-shram-shrim-shraum-sah-chandraya-namah",
+      "clicks": 5,
+      "impressions": 255,
+      "ctr": 0.0196078431372549,
+      "position": 7.96078431372549
+    },
+    {
+      "page": "/mantras/om-bram-brim-braum-sah-budhaya-namah",
+      "clicks": 4,
+      "impressions": 888,
+      "ctr": 0.0045045045045045045,
+      "position": 7.632882882882883
+    },
+    {
+      "page": "/can-i-chant-a-mantra-without-initiation",
+      "clicks": 3,
+      "impressions": 207,
+      "ctr": 0.014492753623188406,
+      "position": 8.314009661835748
+    },
+    {
+      "page": "/how-to-read-upanishads-western-beginner",
+      "clicks": 3,
+      "impressions": 212,
+      "ctr": 0.014150943396226415,
+      "position": 9.669811320754716
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-87",
+      "clicks": 3,
+      "impressions": 33,
+      "ctr": 0.09090909090909091,
+      "position": 18.12121212121212
+    },
+    {
+      "page": "/mantras/om-bram-brim-braum-sah-budhaya-namah",
+      "clicks": 2,
+      "impressions": 59,
+      "ctr": 0.03389830508474576,
+      "position": 6.1525423728813555
+    },
+    {
+      "page": "/compare/ramana-maharshi-vs-nisargadatta-maharaj",
+      "clicks": 2,
+      "impressions": 253,
+      "ctr": 0.007905138339920948,
+      "position": 7.063241106719367
+    },
+    {
+      "page": "/daily-spiritual-routine-beginners",
+      "clicks": 2,
+      "impressions": 161,
+      "ctr": 0.012422360248447204,
+      "position": 9.546583850931677
+    },
+    {
+      "page": "/how-to-start-japa",
+      "clicks": 2,
+      "impressions": 496,
+      "ctr": 0.004032258064516129,
+      "position": 10.699596774193548
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-navami",
+      "clicks": 2,
+      "impressions": 188,
+      "ctr": 0.010638297872340425,
+      "position": 10.659574468085106
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-purnima",
+      "clicks": 2,
+      "impressions": 15,
+      "ctr": 0.13333333333333333,
+      "position": 6
+    },
+    {
+      "page": "/learn/sanskrit/prana",
+      "clicks": 2,
+      "impressions": 39,
+      "ctr": 0.05128205128205128,
+      "position": 9.307692307692308
+    },
+    {
+      "page": "/mantras/om-hram-hrim-hraum-sah-suryaya-namah",
+      "clicks": 2,
+      "impressions": 274,
+      "ctr": 0.0072992700729927005,
+      "position": 8.989051094890511
+    },
+    {
+      "page": "/philosophies",
+      "clicks": 2,
+      "impressions": 292,
+      "ctr": 0.00684931506849315,
+      "position": 13.373287671232877
+    },
+    {
+      "page": "/sanatan-history",
+      "clicks": 2,
+      "impressions": 246,
+      "ctr": 0.008130081300813009,
+      "position": 9.605691056910569
+    },
+    {
+      "page": "/stotras/shiva-tandava-stotram",
+      "clicks": 2,
+      "impressions": 89,
+      "ctr": 0.02247191011235955,
+      "position": 16.303370786516854
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-103",
+      "clicks": 2,
+      "impressions": 16,
+      "ctr": 0.125,
+      "position": 4.75
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-11",
+      "clicks": 2,
+      "impressions": 24,
+      "ctr": 0.08333333333333333,
+      "position": 11.833333333333334
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-14",
+      "clicks": 2,
+      "impressions": 3,
+      "ctr": 0.6666666666666666,
+      "position": 3.6666666666666665
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-19",
+      "clicks": 2,
+      "impressions": 35,
+      "ctr": 0.05714285714285714,
+      "position": 24.17142857142857
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-38",
+      "clicks": 2,
+      "impressions": 22,
+      "ctr": 0.09090909090909091,
+      "position": 5.318181818181818
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-46",
+      "clicks": 2,
+      "impressions": 240,
+      "ctr": 0.008333333333333333,
+      "position": 6.458333333333333
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-47",
+      "clicks": 2,
+      "impressions": 42,
+      "ctr": 0.047619047619047616,
+      "position": 6
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-78",
+      "clicks": 2,
+      "impressions": 28,
+      "ctr": 0.07142857142857142,
+      "position": 5.5
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-81",
+      "clicks": 2,
+      "impressions": 39,
+      "ctr": 0.05128205128205128,
+      "position": 6.128205128205129
+    },
+    {
+      "page": "/what-is-rta",
+      "clicks": 2,
+      "impressions": 40,
+      "ctr": 0.05,
+      "position": 7.65
+    },
+    {
+      "page": "/jyotish/panchang/varas/shanivara",
+      "clicks": 1,
+      "impressions": 11,
+      "ctr": 0.09090909090909091,
+      "position": 7.090909090909091
+    },
+    {
+      "page": "/mantras/om-hram-hrim-hraum-sah-suryaya-namah",
+      "clicks": 1,
+      "impressions": 41,
+      "ctr": 0.024390243902439025,
+      "position": 8.658536585365853
+    },
+    {
+      "page": "/",
+      "clicks": 1,
+      "impressions": 207,
+      "ctr": 0.004830917874396135,
+      "position": 8.879227053140097
+    },
+    {
+      "page": "/compare/adi-shankaracharya-vs-ramanuja",
+      "clicks": 1,
+      "impressions": 61,
+      "ctr": 0.01639344262295082,
+      "position": 9.934426229508198
+    },
+    {
+      "page": "/compare/advaita-vs-buddhism",
+      "clicks": 1,
+      "impressions": 88,
+      "ctr": 0.011363636363636364,
+      "position": 10.556818181818182
+    },
+    {
+      "page": "/compare/mindfulness-vs-dhyana",
+      "clicks": 1,
+      "impressions": 31,
+      "ctr": 0.03225806451612903,
+      "position": 17.741935483870968
+    },
+    {
+      "page": "/compare/paramahansa-yogananda-vs-maharishi-mahesh-yogi",
+      "clicks": 1,
+      "impressions": 28,
+      "ctr": 0.03571428571428571,
+      "position": 5.571428571428571
+    },
+    {
+      "page": "/compare/sadhaka-vs-headspace",
+      "clicks": 1,
+      "impressions": 14,
+      "ctr": 0.07142857142857142,
+      "position": 24.428571428571427
+    },
+    {
+      "page": "/compare/vipassana-vs-transcendental-meditation",
+      "clicks": 1,
+      "impressions": 77,
+      "ctr": 0.012987012987012988,
+      "position": 11.883116883116884
+    },
+    {
+      "page": "/deities/kamalatmika",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 9.8
+    },
+    {
+      "page": "/existentialism-and-vedanta",
+      "clicks": 1,
+      "impressions": 19,
+      "ctr": 0.05263157894736842,
+      "position": 7.2631578947368425
+    },
+    {
+      "page": "/faith-finder",
+      "clicks": 1,
+      "impressions": 15,
+      "ctr": 0.06666666666666667,
+      "position": 12
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-amavasya",
+      "clicks": 1,
+      "impressions": 38,
+      "ctr": 0.02631578947368421,
+      "position": 7.342105263157895
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-navami",
+      "clicks": 1,
+      "impressions": 47,
+      "ctr": 0.02127659574468085,
+      "position": 10.595744680851064
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-saptami",
+      "clicks": 1,
+      "impressions": 57,
+      "ctr": 0.017543859649122806,
+      "position": 6.298245614035087
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-chaturdashi",
+      "clicks": 1,
+      "impressions": 64,
+      "ctr": 0.015625,
+      "position": 7.96875
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-ekadashi",
+      "clicks": 1,
+      "impressions": 26,
+      "ctr": 0.038461538461538464,
+      "position": 7.615384615384615
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-panchami",
+      "clicks": 1,
+      "impressions": 432,
+      "ctr": 0.0023148148148148147,
+      "position": 10.875
+    },
+    {
+      "page": "/jyotish/panchang/varas/mangalavara",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 7.75
+    },
+    {
+      "page": "/learn/sanskrit",
+      "clicks": 1,
+      "impressions": 64,
+      "ctr": 0.015625,
+      "position": 13.765625
+    },
+    {
+      "page": "/learn/sanskrit/asana",
+      "clicks": 1,
+      "impressions": 14,
+      "ctr": 0.07142857142857142,
+      "position": 11.785714285714286
+    },
+    {
+      "page": "/learn/sanskrit/nirvana",
+      "clicks": 1,
+      "impressions": 69,
+      "ctr": 0.014492753623188406,
+      "position": 8.985507246376812
+    },
+    {
+      "page": "/learn/sanskrit/samadhi",
+      "clicks": 1,
+      "impressions": 15,
+      "ctr": 0.06666666666666667,
+      "position": 14.4
+    },
+    {
+      "page": "/mantras/om-gram-grim-graum-sah-gurave-namah",
+      "clicks": 1,
+      "impressions": 64,
+      "ctr": 0.015625,
+      "position": 6.609375
+    },
+    {
+      "page": "/mantras/soham",
+      "clicks": 1,
+      "impressions": 79,
+      "ctr": 0.012658227848101266,
+      "position": 49.10126582278481
+    },
+    {
+      "page": "/practical-spiritual-practices",
+      "clicks": 1,
+      "impressions": 142,
+      "ctr": 0.007042253521126761,
+      "position": 13.746478873239436
+    },
+    {
+      "page": "/sanatan-history/evidence/hastinapura-flood-layer",
+      "clicks": 1,
+      "impressions": 11,
+      "ctr": 0.09090909090909091,
+      "position": 7.363636363636363
+    },
+    {
+      "page": "/sanatan-history/researchers/pv-vartak",
+      "clicks": 1,
+      "impressions": 17,
+      "ctr": 0.058823529411764705,
+      "position": 19.470588235294116
+    },
+    {
+      "page": "/sanatan-history/sites/mehrgarh",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 7.5
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/a-v-r-h-dhi-hit-va-ko-i-ko-ibhir-v-t",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 3
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/budh-rcit",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 6
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/k-me-vara-premaratna-ma-i-pratipa-a-stan",
+      "clicks": 1,
+      "impressions": 3,
+      "ctr": 0.3333333333333333,
+      "position": 6.333333333333333
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/l-l-k-pta-brahm-a-ma-al",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 4
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/mahe-vara-mah-kalpa-mah-t-ava-s-k-i",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 2
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/mudgaudan-sakta-citt",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 2
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/ntimat",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 1
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/praka-k-ti",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 2
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/r-kenduvadan",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 4
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/saccid-nanda-r-pi",
+      "clicks": 1,
+      "impressions": 1,
+      "ctr": 1,
+      "position": 3
+    },
+    {
+      "page": "/stotras/lalita-sahasranama/sukh-r-dhy",
+      "clicks": 1,
+      "impressions": 2,
+      "ctr": 0.5,
+      "position": 3
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-106",
+      "clicks": 1,
+      "impressions": 39,
+      "ctr": 0.02564102564102564,
+      "position": 15.076923076923077
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-15",
+      "clicks": 1,
+      "impressions": 29,
+      "ctr": 0.034482758620689655,
+      "position": 24.03448275862069
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-31",
+      "clicks": 1,
+      "impressions": 27,
+      "ctr": 0.037037037037037035,
+      "position": 5.296296296296297
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-33",
+      "clicks": 1,
+      "impressions": 18,
+      "ctr": 0.05555555555555555,
+      "position": 5.277777777777778
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-35",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 6.375
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-37",
+      "clicks": 1,
+      "impressions": 12,
+      "ctr": 0.08333333333333333,
+      "position": 6
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-42",
+      "clicks": 1,
+      "impressions": 154,
+      "ctr": 0.006493506493506494,
+      "position": 6.857142857142857
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-50",
+      "clicks": 1,
+      "impressions": 22,
+      "ctr": 0.045454545454545456,
+      "position": 27.045454545454547
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-53",
+      "clicks": 1,
+      "impressions": 4,
+      "ctr": 0.25,
+      "position": 3.5
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-64",
+      "clicks": 1,
+      "impressions": 16,
+      "ctr": 0.0625,
+      "position": 7.1875
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-67",
+      "clicks": 1,
+      "impressions": 16,
+      "ctr": 0.0625,
+      "position": 7
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-88",
+      "clicks": 1,
+      "impressions": 28,
+      "ctr": 0.03571428571428571,
+      "position": 7.321428571428571
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-89",
+      "clicks": 1,
+      "impressions": 33,
+      "ctr": 0.030303030303030304,
+      "position": 5.757575757575758
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-9",
+      "clicks": 1,
+      "impressions": 23,
+      "ctr": 0.043478260869565216,
+      "position": 23.695652173913043
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-92",
+      "clicks": 1,
+      "impressions": 8,
+      "ctr": 0.125,
+      "position": 6.375
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-95",
+      "clicks": 1,
+      "impressions": 18,
+      "ctr": 0.05555555555555555,
+      "position": 5.888888888888889
+    },
+    {
+      "page": "/sufi-mysticism-and-vedanta",
+      "clicks": 1,
+      "impressions": 20,
+      "ctr": 0.05,
+      "position": 6.55
+    },
+    {
+      "page": "/texts/bhagavad-gita/chapter-4/shloka-29",
+      "clicks": 1,
+      "impressions": 14,
+      "ctr": 0.07142857142857142,
+      "position": 15.5
+    },
+    {
+      "page": "/traditions",
+      "clicks": 1,
+      "impressions": 51,
+      "ctr": 0.0196078431372549,
+      "position": 12.901960784313726
+    },
+    {
+      "page": "/vedic-clock",
+      "clicks": 1,
+      "impressions": 23,
+      "ctr": 0.043478260869565216,
+      "position": 9.434782608695652
+    },
+    {
+      "page": "/what-is-dharana",
+      "clicks": 1,
+      "impressions": 5,
+      "ctr": 0.2,
+      "position": 5.8
+    },
+    {
+      "page": "/what-is-purushartha",
+      "clicks": 1,
+      "impressions": 57,
+      "ctr": 0.017543859649122806,
+      "position": 32.08771929824562
+    },
+    {
+      "page": "/dark-night-of-the-soul",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 4.8
+    },
+    {
+      "page": "/deities/kali",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
+      "page": "/deities/kartikeya",
+      "clicks": 0,
+      "impressions": 7,
+      "ctr": 0,
+      "position": 6.142857142857143
+    },
+    {
+      "page": "/jyotish/nakshatras/purva-ashadha",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-panchami",
+      "clicks": 0,
+      "impressions": 18,
+      "ctr": 0,
+      "position": 8.944444444444445
+    },
+    {
+      "page": "/kundalini-awakening",
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 10.5
+    },
+    {
+      "page": "/learn/sanskrit/bhakti",
+      "clicks": 0,
+      "impressions": 5,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "page": "/learn/sanskrit/guna",
+      "clicks": 0,
+      "impressions": 22,
+      "ctr": 0,
+      "position": 9.818181818181818
+    },
+    {
+      "page": "/learn/sanskrit/prakriti",
+      "clicks": 0,
+      "impressions": 46,
+      "ctr": 0,
+      "position": 8.326086956521738
+    }
+  ],
+  "trend": [
+    {
+      "date": "2026-05-17",
+      "clicks": 3,
+      "impressions": 667,
+      "ctr": 0.004497751124437781,
+      "position": 9.263868065967017
+    },
+    {
+      "date": "2026-05-18",
+      "clicks": 0,
+      "impressions": 532,
+      "ctr": 0,
+      "position": 12.43233082706767
+    },
+    {
+      "date": "2026-05-19",
+      "clicks": 2,
+      "impressions": 406,
+      "ctr": 0.0049261083743842365,
+      "position": 11.5
+    },
+    {
+      "date": "2026-05-20",
+      "clicks": 1,
+      "impressions": 452,
+      "ctr": 0.0022123893805309734,
+      "position": 10.949115044247788
+    },
+    {
+      "date": "2026-05-21",
+      "clicks": 5,
+      "impressions": 401,
+      "ctr": 0.012468827930174564,
+      "position": 12.40648379052369
+    },
+    {
+      "date": "2026-05-22",
+      "clicks": 4,
+      "impressions": 412,
+      "ctr": 0.009708737864077669,
+      "position": 16.046116504854368
+    },
+    {
+      "date": "2026-05-23",
+      "clicks": 3,
+      "impressions": 396,
+      "ctr": 0.007575757575757576,
+      "position": 17.252525252525253
+    },
+    {
+      "date": "2026-05-24",
+      "clicks": 5,
+      "impressions": 484,
+      "ctr": 0.010330578512396695,
+      "position": 13.605371900826446
+    },
+    {
+      "date": "2026-05-25",
+      "clicks": 7,
+      "impressions": 529,
+      "ctr": 0.013232514177693762,
+      "position": 14.54820415879017
+    },
+    {
+      "date": "2026-05-26",
+      "clicks": 3,
+      "impressions": 453,
+      "ctr": 0.006622516556291391,
+      "position": 13.399558498896248
+    },
+    {
+      "date": "2026-05-27",
+      "clicks": 4,
+      "impressions": 560,
+      "ctr": 0.007142857142857143,
+      "position": 14.644642857142857
+    },
+    {
+      "date": "2026-05-28",
+      "clicks": 7,
+      "impressions": 480,
+      "ctr": 0.014583333333333334,
+      "position": 13.73125
+    },
+    {
+      "date": "2026-05-29",
+      "clicks": 4,
+      "impressions": 678,
+      "ctr": 0.0058997050147492625,
+      "position": 10.061946902654867
+    },
+    {
+      "date": "2026-05-30",
+      "clicks": 3,
+      "impressions": 1113,
+      "ctr": 0.0026954177897574125,
+      "position": 8.287511230907457
+    },
+    {
+      "date": "2026-05-31",
+      "clicks": 7,
+      "impressions": 1281,
+      "ctr": 0.00546448087431694,
+      "position": 8.217017954722873
+    },
+    {
+      "date": "2026-06-01",
+      "clicks": 6,
+      "impressions": 823,
+      "ctr": 0.007290400972053463,
+      "position": 10.69501822600243
+    },
+    {
+      "date": "2026-06-02",
+      "clicks": 13,
+      "impressions": 676,
+      "ctr": 0.019230769230769232,
+      "position": 9.505917159763314
+    },
+    {
+      "date": "2026-06-03",
+      "clicks": 4,
+      "impressions": 566,
+      "ctr": 0.007067137809187279,
+      "position": 9.121908127208481
+    },
+    {
+      "date": "2026-06-04",
+      "clicks": 7,
+      "impressions": 624,
+      "ctr": 0.011217948717948718,
+      "position": 9.086538461538462
+    },
+    {
+      "date": "2026-06-05",
+      "clicks": 8,
+      "impressions": 651,
+      "ctr": 0.01228878648233487,
+      "position": 9.448540706605224
+    },
+    {
+      "date": "2026-06-06",
+      "clicks": 5,
+      "impressions": 661,
+      "ctr": 0.007564296520423601,
+      "position": 8.276853252647504
+    },
+    {
+      "date": "2026-06-07",
+      "clicks": 9,
+      "impressions": 653,
+      "ctr": 0.013782542113323124,
+      "position": 9.225114854517612
+    },
+    {
+      "date": "2026-06-08",
+      "clicks": 8,
+      "impressions": 749,
+      "ctr": 0.010680907877169559,
+      "position": 8.767690253671562
+    },
+    {
+      "date": "2026-06-09",
+      "clicks": 10,
+      "impressions": 704,
+      "ctr": 0.014204545454545454,
+      "position": 9.698863636363637
+    },
+    {
+      "date": "2026-06-10",
+      "clicks": 5,
+      "impressions": 703,
+      "ctr": 0.007112375533428165,
+      "position": 9.263157894736842
+    },
+    {
+      "date": "2026-06-11",
+      "clicks": 7,
+      "impressions": 727,
+      "ctr": 0.009628610729023384,
+      "position": 8.22971114167813
+    },
+    {
+      "date": "2026-06-12",
+      "clicks": 5,
+      "impressions": 646,
+      "ctr": 0.007739938080495356,
+      "position": 8.724458204334365
+    },
+    {
+      "date": "2026-06-13",
+      "clicks": 10,
+      "impressions": 734,
+      "ctr": 0.013623978201634877,
+      "position": 10.220708446866485
+    }
+  ]
+}

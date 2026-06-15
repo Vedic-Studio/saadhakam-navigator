@@ -73,3 +73,10 @@ Ahfrens Audit/
 
 # Scheduled tasks lock file (local runtime)
 .claude/scheduled_tasks.lock
+
+# Reference material kept locally, not committed
+*.rtf
+
+# Local analytics dumps (generated, ephemeral working data)
+/data/dr/
+/data/gsc/

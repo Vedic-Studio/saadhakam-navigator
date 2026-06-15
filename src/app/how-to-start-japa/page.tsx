@@ -7,9 +7,9 @@ import { ArrowRight, Circle, Volume2, Wind } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 
 export const metadata: Metadata = {
-    title: "How to Start Japa: A 7-Step Beginner Guide (Mantra & Mala)",
+    title: "How to Start Japa: The 7-Step Daily Routine for Beginners",
     description:
-        "Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels: vaikhari, upamshu, manasika.",
+        "Japa gives the restless mind one job: 108 repetitions of a single sound. Follow the 7-step routine for mantra, mala, timing, and the three levels of practice.",
     alternates: {
         canonical: "https://www.opensadhaka.com/how-to-start-japa",
     },
@@ -65,6 +65,16 @@ const faqs = [
     },
 ];
 
+const sevenSteps = [
+    { title: "Choose a mantra", detail: "Pick one Nama Japa mantra (Om, So'ham, Om Namah Shivaya) and stay with it." },
+    { title: "Know the three levels", detail: "Vaikhari (audible), Upamshu (whispered), Manasika (mental), in ascending order of concentration." },
+    { title: "Use the mala", detail: "108 beads plus a Meru bead, turned with the thumb; the index finger never touches the string." },
+    { title: "Set the time", detail: "Brahma Muhurta is ideal, but a fixed daily time kept without exception matters more." },
+    { title: "Contemplate the meaning", detail: "Patanjali (YS 1.28) pairs repetition with awareness of what the mantra points to." },
+    { title: "Avoid the common mistakes", detail: "Don't switch mantras early, chant mechanically, or force mental japa before the mind is steady." },
+    { title: "Build the count", detail: "Start with one to three malas per sitting; consistency over 40 days beats sporadic volume." },
+];
+
 const japaLevels = [
     {
         sanskrit: "वाचिक",
@@ -98,9 +108,9 @@ export default function HowToStartJapaPage() {
         "@graph": [
             {
                 "@type": "Article",
-                headline: "How to Start Japa: A 7-Step Beginner Guide (Mantra & Mala)",
+                headline: "How to Start Japa: The 7-Step Daily Routine",
                 description:
-                    "Japa gives the restless mind a specific job: 108 repetitions of a sacred sound. BG 10.25 calls it the highest sacrifice. Here is how to begin.",
+                    "Japa gives the restless mind one job: 108 repetitions of a single sound. Follow the 7-step routine for mantra, mala, timing, and the three levels of practice.",
                 url: "https://www.opensadhaka.com/how-to-start-japa",
                 datePublished: "2026-03-20",
                 dateModified: "2026-03-20",
@@ -158,6 +168,24 @@ export default function HowToStartJapaPage() {
                             108 repetitions of one sound, repeated daily, is enough to change the texture of a mind.
                         </p>
                     </header>
+
+                    {/* 7-step summary (lead extractable answer) */}
+                    <section className="mb-14 rounded-2xl border border-border/60 bg-card/40 p-8">
+                        <h2 className="font-display text-3xl font-bold mb-6">What Are the 7 Steps to Start Japa?</h2>
+                        <ol className="space-y-4">
+                            {sevenSteps.map((step, i) => (
+                                <li key={step.title} className="flex gap-4">
+                                    <span className="w-8 h-8 shrink-0 rounded-full bg-orange-500/10 text-orange-400 flex items-center justify-center text-sm font-bold">
+                                        {i + 1}
+                                    </span>
+                                    <div>
+                                        <span className="font-bold text-foreground">{step.title}.</span>{" "}
+                                        <span className="text-muted-foreground">{step.detail}</span>
+                                    </div>
+                                </li>
+                            ))}
+                        </ol>
+                    </section>
 
                     {/* Quick-start orientation */}
                     <section className="mb-14 rounded-2xl border border-border/60 bg-card/40 p-8">

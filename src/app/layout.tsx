@@ -254,10 +254,11 @@ export default function RootLayout({
                 });
               };
 
-              window.sadhaka.quizStart = function (context) {
+              window.sadhaka.quizStart = function (context, sourceTemplate) {
                 var journey = window.sadhaka.setJourneyContext ? window.sadhaka.setJourneyContext(context) : enrichContext(context);
                 sendEvent('faith_finder_quiz_start', {
                   quiz_name: 'faith_finder',
+                  source_template: sourceTemplate || undefined,
                   journey_id: journey.journeyId,
                   attribution_token: journey.attributionToken,
                   source_article_route: journey.sourceArticleRoute,
@@ -374,7 +375,7 @@ export default function RootLayout({
                 });
               };
 
-              window.sadhaka.ctaClick = function (label, destination, context) {
+              window.sadhaka.ctaClick = function (label, destination, context, sourceTemplate) {
                 var journey = window.sadhaka.setJourneyContext
                   ? window.sadhaka.setJourneyContext(Object.assign({}, context || {}, {
                       ctaLabel: label || 'unknown',
@@ -384,6 +385,7 @@ export default function RootLayout({
                 sendEvent('cta_click', {
                   cta_label: label || 'unknown',
                   cta_destination: destination || '',
+                  source_template: sourceTemplate || undefined,
                   source_article_route: journey.sourceArticleRoute,
                   source_article_slug: journey.sourceArticleSlug,
                   source_pillar: journey.sourcePillar,

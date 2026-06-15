@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame, Clock, Compass, Sparkles, ScrollText, Brain, FileText } from "lucide-react";
+import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame, Clock, Compass, Sparkles, ScrollText, Brain, FileText, Lightbulb, HandHeart } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggeredList } from "@/components/animations/StaggeredList";
 
@@ -17,6 +17,13 @@ const categories = [
     href: "/texts",
     icon: ScrollText,
     color: "text-orange-400",
+  },
+  {
+    title: "Six Darshanas",
+    description: "The six classical schools: Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, Vedanta",
+    href: "/six-darshanas",
+    icon: Brain,
+    color: "text-violet-400",
   },
   {
     title: "Jyotish",
@@ -80,6 +87,20 @@ const categories = [
     href: "/practical-spiritual-practices",
     icon: Sparkles,
     color: "text-pink-400",
+  },
+  {
+    title: "Concepts",
+    description: "Karma, dharma, moksha, maya, atman, and Brahman explained",
+    href: "/concepts",
+    icon: Lightbulb,
+    color: "text-amber-400",
+  },
+  {
+    title: "Practice Library",
+    description: "Japa, dhyana, kirtan, puja, seva, and pranayama, step by step",
+    href: "/practices",
+    icon: HandHeart,
+    color: "text-rose-400",
   },
   {
     title: "Articles",

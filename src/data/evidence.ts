@@ -38,6 +38,17 @@ export interface EvidenceItem {
   falsifiabilityCriteria?: string;
   verifyYourself?: string;
   metaDescription: string;
+  /** Optional SERP title override. When set, used as the <title> instead of `claim`,
+   *  so the click-bait-free curiosity hook is decoupled from the factual H1. */
+  seoTitle?: string;
+  /** Optional on-page comparison table. Used to relocate raw quantitative claims
+   *  (e.g. hectare figures) out of the meta description and onto the page as a
+   *  scannable, AI-extractable table under a dedicated H2. */
+  comparisonTable?: {
+    heading: string;
+    columns: [string, string, string];
+    rows: { label: string; value: string; vsReference: string }[];
+  };
 }
 
 // -----------------------------------------------------------------------------
@@ -434,8 +445,19 @@ export const evidenceItems: EvidenceItem[] = [
     ],
     falsifiabilityCriteria:
       "If systematic excavation of all seven mounds revealed that only one or two were occupied during the Mature Harappan period (with others being post-Harappan or pre-Harappan), the 'largest IVC site' claim would need qualification. The site's existence and general scale are not in question.",
+    comparisonTable: {
+      heading: "How Much Bigger Is Rakhigarhi Than Mohenjo-daro?",
+      columns: ["Site", "Hectares", "vs Rakhigarhi"],
+      rows: [
+        { label: "Rakhigarhi", value: "~350 ha", vsReference: "baseline (largest)" },
+        { label: "Mohenjo-daro", value: "~250 ha", vsReference: "~40% smaller" },
+        { label: "Harappa", value: "~150 ha", vsReference: "~57% smaller" },
+      ],
+    },
     metaDescription:
-      "Rakhigarhi: the largest Indus-Saraswati Civilization site at 350 hectares. Located on the Saraswati paleochannel, challenging Indus-centric narratives.",
+      "Rakhigarhi spans seven mounds on the Saraswati paleochannel and outsizes Mohenjo-daro. See the hectare-by-hectare comparison and why the center shifts east.",
+    seoTitle:
+      "Rakhigarhi vs Mohenjo-daro: The Size Gap, Mapped",
   },
   {
     id: "genetic-steppe-timeline",

@@ -47,7 +47,7 @@ export async function GET() {
         `- Philosophies: ${BASE_URL}/philosophies/{slug}`,
         `- Traditions: ${BASE_URL}/traditions/{slug}`,
         `- Sacred Texts: ${BASE_URL}/texts/{slug}`,
-        `- Spiritual Concepts: ${BASE_URL}/concepts/{slug}`,
+        `- Spiritual Concepts: ${BASE_URL}/what-is-{slug}`,
         `- Spiritual Practices: ${BASE_URL}/practices/{slug}`,
         `- Great Teachers: ${BASE_URL}/greats/{slug}`,
         `- Comparison Pages: ${BASE_URL}/compare/{slug}`,

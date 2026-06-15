@@ -26,6 +26,14 @@ export interface DynastyProfile {
   relatedDynasties: string[]; // other dynasty IDs for cross-linking
   dynastyNodeIds: string[]; // IDs from the original DynastyNode tree (for filtering the tree component)
   metaDescription: string; // SEO meta
+  /** Optional SERP title override. When set, used as the <title> instead of the
+   *  templated `${name} | Sanatan History`, so a CTR-tuned title can be
+   *  decoupled from the on-page H1. */
+  seoTitle?: string;
+  /** Optional on-page answer block. Surfaces the dynasty's defining quantitative
+   *  facts (date range, ruler count, key transition) under a dedicated H2 so the
+   *  answer is on-page and AI-extractable rather than buried in the narrative. */
+  answerBlock?: { heading: string; body: string };
 }
 
 // -----------------------------------------------------------------------------
@@ -212,8 +220,13 @@ export const dynasties: DynastyProfile[] = [
     relatedEras: ["transition"],
     relatedDynasties: ["kuru", "pandava", "haryanka"],
     dynastyNodeIds: ["brihadratha"],
+    seoTitle: "Brihadratha Dynasty: Jarasandha to the Haryankas",
+    answerBlock: {
+      heading: "Who Ruled the Brihadratha Dynasty, and When?",
+      body: "The Brihadratha dynasty ruled Magadha from its capital at Rajagriha (modern Rajgir) across roughly 1,700 to 682 BCE. The Puranas list 21 kings in the line, beginning with its founder Brihadratha and including Jarasandha, the Mahabharata antagonist defeated by Bhima. The last ruler, Ripunjaya, was overthrown around 682 BCE, a transition that ushered in the Haryanka dynasty and the start of independently verifiable Indian history.",
+    },
     metaDescription:
-      "The Brihadratha Dynasty: 21 kings of early Magadha (~1,700–682 BCE). From the Mahabharata's Jarasandha to the rise of the Haryanka dynasty.",
+      "The Brihadratha dynasty bridged the Mahabharata and recorded history: 21 kings at Rajagriha, from Jarasandha to the rise of Magadha. See the ruler timeline.",
   },
   {
     id: "haryanka",

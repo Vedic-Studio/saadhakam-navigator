@@ -23,8 +23,6 @@ export const metadata: Metadata = {
 export default function VishnuSahasranamaPage() {
   const sahasranama = loadSahasranama("vishnu-sahasranama");
 
-  const allNames = (sahasranama.verses ?? []).flatMap((v) => v.names ?? []);
-
   const breadcrumbSchema = buildBreadcrumbSchema([
     { label: "Home", href: "/" },
     { label: "Stotras", href: "/stotras" },
@@ -35,10 +33,10 @@ export default function VishnuSahasranamaPage() {
     name: "Vishnu Sahasranama — 1000 Names of Lord Vishnu",
     description: "The complete Vishnu Sahasranama from the Mahabharata's Anushasana Parva. All 107 shlokas with 1000 names of Lord Vishnu.",
     url: "https://www.opensadhaka.com/stotras/vishnu-sahasranama",
-    items: allNames.slice(0, 50).map((name) => ({
-      name: `${name.transliteration} — ${name.meaning}`,
-      url: `https://www.opensadhaka.com/stotras/vishnu-sahasranama/${name.slug}`,
-      description: name.meaning,
+    items: (sahasranama.verses ?? []).map((verse) => ({
+      name: `Vishnu Sahasranama Shloka ${verse.verse} (Names ${verse.names[0]?.number}, ${verse.names[verse.names.length - 1]?.number})`,
+      url: `https://www.opensadhaka.com/stotras/vishnu-sahasranama/${verse.slug}`,
+      description: `Shloka ${verse.verse} with Sanskrit, transliteration, and meaning.`,
     })),
   });
 

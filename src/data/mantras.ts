@@ -29,6 +29,13 @@ export interface Mantra {
     seoDescription?: string;
     ogTitle?: string;
     ogDescription?: string;
+    /**
+     * Optional lead answer block rendered near the top of the page (before
+     * etymology). Carries a direct, AI-extractable answer to a high-intent
+     * question such as "When should you chant this mantra?" — pairing best-time
+     * with what the mantra is traditionally used for.
+     */
+    answerBlock?: { heading: string; body: string };
 }
 
 import { jyotishMantras } from "@/data/jyotishMantras";

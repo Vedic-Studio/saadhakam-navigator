@@ -1,0 +1,882 @@
+{
+  "source": "gsc-ctr-audit",
+  "siteUrl": "sc-domain:opensadhaka.com",
+  "pulledAt": "2026-06-15T08:42:43.592Z",
+  "windowDays": 28,
+  "range": {
+    "startDate": "2026-05-17",
+    "endDate": "2026-06-13"
+  },
+  "thresholds": {
+    "minImpressions": 25,
+    "queryRowLimit": 250,
+    "pageRowLimit": 250,
+    "pairRowLimit": 1000
+  },
+  "overview": {
+    "clicks": 155,
+    "impressions": 17761,
+    "ctr": 0.008726986093125387,
+    "position": 10.43178875063341
+  },
+  "searchAppearance": [
+    {
+      "appearance": "TRANSLATED_RESULT",
+      "clicks": 5,
+      "impressions": 153,
+      "ctr": 0.032679738562091505,
+      "position": 6.183006535947713
+    }
+  ],
+  "queryCtrOpportunities": [
+    {
+      "query": "27th shloka of vishnu sahasranamam",
+      "clicks": 1,
+      "impressions": 43,
+      "ctr": 0.023255813953488372,
+      "position": 1.5116279069767442
+    },
+    {
+      "query": "shukla panchami",
+      "clicks": 1,
+      "impressions": 71,
+      "ctr": 0.014084507042253521,
+      "position": 8.140845070422536
+    },
+    {
+      "query": "vishnu sahasranamam shloka 83",
+      "clicks": 1,
+      "impressions": 30,
+      "ctr": 0.03333333333333333,
+      "position": 4.933333333333334
+    },
+    {
+      "query": "46 shloka of vishnu sahasranamam",
+      "clicks": 0,
+      "impressions": 52,
+      "ctr": 0,
+      "position": 5.019230769230769
+    },
+    {
+      "query": "bhagavad gita 6.11 clean place translation",
+      "clicks": 0,
+      "impressions": 64,
+      "ctr": 0,
+      "position": 8.109375
+    }
+  ],
+  "pageCtrOpportunities": [
+    {
+      "page": "/10-powerful-sanskrit-mantras",
+      "clicks": 17,
+      "impressions": 819,
+      "ctr": 0.020757020757020756,
+      "position": 13.401709401709402
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-83",
+      "clicks": 10,
+      "impressions": 223,
+      "ctr": 0.04484304932735426,
+      "position": 6.524663677130045
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-27",
+      "clicks": 6,
+      "impressions": 168,
+      "ctr": 0.03571428571428571,
+      "position": 7.285714285714286
+    },
+    {
+      "page": "/mantras/om-shram-shrim-shraum-sah-chandraya-namah",
+      "clicks": 5,
+      "impressions": 255,
+      "ctr": 0.0196078431372549,
+      "position": 7.96078431372549
+    },
+    {
+      "page": "/mantras/om-bram-brim-braum-sah-budhaya-namah",
+      "clicks": 4,
+      "impressions": 888,
+      "ctr": 0.0045045045045045045,
+      "position": 7.632882882882883
+    },
+    {
+      "page": "/can-i-chant-a-mantra-without-initiation",
+      "clicks": 3,
+      "impressions": 207,
+      "ctr": 0.014492753623188406,
+      "position": 8.314009661835748
+    },
+    {
+      "page": "/how-to-read-upanishads-western-beginner",
+      "clicks": 3,
+      "impressions": 212,
+      "ctr": 0.014150943396226415,
+      "position": 9.669811320754716
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-87",
+      "clicks": 3,
+      "impressions": 33,
+      "ctr": 0.09090909090909091,
+      "position": 18.12121212121212
+    },
+    {
+      "page": "/mantras/om-bram-brim-braum-sah-budhaya-namah",
+      "clicks": 2,
+      "impressions": 59,
+      "ctr": 0.03389830508474576,
+      "position": 6.1525423728813555
+    },
+    {
+      "page": "/compare/ramana-maharshi-vs-nisargadatta-maharaj",
+      "clicks": 2,
+      "impressions": 253,
+      "ctr": 0.007905138339920948,
+      "position": 7.063241106719367
+    },
+    {
+      "page": "/daily-spiritual-routine-beginners",
+      "clicks": 2,
+      "impressions": 161,
+      "ctr": 0.012422360248447204,
+      "position": 9.546583850931677
+    },
+    {
+      "page": "/how-to-start-japa",
+      "clicks": 2,
+      "impressions": 496,
+      "ctr": 0.004032258064516129,
+      "position": 10.699596774193548
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-navami",
+      "clicks": 2,
+      "impressions": 188,
+      "ctr": 0.010638297872340425,
+      "position": 10.659574468085106
+    },
+    {
+      "page": "/learn/sanskrit/prana",
+      "clicks": 2,
+      "impressions": 39,
+      "ctr": 0.05128205128205128,
+      "position": 9.307692307692308
+    },
+    {
+      "page": "/mantras/om-hram-hrim-hraum-sah-suryaya-namah",
+      "clicks": 2,
+      "impressions": 274,
+      "ctr": 0.0072992700729927005,
+      "position": 8.989051094890511
+    },
+    {
+      "page": "/philosophies",
+      "clicks": 2,
+      "impressions": 292,
+      "ctr": 0.00684931506849315,
+      "position": 13.373287671232877
+    },
+    {
+      "page": "/sanatan-history",
+      "clicks": 2,
+      "impressions": 246,
+      "ctr": 0.008130081300813009,
+      "position": 9.605691056910569
+    },
+    {
+      "page": "/stotras/shiva-tandava-stotram",
+      "clicks": 2,
+      "impressions": 89,
+      "ctr": 0.02247191011235955,
+      "position": 16.303370786516854
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-19",
+      "clicks": 2,
+      "impressions": 35,
+      "ctr": 0.05714285714285714,
+      "position": 24.17142857142857
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-46",
+      "clicks": 2,
+      "impressions": 240,
+      "ctr": 0.008333333333333333,
+      "position": 6.458333333333333
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-47",
+      "clicks": 2,
+      "impressions": 42,
+      "ctr": 0.047619047619047616,
+      "position": 6
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-78",
+      "clicks": 2,
+      "impressions": 28,
+      "ctr": 0.07142857142857142,
+      "position": 5.5
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-81",
+      "clicks": 2,
+      "impressions": 39,
+      "ctr": 0.05128205128205128,
+      "position": 6.128205128205129
+    },
+    {
+      "page": "/what-is-rta",
+      "clicks": 2,
+      "impressions": 40,
+      "ctr": 0.05,
+      "position": 7.65
+    },
+    {
+      "page": "/mantras/om-hram-hrim-hraum-sah-suryaya-namah",
+      "clicks": 1,
+      "impressions": 41,
+      "ctr": 0.024390243902439025,
+      "position": 8.658536585365853
+    },
+    {
+      "page": "/",
+      "clicks": 1,
+      "impressions": 207,
+      "ctr": 0.004830917874396135,
+      "position": 8.879227053140097
+    },
+    {
+      "page": "/compare/adi-shankaracharya-vs-ramanuja",
+      "clicks": 1,
+      "impressions": 61,
+      "ctr": 0.01639344262295082,
+      "position": 9.934426229508198
+    },
+    {
+      "page": "/compare/advaita-vs-buddhism",
+      "clicks": 1,
+      "impressions": 88,
+      "ctr": 0.011363636363636364,
+      "position": 10.556818181818182
+    },
+    {
+      "page": "/compare/mindfulness-vs-dhyana",
+      "clicks": 1,
+      "impressions": 31,
+      "ctr": 0.03225806451612903,
+      "position": 17.741935483870968
+    },
+    {
+      "page": "/compare/paramahansa-yogananda-vs-maharishi-mahesh-yogi",
+      "clicks": 1,
+      "impressions": 28,
+      "ctr": 0.03571428571428571,
+      "position": 5.571428571428571
+    },
+    {
+      "page": "/compare/vipassana-vs-transcendental-meditation",
+      "clicks": 1,
+      "impressions": 77,
+      "ctr": 0.012987012987012988,
+      "position": 11.883116883116884
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-amavasya",
+      "clicks": 1,
+      "impressions": 38,
+      "ctr": 0.02631578947368421,
+      "position": 7.342105263157895
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-navami",
+      "clicks": 1,
+      "impressions": 47,
+      "ctr": 0.02127659574468085,
+      "position": 10.595744680851064
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-saptami",
+      "clicks": 1,
+      "impressions": 57,
+      "ctr": 0.017543859649122806,
+      "position": 6.298245614035087
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-chaturdashi",
+      "clicks": 1,
+      "impressions": 64,
+      "ctr": 0.015625,
+      "position": 7.96875
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-ekadashi",
+      "clicks": 1,
+      "impressions": 26,
+      "ctr": 0.038461538461538464,
+      "position": 7.615384615384615
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-panchami",
+      "clicks": 1,
+      "impressions": 432,
+      "ctr": 0.0023148148148148147,
+      "position": 10.875
+    },
+    {
+      "page": "/learn/sanskrit",
+      "clicks": 1,
+      "impressions": 64,
+      "ctr": 0.015625,
+      "position": 13.765625
+    },
+    {
+      "page": "/learn/sanskrit/nirvana",
+      "clicks": 1,
+      "impressions": 69,
+      "ctr": 0.014492753623188406,
+      "position": 8.985507246376812
+    },
+    {
+      "page": "/mantras/om-gram-grim-graum-sah-gurave-namah",
+      "clicks": 1,
+      "impressions": 64,
+      "ctr": 0.015625,
+      "position": 6.609375
+    },
+    {
+      "page": "/mantras/soham",
+      "clicks": 1,
+      "impressions": 79,
+      "ctr": 0.012658227848101266,
+      "position": 49.10126582278481
+    },
+    {
+      "page": "/practical-spiritual-practices",
+      "clicks": 1,
+      "impressions": 142,
+      "ctr": 0.007042253521126761,
+      "position": 13.746478873239436
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-106",
+      "clicks": 1,
+      "impressions": 39,
+      "ctr": 0.02564102564102564,
+      "position": 15.076923076923077
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-15",
+      "clicks": 1,
+      "impressions": 29,
+      "ctr": 0.034482758620689655,
+      "position": 24.03448275862069
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-31",
+      "clicks": 1,
+      "impressions": 27,
+      "ctr": 0.037037037037037035,
+      "position": 5.296296296296297
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-42",
+      "clicks": 1,
+      "impressions": 154,
+      "ctr": 0.006493506493506494,
+      "position": 6.857142857142857
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-88",
+      "clicks": 1,
+      "impressions": 28,
+      "ctr": 0.03571428571428571,
+      "position": 7.321428571428571
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-89",
+      "clicks": 1,
+      "impressions": 33,
+      "ctr": 0.030303030303030304,
+      "position": 5.757575757575758
+    },
+    {
+      "page": "/traditions",
+      "clicks": 1,
+      "impressions": 51,
+      "ctr": 0.0196078431372549,
+      "position": 12.901960784313726
+    },
+    {
+      "page": "/what-is-purushartha",
+      "clicks": 1,
+      "impressions": 57,
+      "ctr": 0.017543859649122806,
+      "position": 32.08771929824562
+    },
+    {
+      "page": "/learn/sanskrit/prakriti",
+      "clicks": 0,
+      "impressions": 46,
+      "ctr": 0,
+      "position": 8.326086956521738
+    },
+    {
+      "page": "/texts/bhagavad-gita/chapter-10/shloka-36",
+      "clicks": 0,
+      "impressions": 72,
+      "ctr": 0,
+      "position": 9.11111111111111
+    },
+    {
+      "page": "/texts/bhagavad-gita/chapter-6/shloka-11",
+      "clicks": 0,
+      "impressions": 70,
+      "ctr": 0,
+      "position": 8.642857142857142
+    },
+    {
+      "page": "/advaita-vs-dvaita",
+      "clicks": 0,
+      "impressions": 26,
+      "ctr": 0,
+      "position": 9.5
+    },
+    {
+      "page": "/ancient-wisdom-philosophies",
+      "clicks": 0,
+      "impressions": 36,
+      "ctr": 0,
+      "position": 18.916666666666668
+    },
+    {
+      "page": "/app",
+      "clicks": 0,
+      "impressions": 44,
+      "ctr": 0,
+      "position": 16.18181818181818
+    },
+    {
+      "page": "/articles",
+      "clicks": 0,
+      "impressions": 34,
+      "ctr": 0,
+      "position": 10.705882352941176
+    },
+    {
+      "page": "/best-bhagavad-gita-translation-for-beginners",
+      "clicks": 0,
+      "impressions": 125,
+      "ctr": 0,
+      "position": 14.016
+    },
+    {
+      "page": "/bhagavad-gita-vs-bible",
+      "clicks": 0,
+      "impressions": 42,
+      "ctr": 0,
+      "position": 9.238095238095237
+    },
+    {
+      "page": "/christian-mysticism-and-vedanta",
+      "clicks": 0,
+      "impressions": 33,
+      "ctr": 0,
+      "position": 8.06060606060606
+    },
+    {
+      "page": "/compare",
+      "clicks": 0,
+      "impressions": 148,
+      "ctr": 0,
+      "position": 11.635135135135135
+    },
+    {
+      "page": "/compare/ashtavakra-gita-vs-bhagavad-gita",
+      "clicks": 0,
+      "impressions": 241,
+      "ctr": 0,
+      "position": 8.817427385892117
+    },
+    {
+      "page": "/compare/atman-vs-brahman",
+      "clicks": 0,
+      "impressions": 72,
+      "ctr": 0,
+      "position": 9.694444444444445
+    },
+    {
+      "page": "/compare/bhagavad-gita-vs-upanishads",
+      "clicks": 0,
+      "impressions": 49,
+      "ctr": 0,
+      "position": 9.36734693877551
+    },
+    {
+      "page": "/compare/bhakti-vs-jnana",
+      "clicks": 0,
+      "impressions": 26,
+      "ctr": 0,
+      "position": 8.846153846153847
+    },
+    {
+      "page": "/compare/brahma-sutras-vs-upanishads",
+      "clicks": 0,
+      "impressions": 28,
+      "ctr": 0,
+      "position": 19.392857142857142
+    },
+    {
+      "page": "/compare/japa-vs-meditation",
+      "clicks": 0,
+      "impressions": 44,
+      "ctr": 0,
+      "position": 8.931818181818182
+    },
+    {
+      "page": "/compare/mahabharata-vs-ramayana",
+      "clicks": 0,
+      "impressions": 41,
+      "ctr": 0,
+      "position": 11.902439024390244
+    },
+    {
+      "page": "/compare/mantra-vs-prayer",
+      "clicks": 0,
+      "impressions": 25,
+      "ctr": 0,
+      "position": 8.32
+    },
+    {
+      "page": "/compare/psychology-vs-yoga-philosophy",
+      "clicks": 0,
+      "impressions": 92,
+      "ctr": 0,
+      "position": 19.293478260869566
+    },
+    {
+      "page": "/compare/raja-yoga-vs-kundalini-yoga",
+      "clicks": 0,
+      "impressions": 41,
+      "ctr": 0,
+      "position": 4.853658536585366
+    },
+    {
+      "page": "/compare/samkhya-vs-yoga",
+      "clicks": 0,
+      "impressions": 25,
+      "ctr": 0,
+      "position": 14.16
+    },
+    {
+      "page": "/compare/vaishnavism-vs-shaktism",
+      "clicks": 0,
+      "impressions": 28,
+      "ctr": 0,
+      "position": 8.75
+    },
+    {
+      "page": "/compare/yoga-sutras-vs-bhagavad-gita",
+      "clicks": 0,
+      "impressions": 26,
+      "ctr": 0,
+      "position": 11.076923076923077
+    },
+    {
+      "page": "/deities",
+      "clicks": 0,
+      "impressions": 47,
+      "ctr": 0,
+      "position": 6.127659574468085
+    },
+    {
+      "page": "/fear-of-death-advaita-vedanta",
+      "clicks": 0,
+      "impressions": 47,
+      "ctr": 0,
+      "position": 7.553191489361702
+    },
+    {
+      "page": "/greats",
+      "clicks": 0,
+      "impressions": 33,
+      "ctr": 0,
+      "position": 7.696969696969697
+    },
+    {
+      "page": "/how-karma-dharma-work",
+      "clicks": 0,
+      "impressions": 36,
+      "ctr": 0,
+      "position": 8.472222222222221
+    },
+    {
+      "page": "/isha-foundation-sadhguru",
+      "clicks": 0,
+      "impressions": 56,
+      "ctr": 0,
+      "position": 10.857142857142858
+    },
+    {
+      "page": "/jyotish/nakshatras/pushya",
+      "clicks": 0,
+      "impressions": 46,
+      "ctr": 0,
+      "position": 41.04347826086956
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-dashami",
+      "clicks": 0,
+      "impressions": 67,
+      "ctr": 0,
+      "position": 10.283582089552239
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-panchami",
+      "clicks": 0,
+      "impressions": 52,
+      "ctr": 0,
+      "position": 8.23076923076923
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-pratipada",
+      "clicks": 0,
+      "impressions": 80,
+      "ctr": 0,
+      "position": 8.2375
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-trayodashi",
+      "clicks": 0,
+      "impressions": 51,
+      "ctr": 0,
+      "position": 8.176470588235293
+    },
+    {
+      "page": "/jyotish/panchang/tithis/krishna-tritiya",
+      "clicks": 0,
+      "impressions": 55,
+      "ctr": 0,
+      "position": 7.1454545454545455
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-dashami",
+      "clicks": 0,
+      "impressions": 58,
+      "ctr": 0,
+      "position": 7.189655172413793
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-saptami",
+      "clicks": 0,
+      "impressions": 32,
+      "ctr": 0,
+      "position": 7.6875
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-shashthi",
+      "clicks": 0,
+      "impressions": 30,
+      "ctr": 0,
+      "position": 7.633333333333334
+    },
+    {
+      "page": "/jyotish/panchang/tithis/shukla-trayodashi",
+      "clicks": 0,
+      "impressions": 77,
+      "ctr": 0,
+      "position": 8.597402597402597
+    }
+  ],
+  "queryPageOpportunities": [
+    {
+      "query": "rakhigarhi size compared to mohenjo-daro",
+      "page": "/sanatan-history/evidence/rakhigarhi-largest-site",
+      "clicks": 0,
+      "impressions": 56,
+      "ctr": 0,
+      "position": 2.5,
+      "expectedCtr": 0.19,
+      "ctrGap": 0.19,
+      "opportunityScore": 11
+    },
+    {
+      "query": "27th shloka of vishnu sahasranamam",
+      "page": "/stotras/vishnu-sahasranama/shloka-27",
+      "clicks": 1,
+      "impressions": 43,
+      "ctr": 0.023255813953488372,
+      "position": 1.5116279069767442,
+      "expectedCtr": 0.19,
+      "ctrGap": 0.16674418604651164,
+      "opportunityScore": 7
+    },
+    {
+      "query": "om bram brim",
+      "page": "/mantras/om-bram-brim-braum-sah-budhaya-namah",
+      "clicks": 0,
+      "impressions": 163,
+      "ctr": 0,
+      "position": 8.171779141104295,
+      "expectedCtr": 0.03,
+      "ctrGap": 0.03,
+      "opportunityScore": 5
+    },
+    {
+      "query": "rakhigarhi size compared to mohenjo-daro harappa",
+      "page": "/sanatan-history/evidence/rakhigarhi-largest-site",
+      "clicks": 0,
+      "impressions": 42,
+      "ctr": 0,
+      "position": 3.357142857142857,
+      "expectedCtr": 0.13,
+      "ctrGap": 0.13,
+      "opportunityScore": 5
+    },
+    {
+      "query": "46 shloka of vishnu sahasranamam",
+      "page": "/stotras/vishnu-sahasranama/shloka-46",
+      "clicks": 0,
+      "impressions": 52,
+      "ctr": 0,
+      "position": 5.019230769230769,
+      "expectedCtr": 0.07,
+      "ctrGap": 0.07,
+      "opportunityScore": 4
+    },
+    {
+      "query": "sadhaka",
+      "page": "/",
+      "clicks": 0,
+      "impressions": 121,
+      "ctr": 0,
+      "position": 9.619834710743802,
+      "expectedCtr": 0.022,
+      "ctrGap": 0.022,
+      "opportunityScore": 3
+    },
+    {
+      "query": "om bram brim sah budhaya namah",
+      "page": "/mantras/om-bram-brim-braum-sah-budhaya-namah",
+      "clicks": 0,
+      "impressions": 65,
+      "ctr": 0,
+      "position": 7.876923076923077,
+      "expectedCtr": 0.03,
+      "ctrGap": 0.03,
+      "opportunityScore": 2
+    },
+    {
+      "query": "shukla panchami",
+      "page": "/jyotish/panchang/tithis/shukla-panchami",
+      "clicks": 1,
+      "impressions": 71,
+      "ctr": 0.014084507042253521,
+      "position": 8.140845070422536,
+      "expectedCtr": 0.03,
+      "ctrGap": 0.015915492957746476,
+      "opportunityScore": 1
+    },
+    {
+      "query": "vishnu sahasranamam shloka 83",
+      "page": "/stotras/vishnu-sahasranama/shloka-83",
+      "clicks": 1,
+      "impressions": 30,
+      "ctr": 0.03333333333333333,
+      "position": 4.933333333333334,
+      "expectedCtr": 0.07,
+      "ctrGap": 0.036666666666666674,
+      "opportunityScore": 1
+    },
+    {
+      "query": "bhagavad gita 6.11 clean place translation",
+      "page": "/texts/bhagavad-gita/chapter-6/shloka-11",
+      "clicks": 0,
+      "impressions": 43,
+      "ctr": 0,
+      "position": 7.976744186046512,
+      "expectedCtr": 0.03,
+      "ctrGap": 0.03,
+      "opportunityScore": 1
+    },
+    {
+      "query": "number of classical darshanas are",
+      "page": "/philosophies",
+      "clicks": 0,
+      "impressions": 40,
+      "ctr": 0,
+      "position": 10.475,
+      "expectedCtr": 0.022,
+      "ctrGap": 0.022,
+      "opportunityScore": 1
+    },
+    {
+      "query": "om bram brim braum sah budhaya namah",
+      "page": "/mantras/om-bram-brim-braum-sah-budhaya-namah",
+      "clicks": 0,
+      "impressions": 29,
+      "ctr": 0,
+      "position": 6.379310344827586,
+      "expectedCtr": 0.05,
+      "ctrGap": 0.05,
+      "opportunityScore": 1
+    },
+    {
+      "query": "om hram hrim",
+      "page": "/mantras/om-hram-hrim-hraum-sah-suryaya-namah",
+      "clicks": 0,
+      "impressions": 43,
+      "ctr": 0,
+      "position": 11.13953488372093,
+      "expectedCtr": 0.015,
+      "ctrGap": 0.015,
+      "opportunityScore": 1
+    },
+    {
+      "query": "om shram shreem shroum sah chandraya namah meaning",
+      "page": "/mantras/om-shram-shrim-shraum-sah-chandraya-namah",
+      "clicks": 0,
+      "impressions": 25,
+      "ctr": 0,
+      "position": 5.76,
+      "expectedCtr": 0.05,
+      "ctrGap": 0.05,
+      "opportunityScore": 1
+    },
+    {
+      "query": "sukla panchami",
+      "page": "/jyotish/panchang/tithis/shukla-panchami",
+      "clicks": 0,
+      "impressions": 36,
+      "ctr": 0,
+      "position": 10.555555555555555,
+      "expectedCtr": 0.015,
+      "ctrGap": 0.015,
+      "opportunityScore": 1
+    },
+    {
+      "query": "prakriti",
+      "page": "/learn/sanskrit/prakriti",
+      "clicks": 0,
+      "impressions": 25,
+      "ctr": 0,
+      "position": 50.08,
+      "expectedCtr": 0.005,
+      "ctrGap": 0.005,
+      "opportunityScore": 0
+    },
+    {
+      "query": "yoga philosophy and psychology",
+      "page": "/compare/psychology-vs-yoga-philosophy",
+      "clicks": 0,
+      "impressions": 39,
+      "ctr": 0,
+      "position": 18.871794871794872,
+      "expectedCtr": 0.009,
+      "ctrGap": 0.009,
+      "opportunityScore": 0
+    }
+  ]
+}

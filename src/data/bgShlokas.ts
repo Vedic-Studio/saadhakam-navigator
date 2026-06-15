@@ -13,6 +13,13 @@ export interface BgShloka {
   translation: string;
   commentaries: Commentary[];
   practicalApplication: string;
+  /**
+   * Optional per-verse SEO overrides. The verse template hardcodes a generic
+   * title/description for all ~700 verses; set these on individual shlokas
+   * whose GSC CTR is below expectation to override the generic snippet.
+   */
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 import { chapter1Shlokas } from "./bgShlokasCh1";
@@ -61,4 +68,23 @@ export function getBgShlokaById(id: string): BgShloka | undefined {
 
 export function getBgShlokasByChapter(chapter: number): BgShloka[] {
   return bgShlokas.filter((s) => s.chapter === chapter);
+}
+
+/**
+ * Resolves the SERP title and description for a Bhagavad Gita verse page.
+ * Returns the verse's `seoTitle`/`seoDescription` overrides when present;
+ * otherwise the generic templated title and a description seeded from the
+ * verse translation. Pure function, safe to unit test in isolation. The
+ * caller composes the final fallback description (e.g. via composeMetaDescription).
+ */
+export function resolveVerseSeo(shloka: BgShloka): {
+  title: string;
+  description: string | undefined;
+} {
+  return {
+    title:
+      shloka.seoTitle ??
+      `Bhagavad Gita Chapter ${shloka.chapter} Verse ${shloka.verse} | Meaning & Translation`,
+    description: shloka.seoDescription,
+  };
 }

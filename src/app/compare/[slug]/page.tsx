@@ -9,12 +9,21 @@ import { Button } from "@/components/ui/button";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { LongformContent } from "@/components/LongformContent";
-import { buildBreadcrumbSchema, buildWebPageSchema, buildArticleSchema, buildUrl } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildWebPageSchema, buildArticleSchema, buildComparisonTableSchema, buildFaqSchema, buildUrl } from "@/lib/seo";
 import { FeaturedImage } from "@/components/FeaturedImage";
+import { FaithFinderCTA } from "@/components/faith-finder/FaithFinderCTA";
 
 interface Props {
   params: { slug: string };
 }
+
+// Only these high-traffic, dead-end comparisons get the inline Faith Finder
+// CTA. Gated to a fixed allowlist so the tagged CTA does not appear on every
+// comparison page.
+const FAITH_FINDER_CTA_SLUGS = new Set<string>([
+  "bhagavad-gita-vs-upanishads",
+  "ashtavakra-gita-vs-bhagavad-gita",
+]);
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -99,36 +108,23 @@ export default async function ComparisonPage({ params }: Props) {
     image: comp.featuredImage ? buildUrl(comp.featuredImage.src) : undefined,
   });
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `What is the central distinction between ${comp.entityA} and ${comp.entityB}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: comp.tldr || `The comparison between ${comp.entityA} and ${comp.entityB} highlights key differences in their philosophical approach and practical application.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `On what terms should ${comp.entityA} and ${comp.entityB} be compared?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `${comp.entityA} and ${comp.entityB} should be compared by their definitions, historical setting, core assumptions, methods, and stated goals. This comparison is designed to clarify those structures so each can be understood on its own terms rather than reduced to a superficial similarity.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Do ${comp.entityA} and ${comp.entityB} belong to the same intellectual or religious lineage?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `That depends on the pair. Some comparisons examine neighboring schools within the same broader tradition, while others compare texts, teachers, or practices that only partially overlap. The purpose of the page is to specify the relationship rather than assume they are equivalent.`,
-        },
-      },
-    ],
-  };
+  // FAQ + comparison-table schema are emitted ONLY when the entry carries the
+  // matching real, page-specific data, so FAQPage JSON-LD always corresponds
+  // to a visibly rendered FAQ (Google requirement) and the ItemList always
+  // mirrors a visibly rendered <table>. Entries without this data emit neither.
+  const faqSchema = comp.faq?.length
+    ? buildFaqSchema(comp.faq.map((f) => ({ question: f.q, answer: f.a })))
+    : null;
+
+  const comparisonTableSchema = comp.comparisonTable?.length
+    ? buildComparisonTableSchema({
+        title: comp.title,
+        url: buildUrl(`/compare/${comp.slug}`),
+        entityA: comp.entityA,
+        entityB: comp.entityB,
+        rows: comp.comparisonTable,
+      })
+    : null;
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-orange-500/30 selection:text-orange-100 flex flex-col">
@@ -137,10 +133,18 @@ export default async function ComparisonPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      {comparisonTableSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonTableSchema) }}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -209,6 +213,51 @@ export default async function ComparisonPage({ params }: Props) {
             </div>
           </div>
 
+          {comp.comparisonTable && comp.comparisonTable.length > 0 && (
+            <section className="mb-16" aria-labelledby="comparison-table-heading">
+              <h2
+                id="comparison-table-heading"
+                className="font-display text-2xl md:text-3xl font-bold mb-6"
+              >
+                {comp.entityA} vs {comp.entityB}: at a glance
+              </h2>
+              <div className="overflow-x-auto rounded-2xl border border-border/50">
+                <table className="w-full border-collapse text-left">
+                  <thead>
+                    <tr className="border-b border-border/50 bg-card">
+                      <th scope="col" className="p-4 font-semibold text-sm">
+                        Dimension
+                      </th>
+                      <th scope="col" className="p-4 font-semibold text-sm text-primary">
+                        {comp.entityA}
+                      </th>
+                      <th scope="col" className="p-4 font-semibold text-sm text-secondary-foreground">
+                        {comp.entityB}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {comp.comparisonTable.map((row, i) => (
+                      <tr
+                        key={i}
+                        className="border-b border-border/30 last:border-0 align-top"
+                      >
+                        <th
+                          scope="row"
+                          className="p-4 font-semibold text-sm text-foreground"
+                        >
+                          {row.dimension}
+                        </th>
+                        <td className="p-4 text-sm text-muted-foreground">{row.a}</td>
+                        <td className="p-4 text-sm text-muted-foreground">{row.b}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          )}
+
           <LongformContent
             className="mb-20"
             dangerouslySetInnerHTML={{
@@ -217,6 +266,40 @@ export default async function ComparisonPage({ params }: Props) {
                 "<p>Detailed analysis for this comparison is in progress. Check back soon.</p>",
             }}
           />
+
+          {comp.faq && comp.faq.length > 0 && (
+            <section className="mb-16" aria-labelledby="comparison-faq-heading">
+              <h2
+                id="comparison-faq-heading"
+                className="font-display text-2xl md:text-3xl font-bold mb-8"
+              >
+                Frequently asked questions
+              </h2>
+              <div className="space-y-4">
+                {comp.faq.map((item, i) => (
+                  <details
+                    key={i}
+                    className="group rounded-2xl border border-border/50 bg-card p-6"
+                  >
+                    <summary className="cursor-pointer font-semibold text-lg list-none flex items-start justify-between gap-4">
+                      <span>{item.q}</span>
+                      <span className="text-primary shrink-0 transition-transform group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-4 text-muted-foreground leading-relaxed">
+                      {item.a}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Next step: route undecided readers into the quiz (allowlisted slugs only) */}
+          {FAITH_FINDER_CTA_SLUGS.has(comp.slug) && (
+            <FaithFinderCTA sourceTemplate="comparison" className="mb-16" />
+          )}
 
           <div className="mt-24 mb-16 pt-16 border-t border-border">
             <div className="flex items-baseline justify-between mb-8">

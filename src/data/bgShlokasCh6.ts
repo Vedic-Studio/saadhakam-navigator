@@ -231,6 +231,9 @@ export const chapter6Shlokas: BgShloka[] = [
     ],
     practicalApplication:
       "For modern practitioners, the prescription translates simply: find a firm, comfortable, clean seat at an appropriate height. A firm cushion on the floor or a straight-backed chair both work. What matters is stability and cleanliness — physical and metaphorical. Your meditation space should feel like a sanctuary.",
+    seoTitle: "Bhagavad Gita 6.11: Translation & Word Meaning",
+    seoDescription:
+      "Bhagavad Gita 6.11 prescribes the meditation seat: clean place, firm, neither high nor low. Get the Sanskrit, transliteration, and word-by-word synonyms.",
   },
   {
     id: "6.12",

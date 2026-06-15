@@ -66,11 +66,72 @@ export interface ArticleMeta {
 
 export const articles: ArticleMeta[] = [
     {
+        slug: "six-darshanas",
+        route: "/six-darshanas",
+        title: "The Six Darshanas: Classical Schools of Indian Philosophy",
+        metaDescription:
+            "The six astika darshanas: Nyaya, Vaisheshika, Samkhya, Yoga, Purva Mimamsa, and Vedanta. Founder, sutra text, core idea, and pramana count for each, in one table.",
+        pillar: "ancient-wisdom",
+        publishDate: "2026-06-15",
+        readingTime: 6,
+        primaryKeyword: "number of classical darshanas",
+        wordCount: 1200,
+        aeoAnswer:
+            "There are six classical darshanas, the orthodox schools of Indian philosophy that accept the authority of the Vedas: Nyaya, Vaisheshika, Samkhya, Yoga, Purva Mimamsa, and Vedanta (Uttara Mimamsa). Each rests on a foundational sutra text and a commentarial lineage. They group into three traditional pairs: Nyaya with Vaisheshika, Samkhya with Yoga, and Mimamsa with Vedanta. Being orthodox (astika) means accepting the Vedas, not believing in a creator God.",
+        footerCta: {
+            title: "Go deeper into Vedanta",
+            description:
+                "Vedanta is the sixth darshana and the one that splits into Advaita, Vishishtadvaita, and Dvaita. Start with the school that interprets the Upanishads.",
+            href: "/what-is-vedanta",
+            label: "What is Vedanta",
+        },
+        relatedLinks: [
+            { text: "Nyaya-Vaisheshika", href: "/philosophies/nyaya-vaisheshika" },
+            { text: "Samkhya", href: "/philosophies/samkhya" },
+            { text: "Yoga Darshana", href: "/philosophies/yoga-darshana" },
+            { text: "Mimamsa", href: "/philosophies/mimamsa" },
+            { text: "Vedanta", href: "/philosophies/vedanta" },
+            { text: "What is Vedanta", href: "/what-is-vedanta" },
+            { text: "All Philosophies", href: "/philosophies" },
+        ],
+        faqs: [
+            {
+                question: "How many classical darshanas are there?",
+                answer:
+                    "There are six classical darshanas: Nyaya, Vaisheshika, Samkhya, Yoga, Purva Mimamsa, and Vedanta (Uttara Mimamsa). All six are called astika because they accept the authority of the Vedas. They are traditionally grouped into three pairs by topical affinity.",
+            },
+            {
+                question: "What are the three traditional pairings of the darshanas?",
+                answer:
+                    "The six schools pair as Nyaya-Vaisheshika (logic and ontology), Samkhya-Yoga (metaphysics and practice), and Mimamsa-Vedanta (ritual interpretation and philosophical interpretation of the Veda). Each pair shares a subject matter while keeping its own sutra text. Karl Potter's Encyclopedia of Indian Philosophies treats them in these groupings.",
+            },
+            {
+                question: "What is the difference between astika and nastika schools?",
+                answer:
+                    "Astika means accepting the authority of the Vedas, not belief in a creator God. Purva Mimamsa is formally silent on a creator, and Samkhya is formally atheistic, yet both are astika because they accept Vedic authority. Nastika schools reject that authority: Buddhism, Jainism, and Charvaka.",
+            },
+            {
+                question: "Which darshana is Yoga, and how does it relate to Samkhya?",
+                answer:
+                    "Yoga is the darshana of Patanjali's Yoga Sutras. It inherits Samkhya's purusha-prakriti dualism and its theory of the three gunas, then adds the eightfold ashtanga discipline as the practical method. The two differ on God: Yoga accepts Ishvara as a focus for meditation, while Samkhya is formally atheistic.",
+            },
+        ],
+        mentions: [
+            { name: "Indian philosophy", sameAs: "https://en.wikipedia.org/wiki/Indian_philosophy" },
+            { name: "Nyaya", sameAs: "https://en.wikipedia.org/wiki/Nyaya" },
+            { name: "Vaisheshika", sameAs: "https://en.wikipedia.org/wiki/Vaisheshika" },
+            { name: "Samkhya", sameAs: "https://en.wikipedia.org/wiki/Samkhya" },
+            { name: "Yoga", sameAs: "https://en.wikipedia.org/wiki/Yoga_(philosophy)" },
+            { name: "Mimamsa", sameAs: "https://en.wikipedia.org/wiki/Mimamsa" },
+            { name: "Vedanta", sameAs: "https://en.wikipedia.org/wiki/Vedanta" },
+        ],
+    },
+    {
         slug: "how-to-start-japa",
         route: "/how-to-start-japa",
-        title: "How to Start Japa: A 7-Step Beginner Guide (Mantra & Mala)",
+        title: "How to Start Japa: The 7-Step Daily Routine for Beginners",
         metaDescription:
-            "Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels: vaikhari, upamshu, manasika.",
+            "Japa gives the restless mind one job: 108 repetitions of a single sound. Follow the 7-step routine for mantra, mala, timing, and the three levels of practice.",
         pillar: "practical-practices",
         publishDate: "2026-03-20",
         readingTime: 9,
@@ -216,77 +277,6 @@ export const articles: ArticleMeta[] = [
             { name: "Bhakti Yoga", sameAs: "https://en.wikipedia.org/wiki/Bhakti_yoga", url: "/what-is-bhakti" },
             { name: "Adi Shankaracharya", sameAs: "https://en.wikipedia.org/wiki/Adi_Shankara", url: "/adi-shankaracharya-life-teachings", type: "Person" },
             { name: "Ramanuja", sameAs: "https://en.wikipedia.org/wiki/Ramanuja", type: "Person" },
-        ],
-    },
-    {
-        slug: "spiritual-practice-sequence",
-        route: "/spiritual-practice-sequence",
-        title: "Spiritual Practice Sequence: The Graded Curriculum from the Gita, Yoga Sutras & Shankara",
-        metaDescription:
-            "Indian spiritual practice is a graded curriculum, not a buffet. The Gita, Yoga Sutras, and Shankara's sadhana chatushtaya prescribe practices in order of readiness. Learn the sequence.",
-        pillar: "practical-practices",
-        publishDate: "2026-03-21",
-        readingTime: 11,
-        primaryKeyword: "spiritual practice sequence",
-        aeoAnswer:
-            "Indian spiritual practice is a graded curriculum, not a menu of options. The Bhagavad Gita, Patanjali's Yoga Sutras, and Shankaracharya's Vivekachudamani each prescribe practices in a specific sequence tied to the practitioner's inner readiness — their guna constitution, stage of purification, and degree of dispassion. Karma Yoga purifies the mind; Bhakti Yoga steadies it; Jnana Yoga delivers liberating knowledge. Choosing by preference instead of readiness is the primary reason sincere seekers stall.",
-        footerCta: {
-            title: "Start With the Daily Routine",
-            description:
-                "The curriculum is clear. The question is where you enter it. Build the first stage correctly and the rest follows.",
-            href: "/daily-spiritual-routine-beginners",
-            label: "Daily Spiritual Routine for Beginners",
-        },
-        relatedLinks: [
-            { text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
-            { text: "How to Start Japa", href: "/how-to-start-japa" },
-            { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
-            { text: "Choose Between Bhakti, Jnana, Karma, Raja Yoga", href: "/choose-between-bhakti-jnana-karma-raja-yoga" },
-            { text: "What is Kriya Yoga", href: "/what-is-kriya-yoga" },
-            { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
-        ],
-        faqs: [
-            {
-                question: "What is sadhana chatushtaya?",
-                answer:
-                    "Sadhana chatushtaya is Shankaracharya's four-fold qualification for Vedanta study: viveka (discrimination between the eternal and the temporary), vairagya (dispassion toward sense objects), shamadi-shatka-sampatti (six inner disciplines), and mumukshutva (intense longing for liberation). Vivekachudamani verses 18-19 state these are necessary conditions, not optional preparations. Without them, the teaching does not produce the fruit.",
-            },
-            {
-                question: "Can I practice Karma Yoga and Jnana Yoga at the same time?",
-                answer:
-                    "Shankara's Bhashya on Bhagavad Gita 3.3 is explicit: 'From no point of view whatsoever can there be a combination of Knowledge and action.' The two paths address different stages of inner readiness. Karma Yoga purifies the mind so that Jnana Yoga becomes possible.",
-            },
-            {
-                question: "What are the eight limbs of yoga in order?",
-                answer:
-                    "Patanjali's Yoga Sutra 2.29 lists eight limbs in sequence: yama, niyama, asana, pranayama, pratyahara, dharana, dhyana, and samadhi. Yoga Sutra 2.28 specifies that the progressive practice of these limbs destroys impurity and leads to discriminative wisdom. The sequence is deliberate — outer disciplines precede inner ones.",
-            },
-            {
-                question: "What does adhikari-bheda mean?",
-                answer:
-                    "Adhikari-bheda is the classical doctrine that different teachings are appropriate for different levels of readiness. The Bhagavad Gita 17.2 states that a person's innate faith (shraddha) reflects their guna constitution — sattvic, rajasic, or tamasic — and that practices must align with that constitution.",
-            },
-            {
-                question: "Is Vivekananda's four-yoga framework traditional?",
-                answer:
-                    "No. Vivekananda's equal-footing synthesis of Karma, Bhakti, Raja, and Jnana Yoga as four parallel paths was formulated in the 1890s and published in Raja Yoga (1896). Classical texts assign the paths a sequential rather than parallel relationship. Madhusudana Sarasvati's division of the Gita presents them as stages.",
-            },
-            {
-                question: "How do I know which practice to start with?",
-                answer:
-                    "Chinmayananda's BMI chart offers one diagnostic: if your problem is mala (mental impurity), begin with Karma Yoga. If it is vikshepa (fickleness), begin with Bhakti Yoga. If it is avarana (the veil of ignorance despite mental steadiness), begin with Jnana Yoga.",
-            },
-        ],
-        wordCount: 2400,
-        mentions: [
-            { name: "Bhagavad Gita", sameAs: "https://en.wikipedia.org/wiki/Bhagavad_Gita", url: "/texts/bhagavad-gita", type: "Book" },
-            { name: "Yoga Sutras of Patanjali", sameAs: "https://en.wikipedia.org/wiki/Yoga_Sutras_of_Patanjali", url: "/texts/yoga-sutras", type: "Book" },
-            { name: "Patanjali", sameAs: "https://en.wikipedia.org/wiki/Patanjali", type: "Person" },
-            { name: "Adi Shankaracharya", sameAs: "https://en.wikipedia.org/wiki/Adi_Shankara", url: "/adi-shankaracharya-life-teachings", type: "Person" },
-            { name: "Vivekachudamani", sameAs: "https://en.wikipedia.org/wiki/Vivekachudamani", type: "Book" },
-            { name: "Karma Yoga", sameAs: "https://en.wikipedia.org/wiki/Karma_yoga", url: "/what-is-karma-yoga" },
-            { name: "Bhakti Yoga", sameAs: "https://en.wikipedia.org/wiki/Bhakti_yoga", url: "/what-is-bhakti" },
-            { name: "Jnana Yoga", sameAs: "https://en.wikipedia.org/wiki/Jnana_yoga", url: "/what-is-jnana" },
         ],
     },
     {
@@ -1153,7 +1143,6 @@ export const articles: ArticleMeta[] = [
             { text: "Advaita Vedanta Explained", href: "/advaita-vedanta-explained" },
             { text: "What is Maya?", href: "/what-is-maya" },
             { text: "Advaita vs Dvaita", href: "/advaita-vs-dvaita" },
-            { text: "Buddhism Tradition Hub", href: "/traditions/buddhism" },
         ],
         faqs: [
             {
@@ -3561,7 +3550,6 @@ export const articles: ArticleMeta[] = [
         },
         relatedLinks: [
             { text: "Daily Spiritual Routine for Beginners", href: "/daily-spiritual-routine-beginners" },
-            { text: "Spiritual Practice Sequence", href: "/spiritual-practice-sequence" },
             { text: "How to Start Japa", href: "/how-to-start-japa" },
             { text: "How to Start Meditating Daily", href: "/how-to-start-meditating-daily" },
             { text: "What is Kriya Yoga", href: "/what-is-kriya-yoga" },

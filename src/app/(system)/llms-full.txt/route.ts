@@ -251,7 +251,7 @@ export async function GET() {
     for (const c of concepts) {
         parts.push(
             `## ${c.sanskritWord} — ${c.englishTranslation}`,
-            `URL: ${BASE_URL}/concepts/${c.slug}`,
+            `URL: ${BASE_URL}/what-is-${c.slug}`,
             `Markdown: ${BASE_URL}/api/llm-content?type=concepts&slug=${c.slug}`,
             ``,
             c.shortDefinition,

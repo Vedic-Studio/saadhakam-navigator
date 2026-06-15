@@ -12,6 +12,13 @@ export type ComparisonCategory =
   | "Concept vs Concept"
   | "Platform / Competitor";
 
+/** One row of the structured head-to-head table (dimension + each entity's value). */
+export interface ComparisonRow {
+  dimension: string;
+  a: string;
+  b: string;
+}
+
 export interface Comparison {
   slug: string;
   title: string;
@@ -22,6 +29,20 @@ export interface Comparison {
   tldr?: string;
   content?: string; // Markdown or detailed HTML content
   featuredImage?: ContentImage;
+  /**
+   * Genuine question/answer pairs rendered in a visible FAQ section on the
+   * comparison page. Only present when real, page-specific Q&As exist. The
+   * template renders the FAQ section AND FAQPage JSON-LD only when this is set,
+   * so FAQPage markup always corresponds to visible content (Google rule).
+   */
+  faq?: { q: string; a: string }[];
+  /**
+   * Structured comparison-table rows (dimension | entityA | entityB). When
+   * present, the template renders a semantic <table> (table snippet eligible)
+   * and emits a mirroring ItemList JSON-LD. Independent of the free-form
+   * tables some entries embed inside `content`.
+   */
+  comparisonTable?: ComparisonRow[];
 }
 
 export const comparisons: Comparison[] = [
@@ -1045,6 +1066,31 @@ export const comparisons: Comparison[] = [
 <p>If you have an overactive mind and seek psychological stability and clarity, Raja Yoga is your foundation. It builds the "container" of a stable mind.</p>
 <p>If you feel stuck, stagnant, or seek a direct, visceral experience of the divine energy within the body, Kundalini Yoga (practiced safely) can provide the "spark" to move you forward. Many advanced practitioners find that Raja Yoga provides the necessary discipline to handle the powerful energy that Kundalini awakens.</p>
     `,
+    comparisonTable: [
+      { dimension: "Primary focus", a: "Stilling the mind (Chitta Vritti Nirodha)", b: "Awakening dormant energy (Kundalini Shakti)" },
+      { dimension: "Method", a: "Ethics, concentration, and meditation across Patanjali's eight limbs", b: "Pranayama, mantra, and kriyas that raise energy through the chakras" },
+      { dimension: "Experience", a: "Calm, clear, expansive awareness", b: "Dynamic, energetic, visionary, sometimes ecstatic" },
+      { dimension: "Safety", a: "High; extremely gradual and self-paced", b: "Moderate; requires a qualified teacher and preparation" },
+      { dimension: "Goal", a: "Kaivalya, the liberation of consciousness", b: "Union of Shakti with Shiva at the Sahasrara" },
+    ],
+    faq: [
+      {
+        q: "What is the main difference between Raja Yoga and Kundalini Yoga?",
+        a: "Raja Yoga works top-down by stilling the mind through ethics, concentration, and meditation, so that body and energy follow. Kundalini Yoga works bottom-up by awakening dormant Shakti at the base of the spine and raising it through the chakras using breath, mantra, and kriya.",
+      },
+      {
+        q: "Is Kundalini Yoga safe to practice on your own?",
+        a: "Kundalini Yoga is generally considered to need a qualified teacher and prior preparation, because forcing the energy before the nervous system is ready can be destabilizing. Raja Yoga is far more gradual and is widely practiced safely without close supervision.",
+      },
+      {
+        q: "Should a beginner start with Raja Yoga or Kundalini Yoga?",
+        a: "Most teachers suggest beginning with the mental stability of Raja Yoga. A steady, ethical, concentrated mind becomes the container that can later hold the more intense energetic work of Kundalini Yoga.",
+      },
+      {
+        q: "Can Raja Yoga and Kundalini Yoga be practiced together?",
+        a: "Yes. Many practitioners use Raja Yoga's discipline to build the stillness and self-mastery needed to handle the powerful energy that Kundalini practice awakens, so the two paths reinforce rather than contradict each other.",
+      },
+    ],
   },
   {
     slug: "shaiva-siddhanta-vs-kashmir-shaivism",
@@ -1543,6 +1589,27 @@ export const comparisons: Comparison[] = [
 <p>Read the <strong>Bhagavad Gita</strong> if you are looking for a guide on how to live. It is the most accessible entry point to Indian thought, dealing with doubt, duty, and love in a way that feels intensely modern.</p>
 <p>Read the <strong>Upanishads</strong> (starting with the ten principal ones like the Isha, Kena, and Katha) if you have already grasped the basics and want to dive into the raw, uncompromising mystical source code of reality. They require more mental quietness and reflection.</p>
     `,
+    comparisonTable: [
+      { dimension: "Primary focus", a: "Integrates the yogas of action, devotion, and knowledge", b: "Pure knowledge (Jnana) of Brahman and Atman" },
+      { dimension: "Setting", a: "The battlefield of Kurukshetra, amid crisis and duty", b: "Forest hermitages and silent retreat" },
+      { dimension: "Nature of text", a: "Smriti, remembered tradition within the Mahabharata epic", b: "Shruti, the revealed final sections of the Vedas" },
+      { dimension: "Key audience", a: "Active people and householders facing real decisions", b: "Renunciants and contemplative philosophers" },
+      { dimension: "Core message", a: "Act selflessly and find Brahman within you", b: "You are Brahman" },
+    ],
+    faq: [
+      {
+        q: "What is the difference between the Bhagavad Gita and the Upanishads?",
+        a: "The Upanishads are the philosophical seeds, the revealed (Shruti) closing sections of the Vedas that state the nature of Brahman and the Self in abstract, mystical terms. The Bhagavad Gita is the practical fruit, a Smriti text that takes those truths and makes them actionable for a person living and acting in the world.",
+      },
+      {
+        q: "Is the Bhagavad Gita part of the Upanishads?",
+        a: "Not literally. The Upanishads are part of the Vedas (Shruti), while the Gita sits inside the Mahabharata epic (Smriti). But the Gita is often called an Upanishad in spirit because it distills and applies their non-dual teaching, which is why tradition compares the Upanishads to cows and the Gita to the milk drawn from them.",
+      },
+      {
+        q: "Which should you read first, the Gita or the Upanishads?",
+        a: "Most readers start with the Bhagavad Gita because it is the most accessible entry point, dealing with doubt, duty, and love in a concrete, modern-feeling way. The Upanishads, beginning with the principal ones like Isha, Kena, and Katha, reward readers who already grasp the basics and want the raw mystical source.",
+      },
+    ],
   },
   {
     slug: "yoga-sutras-vs-bhagavad-gita",
@@ -1690,12 +1757,12 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "ashtavakra-gita-vs-bhagavad-gita",
-    title: "Ashtavakra Gita vs Bhagavad Gita: Which to Read First?",
+    title: "Ashtavakra Gita vs Bhagavad Gita: 5 Differences",
     category: "Text vs Text",
     entityA: "Ashtavakra Gita",
     entityB: "Bhagavad Gita",
     metaDescription:
-      "The Bhagavad Gita teaches you how to act in the world. The Ashtavakra Gita says you're already free. Compare audience, method, and read order.",
+      "The Gita teaches how to act; the Ashtavakra Gita says there is nothing to do. Compare the two across five axes, then see which one fits where you are now.",
     tldr: "The Bhagavad Gita is the 'Kindergarten' of Advaita (for everyone); the Ashtavakra Gita is the 'Post-Doctorate' (for those ready for absolute non-duality). The Gita teaches how to act; Ashtavakra teaches how to simply be.",
     content: `
 <h2>The Action and the Absolute</h2>
@@ -1723,6 +1790,27 @@ export const comparisons: Comparison[] = [
 <p>If you feel you have much to "do"—if you are struggling with your emotions and your place in society—read the <strong>Bhagavad Gita</strong>. It will give you the strength to move forward.</p>
 <p>If you have been practicing for years, have done the service, have studied the books, and yet you feel "stuck" in the role of the seeker—if you are ready to "drop the search" and simply see—the <strong>Ashtavakra Gita</strong> will pull the rug out from under your "spiritual ego" and set you free.</p>
     `,
+    comparisonTable: [
+      { dimension: "Starting point", a: "Conflict and confusion that need resolving", b: "Radiant awareness that is already free" },
+      { dimension: "Key advice", a: "Act for the sake of the Divine", b: "Rest in your own being and do nothing" },
+      { dimension: "Mood", a: "Supportive, emotional, balanced", b: "Uncompromising, radical, intellectual" },
+      { dimension: "Requirement", a: "Sincerity and a sense of duty", b: "A pre-purified mind and mature intellect" },
+      { dimension: "View of the path", a: "Essential, through Karma, Bhakti, and Jnana", b: "Unnecessary, even an obstacle" },
+    ],
+    faq: [
+      {
+        q: "What is the difference between the Ashtavakra Gita and the Bhagavad Gita?",
+        a: "The Bhagavad Gita meets you where you are and teaches how to act, purifying body, emotion, and duty through Karma and Bhakti Yoga. The Ashtavakra Gita begins from the conclusion that you are already free, dismisses practice as another ego-trap, and points directly at the recognition of your unchanging nature.",
+      },
+      {
+        q: "Which should you read first, the Bhagavad Gita or the Ashtavakra Gita?",
+        a: "Read the Bhagavad Gita first if you still feel you have much to do or are struggling with emotions and your place in the world. The Ashtavakra Gita suits a reader who has practiced for years, feels stuck in the role of the seeker, and is ready to drop the search entirely.",
+      },
+      {
+        q: "Why is the Ashtavakra Gita considered more advanced?",
+        a: "Because it assumes a pre-purified mind and offers no gradual path. It speaks only the language of immediate, absolute non-duality, so without the groundwork that texts like the Bhagavad Gita provide, its radical directness can be misread as license rather than realization.",
+      },
+    ],
   },
   {
     slug: "shiva-sutras-vs-yoga-sutras",

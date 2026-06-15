@@ -186,7 +186,7 @@ export default async function PseoConceptPage({
 
   const breadcrumbItems = [
     { label: "Home", href: "/" },
-    { label: "Concepts", href: "/learn" },
+    { label: "Concepts", href: "/concepts" },
     { label: conceptName, href: `/what-is-${concept.slug}` },
   ];
 
@@ -245,7 +245,7 @@ export default async function PseoConceptPage({
           <Breadcrumbs
             items={[
               { label: "Home", href: "/" },
-              { label: "Concepts", href: "/learn" },
+              { label: "Concepts", href: "/concepts" },
               { label: conceptName, href: `/what-is-${concept.slug}` },
             ]}
           />

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,17 @@ import type { QuizResult } from "@/data/faithFinderQuiz";
 type QuizState = "intro" | "quiz" | "results";
 
 export default function FaithFinderPage() {
+  return (
+    <Suspense fallback={null}>
+      <FaithFinderPageInner />
+    </Suspense>
+  );
+}
+
+function FaithFinderPageInner() {
+  const searchParams = useSearchParams();
+  const sourceTemplate = searchParams.get("src") || undefined;
+
   const [quizState, setQuizState] = useState<QuizState>("intro");
   const [result, setResult] = useState<QuizResult | null>(null);
 
@@ -113,7 +125,7 @@ export default function FaithFinderPage() {
         {quizState === "quiz" && (
           <div className="py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
-              <QuizContainer onComplete={handleQuizComplete} />
+              <QuizContainer onComplete={handleQuizComplete} sourceTemplate={sourceTemplate} />
             </div>
           </div>
         )}

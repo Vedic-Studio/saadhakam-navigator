@@ -37,7 +37,7 @@ export async function generateMetadata({
   if (!dynasty) return {};
 
   return buildPageMetadata({
-    title: dynasty.name + " | Sanatan History",
+    title: dynasty.seoTitle ?? dynasty.name + " | Sanatan History",
     description: dynasty.metaDescription,
     path: "/sanatan-history/dynasties/" + slug,
   });
@@ -141,6 +141,19 @@ export default async function DynastyDetailPage({
     >
       {/* AEO direct answer */}
       <AeoBlock text={dynasty.significance} />
+
+      {/* On-page answer block — surfaces date range, ruler count, and the
+          key transition under a dedicated H2 for AI extractability */}
+      {dynasty.answerBlock && (
+        <div className="glass-card rounded-2xl border border-white/5 p-6 mb-8">
+          <h2 className="font-display text-xl font-semibold text-foreground mb-4">
+            {dynasty.answerBlock.heading}
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            {dynasty.answerBlock.body}
+          </p>
+        </div>
+      )}
 
       {/* Branch badge + date range + capital */}
       <div className="flex flex-wrap items-center gap-3 mb-8">

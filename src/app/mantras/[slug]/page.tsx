@@ -100,6 +100,15 @@ export default async function MantraDetailPage({ params }: { params: Promise<{ s
                         </p>
                     </ScrollReveal>
 
+                    {mantra.answerBlock && (
+                        <ScrollReveal delay={0.08}>
+                            <section className="mb-10">
+                                <h2 className="text-2xl font-display font-bold mb-4">{mantra.answerBlock.heading}</h2>
+                                <p className="text-muted-foreground leading-relaxed">{mantra.answerBlock.body}</p>
+                            </section>
+                        </ScrollReveal>
+                    )}
+
                     {mantra.etymology && (
                         <ScrollReveal delay={0.1}>
                             <section className="mb-10">

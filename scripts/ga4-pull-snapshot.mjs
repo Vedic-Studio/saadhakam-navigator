@@ -39,6 +39,8 @@ loadEnvLocal();
 
 const KEY_FILE = process.env.GOOGLE_SERVICE_ACCOUNT_FILE || resolve(ROOT, ".data", "google-service-account.json");
 const PROPERTY_ID = process.env.GA4_PROPERTY_ID;
+const USE_ADC = process.env.GA4_AUTH === "adc" || process.env.GSC_AUTH === "adc" || !existsSync(KEY_FILE);
+const QUOTA_PROJECT = process.env.GOOGLE_CLOUD_PROJECT || process.env.GSC_QUOTA_PROJECT || "sadhaka-seo";
 if (!PROPERTY_ID) {
   console.error("GA4_PROPERTY_ID not set. Add to .env.local.");
   process.exit(1);
@@ -59,6 +61,13 @@ const ARGS = parseArgs(process.argv.slice(2));
 mkdirSync(ARGS.outDir, { recursive: true });
 
 async function getAccessToken(scopes) {
+  if (USE_ADC) {
+    const { google } = await import("googleapis");
+    const auth = new google.auth.GoogleAuth({ scopes });
+    const client = await auth.getClient();
+    const token = await client.getAccessToken();
+    return token.token;
+  }
   const keyData = JSON.parse(readFileSync(KEY_FILE, "utf-8"));
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: "RS256", typ: "JWT" };
@@ -80,20 +89,18 @@ async function getAccessToken(scopes) {
 
 async function ga4Run(body, token) {
   const url = `https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:runReport`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+  const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
+  if (USE_ADC) headers["x-goog-user-project"] = QUOTA_PROJECT;
+  const res = await fetch(url, { method: "POST", headers, body: JSON.stringify(body) });
   const text = await res.text();
   if (!res.ok) throw new Error(`GA4 runReport failed: ${res.status} ${text}`);
   return text ? JSON.parse(text) : null;
 }
 
 async function adminCheck(token) {
-  const res = await fetch(`https://analyticsadmin.googleapis.com/v1beta/properties/${PROPERTY_ID}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const headers = { Authorization: `Bearer ${token}` };
+  if (USE_ADC) headers["x-goog-user-project"] = QUOTA_PROJECT;
+  const res = await fetch(`https://analyticsadmin.googleapis.com/v1beta/properties/${PROPERTY_ID}`, { headers });
   const text = await res.text();
   if (!res.ok) {
     return { ok: false, status: res.status, body: text };
