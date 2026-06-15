@@ -21,7 +21,38 @@ export interface Tithi {
     aeoBlock: string;
     practiceSlugs: string[];
     faq: Array<{ question: string; answer: string }>;
+    /**
+     * Optional per-tithi SEO overrides. When omitted the page falls back to the
+     * templated `${name} Tithi` title and a description composed from
+     * `description`. Override these for individual tithis whose GSC CTR is below
+     * expectation. `seoFacts` is an on-page answer block surfacing the tithi's
+     * unique associations under a dedicated H2.
+     */
+    seoTitle?: string;
+    seoDescription?: string;
+    seoFacts?: { heading: string; body: string };
 }
+
+/**
+ * Per-tithi SEO overrides keyed by generated slug. Tithis are generated
+ * programmatically from `tithiBase`, so static, hand-authored SERP copy and
+ * on-page answer blocks for individual tithis live here and are merged in
+ * during generation. Only seed an entry when a specific tithi needs it.
+ */
+const tithiSeoOverrides: Record<
+    string,
+    { seoTitle: string; seoDescription: string; seoFacts: { heading: string; body: string } }
+> = {
+    "shukla-panchami": {
+        seoTitle: "Shukla Panchami: What This Tithi Means (Nagas, Day 5)",
+        seoDescription:
+            "Shukla Panchami is the 5th waxing lunar day, presided by the Nagas and tied to learning, healing, and sensitivity. What it supports and how to observe it.",
+        seoFacts: {
+            heading: "What Is Shukla Panchami and What Is It For?",
+            body: "Shukla Panchami is the fifth lunar day (tithi) of the waxing fortnight (Shukla Paksha), counted from the new moon toward the full moon. Its presiding powers are the Nagas, the serpent deities, which links the day to subtlety, healing, and heightened sensitivity. Traditionally it favours learning, study, and recovery, and it underlies well-known observances: Nag Panchami, when the Nagas are honoured, and Vasant Panchami, the Shukla Panchami of Magha associated with Saraswati and the first stirrings of spring. On Sadhaka, the tithi is treated as a contemplative rhythm marker for learning and gentle repair rather than a predictive forecast.",
+        },
+    },
+};
 
 const tithiBase = [
     ["Pratipada", "Agni", "First lunar day, suited to resetting rhythm and beginning deliberately."],
@@ -127,6 +158,8 @@ export const tithis: Tithi[] = ["Shukla", "Krishna"].flatMap((paksha) =>
         const resolvedName = isEnd ? (paksha === "Shukla" ? "Purnima" : "Amavasya") : name;
         const slug = `${paksha.toLowerCase()}-${resolvedName.toLowerCase().replace(/\//g, "-").replace(/\s+/g, "-")}`;
 
+        const seoOverride = tithiSeoOverrides[slug];
+
         return {
             slug,
             name: `${paksha} ${resolvedName}`,
@@ -143,6 +176,7 @@ export const tithis: Tithi[] = ["Shukla", "Krishna"].flatMap((paksha) =>
                     answer: `${paksha} ${resolvedName} is a lunar day in the traditional tithi cycle used for observance, reflection, and practice timing.`,
                 },
             ],
+            ...(seoOverride ?? {}),
         } satisfies Tithi;
     })
 );
@@ -197,4 +231,17 @@ export function getVaraBySlug(slug: string): Vara | undefined {
 
 export function getTithiBySlug(slug: string): Tithi | undefined {
     return tithis.find((tithi) => tithi.slug === slug);
+}
+
+/**
+ * Resolves the SERP title and description for a tithi page. Returns the
+ * per-tithi `seoTitle`/`seoDescription` overrides when present; otherwise the
+ * generic templated title and a description built from the tithi's narrative.
+ * Pure function, safe to unit test in isolation.
+ */
+export function resolveTithiSeo(tithi: Tithi): { title: string; description: string } {
+    return {
+        title: tithi.seoTitle ?? `${tithi.name} Tithi`,
+        description: tithi.seoDescription ?? tithi.description,
+    };
 }

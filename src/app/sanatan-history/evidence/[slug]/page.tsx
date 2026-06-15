@@ -31,7 +31,7 @@ export async function generateMetadata({
   if (!item) return {};
 
   return buildPageMetadata({
-    title: item.claim + " | Evidence | Sanatan History",
+    title: (item.seoTitle ?? item.claim) + " | Evidence | Sanatan History",
     description: item.metaDescription,
     path: "/sanatan-history/evidence/" + slug,
   });
@@ -120,6 +120,38 @@ export default async function EvidenceDetailPage({
       <div className="mb-8">
         <EvidenceStatusBadge status={item.status} size="md" />
       </div>
+
+      {/* Lead comparison table — relocates raw quantitative claims out of the
+          meta and onto the page as an AI-extractable answer block */}
+      {item.comparisonTable && (
+        <div className="glass-card rounded-2xl border border-white/5 p-6 mb-8">
+          <h2 className="font-display text-xl font-semibold text-foreground mb-4">
+            {item.comparisonTable.heading}
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="text-left border-b border-white/10">
+                  {item.comparisonTable.columns.map((col) => (
+                    <th key={col} className="py-2 pr-4 font-semibold text-foreground">
+                      {col}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {item.comparisonTable.rows.map((row) => (
+                  <tr key={row.label} className="border-b border-white/5">
+                    <td className="py-2 pr-4 text-foreground">{row.label}</td>
+                    <td className="py-2 pr-4 text-muted-foreground">{row.value}</td>
+                    <td className="py-2 pr-4 text-muted-foreground">{row.vsReference}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       {/* Full Description */}
       <div className="glass-card rounded-2xl border border-white/5 p-6 mb-8">

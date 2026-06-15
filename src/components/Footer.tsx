@@ -19,6 +19,8 @@ const footerLinks = {
     { label: "Brand Facts", href: "/brand-facts" },
   ],
   learn: [
+    { label: "Concepts", href: "/concepts" },
+    { label: "Six Darshanas", href: "/six-darshanas" },
     { label: "Sacred Texts", href: "/texts" },
     { label: "Bhagavad Gita", href: "/texts/bhagavad-gita" },
     { label: "Sanskrit Lexicon", href: "/learn/sanskrit" },
@@ -26,6 +28,7 @@ const footerLinks = {
   ],
   practice: [
     { label: "Find Your Path", href: "/faith-finder" },
+    { label: "Practices", href: "/practices" },
     { label: "Mantras", href: "/mantras" },
     { label: "Stotras", href: "/stotras/shiva-tandava-stotram" },
     { label: "Jyotish", href: "/jyotish" },

@@ -53,6 +53,9 @@ const navSections: NavSection[] = [
     group: {
       label: "Explore",
       items: [
+        { label: "Concepts", href: "/concepts", description: "Define karma, dharma, moksha, and core ideas." },
+        { label: "Six Darshanas", href: "/six-darshanas", description: "The six classical schools and how they pair up." },
+        { label: "Practices", href: "/practices", description: "Begin japa, dhyana, puja, seva, and pranayama." },
         { label: "Texts", href: "/sacred-texts-teachings", description: "Scriptures, teachings, and foundational sources." },
         { label: "Deities", href: "/deities", description: "Meet forms, symbolism, and devotional significance." },
         { label: "Traditions", href: "/spiritual-traditions-paths", description: "Understand lineages, sampradayas, and approaches." },

@@ -9,9 +9,15 @@ import { QuestionRenderer } from "./QuestionRenderer";
 
 interface QuizContainerProps {
     onComplete: (result: QuizResult) => void;
+    /**
+     * Canonical `source_template` of the page that sent the reader here, read
+     * from the `?src=` query param on /faith-finder. Forwarded to quizStart so
+     * faith_finder_quiz_start carries source_template attribution.
+     */
+    sourceTemplate?: string;
 }
 
-export const QuizContainer = ({ onComplete }: QuizContainerProps) => {
+export const QuizContainer = ({ onComplete, sourceTemplate }: QuizContainerProps) => {
     type Step = "question" | "calculating";
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -25,15 +31,16 @@ export const QuizContainer = ({ onComplete }: QuizContainerProps) => {
     const result = useMemo(() => determineResult(scores), [scores]);
 
     useEffect(() => {
-        if (typeof window !== "undefined" && typeof window.sadhaka?.quizStart === "function") {
-            window.sadhaka.quizStart({
+        const quizStart = typeof window !== "undefined" ? window.sadhaka?.quizStart : undefined;
+        if (typeof quizStart === "function") {
+            quizStart({
                 pageArchetype: "conversion-bridge",
                 pageTemplate: "/faith-finder",
                 bridgeType: "faith-finder-quiz",
-            });
+            }, sourceTemplate as Parameters<NonNullable<typeof quizStart>>[1]);
         }
 
-    }, []);
+    }, [sourceTemplate]);
 
     const handleAnswer = (optionId: string) => {
         setAnswers(prev => ({

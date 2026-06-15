@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { FaithFinderCTA } from "@/components/faith-finder/FaithFinderCTA";
 
 export const metadata: Metadata = {
     title: "Ramana Maharshi's 'Who Am I?' Technique: A Guide to Self-Inquiry",
@@ -224,6 +225,9 @@ export default function RamanaMaharshiWhoAmIPage() {
                                 ))}
                             </div>
                         </section>
+
+                        {/* Next step: route undecided readers into the quiz */}
+                        <FaithFinderCTA sourceTemplate="biography" className="mt-16" />
                     </div>
 
                     <div className="mt-20 bg-orange-600 rounded-3xl p-12 text-center text-white shadow-2xl">

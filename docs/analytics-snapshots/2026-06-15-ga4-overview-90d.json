@@ -1,0 +1,881 @@
+{
+  "source": "ga4-snapshot",
+  "propertyId": "526473437",
+  "propertyName": "Sadhaka",
+  "timeZone": "Asia/Calcutta",
+  "pulledAt": "2026-06-15T09:08:15.326Z",
+  "windowDays": 90,
+  "range": {
+    "startDate": "2026-03-17",
+    "endDate": "2026-06-14"
+  },
+  "overview": {
+    "sessions": 1179,
+    "activeUsers": 965,
+    "newUsers": 968,
+    "engagementRate": 0.359626802374894,
+    "pageViews": 2441
+  },
+  "topPages": [
+    {
+      "page": "/",
+      "pageViews": 221,
+      "sessions": 119
+    },
+    {
+      "page": "/stotras/shiva-tandava-stotram",
+      "pageViews": 92,
+      "sessions": 43
+    },
+    {
+      "page": "/faith-finder",
+      "pageViews": 59,
+      "sessions": 29
+    },
+    {
+      "page": "/10-powerful-sanskrit-mantras",
+      "pageViews": 57,
+      "sessions": 49
+    },
+    {
+      "page": "/sacred-texts-teachings",
+      "pageViews": 48,
+      "sessions": 8
+    },
+    {
+      "page": "/articles",
+      "pageViews": 45,
+      "sessions": 19
+    },
+    {
+      "page": "/vedic-clock",
+      "pageViews": 44,
+      "sessions": 24
+    },
+    {
+      "page": "/how-to-start-japa",
+      "pageViews": 43,
+      "sessions": 29
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama",
+      "pageViews": 42,
+      "sessions": 28
+    },
+    {
+      "page": "/jyotish",
+      "pageViews": 36,
+      "sessions": 12
+    },
+    {
+      "page": "/stotras/shiva-tandava-stotram/verse-1",
+      "pageViews": 36,
+      "sessions": 17
+    },
+    {
+      "page": "/practical-spiritual-practices",
+      "pageViews": 35,
+      "sessions": 15
+    },
+    {
+      "page": "/stotras/lalita-sahasranama",
+      "pageViews": 35,
+      "sessions": 19
+    },
+    {
+      "page": "/ancient-wisdom-philosophies",
+      "pageViews": 34,
+      "sessions": 10
+    },
+    {
+      "page": "/philosophies",
+      "pageViews": 34,
+      "sessions": 24
+    },
+    {
+      "page": "/compare/ashtavakra-gita-vs-bhagavad-gita",
+      "pageViews": 31,
+      "sessions": 35
+    },
+    {
+      "page": "/sanatan-history",
+      "pageViews": 31,
+      "sessions": 21
+    },
+    {
+      "page": "/deities",
+      "pageViews": 28,
+      "sessions": 11
+    },
+    {
+      "page": "/ramana-maharshi-who-am-i",
+      "pageViews": 28,
+      "sessions": 28
+    },
+    {
+      "page": "/content-agent/editor-desk",
+      "pageViews": 26,
+      "sessions": 13
+    },
+    {
+      "page": "/panchang",
+      "pageViews": 26,
+      "sessions": 8
+    },
+    {
+      "page": "/mantras/om-gram-grim-graum-sah-gurave-namah",
+      "pageViews": 25,
+      "sessions": 17
+    },
+    {
+      "page": "/how-to-read-upanishads-western-beginner",
+      "pageViews": 24,
+      "sessions": 17
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-83",
+      "pageViews": 23,
+      "sessions": 19
+    },
+    {
+      "page": "/mantras/om-bram-brim-braum-sah-budhaya-namah",
+      "pageViews": 22,
+      "sessions": 14
+    }
+  ],
+  "events": [
+    {
+      "eventName": "page_view",
+      "eventCount": 2441
+    },
+    {
+      "eventName": "session_start",
+      "eventCount": 1181
+    },
+    {
+      "eventName": "app_open",
+      "eventCount": 1128
+    },
+    {
+      "eventName": "first_visit",
+      "eventCount": 968
+    },
+    {
+      "eventName": "seo_article_read",
+      "eventCount": 906
+    },
+    {
+      "eventName": "user_engagement",
+      "eventCount": 555
+    },
+    {
+      "eventName": "scroll",
+      "eventCount": 218
+    },
+    {
+      "eventName": "cta_click",
+      "eventCount": 72
+    },
+    {
+      "eventName": "path_explore",
+      "eventCount": 72
+    },
+    {
+      "eventName": "faith_finder_quiz_start",
+      "eventCount": 22
+    },
+    {
+      "eventName": "form_start",
+      "eventCount": 22
+    },
+    {
+      "eventName": "faith_finder_quiz_complete",
+      "eventCount": 11
+    },
+    {
+      "eventName": "faith_finder_email_capture",
+      "eventCount": 6
+    },
+    {
+      "eventName": "faith_finder_result_share",
+      "eventCount": 2
+    },
+    {
+      "eventName": "faith_finder_result_view",
+      "eventCount": 2
+    }
+  ],
+  "trend": [
+    {
+      "date": "20260317",
+      "sessions": 14,
+      "activeUsers": 5
+    },
+    {
+      "date": "20260319",
+      "sessions": 5,
+      "activeUsers": 2
+    },
+    {
+      "date": "20260320",
+      "sessions": 2,
+      "activeUsers": 2
+    },
+    {
+      "date": "20260321",
+      "sessions": 7,
+      "activeUsers": 4
+    },
+    {
+      "date": "20260322",
+      "sessions": 2,
+      "activeUsers": 0
+    },
+    {
+      "date": "20260323",
+      "sessions": 4,
+      "activeUsers": 3
+    },
+    {
+      "date": "20260324",
+      "sessions": 1,
+      "activeUsers": 1
+    },
+    {
+      "date": "20260325",
+      "sessions": 4,
+      "activeUsers": 4
+    },
+    {
+      "date": "20260326",
+      "sessions": 11,
+      "activeUsers": 10
+    },
+    {
+      "date": "20260327",
+      "sessions": 11,
+      "activeUsers": 11
+    },
+    {
+      "date": "20260328",
+      "sessions": 12,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260329",
+      "sessions": 14,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260330",
+      "sessions": 11,
+      "activeUsers": 10
+    },
+    {
+      "date": "20260331",
+      "sessions": 8,
+      "activeUsers": 5
+    },
+    {
+      "date": "20260401",
+      "sessions": 14,
+      "activeUsers": 10
+    },
+    {
+      "date": "20260402",
+      "sessions": 12,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260403",
+      "sessions": 11,
+      "activeUsers": 6
+    },
+    {
+      "date": "20260404",
+      "sessions": 12,
+      "activeUsers": 11
+    },
+    {
+      "date": "20260405",
+      "sessions": 14,
+      "activeUsers": 13
+    },
+    {
+      "date": "20260406",
+      "sessions": 6,
+      "activeUsers": 6
+    },
+    {
+      "date": "20260407",
+      "sessions": 5,
+      "activeUsers": 5
+    },
+    {
+      "date": "20260408",
+      "sessions": 1,
+      "activeUsers": 1
+    },
+    {
+      "date": "20260409",
+      "sessions": 13,
+      "activeUsers": 10
+    },
+    {
+      "date": "20260410",
+      "sessions": 16,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260411",
+      "sessions": 7,
+      "activeUsers": 6
+    },
+    {
+      "date": "20260412",
+      "sessions": 8,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260413",
+      "sessions": 17,
+      "activeUsers": 17
+    },
+    {
+      "date": "20260414",
+      "sessions": 5,
+      "activeUsers": 5
+    },
+    {
+      "date": "20260415",
+      "sessions": 6,
+      "activeUsers": 6
+    },
+    {
+      "date": "20260416",
+      "sessions": 4,
+      "activeUsers": 4
+    },
+    {
+      "date": "20260417",
+      "sessions": 10,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260418",
+      "sessions": 10,
+      "activeUsers": 9
+    },
+    {
+      "date": "20260419",
+      "sessions": 14,
+      "activeUsers": 12
+    },
+    {
+      "date": "20260420",
+      "sessions": 8,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260421",
+      "sessions": 7,
+      "activeUsers": 6
+    },
+    {
+      "date": "20260422",
+      "sessions": 12,
+      "activeUsers": 11
+    },
+    {
+      "date": "20260423",
+      "sessions": 11,
+      "activeUsers": 10
+    },
+    {
+      "date": "20260424",
+      "sessions": 7,
+      "activeUsers": 6
+    },
+    {
+      "date": "20260425",
+      "sessions": 9,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260426",
+      "sessions": 11,
+      "activeUsers": 9
+    },
+    {
+      "date": "20260427",
+      "sessions": 10,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260428",
+      "sessions": 11,
+      "activeUsers": 9
+    },
+    {
+      "date": "20260429",
+      "sessions": 4,
+      "activeUsers": 4
+    },
+    {
+      "date": "20260430",
+      "sessions": 8,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260501",
+      "sessions": 10,
+      "activeUsers": 9
+    },
+    {
+      "date": "20260502",
+      "sessions": 11,
+      "activeUsers": 9
+    },
+    {
+      "date": "20260503",
+      "sessions": 6,
+      "activeUsers": 5
+    },
+    {
+      "date": "20260504",
+      "sessions": 8,
+      "activeUsers": 7
+    },
+    {
+      "date": "20260505",
+      "sessions": 11,
+      "activeUsers": 11
+    },
+    {
+      "date": "20260506",
+      "sessions": 10,
+      "activeUsers": 9
+    },
+    {
+      "date": "20260507",
+      "sessions": 6,
+      "activeUsers": 6
+    },
+    {
+      "date": "20260508",
+      "sessions": 8,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260509",
+      "sessions": 10,
+      "activeUsers": 10
+    },
+    {
+      "date": "20260510",
+      "sessions": 8,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260511",
+      "sessions": 15,
+      "activeUsers": 14
+    },
+    {
+      "date": "20260512",
+      "sessions": 12,
+      "activeUsers": 10
+    },
+    {
+      "date": "20260513",
+      "sessions": 11,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260514",
+      "sessions": 15,
+      "activeUsers": 12
+    },
+    {
+      "date": "20260515",
+      "sessions": 10,
+      "activeUsers": 9
+    },
+    {
+      "date": "20260516",
+      "sessions": 10,
+      "activeUsers": 9
+    },
+    {
+      "date": "20260517",
+      "sessions": 14,
+      "activeUsers": 13
+    },
+    {
+      "date": "20260518",
+      "sessions": 7,
+      "activeUsers": 7
+    },
+    {
+      "date": "20260519",
+      "sessions": 13,
+      "activeUsers": 10
+    },
+    {
+      "date": "20260520",
+      "sessions": 14,
+      "activeUsers": 12
+    },
+    {
+      "date": "20260521",
+      "sessions": 16,
+      "activeUsers": 15
+    },
+    {
+      "date": "20260522",
+      "sessions": 15,
+      "activeUsers": 15
+    },
+    {
+      "date": "20260523",
+      "sessions": 21,
+      "activeUsers": 19
+    },
+    {
+      "date": "20260524",
+      "sessions": 15,
+      "activeUsers": 12
+    },
+    {
+      "date": "20260525",
+      "sessions": 22,
+      "activeUsers": 20
+    },
+    {
+      "date": "20260526",
+      "sessions": 18,
+      "activeUsers": 18
+    },
+    {
+      "date": "20260527",
+      "sessions": 22,
+      "activeUsers": 16
+    },
+    {
+      "date": "20260528",
+      "sessions": 30,
+      "activeUsers": 24
+    },
+    {
+      "date": "20260529",
+      "sessions": 10,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260530",
+      "sessions": 16,
+      "activeUsers": 16
+    },
+    {
+      "date": "20260531",
+      "sessions": 21,
+      "activeUsers": 19
+    },
+    {
+      "date": "20260601",
+      "sessions": 36,
+      "activeUsers": 32
+    },
+    {
+      "date": "20260602",
+      "sessions": 24,
+      "activeUsers": 21
+    },
+    {
+      "date": "20260603",
+      "sessions": 22,
+      "activeUsers": 19
+    },
+    {
+      "date": "20260604",
+      "sessions": 20,
+      "activeUsers": 19
+    },
+    {
+      "date": "20260605",
+      "sessions": 30,
+      "activeUsers": 26
+    },
+    {
+      "date": "20260606",
+      "sessions": 31,
+      "activeUsers": 24
+    },
+    {
+      "date": "20260607",
+      "sessions": 29,
+      "activeUsers": 27
+    },
+    {
+      "date": "20260608",
+      "sessions": 28,
+      "activeUsers": 24
+    },
+    {
+      "date": "20260609",
+      "sessions": 33,
+      "activeUsers": 29
+    },
+    {
+      "date": "20260610",
+      "sessions": 30,
+      "activeUsers": 30
+    },
+    {
+      "date": "20260611",
+      "sessions": 23,
+      "activeUsers": 22
+    },
+    {
+      "date": "20260612",
+      "sessions": 11,
+      "activeUsers": 11
+    },
+    {
+      "date": "20260613",
+      "sessions": 34,
+      "activeUsers": 32
+    },
+    {
+      "date": "20260614",
+      "sessions": 25,
+      "activeUsers": 25
+    }
+  ],
+  "quizFunnel": [
+    {
+      "eventName": "faith_finder_quiz_start",
+      "count": 22
+    },
+    {
+      "eventName": "faith_finder_quiz_complete",
+      "count": 11
+    },
+    {
+      "eventName": "faith_finder_email_capture",
+      "count": 6
+    }
+  ],
+  "sourceMix": [
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "sessions": 496,
+      "activeUsers": 436,
+      "engagementRate": 0.19153225806451613
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "sessions": 312,
+      "activeUsers": 248,
+      "engagementRate": 0.46794871794871795
+    },
+    {
+      "source": "bing",
+      "medium": "organic",
+      "sessions": 92,
+      "activeUsers": 78,
+      "engagementRate": 0.6086956521739131
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "(not set)",
+      "sessions": 46,
+      "activeUsers": 44,
+      "engagementRate": 0.1956521739130435
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "ai-assistant",
+      "sessions": 45,
+      "activeUsers": 43,
+      "engagementRate": 0.4888888888888889
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "referral",
+      "sessions": 44,
+      "activeUsers": 33,
+      "engagementRate": 0.5454545454545454
+    },
+    {
+      "source": "app.ahrefs.com",
+      "medium": "referral",
+      "sessions": 27,
+      "activeUsers": 1,
+      "engagementRate": 0.48148148148148145
+    },
+    {
+      "source": "duckduckgo",
+      "medium": "organic",
+      "sessions": 26,
+      "activeUsers": 21,
+      "engagementRate": 0.5769230769230769
+    },
+    {
+      "source": "yahoo",
+      "medium": "organic",
+      "sessions": 19,
+      "activeUsers": 16,
+      "engagementRate": 0.631578947368421
+    },
+    {
+      "source": "ecosia.org",
+      "medium": "organic",
+      "sessions": 13,
+      "activeUsers": 9,
+      "engagementRate": 0.3076923076923077
+    },
+    {
+      "source": "results_page",
+      "medium": "(not set)",
+      "sessions": 8,
+      "activeUsers": 1,
+      "engagementRate": 0.5
+    },
+    {
+      "source": "copilot.com",
+      "medium": "referral",
+      "sessions": 7,
+      "activeUsers": 5,
+      "engagementRate": 0.42857142857142855
+    },
+    {
+      "source": "in.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 7,
+      "activeUsers": 6,
+      "engagementRate": 0.42857142857142855
+    },
+    {
+      "source": "copilot.com",
+      "medium": "(not set)",
+      "sessions": 5,
+      "activeUsers": 3,
+      "engagementRate": 0.6
+    },
+    {
+      "source": "perplexity.ai",
+      "medium": "referral",
+      "sessions": 5,
+      "activeUsers": 2,
+      "engagementRate": 0
+    },
+    {
+      "source": "m.facebook.com",
+      "medium": "referral",
+      "sessions": 3,
+      "activeUsers": 3,
+      "engagementRate": 0
+    },
+    {
+      "source": "malaysia.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 3,
+      "activeUsers": 2,
+      "engagementRate": 0.6666666666666666
+    },
+    {
+      "source": "qwant.com",
+      "medium": "organic",
+      "sessions": 3,
+      "activeUsers": 3,
+      "engagementRate": 1
+    },
+    {
+      "source": "share_page",
+      "medium": "(not set)",
+      "sessions": 3,
+      "activeUsers": 1,
+      "engagementRate": 0.3333333333333333
+    },
+    {
+      "source": "(not set)",
+      "medium": "(not set)",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 0
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "(none)",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 0.5
+    },
+    {
+      "source": "cn.bing.com",
+      "medium": "referral",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 1
+    },
+    {
+      "source": "notebooklm.google.com",
+      "medium": "referral",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 1
+    },
+    {
+      "source": "youtube.com",
+      "medium": "referral",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 0.5
+    },
+    {
+      "source": "ca.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 0
+    },
+    {
+      "source": "perplexity",
+      "medium": "(not set)",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 0
+    },
+    {
+      "source": "perplexity.ai",
+      "medium": "ai-assistant",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 1
+    },
+    {
+      "source": "privacywall.org",
+      "medium": "referral",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 0
+    },
+    {
+      "source": "t.co",
+      "medium": "referral",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 1
+    },
+    {
+      "source": "tr.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 1
+    }
+  ]
+}

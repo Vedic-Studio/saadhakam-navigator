@@ -4,7 +4,7 @@ import { getMantraBySlug } from "@/data/mantras";
 import { getNakshatraBySlug, nakshatras, type Nakshatra } from "@/data/nakshatras";
 import { getPracticeBySlug } from "@/data/practices";
 import { getRashiBySlug, rashis, type Rashi } from "@/data/rashis";
-import { getTithiBySlug, getVaraBySlug, tithis, varas, type Tithi, type Vara } from "@/data/panchang";
+import { getTithiBySlug, getVaraBySlug, resolveTithiSeo, tithis, varas, type Tithi, type Vara } from "@/data/panchang";
 
 export interface PracticeBundle {
     title: string;
@@ -94,5 +94,5 @@ export function getAllJyotishSlugs() {
 }
 
 export { grahas, rashis, nakshatras, varas, tithis };
-export { getGrahaBySlug, getRashiBySlug, getNakshatraBySlug, getVaraBySlug, getTithiBySlug };
+export { getGrahaBySlug, getRashiBySlug, getNakshatraBySlug, getVaraBySlug, getTithiBySlug, resolveTithiSeo };
 export type { Graha, Rashi, Nakshatra, Vara, Tithi };

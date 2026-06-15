@@ -81,6 +81,15 @@ describe("child sitemaps", () => {
         expect(xml).toContain("<loc>https://www.opensadhaka.com/terms</loc>");
     });
 
+    it("shlokas sitemap never emits chapter-undefined or shloka-undefined", async () => {
+        const xml = await fetchChild("shlokas");
+        expect(xml).not.toContain("undefined");
+        // Sanity: the well-formed chapter + chapter-1 shloka URLs are still present.
+        expect(xml).toContain("<loc>https://www.opensadhaka.com/texts/bhagavad-gita/chapter-1</loc>");
+        expect(xml).toContain("<loc>https://www.opensadhaka.com/texts/bhagavad-gita/chapter-18</loc>");
+        expect(xml).toContain("<loc>https://www.opensadhaka.com/texts/bhagavad-gita/chapter-1/shloka-1</loc>");
+    });
+
     it("returns 404 for unknown sitemap ids", async () => {
         const res = await getChildSitemap(new Request("http://localhost/sitemap/nope.xml") as never, {
             params: Promise.resolve({ id: "nope.xml" }),

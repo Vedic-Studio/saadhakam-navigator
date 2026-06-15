@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArrowRight } from "lucide-react";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { FaithFinderCTA } from "@/components/faith-finder/FaithFinderCTA";
 
 export const metadata: Metadata = {
     title: "What is Maya? The 3 Levels of Reality (Not 'Illusion')",
@@ -310,6 +311,9 @@ export default function WhatIsMayaPage() {
                                 ))}
                             </div>
                         </section>
+
+                        {/* Next step: route undecided readers into the quiz */}
+                        <FaithFinderCTA sourceTemplate="concept-essay" className="mt-16" />
 
                     </div>
 

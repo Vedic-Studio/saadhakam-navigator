@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { concepts, type Concept } from "./concepts";
+import { concepts, getAllConcepts, type Concept } from "./concepts";
 
 describe("concepts data integrity", () => {
   it("has at least one concept", () => {
@@ -137,5 +137,29 @@ describe("concepts data integrity", () => {
     expect(prasad?.seoDescription).toBeDefined();
     expect(prasad?.ogTitle).toBeDefined();
     expect(prasad?.ogDescription).toBeDefined();
+  });
+});
+
+// The /concepts hub maps over getAllConcepts() to render one card per concept,
+// keyed on slug and linked to /what-is-<slug>. These are the invariants that
+// page relies on. (Not a tautology against `concepts` — these assert the
+// shape the hub consumes, independent of how getAllConcepts is wired.)
+describe("getAllConcepts() — /concepts hub source", () => {
+  it("returns a non-empty list so the hub has cards to render", () => {
+    expect(getAllConcepts().length).toBeGreaterThan(0);
+  });
+
+  it("returns no duplicate slugs (hub card keys and /what-is-<slug> links)", () => {
+    const slugs = getAllConcepts().map((c) => c.slug);
+    expect(new Set(slugs).size).toBe(slugs.length);
+  });
+
+  it("includes the batch-spread concepts, not just the inline ones", () => {
+    // getAllConcepts must surface conceptsBatch1/2/3 (spread into `concepts`),
+    // otherwise the hub silently drops most of the catalogue. `karma` is inline
+    // and `prasad` lives in a batch file, so requiring both proves the spread.
+    const slugs = new Set(getAllConcepts().map((c) => c.slug));
+    expect(slugs.has("karma")).toBe(true);
+    expect(slugs.has("prasad")).toBe(true);
   });
 });

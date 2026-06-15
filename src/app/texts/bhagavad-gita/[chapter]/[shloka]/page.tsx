@@ -1,13 +1,20 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { bgShlokas, getBgShlokaById, getBgShlokasByChapter } from "@/data/bgShlokas";
+import { bgShlokas, getBgShlokaById, getBgShlokasByChapter, resolveVerseSeo } from "@/data/bgShlokas";
 import { getBgChapterByNumber } from "@/data/bgChapters";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
 import { composeMetaDescription } from "@/lib/seo/metaDescription";
+import {
+    buildArticleSchema,
+    buildBreadcrumbSchema,
+    buildFaqSchema,
+    buildUrl,
+    type FaqItem,
+} from "@/lib/seo";
 
 export const revalidate = 86400;
 
@@ -54,15 +61,19 @@ export async function generateMetadata({
         return { title: "Shloka Not Found" };
     }
 
+    const seo = resolveVerseSeo(shloka);
+
     return {
-        title: `Bhagavad Gita Chapter ${shloka.chapter} Verse ${shloka.verse} | Meaning & Translation`,
-        description: composeMetaDescription(
-            [`Bhagavad Gita ${shlokaId} — meaning, translation, and Sanskrit`, shloka.translation],
-            {
-                fallback:
-                    "Read the full verse with Devanagari, word-by-word meaning, and commentary on Sadhaka.",
-            },
-        ),
+        title: seo.title,
+        description:
+            seo.description ??
+            composeMetaDescription(
+                [`Bhagavad Gita ${shlokaId} — meaning, translation, and Sanskrit`, shloka.translation],
+                {
+                    fallback:
+                        "Read the full verse with Devanagari, word-by-word meaning, and commentary on Sadhaka.",
+                },
+            ),
         alternates: {
             canonical: `https://www.opensadhaka.com/texts/bhagavad-gita/chapter-${shloka.chapter}/shloka-${shloka.verse}`,
         },
@@ -98,28 +109,73 @@ export default async function BgShlokaPage({
         : null;
     const nextChapter = !nextShloka ? getBgChapterByNumber(shloka.chapter + 1) : null;
 
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: [
+    const breadcrumbItems = [
+        { label: "Home", href: "/" },
+        { label: "Bhagavad Gita", href: "/texts/bhagavad-gita" },
+        {
+            label: chapterDetails?.nameEnglish ?? `Chapter ${shloka.chapter}`,
+            href: `/texts/bhagavad-gita/chapter-${shloka.chapter}`,
+        },
+        {
+            label: `Verse ${shloka.verse}`,
+            href: `/texts/bhagavad-gita/chapter-${shloka.chapter}/shloka-${shloka.verse}`,
+        },
+    ];
+    const pageUrl = buildUrl(
+        `/texts/bhagavad-gita/chapter-${shloka.chapter}/shloka-${shloka.verse}`,
+    );
+
+    // Genuine FAQs derived from real verse fields. Each is rendered visibly
+    // below AND fed to buildFaqSchema, so the FAQPage JSON-LD always
+    // corresponds to on-page content (Google's FAQ-rich-result rule). The
+    // word-by-word entry is gated on `synonyms` being present, since some
+    // verses are only partially seeded.
+    const faqItems: FaqItem[] = [
+        {
+            question: `What does Bhagavad Gita ${shlokaId} mean?`,
+            answer: shloka.translation,
+        },
+    ];
+    if (shloka.synonyms?.trim()) {
+        faqItems.push({
+            question: `What is the word-by-word meaning of Bhagavad Gita ${shlokaId}?`,
+            answer: shloka.synonyms,
+        });
+    }
+    if (shloka.practicalApplication?.trim()) {
+        faqItems.push({
+            question: `How can I apply Bhagavad Gita ${shlokaId} in daily life?`,
+            answer: shloka.practicalApplication,
+        });
+    }
+
+    const articleSchema = buildArticleSchema({
+        headline: `Bhagavad Gita ${shlokaId}: Meaning, Translation, and Commentary`,
+        description: composeMetaDescription(
+            [`Bhagavad Gita ${shlokaId} — meaning, translation, and Sanskrit`, shloka.translation],
             {
-                "@type": "Question",
-                name: `What is the meaning of Bhagavad Gita ${shlokaId}?`,
-                acceptedAnswer: {
-                    "@type": "Answer",
-                    text: shloka.translation,
-                },
+                fallback:
+                    "Read the full verse with Devanagari, word-by-word meaning, and commentary on Sadhaka.",
             },
-            {
-                "@type": "Question",
-                name: `How can I apply Bhagavad Gita ${shlokaId} in daily life?`,
-                acceptedAnswer: {
-                    "@type": "Answer",
-                    text: shloka.practicalApplication,
-                },
-            },
+        ),
+        url: pageUrl,
+        datePublished: "2025-01-01",
+        dateModified: "2026-03-15",
+        section: "Bhagavad Gita",
+        keywords: [
+            `Bhagavad Gita ${shlokaId}`,
+            `Bhagavad Gita Chapter ${shloka.chapter} Verse ${shloka.verse}`,
+            "Bhagavad Gita meaning",
         ],
-    };
+        about: {
+            name: `Bhagavad Gita ${shlokaId}`,
+            type: "Quotation",
+            description: shloka.translation,
+        },
+    });
+
+    const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbItems);
+    const faqSchema = buildFaqSchema(faqItems);
 
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -131,23 +187,18 @@ export default async function BgShlokaPage({
             />
             <script
                 type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
 
-            <Breadcrumbs
-                items={[
-                    { label: "Home", href: "/" },
-                    { label: "Bhagavad Gita", href: "/texts/bhagavad-gita" },
-                    {
-                        label: chapterDetails?.nameEnglish ?? `Chapter ${shloka.chapter}`,
-                        href: `/texts/bhagavad-gita/chapter-${shloka.chapter}`,
-                    },
-                    {
-                        label: `Verse ${shloka.verse}`,
-                        href: `/texts/bhagavad-gita/chapter-${shloka.chapter}/shloka-${shloka.verse}`,
-                    },
-                ]}
-            />
+            <Breadcrumbs items={breadcrumbItems} />
 
             <header className="mb-12 border-b border-neutral-200 pb-12 text-center">
                 <div className="text-primary font-bold tracking-[0.2em] mb-4 text-sm uppercase">
@@ -222,6 +273,30 @@ export default async function BgShlokaPage({
                         {shloka.practicalApplication}
                     </p>
                 </div>
+
+                <section aria-labelledby="bg-faq-heading" className="mb-16">
+                    <h2
+                        id="bg-faq-heading"
+                        className="text-3xl font-bold mt-0 mb-8 text-neutral-900"
+                    >
+                        Frequently Asked Questions
+                    </h2>
+                    <div className="space-y-4 not-prose">
+                        {faqItems.map((faq, i) => (
+                            <div
+                                key={i}
+                                className="bg-neutral-50 border border-neutral-200 rounded-2xl p-6"
+                            >
+                                <h3 className="font-bold text-lg text-neutral-900 mb-2">
+                                    {faq.question}
+                                </h3>
+                                <p className="m-0 text-neutral-700 leading-relaxed">
+                                    {faq.answer}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
             </div>
 
             <nav
@@ -270,12 +345,12 @@ export default async function BgShlokaPage({
                         </Link>
                     ) : nextChapter ? (
                         <Link
-                            href={`/texts/bhagavad-gita/chapter-${nextChapter.chapter}`}
+                            href={`/texts/bhagavad-gita/chapter-${nextChapter.chapterNumber}`}
                             className="inline-flex flex-col gap-1 text-sm text-neutral-700 hover:text-primary"
                         >
                             <span className="text-xs uppercase tracking-wider text-neutral-500">Next chapter →</span>
                             <span className="font-semibold">
-                                {nextChapter.nameEnglish ?? `Chapter ${nextChapter.chapter}`}
+                                {nextChapter.nameEnglish ?? `Chapter ${nextChapter.chapterNumber}`}
                             </span>
                         </Link>
                     ) : (

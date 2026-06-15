@@ -15,17 +15,17 @@ import { FAQSection } from "@/components/landing/FAQSection";
 
 export const metadata: Metadata = {
   title:
-    "Sadhaka | Open library of Sanatan Dharma & Daily Sadhana",
+    "Sadhaka: meaning and an open library for Sanatan Dharma",
   description:
-    "Learn the history of sanatan dharma. Build a daily sadhana. Read the upanishads and shastras, follow the vedic panchang. An open library, free.",
+    "A sadhaka is a committed practitioner on a spiritual path. Sadhaka is a free, source-grounded library for Sanatan Dharma, the shastras, and daily sadhana.",
   alternates: {
     canonical: "https://www.opensadhaka.com",
   },
   openGraph: {
     title:
-      "Sadhaka | Open library of Sanatan Dharma & Daily Sadhana",
+      "Sadhaka: meaning and an open library for Sanatan Dharma",
     description:
-      "Learn the history of sanatan dharma. Build a daily sadhana. Read the upanishads and shastras, follow the vedic panchang. An open library, free.",
+      "A sadhaka is a committed practitioner on a spiritual path. Sadhaka is a free, source-grounded library for Sanatan Dharma, the shastras, and daily sadhana.",
     url: "https://www.opensadhaka.com",
   },
 };
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const faqSchema = buildFaqSchema(homepageFaqs);
   const webPageSchema = buildWebPageSchema({
-    name: "Sadhaka | Open library of Sanatan Dharma & Daily Sadhana",
+    name: "Sadhaka: meaning and an open library for Sanatan Dharma",
     description:
-      "Learn the history of sanatan dharma. Build a daily sadhana. Read the upanishads and shastras, follow the vedic panchang. An open library, free.",
+      "A sadhaka is a committed practitioner on a spiritual path. Sadhaka is a free, source-grounded library for Sanatan Dharma, the shastras, and daily sadhana.",
     url: buildUrl("/"),
   });
 

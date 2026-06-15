@@ -20,6 +20,7 @@ import {
     buildProfilePageSchema,
     buildArchaeologicalSiteSchema,
     buildItemListSchema,
+    buildComparisonTableSchema,
 } from "./index";
 
 describe("seo helpers", () => {
@@ -748,5 +749,98 @@ describe("buildItemListSchema", () => {
             items: [{ name: "A" }],
         });
         expect(schema.itemListElement[0]).not.toHaveProperty("description");
+    });
+});
+
+describe("buildComparisonTableSchema", () => {
+    const sampleRows = [
+        { dimension: "Primary focus", a: "Stilling the mind", b: "Awakening energy" },
+        { dimension: "Method", a: "Meditation and ethics", b: "Pranayama and kriya" },
+        { dimension: "Goal", a: "Kaivalya", b: "Union of Shakti with Shiva" },
+    ];
+
+    const build = () =>
+        buildComparisonTableSchema({
+            title: "Raja Yoga vs Kundalini Yoga",
+            url: "https://www.opensadhaka.com/compare/raja-yoga-vs-kundalini-yoga",
+            entityA: "Raja Yoga",
+            entityB: "Kundalini Yoga",
+            rows: sampleRows,
+        });
+
+    it("emits a valid schema.org ItemList with @context and @type", () => {
+        const schema = build();
+        expect(schema).not.toBeNull();
+        expect(schema!["@context"]).toBe("https://schema.org");
+        expect(schema!["@type"]).toBe("ItemList");
+    });
+
+    it("names the list after both entities so the relationship survives off-page", () => {
+        const schema = build();
+        expect(schema!.name).toBe("Raja Yoga vs Kundalini Yoga: comparison");
+    });
+
+    it("carries the page url and a numberOfItems that matches the row count", () => {
+        const schema = build();
+        expect(schema!.url).toBe(
+            "https://www.opensadhaka.com/compare/raja-yoga-vs-kundalini-yoga",
+        );
+        expect(schema!.numberOfItems).toBe(sampleRows.length);
+        expect(schema!.itemListElement).toHaveLength(sampleRows.length);
+    });
+
+    it("reflects input: each row becomes a 1-indexed ListItem whose name is the dimension", () => {
+        const schema = build();
+        const items = schema!.itemListElement;
+        expect(items.map((el) => el.position)).toEqual([1, 2, 3]);
+        expect(items.map((el) => el["@type"])).toEqual([
+            "ListItem",
+            "ListItem",
+            "ListItem",
+        ]);
+        expect(items[0].name).toBe("Primary focus");
+        expect(items[2].name).toBe("Goal");
+    });
+
+    it("encodes both entities' values into each row description", () => {
+        const schema = build();
+        // Description must contain both entity labels and both values so an AI
+        // crawler reading only the JSON-LD can reconstruct the row.
+        expect(schema!.itemListElement[0].description).toBe(
+            "Raja Yoga: Stilling the mind | Kundalini Yoga: Awakening energy",
+        );
+        expect(schema!.itemListElement[2].description).toBe(
+            "Raja Yoga: Kaivalya | Kundalini Yoga: Union of Shakti with Shiva",
+        );
+    });
+
+    it("contains no undefined values anywhere in the serialized output", () => {
+        const schema = build();
+        expect(JSON.stringify(schema)).not.toContain("undefined");
+    });
+
+    it("returns null when rows are empty (no meaningless empty ItemList)", () => {
+        expect(
+            buildComparisonTableSchema({
+                title: "X vs Y",
+                url: "https://www.opensadhaka.com/compare/x-vs-y",
+                entityA: "X",
+                entityB: "Y",
+                rows: [],
+            }),
+        ).toBeNull();
+    });
+
+    it("returns null when rows are missing entirely", () => {
+        expect(
+            buildComparisonTableSchema({
+                title: "X vs Y",
+                url: "https://www.opensadhaka.com/compare/x-vs-y",
+                entityA: "X",
+                entityB: "Y",
+                // @ts-expect-error — exercising the missing-rows guard at runtime
+                rows: undefined,
+            }),
+        ).toBeNull();
     });
 });

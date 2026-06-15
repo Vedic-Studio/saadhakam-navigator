@@ -41,6 +41,12 @@ loadEnvLocal();
 const KEY_FILE = process.env.GOOGLE_SERVICE_ACCOUNT_FILE || resolve(ROOT, ".data", "google-service-account.json");
 const SITE_URL = process.env.GSC_SITE_URL || "sc-domain:opensadhaka.com";
 
+// Auth mode: ADC (gcloud application-default) vs service-account key file.
+// Honor GSC_AUTH=adc (consistent with gsc-diagnose.mjs); also auto-fall-back to
+// ADC if the service-account key file is missing.
+const USE_ADC = process.env.GSC_AUTH === "adc" || !existsSync(KEY_FILE);
+const QUOTA_PROJECT = process.env.GOOGLE_CLOUD_PROJECT || process.env.GSC_QUOTA_PROJECT || "sadhaka-seo";
+
 // ── CLI args ─────────────────────────────────────────────────────────────────
 function parseArgs(argv) {
   const out = { days: 28, outDir: resolve(ROOT, "docs/analytics-snapshots"), date: new Date().toISOString().slice(0, 10) };
@@ -55,8 +61,15 @@ function parseArgs(argv) {
 const ARGS = parseArgs(process.argv.slice(2));
 mkdirSync(ARGS.outDir, { recursive: true });
 
-// ── Auth (manual JWT, no googleapis dep needed) ──────────────────────────────
+// ── Auth: ADC-first (verified GSC user), service-account JWT as fallback ──────
 async function getAccessToken(scopes) {
+  if (USE_ADC) {
+    const { google } = await import("googleapis");
+    const auth = new google.auth.GoogleAuth({ scopes });
+    const client = await auth.getClient();
+    const token = await client.getAccessToken();
+    return token.token;
+  }
   const keyData = JSON.parse(readFileSync(KEY_FILE, "utf-8"));
   const now = Math.floor(Date.now() / 1000);
   const header = { alg: "RS256", typ: "JWT" };
@@ -85,11 +98,9 @@ async function getAccessToken(scopes) {
 
 async function gscPost(path, body, token) {
   const url = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE_URL)}${path}`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+  const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
+  if (USE_ADC) headers["x-goog-user-project"] = QUOTA_PROJECT;
+  const res = await fetch(url, { method: "POST", headers, body: JSON.stringify(body) });
   const text = await res.text();
   if (!res.ok) throw new Error(`POST ${path}: ${res.status} ${text}`);
   return text ? JSON.parse(text) : null;
@@ -147,6 +158,7 @@ function mapRow(row) {
 // ── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
   console.log(`[gsc-pull] window=${ARGS.days}d site=${SITE_URL}`);
+  console.log(`[gsc-pull] auth=${USE_ADC ? "adc" : "service-account"}`);
   const range = getDateRange(ARGS.days);
   console.log(`[gsc-pull] range=${range.startDate} → ${range.endDate}`);
 

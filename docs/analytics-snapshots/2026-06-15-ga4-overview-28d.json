@@ -1,0 +1,519 @@
+{
+  "source": "ga4-snapshot",
+  "propertyId": "526473437",
+  "propertyName": "Sadhaka",
+  "timeZone": "Asia/Calcutta",
+  "pulledAt": "2026-06-15T09:08:12.013Z",
+  "windowDays": 28,
+  "range": {
+    "startDate": "2026-05-18",
+    "endDate": "2026-06-14"
+  },
+  "overview": {
+    "sessions": 615,
+    "activeUsers": 534,
+    "newUsers": 533,
+    "engagementRate": 0.35772357723577236,
+    "pageViews": 1174
+  },
+  "topPages": [
+    {
+      "page": "/stotras/shiva-tandava-stotram",
+      "pageViews": 84,
+      "sessions": 40
+    },
+    {
+      "page": "/",
+      "pageViews": 54,
+      "sessions": 31
+    },
+    {
+      "page": "/stotras/shiva-tandava-stotram/verse-1",
+      "pageViews": 34,
+      "sessions": 16
+    },
+    {
+      "page": "/articles",
+      "pageViews": 33,
+      "sessions": 12
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama",
+      "pageViews": 33,
+      "sessions": 20
+    },
+    {
+      "page": "/10-powerful-sanskrit-mantras",
+      "pageViews": 31,
+      "sessions": 28
+    },
+    {
+      "page": "/stotras/vishnu-sahasranama/shloka-83",
+      "pageViews": 23,
+      "sessions": 19
+    },
+    {
+      "page": "/mantras/om-gram-grim-graum-sah-gurave-namah",
+      "pageViews": 21,
+      "sessions": 14
+    },
+    {
+      "page": "/sanatan-history/sites/dwarka-underwater",
+      "pageViews": 21,
+      "sessions": 22
+    },
+    {
+      "page": "/stotras/lalita-sahasranama",
+      "pageViews": 20,
+      "sessions": 11
+    },
+    {
+      "page": "/faith-finder",
+      "pageViews": 18,
+      "sessions": 11
+    },
+    {
+      "page": "/philosophies",
+      "pageViews": 18,
+      "sessions": 15
+    },
+    {
+      "page": "/ramana-maharshi-who-am-i",
+      "pageViews": 18,
+      "sessions": 18
+    },
+    {
+      "page": "/compare",
+      "pageViews": 17,
+      "sessions": 6
+    },
+    {
+      "page": "/compare/ashtavakra-gita-vs-bhagavad-gita",
+      "pageViews": 17,
+      "sessions": 17
+    },
+    {
+      "page": "/how-to-read-upanishads-western-beginner",
+      "pageViews": 17,
+      "sessions": 13
+    },
+    {
+      "page": "/sanatan-history",
+      "pageViews": 17,
+      "sessions": 11
+    },
+    {
+      "page": "/learn/sanskrit",
+      "pageViews": 16,
+      "sessions": 5
+    },
+    {
+      "page": "/sacred-texts-teachings",
+      "pageViews": 16,
+      "sessions": 3
+    },
+    {
+      "page": "/practical-spiritual-practices",
+      "pageViews": 14,
+      "sessions": 9
+    },
+    {
+      "page": "/what-is-maya",
+      "pageViews": 14,
+      "sessions": 16
+    },
+    {
+      "page": "/ancient-wisdom-philosophies",
+      "pageViews": 13,
+      "sessions": 4
+    },
+    {
+      "page": "/stotras/shiva-tandava-stotram/verse-2",
+      "pageViews": 13,
+      "sessions": 5
+    },
+    {
+      "page": "/texts",
+      "pageViews": 13,
+      "sessions": 3
+    },
+    {
+      "page": "/vedic-clock",
+      "pageViews": 13,
+      "sessions": 8
+    }
+  ],
+  "events": [
+    {
+      "eventName": "page_view",
+      "eventCount": 1174
+    },
+    {
+      "eventName": "session_start",
+      "eventCount": 619
+    },
+    {
+      "eventName": "app_open",
+      "eventCount": 596
+    },
+    {
+      "eventName": "first_visit",
+      "eventCount": 533
+    },
+    {
+      "eventName": "seo_article_read",
+      "eventCount": 456
+    },
+    {
+      "eventName": "user_engagement",
+      "eventCount": 244
+    },
+    {
+      "eventName": "scroll",
+      "eventCount": 74
+    },
+    {
+      "eventName": "cta_click",
+      "eventCount": 36
+    },
+    {
+      "eventName": "path_explore",
+      "eventCount": 36
+    },
+    {
+      "eventName": "faith_finder_quiz_start",
+      "eventCount": 7
+    },
+    {
+      "eventName": "form_start",
+      "eventCount": 2
+    },
+    {
+      "eventName": "faith_finder_email_capture",
+      "eventCount": 1
+    },
+    {
+      "eventName": "faith_finder_quiz_complete",
+      "eventCount": 1
+    }
+  ],
+  "trend": [
+    {
+      "date": "20260518",
+      "sessions": 7,
+      "activeUsers": 7
+    },
+    {
+      "date": "20260519",
+      "sessions": 13,
+      "activeUsers": 10
+    },
+    {
+      "date": "20260520",
+      "sessions": 14,
+      "activeUsers": 12
+    },
+    {
+      "date": "20260521",
+      "sessions": 16,
+      "activeUsers": 15
+    },
+    {
+      "date": "20260522",
+      "sessions": 15,
+      "activeUsers": 15
+    },
+    {
+      "date": "20260523",
+      "sessions": 21,
+      "activeUsers": 19
+    },
+    {
+      "date": "20260524",
+      "sessions": 15,
+      "activeUsers": 12
+    },
+    {
+      "date": "20260525",
+      "sessions": 22,
+      "activeUsers": 20
+    },
+    {
+      "date": "20260526",
+      "sessions": 18,
+      "activeUsers": 18
+    },
+    {
+      "date": "20260527",
+      "sessions": 22,
+      "activeUsers": 16
+    },
+    {
+      "date": "20260528",
+      "sessions": 30,
+      "activeUsers": 24
+    },
+    {
+      "date": "20260529",
+      "sessions": 10,
+      "activeUsers": 8
+    },
+    {
+      "date": "20260530",
+      "sessions": 16,
+      "activeUsers": 16
+    },
+    {
+      "date": "20260531",
+      "sessions": 21,
+      "activeUsers": 19
+    },
+    {
+      "date": "20260601",
+      "sessions": 36,
+      "activeUsers": 32
+    },
+    {
+      "date": "20260602",
+      "sessions": 24,
+      "activeUsers": 21
+    },
+    {
+      "date": "20260603",
+      "sessions": 22,
+      "activeUsers": 19
+    },
+    {
+      "date": "20260604",
+      "sessions": 20,
+      "activeUsers": 19
+    },
+    {
+      "date": "20260605",
+      "sessions": 30,
+      "activeUsers": 26
+    },
+    {
+      "date": "20260606",
+      "sessions": 31,
+      "activeUsers": 24
+    },
+    {
+      "date": "20260607",
+      "sessions": 29,
+      "activeUsers": 27
+    },
+    {
+      "date": "20260608",
+      "sessions": 28,
+      "activeUsers": 24
+    },
+    {
+      "date": "20260609",
+      "sessions": 33,
+      "activeUsers": 29
+    },
+    {
+      "date": "20260610",
+      "sessions": 30,
+      "activeUsers": 30
+    },
+    {
+      "date": "20260611",
+      "sessions": 23,
+      "activeUsers": 22
+    },
+    {
+      "date": "20260612",
+      "sessions": 11,
+      "activeUsers": 11
+    },
+    {
+      "date": "20260613",
+      "sessions": 34,
+      "activeUsers": 32
+    },
+    {
+      "date": "20260614",
+      "sessions": 25,
+      "activeUsers": 25
+    }
+  ],
+  "quizFunnel": [
+    {
+      "eventName": "faith_finder_quiz_start",
+      "count": 7
+    },
+    {
+      "eventName": "faith_finder_email_capture",
+      "count": 1
+    },
+    {
+      "eventName": "faith_finder_quiz_complete",
+      "count": 1
+    }
+  ],
+  "sourceMix": [
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "sessions": 199,
+      "activeUsers": 180,
+      "engagementRate": 0.12562814070351758
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "sessions": 179,
+      "activeUsers": 150,
+      "engagementRate": 0.45251396648044695
+    },
+    {
+      "source": "bing",
+      "medium": "organic",
+      "sessions": 57,
+      "activeUsers": 48,
+      "engagementRate": 0.5087719298245614
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "ai-assistant",
+      "sessions": 45,
+      "activeUsers": 43,
+      "engagementRate": 0.4888888888888889
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "(not set)",
+      "sessions": 36,
+      "activeUsers": 34,
+      "engagementRate": 0.2222222222222222
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "referral",
+      "sessions": 32,
+      "activeUsers": 25,
+      "engagementRate": 0.59375
+    },
+    {
+      "source": "duckduckgo",
+      "medium": "organic",
+      "sessions": 18,
+      "activeUsers": 15,
+      "engagementRate": 0.5555555555555556
+    },
+    {
+      "source": "yahoo",
+      "medium": "organic",
+      "sessions": 12,
+      "activeUsers": 10,
+      "engagementRate": 0.6666666666666666
+    },
+    {
+      "source": "ecosia.org",
+      "medium": "organic",
+      "sessions": 10,
+      "activeUsers": 7,
+      "engagementRate": 0.4
+    },
+    {
+      "source": "copilot.com",
+      "medium": "(not set)",
+      "sessions": 5,
+      "activeUsers": 3,
+      "engagementRate": 0.6
+    },
+    {
+      "source": "copilot.com",
+      "medium": "referral",
+      "sessions": 4,
+      "activeUsers": 3,
+      "engagementRate": 0.25
+    },
+    {
+      "source": "in.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 4,
+      "activeUsers": 3,
+      "engagementRate": 0.5
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "(none)",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 0.5
+    },
+    {
+      "source": "cn.bing.com",
+      "medium": "referral",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 1
+    },
+    {
+      "source": "notebooklm.google.com",
+      "medium": "referral",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 1
+    },
+    {
+      "source": "youtube.com",
+      "medium": "referral",
+      "sessions": 2,
+      "activeUsers": 2,
+      "engagementRate": 0.5
+    },
+    {
+      "source": "m.facebook.com",
+      "medium": "referral",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 0
+    },
+    {
+      "source": "malaysia.search.yahoo.com",
+      "medium": "referral",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 1
+    },
+    {
+      "source": "perplexity",
+      "medium": "(not set)",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 0
+    },
+    {
+      "source": "perplexity.ai",
+      "medium": "ai-assistant",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 1
+    },
+    {
+      "source": "perplexity.ai",
+      "medium": "referral",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 0
+    },
+    {
+      "source": "privacywall.org",
+      "medium": "referral",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 0
+    },
+    {
+      "source": "qwant.com",
+      "medium": "organic",
+      "sessions": 1,
+      "activeUsers": 1,
+      "engagementRate": 1
+    }
+  ]
+}

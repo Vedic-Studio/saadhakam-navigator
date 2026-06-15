@@ -79,6 +79,11 @@ const nextConfig: NextConfig = {
                 destination: "/panchang",
                 permanent: true,
             },
+            {
+                source: "/spiritual-practice-sequence",
+                destination: "/practical-spiritual-practices",
+                permanent: true,
+            },
         ];
 
         const dynamicRedirects = concepts.map((concept) => ({

@@ -31,10 +31,6 @@ export const ORG_SAME_AS = [
     "https://twitter.com/opensadhaka",
     "https://instagram.com/opensadhaka",
     "https://youtube.com/@opensadhaka",
-    "https://github.com/opensadhaka",
-    "https://www.linkedin.com/company/opensadhaka",
-    "https://www.crunchbase.com/organization/sadhaka",
-    "https://en.wikipedia.org/wiki/Sanatan_Dharma",
 ];
 export const ORG_KNOWS_ABOUT = [
     "Sanatan Dharma",
@@ -229,6 +225,26 @@ export interface ArticleMentionSchema {
     type?: string;
 }
 
+/**
+ * The primary subject entity an Article is *about*. Unlike `mentions` (a flat
+ * list of secondary entity references), `about` names the single thing the
+ * page is principally describing. For a panchang tithi page that subject is
+ * the lunar day itself, so we expose the tithi as a typed entity with its
+ * presiding deity and lunar-position keywords. Google and AI engines use
+ * `about` to anchor the page to a knowledge-graph node.
+ *
+ * - `name`: the entity name, e.g. "Shukla Ekadashi".
+ * - `type`: schema.org type; defaults to "Thing".
+ * - `description`: optional one-line gloss of the entity.
+ * - `sameAs`: optional canonical external URL confirming entity identity.
+ */
+export interface ArticleAboutSchema {
+    name: string;
+    type?: string;
+    description?: string;
+    sameAs?: string;
+}
+
 export interface ArticleSchemaMeta {
     headline: string;
     description: string;
@@ -244,6 +260,8 @@ export interface ArticleSchemaMeta {
     wordCount?: number;
     /** Entity relationships — see {@link ArticleMentionSchema}. */
     mentions?: ArticleMentionSchema[];
+    /** Primary subject entity, see {@link ArticleAboutSchema}. */
+    about?: ArticleAboutSchema;
 }
 
 /**
@@ -297,6 +315,16 @@ export function buildArticleSchema(meta: ArticleSchemaMeta) {
           })
         : undefined;
 
+    let aboutNode: Record<string, unknown> | undefined;
+    if (meta.about) {
+        aboutNode = {
+            "@type": meta.about.type || "Thing",
+            name: meta.about.name,
+        };
+        if (meta.about.description) aboutNode.description = meta.about.description;
+        if (meta.about.sameAs) aboutNode.sameAs = meta.about.sameAs;
+    }
+
     return {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -319,6 +347,7 @@ export function buildArticleSchema(meta: ArticleSchemaMeta) {
         isPartOf: { "@type": "WebSite", "@id": WEBSITE_ID },
         ...(meta.wordCount !== undefined ? { wordCount: meta.wordCount } : {}),
         ...(mentionsNode ? { mentions: mentionsNode } : {}),
+        ...(aboutNode ? { about: aboutNode } : {}),
         ...(imageNode !== undefined ? { image: imageNode } : {}),
     };
 }
@@ -522,6 +551,57 @@ export function buildComparisonMetadata(comp: ComparisonMeta): Metadata {
         description: comp.metaDescription,
         path: `/compare/${comp.slug}`,
     });
+}
+
+/**
+ * One row of a head-to-head comparison: a single dimension and how each of the
+ * two entities scores on it. Mirrors a visible `<table>` row (dimension |
+ * entityA value | entityB value).
+ */
+export interface ComparisonTableRow {
+    dimension: string;
+    a: string;
+    b: string;
+}
+
+export interface ComparisonTableSchemaMeta {
+    title: string;
+    url: string;
+    entityA: string;
+    entityB: string;
+    rows: ComparisonTableRow[];
+}
+
+/**
+ * Build an ItemList JSON-LD for a comparison table.
+ *
+ * schema.org has no rich-result "Table" type the way it has FAQPage, so a
+ * head-to-head comparison is represented structurally as an `ItemList`. Each
+ * row becomes a positioned `ListItem` whose `name` is the dimension and whose
+ * `description` states both entities' values, so the relationship survives
+ * even when the JSON-LD is consumed off-page (AI crawlers, validators). This
+ * is paired with a real visible `<table>` in the template. The visible table
+ * is what makes the page eligible for table featured-snippets; the ItemList
+ * gives engines a clean, parseable mirror of it.
+ *
+ * Returns `null` when there are no rows, so callers can skip injecting an
+ * empty list (an ItemList with zero items is meaningless and Google flags it).
+ */
+export function buildComparisonTableSchema(meta: ComparisonTableSchemaMeta) {
+    if (!meta.rows || meta.rows.length === 0) return null;
+    return {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: `${meta.entityA} vs ${meta.entityB}: comparison`,
+        url: meta.url,
+        numberOfItems: meta.rows.length,
+        itemListElement: meta.rows.map((row, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: row.dimension,
+            description: `${meta.entityA}: ${row.a} | ${meta.entityB}: ${row.b}`,
+        })),
+    };
 }
 
 /**

@@ -200,7 +200,9 @@ function getEntries(id: string): SitemapEntry[] {
 
     case "shlokas": {
       const entries: SitemapEntry[] = [];
-      for (const ch of bgChapters) {
+      // Guard: skip any chapter whose chapterNumber is not a positive integer,
+      // so a malformed data row can never emit /chapter-undefined into the sitemap.
+      for (const ch of bgChapters.filter((c) => Number.isInteger(c.chapterNumber) && c.chapterNumber > 0)) {
         entries.push({
           url: `${baseUrl}/texts/bhagavad-gita/chapter-${ch.chapterNumber}`,
           lastModified: contentDate,
@@ -210,7 +212,9 @@ function getEntries(id: string): SitemapEntry[] {
       }
       // Only include Chapter 1 shlokas (fully seeded with translations + commentaries).
       // Chapters 2-18 stubs are too thin — exclude until content is populated.
-      for (const sh of bgShlokas.filter((s) => s.chapter === 1)) {
+      // Guard: require integer chapter (=== 1) AND integer verse so a malformed
+      // row can never emit /chapter-undefined or /shloka-undefined.
+      for (const sh of bgShlokas.filter((s) => s.chapter === 1 && Number.isInteger(s.verse) && s.verse > 0)) {
         entries.push({
           url: `${baseUrl}/texts/bhagavad-gita/chapter-${sh.chapter}/shloka-${sh.verse}`,
           lastModified: contentDate,

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { deities, type Deity } from "./deities";
+import { traditions } from "./traditions";
 
 describe("deities data integrity", () => {
   it("has at least one deity", () => {
@@ -125,5 +126,25 @@ describe("deities data integrity", () => {
         `Deity "${deity.slug}" has empty iconography attributes`
       ).toBeGreaterThan(0);
     }
+  });
+
+  it("associatedTraditions reference real tradition slugs (no /traditions 404s)", () => {
+    const validTraditionSlugs = new Set(traditions.map((t) => t.slug));
+    const broken: string[] = [];
+
+    for (const deity of deities) {
+      for (const tradition of deity.associatedTraditions) {
+        if (!validTraditionSlugs.has(tradition)) {
+          broken.push(`"${deity.slug}" -> "${tradition}"`);
+        }
+      }
+    }
+
+    expect(
+      broken,
+      `associatedTraditions slugs with no matching tradition page (would 404 at /traditions/<slug>):\n${broken.join(
+        "\n"
+      )}`
+    ).toHaveLength(0);
   });
 });
