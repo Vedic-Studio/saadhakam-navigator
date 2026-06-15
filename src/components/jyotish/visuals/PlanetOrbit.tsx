@@ -90,20 +90,22 @@ function StarField() {
 function GrahaSprite({ slug, yOffset }: { slug: string; yOffset: number }) {
   const iconPath = GRAHA_ICONS[slug];
   if (!iconPath) return null;
+  return <GrahaSpriteTexture iconPath={iconPath} yOffset={yOffset} />;
+}
 
-  try {
-    const texture = useLoader(TextureLoader, iconPath);
-    return (
-      <Billboard position={[0, yOffset, 0]}>
-        <mesh>
-          <planeGeometry args={[0.4, 0.4]} />
-          <meshBasicMaterial map={texture} transparent alphaTest={0.1} />
-        </mesh>
-      </Billboard>
-    );
-  } catch {
-    return null;
-  }
+// `useLoader` must run unconditionally and outside try/catch (react-hooks/rules-of-hooks),
+// so the "no icon" guard lives in the GrahaSprite wrapper above. Loading is handled by the
+// enclosing <Suspense> boundary; a genuine asset-load failure should surface, not be swallowed.
+function GrahaSpriteTexture({ iconPath, yOffset }: { iconPath: string; yOffset: number }) {
+  const texture = useLoader(TextureLoader, iconPath);
+  return (
+    <Billboard position={[0, yOffset, 0]}>
+      <mesh>
+        <planeGeometry args={[0.4, 0.4]} />
+        <meshBasicMaterial map={texture} transparent alphaTest={0.1} />
+      </mesh>
+    </Billboard>
+  );
 }
 
 /* ───────────────────────── Orbiting Planet ───────────────────────── */

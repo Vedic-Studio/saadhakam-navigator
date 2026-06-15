@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Metadata } from "next";
 import { Sparkles, ArrowRight, Quote } from "lucide-react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Advaita vs Dvaita Vedanta: The Core Debate of Non-Duality | Sadhaka",
@@ -150,11 +151,11 @@ export default function AdvaitaVsDvaitaPage() {
                             <div className="mt-20 mb-16">
                                 <h2 className="text-3xl font-display font-bold mb-8">Go Deeper</h2>
                                 <div className="flex flex-wrap gap-4">
-                                    <a href="/what-is-vedanta" className="text-orange-400 hover:text-orange-300 underline transition-colors">What is Vedanta?</a>
-                                    <a href="/advaita-vedanta-explained" className="text-orange-400 hover:text-orange-300 underline transition-colors">Advaita Vedanta Explained</a>
-                                    <a href="/what-is-sanatan-dharma" className="text-orange-400 hover:text-orange-300 underline transition-colors">What is Sanatan Dharma?</a>
-                                    <a href="/what-is-maya" className="text-orange-400 hover:text-orange-300 underline transition-colors">What is Maya?</a>
-                                    <a href="/shaivism-vs-vaishnavism" className="text-orange-400 hover:text-orange-300 underline transition-colors">Shaivism vs Vaishnavism</a>
+                                    <Link href="/what-is-vedanta" className="text-orange-400 hover:text-orange-300 underline transition-colors">What is Vedanta?</Link>
+                                    <Link href="/advaita-vedanta-explained" className="text-orange-400 hover:text-orange-300 underline transition-colors">Advaita Vedanta Explained</Link>
+                                    <Link href="/what-is-sanatan-dharma" className="text-orange-400 hover:text-orange-300 underline transition-colors">What is Sanatan Dharma?</Link>
+                                    <Link href="/what-is-maya" className="text-orange-400 hover:text-orange-300 underline transition-colors">What is Maya?</Link>
+                                    <Link href="/shaivism-vs-vaishnavism" className="text-orange-400 hover:text-orange-300 underline transition-colors">Shaivism vs Vaishnavism</Link>
                                 </div>
                             </div>
 
@@ -173,11 +174,11 @@ export default function AdvaitaVsDvaitaPage() {
                                 <p className="text-xl text-muted-foreground max-w-xl mx-auto mb-10">
                                     Take the Faith Finder assessment to see which Vedanta school aligns with your psychological temperament.
                                 </p>
-                                <a href="/faith-finder">
+                                <Link href="/faith-finder">
                                     <button className="bg-primary text-primary-foreground font-bold px-10 h-16 rounded-2xl hover:scale-105 transition-transform flex items-center mx-auto">
                                         Start Faith Finder <ArrowRight className="ml-2 w-5 h-5" />
                                     </button>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
