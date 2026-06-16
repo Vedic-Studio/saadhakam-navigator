@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="A chain of twenty-one royal markers bridging two eras">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#231024"/>
+      <stop offset="1" stop-color="#120814"/>
+    </linearGradient>
+    <linearGradient id="bridge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6d5a8a"/>
+      <stop offset="0.5" stop-color="#E07B39"/>
+      <stop offset="1" stop-color="#D4A843"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg5)"/>
+  <!-- sikhara watermark, centered faint -->
+  <g transform="translate(520,120) scale(3.6)" fill="#E07B39" opacity="0.07">
+    <rect x="4" y="88" width="92" height="5"/>
+    <path fill-rule="evenodd" d="M 12 88 V 79 H 17 V 70 H 22 V 61 H 27 V 52 H 32 V 43 H 37 V 34 H 63 V 43 H 68 V 52 H 73 V 61 H 78 V 70 H 83 V 79 H 88 V 88 H 12 Z M 32 86 L 50 40 L 68 86 Z"/>
+    <ellipse cx="50" cy="27" rx="11" ry="2.5"/>
+    <circle cx="50" cy="20" r="3"/>
+    <circle cx="50" cy="13" r="2"/>
+  </g>
+  <!-- the bridge line: myth (left) to history (right) -->
+  <rect x="96" y="312" width="1008" height="6" rx="3" fill="url(#bridge)"/>
+  <!-- 21 markers along the bridge, growing more solid toward history -->
+  <g>
+    <!-- generate 21 evenly: x from 130 to 1070 -->
+    <g fill="#6d5a8a">
+      <circle cx="130" cy="315" r="13"/>
+      <circle cx="177" cy="315" r="13"/>
+      <circle cx="224" cy="315" r="13"/>
+      <circle cx="271" cy="315" r="13"/>
+      <circle cx="318" cy="315" r="13"/>
+    </g>
+    <g fill="#9a6f4f">
+      <circle cx="365" cy="315" r="13"/>
+      <circle cx="412" cy="315" r="13"/>
+      <circle cx="459" cy="315" r="13"/>
+      <circle cx="506" cy="315" r="13"/>
+      <circle cx="553" cy="315" r="13"/>
+      <circle cx="600" cy="315" r="13"/>
+    </g>
+    <g fill="#E07B39">
+      <circle cx="647" cy="315" r="13"/>
+      <circle cx="694" cy="315" r="13"/>
+      <circle cx="741" cy="315" r="13"/>
+      <circle cx="788" cy="315" r="13"/>
+      <circle cx="835" cy="315" r="13"/>
+    </g>
+    <g fill="#D4A843">
+      <circle cx="882" cy="315" r="13"/>
+      <circle cx="929" cy="315" r="13"/>
+      <circle cx="976" cy="315" r="13"/>
+      <circle cx="1023" cy="315" r="13"/>
+      <circle cx="1070" cy="315" r="15"/>
+    </g>
+  </g>
+  <!-- a small crown over the first (Jarasandha) and last (Haryanka transition) -->
+  <g fill="#F5E6C8" opacity="0.8">
+    <path d="M 110 268 L 122 290 L 130 276 L 138 290 L 150 268 L 146 296 L 114 296 Z"/>
+    <path d="M 1048 262 L 1062 288 L 1070 272 L 1078 288 L 1092 262 L 1088 294 L 1052 294 Z"/>
+  </g>
+  <rect x="96" y="520" width="1008" height="3" fill="#D4A843" opacity="0.35"/>
+</svg>

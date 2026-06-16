@@ -14,6 +14,7 @@ import type { SidebarItem } from "@/components/history/HistorySidebar";
 import { dynasties, getDynastyById } from "@/data/dynasties";
 import { getSiteById } from "@/data/sites";
 import { getEraById } from "@/data/eras";
+import { FactCardForPage } from "@/components/share/FactCardForPage";
 
 // =============================================================================
 // Static params
@@ -154,6 +155,13 @@ export default async function DynastyDetailPage({
           </p>
         </div>
       )}
+
+      {/* Shareable fact card — appears only on dynasties that have one seeded
+          (currently Brihadratha). 1-tap share fires outbound_share. */}
+      <FactCardForPage
+        path={"/sanatan-history/dynasties/" + dynasty.id}
+        className="mb-8"
+      />
 
       {/* Branch badge + date range + capital */}
       <div className="flex flex-wrap items-center gap-3 mb-8">

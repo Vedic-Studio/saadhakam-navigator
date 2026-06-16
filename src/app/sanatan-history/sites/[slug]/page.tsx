@@ -16,6 +16,7 @@ import { AeoBlock } from "@/components/history/AeoBlock";
 import { HistorySidebar } from "@/components/history/HistorySidebar";
 import type { SidebarItem } from "@/components/history/HistorySidebar";
 import { EvidenceStatusBadge } from "@/components/history/EvidenceStatusBadge";
+import { FactCardForPage } from "@/components/share/FactCardForPage";
 
 export async function generateStaticParams() {
   return sites.map((site) => ({ slug: site.id }));
@@ -166,6 +167,14 @@ export default async function SiteDetailPage({
           <EvidenceStatusBadge status={site.evidenceType} />
         </div>
       </div>
+
+      {/* Shareable fact card — appears only on sites that have one seeded
+          (currently Dwarka). On Dwarka it also links the Mahabharata-dating
+          sibling fact, giving this high-bounce page an in-cluster next step. */}
+      <FactCardForPage
+        path={"/sanatan-history/sites/" + site.id}
+        className="mb-8"
+      />
 
       {/* Description */}
       <div className="glass-card rounded-2xl border border-white/5 p-6 mb-8">
