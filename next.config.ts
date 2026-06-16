@@ -50,6 +50,12 @@ const nextConfig: NextConfig = {
                 permanent: true,
             },
             {
+                // Slug renamed yoga -> yoga-darshana; old URL was 404ing (GSC 2026-06-16)
+                source: "/philosophies/yoga",
+                destination: "/philosophies/yoga-darshana",
+                permanent: true,
+            },
+            {
                 source: "/compare/advaita-vs-dvaita",
                 destination: "/advaita-vs-dvaita",
                 permanent: true,

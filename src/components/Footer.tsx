@@ -30,7 +30,7 @@ const footerLinks = {
     { label: "Find Your Path", href: "/faith-finder" },
     { label: "Practices", href: "/practices" },
     { label: "Mantras", href: "/mantras" },
-    { label: "Stotras", href: "/stotras/shiva-tandava-stotram" },
+    { label: "Stotras", href: "/stotras" },
     { label: "Jyotish", href: "/jyotish" },
     { label: "Panchang", href: "/panchang" },
     { label: "AI Tutor", href: "/app" },

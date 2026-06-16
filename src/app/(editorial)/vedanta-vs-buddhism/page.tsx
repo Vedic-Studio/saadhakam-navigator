@@ -109,7 +109,7 @@ export default function VedantaVsBuddhismPage() {
             <div className="article-callout" data-tone="insight">
                 <div className="article-callout-title">Comparative caution</div>
                 <p>
-                    If you want the larger landscape of Indian philosophical disagreement, connect this page with <ArticleLink href="/advaita-vs-dvaita" eventLabel="vedanta-buddhism:body:advaita-dvaita">Advaita vs Dvaita</ArticleLink> and the <ArticleLink href="/traditions/buddhism" eventLabel="vedanta-buddhism:body:buddhism">Buddhism tradition hub</ArticleLink>. The dispute with Buddhism is one major front in a wider doctrinal field.
+                    If you want the larger landscape of Indian philosophical disagreement, connect this page with <ArticleLink href="/advaita-vs-dvaita" eventLabel="vedanta-buddhism:body:advaita-dvaita">Advaita vs Dvaita</ArticleLink> and the <ArticleLink href="/six-darshanas" eventLabel="vedanta-buddhism:body:six-darshanas">six schools of Indian philosophy</ArticleLink>. The dispute with Buddhism is one major front in a wider doctrinal field.
                 </p>
             </div>
 
