@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame, Clock, Compass, Sparkles, ScrollText, Brain, FileText, Lightbulb, HandHeart } from "lucide-react";
+import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame, Clock, Compass, Sparkles, ScrollText, Brain, FileText, Lightbulb, HandHeart, Music } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggeredList } from "@/components/animations/StaggeredList";
 
@@ -47,11 +47,18 @@ const categories = [
     color: "text-rose-400",
   },
   {
-    title: "Mantras & Stotras",
+    title: "Mantras",
     description: "Sacred chants with interactive japa counter",
     href: "/mantras",
     icon: BookOpen,
     color: "text-indigo-400",
+  },
+  {
+    title: "Stotras",
+    description: "Vishnu & Lalita Sahasranama, Shiva Tandava, Navagraha — Sanskrit & meaning",
+    href: "/stotras",
+    icon: Music,
+    color: "text-blue-400",
   },
   {
     title: "Sanskrit",

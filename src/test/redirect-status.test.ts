@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import nextConfig from "../../next.config";
 
 function readSource(file: string): string {
     return readFileSync(resolve(process.cwd(), file), "utf8");
@@ -37,5 +38,24 @@ describe("Vishnu Sahasranama redirect status + canonical structured data", () =>
         const source = readSource(LALITA_SLUG_PAGE);
         // Guard against an accidental redirect being introduced to lalita, which serves names directly.
         expect(source).not.toContain("redirect");
+    });
+});
+
+describe("next.config.ts philosophy slug-rename redirects", () => {
+    it("permanently redirects renamed philosophy slugs so old indexed URLs don't 404", async () => {
+        // Slugs were renamed but old URLs stayed indexed and 404'd (GSC 2026-06-16).
+        // A permanent redirect consolidates the dead URL onto the live page.
+        expect(typeof nextConfig.redirects).toBe("function");
+        const redirects = await nextConfig.redirects!();
+
+        const yoga = redirects.find((r) => r.source === "/philosophies/yoga");
+        expect(yoga).toBeDefined();
+        expect(yoga?.destination).toBe("/philosophies/yoga-darshana");
+        expect(yoga?.permanent).toBe(true);
+
+        // Siblings already fixed — guard against accidental removal in the same block.
+        for (const old of ["/philosophies/advaita-vedanta", "/philosophies/nyaya", "/philosophies/vaisheshika"]) {
+            expect(redirects.some((r) => r.source === old && r.permanent)).toBe(true);
+        }
     });
 });

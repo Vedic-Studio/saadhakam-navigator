@@ -81,6 +81,16 @@ describe("child sitemaps", () => {
         expect(xml).toContain("<loc>https://www.opensadhaka.com/terms</loc>");
     });
 
+    it("advertises the /stotras hub in both the core and stotras sitemaps", async () => {
+        // The hub had no page and was absent from the sitemap, so Google only ever
+        // saw /stotras as a 404 (GSC 2026-06-16). The </loc> anchor makes this match
+        // the hub exactly, never a child like /stotras/shiva-tandava-stotram.
+        const core = await fetchChild("core");
+        expect(core).toContain("<loc>https://www.opensadhaka.com/stotras</loc>");
+        const stotras = await fetchChild("stotras");
+        expect(stotras).toContain("<loc>https://www.opensadhaka.com/stotras</loc>");
+    });
+
     it("shlokas sitemap never emits chapter-undefined or shloka-undefined", async () => {
         const xml = await fetchChild("shlokas");
         expect(xml).not.toContain("undefined");

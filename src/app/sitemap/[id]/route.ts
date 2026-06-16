@@ -78,6 +78,7 @@ function getEntries(id: string): SitemapEntry[] {
         { url: `${baseUrl}/terms`, lastModified: contentDate, changeFrequency: "yearly", priority: 0.3 },
         { url: `${baseUrl}/deities`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
         { url: `${baseUrl}/mantras`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
+        { url: `${baseUrl}/stotras`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.9 },
         { url: `${baseUrl}/best-spiritual-path-for-beginners`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.8 },
         { url: `${baseUrl}/choose-between-bhakti-jnana-karma-raja-yoga`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.8 },
         { url: `${baseUrl}/best-meditation-style-for-your-personality`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.8 },
@@ -248,6 +249,7 @@ function getEntries(id: string): SitemapEntry[] {
 
     case "stotras":
       return [
+        { url: `${baseUrl}/stotras`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.85 },
         { url: `${baseUrl}/stotras/shiva-tandava-stotram`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.8 },
         ...Array.from({ length: 16 }, (_, i) => ({
           url: `${baseUrl}/stotras/shiva-tandava-stotram/verse-${i + 1}`,

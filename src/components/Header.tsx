@@ -71,7 +71,7 @@ const navSections: NavSection[] = [
       label: "Resources",
       items: [
         { label: "Mantras", href: "/mantras", description: "Browse mantra guides, meanings, and use cases." },
-        { label: "Stotras", href: "/stotras/shiva-tandava-stotram", description: "Access devotional hymns and recitation texts." },
+        { label: "Stotras", href: "/stotras", description: "Access devotional hymns and recitation texts." },
         { label: "Sanskrit Dictionary", href: "/learn/sanskrit", description: "Study key Sanskrit terms and language basics." },
         { label: "Compare Paths", href: "/compare", description: "Contrast spiritual paths to find personal fit." },
         { label: "Daily Guidance", href: "/panchang", description: "Check today’s spiritual timing and orientation." },
