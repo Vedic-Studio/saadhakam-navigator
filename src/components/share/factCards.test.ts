@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import {
   factCards,
   getFactCardById,
-  getFactCardByHref,
   shareUrlFor,
   type FactConfidence,
 } from "./factCards";
@@ -14,16 +13,15 @@ import { SITE_URL } from "@/lib/seo/index";
 const VALID_CONFIDENCE: FactConfidence[] = ["confirmed", "strong", "open"];
 
 describe("factCards data integrity", () => {
-  it("seeds exactly the four civilizational facts plus the DNA companion", () => {
-    // Brief requires four cards (Rakhigarhi size flagship, Dwarka, Mahabharata,
-    // one dynasty). The Rakhigarhi DNA card is an extra companion that also
-    // repairs the DNA evidence page. Guard the set so it can't silently drift.
+  it("seeds exactly the three kb-sourced civilizational fact cards", () => {
+    // Only cards with a seeded kb/claims backing file ship. The Mahabharata
+    // astronomical-dating and Dwarka-submersion cards are deferred until
+    // kb/claims/mahabharata-astronomical-dating-claim.md and
+    // kb/claims/dwarka-submersion-claim.md are seeded.
     const ids = factCards.map((c) => c.id).sort();
     expect(ids).toEqual(
       [
         "brihadratha-dynasty",
-        "dwarka-underwater",
-        "mahabharata-5561-bce",
         "rakhigarhi-dna",
         "rakhigarhi-vs-mohenjo-daro",
       ].sort(),
@@ -110,24 +108,6 @@ describe("factCards data integrity", () => {
     expect(flagship?.fact).toContain("250");
   });
 
-  it("the Dwarka repair card is keyed to the dwarka-underwater site page", () => {
-    const dwarka = getFactCardByHref(
-      "/sanatan-history/sites/dwarka-underwater",
-    );
-    expect(dwarka?.id).toBe("dwarka-underwater");
-    // Confidence stays 'open' — we must not over-claim it is Krishna's Dwarka.
-    expect(dwarka?.confidence).toBe("open");
-  });
-
-  it("the Mahabharata card is labelled a proposal (status strong), matching mb-5561", () => {
-    const mb = getFactCardById("mahabharata-5561-bce");
-    const onPage = evidenceItems.find((e) => e.id === "mb-5561");
-    expect(mb?.confidence).toBe("strong");
-    expect(onPage?.status).toBe("strong");
-    // Numbers must match the on-page source verbatim.
-    expect(mb?.fact).toContain("5,561 BCE");
-    expect(mb?.fact).toContain("215+");
-  });
 });
 
 describe("shareUrlFor", () => {

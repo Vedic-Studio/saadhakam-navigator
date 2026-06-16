@@ -45,21 +45,14 @@ describe("FactCardForPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("links the Dwarka page to its Mahabharata-dating sibling (bounce repair)", () => {
+  it("links the Rakhigarhi size page to the DNA sibling card", () => {
     render(
-      <FactCardForPage path="/sanatan-history/sites/dwarka-underwater" />,
+      <FactCardForPage path="/sanatan-history/evidence/rakhigarhi-largest-site" />,
     );
-    const mb = getFactCardById("mahabharata-5561-bce")!;
+    const dna = getFactCardById("rakhigarhi-dna")!;
     const link = screen.getByRole("link", { name: /related fact/i });
-    expect(link).toHaveAttribute("href", mb.href);
-    expect(link).toHaveTextContent(mb.headline);
-  });
-
-  it("links the Mahabharata page back to the Dwarka sibling", () => {
-    render(<FactCardForPage path="/sanatan-history/evidence/mb-5561" />);
-    const dwarka = getFactCardById("dwarka-underwater")!;
-    const link = screen.getByRole("link", { name: /related fact/i });
-    expect(link).toHaveAttribute("href", dwarka.href);
+    expect(link).toHaveAttribute("href", dna.href);
+    expect(link).toHaveTextContent(dna.headline);
   });
 
   it("does not render a sibling link for the standalone Brihadratha card", () => {

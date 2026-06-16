@@ -8,9 +8,8 @@
  * and the card appears only where one is seeded. Server component (no client
  * hooks); the embedded ShareButton is the only client island.
  *
- * The sibling link does double duty: it gives the high-bounce Dwarka page an
- * internal next-step (to the Mahabharata-dating fact, whose submersion timeline
- * it shares), turning a dead end into a path deeper into the cluster.
+ * The sibling link links the two Rakhigarhi cards (size vs DNA) bidirectionally,
+ * so a reader on either page gets a natural next step into the other supporting fact.
  */
 
 import Link from "next/link";
@@ -24,10 +23,6 @@ import { getFactCardByHref, getFactCardById, type FactCard as FactCardData } fro
  * are listed explicitly so the relationship is obvious at a glance.
  */
 const SIBLING_BY_ID: Record<string, string> = {
-  // Dwarka's submersion is dated in the Mahabharata-dating evidence, and vice
-  // versa — link them both ways.
-  "dwarka-underwater": "mahabharata-5561-bce",
-  "mahabharata-5561-bce": "dwarka-underwater",
   // The two Rakhigarhi facts (size + DNA) reinforce each other.
   "rakhigarhi-vs-mohenjo-daro": "rakhigarhi-dna",
   "rakhigarhi-dna": "rakhigarhi-vs-mohenjo-daro",

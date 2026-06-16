@@ -45,10 +45,10 @@ describe("FactCard", () => {
     expect(screen.getByText("Confirmed")).toBeInTheDocument();
   });
 
-  it("renders 'Open question' for the open-confidence Dwarka card", () => {
-    const dwarka = getFactCardById("dwarka-underwater")!;
-    render(<FactCard card={dwarka} />);
-    expect(screen.getByText("Open question")).toBeInTheDocument();
+  it("renders 'Strong evidence' for the strong-confidence Brihadratha card", () => {
+    const brihadratha = getFactCardById("brihadratha-dynasty")!;
+    render(<FactCard card={brihadratha} />);
+    expect(screen.getByText("Strong evidence")).toBeInTheDocument();
   });
 
   it("embeds a ShareButton that fires outbound_share with the card's absolute URL", async () => {
