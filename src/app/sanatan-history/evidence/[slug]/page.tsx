@@ -16,6 +16,7 @@ import { HistorySidebar } from "@/components/history/HistorySidebar";
 import type { SidebarItem } from "@/components/history/HistorySidebar";
 import { EvidenceStatusBadge } from "@/components/history/EvidenceStatusBadge";
 import { CounterArgumentsSection } from "@/components/history/CounterArgumentsSection";
+import { FactCardForPage } from "@/components/share/FactCardForPage";
 
 export async function generateStaticParams() {
   return evidenceItems.map((item) => ({ slug: item.id }));
@@ -120,6 +121,14 @@ export default async function EvidenceDetailPage({
       <div className="mb-8">
         <EvidenceStatusBadge status={item.status} size="md" />
       </div>
+
+      {/* Shareable fact card — appears only on evidence pages that have one
+          seeded (e.g. Rakhigarhi size/DNA, Mahabharata dating). The 1-tap share
+          fires outbound_share with content_type: fact_card. */}
+      <FactCardForPage
+        path={"/sanatan-history/evidence/" + item.id}
+        className="mb-8"
+      />
 
       {/* Lead comparison table — relocates raw quantitative claims out of the
           meta and onto the page as an AI-extractable answer block */}

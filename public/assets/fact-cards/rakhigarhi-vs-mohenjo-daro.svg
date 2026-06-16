@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Rakhigarhi approximately 350 hectares compared with Mohenjo-daro approximately 250 hectares">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1330"/>
+      <stop offset="1" stop-color="#0f0a1c"/>
+    </linearGradient>
+    <linearGradient id="saffron" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E07B39"/>
+      <stop offset="1" stop-color="#C87941"/>
+    </linearGradient>
+    <linearGradient id="muted" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6d5a8a"/>
+      <stop offset="1" stop-color="#4a3d63"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- faint sikhara watermark, right -->
+  <g transform="translate(880,150) scale(3.6)" fill="#E07B39" opacity="0.08">
+    <rect x="4" y="88" width="92" height="5"/>
+    <path fill-rule="evenodd" d="M 12 88 V 79 H 17 V 70 H 22 V 61 H 27 V 52 H 32 V 43 H 37 V 34 H 63 V 43 H 68 V 52 H 73 V 61 H 78 V 70 H 83 V 79 H 88 V 88 H 12 Z M 32 86 L 50 40 L 68 86 Z"/>
+    <ellipse cx="50" cy="27" rx="11" ry="2.5"/>
+    <circle cx="50" cy="20" r="3"/>
+    <circle cx="50" cy="13" r="2"/>
+  </g>
+  <!-- Two proportional bands: Rakhigarhi 350 vs Mohenjo-daro 250 -->
+  <g transform="translate(96,150)">
+    <!-- Rakhigarhi bar (full) -->
+    <rect x="0" y="0" width="700" height="120" rx="14" fill="url(#saffron)"/>
+    <circle cx="42" cy="60" r="22" fill="#0f0a1c" opacity="0.18"/>
+    <!-- Mohenjo-daro bar (~71% of width = 250/350) -->
+    <rect x="0" y="170" width="500" height="120" rx="14" fill="url(#muted)"/>
+    <circle cx="42" cy="230" r="22" fill="#0f0a1c" opacity="0.22"/>
+  </g>
+  <!-- thin gold baseline -->
+  <rect x="96" y="468" width="1008" height="3" fill="#D4A843" opacity="0.5"/>
+  <!-- brand dot row -->
+  <g transform="translate(96,520)" fill="#F5E6C8" opacity="0.5">
+    <circle cx="0" cy="0" r="4"/>
+    <circle cx="20" cy="0" r="4" opacity="0.7"/>
+    <circle cx="40" cy="0" r="4" opacity="0.45"/>
+  </g>
+</svg>
