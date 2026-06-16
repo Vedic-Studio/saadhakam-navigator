@@ -130,4 +130,150 @@ describe("articles data integrity", () => {
       }
     }
   });
+
+  describe("per-destroyer temple-destruction hub pages", () => {
+    const expectedSlugs = [
+      "aurangzeb-temples-destroyed",
+      "mahmud-of-ghazni-temples-destroyed",
+      "sikandar-butshikan-kashmir-temples",
+    ];
+
+    it("all three destroyer pages are registered", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(entry, `expected article "${slug}" to be registered in articles.ts`).toBeDefined();
+      }
+    });
+
+    it("each destroyer page sits under the spiritual-traditions pillar", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(entry?.pillar, `"${slug}" should sit under spiritual-traditions pillar`).toBe(
+          "spiritual-traditions",
+        );
+      }
+    });
+
+    it("each destroyer page has the canonical AEO answer block (60-100+ chars)", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(entry?.aeoAnswer, `"${slug}" missing aeoAnswer`).toBeDefined();
+        expect(
+          (entry?.aeoAnswer ?? "").length,
+          `"${slug}" aeoAnswer too short`,
+        ).toBeGreaterThan(200);
+      }
+    });
+
+    it("each destroyer page has at least four FAQs", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(
+          entry?.faqs.length ?? 0,
+          `"${slug}" should have at least 4 FAQs`,
+        ).toBeGreaterThanOrEqual(4);
+      }
+    });
+
+    it("each destroyer page cross-links the hub article", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        const hrefs = entry?.relatedLinks.map((l) => l.href) ?? [];
+        expect(
+          hrefs,
+          `"${slug}" relatedLinks should reference the hub`,
+        ).toContain("/temples-destroyed-medieval-india");
+      }
+    });
+
+    it("title for each destroyer page is under 60 characters (SEO meta limit)", () => {
+      for (const slug of expectedSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(
+          (entry?.title ?? "").length,
+          `"${slug}" title is too long for SEO`,
+        ).toBeLessThanOrEqual(60);
+      }
+    });
+  });
+
+  describe("individual temple-destruction case pages", () => {
+    const caseSlugs = [
+      "somnath-destruction",
+      "kashi-vishwanath-aurangzeb",
+      "keshavdev-mathura",
+      "martand-sun-temple",
+    ];
+
+    it("all four case pages are registered", () => {
+      for (const slug of caseSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(entry, `expected article "${slug}" to be registered in articles.ts`).toBeDefined();
+      }
+    });
+
+    it("each case page sits under the spiritual-traditions pillar", () => {
+      for (const slug of caseSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(entry?.pillar, `"${slug}" should sit under spiritual-traditions pillar`).toBe(
+          "spiritual-traditions",
+        );
+      }
+    });
+
+    it("each case page has a 60-100 word AEO answer", () => {
+      for (const slug of caseSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        const wordCount = (entry?.aeoAnswer ?? "").split(/\s+/).filter(Boolean).length;
+        expect(
+          wordCount,
+          `"${slug}" aeoAnswer word count ${wordCount} not in 60-100 range`,
+        ).toBeGreaterThanOrEqual(60);
+        expect(
+          wordCount,
+          `"${slug}" aeoAnswer word count ${wordCount} not in 60-100 range`,
+        ).toBeLessThanOrEqual(110);
+      }
+    });
+
+    it("each case page has at least four FAQs", () => {
+      for (const slug of caseSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(
+          entry?.faqs.length ?? 0,
+          `"${slug}" should have at least 4 FAQs`,
+        ).toBeGreaterThanOrEqual(4);
+      }
+    });
+
+    it("each case page cross-links the hub article", () => {
+      for (const slug of caseSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        const hrefs = entry?.relatedLinks.map((l) => l.href) ?? [];
+        expect(
+          hrefs,
+          `"${slug}" relatedLinks should reference the hub`,
+        ).toContain("/temples-destroyed-medieval-india");
+      }
+    });
+
+    it("title for each case page is under 60 characters (SEO meta limit)", () => {
+      for (const slug of caseSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        expect(
+          (entry?.title ?? "").length,
+          `"${slug}" title is too long for SEO`,
+        ).toBeLessThanOrEqual(60);
+      }
+    });
+
+    it("metaDescription for each case page is within SEO bounds (50-170 chars)", () => {
+      for (const slug of caseSlugs) {
+        const entry = articles.find((a) => a.slug === slug);
+        const len = entry?.metaDescription.length ?? 0;
+        expect(len, `"${slug}" metaDescription is too short`).toBeGreaterThanOrEqual(50);
+        expect(len, `"${slug}" metaDescription is too long`).toBeLessThanOrEqual(170);
+      }
+    });
+  });
 });

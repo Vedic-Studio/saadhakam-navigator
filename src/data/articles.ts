@@ -2583,6 +2583,390 @@ export const articles: ArticleMeta[] = [
             { name: "Varanasi", sameAs: "https://en.wikipedia.org/wiki/Varanasi", type: "Place" },
         ],
     },
+    {
+        slug: "temples-destroyed-medieval-india",
+        route: "/temples-destroyed-medieval-india",
+        title: "Hindu Temples Destroyed in Medieval India: The Documented Record",
+        metaDescription:
+            "What happened to India's pre-Islamic temple corpus? The Muslim chronicles themselves — Maasir-i-Alamgiri, Tabaqat-i-Nasiri, the Quwwat-ul-Islam inscription — name names, places, and dates. Somnath, Kashi, Mathura, Vijayanagara, and 2,000 documented cases.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-05-16",
+        readingTime: 14,
+        primaryKeyword: "hindu temples destroyed in medieval india",
+        aeoAnswer:
+            "Thousands of Hindu, Buddhist, and Jain temples across the Indian subcontinent were destroyed or converted into mosques during medieval Islamic rule (c. 1000–1700 CE). The evidence is not Hindu polemic — it is recorded in the Muslim chronicles themselves: Mahmud of Ghazni's destruction of Somnath in 1026 (Tabaqat-i-Nasiri), Aurangzeb's 1669 firman ordering the demolition of the Kashi Vishwanath temple (Maasir-i-Alamgiri), the 1670 destruction of the Keshavdev temple at Krishna's birthplace in Mathura, the five-month sacking of Vijayanagara in 1565, and 2,000+ Muslim monuments built on temple sites catalogued from Archaeological Survey of India field reports.",
+        relatedLinks: [
+            { text: "Most Powerful Shiva Temples", href: "/most-powerful-shiva-temples-india" },
+            { text: "South India Temple Architecture", href: "/south-india-temple-architecture" },
+            { text: "Kailasa Temple Ellora", href: "/kailasa-temple-ellora" },
+            { text: "Sacred Sites in India", href: "/sacred-sites-india" },
+        ],
+        faqs: [
+            {
+                question: "How many Hindu temples were destroyed during Muslim rule in India?",
+                answer:
+                    "The most thorough documentary survey (Hindu Temples — What Happened to Them?, Voice of India, 1990–93) catalogues over 2,000 Muslim monuments — mosques, dargahs, tombs, idgahs — built on the sites of, or using materials from, demolished Hindu, Buddhist, and Jain temples. These are documented cases with archaeological survey provenance. The actual total is higher; the listed monuments are the ones for which inscriptional, literary, or archaeological evidence survives. Uttar Pradesh alone has 400+ documented cases.",
+            },
+            {
+                question: "Did Aurangzeb really order the destruction of the Kashi Vishwanath temple?",
+                answer:
+                    "Yes — Aurangzeb's own court chronicle, the Maasir-i-Alamgiri (compiled 1710 from Mughal state archives), records the April 1669 firman ordering the demolition of temples in Tatta, Multan, and especially Benares, followed by the specific report: 'It was reported that, according to the Emperor's command, his officers had demolished the temple of Viswanath at Kashi.' The Gyanvapi Mosque was built on the western half of the destroyed temple. Visible temple-fabric (pillars, plinth carvings) still embedded in the mosque's western wall is independent corroboration.",
+            },
+            {
+                question: "Was the Babri Masjid actually built on a Ram temple?",
+                answer:
+                    "Four pre-British Muslim sources document this directly: Mirza Jan's Hadiqah-i Shuhada (Lucknow, 1856), Shykh Azamat Ali Kakorawi's Tarikh-i Avadh (1869), Mirza Rajab Ali Beg Surur's Fasanah-i Ibrat, and an 1858 legal application by the mosque's own Khatib that refers to the structure as 'masjid-i Janmasthan.' The 2003 Archaeological Survey of India excavation under court direction confirmed a pre-existing massive structure with 50+ pillar bases and a north–south wall beneath the mosque. The Supreme Court's 2019 verdict drew on this combined evidence.",
+            },
+            {
+                question: "Who was Sikandar Butshikan and what did he do in Kashmir?",
+                answer:
+                    "Sikandar Shah Miri (r. c. 1389–1413) was the Sultan of Kashmir given the title 'Butshikan' — idol-breaker — by Kashmir's own Persian chroniclers. During his reign, the pre-Islamic Hindu and Buddhist monument corpus of the Kashmir Valley, documented by Kalhana in the 12th-century Rajatarangini, was systematically destroyed. The Martand Sun Temple ruins survive as the most visible casualty. Srinagar's Jami Masjid was built from the materials of converted temples (Jayasvamin, Vishnusvamin, Bhimasvamin, Vishnu Ranasvamin, Narendrasvamin).",
+            },
+        ],
+        featuredImage: {
+            src: "/assets/articles/temples-destroyed-medieval-india/featured.webp",
+            alt: "hindu temples destroyed in medieval india — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
+    },
+    {
+        slug: "aurangzeb-temples-destroyed",
+        route: "/aurangzeb-temples-destroyed",
+        title: "Aurangzeb's Temple Destructions: The Documented Record",
+        metaDescription:
+            "Aurangzeb's 1669 firman and the Maasir-i-Alamgiri case ledger: Kashi Vishwanath, Keshavdev Mathura, Udaipur (172 temples), Amber, Khandela, Jodhpur, Pandharpur.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-05-17",
+        readingTime: 12,
+        primaryKeyword: "aurangzeb temples destroyed",
+        aeoAnswer:
+            "The Mughal emperor Aurangzeb (r. 1658–1707) ordered the demolition of Hindu temples as recurring state policy, beginning with the general firman of April 1669 against the temples and Hindu schools of Tatta, Multan, and Benares. His own court chronicle, the Maasir-i-Alamgiri by Saqi Mustaid Khan (completed 1710 from Mughal state archives), records the specific demolitions: Kashi Vishwanath in 1669, the Keshavdev temple at Krishna's birthplace in Mathura in 1670, 172 temples in the Mewar campaign of January 1680, 66 temples at Amber in August 1680, and the temples of Khandela (where 300 Rajputs died defending), Jodhpur, and Pandharpur. The pattern was administrative procedure recorded by named officers, not exception.",
+        relatedLinks: [
+            { text: "Hub: Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
+            { text: "Mahmud of Ghazni's Destructions", href: "/mahmud-of-ghazni-temples-destroyed" },
+            { text: "Sikandar Butshikan's Kashmir", href: "/sikandar-butshikan-kashmir-temples" },
+            { text: "Most Powerful Shiva Temples (Jyotirlingas)", href: "/most-powerful-shiva-temples-india" },
+            { text: "Kailasa Temple Ellora", href: "/kailasa-temple-ellora" },
+        ],
+        faqs: [
+            {
+                question: "How many temples did Aurangzeb destroy?",
+                answer:
+                    "Aurangzeb's own court chronicle, the Maasir-i-Alamgiri, records the specific demolitions but not a single cumulative total. The documented count from named cases — Kashi Vishwanath, Keshavdev Mathura, the temples of Khandela, Jodhpur, the 172 temples of the Mewar campaign in January 1680, the 66 temples destroyed by Abu Turab at Amber in August 1680, the three temples on Lake Udaisagar, the Pandharpur Vithoba — runs to well over 300 named structures across the chronicle's coverage of 1669 onward. The actual figure including provincial demolitions that did not reach the court is substantially higher.",
+            },
+            {
+                question: "What was Aurangzeb's 1669 firman?",
+                answer:
+                    "On 9th April 1669, Aurangzeb issued a general firman from his court at Delhi ordering the governors of all provinces 'to demolish the schools and temples of the infidels and with the utmost urgency put down the teaching and the public practice of the religion of these misbelievers.' The Maasir-i-Alamgiri records the firman verbatim. It was not a one-time order but a standing instruction that produced the documented case-by-case demolitions over the subsequent thirty-eight years of the reign — beginning with the Kashi Vishwanath demolition within months.",
+            },
+            {
+                question: "What happened to the idols Aurangzeb's officers seized?",
+                answer:
+                    "The chronicles record a recurring humiliation pattern: idols were brought to Delhi or Agra and buried under the steps of mosques to be permanently trodden on. The Maasir-i-Alamgiri describes the Mathura Keshavdev idols being 'buried under the steps of the mosque of the Begam Sahib' at Agra after the 1670 demolition. The same chronicle records the Jodhpur idols of 1679 being 'cast in the yard of the Court and under the steps of the Jami mosque, to be trodden on. They remained so for some time and at last their very names were lost.' At Pandharpur, the order was to slaughter cows inside the Vithoba temple to permanently desecrate the site.",
+            },
+            {
+                question: "Did Aurangzeb give grants to any Hindu temples?",
+                answer:
+                    "Yes. Surviving farmans in the National Archives and the Banaras temple archives record Aurangzeb's grants of land and stipends to specific Hindu temples and Brahmin pandits in Banaras, Allahabad, and elsewhere. The grants do not contradict the demolition record — they sit alongside it. Aurangzeb's policy was theologically discriminating, not uniformly destructive: temples and Brahmin establishments that fit within the dhimmi framework on his terms were sometimes supported, while sites that drew large public worship or anchored politically resistant communities were demolished. Audrey Truschke's Aurangzeb (2017) catalogues the grants; the Maasir-i-Alamgiri catalogues the demolitions. Both records are real.",
+            },
+        ],
+        featuredImage: {
+            src: "/assets/articles/aurangzeb-temples-destroyed/featured.webp",
+            alt: "aurangzeb temples destroyed — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
+    },
+    {
+        slug: "mahmud-of-ghazni-temples-destroyed",
+        route: "/mahmud-of-ghazni-temples-destroyed",
+        title: "Mahmud of Ghazni's Temple Destructions: The Record",
+        metaDescription:
+            "Seventeen raids 1001–1027: Somnath 1026, Mathura 1018, Kanauj 1018, Thanesar 1014. What Utbi's Tarikh-i-Yamini, Minhaj-us-Siraj, and al-Biruni recorded.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-05-17",
+        readingTime: 11,
+        primaryKeyword: "mahmud of ghazni temples destroyed",
+        aeoAnswer:
+            "Sultan Mahmud of Ghazni (r. 998–1030) conducted seventeen recorded military expeditions into the Indian subcontinent between 1001 and 1027. The 1026 destruction of the Somnath temple in Saurashtra is the case that entered Hindu memory most deeply; the earlier campaigns at Thanesar (1014), Mathura (1018), Kanauj (1018), and Nagarkot (1009 and 1023) are described in equally explicit detail by Mahmud's own court historian Utbi in the Tarikh-i-Yamini. The Lahore mint under Mahmud's authority struck coins titling him but-shikan, 'the breaker of idols,' and yamin-ud-daulah, 'the right hand of the Caliph.' The polymath al-Biruni, who travelled with the campaigns, independently corroborates the destruction in the Kitab-ul-Hind.",
+        relatedLinks: [
+            { text: "Hub: Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
+            { text: "Aurangzeb's Destructions", href: "/aurangzeb-temples-destroyed" },
+            { text: "Sikandar Butshikan's Kashmir", href: "/sikandar-butshikan-kashmir-temples" },
+            { text: "Most Powerful Shiva Temples (Jyotirlingas)", href: "/most-powerful-shiva-temples-india" },
+            { text: "South India Temple Architecture", href: "/south-india-temple-architecture" },
+        ],
+        faqs: [
+            {
+                question: "How many times did Mahmud of Ghazni raid India?",
+                answer:
+                    "Seventeen recorded expeditions between 1001 and 1027, conducted annually or near-annually from his capital at Ghazni in modern Afghanistan. The campaigns were tactically raids — Mahmud did not, with the exception of Punjab, establish administration in the territories he raided. Each campaign followed the same pattern: take the rampart, take the temple, carry the wealth and the principal idol home to Ghazni, return the next year for the next target. The seventeen-raid figure comes from Utbi's Tarikh-i-Yamini and is corroborated by Minhaj-us-Siraj's Tabaqat-i-Nasiri (c. 1260) and the Ghaznavid administrative record.",
+            },
+            {
+                question: "Why was the Somnath raid so significant?",
+                answer:
+                    "Somnath in 1026 was the eleventh of the seventeen raids but became the canonical case in Hindu civilizational memory because of the temple's exceptional cultural status as a Jyotirlinga and the sheer scale of the destruction the chronicles record. Mahmud reached Somnath through Multan and the Thar desert, sacked the temple, broke the principal idol into four parts, and shipped fragments to be installed at the entrances of mosques at Ghazni, Mecca, and Medina, and at the gateway of his own palace at Ghazni. The temple was rebuilt repeatedly across the medieval and modern periods; the current structure was reconstructed in 1951 under Sardar Patel's direction as the sixth rebuild over the original plinth.",
+            },
+            {
+                question: "Did Mahmud's own coins really call him 'breaker of idols'?",
+                answer:
+                    "Yes. Silver and gold coins struck at the Lahore mint under Mahmud's authority bear the Arabic legend al-Sultan al-Adil Yamin-ud-Daulah wa Amin-ul-Millah Mahmud — but-shikan, 'the just sultan, the right hand of the dominion and trustee of the community, Mahmud, the breaker of idols.' The numismatic evidence is held in the British Museum and the Lahore Museum and catalogued in C. E. Bosworth's The Ghaznavids (1963). The title is not a retrospective hostile label — it is what Mahmud chose to call himself on the currency his administration issued. The destroyer named the policy on his own coins.",
+            },
+            {
+                question: "How reliable are the loot figures Utbi gives for Somnath?",
+                answer:
+                    "The Somnath wealth figures — millions of dinars, thousands of camel-loads of treasure — are court-chronicle hagiography written by Mahmud's own panegyrist Utbi and should be treated as upper-bound rhetorical figures rather than audit-grade accounting. Modern historians of the Ghaznavid economy use them as indicators of magnitude, not precise totals. What is independently corroborated — by Minhaj-us-Siraj two and a half centuries later, by al-Biruni's contemporary Kitab-ul-Hind, and by the temple's repeated reconstruction — is the fact of the destruction and its scale. The precise wealth extracted is contested; the destruction itself is not.",
+            },
+        ],
+        featuredImage: {
+            src: "/assets/articles/mahmud-of-ghazni-temples-destroyed/featured.webp",
+            alt: "mahmud of ghazni temples destroyed — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
+    },
+    {
+        slug: "sikandar-butshikan-kashmir-temples",
+        route: "/sikandar-butshikan-kashmir-temples",
+        title: "Sikandar Butshikan: Kashmir's Temple Destructions",
+        metaDescription:
+            "Sultan Sikandar of Kashmir (r. 1389–1413), titled Butshikan by his own Persian chroniclers. Martand Sun Temple, the Srinagar shrines, Jonaraja's Sanskrit witness.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-05-17",
+        readingTime: 11,
+        primaryKeyword: "sikandar butshikan kashmir",
+        aeoAnswer:
+            "Sultan Sikandar Shah Miri of the Shah Mir dynasty (r. c. 1389–1413) is the only medieval ruler of the Kashmir Valley whose Persian-language chroniclers — Kashmir's own historians, not hostile outside sources — gave him the name Butshikan, 'the idol-breaker.' Over a reign of roughly twenty-four years, the pre-Islamic Hindu and Buddhist temple corpus of the Kashmir Valley that Kalhana had catalogued in the 12th-century Rajatarangini was systematically demolished. The Martand Sun Temple at Anantnag — Lalitaditya's eighth-century Surya foundation, the most monumental shrine of the northern subcontinent — survives only as a ruin. The Srinagar shrines named by the chronicles (Jayasvamin, Vishnusvamin, Bhimasvamin, Diddamatha, the Skandabhavana Vihara) were demolished or converted. Jonaraja's Sanskrit Dvitiya Rajatarangini, written within a generation from the Pandit perspective, independently corroborates the Persian chronicles.",
+        relatedLinks: [
+            { text: "Hub: Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
+            { text: "Aurangzeb's Destructions", href: "/aurangzeb-temples-destroyed" },
+            { text: "Mahmud of Ghazni's Destructions", href: "/mahmud-of-ghazni-temples-destroyed" },
+            { text: "Kailasa Temple Ellora", href: "/kailasa-temple-ellora" },
+            { text: "South India Temple Architecture", href: "/south-india-temple-architecture" },
+        ],
+        faqs: [
+            {
+                question: "Who was Sikandar Butshikan?",
+                answer:
+                    "Sultan Sikandar Shah Miri (r. c. 1389–1413) was the sixth ruler of the Shah Mir dynasty, the first independent Muslim dynasty of Kashmir. His grandfather Shah Mir had taken the throne in 1339 in the political vacuum left by the Mongol invasions. The honorific Butshikan — 'idol-breaker' — was given to Sikandar by his own court historians and successive Persian chroniclers of Kashmir, not by hostile external sources. The iconoclastic phase of his reign, associated with his queen Subh Mata, his chief minister Suhabhatta (a converted Brahmin who took the name Saif-ud-Din), and the influence of the visiting Sayyid missionary Mir Muhammad Hamadani, is conventionally dated to the decade 1400–1413.",
+            },
+            {
+                question: "What happened to the Martand Sun Temple?",
+                answer:
+                    "The Martand Sun Temple on the Mattan plateau in Anantnag district, founded by King Lalitaditya Muktapida of the Karkota dynasty in the eighth century, was demolished during Sikandar's reign and survives only as ruin. ASI-era surveys note that the structural damage shows the chisel and crowbar marks of intentional dismantling rather than the cumulative weathering of natural collapse — consistent with the Persian chronicles' description of the temple being 'burnt and broken' under direct order. The plinth was preserved largely because the masonry blocks were too heavy to move. The ruins are now an ASI-protected monument.",
+            },
+            {
+                question: "Did the Sanskrit chronicle Rajatarangini confirm Sikandar's destruction?",
+                answer:
+                    "Yes — but the source is the continuation, not Kalhana's original. Jonaraja's Sanskrit Dvitiya Rajatarangini (Second Rajatarangini), completed approximately 1459 within a generation of Sikandar's death, continues Kalhana's chronicle into the Sultanate period from the Brahmin Pandit perspective. It corroborates the Persian chronicles' account of the temple destructions, names Suhabhatta as the chief enforcer of the conversion campaign, and describes the mass migration of Pandit families from the valley and the temple-fires of those who refused conversion. The convergence of the Persian Muslim chronicles and Jonaraja's Sanskrit Hindu chronicle on the same events is the evidentiary foundation of the Sikandar case.",
+            },
+            {
+                question: "Did Sikandar's reign end Hindu Kashmir entirely?",
+                answer:
+                    "No — the rupture was sharp but not complete. Sikandar's second son Zain-ul-Abidin (r. 1420–1470), who succeeded after the brief and unsuccessful reign of his elder brother Ali Shah, is recorded by the same Persian chronicles as a sovereign who reversed many of his father's policies. He recalled exiled Pandits, restored some temples, patronised Sanskrit scholarship, and is remembered in Kashmiri folk memory by the honorific Bud-Shah ('Great King'). The modern Kashmiri Pandit community descends in part from those who returned during Zain-ul-Abidin's reign and in part from later immigrant Pandit families. The Sikandar episode is the most documented single-reign campaign of medieval temple destruction in India, not a total extinction.",
+            },
+        ],
+        featuredImage: {
+            src: "/assets/articles/sikandar-butshikan-kashmir-temples/featured.webp",
+            alt: "sikandar butshikan kashmir temples — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
+    },
+    // ─── Temple-Destruction Case Pages (one per documented event) ────────────
+    {
+        slug: "somnath-destruction",
+        route: "/somnath-destruction",
+        title: "Somnath Destruction 1026: Mahmud of Ghazni's Raid",
+        metaDescription:
+            "Mahmud of Ghazni sacked the Somnath Shiva temple in January 1026. What Utbi, al-Biruni, and Minhaj-us-Siraj actually say, and what the loot figures get wrong.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-05-17",
+        readingTime: 7,
+        primaryKeyword: "somnath destruction",
+        aeoAnswer:
+            "In January 1026 CE, Mahmud of Ghazni led a Ghaznavid army across the Thar desert into Saurashtra, assaulted the great Shiva temple at Somnath on the Arabian Sea coast, broke the central Shivalinga, and shipped its fragments to Ghazni, Mecca, and Medina. The destruction is reported by Mahmud's own court historian Utbi (Tarikh-i-Yamini), independently confirmed by al-Biruni in the Kitab-ul-Hind, and recorded again by Minhaj-us-Siraj two centuries later. The temple was rebuilt repeatedly; the current 1951 reconstruction by Sardar Patel is the sixth structure on the original plinth.",
+        relatedLinks: [
+            { text: "Hub: Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
+            { text: "Mahmud of Ghazni's Destructions", href: "/mahmud-of-ghazni-temples-destroyed" },
+            { text: "Most Powerful Shiva Temples (Jyotirlingas)", href: "/most-powerful-shiva-temples-india" },
+            { text: "Aurangzeb's Destructions", href: "/aurangzeb-temples-destroyed" },
+            { text: "Kashi Vishwanath 1669", href: "/kashi-vishwanath-aurangzeb" },
+        ],
+        faqs: [
+            {
+                question: "When did Mahmud of Ghazni destroy Somnath?",
+                answer:
+                    "January 1026 CE. The campaign was the eleventh of Mahmud's seventeen recorded Indian expeditions. The dating comes from his own court historian Utbi, who wrote within a decade of the event, and is independently confirmed by al-Biruni — the polymath who travelled with the campaigns and composed the Kitab-ul-Hind during Mahmud's later reign.",
+            },
+            {
+                question: "Was the Somnath Shivalinga really broken into four pieces?",
+                answer:
+                    "Yes, according to Minhaj-us-Siraj's Tabaqat-i-Nasiri (c. 1260). He records that the idol 'was broken into four parts, one of which was cast before the centre of the great masjid at Ghaznin, the second before the gateway of the Sultan's palace, and the third and fourth were sent to Makkah and Madinah respectively.' The deliberate distribution of fragments as humiliation tokens is a documented pattern in Mahmud's campaigns.",
+            },
+            {
+                question: "Were Mahmud's reported loot figures accurate?",
+                answer:
+                    "Likely exaggerated. Utbi was Mahmud's court historian, paid to glorify his patron, and chronicles of the period inflate numbers throughout — army sizes, idol heights, treasure weights. The fact of substantial looting is well-attested; the specific figures are court-chronicler rhetoric and should be cited with a 'as reported by the court chronicle' qualifier, not as audited accounting.",
+            },
+            {
+                question: "Has Somnath been rebuilt seventeen times?",
+                answer:
+                    "No — this is a composite trope, not a documented sequence. The temple was reconstructed multiple times across centuries (notably by Bhima I and Kumarapala of the Chaulukyas in the 11th–12th c., by Mughal-era patrons, and finally by the Government of India in 1951 under Sardar Patel's initiative). But there is no inventoried 'seventeen rebuilds' list; the figure is a rhetorical echo of 'seventeen raids' and should not be presented as a documented count.",
+            },
+        ],
+        featuredImage: {
+            src: "/assets/articles/somnath-destruction/featured.webp",
+            alt: "somnath destruction — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
+    },
+    {
+        slug: "kashi-vishwanath-aurangzeb",
+        route: "/kashi-vishwanath-aurangzeb",
+        title: "Kashi Vishwanath 1669: Aurangzeb's Demolition Order",
+        metaDescription:
+            "Aurangzeb's April 1669 firman, the September report of the Vishweshwar temple demolished at Kashi, and the Gyanvapi mosque on the same footprint.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-05-17",
+        readingTime: 7,
+        primaryKeyword: "kashi vishwanath aurangzeb",
+        aeoAnswer:
+            "In April 1669, the Mughal emperor Aurangzeb issued a firman ordering the demolition of 'the schools and temples of the infidels' in Tatta, Multan, and especially Benares. By September 1669 his own court chronicle, the Maasir-i-Alamgiri, recorded that the temple of Vishweshwar at Kashi had been demolished pursuant to the order. The Gyanvapi Mosque was built on the same footprint using temple materials; the eastern wall of the original temple survives as the qibla wall of the mosque. The current Kashi Vishwanath shrine is Maharani Ahilyabai Holkar's 1780 reconstruction on the adjacent plot.",
+        relatedLinks: [
+            { text: "Hub: Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
+            { text: "Aurangzeb's Destructions", href: "/aurangzeb-temples-destroyed" },
+            { text: "Keshavdev Mathura 1670", href: "/keshavdev-mathura" },
+            { text: "Most Powerful Shiva Temples (Jyotirlingas)", href: "/most-powerful-shiva-temples-india" },
+            { text: "Mahmud of Ghazni's Destructions", href: "/mahmud-of-ghazni-temples-destroyed" },
+        ],
+        faqs: [
+            {
+                question: "What did the 1669 firman actually order?",
+                answer:
+                    "Aurangzeb's general firman of 9 April 1669 instructed the governors of all provinces 'to demolish the schools and temples of the infidels and with the utmost urgency put down the teaching and the public practice of the religion of these misbelievers.' It named Tatta, Multan, and Benares specifically. The Maasir-i-Alamgiri preserves the firman text verbatim; Jadunath Sarkar's 1947 English translation is the standard citable form.",
+            },
+            {
+                question: "Is the Gyanvapi Mosque really built on the Vishweshwar temple?",
+                answer:
+                    "Yes — the Maasir-i-Alamgiri records the demolition in September 1669, and the 20th-century Indian Muslim scholar Maulana Abdul Hai (Rector of Darul-Ulum Nadwa, Lucknow) confirms in his 1973 Urdu work Hindustan Islami Ahad Mein that 'the mosque which was built by Alamgir is, in fact, the site of the Bisheshwar Temple. Alamgir got the temple demolished and built a mosque there with those very stones.' The qibla wall of the mosque is the eastern wall of the original temple.",
+            },
+            {
+                question: "Is the current Kashi Vishwanath temple the original?",
+                answer:
+                    "No. The temple now adjoining the Gyanvapi Mosque was reconstructed in 1780 by Maharani Ahilyabai Holkar of Indore on land adjacent to the original site. The pre-1669 footprint is occupied by the Gyanvapi Mosque, not by the 1780 Ahilyabai temple. The Ahilyabai shrine is itself a major Shaiva pilgrimage centre and the canonical contemporary Kashi Vishwanath, but it is not on the precise original plot.",
+            },
+            {
+                question: "Why does the Muslim source from Nadwa matter?",
+                answer:
+                    "Because it closes off the 'this is Hindu fabrication' deflection. Maulana Abdul Hai was a senior Indian Muslim scholar writing in Urdu at one of South Asia's most authoritative seminaries. His 1973 confirmation that Aurangzeb demolished the temple and reused its stones for the mosque is Muslim-insider testimony, not Hindu polemic. The English translation of his work (1977) omitted these passages — a redaction Arun Shourie documented in 1989.",
+            },
+        ],
+        featuredImage: {
+            src: "/assets/articles/kashi-vishwanath-aurangzeb/featured.webp",
+            alt: "kashi vishwanath aurangzeb — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
+    },
+    {
+        slug: "keshavdev-mathura",
+        route: "/keshavdev-mathura",
+        title: "Keshavdev Mathura 1670: Aurangzeb's Krishna-Site Order",
+        metaDescription:
+            "Aurangzeb's January 1670 firman demolished the Keshavdev temple at Krishna's birthplace, raised the Shahi Eidgah, buried the idols at Agra, and renamed Mathura.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-05-17",
+        readingTime: 7,
+        primaryKeyword: "keshavdev mathura aurangzeb",
+        aeoAnswer:
+            "In January 1670 (Ramadan 1080 AH), Aurangzeb ordered the demolition of the Keshavdev temple at Mathura — the great Vaishnava shrine on the traditional site of Krishna's birthplace, built by Bir Singh Bundela of Orchha sixty years earlier. The Maasir-i-Alamgiri records four elements: the destruction itself, the Shahi Eidgah Mosque raised on the temple footprint, the burial of the jewelled idols under the steps of the Begum Sahib's mosque at Agra 'to be continually trodden upon,' and the renaming of Mathura to Islamabad. All four are in the emperor's own court chronicle.",
+        relatedLinks: [
+            { text: "Hub: Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
+            { text: "Aurangzeb's Destructions", href: "/aurangzeb-temples-destroyed" },
+            { text: "Kashi Vishwanath 1669", href: "/kashi-vishwanath-aurangzeb" },
+            { text: "Most Powerful Shiva Temples (Jyotirlingas)", href: "/most-powerful-shiva-temples-india" },
+            { text: "Mahmud of Ghazni's Destructions", href: "/mahmud-of-ghazni-temples-destroyed" },
+        ],
+        faqs: [
+            {
+                question: "Did Aurangzeb really destroy the Krishna Janmasthan temple?",
+                answer:
+                    "Yes — the destruction is recorded in Aurangzeb's own court chronicle, the Maasir-i-Alamgiri (completed 1710 from Mughal state archives), under the month of Ramadan 1080 AH (January 1670). The chronicle reports both the firman and the report-back: 'In a short time by the great exertions of his officers the destruction of this strong foundation of infidelity was accomplished, and on its site a lofty mosque was built at the expenditure of a large sum.'",
+            },
+            {
+                question: "What happened to the idols from the Keshavdev temple?",
+                answer:
+                    "The Maasir-i-Alamgiri records that 'the idols, large and small, set with costly jewels which had been set up in the temple were brought to Agra, and buried under the steps of the mosque of the Begam Sahib, in order to be continually trodden upon.' The Begum Sahib was Jahanara Begum, Shah Jahan's elder daughter and Aurangzeb's sister. The same idol-burial pattern recurs at Jodhpur (1679) and Khandela (1679) in the chronicle.",
+            },
+            {
+                question: "Was Mathura really renamed to Islamabad?",
+                answer:
+                    "Yes, as an act of state. The Maasir-i-Alamgiri records: 'The name of Mathura was changed to Islamabad.' Official Mughal documents and coinage from the period reflect the renaming. It did not stick in popular usage; Mathura reverted to its original Sanskritic name after the Mughal period. The renaming was bureaucratic erasure, not folk culture.",
+            },
+            {
+                question: "Was the destruction religious or political?",
+                answer:
+                    "Both, with the religious framing on the surface of the court record. The chronicle's language is explicitly religious — the temple is called 'this strong foundation of infidelity,' the idols are humiliated, the city renamed. At the same time, Mathura was the centre of Gokula's Jat agrarian rebellion, suppressed the same month. Audrey Truschke's 2017 biography develops the political-punishment reading without denying the religious framing.",
+            },
+        ],
+        featuredImage: {
+            src: "/assets/articles/keshavdev-mathura/featured.webp",
+            alt: "keshavdev mathura aurangzeb — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
+    },
+    {
+        slug: "martand-sun-temple",
+        route: "/martand-sun-temple",
+        title: "Martand Sun Temple: Sikandar Butshikan's Kashmir Raid",
+        metaDescription:
+            "The eighth-century Karkota-built Surya temple at Anantnag, dismantled c. 1400 under Sikandar Butshikan. Persian and Sanskrit sources converge on the destruction.",
+        pillar: "spiritual-traditions",
+        publishDate: "2026-05-17",
+        readingTime: 7,
+        primaryKeyword: "martand sun temple destruction",
+        aeoAnswer:
+            "The Martand Sun Temple on the Mattan plateau in Anantnag, built around 725-750 CE by King Lalitaditya Muktapida of the Karkota dynasty, was systematically dismantled during the reign of Sultan Sikandar Shah Miri of Kashmir (c. 1389-1413), whose own Persian-language chroniclers gave him the title Butshikan, 'idol-breaker.' The destruction is documented in the Tarikh-i-Rashidi, the Tarikh-i-Hassan, and the Baharistan-i-Shahi, and independently corroborated in Jonaraja's Sanskrit continuation of Kalhana's Rajatarangini, written within a generation by a Brahmin court historian. The ruined plinth and 84-column peristyle outline survive as an ASI-protected monument.",
+        relatedLinks: [
+            { text: "Hub: Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
+            { text: "Sikandar Butshikan's Kashmir", href: "/sikandar-butshikan-kashmir-temples" },
+            { text: "Mahmud of Ghazni's Destructions", href: "/mahmud-of-ghazni-temples-destroyed" },
+            { text: "Aurangzeb's Destructions", href: "/aurangzeb-temples-destroyed" },
+            { text: "Kailasa Temple Ellora", href: "/kailasa-temple-ellora" },
+        ],
+        faqs: [
+            {
+                question: "Who built the Martand Sun Temple?",
+                answer:
+                    "King Lalitaditya Muktapida of the Karkota dynasty of Kashmir, around 725-750 CE. Lalitaditya is the most expansionist sovereign in Kalhana's twelfth-century Rajatarangini — credited with campaigns across northern India and central Asia. The Martand temple, dedicated to Surya, was the monumental Karkota foundation on the Mattan plateau and one of the largest stone shrines of the northern subcontinent before its destruction.",
+            },
+            {
+                question: "Who gave Sikandar the title 'Butshikan'?",
+                answer:
+                    "Kashmir's own Persian-language Muslim chroniclers — not hostile external sources. The title appears in Mirza Haidar Dughlat's Tarikh-i-Rashidi (c. 1546), Pir Hassan Shah's Tarikh-i-Hassan, the anonymous Baharistan-i-Shahi (c. 1614), and Saiyid Ali's Tarikh-i-Kashmir. In their tradition the title was honorific, marking Sikandar as a Sultan who fulfilled the ruler's duty of destroying idols. This Muslim-internal usage is what makes the 'this is Hindu propaganda' deflection untenable.",
+            },
+            {
+                question: "Did Sikandar's own minister drive the policy?",
+                answer:
+                    "Jonaraja's Sanskrit continuation of the Rajatarangini names the convert-minister Suhabhatta — a Brahmin who converted to Islam and took the name Saifuddin — as the principal architect of the temple-destruction policy and the restrictive measures against the Pandit community. Mohibbul Hasan's Kashmir Under the Sultans (1959) treats Suhabhatta as the executive agent, with Sikandar as a more passive figure. The Persian chronicles credit Sikandar directly. Both readings sit within the sources.",
+            },
+            {
+                question: "How do we know the Martand damage was deliberate?",
+                answer:
+                    "Archaeological survey patterning. ASI reports from Cunningham onwards document the destruction as systematic dismantling — chisel and crowbar marks, structural elements broken at structural points, surrounding monastic cells stripped — rather than the cumulative weathering of natural collapse. The plinth and the 84-column peristyle outline survived only because the masonry blocks were too heavy to move. The pattern is consistent with the Persian chronicles' description of the temple being 'burnt and broken.'",
+            },
+        ],
+        featuredImage: {
+            src: "/assets/articles/martand-sun-temple/featured.webp",
+            alt: "martand sun temple destruction — sacred geometry illustration in ochre and saffron tones",
+            width: 1200,
+            height: 630,
+        },
+    },
     // ─── Sprint 5: Cluster 7 — Courses & Structured Learning ─────────────────
     {
         slug: "how-to-study-indian-philosophy-home",

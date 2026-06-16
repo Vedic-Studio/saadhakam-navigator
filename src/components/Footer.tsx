@@ -43,6 +43,14 @@ const footerLinks = {
     { label: "How to Start Japa", href: "/how-to-start-japa" },
     { label: "10 Sanskrit Mantras", href: "/10-powerful-sanskrit-mantras" },
     { label: "Daily Spiritual Routine", href: "/daily-spiritual-routine-beginners" },
+    { label: "Temples Destroyed in Medieval India", href: "/temples-destroyed-medieval-india" },
+    { label: "Aurangzeb's Temple Destructions", href: "/aurangzeb-temples-destroyed" },
+    { label: "Mahmud of Ghazni's Destructions", href: "/mahmud-of-ghazni-temples-destroyed" },
+    { label: "Sikandar Butshikan's Kashmir", href: "/sikandar-butshikan-kashmir-temples" },
+    { label: "Case: Somnath 1026", href: "/somnath-destruction" },
+    { label: "Case: Kashi Vishwanath 1669", href: "/kashi-vishwanath-aurangzeb" },
+    { label: "Case: Keshavdev Mathura 1670", href: "/keshavdev-mathura" },
+    { label: "Case: Martand Sun Temple", href: "/martand-sun-temple" },
   ],
 };
 

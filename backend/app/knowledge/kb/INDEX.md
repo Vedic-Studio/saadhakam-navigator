@@ -126,6 +126,14 @@ The master domain map. Every file in `kb/` is listed here with a one-line hook.
 - [Aryan invasion / migration claim](claims/aryan-invasion-migration-claim.md) — AIT vs IAMT vs OIT; the 2019 Narasimhan ancient-DNA evidence
 - [Ancient heliocentrism claim](claims/ancient-heliocentrism-claim.md) — Aryabhata's earth rotation vs heliocentrism; Nilakantha's partial heliocentrism
 - [Nyaya first-order logic claim](claims/nyaya-first-order-logic-claim.md) — Nyaya as a sophisticated peer tradition vs equivalence to modern predicate logic
+- [Somnath destruction claim](claims/somnath-destruction-claim.md) — Mahmud of Ghazni 1026; the destruction event vs "seventeen raids," "seventeen rebuilds," inflated loot figures, and the religious-vs-political motivation debate
+- [Kashi Vishwanath / Aurangzeb claim](claims/kashi-vishwanath-aurangzeb-claim.md) — the April 1669 firman, the Vishweshwar demolition, the Gyanvapi Mosque on the temple footprint, and Maulana Abdul Hai's 1973 Urdu confirmation
+- [Keshavdev Mathura / Aurangzeb claim](claims/keshavdev-mathura-aurangzeb-claim.md) — January 1670 firman, Shahi Eidgah on the site, idols buried under Begum Sahib mosque steps at Agra, Mathura renamed Islamabad
+- [Babri Masjid temple site claim](claims/babri-masjid-temple-site-claim.md) — the secular historical question (was there a temple?) decomposed from the devotional question (was Rama born here?); the four pre-British Muslim sources; the 2019 Supreme Court judgment
+- [Nalanda / Bakhtiyar Khilji claim](claims/nalanda-bakhtiyar-khilji-claim.md) — c. 1193 destruction; the Odantapuri-vs-Nalanda identification problem; the "library burned for six months" framing as Tibetan diaspora memory, not contemporary chronicle
+- [Martand Sun Temple / Sikandar Butshikan claim](claims/martand-sun-temple-sikandar-butshikan-claim.md) — Kashmir Valley temple corpus destruction c. 1389–1413; the "Butshikan" title given by Kashmir's own Persian chroniclers; Jonaraja's contemporary Sanskrit account
+- [Rudramahalaya Sidhpur claim](claims/rudramahalaya-sidhpur-claim.md) — two-stage destruction (Ulugh Khan 1297–98, Ahmed Shah I 1415); ASI excavation; Government of India Minorities' Commission 1983 report explicitly documenting the conversion
+- [Ayodhya ASI 2003 report claim](claims/ayodhya-asi-2003-report-claim.md) — court-directed excavation findings (pillar bases, north–south wall, structural floor, 50+ pillars); what the report does and does not prove; its role in the 2019 Supreme Court verdict
 
 ---
 
