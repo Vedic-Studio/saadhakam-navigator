@@ -369,6 +369,8 @@ export default async function ComparisonPage({ params }: Props) {
             </div>
           )}
 
+          {/* Generic Faith Finder CTA, suppressed on slugs that already render the tagged inline CTA above */}
+          {!FAITH_FINDER_CTA_SLUGS.has(comp.slug) && (
           <div className="bg-gradient-to-br from-indigo-950/40 to-background rounded-3xl border border-white/10 p-10 text-center relative overflow-hidden">
 
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
@@ -394,6 +396,7 @@ export default async function ComparisonPage({ params }: Props) {
               </Button>
             </TrackedLink>
           </div>
+          )}
         </article>
       </main>
 
