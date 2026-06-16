@@ -1,4 +1,4 @@
-import { Body, DefineStar, EclipticLongitude, SunPosition, SearchRiseSet, Observer } from "astronomy-engine";
+import { Body, DefineStar, EclipticGeoMoon, EclipticLongitude, SunPosition, SearchRiseSet, Observer } from "astronomy-engine";
 
 export interface AstronomicalSunWindow {
     sunriseMinutes: number;
@@ -330,7 +330,10 @@ export function getLahiriAyanamsha(date: Date) {
 export function getSiderealLongitudes(observationDate: Date, ayanamsha?: number) {
     const activeAyanamsha = ayanamsha ?? getLahiriAyanamsha(observationDate);
     const solarLongitude = normalizeDegrees(SunPosition(observationDate).elon - activeAyanamsha);
-    const lunarLongitude = normalizeDegrees(EclipticLongitude(Body.Moon, observationDate) - activeAyanamsha);
+    // Geocentric Moon longitude (advances ~13 deg/day). EclipticLongitude(Body.Moon, ...) returns the
+    // HELIOCENTRIC longitude (advances ~1 deg/day and sits ~180 deg from the Sun), which froze tithi and
+    // nakshatra for ~14 days at a time. EclipticGeoMoon(...).lon is the correct geocentric value of date.
+    const lunarLongitude = normalizeDegrees(EclipticGeoMoon(observationDate).lon - activeAyanamsha);
 
     return {
         solarLongitude,
