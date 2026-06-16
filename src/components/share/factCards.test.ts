@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   factCards,
@@ -33,9 +35,18 @@ describe("factCards data integrity", () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it("has unique art paths so two cards never share one image", () => {
+  it("has unique art + rasterArt paths so two cards never share one image", () => {
     const art = factCards.map((c) => c.art);
     expect(new Set(art).size).toBe(art.length);
+    const raster = factCards.map((c) => c.rasterArt);
+    expect(new Set(raster).size).toBe(raster.length);
+  });
+
+  it("every rasterArt PNG exists on disk (run `npm run images:fact-cards` after editing art)", () => {
+    for (const card of factCards) {
+      const file = path.join(process.cwd(), "public", card.rasterArt);
+      expect(existsSync(file), `${card.id}: missing ${card.rasterArt}`).toBe(true);
+    }
   });
 
   for (const card of factCards) {
@@ -59,9 +70,12 @@ describe("factCards data integrity", () => {
         expect(card.href.endsWith("/")).toBe(false);
       });
 
-      it("points art at an SVG under /assets/fact-cards/", () => {
+      it("points art at an SVG and rasterArt at the matching PNG under /assets/fact-cards/", () => {
         expect(card.href).not.toContain(" ");
         expect(card.art).toMatch(/^\/assets\/fact-cards\/[\w-]+\.svg$/);
+        expect(card.rasterArt).toMatch(/^\/assets\/fact-cards\/[\w-]+\.png$/);
+        // The PNG is the rasterized twin of the SVG: same basename, different ext.
+        expect(card.rasterArt).toBe(card.art.replace(/\.svg$/, ".png"));
       });
 
       it("the fact carries at least one concrete number (it's the quotable payload)", () => {

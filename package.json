@@ -39,6 +39,7 @@
     "images:review": "node scripts/review-images.mjs",
     "images:review:prompts": "node scripts/review-images.mjs --prompts-only",
     "images:run": "npm run images:generate && npm run images:optimize",
+    "images:fact-cards": "node scripts/rasterize-fact-cards.mjs",
     "backlinks:checklist": "node scripts/backlinks/generate-checklist.mjs",
     "backlinks:check": "node scripts/backlinks/check-status.mjs",
     "backlinks:report": "node scripts/backlinks/report.mjs",

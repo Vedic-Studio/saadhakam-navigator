@@ -41,8 +41,13 @@ export interface FactCard {
   citation: string;
   /** X/Twitter hashtags (without leading '#'). */
   hashtags: string[];
-  /** Path to the branded card art under /public. */
+  /** Path to the branded card art (SVG) under /public, shown on the page. */
   art: string;
+  /**
+   * Rasterized PNG of the card art (1200x630) for social / Open Graph previews —
+   * platforms cannot render SVG. Regenerate with `npm run images:fact-cards`.
+   */
+  rasterArt: string;
   /** Alt text for the art. */
   artAlt: string;
   /**
@@ -73,6 +78,7 @@ export const factCards: FactCard[] = [
     citation: "ASI & Deccan College excavations; site extent ~350 ha (7 mounds)",
     hashtags: ["Rakhigarhi", "IndusValley", "SanatanHistory"],
     art: "/assets/fact-cards/rakhigarhi-vs-mohenjo-daro.svg",
+    rasterArt: "/assets/fact-cards/rakhigarhi-vs-mohenjo-daro.png",
     artAlt:
       "Fact card: Rakhigarhi ~350 hectares versus Mohenjo-daro ~250 hectares.",
     sourceNote:
@@ -94,6 +100,7 @@ export const factCards: FactCard[] = [
     citation: "Shinde et al., Cell 2019; Narasimhan et al., Science 2019",
     hashtags: ["Rakhigarhi", "AncientDNA", "SanatanHistory"],
     art: "/assets/fact-cards/rakhigarhi-dna.svg",
+    rasterArt: "/assets/fact-cards/rakhigarhi-dna.png",
     artAlt:
       "Fact card: 2,500 BCE Rakhigarhi DNA shows no Steppe or Iranian-farmer ancestry.",
     sourceNote:
@@ -115,6 +122,7 @@ export const factCards: FactCard[] = [
     citation: "Puranic genealogy (21 kings, Rajagriha); Haryanka transition ~682 BCE",
     hashtags: ["Magadha", "Jarasandha", "SanatanHistory"],
     art: "/assets/fact-cards/brihadratha-dynasty.svg",
+    rasterArt: "/assets/fact-cards/brihadratha-dynasty.png",
     artAlt:
       "Fact card: 21 Brihadratha kings ruled Magadha from Rajagriha, circa 1,700 to 682 BCE.",
     sourceNote:

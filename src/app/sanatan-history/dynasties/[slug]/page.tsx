@@ -7,6 +7,7 @@ import {
   buildUrl,
   SPEAKABLE_SPEC,
 } from "@/lib/seo/index";
+import { getFactCardByHref } from "@/components/share/factCards";
 import { HistoryPageLayout } from "@/components/history/HistoryPageLayout";
 import { AeoBlock } from "@/components/history/AeoBlock";
 import { HistorySidebar } from "@/components/history/HistorySidebar";
@@ -37,10 +38,13 @@ export async function generateMetadata({
   const dynasty = getDynastyById(slug);
   if (!dynasty) return {};
 
+  const path = "/sanatan-history/dynasties/" + slug;
+  const card = getFactCardByHref(path);
   return buildPageMetadata({
     title: dynasty.seoTitle ?? dynasty.name + " | Sanatan History",
     description: dynasty.metaDescription,
-    path: "/sanatan-history/dynasties/" + slug,
+    path,
+    images: card ? [card.rasterArt] : undefined,
   });
 }
 

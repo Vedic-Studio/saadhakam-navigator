@@ -10,6 +10,7 @@ import {
   buildScholarlyArticleSchema,
   buildUrl,
 } from "@/lib/seo/index";
+import { getFactCardByHref } from "@/components/share/factCards";
 import { HistoryPageLayout } from "@/components/history/HistoryPageLayout";
 import { AeoBlock } from "@/components/history/AeoBlock";
 import { HistorySidebar } from "@/components/history/HistorySidebar";
@@ -31,10 +32,13 @@ export async function generateMetadata({
   const item = getEvidenceById(slug);
   if (!item) return {};
 
+  const path = "/sanatan-history/evidence/" + slug;
+  const card = getFactCardByHref(path);
   return buildPageMetadata({
     title: (item.seoTitle ?? item.claim) + " | Evidence | Sanatan History",
     description: item.metaDescription,
-    path: "/sanatan-history/evidence/" + slug,
+    path,
+    images: card ? [card.rasterArt] : undefined,
   });
 }
 
