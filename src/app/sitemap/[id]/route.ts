@@ -24,6 +24,7 @@ import { sites } from "@/data/sites";
 import { researchers } from "@/data/researchers";
 import { evidenceItems } from "@/data/evidence";
 import { civilizationComparisons } from "@/data/civilizations";
+import { learningPaths } from "@/components/path/paths";
 
 // Hardcoded to www — env var inconsistency caused Google canonical confusion
 const baseUrl = "https://www.opensadhaka.com";
@@ -105,6 +106,15 @@ function getEntries(id: string): SitemapEntry[] {
         { url: `${baseUrl}/inquiry-vs-devotion-path`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.78 },
         { url: `${baseUrl}/which-meditation-for-me`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.78 },
         { url: `${baseUrl}/starting-spiritual-practice`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.78 },
+        { url: `${baseUrl}/today`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
+        { url: `${baseUrl}/path`, lastModified: contentDate, changeFrequency: "weekly", priority: 0.8 },
+        ...learningPaths.map((p) => ({
+          url: `${baseUrl}/path/${p.id}`,
+          lastModified: contentDate,
+          changeFrequency: "monthly",
+          priority: 0.7,
+        })),
+        { url: `${baseUrl}/jyotish/nakshatras`, lastModified: contentDate, changeFrequency: "monthly", priority: 0.7 },
       ];
 
     case "philosophies":

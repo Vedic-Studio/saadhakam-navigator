@@ -48,6 +48,7 @@ const navSections: NavSection[] = [
   { type: "link", item: { label: "Vedic Clock", href: "/vedic-clock" } },
   { type: "link", item: { label: "Jyotish", href: "/jyotish" } },
   { type: "link", item: { label: "Panchang", href: "/panchang" } },
+  { type: "link", item: { label: "Today", href: "/today" } },
   {
     type: "group",
     group: {
@@ -55,6 +56,7 @@ const navSections: NavSection[] = [
       items: [
         { label: "Concepts", href: "/concepts", description: "Define karma, dharma, moksha, and core ideas." },
         { label: "Six Darshanas", href: "/six-darshanas", description: "The six classical schools and how they pair up." },
+        { label: "Learning Paths", href: "/path", description: "Guided step-by-step journeys through the darshanas and core texts." },
         { label: "Practices", href: "/practices", description: "Begin japa, dhyana, puja, seva, and pranayama." },
         { label: "Texts", href: "/sacred-texts-teachings", description: "Scriptures, teachings, and foundational sources." },
         { label: "Deities", href: "/deities", description: "Meet forms, symbolism, and devotional significance." },

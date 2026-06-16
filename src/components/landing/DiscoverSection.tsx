@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame, Clock, Compass, Sparkles, ScrollText, Brain, FileText, Lightbulb, HandHeart, Music } from "lucide-react";
+import { ArrowRight, Star, Users, BookOpen, Languages, GitCompareArrows, Flame, Clock, Compass, Sparkles, ScrollText, Brain, FileText, Lightbulb, HandHeart, Music, Sun, Route } from "lucide-react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggeredList } from "@/components/animations/StaggeredList";
 
@@ -26,6 +26,13 @@ const categories = [
     color: "text-violet-400",
   },
   {
+    title: "Learning Paths",
+    description: "Guided step-by-step journeys through the darshanas and core texts",
+    href: "/path",
+    icon: Route,
+    color: "text-sky-400",
+  },
+  {
     title: "Jyotish",
     description: "Nakshatras, rashis, grahas, and daily panchang",
     href: "/jyotish",
@@ -38,6 +45,13 @@ const categories = [
     href: "/panchang",
     icon: Compass,
     color: "text-orange-400",
+  },
+  {
+    title: "Aaj ka Sadhaka",
+    description: "Today's vara, planetary mantra, verse, and a single practice to begin",
+    href: "/today",
+    icon: Sun,
+    color: "text-amber-400",
   },
   {
     title: "Deities",
