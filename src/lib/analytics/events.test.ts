@@ -6,6 +6,7 @@ import {
   trackPathStepComplete,
   trackVerseBookmark,
   trackOutboundShare,
+  trackEmailSignup,
 } from "./events";
 
 describe("analytics event wrappers", () => {
@@ -102,6 +103,21 @@ describe("analytics event wrappers", () => {
       content_type: "fact_card",
       url: "https://opensadhaka.com/sanatan-history/evidence/rakhigarhi",
     });
+  });
+
+  it("trackEmailSignup fires email_signup with source", () => {
+    trackEmailSignup("today");
+    expect(gtag).toHaveBeenCalledTimes(1);
+    expect(gtag).toHaveBeenCalledWith("event", "email_signup", {
+      source: "today",
+    });
+  });
+
+  it("trackEmailSignup drops an empty source", () => {
+    trackEmailSignup("");
+    const params = gtag.mock.calls[0][2] as Record<string, unknown>;
+    expect(params).toEqual({});
+    expect("source" in params).toBe(false);
   });
 
   it("drops empty-string properties so gtag never receives blanks", () => {

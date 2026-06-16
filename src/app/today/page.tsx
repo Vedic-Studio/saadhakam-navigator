@@ -7,9 +7,10 @@ import { JyotishDisclaimer } from "@/components/jyotish/JyotishDisclaimer";
 import { TodayPanchangView } from "@/components/today/TodayPanchangView";
 import { TodayPractice } from "@/components/today/TodayPractice";
 import { buildBreadcrumbSchema, buildWebPageSchema, buildPageMetadata, buildUrl } from "@/lib/seo";
-import { getPanchangForDate, getGrahaBySlug } from "@/lib/jyotish";
-import { getMantraBySlug } from "@/data/mantras";
+import { getPanchangForDate } from "@/lib/jyotish";
 import { getVerseForDay, getPracticeForDay, verseHref } from "./rotation";
+import { getVaraSelection } from "./varaSelection";
+import { DailyEmailCapture } from "@/components/today/DailyEmailCapture";
 
 export const metadata: Metadata = buildPageMetadata({
     title: "Aaj ka Sadhaka — Today's Tithi, Mantra & Practice",
@@ -32,9 +33,8 @@ export default function TodayPage() {
     const panchang = getPanchangForDate(now);
 
     // Bind the day's mantra: vara -> ruling graha -> its first (beej) mantra.
-    const graha = getGrahaBySlug(panchang.vara.rulingGraha);
-    const mantraSlug = graha?.mantraSlugs[0];
-    const mantra = mantraSlug ? getMantraBySlug(mantraSlug) : undefined;
+    // Shared with the daily vara email so both resolve the same mantra.
+    const { graha, mantra } = getVaraSelection(now);
 
     const verse = getVerseForDay(now);
     const practice = getPracticeForDay(now);
@@ -252,6 +252,11 @@ export default function TodayPage() {
                                 How to begin
                                 <ArrowRight className="h-4 w-4" aria-hidden />
                             </Link>
+                        </section>
+
+                        {/* Email capture — bring the daily loop to the inbox. */}
+                        <section className="rounded-3xl border border-border bg-card/40 p-6 backdrop-blur-md md:p-8">
+                            <DailyEmailCapture />
                         </section>
 
                         <div className="flex items-center justify-center gap-2 pt-2 text-center text-xs text-muted-foreground">

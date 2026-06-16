@@ -145,6 +145,20 @@ export function trackVerseBookmark(verseId: string, cluster: string): void {
   });
 }
 
+/**
+ * `email_signup` — fires when a visitor submits an email-capture form and the
+ * subscribe request succeeds. Persona-agnostic conversion primitive; the
+ * `source` distinguishes which surface drove the signup (for example `today`
+ * for the daily-vara capture on the /today page).
+ *
+ * @param source The capture surface, e.g. `today`. Dropped if empty.
+ */
+export function trackEmailSignup(source: string): void {
+  sendEvent("email_signup", {
+    source: source || undefined,
+  });
+}
+
 /** Arguments for `trackOutboundShare`, mirroring the outbound_share properties. */
 export type OutboundShareParams = {
   /** The share destination. */

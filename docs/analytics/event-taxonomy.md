@@ -37,6 +37,7 @@ Phase legend (from the 12-week roadmap, plan section 6):
 | `return_visit` | SHIPPED | P0 (now) | All | Retention primitive | days_since_last, visit_count |
 | `cta_click` (source_template enrichment) | SHIPPED | P0 (now) | All | Read to act | source_template (added) |
 | `faith_finder_quiz_start` (source_template enrichment) | SHIPPED | P0 (now) | All | Read to act | source_template (added) |
+| `email_signup` | SHIPPED | P2 | All | Email capture | source |
 | `streak_day` | DEFERRED | P1 | Practitioner | HABIT | streak_len, cluster |
 | `mantra_audio_play` | DEFERRED | P1 | Practitioner | HABIT | mantra_id, deity, duration_pct |
 | `panchang_view` | DEFERRED | P1 | Practitioner (daily-return cohort) | HABIT / daily-return | date, tithi, vara, nakshatra |
@@ -161,6 +162,33 @@ each page template. Until then, the property simply stays absent.
     quiz_name: 'faith_finder',
     source_template: 'homepage',
     // ...existing journey properties
+  });
+  ```
+
+### `email_signup`
+
+- Name: `email_signup`
+- Trigger: fires when a visitor submits an email-capture form and the subscribe
+  request succeeds (`POST /api/newsletter/subscribe` returns ok). Plan feature P2
+  (email-capture moments layered on the P1 loops).
+- Wiring: `src/lib/analytics/events.ts` exports `trackEmailSignup(source)`, which
+  calls `sendEvent('email_signup', { source })`. The first call site is
+  `src/components/today/DailyEmailCapture.tsx` (the daily-vara capture on `/today`),
+  which fires it with `source: 'today'` after a successful subscribe.
+- Maps to: all personas. The email-capture conversion primitive that turns an
+  on-site reader into a subscriber the daily vara email can reach.
+- Properties:
+
+  | Property | Type | Allowed values | Notes |
+  |----------|------|----------------|-------|
+  | `source` | string | capture-surface id (for example `today`) | Which surface drove the signup. Dropped when empty. |
+
+- Wired in phase: P2.
+- Example gtag call:
+
+  ```javascript
+  window.gtag('event', 'email_signup', {
+    source: 'today',
   });
   ```
 
