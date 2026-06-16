@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { SanskritTypewriter } from "@/components/visuals/SanskritTypewriter";
+import { BookmarkButton } from "@/components/bookmark/BookmarkButton";
 import {
   loadSahasranama,
   getSahasranamaVerseBySlug,
@@ -120,9 +121,16 @@ export default async function VishnuSahasranamaVersePage({
             <p className="text-sm text-blue-400/70 font-medium mt-8 mb-2">
               Shloka {verse.verse} of {sahasranama.verseCount} &middot; Names {firstN}–{lastN}
             </p>
-            <h1 className="font-display text-4xl md:text-6xl font-black mb-10 tracking-tighter">
+            <h1 className="font-display text-4xl md:text-6xl font-black mb-6 tracking-tighter">
               Vishnu Sahasranama — Shloka {verse.verse}
             </h1>
+            <div className="mb-10">
+              <BookmarkButton
+                verseId={`vsn-shloka-${verse.verse}`}
+                cluster="vishnu-sahasranama"
+                label="shloka"
+              />
+            </div>
           </ScrollReveal>
 
           <section className="space-y-8">

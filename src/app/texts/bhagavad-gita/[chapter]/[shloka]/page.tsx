@@ -7,6 +7,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentPageTracker, TrackedLink } from "@/components/ContentAnalytics";
+import { BookmarkButton } from "@/components/bookmark/BookmarkButton";
 import { composeMetaDescription } from "@/lib/seo/metaDescription";
 import {
     buildArticleSchema,
@@ -205,9 +206,17 @@ export default async function BgShlokaPage({
                     Bhagavad Gita {shlokaId}
                 </div>
 
-                <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-8">
+                <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
                     Verse {shloka.verse}
                 </h1>
+
+                <div className="mb-8 flex justify-center">
+                    <BookmarkButton
+                        verseId={`bg-${shloka.chapter}-${shloka.verse}`}
+                        cluster="bhagavad-gita"
+                        label="verse"
+                    />
+                </div>
 
                 <div className="bg-neutral-50 px-8 py-10 rounded-3xl border border-neutral-200 shadow-sm mx-auto w-full md:w-[85%]">
                     <p
