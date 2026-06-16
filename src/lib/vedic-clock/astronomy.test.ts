@@ -12,13 +12,13 @@ describe("vedic clock astronomy fixtures", () => {
             dayLengthMinutes: 756,
             solarNoonMinutes: 720,
         });
-        expect(panchanga.tithiIndex).toBe(15);
-        expect(panchanga.nakshatraIndex).toBe(13);
-        expect(panchanga.yogaIndex).toBe(12);
-        expect(panchanga.karanaIndex).toBe(30);
+        expect(panchanga.tithiIndex).toBe(21);
+        expect(panchanga.nakshatraIndex).toBe(19);
+        expect(panchanga.yogaIndex).toBe(18);
+        expect(panchanga.karanaIndex).toBe(43);
         expect(panchanga.longitudes.solarLongitude).toBeCloseTo(355.18223965680244, 8);
-        expect(panchanga.longitudes.lunarLongitude).toBeCloseTo(175.33889923071627, 8);
-        expect(panchanga.longitudes.angularDifference).toBeCloseTo(180.15665957391394, 8);
+        expect(panchanga.longitudes.lunarLongitude).toBeCloseTo(254.79497198668605, 8);
+        expect(panchanga.longitudes.angularDifference).toBeCloseTo(259.6127323298836, 8);
     });
 
     it("matches stable fixture values for San Francisco", () => {
@@ -31,13 +31,13 @@ describe("vedic clock astronomy fixtures", () => {
             dayLengthMinutes: 774,
             solarNoonMinutes: 792,
         });
-        expect(panchanga.tithiIndex).toBe(15);
-        expect(panchanga.nakshatraIndex).toBe(13);
-        expect(panchanga.yogaIndex).toBe(12);
-        expect(panchanga.karanaIndex).toBe(30);
+        expect(panchanga.tithiIndex).toBe(22);
+        expect(panchanga.nakshatraIndex).toBe(19);
+        expect(panchanga.yogaIndex).toBe(19);
+        expect(panchanga.karanaIndex).toBe(44);
         expect(panchanga.longitudes.solarLongitude).toBeCloseTo(355.6836658373101, 8);
-        expect(panchanga.longitudes.lunarLongitude).toBeCloseTo(175.84187827922892, 8);
-        expect(panchanga.longitudes.angularDifference).toBeCloseTo(180.15821244191886, 8);
+        expect(panchanga.longitudes.lunarLongitude).toBeCloseTo(260.9077779545921, 8);
+        expect(panchanga.longitudes.angularDifference).toBeCloseTo(265.224112117282, 8);
     });
 
     it("matches stable fixture values for Delhi", () => {
@@ -50,17 +50,28 @@ describe("vedic clock astronomy fixtures", () => {
             dayLengthMinutes: 629,
             solarNoonMinutes: 749,
         });
-        expect(panchanga.tithiIndex).toBe(14);
-        expect(panchanga.nakshatraIndex).toBe(6);
-        expect(panchanga.yogaIndex).toBe(26);
-        expect(panchanga.karanaIndex).toBe(29);
+        expect(panchanga.tithiIndex).toBe(5);
+        expect(panchanga.nakshatraIndex).toBe(25);
+        expect(panchanga.yogaIndex).toBe(18);
+        expect(panchanga.karanaIndex).toBe(11);
         expect(panchanga.longitudes.solarLongitude).toBeCloseTo(269.5454819089499, 8);
-        expect(panchanga.longitudes.lunarLongitude).toBeCloseTo(89.40825568509172, 8);
-        expect(panchanga.longitudes.angularDifference).toBeCloseTo(179.86277377614175, 8);
+        expect(panchanga.longitudes.lunarLongitude).toBeCloseTo(339.85082340991613, 8);
+        expect(panchanga.longitudes.angularDifference).toBeCloseTo(70.30534150096622, 8);
     });
 
     it("tracks the documented Lahiri convention around standard anchors", () => {
         expect(getLahiriAyanamsha(new Date("1956-03-21T00:00:32.000Z"))).toBeCloseTo(23.25190446175816, 8);
         expect(getLahiriAyanamsha(new Date("2000-01-01T12:00:00.000Z"))).toBeCloseTo(23.85468701463168, 8);
+    });
+
+    it("advances the Moon ~12 to 15 deg per day (geocentric, not heliocentric)", () => {
+        // The geocentric Moon moves ~13 deg/day (range ~12 near apogee to ~15.3 near perigee).
+        // The earlier heliocentric bug advanced it ~1 deg/day, which froze tithi and nakshatra
+        // for ~14 days at a time. This test fails if the computation regresses to heliocentric.
+        const day0 = getComputedPanchanga(new Date("2026-04-09T06:15:00.000Z")).longitudes.lunarLongitude;
+        const day1 = getComputedPanchanga(new Date("2026-04-10T06:15:00.000Z")).longitudes.lunarLongitude;
+        const dailyMotion = ((day1 - day0) + 360) % 360;
+        expect(dailyMotion).toBeGreaterThan(11);
+        expect(dailyMotion).toBeLessThan(16);
     });
 });
