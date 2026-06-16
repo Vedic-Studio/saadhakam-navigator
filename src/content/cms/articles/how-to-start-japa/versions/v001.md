@@ -1,7 +1,7 @@
 ---
 slug: how-to-start-japa
-title: How to Start Japa: A 7-Step Beginner Guide (Mantra & Mala)
-description: Krishna calls japa the highest sacrifice (Gita 10.25). Pick a mantra, use a 108-bead mala, and progress through the 3 levels: vaikhari, upamshu, manasika.
+title: How to Start Japa: The 7-Step Daily Routine for Beginners
+description: Japa gives the restless mind one job: 108 repetitions of a single sound. Follow the 7-step routine for mantra, mala, timing, and the three levels of practice.
 publishDate: 2026-03-20
 updatedAt: 2026-03-20
 pillar: practical-practices
